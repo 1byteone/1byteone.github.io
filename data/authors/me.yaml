@@ -1,0 +1,95 @@
+schema: hugoblox/author/v1
+slug: me
+is_owner: true
+name:
+  display: "1byteone"
+  given: ""
+  family: ""
+postnominals: []
+status:
+  icon: "🤖"  # Emoji shown on avatar badge: 💻 developer, 🎨 designer, 🚀 startup, 🔬 researcher, 🎓 student
+role: AI Application Developer
+email: "yjs_0831@qq.com"
+bio: |
+  AI Application Developer specializing in LLM-powered systems, RAG pipelines, and agent-based architectures.
+  Building intelligent solutions with LangChain, FastAPI, and Spring Boot.
+  Focused on practical AI engineering: document preprocessing, vector persistence, hallucination control, and streaming interfaces.
+
+affiliations:
+  - name: Jiangxi Agricultural University
+    url: ""
+
+links:
+  - icon: at-symbol
+    url: "mailto:yjs_0831@qq.com"
+    label: E-mail Me
+  - icon: brands/github
+    url: "https://github.com/1byteone"
+
+interests:
+  - AI Application Development
+  - RAG (Retrieval-Augmented Generation)
+  - LLM Agents
+  - LangChain & FastAPI
+  - Spring Boot & Microservices
+
+education:
+  - degree: B.S. Software Engineering
+    institution: Jiangxi Agricultural University
+    start: 2023-09-01
+    end: 2027-06-30
+    summary: |
+      Full-time undergraduate student, Class of 2027.
+      Focus on AI application development and backend engineering.
+      CET-4 certified.
+
+experience:
+  - role: AI Application Developer Intern
+    org: Jiangxi Chuanxi Education Technology Co., Ltd.
+    start: 2026-09-01
+    summary: |
+      Developing AI-powered search and recommendation systems.
+      Building RAG-based intelligent retrieval services.
+      Integrating Python AI services with Spring Cloud microservices.
+
+skills:
+  - name: AI Application Development
+    items:
+      - label: LangChain
+        level: 5
+      - label: RAG (Retrieval-Augmented Generation)
+        level: 5
+      - label: FastAPI
+        level: 5
+      - label: Python
+        level: 5
+  - name: Backend Development
+    items:
+      - label: Spring Boot
+        level: 5
+      - label: Spring Cloud
+        level: 4
+      - label: MySQL
+        level: 5
+      - label: Redis
+        level: 4
+  - name: DevOps & Tools
+    items:
+      - label: Docker
+        level: 4
+      - label: Git
+        level: 5
+      - label: Conda
+        level: 4
+      - label: Jupyter
+        level: 4
+
+languages:
+  - name: English
+    level: 4
+    label: Intermediate (CET-4)
+  - name: Chinese
+    level: 5
+    label: Native
+
+awards: []
