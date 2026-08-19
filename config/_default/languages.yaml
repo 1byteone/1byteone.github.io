@@ -2,16 +2,36 @@
 #   Create a section for each of your site's languages.
 #   Documentation: https://docs.hugoblox.com/reference/language/
 
-# Default language
-en:
-  locale: en-us
-
-# Chinese language
+# Default language - Chinese
 zh:
   locale: zh-Hans
-  title: "1byteone - AI Application Developer"
+  title: "1byteone - AI应用开发工程师"
   params:
     description: "AI应用开发工程师，专注于大模型工程落地、RAG检索应用与智能体开发"
+  menu:
+    main:
+      - name: 项目
+        url: /#projects
+        weight: 10
+      - name: 技术栈
+        url: /#skills
+        weight: 20
+      - name: 经历
+        url: /#experience
+        weight: 30
+      - name: 博客
+        url: /#blog
+        weight: 40
+      - name: 联系
+        url: /#contact
+        weight: 50
+
+# English language
+en:
+  locale: en-us
+  title: "1byteone - AI Application Developer"
+  params:
+    description: "AI Application Developer specializing in LLM-powered systems, RAG pipelines, and agent-based architectures"
   menu:
     main:
       - name: Projects

@@ -12,7 +12,7 @@ baseURL: 'https://1byteone.github.io/'
 ## LANGUAGE
 ############################
 
-defaultContentLanguage: en
+defaultContentLanguage: zh
 hasCJKLanguage: true
 defaultContentLanguageInSubdir: false
 removePathAccents: true
