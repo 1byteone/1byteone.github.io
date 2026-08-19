@@ -1,0 +1,233 @@
+[read_more]
+other = "Read More"
+
+[view]
+other = "View"
+
+[view_section]
+other = "View"
+
+[more_pages]
+other = "More"
+
+[posted]
+other = "Posted"
+
+[by]
+other = "By"
+
+[minutes]
+other = "min read"
+
+[minute]
+other = "min read"
+
+[read]
+other = "Read"
+
+[tags]
+other = "Tags"
+
+[tag]
+other = "Tag"
+
+[related]
+other = "Related Posts"
+
+[table_of_contents]
+other = "Table of Contents"
+
+[share]
+other = "Share"
+
+[page_not_found]
+other = "Page Not Found"
+
+[page_does_not_exist]
+other = "Sorry, the page you are looking for does not exist."
+
+[back_to_home]
+other = "Back to Home"
+
+[search]
+other = "Search"
+
+[search_placeholder]
+other = "Search..."
+
+[no_results]
+other = "No results found"
+
+[blog]
+other = "Blog"
+
+[projects]
+other = "Projects"
+
+[contact]
+other = "Contact"
+
+[email]
+other = "Email"
+
+[phone]
+other = "Phone"
+
+[address]
+other = "Address"
+
+[open_in_new]
+other = "Open in new window"
+
+[archive]
+other = "Archive"
+
+[archive_title]
+other = "All Posts"
+
+[featured]
+other = "Featured"
+
+[recent_posts]
+other = "Recent Posts"
+
+[all_posts]
+other = "All Posts"
+
+[all_projects]
+other = "All Projects"
+
+[filter]
+other = "Filter"
+
+[all]
+other = "All"
+
+[status]
+other = "Status"
+
+[role]
+other = "Role"
+
+[duration]
+other = "Duration"
+
+[team_size]
+other = "Team Size"
+
+[tech_stack]
+other = "Tech Stack"
+
+[highlights]
+other = "Highlights"
+
+[links]
+other = "Links"
+
+[source_code]
+other = "Source Code"
+
+[live_demo]
+other = "Live Demo"
+
+[download_resume]
+other = "Download Resume"
+
+[open_to_opportunities]
+other = "Open to Opportunities"
+
+[get_in_touch]
+other = "Get In Touch"
+
+[let_me_know]
+other = "Let's build something amazing together"
+
+[your_name]
+other = "Your Name"
+
+[your_email]
+other = "Your Email"
+
+[your_message]
+other = "Your Message"
+
+[send_message]
+other = "Send Message"
+
+[message_sent]
+other = "Message sent, thank you!"
+
+[copyright]
+other = "All rights reserved"
+
+[theme_by]
+other = "Theme by"
+
+[powered_by]
+other = "Powered by"
+
+[and]
+other = "and"
+
+[or]
+other = "or"
+
+[loading]
+other = "Loading..."
+
+[error]
+other = "Error"
+
+[success]
+other = "Success"
+
+[close]
+other = "Close"
+
+[back]
+other = "Back"
+
+[next]
+other = "Next"
+
+[previous]
+other = "Previous"
+
+[page]
+other = "Page"
+
+[of]
+other = "of"
+
+[no_content]
+other = "No content yet"
+
+[view_project]
+other = "View Project"
+
+[view_blog]
+other = "View Post"
+
+[experiences]
+other = "Experience"
+
+[education]
+other = "Education"
+
+[skills]
+other = "Skills"
+
+[interests]
+other = "Interests"
+
+[certificates]
+other = "Certificates"
+
+[awards]
+other = "Awards"
+
+[publications]
+other = "Publications"
+
+[click_to_view]
+other = "Click to view"

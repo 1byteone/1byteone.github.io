@@ -1,80 +1,80 @@
 ---
-title: "Building a RAG Pipeline with LangChain: From Document Processing to Vector Search"
+title: "使用LangChain构建RAG管道：从文档处理到向量搜索"
 date: 2026-06-15
-summary: "A comprehensive guide to building a production-ready RAG (Retrieval-Augmented Generation) pipeline using LangChain, covering document preprocessing, vector storage, and retrieval optimization"
+summary: "使用LangChain构建生产级RAG（检索增强生成）管道的完整指南，涵盖文档预处理、向量存储和检索优化"
 tags:
   - AI
   - RAG
   - LangChain
   - Python
-  - Tutorial
+  - 教程
 authors:
   - me
 featured: true
 ---
 
-Retrieval-Augmented Generation (RAG) has become the standard approach for building AI applications that need to access specific knowledge bases. This guide walks through building a complete RAG pipeline from scratch using LangChain.
+检索增强生成（RAG）已成为构建需要访问特定知识库的AI应用的标准方法。本指南将介绍如何使用LangChain从零开始构建完整的RAG管道。
 
-## Table of Contents
+## 目录
 
-1. [What is RAG?](#what-is-rag)
-2. [Document Processing](#document-processing)
-3. [Vector Storage](#vector-storage)
-4. [Retrieval Strategies](#retrieval)
-5. [Hallucination Prevention](#hallucination)
-6. [Streaming Interface](#streaming)
-7. [Production Considerations](#production)
+1. [什么是RAG？](#什么是rag)
+2. [文档处理](#文档处理)
+3. [向量存储](#向量存储)
+4. [检索策略](#检索策略)
+5. [幻觉预防](#幻觉预防)
+6. [流式接口](#流式接口)
+7. [生产环境考虑](#生产环境考虑)
 
-## What is RAG? {#what-is-rag}
+## 什么是RAG？ {#什么是rag}
 
-RAG combines the power of large language models with external knowledge retrieval:
+RAG结合了大语言模型和外部知识检索的能力：
 
 ```
-User Query → Retrieval → Context + Query → LLM → Answer
+用户查询 → 检索 → 上下文 + 查询 → LLM → 回答
 ```
 
-This approach solves the core problem of LLMs: they can only answer based on their training data. RAG allows them to access up-to-date, domain-specific, or private information.
+这种方法解决了LLM的核心问题：它们只能基于训练数据回答问题。RAG允许它们访问最新的、特定领域的或私有的信息。
 
-## Document Processing {#document-processing}
+## 文档处理 {#文档处理}
 
-The first step is preparing your documents for retrieval:
+第一步是为检索准备文档：
 
 ```python
 from langchain.document_loaders import PyPDFLoader
 from langchain.text_splitter import TokenTextSplitter
 
-# Load documents
+# 加载文档
 loader = PyPDFLoader("knowledge_base.pdf")
 documents = loader.load()
 
-# Split into chunks
+# 分割为块
 text_splitter = TokenTextSplitter(
     chunk_size=500,
     chunk_overlap=50,
-    encoding_name="cl100k_base"  # OpenAI tokenizer
+    encoding_name="cl100k_base"  # OpenAI分词器
 )
 
 chunks = text_splitter.split_documents(documents)
 ```
 
-### Key Considerations
+### 关键考虑
 
-1. **Chunk Size** - Balance between context and retrieval accuracy
-2. **Overlap** - Prevent important information from being split across chunks
-3. **Metadata** - Preserve source information for attribution
+1. **块大小** - 平衡上下文和检索准确性
+2. **重叠** - 防止重要信息被分割到不同块中
+3. **元数据** - 保留源信息用于归属
 
-## Vector Storage {#vector-storage}
+## 向量存储 {#向量存储}
 
-Store embeddings for efficient similarity search:
+存储嵌入以进行高效相似性搜索：
 
 ```python
 from langchain.embeddings import OpenAIEmbeddings
 from langchain.vectorstores import Redis
 
-# Initialize embeddings
+# 初始化嵌入
 embeddings = OpenAIEmbeddings()
 
-# Create vector store
+# 创建向量存储
 vector_store = Redis.from_documents(
     documents=chunks,
     embedding=embeddings,
@@ -83,30 +83,30 @@ vector_store = Redis.from_documents(
 )
 ```
 
-### Choosing a Vector Store
+### 选择向量存储
 
-| Store | Performance | Features | Best For |
-|-------|-------------|----------|----------|
-| Redis | High | Real-time updates | Production |
-| Pinecone | High | Managed service | Enterprise |
-| FAISS | Medium | Local, free | Development |
-| Chroma | Medium | Simple setup | Prototyping |
+| 存储 | 性能 | 功能 | 最佳用途 |
+|------|------|------|----------|
+| Redis | 高 | 实时更新 | 生产环境 |
+| Pinecone | 高 | 托管服务 | 企业级 |
+| FAISS | 中 | 本地、免费 | 开发环境 |
+| Chroma | 中 | 简单设置 | 原型开发 |
 
-## Retrieval Strategies {#retrieval}
+## 检索策略 {#检索策略}
 
-Implement smart retrieval with LangChain:
+使用LangChain实现智能检索：
 
 ```python
 from langchain.retrievers import ContextualCompressionRetriever
 from langchain.retrievers.document_compressors import LLMChainExtractor
 
-# Basic similarity search
+# 基本相似性搜索
 retriever = vector_store.as_retriever(
     search_type="similarity",
     search_kwargs={"k": 5}
 )
 
-# Advanced: Contextual compression
+# 高级：上下文压缩
 compressor = LLMChainExtractor.from_llm(llm)
 compression_retriever = ContextualCompressionRetriever(
     base_compressor=compressor,
@@ -114,16 +114,16 @@ compression_retriever = ContextualCompressionRetriever(
 )
 ```
 
-## Hallucination Prevention {#hallucination}
+## 幻觉预防 {#幻觉预防}
 
-Critical for production RAG systems:
+对生产级RAG系统至关重要：
 
 ```python
 from langchain.prompts import ChatPromptTemplate
 
-system_prompt = """You are an agricultural expert. Answer questions based ONLY on the provided context. If the context doesn't contain enough information, say "I don't have enough information to answer this question."
+system_prompt = """你是一位农业专家。仅基于提供的上下文回答问题。如果上下文没有包含足够的信息，请说"我没有足够的信息来回答这个问题。"
 
-Context: {context}
+上下文：{context}
 """
 
 prompt = ChatPromptTemplate.from_messages([
@@ -132,15 +132,15 @@ prompt = ChatPromptTemplate.from_messages([
 ])
 ```
 
-### Three-Layer Prevention
+### 三层预防
 
-1. **Retrieval Filtering** - Only pass high-relevance documents
-2. **Prompt Engineering** - Force model to cite sources
-3. **Output Validation** - Verify responses against source data
+1. **检索过滤** - 仅传递高相关性文档
+2. **提示词工程** - 强制模型引用来源
+3. **输出验证** - 验证响应与源数据
 
-## Streaming Interface {#streaming}
+## 流式接口 {#流式接口}
 
-Implement real-time responses with FastAPI:
+使用FastAPI实现实时响应：
 
 ```python
 from fastapi import FastAPI
@@ -154,7 +154,7 @@ async def chat(query: str):
     async def generate():
         async for chunk in chain.astream({"input": query}):
             yield f"data: {chunk.content}\n\n"
-            await asyncio.sleep(0.01)  # Simulate typing
+            await asyncio.sleep(0.01)  # 模拟打字效果
         yield "data: [DONE]\n\n"
     
     return StreamingResponse(
@@ -163,18 +163,18 @@ async def chat(query: str):
     )
 ```
 
-## Production Considerations {#production}
+## 生产环境考虑 {#生产环境考虑}
 
-### 1. Error Handling
+### 1. 错误处理
 ```python
 try:
     response = await chain.ainvoke({"input": query})
 except Exception as e:
-    logger.error(f"RAG error: {e}")
-    return {"error": "Failed to generate response"}
+    logger.error(f"RAG错误: {e}")
+    return {"error": "生成响应失败"}
 ```
 
-### 2. Caching
+### 2. 缓存
 ```python
 from langchain.cache import RedisCache
 
@@ -182,23 +182,23 @@ cache = RedisCache(redis_url="redis://localhost:6379")
 llm = OpenAI(cache=cache)
 ```
 
-### 3. Monitoring
-Track key metrics:
-- Retrieval accuracy
-- Response latency
-- User satisfaction
-- Hallucination rate
+### 3. 监控
+跟踪关键指标：
+- 检索准确性
+- 响应延迟
+- 用户满意度
+- 幻觉率
 
-## Conclusion
+## 总结
 
-Building a production RAG system requires attention to:
-- **Document Quality** - Good preprocessing is crucial
-- **Retrieval Strategy** - Balance precision and recall
-- **Hallucination Prevention** - Multi-layered approach
-- **User Experience** - Streaming and error handling
+构建生产级RAG系统需要关注：
+- **文档质量** - 良好的预处理至关重要
+- **检索策略** - 平衡精确率和召回率
+- **幻觉预防** - 多层次方法
+- **用户体验** - 流式传输和错误处理
 
-The complete code is available on [GitHub](https://github.com/1byteone/rag-pipeline-guide).
+完整代码可在 [GitHub](https://github.com/1byteone/rag-pipeline-guide) 上获取。
 
 ---
 
-Questions? Reach out on [GitHub](https://github.com/1byteone) or email me at yjs_0831@qq.com!
+有问题？通过 [GitHub](https://github.com/1byteone) 或邮件 yjs_0831@qq.com 联系我！

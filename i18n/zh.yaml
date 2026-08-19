@@ -1,0 +1,233 @@
+[read_more]
+other = "阅读全文"
+
+[view]
+other = "查看"
+
+[view_section]
+other = "查看"
+
+[more_pages]
+other = "查看更多"
+
+[posted]
+other = "发布于"
+
+[by]
+other = "作者"
+
+[minutes]
+other = "分钟"
+
+[minute]
+other = "分钟"
+
+[read]
+other = "阅读"
+
+[tags]
+other = "标签"
+
+[tag]
+other = "标签"
+
+[related]
+other = "相关文章"
+
+[table_of_contents]
+other = "目录"
+
+[share]
+other = "分享"
+
+[page_not_found]
+other = "页面未找到"
+
+[page_does_not_exist]
+other = "抱歉，您访问的页面不存在。"
+
+[back_to_home]
+other = "返回首页"
+
+[search]
+other = "搜索"
+
+[search_placeholder]
+other = "输入关键词搜索..."
+
+[no_results]
+other = "没有找到结果"
+
+[blog]
+other = "博客"
+
+[projects]
+other = "项目"
+
+[contact]
+other = "联系"
+
+[email]
+other = "邮箱"
+
+[phone]
+other = "电话"
+
+[address]
+other = "地址"
+
+[open_in_new]
+other = "在新窗口打开"
+
+[archive]
+other = "归档"
+
+[archive_title]
+other = "所有文章"
+
+[featured]
+other = "精选"
+
+[recent_posts]
+other = "最新文章"
+
+[all_posts]
+other = "全部文章"
+
+[all_projects]
+other = "全部项目"
+
+[filter]
+other = "筛选"
+
+[all]
+other = "全部"
+
+[status]
+other = "状态"
+
+[role]
+other = "角色"
+
+[duration]
+other = "周期"
+
+[team_size]
+other = "团队规模"
+
+[tech_stack]
+other = "技术栈"
+
+[highlights]
+other = "项目亮点"
+
+[links]
+other = "链接"
+
+[source_code]
+other = "源代码"
+
+[live_demo]
+other = "在线演示"
+
+[download_resume]
+other = "下载简历"
+
+[open_to_opportunities]
+other = "开放机会"
+
+[get_in_touch]
+other = "联系我"
+
+[let_me_know]
+other = "随时联系我"
+
+[your_name]
+other = "您的姓名"
+
+[your_email]
+other = "您的邮箱"
+
+[your_message]
+other = "您的留言"
+
+[send_message]
+other = "发送消息"
+
+[message_sent]
+other = "消息已发送，感谢您的联系！"
+
+[copyright]
+other = "版权所有"
+
+[theme_by]
+other = "主题由"
+
+[powered_by]
+other = "由"
+
+[and]
+other = "和"
+
+[or]
+other = "或"
+
+[loading]
+other = "加载中..."
+
+[error]
+other = "错误"
+
+[success]
+other = "成功"
+
+[close]
+other = "关闭"
+
+[back]
+other = "返回"
+
+[next]
+other = "下一页"
+
+[previous]
+other = "上一页"
+
+[page]
+other = "页"
+
+[of]
+other = "共"
+
+[no_content]
+other = "暂无内容"
+
+[view_project]
+other = "查看项目"
+
+[view_blog]
+other = "查看文章"
+
+[experiences]
+other = "经历"
+
+[education]
+other = "教育"
+
+[skills]
+other = "技能"
+
+[interests]
+other = "兴趣"
+
+[certificates]
+other = "证书"
+
+[awards]
+other = "荣誉"
+
+[publications]
+other = "发表"
+
+[click_to_view]
+other = "点击查看"

@@ -1,35 +1,35 @@
 ---
-# Leave the homepage title empty to use the site title
+# 中文主页配置
 title: ''
 summary: ''
 date: 2026-01-05
 type: landing
 
 sections:
-  # Developer Hero - Gradient background with name, role, social, and CTAs
+  # 开发者英雄区 - 个人介绍
   - block: dev-hero
     id: hero
     content:
       username: me
-      greeting: "Hi, I'm"
+      greeting: "你好，我是"
       show_status: true
       show_scroll_indicator: true
       typewriter:
         enable: true
-        prefix: "I build"
+        prefix: "我构建"
         strings:
-          - "RAG-powered search systems"
-          - "AI agent applications"
-          - "intelligent retrieval services"
-          - "LLM-integrated backends"
+          - "RAG智能检索系统"
+          - "AI智能体应用"
+          - "智能问答服务"
+          - "大模型集成后端"
         type_speed: 70
         delete_speed: 40
         pause_time: 2500
       cta_buttons:
-        - text: View My Work
+        - text: 查看我的作品
           url: "#projects"
           icon: arrow-down
-        - text: Get In Touch
+        - text: 联系我
           url: "#contact"
           icon: envelope
     design:
@@ -43,25 +43,25 @@ sections:
       spacing:
         padding: ["6rem", "0", "4rem", "0"]
   
-  # Filterable Portfolio - Alpine.js powered project filtering
+  # 项目展示区
   - block: portfolio
     id: projects
     content:
-      title: "Featured Projects"
-      subtitle: "AI-powered systems and intelligent applications"
+      title: "精选项目"
+      subtitle: "我的项目作品集"
       count: 0
       filters:
         folders:
           - projects
       buttons:
-        - name: All
+        - name: 全部
           tag: '*'
+        - name: Java
+          tag: Java
         - name: AI
           tag: AI
-        - name: RAG
-          tag: RAG
-        - name: Backend
-          tag: Backend
+        - name: Python
+          tag: Python
       default_button_index: 0
     design:
       columns: 3
@@ -72,14 +72,14 @@ sections:
       spacing:
         padding: ["4rem", "0", "4rem", "0"]
   
-  # Visual Tech Stack - Icons organized by category
+  # 技术栈展示区
   - block: tech-stack
     id: skills
     content:
-      title: "Tech Stack"
-      subtitle: "Technologies I use to build intelligent systems"
+      title: "技术栈"
+      subtitle: "我用来构建智能系统的技术"
       categories:
-        - name: AI & LLM
+        - name: AI与大模型
           items:
             - name: LangChain
               icon: devicon/python
@@ -89,7 +89,7 @@ sections:
               icon: devicon/python
             - name: OpenAI
               icon: devicon/python
-        - name: Backend
+        - name: 后端开发
           items:
             - name: Java
               icon: devicon/java
@@ -99,7 +99,7 @@ sections:
               icon: devicon/python
             - name: MySQL
               icon: devicon/mysql
-        - name: Infrastructure
+        - name: 基础设施
           items:
             - name: Redis
               icon: devicon/redis
@@ -109,7 +109,7 @@ sections:
               icon: devicon/rabbitmq
             - name: Elasticsearch
               icon: devicon/elasticsearch
-        - name: DevOps
+        - name: 开发工具
           items:
             - name: Git
               icon: brands/github
@@ -129,37 +129,49 @@ sections:
       spacing:
         padding: ["4rem", "0", "4rem", "0"]
   
-  # Experience Timeline
+  # 工作经历时间线
   - block: resume-experience
     id: experience
     content:
-      title: "Experience"
+      title: "工作经历"
       date_format: Jan 2006
       items:
-        - title: AI Application Developer Intern
-          company: Jiangxi Chuanxi Education Technology Co., Ltd.
+        - title: Java后端 / AI应用开发实习生
+          company: 江西传习教育科技有限公司
           company_url: ''
           company_logo: ''
-          location: Nanchang, China
+          location: 南昌，中国
           date_start: '2026-09-01'
           date_end: ''
           description: |2-
-            * Developing AI-powered search and recommendation systems
-            * Building RAG-based intelligent retrieval services
-            * Integrating Python AI services with Spring Cloud microservices
-            * Implementing vector search and hallucination control mechanisms
-        - title: AI Application Developer (Personal Projects)
-          company: Independent Developer
+            * 开发AI驱动的搜索与推荐系统
+            * 构建基于RAG的智能检索服务
+            * 集成Python AI服务与Spring Cloud微服务
+            * 实现向量搜索与幻觉控制机制
+        - title: 核心后端负责人（分布式微云商城）
+          company: 4人实训项目
           company_url: 'https://github.com/1byteone'
           company_logo: ''
-          location: Remote
-          date_start: '2026-03-01'
+          location: 远程
+          date_start: '2026-05-01'
           date_end: '2026-09-01'
           description: |2-
-            * Built agricultural knowledge base Q&A agent with LangChain
-            * Developed e-commerce natural language AI search system
-            * Implemented RAG pipelines with vector storage and multi-turn conversation
-            * Created FastAPI streaming interfaces with SSE support
+            * 主导秒杀链路、搜索/RAG、分布式一致性与研发规范
+            * 采用Redis预扣库存+Redisson可重入锁+RocketMQ异步落库解决超卖
+            * 商品搜索响应从2s降至20ms内，语义召回准确率提升35%
+            * 统一建表、SQL评审、Git分支与CodeReview规范，联调Bug降低60%
+        - title: 独立开发者（农业知识库问答智能体）
+          company: 个人实训项目
+          company_url: 'https://github.com/1byteone'
+          company_logo: ''
+          location: 远程
+          date_start: '2026-03-01'
+          date_end: '2026-03-31'
+          description: |2-
+            * 独立完成农业病害问答Agent，从PDF文档预处理、向量检索到FastAPI接口闭环
+            * 采用私有知识库优先、通用知识兜底的调度策略
+            * 支持多轮记忆、SSE流式输出和结构化结果
+            * 定位修复向量召回超时、工具调用失效等7类故障
     design:
       columns: '1'
       background:
@@ -169,12 +181,12 @@ sections:
       spacing:
         padding: ["4rem", "0", "4rem", "0"]
   
-  # Recent Blog Posts
+  # 博客文章区
   - block: collection
     id: blog
     content:
-      title: "Recent Posts"
-      subtitle: 'Thoughts on AI engineering, RAG, and LLM applications'
+      title: "最新文章"
+      subtitle: '关于AI工程、RAG和大模型应用的思考'
       text: ''
       filters:
         folders:
@@ -192,15 +204,15 @@ sections:
       spacing:
         padding: ["4rem", "0", "4rem", "0"]
   
-  # Contact Section
+  # 联系方式
   - block: contact-info
     id: contact
     content:
-      title: "Get In Touch"
-      subtitle: "Let's build something amazing together"
+      title: "联系我"
+      subtitle: "一起构建精彩项目"
       text: |-
-        I'm always interested in hearing about new projects and opportunities.
-        Whether you're looking to hire, collaborate, or just want to say hi, feel free to reach out!
+        我对新的项目和机会总是很感兴趣。
+        无论你是想雇佣、合作，还是只想打个招呼，都可以随时联系我！
       email: "yjs_0831@qq.com"
       autolink: true
     design:
@@ -212,16 +224,16 @@ sections:
       spacing:
         padding: ["4rem", "0", "4rem", "0"]
   
-  # CTA Card
+  # 行动号召卡片
   - block: cta-card
     content:
-      title: "Open to Opportunities"
+      title: "开放机会"
       text: |-
-        I'm currently looking for **AI Application Developer** or **Backend Engineer** roles.
+        我目前正在寻找 **AI应用开发工程师** 或 **后端工程师** 职位。
         
-        Let's connect and discuss how I can help your team with intelligent systems.
+        让我们联系讨论我能如何为你的团队带来智能系统。
       button:
-        text: 'Download Resume'
+        text: '下载简历'
         url: uploads/resume.pdf
         new_tab: true
     design:

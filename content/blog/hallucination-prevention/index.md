@@ -1,46 +1,46 @@
 ---
-title: "Three-Layer Hallucination Prevention in RAG Systems: A Practical Guide"
+title: "RAG系统中的三层幻觉预防：实践指南"
 date: 2026-08-05
-summary: "Learn how to prevent LLM hallucinations in RAG systems with a three-layer approach: retrieval filtering, prompt engineering, and output validation"
+summary: "学习如何通过三层方法预防RAG系统中的LLM幻觉：检索过滤、提示词工程和输出验证"
 tags:
   - AI
   - RAG
   - LLM
-  - Hallucination Prevention
+  - 幻觉预防
   - Python
 authors:
   - me
 featured: true
 ---
 
-Hallucination is one of the biggest challenges in deploying LLMs for production use. This guide presents a practical three-layer approach to prevent hallucinations in RAG systems.
+幻觉是部署LLM用于生产环境时最大的挑战之一。本指南介绍了一种实用的三层方法来预防RAG系统中的幻觉。
 
-## Table of Contents
+## 目录
 
-1. [Understanding Hallucination](#understanding)
-2. [Layer 1: Retrieval Filtering](#layer-1)
-3. [Layer 2: Prompt Engineering](#layer-2)
-4. [Layer 3: Output Validation](#layer-3)
-5. [Implementation Example](#implementation)
-6. [Measuring Effectiveness](#measuring)
+1. [理解幻觉](#理解幻觉)
+2. [第一层：检索过滤](#第一层)
+3. [第二层：提示词工程](#第二层)
+4. [第三层：输出验证](#第三层)
+5. [实现示例](#实现示例)
+6. [效果衡量](#效果衡量)
 
-## Understanding Hallucination {#understanding}
+## 理解幻觉 {#理解幻觉}
 
-Hallucination occurs when LLMs generate plausible-sounding but factually incorrect information. In RAG systems, this typically happens when:
+幻觉是指LLM生成看似合理但事实不正确的信息。在RAG系统中，这通常发生在：
 
-- Retrieved context is irrelevant or insufficient
-- LLMs prioritize their training data over provided context
-- Models "fill in gaps" with fabricated information
+- 检索到的上下文不相关或不足
+- LLM优先使用其训练数据而非提供的上下文
+- 模型用编造的信息"填补空白"
 
-### Common Scenarios
+### 常见场景
 
-1. **Product Information** - LLMs inventing prices, specifications, or availability
-2. **Medical/Agricultural Advice** - Generating incorrect dosages or treatments
-3. **Legal/Financial** - Creating non-existent regulations or policies
+1. **产品信息** - LLM编造价格、规格或可用性
+2. **医疗/农业建议** - 生成错误的剂量或治疗方法
+3. **法律/财务** - 创建不存在的法规或政策
 
-## Layer 1: Retrieval Filtering {#layer-1}
+## 第一层：检索过滤 {#第一层}
 
-Ensure only relevant information reaches the LLM:
+确保只有相关信息到达LLM：
 
 ```python
 from langchain.retrievers import ContextualCompressionRetriever
@@ -52,104 +52,104 @@ class RetrievalFilter:
         self.llm = llm
     
     def filter_documents(self, query: str, threshold: float = 0.7):
-        """Filter retrieved documents by relevance score."""
-        # Get initial results
+        """按相关性过滤检索到的文档。"""
+        # 获取初始结果
         results = self.vector_store.similarity_search_with_score(query, k=10)
         
-        # Filter by score threshold
+        # 按分数阈值过滤
         filtered = [
             (doc, score) 
             for doc, score in results 
             if score >= threshold
         ]
         
-        # Rerank using LLM
+        # 使用LLM重新排序
         reranked = self.rerank_with_llm(query, filtered)
         
         return reranked
     
     def rerank_with_llm(self, query: str, documents):
-        """Use LLM to rerank documents by relevance."""
-        prompt = f"""Rank these documents by relevance to the query: {query}
+        """使用LLM按相关性重新排序文档。"""
+        prompt = f"""根据查询对这些文档按相关性排序：{query}
         
-Documents:
+文档：
 {[doc.page_content for doc, _ in documents]}
 
-Return the most relevant document indices (comma-separated):"""
+返回最相关的文档索引（逗号分隔）："""
         
         response = self.llm.predict(prompt)
-        # Parse and return top documents
-        # Implementation details...
+        # 解析并返回顶级文档
+        # 实现细节...
 ```
 
-### Filtering Strategies
+### 过滤策略
 
-1. **Score Thresholding** - Remove low-relevance documents
-2. **Diversity Filtering** - Ensure varied perspectives
-3. **Source Verification** - Prioritize authoritative sources
-4. **Freshness Filtering** - Prefer recent information
+1. **分数阈值** - 移除低相关性文档
+2. **多样性过滤** - 确保多样化的视角
+3. **来源验证** - 优先考虑权威来源
+4. **时效性过滤** - 偏好最新信息
 
-## Layer 2: Prompt Engineering {#layer-2}
+## 第二层：提示词工程 {#第二层}
 
-Design prompts that constrain LLM behavior:
+设计约束LLM行为的提示词：
 
 ```python
-HALLUCINATION_PREVENTION_PROMPT = """You are a helpful assistant. Answer the question based ONLY on the provided context.
+HALLUCINATION_PREVENTION_PROMPT = """你是一个有用的助手。仅基于提供的上下文回答问题。
 
-Rules:
-1. If the context doesn't contain enough information, say "I don't have enough information to answer this question."
-2. Never make up information not present in the context.
-3. Always cite the source document when possible.
-4. If multiple sources conflict, present both perspectives.
-5. For numerical data, quote exact figures from the context.
+规则：
+1. 如果上下文没有包含足够的信息，请说"我没有足够的信息来回答这个问题。"
+2. 永远不要编造上下文中不存在的信息。
+3. 尽可能引用源文档。
+4. 如果多个来源冲突，请呈现两种观点。
+5. 对于数值数据，引用上下文中的确切数字。
 
-Context:
+上下文：
 {context}
 
-Question: {input}
+问题：{input}
 
-Answer:"""
+回答："""
 ```
 
-### Prompt Templates by Domain
+### 按领域的提示词模板
 
-**E-Commerce Products:**
+**电商产品：**
 ```python
-ECOMMERC_PROMPT = """You are a product expert. Answer questions about products using ONLY the provided product information.
+ECOMMERC_PROMPT = """你是产品专家。仅使用提供的产品信息回答产品问题。
 
-Rules:
-1. Never invent prices, specifications, or availability
-2. If product info is incomplete, say "I don't have complete information about this product"
-3. Always mention the product name and key features from the data
-4. For comparisons, stick strictly to the provided data
+规则：
+1. 永远不要编造价格、规格或可用性
+2. 如果产品信息不完整，请说"我没有关于此产品的完整信息"
+3. 始终提及数据中的产品名称和关键特性
+4. 对于比较，严格坚持提供的数据
 
-Product Information:
+产品信息：
 {context}
 
-Question: {input}
+问题：{input}
 """
 ```
 
-**Agricultural Knowledge:**
+**农业知识：**
 ```python
-AGRICULTURAL_PROMPT = """You are an agricultural expert. Answer farming questions using ONLY the provided knowledge base.
+AGRICULTURAL_PROMPT = """你是农业专家。仅使用提供的知识库回答农业问题。
 
-Rules:
-1. Never invent pesticide dosages or treatment methods
-2. If the knowledge base doesn't cover the specific crop/disease, recommend consulting a local expert
-3. Always cite the source manual when possible
-4. For safety-critical advice, include appropriate warnings
+规则：
+1. 永远不要编造农药剂量或治疗方法
+2. 如果知识库没有涵盖特定作物/病害，建议咨询当地专家
+3. 尽可能引用源手册
+4. 对于安全关键建议，包含适当的警告
 
-Knowledge Base:
+知识库：
 {context}
 
-Question: {input}
+问题：{input}
 """
 ```
 
-## Layer 3: Output Validation {#layer-3}
+## 第三层：输出验证 {#第三层}
 
-Verify LLM responses against source data:
+根据源数据验证LLM响应：
 
 ```python
 import re
@@ -160,29 +160,29 @@ class OutputValidator:
         self.llm = llm
     
     def validate_response(self, response: str, context: str) -> Dict:
-        """Validate LLM response against source context."""
+        """根据源上下文验证LLM响应。"""
         validation_results = {
             "is_valid": True,
             "issues": [],
             "corrected_response": response
         }
         
-        # Check 1: Numerical claims
+        # 检查1：数值声明
         numerical_issues = self.check_numerical_claims(response, context)
         if numerical_issues:
             validation_results["issues"].extend(numerical_issues)
         
-        # Check 2: Entity verification
+        # 检查2：实体验证
         entity_issues = self.verify_entities(response, context)
         if entity_issues:
             validation_results["issues"].extend(entity_issues)
         
-        # Check 3: Source citation
+        # 检查3：来源引用
         citation_issues = self.check_citations(response, context)
         if citation_issues:
             validation_results["issues"].extend(citation_issues)
         
-        # If issues found, generate corrected response
+        # 如果发现问题，生成修正后的响应
         if validation_results["issues"]:
             validation_results["corrected_response"] = self.generate_corrected_response(
                 response, validation_results["issues"], context
@@ -192,35 +192,35 @@ class OutputValidator:
         return validation_results
     
     def check_numerical_claims(self, response: str, context: str) -> List[str]:
-        """Verify numerical values in response exist in context."""
+        """验证响应中的数值在上下文中存在。"""
         issues = []
         
-        # Extract numbers from response
+        # 从响应中提取数字
         numbers = re.findall(r'\b\d+(?:\.\d+)?(?:%|元|kg|ml)?\b', response)
         
         for number in numbers:
             if number not in context:
-                issues.append(f"Numerical value '{number}' not found in source context")
+                issues.append(f"数值 '{number}' 在源上下文中未找到")
         
         return issues
     
     def verify_entities(self, response: str, context: str) -> List[str]:
-        """Verify product/entity names exist in context."""
+        """验证产品/实体名称在上下文中存在。"""
         issues = []
         
-        # Simple entity extraction (can be enhanced with NER)
+        # 简单实体提取（可增强NER）
         entities = re.findall(r'[A-Z][a-z]+(?:\s[A-Z][a-z]+)*', response)
         
         for entity in entities:
             if entity.lower() not in context.lower():
-                issues.append(f"Entity '{entity}' not found in source context")
+                issues.append(f"实体 '{entity}' 在源上下文中未找到")
         
         return issues
 ```
 
-## Implementation Example {#implementation}
+## 实现示例 {#实现示例}
 
-Complete three-layer prevention system:
+完整的三层预防系统：
 
 ```python
 from langchain.chains import LLMChain
@@ -234,18 +234,18 @@ class HallucinationPreventionSystem:
         self.output_validator = OutputValidator(llm)
     
     def query(self, user_input: str) -> Dict:
-        """Process query with three-layer hallucination prevention."""
+        """使用三层幻觉预防处理查询。"""
         
-        # Layer 1: Filter retrieval
+        # 第一层：过滤检索
         filtered_docs = self.retrieval_filter.filter_documents(user_input)
         context = "\n\n".join([doc.page_content for doc in filtered_docs])
         
-        # Layer 2: Generate response with constrained prompt
+        # 第二层：使用约束提示词生成响应
         prompt = ChatPromptTemplate.from_template(HALLUCINATION_PREVENTION_PROMPT)
         chain = LLMChain(llm=self.llm, prompt=prompt)
         response = chain.invoke({"context": context, "input": user_input})
         
-        # Layer 3: Validate output
+        # 第三层：验证输出
         validation = self.output_validator.validate_response(
             response["text"], context
         )
@@ -258,9 +258,9 @@ class HallucinationPreventionSystem:
         }
 ```
 
-## Measuring Effectiveness {#measuring}
+## 效果衡量 {#效果衡量}
 
-Track key metrics to evaluate your prevention system:
+跟踪关键指标以评估预防系统：
 
 ```python
 class HallucinationMetrics:
@@ -273,49 +273,49 @@ class HallucinationMetrics:
         }
     
     def evaluate_response(self, response: str, context: str, ground_truth: str):
-        """Evaluate response quality and hallucination presence."""
+        """评估响应质量和幻觉存在情况。"""
         self.metrics["total_queries"] += 1
         
-        # Check for hallucinations
+        # 检查幻觉
         if self.detect_hallucination(response, context):
             self.metrics["hallucinations_detected"] += 1
         
-        # Compare with ground truth
+        # 与真实情况比较
         accuracy = self.calculate_accuracy(response, ground_truth)
         self.metrics["retrieval_accuracy"] += accuracy
     
     def detect_hallucination(self, response: str, context: str) -> bool:
-        """Simple hallucination detection."""
-        # Check if response contains information not in context
+        """简单幻觉检测。"""
+        # 检查响应是否包含上下文中没有的信息
         response_words = set(response.lower().split())
         context_words = set(context.lower().split())
         
-        # Words in response but not in context
+        # 响应中有但上下文中没有的词
         novel_words = response_words - context_words
         
-        # If too many novel words, likely hallucination
+        # 如果太多新词，可能是幻觉
         return len(novel_words) > len(response_words) * 0.3
 ```
 
-### Metrics Dashboard
+### 指标仪表板
 
-| Metric | Description | Target |
-|--------|-------------|--------|
-| Hallucination Rate | % of responses with hallucinations | < 5% |
-| Retrieval Accuracy | % of relevant documents retrieved | > 90% |
-| Response Quality | User satisfaction score | > 4.5/5 |
-| Latency | Response time including validation | < 2s |
+| 指标 | 描述 | 目标 |
+|------|------|------|
+| 幻觉率 | 包含幻觉的响应百分比 | < 5% |
+| 检索准确性 | 检索到的相关文档百分比 | > 90% |
+| 响应质量 | 用户满意度评分 | > 4.5/5 |
+| 延迟 | 包含验证的响应时间 | < 2秒 |
 
-## Conclusion
+## 总结
 
-Preventing hallucinations in RAG systems requires a multi-layered approach:
+预防RAG系统中的幻觉需要多层次方法：
 
-1. **Retrieval Filtering** - Ensure only relevant information reaches the LLM
-2. **Prompt Engineering** - Constrain LLM behavior with clear instructions
-3. **Output Validation** - Verify responses against source data
+1. **检索过滤** - 确保只有相关信息到达LLM
+2. **提示词工程** - 使用清晰指令约束LLM行为
+3. **输出验证** - 根据源数据验证响应
 
-The complete implementation is available on [GitHub](https://github.com/1byteone/hallucination-prevention).
+完整实现可在 [GitHub](https://github.com/1byteone/hallucination-prevention) 上获取。
 
 ---
 
-Questions? Reach out on [GitHub](https://github.com/1byteone) or email me at yjs_0831@qq.com!
+有问题？通过 [GitHub](https://github.com/1byteone) 或邮件 yjs_0831@qq.com 联系我！

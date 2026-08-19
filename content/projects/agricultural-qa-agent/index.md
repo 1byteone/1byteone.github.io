@@ -1,7 +1,7 @@
 ---
-title: "Agri-QA-Assistant"
+title: "农业知识问答系统"
 date: 2026-03-20
-summary: "Agricultural Intelligent Q&A Prototype System based on LangGraph Goal-Oriented Agent Architecture"
+summary: "基于LangGraph目标导向型智能体架构的农业知识问答系统"
 tags:
   - AI
   - RAG
@@ -19,88 +19,88 @@ tech_stack:
 links:
   - type: github
     url: https://github.com/1byteone/agri-qa-assistant
-    label: Code
+    label: 查看代码
 featured: true
-status: "Completed"
-role: "Solo Developer"
-duration: "2 months"
+status: "已完成"
+role: "独立开发者"
+duration: "2个月"
 team_size: 1
 highlights:
-  - "Goal-oriented agent architecture"
-  - "Apple Liquid Glass UI design"
-  - "Evidence grounding with faithfulness scoring"
-  - "MCP server integration"
+  - "目标导向型智能体架构"
+  - "Apple Liquid Glass UI设计"
+  - "证据溯源与可信度评分"
+  - "MCP服务器集成"
 ---
 
-Agricultural Intelligent Q&A Prototype System based on LangGraph Goal-Oriented Agent Architecture.
+基于LangGraph目标导向型智能体架构的农业知识问答系统。
 
-## Project Overview
+## 项目概述
 
-Agri-QA-Assistant is a production-grade prototype for agricultural knowledge retrieval and question answering. It combines **Retrieval-Augmented Generation (RAG)** with a **goal-oriented agent architecture** to provide accurate, context-aware answers about crop cultivation, pest management, fertilization, and agricultural policy.
+农业智能问答原型系统，结合**检索增强生成（RAG）**与**目标导向型智能体架构**，提供关于作物种植、病害管理、施肥和农业政策的准确、上下文感知的回答。
 
-## Core Features
+## 核心功能
 
-| Feature | Description |
-|---------|-------------|
-| 🌱 **Domain-Specific RAG** | ChromaDB vector store with curated agricultural knowledge base covering crops, pests, fertilizers, soil, and machinery |
-| 🧠 **Multi-turn Memory** | SQLite-backed conversation history with context continuity across sessions |
-| 🎯 **Intent-Aware Routing** | LangGraph agent routes queries to RAG, general knowledge, or tool-augmented paths |
-| 📊 **Evidence Grounding** | Citation-backed responses with source attribution and faithfulness scoring |
-| 🔧 **MCP Integration** | Open MCP servers for web fetch, temporal queries, and extensible tool use |
-| 🎨 **Apple Liquid Glass UI** | Frosted glass effects, translucent layers, iOS-style animations with Tailwind CSS |
+| 功能 | 描述 |
+|------|------|
+| 🌱 **领域专用RAG** | ChromaDB向量存储，包含作物、病害、肥料、土壤、机械等农业知识库 |
+| 🧠 **多轮记忆** | SQLite支持的对话历史，跨会话上下文连续性 |
+| 🎯 **意图感知路由** | LangGraph智能体路由查询到RAG、通用知识或工具增强路径 |
+| 📊 **证据溯源** | 引用支持的响应，来源归属与忠实度评分 |
+| 🔧 **MCP集成** | Open MCP服务器用于网络获取、时间查询和可扩展工具使用 |
+| 🎨 **Apple Liquid Glass UI** | 磨砂玻璃效果、半透明层、iOS风格动画与Tailwind CSS |
 
-## Technical Architecture
+## 技术架构
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│                    Frontend: Next.js 14 + Radix UI               │
-│   Apple Liquid Glass Chat Interface                              │
+│                    前端: Next.js 14 + Radix UI                   │
+│              Apple Liquid Glass 聊天界面                         │
 │   ┌─────────────┐ ┌──────────────┐ ┌─────────────────────────┐ │
-│   │ Chat Panel   │ │ Knowledge    │ │ Generative UI           │ │
-│   │ + Streaming  │ │ Panel        │ │ (Crop Diagnosis, etc.)  │ │
+│   │ 聊天面板     │ │ 知识面板      │ │ 生成式UI               │ │
+│   │ + 流式输出   │ │              │ │ (作物诊断等)            │ │
 │   └─────────────┘ └──────────────┘ └─────────────────────────┘ │
 └────────────────────────────┬────────────────────────────────────┘
                              │ HTTP / SSE
 ┌────────────────────────────▼────────────────────────────────────┐
-│                  Backend: FastAPI + LangGraph                    │
+│                  后端: FastAPI + LangGraph                       │
 │   ┌──────────────┐ ┌──────────────┐ ┌────────────────────────┐ │
-│   │ Intent Router │ │ RAG Pipeline │ │ Tool Executor          │ │
-│   │ (LangGraph)  │ │ (ChromaDB)   │ │ (MCP Servers)          │ │
+│   │ 意图路由器    │ │ RAG管道      │ │ 工具执行器             │ │
+│   │ (LangGraph)  │ │ (ChromaDB)   │ │ (MCP服务器)            │ │
 │   └──────────────┘ └──────────────┘ └────────────────────────┘ │
 └─────────────────────────────────────────────────────────────────┘
 ```
 
-## Technical Highlights
+## 技术亮点
 
-### 1. Goal-Oriented Agent Architecture
-Built on LangGraph's agent framework, the system dynamically routes queries based on user intent:
-- **RAG Path**: Retrieves information from agricultural knowledge base
-- **General Knowledge Path**: Calls general LLM for answers
-- **Tool-Augmented Path**: Integrates external tools for real-time data
+### 1. 目标导向型智能体
+基于LangGraph构建的智能体架构，能够根据用户意图动态路由到不同处理路径：
+- **RAG路径**: 从农业知识库检索相关信息
+- **通用知识路径**: 调用通用大模型回答
+- **工具增强路径**: 集成外部工具获取实时数据
 
-### 2. Evidence Grounding & Faithfulness Scoring
-- Each response includes source citations
-- Faithfulness scoring ensures information reliability
-- Users can verify response sources
+### 2. 证据溯源与可信度评分
+- 每个回答都附带来源引用
+- 可信度评分确保信息可靠性
+- 支持用户验证回答来源
 
 ### 3. Apple Liquid Glass UI
-- Modern frosted glass effect interface
-- iOS-style animations and interactions
-- Responsive design for multi-device support
+- 磨砂玻璃效果的现代化界面
+- iOS风格的动画与交互
+- 响应式设计支持多设备
 
-### 4. MCP Server Integration
-- Open tool-calling architecture
-- Supports web fetch, temporal queries, and extensions
-- Pluggable tool ecosystem
+### 4. MCP服务器集成
+- 开放式工具调用架构
+- 支持网络获取、时间查询等扩展
+- 可插拔的工具生态系统
 
-## Project Results
+## 项目成果
 
-- **Accuracy**: 95%+ agricultural knowledge Q&A accuracy
-- **Usability**: Multi-turn conversation context retention
-- **Experience**: Modern Apple Liquid Glass UI
-- **Extensibility**: MCP tool integration architecture
+- **准确性**: 农业知识问答准确率95%+
+- **可用性**: 多轮对话上下文保持
+- **体验**: 现代化Apple Liquid Glass UI
+- **可扩展**: MCP工具集成架构
 
 ---
 
-**Project Status**: ✅ Completed  
-**GitHub**: [View Source Code](https://github.com/1byteone/agri-qa-assistant)
+**项目状态**: ✅ 已完成  
+**GitHub**: [查看源代码](https://github.com/1byteone/agri-qa-assistant)
