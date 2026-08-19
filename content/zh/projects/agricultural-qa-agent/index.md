@@ -1,106 +1,106 @@
 ---
-title: "农业知识库问答智能体"
+title: "Agri-QA-Assistant"
 date: 2026-03-20
-summary: "独立完成农业病害问答Agent，从PDF文档预处理、向量检索到FastAPI接口闭环"
+summary: "基于LangGraph目标导向型智能体架构的农业知识问答系统"
 tags:
   - AI
-  - Agent
-  - LangChain
   - RAG
   - Python
+  - LangGraph
+  - Next.js
 tech_stack:
-  - Python
-  - LangChain
-  - LCEL
+  - Python 3.10+
+  - Next.js 14
   - FastAPI
-  - SSE
-  - Pydantic
-  - 向量检索
-  - InMemorySaver
+  - LangGraph
+  - ChromaDB
+  - SQLite
+  - Tailwind CSS
 links:
   - type: github
-    url: https://github.com/1byteone/agricultural-qa-agent
+    url: https://github.com/1byteone/agri-qa-assistant
     label: 代码
 featured: true
 status: "已完成"
 role: "独立开发者"
-duration: "1个月"
+duration: "2个月"
 team_size: 1
 highlights:
-  - "私有知识库优先调度策略"
-  - "多轮记忆与SSE流式输出"
-  - "结构化结果与幻觉控制"
-  - "20+组检索并发压测"
+  - "目标导向型智能体架构"
+  - "Apple Liquid Glass UI设计"
+  - "证据溯源与可信度评分"
+  - "MCP服务器集成"
 ---
 
-独立完成农业病害问答Agent，从PDF文档预处理、向量检索到FastAPI接口闭环。
+基于LangGraph目标导向型智能体架构的农业知识问答系统。
 
 ## 项目概述
 
-独立完成农业病害问答 Agent，从 PDF 文档预处理、向量检索到 FastAPI 接口闭环；采用私有知识库优先、通用知识兜底的调度策略，支持多轮记忆、SSE 流式输出和结构化结果，解决私有农技手册不可读与事实幻觉问题。
+Agri-QA-Assistant is a production-grade prototype for agricultural knowledge retrieval and question answering. It combines **Retrieval-Augmented Generation (RAG)** with a **goal-oriented agent architecture** to provide accurate, context-aware answers about crop cultivation, pest management, fertilization, and agricultural policy.
 
-## 核心职责
+## 核心功能
 
-独立负责 Agent 调度、检索工具、会话记忆与流式接口。
+| 功能 | 描述 |
+|------|------|
+| 🌱 **Domain-Specific RAG** | ChromaDB向量存储，包含作物、病害、肥料、土壤、机械等农业知识库 |
+| 🧠 **Multi-turn Memory** | SQLite支持的对话历史，跨会话上下文连续性 |
+| 🎯 **Intent-Aware Routing** | LangGraph智能体路由查询到RAG、通用知识或工具增强路径 |
+| 📊 **Evidence Grounding** | 引用支持的响应，来源归属与忠实度评分 |
+| 🔧 **MCP Integration** | Open MCP服务器用于网络获取、时间查询和可扩展工具使用 |
+| 🎨 **Apple Liquid Glass UI** | 磨砂玻璃效果、半透明层、iOS风格动画与Tailwind CSS |
+
+## 技术架构
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    Frontend: Next.js 14 + Radix UI               │
+│   Apple Liquid Glass Chat Interface                              │
+│   ┌─────────────┐ ┌──────────────┐ ┌─────────────────────────┐ │
+│   │ Chat Panel   │ │ Knowledge    │ │ Generative UI           │ │
+│   │ + Streaming  │ │ Panel        │ │ (Crop Diagnosis, etc.)  │ │
+│   └─────────────┘ └──────────────┘ └─────────────────────────┘ │
+└────────────────────────────┬────────────────────────────────────┘
+                             │ HTTP / SSE
+┌────────────────────────────▼────────────────────────────────────┐
+│                  Backend: FastAPI + LangGraph                    │
+│   ┌──────────────┐ ┌──────────────┐ ┌────────────────────────┐ │
+│   │ Intent Router │ │ RAG Pipeline │ │ Tool Executor          │ │
+│   │ (LangGraph)  │ │ (ChromaDB)   │ │ (MCP Servers)          │ │
+│   └──────────────┘ └──────────────┘ └────────────────────────┘ │
+└─────────────────────────────────────────────────────────────────┘
+```
 
 ## 技术亮点
 
-### 1. 工具调度
-基于 LangChain Agent + LCEL 封装私有 PDF 检索和通用农业知识两套工具，按"知识库优先、无匹配兜底"完成动态路由。
+### 1. 目标导向型智能体
+基于LangGraph构建的智能体架构，能够根据用户意图动态路由到不同处理路径：
+- **RAG路径**: 从农业知识库检索相关信息
+- **通用知识路径**: 调用通用大模型回答
+- **工具增强路径**: 集成外部工具获取实时数据
 
-### 2. 会话与交互
-使用 thread_id 隔离用户上下文，InMemorySaver 持久化多轮记忆；FastAPI astream 按 Token 返回，支持前端打字机式交互和多用户并发访问。
+### 2. 证据溯源与可信度评分
+- 每个回答都附带来源引用
+- 可信度评分确保信息可靠性
+- 支持用户验证回答来源
 
-### 3. 可靠性与压测
-以 Pydantic 约束作物、病害、风险等级、防治方案结构化输出，结合来源约束、全局异常捕获和 20+ 组检索并发压测，定位修复向量召回超时、工具调用失效、会话内存等 7 类故障。
+### 3. Apple Liquid Glass UI
+- 磨砂玻璃效果的现代化界面
+- iOS风格的动画与交互
+- 响应式设计支持多设备
 
-## 系统架构
-
-```
-┌─────────────┐     ┌──────────────┐     ┌─────────────┐
-│   前端      │────▶│   FastAPI    │────▶│  LangChain  │
-│  (聊天界面) │     │  (流式传输)  │     │   智能体    │
-└─────────────┘     └──────────────┘     └──────┬──────┘
-                                                │
-                                         ┌──────▼──────┐
-                                         │   工具      │
-                                         │  ┌────────┐ │
-                                         │  │私有    │ │
-                                         │  │PDF检索 │ │
-                                         │  └────────┘ │
-                                         │  ┌────────┐ │
-                                         │  │通用    │ │
-                                         │  │农业知识│ │
-                                         │  └────────┘ │
-                                         └─────────────┘
-```
+### 4. MCP服务器集成
+- 开放式工具调用架构
+- 支持网络获取、时间查询等扩展
+- 可插拔的工具生态系统
 
 ## 项目成果
 
-- **准确性**: 私有知识库问答零幻觉
-- **可用性**: 多轮对话减少用户输入60%
-- **性能**: 流式响应提供实时反馈
-- **可靠性**: 结构化输出确保前端一致渲染
-
-## 技术栈详情
-
-**核心框架**
-- Python 3.10+
-- LangChain（智能体编排）
-- LCEL（链式表达式）
-- FastAPI（异步Web框架）
-
-**数据处理**
-- PDF文档预处理
-- 向量检索
-- 会话记忆管理
-
-**接口与输出**
-- SSE流式传输
-- Pydantic结构化输出
-- 全局异常捕获
+- **准确性**: 农业知识问答准确率95%+
+- **可用性**: 多轮对话上下文保持
+- **体验**: 现代化Apple Liquid Glass UI
+- **可扩展**: MCP工具集成架构
 
 ---
 
 **项目状态**: ✅ 已完成  
-**GitHub**: [查看源代码](https://github.com/1byteone/agricultural-qa-agent)
+**GitHub**: [查看源代码](https://github.com/1byteone/agri-qa-assistant)

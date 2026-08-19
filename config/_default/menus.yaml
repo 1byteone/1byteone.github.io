@@ -3,18 +3,21 @@
 #   The weight parameter defines the order that the links appear.
 
 main:
-  - name: Projects
-    url: /#projects
+  - name: 首页
+    url: /#hero
     weight: 10
-  - name: Skills
-    url: /#skills
+  - name: 项目
+    url: /#projects
     weight: 20
-  - name: Experience
-    url: /#experience
+  - name: 技术栈
+    url: /#skills
     weight: 30
-  - name: Blog
-    url: /#blog
+  - name: 经历
+    url: /#experience
     weight: 40
-  - name: Contact
-    url: /#contact
+  - name: 博客
+    url: /#blog
     weight: 50
+  - name: 联系
+    url: /#contact
+    weight: 60

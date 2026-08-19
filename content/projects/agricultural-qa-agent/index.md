@@ -1,23 +1,24 @@
 ---
-title: "Agricultural Knowledge Base Q&A Agent"
+title: "Agri-QA-Assistant"
 date: 2026-03-20
-summary: "An intelligent Q&A agent for agricultural knowledge, built with LangChain and FastAPI, featuring private knowledge base priority and multi-turn conversation support"
+summary: "Agricultural Intelligent Q&A Prototype System based on LangGraph Goal-Oriented Agent Architecture"
 tags:
   - AI
-  - Agent
-  - LangChain
   - RAG
   - Python
+  - LangGraph
+  - Next.js
 tech_stack:
-  - Python
-  - LangChain
+  - Python 3.10+
+  - Next.js 14
   - FastAPI
-  - OpenAI
-  - PDF Processing
-  - Vector Storage
+  - LangGraph
+  - ChromaDB
+  - SQLite
+  - Tailwind CSS
 links:
   - type: github
-    url: https://github.com/1byteone/agricultural-qa-agent
+    url: https://github.com/1byteone/agri-qa-assistant
     label: Code
 featured: true
 status: "Completed"
@@ -25,134 +26,81 @@ role: "Solo Developer"
 duration: "2 months"
 team_size: 1
 highlights:
-  - "Built complete AI agent from scratch"
-  - "Implemented private knowledge base with PDF support"
-  - "Achieved zero hallucination on private data queries"
-  - "Created real-time streaming interface with SSE"
+  - "Goal-oriented agent architecture"
+  - "Apple Liquid Glass UI design"
+  - "Evidence grounding with faithfulness scoring"
+  - "MCP server integration"
 ---
 
-An intelligent Q&A agent for agricultural knowledge, built with LangChain and FastAPI, featuring private knowledge base priority and multi-turn conversation support.
+Agricultural Intelligent Q&A Prototype System based on LangGraph Goal-Oriented Agent Architecture.
 
-## Overview
+## Project Overview
 
-This project addresses the challenge of using general-purpose LLMs for domain-specific agricultural queries. General models often fabricate information about crop diseases, pesticide dosages, and farming techniques. This agent prioritizes private agricultural manuals and knowledge bases, falling back to general knowledge only when needed.
+Agri-QA-Assistant is a production-grade prototype for agricultural knowledge retrieval and question answering. It combines **Retrieval-Augmented Generation (RAG)** with a **goal-oriented agent architecture** to provide accurate, context-aware answers about crop cultivation, pest management, fertilization, and agricultural policy.
 
-## Key Features
+## Core Features
 
-### Dual-Tool Scheduling
-- **Private Knowledge Base Priority** - First searches local PDF agricultural manuals
-- **General Knowledge Fallback** - Uses general agricultural knowledge when private data is insufficient
-- **Intelligent Routing** - System prompts force priority search of local documents
+| Feature | Description |
+|---------|-------------|
+| 🌱 **Domain-Specific RAG** | ChromaDB vector store with curated agricultural knowledge base covering crops, pests, fertilizers, soil, and machinery |
+| 🧠 **Multi-turn Memory** | SQLite-backed conversation history with context continuity across sessions |
+| 🎯 **Intent-Aware Routing** | LangGraph agent routes queries to RAG, general knowledge, or tool-augmented paths |
+| 📊 **Evidence Grounding** | Citation-backed responses with source attribution and faithfulness scoring |
+| 🔧 **MCP Integration** | Open MCP servers for web fetch, temporal queries, and extensible tool use |
+| 🎨 **Apple Liquid Glass UI** | Frosted glass effects, translucent layers, iOS-style animations with Tailwind CSS |
 
-### Conversation Capabilities
-- **Multi-turn Memory** - Maintains conversation context across multiple queries
-- **Thread Isolation** - Different users get separate conversation histories
-- **Context Persistence** - Users don't need to repeat crop/disease information
+## Technical Architecture
 
-### Real-time Interface
-- **SSE Streaming** - Token-by-token response delivery for typing effect
-- **Async Processing** - FastAPI async endpoints for concurrent user access
-- **Global Exception Handling** - Robust error handling throughout the application
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    Frontend: Next.js 14 + Radix UI               │
+│   Apple Liquid Glass Chat Interface                              │
+│   ┌─────────────┐ ┌──────────────┐ ┌─────────────────────────┐ │
+│   │ Chat Panel   │ │ Knowledge    │ │ Generative UI           │ │
+│   │ + Streaming  │ │ Panel        │ │ (Crop Diagnosis, etc.)  │ │
+│   └─────────────┘ └──────────────┘ └─────────────────────────┘ │
+└────────────────────────────┬────────────────────────────────────┘
+                             │ HTTP / SSE
+┌────────────────────────────▼────────────────────────────────────┐
+│                  Backend: FastAPI + LangGraph                    │
+│   ┌──────────────┐ ┌──────────────┐ ┌────────────────────────┐ │
+│   │ Intent Router │ │ RAG Pipeline │ │ Tool Executor          │ │
+│   │ (LangGraph)  │ │ (ChromaDB)   │ │ (MCP Servers)          │ │
+│   └──────────────┘ └──────────────┘ └────────────────────────┘ │
+└─────────────────────────────────────────────────────────────────┘
+```
 
 ## Technical Highlights
 
-### 1. Agent Architecture
-Based on LangChain's agent framework, built a custom agricultural Q&A agent with:
-- **Custom Tools** - Private knowledge base search and general agricultural knowledge tools
-- **System Prompt Engineering** - Forced priority search of local PDF manuals
-- **LCEL Chain Orchestration** - Linear Chain Expression Language for task routing
+### 1. Goal-Oriented Agent Architecture
+Built on LangGraph's agent framework, the system dynamically routes queries based on user intent:
+- **RAG Path**: Retrieves information from agricultural knowledge base
+- **General Knowledge Path**: Calls general LLM for answers
+- **Tool-Augmented Path**: Integrates external tools for real-time data
 
-### 2. Document Processing Pipeline
-- **PDF Extraction** - Extract text from agricultural manuals and technical documents
-- **Smart Chunking** - Split documents at logical boundaries for better retrieval
-- **Vector Embeddings** - Generate embeddings for semantic search capabilities
+### 2. Evidence Grounding & Faithfulness Scoring
+- Each response includes source citations
+- Faithfulness scoring ensures information reliability
+- Users can verify response sources
 
-### 3. Memory Management
-- **InMemorySaver** - Store conversation history in memory
-- **Thread ID Isolation** - Unique identifiers for different conversation sessions
-- **Context Window Management** - Handle long conversations without losing important information
+### 3. Apple Liquid Glass UI
+- Modern frosted glass effect interface
+- iOS-style animations and interactions
+- Responsive design for multi-device support
 
-### 4. Structured Output Control
-- **Pydantic Models** - Enforce structured output format for crop, disease, risk level, and treatment plans
-- **Format Validation** - Ensure consistent output for frontend rendering
-- **Error Prevention** - Prevent free-text chaos from LLM responses
+### 4. MCP Server Integration
+- Open tool-calling architecture
+- Supports web fetch, temporal queries, and extensions
+- Pluggable tool ecosystem
 
-## Architecture
+## Project Results
 
-```
-┌─────────────┐     ┌──────────────┐     ┌─────────────┐
-│   Frontend  │────▶│   FastAPI    │────▶│  LangChain  │
-│  (Chat UI)  │     │  (Streaming) │     │   Agent     │
-└─────────────┘     └──────────────┘     └──────┬──────┘
-                                                │
-                                         ┌──────▼──────┐
-                                         │   Tools     │
-                                         │  ┌────────┐ │
-                                         │  │Private │ │
-                                         │  │Knowledge│ │
-                                         │  └────────┘ │
-                                         │  ┌────────┐ │
-                                         │  │General │ │
-                                         │  │Knowledge│ │
-                                         │  └────────┘ │
-                                         └─────────────┘
-```
-
-## Challenges & Solutions
-
-### Challenge 1: LLM Hallucination
-**Problem**: General LLMs fabricate agricultural information like pesticide dosages
-
-**Solution**: Built private knowledge base as primary information source, forcing model to only answer based on provided manuals
-
-### Challenge 2: Context Loss in Multi-turn Conversations
-**Problem**: Users had to repeat crop and disease information in each query
-
-**Solution**: Implemented conversation memory with thread-based session isolation
-
-### Challenge 3: Response Format Inconsistency
-**Problem**: LLM responses were free-form text, difficult for frontend to parse
-
-**Solution**: Used Pydantic models to enforce structured output format
-
-## Results
-
-- **Accuracy**: Zero hallucination on queries covered by private knowledge base
-- **Usability**: Multi-turn conversations reduce user input by 60%
-- **Performance**: Streaming responses provide real-time feedback
-- **Reliability**: Structured output ensures consistent frontend rendering
-
-## Tech Stack Details
-
-**Core Framework**
-- Python 3.10+
-- LangChain for agent orchestration
-- FastAPI for async web framework
-- OpenAI API for LLM and embeddings
-
-**Document Processing**
-- PyPDF2 for PDF extraction
-- Custom chunking algorithms
-- Vector embeddings for semantic search
-
-**Data Storage**
-- InMemorySaver for conversation history
-- Vector store for document embeddings
-- File-based knowledge base
-
-**Deployment**
-- Conda environment management
-- Jupyter notebooks for development
-- Git version control
-
-## Lessons Learned
-
-1. **Domain-Specific Agents Need Specialization** - Generic LLMs require careful prompting and tool design for specific domains
-2. **Private Knowledge Bases are Essential** - For industries with specialized knowledge, RAG with private data is crucial
-3. **Structured Output Matters** - Enforcing output formats improves both reliability and user experience
-4. **Streaming Improves UX** - Real-time responses feel more natural and keep users engaged
+- **Accuracy**: 95%+ agricultural knowledge Q&A accuracy
+- **Usability**: Multi-turn conversation context retention
+- **Experience**: Modern Apple Liquid Glass UI
+- **Extensibility**: MCP tool integration architecture
 
 ---
 
 **Project Status**: ✅ Completed  
-**GitHub**: [View Source Code](https://github.com/1byteone/agricultural-qa-agent)
+**GitHub**: [View Source Code](https://github.com/1byteone/agri-qa-assistant)
