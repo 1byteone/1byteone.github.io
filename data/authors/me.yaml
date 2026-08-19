@@ -2,94 +2,104 @@ schema: hugoblox/author/v1
 slug: me
 is_owner: true
 name:
-  display: "1byteone"
-  given: ""
-  family: ""
+  display: "杨劲松"
+  given: "劲松"
+  family: "杨"
 postnominals: []
 status:
-  icon: "🤖"  # Emoji shown on avatar badge: 💻 developer, 🎨 designer, 🚀 startup, 🔬 researcher, 🎓 student
-role: AI Application Developer
+  icon: "👨‍💻"  # Emoji shown on avatar badge: 💻 developer, 🎨 designer, 🚀 startup, 🔬 researcher, 🎓 student
+role: Java后端工程师 / AI应用开发
 email: "yjs_0831@qq.com"
 bio: |
-  AI Application Developer specializing in LLM-powered systems, RAG pipelines, and agent-based architectures.
-  Building intelligent solutions with LangChain, FastAPI, and Spring Boot.
-  Focused on practical AI engineering: document preprocessing, vector persistence, hallucination control, and streaming interfaces.
+  Java后端与AI应用融合开发，具备从微服务架构、缓存与消息队列到RAG检索、Agent工具调用的完整项目实践。
+  关注可量化指标，能通过压测、日志与链路排查定位锁、缓存、检索和接口问题。
+  重视接口契约、CodeReview和文档沉淀，能在Java/Python跨语言场景中推动联调落地。
 
 affiliations:
-  - name: Jiangxi Agricultural University
+  - name: 江西农业大学
     url: ""
 
 links:
   - icon: at-symbol
     url: "mailto:yjs_0831@qq.com"
-    label: E-mail Me
+    label: 联系我
   - icon: brands/github
     url: "https://github.com/1byteone"
 
 interests:
-  - AI Application Development
-  - RAG (Retrieval-Augmented Generation)
-  - LLM Agents
-  - LangChain & FastAPI
-  - Spring Boot & Microservices
+  - Java微服务与高并发
+  - AI应用开发（RAG/Agent）
+  - 分布式系统
+  - 数据检索与向量搜索
 
 education:
-  - degree: B.S. Software Engineering
-    institution: Jiangxi Agricultural University
+  - degree: 软件工程（本科）
+    institution: 江西农业大学
     start: 2023-09-01
     end: 2027-06-30
     summary: |
-      Full-time undergraduate student, Class of 2027.
-      Focus on AI application development and backend engineering.
-      CET-4 certified.
+      全日制本科，2027届应届生。
+      GPA专业前15%，CET-4。
+      求职方向：Java后端 / AI应用开发。
 
 experience:
-  - role: AI Application Developer Intern
-    org: Jiangxi Chuanxi Education Technology Co., Ltd.
+  - role: Java后端 / AI应用开发实习生
+    org: 江西传习教育科技有限公司
     start: 2026-09-01
     summary: |
-      Developing AI-powered search and recommendation systems.
-      Building RAG-based intelligent retrieval services.
-      Integrating Python AI services with Spring Cloud microservices.
+      开发AI驱动的搜索与推荐系统。
+      构建RAG智能检索服务。
+      集成Python AI服务与Spring Cloud微服务。
+      实现向量搜索与幻觉控制机制。
 
 skills:
-  - name: AI Application Development
+  - name: Java微服务与高并发
     items:
-      - label: LangChain
+      - label: Spring Boot 3
         level: 5
-      - label: RAG (Retrieval-Augmented Generation)
+      - label: Spring Cloud Alibaba
+        level: 5
+      - label: Redis/Redisson
+        level: 5
+      - label: RocketMQ
+        level: 4
+  - name: 数据与检索
+    items:
+      - label: MySQL
+        level: 5
+      - label: Elasticsearch
+        level: 5
+      - label: RedisStack向量检索
+        level: 4
+      - label: RAG
+        level: 5
+  - name: AI应用开发
+    items:
+      - label: Python
+        level: 5
+      - label: LangChain
         level: 5
       - label: FastAPI
         level: 5
-      - label: Python
+      - label: Agent
         level: 5
-  - name: Backend Development
+  - name: 工程协作
     items:
-      - label: Spring Boot
-        level: 5
-      - label: Spring Cloud
-        level: 4
-      - label: MySQL
-        level: 5
-      - label: Redis
-        level: 4
-  - name: DevOps & Tools
-    items:
-      - label: Docker
-        level: 4
       - label: Git
         level: 5
-      - label: Conda
+      - label: Docker
         level: 4
-      - label: Jupyter
+      - label: CodeReview
+        level: 5
+      - label: Conda/Jupyter
         level: 4
 
 languages:
-  - name: English
+  - name: 英语
     level: 4
-    label: Intermediate (CET-4)
-  - name: Chinese
+    label: CET-4
+  - name: 中文
     level: 5
-    label: Native
+    label: 母语
 
 awards: []

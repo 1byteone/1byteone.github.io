@@ -136,7 +136,7 @@ sections:
       title: "工作经历"
       date_format: Jan 2006
       items:
-        - title: AI应用开发实习生
+        - title: Java后端 / AI应用开发实习生
           company: 江西传习教育科技有限公司
           company_url: ''
           company_logo: ''
@@ -148,18 +148,30 @@ sections:
             * 构建基于RAG的智能检索服务
             * 集成Python AI服务与Spring Cloud微服务
             * 实现向量搜索与幻觉控制机制
-        - title: AI应用开发者（个人项目）
-          company: 独立开发者
+        - title: 核心后端负责人（分布式微云商城）
+          company: 4人实训项目
+          company_url: 'https://github.com/1byteone'
+          company_logo: ''
+          location: 远程
+          date_start: '2026-05-01'
+          date_end: '2026-09-01'
+          description: |2-
+            * 主导秒杀链路、搜索/RAG、分布式一致性与研发规范
+            * 采用Redis预扣库存+Redisson可重入锁+RocketMQ异步落库解决超卖
+            * 商品搜索响应从2s降至20ms内，语义召回准确率提升35%
+            * 统一建表、SQL评审、Git分支与CodeReview规范，联调Bug降低60%
+        - title: 独立开发者（农业知识库问答智能体）
+          company: 个人实训项目
           company_url: 'https://github.com/1byteone'
           company_logo: ''
           location: 远程
           date_start: '2026-03-01'
-          date_end: '2026-09-01'
+          date_end: '2026-03-31'
           description: |2-
-            * 使用LangChain构建农业知识库问答智能体
-            * 开发电商自然语言AI检索系统
-            * 实现RAG管道与向量存储、多轮对话
-            * 创建FastAPI流式接口与SSE支持
+            * 独立完成农业病害问答Agent，从PDF文档预处理、向量检索到FastAPI接口闭环
+            * 采用私有知识库优先、通用知识兜底的调度策略
+            * 支持多轮记忆、SSE流式输出和结构化结果
+            * 定位修复向量召回超时、工具调用失效等7类故障
     design:
       columns: '1'
       background:
