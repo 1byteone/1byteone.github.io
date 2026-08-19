@@ -26,7 +26,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      HUGO_VERSION: 0.139.0
+      HUGO_VERSION: 0.161.1
 
     steps:
       # 安装 Hugo CLI
