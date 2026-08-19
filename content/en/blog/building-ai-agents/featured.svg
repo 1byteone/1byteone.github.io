@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a1a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1a0a2e;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="box1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a3e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2a1a4e;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6366f1" />
+      <stop offset="100%" style="stop-color:#8b5cf6" />
+    </linearGradient>
+    <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#06b6d4" />
+      <stop offset="100%" style="stop-color:#3b82f6" />
+    </linearGradient>
+    <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f59e0b" />
+      <stop offset="100%" style="stop-color:#ef4444" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#ffffff" stroke-opacity="0.03" stroke-width="1"/>
+  </pattern>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+
+  <text x="600" y="55" text-anchor="middle" fill="#ffffff" font-family="system-ui, sans-serif" font-size="28" font-weight="700" filter="url(#glow)">LangChain AI Agent Architecture</text>
+  <text x="600" y="80" text-anchor="middle" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="14">Tool Integration · Multi-turn Memory · Streaming Interface</text>
+
+  <!-- User Input -->
+  <rect x="450" y="110" width="300" height="60" rx="30" fill="url(#grad1)" filter="url(#shadow)"/>
+  <text x="600" y="146" text-anchor="middle" fill="#ffffff" font-family="system-ui, sans-serif" font-size="16" font-weight="600">👤 User Input</text>
+
+  <path d="M 600 170 L 600 200" stroke="#6366f1" stroke-width="2" marker-end="url(#a)"/>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#6366f1"/></marker></defs>
+
+  <!-- Agent Core -->
+  <rect x="350" y="210" width="500" height="100" rx="16" fill="url(#box1)" stroke="url(#grad1)" stroke-width="2" filter="url(#shadow)"/>
+  <text x="600" y="240" text-anchor="middle" fill="#a5b4fc" font-family="system-ui, sans-serif" font-size="18" font-weight="700">🧠 LangChain Agent</text>
+  <text x="600" y="262" text-anchor="middle" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="12">LLM Reasoning + Tool Selection + Action Execution</text>
+  <text x="600" y="280" text-anchor="middle" fill="#64748b" font-family="monospace" font-size="11">create_openai_tools_agent(llm, tools, prompt)</text>
+
+  <path d="M 600 310 L 600 340" stroke="#6366f1" stroke-width="2" marker-end="url(#a)"/>
+
+  <!-- Tool Router -->
+  <rect x="350" y="350" width="500" height="50" rx="25" fill="url(#box1)" stroke="#8b5cf6" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="600" y="380" text-anchor="middle" fill="#c4b5fd" font-family="system-ui, sans-serif" font-size="14" font-weight="600">🔄 Tool Router — Intent-Aware Decision</text>
+
+  <!-- Three Tool Paths -->
+  <path d="M 350 375 L 200 410" stroke="#06b6d4" stroke-width="2" marker-end="url(#a)"/>
+  <path d="M 600 400 L 600 410" stroke="#f59e0b" stroke-width="2" marker-end="url(#a)"/>
+  <path d="M 850 375 L 1000 410" stroke="#22c55e" stroke-width="2" marker-end="url(#a)"/>
+
+  <rect x="60" y="420" width="240" height="90" rx="12" fill="url(#box1)" stroke="#06b6d4" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="180" y="448" text-anchor="middle" fill="#67e8f9" font-family="system-ui, sans-serif" font-size="13" font-weight="600">🔧 RAG Tool</text>
+  <text x="180" y="468" text-anchor="middle" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="11">Vector store search</text>
+  <text x="180" y="484" text-anchor="middle" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="11">Knowledge base retrieval</text>
+  <text x="180" y="500" text-anchor="middle" fill="#64748b" font-family="monospace" font-size="10">search_knowledge_base</text>
+
+  <rect x="480" y="420" width="240" height="90" rx="12" fill="url(#box1)" stroke="#f59e0b" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="600" y="448" text-anchor="middle" fill="#fbbf24" font-family="system-ui, sans-serif" font-size="13" font-weight="600">🔧 General Tool</text>
+  <text x="600" y="468" text-anchor="middle" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="11">LLM general knowledge</text>
+  <text x="600" y="484" text-anchor="middle" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="11">Fallback answering</text>
+  <text x="600" y="500" text-anchor="middle" fill="#64748b" font-family="monospace" font-size="10">get_general_knowledge</text>
+
+  <rect x="900" y="420" width="240" height="90" rx="12" fill="url(#box1)" stroke="#22c55e" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="1020" y="448" text-anchor="middle" fill="#86efac" font-family="system-ui, sans-serif" font-size="13" font-weight="600">🔧 External Tool</text>
+  <text x="1020" y="468" text-anchor="middle" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="11">API / Database / MCP</text>
+  <text x="1020" y="484" text-anchor="middle" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="11">External service calls</text>
+  <text x="1020" y="500" text-anchor="middle" fill="#64748b" font-family="monospace" font-size="10">get_product_info</text>
+
+  <!-- Bottom: Memory + Streaming -->
+  <rect x="60" y="540" width="340" height="60" rx="12" fill="url(#box1)" stroke="#6366f1" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="230" y="568" text-anchor="middle" fill="#a5b4fc" font-family="system-ui, sans-serif" font-size="13" font-weight="600">💬 Multi-turn Memory</text>
+  <text x="230" y="586" text-anchor="middle" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="11">ConversationBufferMemory · InMemorySaver</text>
+
+  <rect x="440" y="540" width="320" height="60" rx="12" fill="url(#box1)" stroke="#06b6d4" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="600" y="568" text-anchor="middle" fill="#67e8f9" font-family="system-ui, sans-serif" font-size="13" font-weight="600">⚡ Streaming Interface</text>
+  <text x="600" y="586" text-anchor="middle" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="11">SSE · FastAPI astream · Token-by-token</text>
+
+  <rect x="800" y="540" width="340" height="60" rx="12" fill="url(#box1)" stroke="#22c55e" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="970" y="568" text-anchor="middle" fill="#86efac" font-family="system-ui, sans-serif" font-size="13" font-weight="600">📊 Structured Output</text>
+  <text x="970" y="586" text-anchor="middle" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="11">Pydantic model · JSON validation</text>
+
+  <rect x="0" y="620" width="1200" height="10" fill="#0a0a1a"/>
+</svg>

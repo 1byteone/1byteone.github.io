@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a1a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1a0a2e;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="box1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a3e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2a1a4e;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6366f1" />
+      <stop offset="100%" style="stop-color:#8b5cf6" />
+    </linearGradient>
+    <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#06b6d4" />
+      <stop offset="100%" style="stop-color:#3b82f6" />
+    </linearGradient>
+    <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f59e0b" />
+      <stop offset="100%" style="stop-color:#ef4444" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#ffffff" stroke-opacity="0.03" stroke-width="1"/>
+  </pattern>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+
+  <text x="600" y="55" text-anchor="middle" fill="#ffffff" font-family="system-ui, sans-serif" font-size="28" font-weight="700" filter="url(#glow)">Three-Layer Hallucination Prevention</text>
+  <text x="600" y="80" text-anchor="middle" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="14">Retrieval Filtering → Prompt Engineering → Output Validation</text>
+
+  <!-- Layer 1 -->
+  <rect x="60" y="110" width="1080" height="140" rx="16" fill="url(#box1)" stroke="#6366f1" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="60" y="110" width="1080" height="40" rx="16" fill="url(#grad1)"/>
+  <rect x="60" y="130" width="1080" height="20" fill="url(#grad1)"/>
+  <text x="600" y="136" text-anchor="middle" fill="#ffffff" font-family="system-ui, sans-serif" font-size="16" font-weight="700">🛡️ Layer 1: Retrieval Filtering</text>
+
+  <text x="600" y="175" text-anchor="middle" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="13">Ensure only relevant information reaches the LLM</text>
+
+  <rect x="90" y="195" width="230" height="40" rx="8" fill="#1a1a3e" stroke="#6366f1" stroke-width="1"/>
+  <text x="205" y="220" text-anchor="middle" fill="#a5b4fc" font-family="system-ui, sans-serif" font-size="12" font-weight="600">Score Thresholding</text>
+
+  <rect x="340" y="195" width="230" height="40" rx="8" fill="#1a1a3e" stroke="#6366f1" stroke-width="1"/>
+  <text x="455" y="220" text-anchor="middle" fill="#a5b4fc" font-family="system-ui, sans-serif" font-size="12" font-weight="600">Diversity Filtering</text>
+
+  <rect x="590" y="195" width="230" height="40" rx="8" fill="#1a1a3e" stroke="#6366f1" stroke-width="1"/>
+  <text x="705" y="220" text-anchor="middle" fill="#a5b4fc" font-family="system-ui, sans-serif" font-size="12" font-weight="600">Source Verification</text>
+
+  <rect x="840" y="195" width="270" height="40" rx="8" fill="#1a1a3e" stroke="#6366f1" stroke-width="1"/>
+  <text x="975" y="220" text-anchor="middle" fill="#a5b4fc" font-family="system-ui, sans-serif" font-size="12" font-weight="600">Freshness Filtering</text>
+
+  <!-- Arrow -->
+  <path d="M 600 250 L 600 280" stroke="#6366f1" stroke-width="2" marker-end="url(#a)"/>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#6366f1"/></marker></defs>
+
+  <!-- Layer 2 -->
+  <rect x="60" y="290" width="1080" height="130" rx="16" fill="url(#box1)" stroke="#06b6d4" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="60" y="290" width="1080" height="40" rx="16" fill="url(#grad2)"/>
+  <rect x="60" y="310" width="1080" height="20" fill="url(#grad2)"/>
+  <text x="600" y="316" text-anchor="middle" fill="#ffffff" font-family="system-ui, sans-serif" font-size="16" font-weight="700">📝 Layer 2: Prompt Engineering</text>
+
+  <text x="600" y="355" text-anchor="middle" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="13">Constrain LLM behavior with clear instructions and rules</text>
+
+  <rect x="90" y="370" width="320" height="40" rx="8" fill="#1a1a3e" stroke="#06b6d4" stroke-width="1"/>
+  <text x="250" y="395" text-anchor="middle" fill="#67e8f9" font-family="system-ui, sans-serif" font-size="12" font-weight="600">"Only answer based on context"</text>
+
+  <rect x="440" y="370" width="320" height="40" rx="8" fill="#1a1a3e" stroke="#06b6d4" stroke-width="1"/>
+  <text x="600" y="395" text-anchor="middle" fill="#67e8f9" font-family="system-ui, sans-serif" font-size="12" font-weight="600">"If unsure, say 'I don't know'"</text>
+
+  <rect x="790" y="370" width="320" height="40" rx="8" fill="#1a1a3e" stroke="#06b6d4" stroke-width="1"/>
+  <text x="950" y="395" text-anchor="middle" fill="#67e8f9" font-family="system-ui, sans-serif" font-size="12" font-weight="600">"Cite source documents"</text>
+
+  <!-- Arrow -->
+  <path d="M 600 420 L 600 450" stroke="#06b6d4" stroke-width="2" marker-end="url(#a)"/>
+
+  <!-- Layer 3 -->
+  <rect x="60" y="460" width="1080" height="130" rx="16" fill="url(#box1)" stroke="#22c55e" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="60" y="460" width="1080" height="40" rx="16" fill="url(#grad3)"/>
+  <rect x="60" y="480" width="1080" height="20" fill="url(#grad3)"/>
+  <text x="600" y="486" text-anchor="middle" fill="#ffffff" font-family="system-ui, sans-serif" font-size="16" font-weight="700">✅ Layer 3: Output Validation</text>
+
+  <text x="600" y="525" text-anchor="middle" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="13">Verify LLM responses against source data</text>
+
+  <rect x="90" y="540" width="230" height="40" rx="8" fill="#1a1a3e" stroke="#22c55e" stroke-width="1"/>
+  <text x="205" y="565" text-anchor="middle" fill="#86efac" font-family="system-ui, sans-serif" font-size="12" font-weight="600">Numerical Claim Check</text>
+
+  <rect x="340" y="540" width="230" height="40" rx="8" fill="#1a1a3e" stroke="#22c55e" stroke-width="1"/>
+  <text x="455" y="565" text-anchor="middle" fill="#86efac" font-family="system-ui, sans-serif" font-size="12" font-weight="600">Entity Verification</text>
+
+  <rect x="590" y="540" width="230" height="40" rx="8" fill="#1a1a3e" stroke="#22c55e" stroke-width="1"/>
+  <text x="705" y="565" text-anchor="middle" fill="#86efac" font-family="system-ui, sans-serif" font-size="12" font-weight="600">Source Citation Check</text>
+
+  <rect x="840" y="540" width="270" height="40" rx="8" fill="#1a1a3e" stroke="#22c55e" stroke-width="1"/>
+  <text x="975" y="565" text-anchor="middle" fill="#86efac" font-family="system-ui, sans-serif" font-size="12" font-weight="600">Hallucination Rate &lt; 5%</text>
+
+  <rect x="0" y="610" width="1200" height="20" fill="#0a0a1a"/>
+</svg>

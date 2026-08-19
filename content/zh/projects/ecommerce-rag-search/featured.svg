@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a1a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1a0a2e;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="box1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a3e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2a1a4e;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6366f1" />
+      <stop offset="100%" style="stop-color:#8b5cf6" />
+    </linearGradient>
+    <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#06b6d4" />
+      <stop offset="100%" style="stop-color:#3b82f6" />
+    </linearGradient>
+    <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f59e0b" />
+      <stop offset="100%" style="stop-color:#ef4444" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#ffffff" stroke-opacity="0.03" stroke-width="1"/>
+  </pattern>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+
+  <text x="600" y="55" text-anchor="middle" fill="#ffffff" font-family="system-ui, sans-serif" font-size="28" font-weight="700" filter="url(#glow)">Distributed Micro Cloud Mall Architecture</text>
+  <text x="600" y="80" text-anchor="middle" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="14">SpringCloud Alibaba · Nacos · Gateway · Seata · RocketMQ</text>
+
+  <!-- Client -->
+  <rect x="450" y="110" width="300" height="55" rx="27" fill="url(#grad1)" filter="url(#shadow)"/>
+  <text x="600" y="143" text-anchor="middle" fill="#ffffff" font-family="system-ui, sans-serif" font-size="15" font-weight="600">👤 Clients (Web / App)</text>
+
+  <path d="M 600 165 L 600 195" stroke="#6366f1" stroke-width="2" marker-end="url(#a)"/>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#6366f1"/></marker></defs>
+
+  <!-- Gateway -->
+  <rect x="350" y="205" width="500" height="60" rx="12" fill="url(#box1)" stroke="url(#grad1)" stroke-width="2" filter="url(#shadow)"/>
+  <text x="600" y="233" text-anchor="middle" fill="#a5b4fc" font-family="system-ui, sans-serif" font-size="15" font-weight="700">🚪 Spring Cloud Gateway</text>
+  <text x="600" y="252" text-anchor="middle" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="11">Unified Auth · Routing · Rate Limiting</text>
+
+  <path d="M 600 265 L 600 295" stroke="#6366f1" stroke-width="2" marker-end="url(#a)"/>
+
+  <!-- Service registry -->
+  <rect x="185" y="305" width="250" height="55" rx="12" fill="url(#box1)" stroke="#8b5cf6" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="310" y="330" text-anchor="middle" fill="#c4b5fd" font-family="system-ui, sans-serif" font-size="13" font-weight="600">🧭 Service Registry</text>
+  <text x="310" y="348" text-anchor="middle" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="11">Nacos · Sentinel · Seata</text>
+
+  <rect x="760" y="305" width="250" height="55" rx="12" fill="url(#box1)" stroke="#06b6d4" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="885" y="330" text-anchor="middle" fill="#67e8f9" font-family="system-ui, sans-serif" font-size="13" font-weight="600">⚡ Message Queue</text>
+  <text x="885" y="348" text-anchor="middle" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="11">RocketMQ · Kafka</text>
+
+  <!-- Microservices -->
+  <text x="600" y="395" text-anchor="middle" fill="#ffffff" font-family="system-ui, sans-serif" font-size="18" font-weight="600" filter="url(#glow)">Microservices</text>
+
+  <rect x="60" y="415" width="200" height="75" rx="10" fill="url(#box1)" stroke="#6366f1" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="160" y="440" text-anchor="middle" fill="#a5b4fc" font-family="system-ui, sans-serif" font-size="12" font-weight="600">👤 User Service</text>
+  <text x="160" y="458" text-anchor="middle" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="10">JWT · BCrypt</text>
+  <text x="160" y="474" text-anchor="middle" fill="#64748b" font-family="monospace" font-size="9">mall-user</text>
+
+  <rect x="280" y="415" width="200" height="75" rx="10" fill="url(#box1)" stroke="#06b6d4" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="380" y="440" text-anchor="middle" fill="#67e8f9" font-family="system-ui, sans-serif" font-size="12" font-weight="600">📦 Product Service</text>
+  <text x="380" y="458" text-anchor="middle" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="10">MyBatis-Plus</text>
+  <text x="380" y="474" text-anchor="middle" fill="#64748b" font-family="monospace" font-size="9">mall-product</text>
+
+  <rect x="500" y="415" width="200" height="75" rx="10" fill="url(#box1)" stroke="#f59e0b" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="600" y="440" text-anchor="middle" fill="#fbbf24" font-family="system-ui, sans-serif" font-size="12" font-weight="600">🛒 Cart Service</text>
+  <text x="600" y="458" text-anchor="middle" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="10">Redis Cache</text>
+  <text x="600" y="474" text-anchor="middle" fill="#64748b" font-family="monospace" font-size="9">mall-cart</text>
+
+  <rect x="720" y="415" width="200" height="75" rx="10" fill="url(#box1)" stroke="#ef4444" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="820" y="440" text-anchor="middle" fill="#fca5a5" font-family="system-ui, sans-serif" font-size="12" font-weight="600">📋 Order Service</text>
+  <text x="820" y="458" text-anchor="middle" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="10">Seata AT</text>
+  <text x="820" y="474" text-anchor="middle" fill="#64748b" font-family="monospace" font-size="9">mall-order</text>
+
+  <rect x="940" y="415" width="200" height="75" rx="10" fill="url(#box1)" stroke="#22c55e" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="1040" y="440" text-anchor="middle" fill="#86efac" font-family="system-ui, sans-serif" font-size="12" font-weight="600">🔍 Search Service</text>
+  <text x="1040" y="458" text-anchor="middle" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="10">ES · IK Analyzer</text>
+  <text x="1040" y="474" text-anchor="middle" fill="#64748b" font-family="monospace" font-size="9">mall-es</text>
+
+  <!-- Data stores -->
+  <text x="600" y="535" text-anchor="middle" fill="#ffffff" font-family="system-ui, sans-serif" font-size="16" font-weight="600">Data Layer</text>
+
+  <rect x="120" y="555" width="190" height="50" rx="10" fill="url(#box1)" stroke="#f59e0b" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="215" y="580" text-anchor="middle" fill="#fbbf24" font-family="system-ui, sans-serif" font-size="12" font-weight="600">🐬 MySQL</text>
+  <text x="215" y="595" text-anchor="middle" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="10">Business Data</text>
+
+  <rect x="340" y="555" width="190" height="50" rx="10" fill="url(#box1)" stroke="#ef4444" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="435" y="580" text-anchor="middle" fill="#fca5a5" font-family="system-ui, sans-serif" font-size="12" font-weight="600">🚀 Redis</text>
+  <text x="435" y="595" text-anchor="middle" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="10">Cache + Lock</text>
+
+  <rect x="560" y="555" width="190" height="50" rx="10" fill="url(#box1)" stroke="#6366f1" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="655" y="580" text-anchor="middle" fill="#a5b4fc" font-family="system-ui, sans-serif" font-size="12" font-weight="600">🔎 Elasticsearch</text>
+  <text x="655" y="595" text-anchor="middle" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="10">Full-text Search</text>
+
+  <rect x="780" y="555" width="190" height="50" rx="10" fill="url(#box1)" stroke="#06b6d4" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="875" y="580" text-anchor="middle" fill="#67e8f9" font-family="system-ui, sans-serif" font-size="12" font-weight="600">📨 RocketMQ</text>
+  <text x="875" y="595" text-anchor="middle" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="10">Async Messages</text>
+
+  <rect x="0" y="625" width="1200" height="5" fill="#0a0a1a"/>
+</svg>
