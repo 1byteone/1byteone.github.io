@@ -1,7 +1,7 @@
 ---
 title: "分布式微云商城"
 date: 2026-05-15
-summary: "微服务电商平台 - SpringCloud Alibaba技术栈（Nacos/Gateway/Sentinel）+ MyBatis-Plus + Feign远程调用"
+summary: "微服务电商平台 - SpringCloud Alibaba技术栈 + MyBatis-Plus + Feign远程调用"
 tags:
   - Java
   - Spring Boot
@@ -23,7 +23,7 @@ tech_stack:
 links:
   - type: github
     url: https://github.com/1byteone/mall-micro-cloud
-    label: 代码
+    label: 查看代码
 featured: true
 status: "已完成"
 role: "核心后端负责人"
@@ -36,7 +36,7 @@ highlights:
   - "完整企业级解决方案"
 ---
 
-微服务电商平台 - SpringCloud Alibaba技术栈（Nacos/Gateway/Sentinel）+ MyBatis-Plus + Feign远程调用。
+微服务电商平台 - SpringCloud Alibaba技术栈 + MyBatis-Plus + Feign远程调用。
 
 ## 项目概述
 

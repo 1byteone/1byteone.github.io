@@ -48,7 +48,7 @@ sections:
     id: projects
     content:
       title: "精选项目"
-      subtitle: "AI驱动的系统与智能应用"
+      subtitle: "我的项目作品集"
       count: 0
       filters:
         folders:
@@ -56,12 +56,12 @@ sections:
       buttons:
         - name: 全部
           tag: '*'
+        - name: Java
+          tag: Java
         - name: AI
           tag: AI
-        - name: RAG
-          tag: RAG
-        - name: 后端
-          tag: Backend
+        - name: Python
+          tag: Python
       default_button_index: 0
     design:
       columns: 3

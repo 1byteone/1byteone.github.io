@@ -1,5 +1,5 @@
 ---
-title: "Agri-QA-Assistant"
+title: "农业知识问答系统"
 date: 2026-03-20
 summary: "基于LangGraph目标导向型智能体架构的农业知识问答系统"
 tags:
@@ -19,7 +19,7 @@ tech_stack:
 links:
   - type: github
     url: https://github.com/1byteone/agri-qa-assistant
-    label: 代码
+    label: 查看代码
 featured: true
 status: "已完成"
 role: "独立开发者"
@@ -36,36 +36,36 @@ highlights:
 
 ## 项目概述
 
-Agri-QA-Assistant is a production-grade prototype for agricultural knowledge retrieval and question answering. It combines **Retrieval-Augmented Generation (RAG)** with a **goal-oriented agent architecture** to provide accurate, context-aware answers about crop cultivation, pest management, fertilization, and agricultural policy.
+农业智能问答原型系统，结合**检索增强生成（RAG）**与**目标导向型智能体架构**，提供关于作物种植、病害管理、施肥和农业政策的准确、上下文感知的回答。
 
 ## 核心功能
 
 | 功能 | 描述 |
 |------|------|
-| 🌱 **Domain-Specific RAG** | ChromaDB向量存储，包含作物、病害、肥料、土壤、机械等农业知识库 |
-| 🧠 **Multi-turn Memory** | SQLite支持的对话历史，跨会话上下文连续性 |
-| 🎯 **Intent-Aware Routing** | LangGraph智能体路由查询到RAG、通用知识或工具增强路径 |
-| 📊 **Evidence Grounding** | 引用支持的响应，来源归属与忠实度评分 |
-| 🔧 **MCP Integration** | Open MCP服务器用于网络获取、时间查询和可扩展工具使用 |
+| 🌱 **领域专用RAG** | ChromaDB向量存储，包含作物、病害、肥料、土壤、机械等农业知识库 |
+| 🧠 **多轮记忆** | SQLite支持的对话历史，跨会话上下文连续性 |
+| 🎯 **意图感知路由** | LangGraph智能体路由查询到RAG、通用知识或工具增强路径 |
+| 📊 **证据溯源** | 引用支持的响应，来源归属与忠实度评分 |
+| 🔧 **MCP集成** | Open MCP服务器用于网络获取、时间查询和可扩展工具使用 |
 | 🎨 **Apple Liquid Glass UI** | 磨砂玻璃效果、半透明层、iOS风格动画与Tailwind CSS |
 
 ## 技术架构
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│                    Frontend: Next.js 14 + Radix UI               │
-│   Apple Liquid Glass Chat Interface                              │
+│                    前端: Next.js 14 + Radix UI                   │
+│              Apple Liquid Glass 聊天界面                         │
 │   ┌─────────────┐ ┌──────────────┐ ┌─────────────────────────┐ │
-│   │ Chat Panel   │ │ Knowledge    │ │ Generative UI           │ │
-│   │ + Streaming  │ │ Panel        │ │ (Crop Diagnosis, etc.)  │ │
+│   │ 聊天面板     │ │ 知识面板      │ │ 生成式UI               │ │
+│   │ + 流式输出   │ │              │ │ (作物诊断等)            │ │
 │   └─────────────┘ └──────────────┘ └─────────────────────────┘ │
 └────────────────────────────┬────────────────────────────────────┘
                              │ HTTP / SSE
 ┌────────────────────────────▼────────────────────────────────────┐
-│                  Backend: FastAPI + LangGraph                    │
+│                  后端: FastAPI + LangGraph                       │
 │   ┌──────────────┐ ┌──────────────┐ ┌────────────────────────┐ │
-│   │ Intent Router │ │ RAG Pipeline │ │ Tool Executor          │ │
-│   │ (LangGraph)  │ │ (ChromaDB)   │ │ (MCP Servers)          │ │
+│   │ 意图路由器    │ │ RAG管道      │ │ 工具执行器             │ │
+│   │ (LangGraph)  │ │ (ChromaDB)   │ │ (MCP服务器)            │ │
 │   └──────────────┘ └──────────────┘ └────────────────────────┘ │
 └─────────────────────────────────────────────────────────────────┘
 ```
