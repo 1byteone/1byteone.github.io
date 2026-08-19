@@ -1,13 +1,30 @@
-# 手动部署指南
+# 中文博客部署指南
 
-由于GitHub OAuth Token权限限制，需要手动添加GitHub Actions工作流。
+## 当前状态
 
-## 步骤1：在GitHub上添加工作流文件
+✅ **中文内容已添加完成**，网站现在支持中英双语，默认显示中文。
+
+### 已完成的中文内容
+
+| 板块 | 中文内容 |
+|------|----------|
+| **首页** | "你好，我是 1byteone" + AI工程师介绍 |
+| **项目** | 电商RAG检索系统 + 农业问答Agent（中文详情） |
+| **技术栈** | AI与大模型、后端开发、基础设施、开发工具 |
+| **经历** | AI应用开发实习生 + 独立开发者 |
+| **博客** | 3篇RAG/LangChain技术文章（中文版） |
+| **联系** | yjs_0831@qq.com |
+
+## 部署步骤
+
+### 步骤1：添加GitHub Actions工作流
+
+由于GitHub OAuth Token权限限制，需要手动添加工作流文件：
 
 1. 访问 https://github.com/1byteone/1byteone.github.io
 2. 点击 "Create new file"
 3. 文件名输入: `.github/workflows/deploy.yml`
-4. 复制以下内容到文件中：
+4. 复制以下内容：
 
 ```yaml
 name: Deploy Hugo site to GitHub Pages
@@ -90,32 +107,25 @@ jobs:
 
 5. 点击 "Commit new file"
 
-## 步骤2：启用GitHub Pages
+### 步骤2：启用GitHub Pages
 
 1. 进入仓库 Settings → Pages
 2. Source 选择: **GitHub Actions**
-3. 等待工作流运行完成
+3. 等待工作流运行完成（约2-3分钟）
 
-## 步骤3：访问网站
+### 步骤3：访问网站
 
-- URL: https://1byteone.github.io
-- 等待2-3分钟部署完成
+- **URL**: https://1byteone.github.io
+- 默认显示中文，可通过导航栏切换到英文
 
-## 备选方案：使用Netlify
+## 语言切换
 
-如果GitHub Pages有问题，可以使用Netlify：
-
-1. 访问 https://app.netlify.com
-2. 点击 "Add new site" → "Import an existing project"
-3. 选择 GitHub，授权后选择 `1byteone.github.io` 仓库
-4. 部署设置保持默认
-5. 点击 "Deploy site"
-
-Netlify会自动检测Hugo项目并部署。
+网站支持中英双语切换：
+- 默认语言：中文（zh）
+- 可切换到英文（en）
+- 导航栏右上角有语言切换按钮
 
 ## 本地预览
-
-在本地查看效果：
 
 ```bash
 cd D:\1byteone.github.io
@@ -128,3 +138,31 @@ npm run dev
 
 # 访问 http://localhost:1313
 ```
+
+## 内容结构
+
+```
+content/
+├── _index.md          # 英文首页
+├── zh/
+│   ├── _index.md      # 中文首页
+│   ├── projects/      # 中文项目
+│   └── blog/          # 中文博客
+├── projects/          # 英文项目
+└── blog/              # 英文博客
+```
+
+## 自定义修改
+
+### 更换头像
+替换 `assets/media/authors/me.png`（建议400x400px正方形）
+
+### 添加更多中文内容
+在 `content/zh/` 目录下创建新的文件夹和 `index.md` 文件
+
+### 修改主题颜色
+编辑 `config/_default/params.yaml` 中的 `theme.colors.primary`
+
+---
+
+**中文博客已准备就绪，推送到GitHub即可自动部署！** 🎉
