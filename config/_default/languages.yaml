@@ -4,9 +4,9 @@
 
 # Default language - Chinese
 zh:
-  languageCode: zh-Hans
+  contentDir: content/zh
   locale: zh-Hans
-  languageName: 中文
+  label: 中文
   title: "杨劲松 - Java后端 / AI应用开发工程师"
   params:
     description: "Java后端与AI应用开发工程师，专注于微服务架构、RAG检索应用与智能体开发"
@@ -33,10 +33,9 @@ zh:
 
 # English language
 en:
-  languageCode: en
-  locale: en-us
-  languageName: English
   contentDir: content/en
+  locale: en-us
+  label: English
   title: "1byteone - Java Backend / AI Application Developer"
   params:
     description: "Java Backend and AI Application Developer specializing in microservices architecture, RAG pipelines, and agent-based developments"
