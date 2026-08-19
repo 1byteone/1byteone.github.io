@@ -1,0 +1,105 @@
+schema: hugoblox/author/v1
+slug: me
+is_owner: true
+name:
+  display: "1byteone"
+  given: ""
+  family: ""
+postnominals: []
+status:
+  icon: "👨‍💻"
+role: Java Backend / AI Application Developer
+email: "yjs_0831@qq.com"
+bio: |
+  Java backend and AI application developer with hands-on experience in microservices architecture, caching, message queues, RAG retrieval, and agent tool integration.
+  Focused on quantifiable results, able to identify issues in locks, caching, retrieval, and API through load testing, logging, and link tracing.
+  Values API contracts, CodeReview, and documentation, capable of driving cross-language integration between Java and Python.
+
+affiliations:
+  - name: Jiangxi Agricultural University
+    url: ""
+
+links:
+  - icon: at-symbol
+    url: "mailto:yjs_0831@qq.com"
+    label: Email Me
+  - icon: brands/github
+    url: "https://github.com/1byteone"
+
+interests:
+  - Java Microservices & High Concurrency
+  - AI Application Development (RAG/Agent)
+  - Distributed Systems
+  - Data Retrieval & Vector Search
+
+education:
+  - degree: B.S. Software Engineering
+    institution: Jiangxi Agricultural University
+    start: 2023-09-01
+    end: 2027-06-30
+    summary: |
+      Full-time undergraduate, Class of 2027.
+      Top 15% GPA, CET-4 certified.
+      Target role: Java Backend / AI Application Development.
+
+experience:
+  - role: Java Backend / AI Application Developer Intern
+    org: Jiangxi Chuanxi Education Technology Co., Ltd.
+    start: 2026-09-01
+    summary: |
+      Developing AI-powered search and recommendation systems.
+      Building RAG-based intelligent retrieval services.
+      Integrating Python AI services with Spring Cloud microservices.
+      Implementing vector search and hallucination control mechanisms.
+
+skills:
+  - name: Java Microservices & High Concurrency
+    items:
+      - label: Spring Boot 3
+        level: 5
+      - label: Spring Cloud Alibaba
+        level: 5
+      - label: Redis/Redisson
+        level: 5
+      - label: RocketMQ
+        level: 4
+  - name: Data & Retrieval
+    items:
+      - label: MySQL
+        level: 5
+      - label: Elasticsearch
+        level: 5
+      - label: RedisStack Vector Search
+        level: 4
+      - label: RAG
+        level: 5
+  - name: AI Application Development
+    items:
+      - label: Python
+        level: 5
+      - label: LangChain
+        level: 5
+      - label: FastAPI
+        level: 5
+      - label: Agent
+        level: 5
+  - name: Engineering Collaboration
+    items:
+      - label: Git
+        level: 5
+      - label: Docker
+        level: 4
+      - label: CodeReview
+        level: 5
+      - label: Conda/Jupyter
+        level: 4
+
+languages:
+  - name: English
+    level: 4
+    label: CET-4
+  - name: Chinese
+    level: 5
+    label: Native
+
+awards: []

@@ -36,6 +36,7 @@ en:
   languageCode: en
   locale: en-us
   languageName: English
+  contentDir: content/en
   title: "1byteone - Java Backend / AI Application Developer"
   params:
     description: "Java Backend and AI Application Developer specializing in microservices architecture, RAG pipelines, and agent-based developments"
