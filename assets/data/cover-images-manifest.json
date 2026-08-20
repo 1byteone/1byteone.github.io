@@ -1,0 +1,54 @@
+{
+  "images": [
+    {
+      "article": "RAG Pipeline Tutorial",
+      "paths": ["content/zh/blog/building-rag-pipeline/", "content/en/blog/building-rag-pipeline/"],
+      "source_url": "https://cdn.stocksnap.io/img-thumbs/960w/TRQLTMBFZY.jpg",
+      "license": "CC0 1.0 - Public Domain",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "creator": "HD Wallpapers",
+      "provider": "stocksnap",
+      "attribution": "Abstract Flowing by HD Wallpapers is licensed under CC0 1.0"
+    },
+    {
+      "article": "AI Agent Tutorial",
+      "paths": ["content/zh/blog/building-ai-agents/", "content/en/blog/building-ai-agents/"],
+      "source_url": "https://cdn.stocksnap.io/img-thumbs/960w/PN7RVGLUUD.jpg",
+      "license": "CC0 1.0 - Public Domain",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "creator": "HD Wallpapers",
+      "provider": "stocksnap",
+      "attribution": "Technology Network by HD Wallpapers is licensed under CC0 1.0"
+    },
+    {
+      "article": "Hallucination Prevention",
+      "paths": ["content/zh/blog/hallucination-prevention/", "content/en/blog/hallucination-prevention/"],
+      "source_url": "https://cdn.stocksnap.io/img-thumbs/960w/A3KPSZEFND.jpg",
+      "license": "CC0 1.0 - Public Domain",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "creator": "Vidsplay",
+      "provider": "stocksnap",
+      "attribution": "Abstract Flowing by Vidsplay is licensed under CC0 1.0"
+    },
+    {
+      "article": "Micro Cloud Mall",
+      "paths": ["content/zh/projects/ecommerce-rag-search/", "content/en/projects/ecommerce-rag-search/"],
+      "source_url": "https://cdn.stocksnap.io/img-thumbs/960w/PUWHAS3RNI.jpg",
+      "license": "CC0 1.0 - Public Domain",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "creator": "HD Wallpapers",
+      "provider": "stocksnap",
+      "attribution": "Abstract Flowing by HD Wallpapers is licensed under CC0 1.0"
+    },
+    {
+      "article": "Agri-QA-Assistant",
+      "paths": ["content/zh/projects/agricultural-qa-agent/", "content/en/projects/agricultural-qa-agent/"],
+      "source_url": "https://cdn.stocksnap.io/img-thumbs/960w/3R3DYREHEW.jpg",
+      "license": "CC0 1.0 - Public Domain",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "creator": "Vidsplay",
+      "provider": "stocksnap",
+      "attribution": "Abstract Light by Vidsplay is licensed under CC0 1.0"
+    }
+  ]
+}
