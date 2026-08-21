@@ -15,6 +15,10 @@ featured: true
 
 AI智能体正在改变我们构建智能应用的方式。与简单聊天机器人不同，智能体可以使用工具、保持上下文并做出决策。本指南介绍如何使用LangChain构建生产级智能体。
 
+![LangChain AI智能体架构图](/zh/blog/building-ai-agents/featured.png)
+
+*上图：LangChain Agent架构 — 用户输入 → 推理循环 → 工具调用 → 多轮对话*
+
 ## 目录
 
 1. [什么是AI智能体？](#什么是ai智能体)

@@ -15,6 +15,10 @@ featured: true
 
 Retrieval-Augmented Generation (RAG) has become the standard approach for building AI applications that need to access specific knowledge bases. This guide walks through building a complete RAG pipeline from scratch using LangChain.
 
+![Production RAG Pipeline Architecture](/en/blog/building-rag-pipeline/featured.png)
+
+*Above: Production RAG Pipeline — Document Ingestion → Embedding → Retrieval → Augmented Generation → Output*
+
 ## Table of Contents
 
 1. [What is RAG?](#what-is-rag)
