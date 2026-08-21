@@ -1,0 +1,146 @@
+[
+  {
+    "number": 1,
+    "slug": "java-core-architecture",
+    "domain": "JAVA",
+    "title": "Java Core Architecture",
+    "title_zh": "Java 核心架构：从源码到 JVM 执行",
+    "image": "/media/backend-engineering/01-java-core-architecture.png",
+    "license": "Original locally rendered SVG whiteboard diagram; no external assets"
+  },
+  {
+    "number": 2,
+    "slug": "java-collections-hashmap",
+    "domain": "JAVA",
+    "title": "Java Collections & HashMap Internals",
+    "title_zh": "Java 集合与 HashMap：从 key 到 bucket",
+    "image": "/media/backend-engineering/02-java-collections-hashmap.png",
+    "license": "Original locally rendered SVG whiteboard diagram; no external assets"
+  },
+  {
+    "number": 3,
+    "slug": "java-concurrency",
+    "domain": "JAVA",
+    "title": "Java Concurrency Model",
+    "title_zh": "Java 并发模型：线程池、锁与可见性",
+    "image": "/media/backend-engineering/03-java-concurrency.png",
+    "license": "Original locally rendered SVG whiteboard diagram; no external assets"
+  },
+  {
+    "number": 4,
+    "slug": "jvm-memory-gc",
+    "domain": "JAVA",
+    "title": "JVM Memory & Garbage Collection",
+    "title_zh": "JVM 内存与 GC：对象从 Eden 到回收",
+    "image": "/media/backend-engineering/04-jvm-memory-gc.png",
+    "license": "Original locally rendered SVG whiteboard diagram; no external assets"
+  },
+  {
+    "number": 5,
+    "slug": "spring-boot-application-architecture",
+    "domain": "SPRING BOOT",
+    "title": "Spring Boot Application Architecture",
+    "title_zh": "Spring Boot 应用架构：Controller 到 Database",
+    "image": "/media/backend-engineering/05-spring-boot-application-architecture.png",
+    "license": "Original locally rendered SVG whiteboard diagram; no external assets"
+  },
+  {
+    "number": 6,
+    "slug": "spring-boot-ioc-dependency-injection",
+    "domain": "SPRING BOOT",
+    "title": "Spring Boot IoC & Dependency Injection",
+    "title_zh": "Spring Boot IoC 与依赖注入：让对象可替换",
+    "image": "/media/backend-engineering/06-spring-boot-ioc-dependency-injection.png",
+    "license": "Original locally rendered SVG whiteboard diagram; no external assets"
+  },
+  {
+    "number": 7,
+    "slug": "spring-boot-request-lifecycle",
+    "domain": "SPRING BOOT",
+    "title": "Spring Boot Request Lifecycle",
+    "title_zh": "Spring Boot 请求生命周期：从 HTTP 到响应",
+    "image": "/media/backend-engineering/07-spring-boot-request-lifecycle.png",
+    "license": "Original locally rendered SVG whiteboard diagram; no external assets"
+  },
+  {
+    "number": 8,
+    "slug": "spring-boot-production-architecture",
+    "domain": "SPRING BOOT",
+    "title": "Production Spring Boot Architecture",
+    "title_zh": "生产级 Spring Boot 架构：可观测的服务边界",
+    "image": "/media/backend-engineering/08-spring-boot-production-architecture.png",
+    "license": "Original locally rendered SVG whiteboard diagram; no external assets"
+  },
+  {
+    "number": 9,
+    "slug": "python-runtime-architecture",
+    "domain": "PYTHON",
+    "title": "Python Runtime & Basics",
+    "title_zh": "Python 运行时：源码、字节码与对象模型",
+    "image": "/media/backend-engineering/09-python-runtime-architecture.png",
+    "license": "Original locally rendered SVG whiteboard diagram; no external assets"
+  },
+  {
+    "number": 10,
+    "slug": "python-data-structures-decorators",
+    "domain": "PYTHON",
+    "title": "Python Data Structures & Decorators",
+    "title_zh": "Python 数据结构与装饰器：复用行为而不隐藏边界",
+    "image": "/media/backend-engineering/10-python-data-structures-decorators.png",
+    "license": "Original locally rendered SVG whiteboard diagram; no external assets"
+  },
+  {
+    "number": 11,
+    "slug": "python-asyncio-concurrency",
+    "domain": "PYTHON",
+    "title": "Python asyncio & Concurrency",
+    "title_zh": "Python asyncio 并发：事件循环与非阻塞 I/O",
+    "image": "/media/backend-engineering/11-python-asyncio-concurrency.png",
+    "license": "Original locally rendered SVG whiteboard diagram; no external assets"
+  },
+  {
+    "number": 12,
+    "slug": "python-ai-engineering",
+    "domain": "PYTHON",
+    "title": "AI Engineering with Python",
+    "title_zh": "Python AI 工程：把模型调用接入可靠应用",
+    "image": "/media/backend-engineering/12-python-ai-engineering.png",
+    "license": "Original locally rendered SVG whiteboard diagram; no external assets"
+  },
+  {
+    "number": 13,
+    "slug": "mysql-architecture",
+    "domain": "MYSQL",
+    "title": "MySQL Architecture",
+    "title_zh": "MySQL 内部架构：SQL 层到 InnoDB",
+    "image": "/media/backend-engineering/13-mysql-architecture.png",
+    "license": "Original locally rendered SVG whiteboard diagram; no external assets"
+  },
+  {
+    "number": 14,
+    "slug": "mysql-index-btree",
+    "domain": "MYSQL",
+    "title": "MySQL Index & B+Tree",
+    "title_zh": "MySQL 索引与 B+Tree：让查询走 Fast Path",
+    "image": "/media/backend-engineering/14-mysql-index-btree.png",
+    "license": "Original locally rendered SVG whiteboard diagram; no external assets"
+  },
+  {
+    "number": 15,
+    "slug": "mysql-transaction-mvcc",
+    "domain": "MYSQL",
+    "title": "MySQL Transaction & MVCC",
+    "title_zh": "MySQL 事务与 MVCC：一致性读如何成立",
+    "image": "/media/backend-engineering/15-mysql-transaction-mvcc.png",
+    "license": "Original locally rendered SVG whiteboard diagram; no external assets"
+  },
+  {
+    "number": 16,
+    "slug": "mysql-high-concurrency-architecture",
+    "domain": "MYSQL",
+    "title": "Production MySQL High-Concurrency Architecture",
+    "title_zh": "生产级 MySQL 高并发架构：缓存、读写分离与分片",
+    "image": "/media/backend-engineering/16-mysql-high-concurrency-architecture.png",
+    "license": "Original locally rendered SVG whiteboard diagram; no external assets"
+  }
+]
