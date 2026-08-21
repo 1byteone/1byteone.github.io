@@ -1,6 +1,7 @@
 {{ define "main" }}
 {{ $slug := .Params.tech_slug | default .File.ContentBaseName }}
-{{ $item := where site.Data.tech_learning "slug" $slug | first }}
+{{ $items := where site.Data.tech_learning "slug" $slug }}
+{{ $item := index $items 0 }}
 {{ if not $item }}
   <div class="max-w-3xl mx-auto px-4 py-24"><h1 class="text-3xl font-bold">Learning page not found</h1></div>
 {{ else }}
