@@ -15,6 +15,10 @@ featured: true
 
 Hallucination is one of the biggest challenges in deploying LLMs for production use. This guide presents a practical three-layer approach to prevent hallucinations in RAG systems.
 
+![RAG Hallucination Prevention Architecture](/en/blog/hallucination-prevention/featured.png)
+
+*Above: Three-layer defense architecture for RAG hallucination prevention — Retrieval Filtering → Prompt Engineering → Output Validation*
+
 ## Table of Contents
 
 1. [Understanding Hallucination](#understanding)
