@@ -2,11 +2,11 @@
   "name": "1byteone-github-io",
   "version": "1.0.0",
   "private": true,
-  "packageManager": "pnpm@10.14.0",
+  "packageManager": "npm@10.9.3",
   "description": "AI Application Developer Portfolio - 1byteone",
   "scripts": {
     "dev": "hugo server --disableFastRender",
-    "build": "hugo --minify && pnpm run pagefind",
+    "build": "hugo --minify && npm run pagefind",
     "pagefind": "pagefind --site public"
   },
   "dependencies": {
