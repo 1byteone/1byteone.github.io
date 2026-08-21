@@ -1,0 +1,63 @@
+{{- $img := .Page.Resources.GetMatch (printf "%s*" .Destination) -}}
+{{- $src := .Destination -}}
+{{- $width := "" -}}
+{{- $height := "" -}}
+{{- if $img -}}
+  {{- $src = $img.RelPermalink -}}
+  {{- $width = $img.Width -}}
+  {{- $height = $img.Height -}}
+{{- end -}}
+{{- if not (.Page.Scratch.Get "lightbox_loaded") -}}
+  {{- .Page.Scratch.Set "lightbox_loaded" true -}}
+<style>
+.lightbox-link{display:inline-block;cursor:zoom-in;border-radius:8px;overflow:hidden;transition:transform .2s ease,box-shadow .2s ease}
+.lightbox-link img{display:block;max-width:100%;height:auto;border-radius:8px}
+.lightbox-link:hover{transform:scale(1.02);box-shadow:0 8px 32px rgba(0,0,0,.35)}
+.lightbox-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.92);z-index:9999;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:opacity .3s ease,visibility .3s ease;cursor:zoom-out}
+.lightbox-overlay.active{opacity:1;visibility:visible}
+.lightbox-overlay .lightbox-container{position:relative;max-width:92vw;max-height:90vh;display:flex;align-items:center;justify-content:center}
+.lightbox-overlay img.lightbox-image{max-width:92vw;max-height:90vh;object-fit:contain;border-radius:4px;box-shadow:0 12px 48px rgba(0,0,0,.6);transform:scale(.95);transition:transform .3s ease}
+.lightbox-overlay.active img.lightbox-image{transform:scale(1)}
+.lightbox-overlay .lightbox-caption{position:absolute;bottom:-2.5rem;left:50%;transform:translateX(-50%);color:#fff;font-size:.9rem;opacity:.8}
+.lightbox-overlay .lightbox-close{position:absolute;top:16px;right:24px;width:44px;height:44px;border:none;background:rgba(255,255,255,.1);color:#fff;font-size:28px;border-radius:50%;cursor:pointer;z-index:10001;transition:background .2s ease}
+.lightbox-overlay .lightbox-close:hover{background:rgba(255,255,255,.25)}
+.lightbox-overlay .lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);width:48px;height:48px;border:none;background:rgba(255,255,255,.1);color:#fff;font-size:24px;border-radius:50%;cursor:pointer;z-index:10001}
+.lightbox-overlay .lightbox-nav:hover{background:rgba(255,255,255,.25)}
+.lightbox-overlay .lightbox-prev{left:16px}
+.lightbox-overlay .lightbox-next{right:16px}
+.lightbox-overlay .lightbox-counter{position:absolute;top:20px;left:24px;color:#fff;font-size:.875rem;opacity:.7;z-index:10001}
+@media(max-width:768px){.lightbox-overlay .lightbox-nav{width:40px;height:40px;font-size:20px}}
+</style>
+<script>
+(function(){'use strict';var o=null,img=null,cap=null,cnt=null,prev=null,next=null,close=null,items=[],idx=0;
+function init(){if(o)return;o=document.createElement('div');o.className='lightbox-overlay';
+o.innerHTML='<button class="lightbox-close">&times;</button><button class="lightbox-nav lightbox-prev">&#10094;</button><div class="lightbox-container"><img class="lightbox-image" src="" alt=""></div><button class="lightbox-nav lightbox-next">&#10095;</button><div class="lightbox-counter"></div><div class="lightbox-caption"></div>';
+document.body.appendChild(o);img=o.querySelector('.lightbox-image');cap=o.querySelector('.lightbox-caption');cnt=o.querySelector('.lightbox-counter');prev=o.querySelector('.lightbox-prev');next=o.querySelector('.lightbox-next');close=o.querySelector('.lightbox-close');
+o.addEventListener('click',closeLb);close.addEventListener('click',function(e){e.stopPropagation();closeLb()});
+prev.addEventListener('click',function(e){e.stopPropagation();nav(-1)});
+next.addEventListener('click',function(e){e.stopPropagation();nav(1)});
+document.addEventListener('keydown',function(e){if(!o.classList.contains('active'))return;if(e.key==='Escape')closeLb();if(e.key==='ArrowLeft')nav(-1);if(e.key==='ArrowRight')nav(1)});}
+function openLb(index,all){init();items=all;idx=index;show();o.classList.add('active');document.body.style.overflow='hidden'}
+function show(){var item=items[idx];img.src=item.src;img.alt=item.title||'';cap.textContent=item.title||'';
+if(items.length>1){cnt.textContent=(idx+1)+' / '+items.length;cnt.style.display='';prev.style.display='';next.style.display=''}
+else{cnt.style.display='none';prev.style.display='none';next.style.display='none'}}
+function closeLb(){if(!o)return;o.classList.remove('active');document.body.style.overflow='';img.src='';}
+function nav(d){if(!items.length)return;idx=(idx+d+items.length)%items.length;show()}
+function collect(){var links=document.querySelectorAll('.lightbox-link');var out=[];links.forEach(function(l){var i=l.querySelector('img');out.push({src:l.getAttribute('href'),title:i?i.alt:''})});return out}
+function bind(){document.querySelectorAll('.lightbox-link').forEach(function(l,i){l.addEventListener('click',function(e){e.preventDefault();var all=collect();openLb(i,all)})})}
+function initAll(){init();bind();if(window.MutationObserver){new MutationObserver(function(){bind()}).observe(document.body,{childList:true,subtree:true})}}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',initAll);else initAll()})();
+</script>
+{{- end -}}
+{{- if .IsBlock -}}
+<figure class="lightbox-figure" style="margin:2rem auto;text-align:center">
+  <a href="{{ $src }}" class="lightbox-link" data-lightbox="{{ .Page.Title | urlize }}" data-title="{{ .Text }}">
+    <img src="{{ $src }}" alt="{{ .Text }}" loading="lazy" style="border-radius:8px;max-width:100%;height:auto"{{ with $width }} width="{{ . }}"{{ end }}{{ with $height }} height="{{ . }}"{{ end }}>
+  </a>
+  {{- with .Title }}<figcaption style="margin-top:.5rem;font-size:.875rem;opacity:.8">{{ . }}</figcaption>{{ end -}}
+</figure>
+{{- else -}}
+<a href="{{ $src }}" class="lightbox-link" data-lightbox="{{ .Page.Title | urlize }}" data-title="{{ .Text }}">
+  <img src="{{ $src }}" alt="{{ .Text }}" loading="lazy" style="border-radius:8px;max-width:100%;height:auto"{{ with $width }} width="{{ . }}"{{ end }}{{ with $height }} height="{{ . }}"{{ end }}>
+</a>
+{{- end -}}

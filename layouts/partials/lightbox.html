@@ -1,0 +1,12 @@
+{{/* 注入Lightbox CSS和JS到所有页面 */}}
+{{- $css := resources.Get "css/lightbox.css" -}}
+{{- if $css -}}
+  {{- $css = $css | resources.Minify | resources.Fingerprint -}}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+{{- end -}}
+
+{{- $js := resources.Get "js/lightbox.js" -}}
+{{- if $js -}}
+  {{- $js = $js | resources.Minify | resources.Fingerprint -}}
+  <script defer src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}"></script>
+{{- end -}}

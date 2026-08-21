@@ -1,0 +1,130 @@
+[
+  {
+    "number": 1,
+    "slug": "langchain-core-architecture",
+    "domain": "LangChain",
+    "title": "Core Architecture",
+    "image": "/media/ai-engineering/01-langchain-core-architecture.png",
+    "license": "Original SVG whiteboard diagram rendered locally; no external assets"
+  },
+  {
+    "number": 2,
+    "slug": "langchain-prompt-chain",
+    "domain": "LangChain",
+    "title": "Prompt & Chain",
+    "image": "/media/ai-engineering/02-langchain-prompt-chain.png",
+    "license": "Original SVG whiteboard diagram rendered locally; no external assets"
+  },
+  {
+    "number": 3,
+    "slug": "langchain-tool-calling-agent",
+    "domain": "LangChain",
+    "title": "Tool Calling & Agent",
+    "image": "/media/ai-engineering/03-langchain-tool-calling-agent.png",
+    "license": "Original SVG whiteboard diagram rendered locally; no external assets"
+  },
+  {
+    "number": 4,
+    "slug": "langchain-memory-multiturn",
+    "domain": "LangChain",
+    "title": "Memory + Multi-turn Agent",
+    "image": "/media/ai-engineering/04-langchain-memory-multiturn.png",
+    "license": "Original SVG whiteboard diagram rendered locally; no external assets"
+  },
+  {
+    "number": 5,
+    "slug": "fastapi-project-architecture",
+    "domain": "FastAPI",
+    "title": "Project Architecture",
+    "image": "/media/ai-engineering/05-fastapi-project-architecture.png",
+    "license": "Original SVG whiteboard diagram rendered locally; no external assets"
+  },
+  {
+    "number": 6,
+    "slug": "fastapi-request-response-pydantic",
+    "domain": "FastAPI",
+    "title": "Request / Response / Pydantic",
+    "image": "/media/ai-engineering/06-fastapi-request-response-pydantic.png",
+    "license": "Original SVG whiteboard diagram rendered locally; no external assets"
+  },
+  {
+    "number": 7,
+    "slug": "fastapi-async-dependency-injection",
+    "domain": "FastAPI",
+    "title": "Async + Dependency Injection",
+    "image": "/media/ai-engineering/07-fastapi-async-dependency-injection.png",
+    "license": "Original SVG whiteboard diagram rendered locally; no external assets"
+  },
+  {
+    "number": 8,
+    "slug": "fastapi-ai-streaming-api",
+    "domain": "FastAPI",
+    "title": "AI Streaming API",
+    "image": "/media/ai-engineering/08-fastapi-ai-streaming-api.png",
+    "license": "Original SVG whiteboard diagram rendered locally; no external assets"
+  },
+  {
+    "number": 9,
+    "slug": "rag-basic-pipeline",
+    "domain": "RAG",
+    "title": "Basic Pipeline",
+    "image": "/media/ai-engineering/09-rag-basic-pipeline.png",
+    "license": "Original SVG whiteboard diagram rendered locally; no external assets"
+  },
+  {
+    "number": 10,
+    "slug": "rag-embedding-vector-database",
+    "domain": "RAG",
+    "title": "Embedding + Vector Database",
+    "image": "/media/ai-engineering/10-rag-embedding-vector-database.png",
+    "license": "Original SVG whiteboard diagram rendered locally; no external assets"
+  },
+  {
+    "number": 11,
+    "slug": "rag-retriever-optimization",
+    "domain": "RAG",
+    "title": "Retriever Optimization",
+    "image": "/media/ai-engineering/11-rag-retriever-optimization.png",
+    "license": "Original SVG whiteboard diagram rendered locally; no external assets"
+  },
+  {
+    "number": 12,
+    "slug": "rag-production-architecture",
+    "domain": "RAG",
+    "title": "Production RAG",
+    "image": "/media/ai-engineering/12-rag-production-architecture.png",
+    "license": "Original SVG whiteboard diagram rendered locally; no external assets"
+  },
+  {
+    "number": 13,
+    "slug": "openai-api-fundamentals",
+    "domain": "OpenAI",
+    "title": "API Fundamentals",
+    "image": "/media/ai-engineering/13-openai-api-fundamentals.png",
+    "license": "Original SVG whiteboard diagram rendered locally; no external assets"
+  },
+  {
+    "number": 14,
+    "slug": "openai-structured-output",
+    "domain": "OpenAI",
+    "title": "Structured Output",
+    "image": "/media/ai-engineering/14-openai-structured-output.png",
+    "license": "Original SVG whiteboard diagram rendered locally; no external assets"
+  },
+  {
+    "number": 15,
+    "slug": "openai-tool-calling",
+    "domain": "OpenAI",
+    "title": "Tool Calling",
+    "image": "/media/ai-engineering/15-openai-tool-calling.png",
+    "license": "Original SVG whiteboard diagram rendered locally; no external assets"
+  },
+  {
+    "number": 16,
+    "slug": "openai-multimodal-ai",
+    "domain": "OpenAI",
+    "title": "Multimodal AI",
+    "image": "/media/ai-engineering/16-openai-multimodal-ai.png",
+    "license": "Original SVG whiteboard diagram rendered locally; no external assets"
+  }
+]
