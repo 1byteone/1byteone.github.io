@@ -72,13 +72,72 @@ sections:
       spacing:
         padding: ["4rem", "0", "4rem", "0"]
   
-  # Clickable tech stack learning roadmap
-  - block: tech-learning
+  # Clickable tech stack with learning roadmap links
+  - block: tech-stack
     id: skills
     content:
-      title: "Tech Stack Learning Roadmap"
-      subtitle: "Open any card for its diagram, tutorial, study overview, roadmap, and professional goal"
+      title: "Tech Stack"
+      subtitle: "Click any icon to open its learning roadmap"
+      categories:
+        - name: AI & LLM
+          items:
+            - name: LangChain
+              icon: devicon/python
+              url: /tech-stack/langchain/
+            - name: FastAPI
+              icon: devicon/python
+              url: /tech-stack/fastapi/
+            - name: RAG
+              icon: devicon/python
+              url: /tech-stack/rag/
+            - name: OpenAI
+              icon: devicon/python
+              url: /tech-stack/openai/
+        - name: Backend
+          items:
+            - name: Java
+              icon: devicon/java
+              url: /tech-stack/java/
+            - name: Spring Boot
+              icon: devicon/spring
+              url: /tech-stack/spring-boot/
+            - name: Python
+              icon: devicon/python
+              url: /tech-stack/python/
+            - name: MySQL
+              icon: devicon/mysql
+              url: /tech-stack/mysql/
+        - name: Infrastructure
+          items:
+            - name: Redis
+              icon: devicon/redis
+              url: /tech-stack/redis/
+            - name: Docker
+              icon: devicon/docker
+              url: /tech-stack/docker/
+            - name: RocketMQ
+              icon: devicon/rabbitmq
+              url: /tech-stack/rocketmq/
+            - name: Elasticsearch
+              icon: devicon/elasticsearch
+              url: /tech-stack/elasticsearch/
+        - name: DevOps
+          items:
+            - name: Git
+              icon: brands/github
+              url: /tech-stack/git/
+            - name: Conda
+              icon: devicon/python
+              url: /tech-stack/conda/
+            - name: Jupyter
+              icon: devicon/jupyter
+              url: /tech-stack/jupyter/
+            - name: Linux
+              icon: devicon/linux
+              url: /tech-stack/linux/
     design:
+      style: grid
+      show_levels: false
       background:
         color:
           light: "#f5f5f5"

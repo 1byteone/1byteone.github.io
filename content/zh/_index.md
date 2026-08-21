@@ -73,12 +73,71 @@ sections:
         padding: ["4rem", "0", "4rem", "0"]
   
   # 可点击技术栈学习区
-  - block: tech-learning
+  - block: tech-stack
     id: skills
     content:
-      title: "技术栈学习路线"
-      subtitle: "点击任意卡片，查看配套架构图、教程、学习速览、路线大纲与专业 Goal"
+      title: "技术栈"
+      subtitle: "点击图标查看对应的技术栈学习路线"
+      categories:
+        - name: AI与大模型
+          items:
+            - name: LangChain
+              icon: devicon/python
+              url: /tech-stack/langchain/
+            - name: FastAPI
+              icon: devicon/python
+              url: /tech-stack/fastapi/
+            - name: RAG
+              icon: devicon/python
+              url: /tech-stack/rag/
+            - name: OpenAI
+              icon: devicon/python
+              url: /tech-stack/openai/
+        - name: 后端开发
+          items:
+            - name: Java
+              icon: devicon/java
+              url: /tech-stack/java/
+            - name: Spring Boot
+              icon: devicon/spring
+              url: /tech-stack/spring-boot/
+            - name: Python
+              icon: devicon/python
+              url: /tech-stack/python/
+            - name: MySQL
+              icon: devicon/mysql
+              url: /tech-stack/mysql/
+        - name: 基础设施
+          items:
+            - name: Redis
+              icon: devicon/redis
+              url: /tech-stack/redis/
+            - name: Docker
+              icon: devicon/docker
+              url: /tech-stack/docker/
+            - name: RocketMQ
+              icon: devicon/rabbitmq
+              url: /tech-stack/rocketmq/
+            - name: Elasticsearch
+              icon: devicon/elasticsearch
+              url: /tech-stack/elasticsearch/
+        - name: 开发工具
+          items:
+            - name: Git
+              icon: brands/github
+              url: /tech-stack/git/
+            - name: Conda
+              icon: devicon/python
+              url: /tech-stack/conda/
+            - name: Jupyter
+              icon: devicon/jupyter
+              url: /tech-stack/jupyter/
+            - name: Linux
+              icon: devicon/linux
+              url: /tech-stack/linux/
     design:
+      style: grid
+      show_levels: false
       background:
         color:
           light: "#f5f5f5"
