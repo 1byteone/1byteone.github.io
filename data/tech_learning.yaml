@@ -1,0 +1,400 @@
+- slug: langchain
+  name: LangChain
+  category: AI 与大模型
+  category_en: AI & LLM
+  priority: P0
+  phase: AI 应用核心
+  duration: 2 周
+  goal: 能使用 Runnable、Prompt、Model、Parser 构建可测试、可观测的 AI 链路。
+  image: /media/ai-engineering/01-langchain-core-architecture.png
+  article: /blog/langchain-core-architecture/
+  prerequisite: Python 基础、HTTP 与 JSON
+  overview:
+    - 掌握 Prompt、Model、Output Parser 与 Runnable 的职责边界
+    - 能够实现 invoke、batch、stream 三种调用模式
+    - 为外部调用补齐超时、重试、日志与离线评测
+  roadmap:
+    - 基础：核心对象、消息模型与最小链路
+    - 核心机制：Runnable 组合、结构化输出与工具调用
+    - 工程实践：状态管理、追踪、失败降级与成本控制
+    - 项目验收：完成一个可测试的知识问答或 Agent 链路
+  checklist:
+    - 能画出输入、模型、解析器和失败路径
+    - 能运行不依赖网络的 parser 单元测试
+    - 能处理限流、超时、空结果与格式错误
+  related: [Python, OpenAI, RAG, FastAPI]
+- slug: fastapi
+  name: FastAPI
+  category: AI 与大模型
+  category_en: AI & LLM
+  priority: P1
+  phase: 服务化交付
+  duration: 1 周
+  goal: 能设计异步、类型安全、可观测的 AI API，并稳定交付流式响应。
+  image: /media/ai-engineering/05-fastapi-project-architecture.png
+  article: /blog/fastapi-project-architecture/
+  prerequisite: Python、HTTP、REST 与 asyncio
+  overview:
+    - 理解路由、Pydantic Schema、依赖注入与生命周期
+    - 能实现统一错误、鉴权、限流与请求追踪
+    - 能用 SSE 或 StreamingResponse 输出 AI 结果
+  roadmap:
+    - 基础：路由、请求响应模型与 OpenAPI
+    - 核心机制：依赖注入、异步并发与后台任务
+    - 工程实践：超时、日志、健康检查与容器化
+    - 项目验收：完成一个可部署的流式问答 API
+  checklist:
+    - API 文档可直接调试且 schema 无歧义
+    - 为成功、参数错、超时和上游失败编写测试
+    - 流式接口断连后不会泄漏任务或连接
+  related: [Python, LangChain, OpenAI, Docker]
+- slug: rag
+  name: RAG
+  category: AI 与大模型
+  category_en: AI & LLM
+  priority: P0
+  phase: AI 应用核心
+  duration: 2 周
+  goal: 能从文档预处理到证据引用构建可评测、可优化的检索增强生成系统。
+  image: /media/ai-engineering/09-rag-basic-pipeline.png
+  article: /blog/rag-basic-pipeline/
+  prerequisite: Python、向量、Embedding 与基础数据库
+  overview:
+    - 理解切分、向量化、召回、重排、生成的完整闭环
+    - 能诊断召回不足、上下文过长和幻觉问题
+    - 能建立离线问题集与召回/答案质量指标
+  roadmap:
+    - 基础：文档清洗、分块、Embedding 与向量库
+    - 核心机制：混合检索、过滤、重排与上下文组装
+    - 工程实践：增量索引、缓存、引用溯源与安全边界
+    - 项目验收：完成带来源引用和拒答策略的知识库问答
+  checklist:
+    - 每条答案都能回指证据片段
+    - 有 Recall@K、命中率与延迟基线
+    - 对无答案问题明确拒答而不是编造
+  related: [LangChain, OpenAI, Elasticsearch, Python]
+- slug: openai
+  name: OpenAI API
+  category: AI 与大模型
+  category_en: AI & LLM
+  priority: P0
+  phase: AI 应用核心
+  duration: 1 周
+  goal: 能安全、稳定地使用模型 API 完成结构化输出、工具调用和多模态能力集成。
+  image: /media/ai-engineering/13-openai-api-fundamentals.png
+  article: /blog/openai-api-fundamentals/
+  prerequisite: Python、HTTP、JSON Schema
+  overview:
+    - 掌握消息、参数、token、流式与错误响应
+    - 使用 Structured Output 固化应用契约
+    - 设计密钥保护、重试、预算和内容安全边界
+  roadmap:
+    - 基础：请求生命周期、参数与响应解析
+    - 核心机制：结构化输出、工具调用与多模态输入
+    - 工程实践：超时、指数退避、成本监控和回退
+    - 项目验收：完成一个有 schema 校验的模型服务
+  checklist:
+    - 密钥只从环境或密钥服务读取
+    - 对限流、超时和无效 JSON 有确定处理
+    - 记录请求耗时、token 与业务结果而非敏感原文
+  related: [LangChain, RAG, FastAPI, Python]
+- slug: java
+  name: Java
+  category: 后端开发
+  category_en: Backend
+  priority: P0
+  phase: 后端基础
+  duration: 3 周
+  goal: 能以面向对象、并发与 JVM 原理为基础写出可维护、可测试的后端代码。
+  image: /media/backend-engineering/01-java-core-architecture.png
+  article: /blog/java-core-architecture/
+  prerequisite: 编程基础、数据结构与 Git
+  overview:
+    - 掌握集合、异常、泛型、IO 与面向对象设计
+    - 理解线程、锁、线程池与并发安全
+    - 能用 JVM 内存与 GC 视角定位基础性能问题
+  roadmap:
+    - 基础：语法、类设计、集合与异常边界
+    - 核心机制：HashMap、并发容器、线程池与锁
+    - 工程实践：测试、日志、性能剖析与编码规范
+    - 项目验收：完成可运行的订单/库存领域服务
+  checklist:
+    - 关键领域对象有清晰不变量
+    - 并发代码能说明可见性、原子性和有序性
+    - 为边界条件和异常路径提供自动化测试
+  related: [Spring Boot, MySQL, Redis, Git]
+- slug: spring-boot
+  name: Spring Boot
+  category: 后端开发
+  category_en: Backend
+  priority: P0
+  phase: 后端基础
+  duration: 2 周
+  goal: 能搭建具备配置、依赖注入、数据访问、鉴权和可观测性的生产级服务。
+  image: /media/backend-engineering/05-spring-boot-application-architecture.png
+  article: /blog/spring-boot-application-architecture/
+  prerequisite: Java、HTTP、SQL
+  overview:
+    - 理解 IoC、AOP、自动配置与请求生命周期
+    - 能分层组织 Controller、Service、Repository
+    - 能接入 MySQL、Redis、消息与统一异常处理
+  roadmap:
+    - 基础：项目结构、配置、Bean 与 REST API
+    - 核心机制：IoC、事务、过滤器与拦截器
+    - 工程实践：鉴权、指标、日志、测试和部署
+    - 项目验收：完成可观测的订单微服务
+  checklist:
+    - 配置按环境隔离且无敏感信息入库
+    - 接口具备幂等、校验和一致错误模型
+    - 核心服务有集成测试与健康检查
+  related: [Java, MySQL, Redis, Docker]
+- slug: python
+  name: Python
+  category: 后端开发
+  category_en: Backend
+  priority: P0
+  phase: AI 工程基础
+  duration: 2 周
+  goal: 能用 Python 的数据结构、异步能力与工程规范支撑 AI 服务开发。
+  image: /media/backend-engineering/09-python-runtime-architecture.png
+  article: /blog/python-runtime-architecture/
+  prerequisite: 编程基础、命令行与 Git
+  overview:
+    - 掌握数据模型、迭代器、装饰器、异常和模块组织
+    - 理解 asyncio、协程、任务和 IO 并发
+    - 能使用类型检查、测试和依赖锁定维护项目
+  roadmap:
+    - 基础：对象模型、容器、函数与模块
+    - 核心机制：装饰器、生成器、异步任务与并发边界
+    - 工程实践：typing、pytest、ruff、日志和打包
+    - 项目验收：完成一个可测试的异步 API 服务
+  checklist:
+    - 说明同步/异步选择与阻塞点
+    - 依赖与运行命令可以被新环境复现
+    - 对输入校验、异常和资源释放有测试
+  related: [FastAPI, LangChain, RAG, Conda]
+- slug: mysql
+  name: MySQL
+  category: 后端开发
+  category_en: Backend
+  priority: P1
+  phase: 数据与一致性
+  duration: 2 周
+  goal: 能完成规范建模、索引设计、事务控制与高并发读写优化。
+  image: /media/backend-engineering/13-mysql-architecture.png
+  article: /blog/mysql-architecture/
+  prerequisite: SQL、Java 或 Python 基础
+  overview:
+    - 掌握表设计、约束、索引和执行计划
+    - 理解 MVCC、隔离级别、锁与事务边界
+    - 能针对慢查询和热点写入建立优化证据
+  roadmap:
+    - 基础：关系模型、SQL、范式与约束
+    - 核心机制：B+Tree、EXPLAIN、MVCC 与锁
+    - 工程实践：连接池、分库分表、备份与迁移
+    - 项目验收：完成订单库存模型并通过并发测试
+  checklist:
+    - 关键查询有索引依据与执行计划
+    - 事务边界和隔离级别有明确选择
+    - 失败重试不会造成重复扣减或脏数据
+  related: [Java, Spring Boot, Redis, Elasticsearch]
+- slug: redis
+  name: Redis
+  category: 基础设施
+  category_en: Infrastructure
+  priority: P1
+  phase: 性能与并发
+  duration: 1 周
+  goal: 能用 Redis 设计缓存、分布式锁、限流与异步数据结构，并控制一致性风险。
+  image: /media/tech-stack/redis-architecture.png
+  article: /blog/mysql-high-concurrency-architecture/
+  prerequisite: 数据结构、并发与网络基础
+  overview:
+    - 选择 String、Hash、Set、ZSet、Stream 等正确数据结构
+    - 处理缓存穿透、击穿、雪崩和热点 Key
+    - 理解持久化、淘汰、主从与高可用边界
+  roadmap:
+    - 基础：数据结构、TTL、命令与事务
+    - 核心机制：Lua、Stream、发布订阅与分布式锁
+    - 工程实践：缓存一致性、限流、监控与故障演练
+    - 项目验收：完成秒杀库存或热点数据服务
+  checklist:
+    - 缓存失效与回源路径可观测
+    - 锁有超时、续期、解锁校验与降级策略
+    - 能解释数据丢失、重复消费和一致性取舍
+  related: [Spring Boot, MySQL, RocketMQ, Docker]
+- slug: docker
+  name: Docker
+  category: 基础设施
+  category_en: Infrastructure
+  priority: P2
+  phase: 交付与部署
+  duration: 1 周
+  goal: 能把应用、依赖和配置打包为可复现镜像，并设计安全可运维的容器运行方式。
+  image: /media/tech-stack/docker-architecture.png
+  article: /blog/spring-boot-production-architecture/
+  prerequisite: Linux、网络、Git
+  overview:
+    - 理解镜像层、容器、网络、卷与资源限制
+    - 编写多阶段 Dockerfile 并减少镜像攻击面
+    - 用 Compose 复现应用、数据库和消息依赖
+  roadmap:
+    - 基础：镜像、容器、端口、卷与日志
+    - 核心机制：分层缓存、网络、健康检查和资源限制
+    - 工程实践：多阶段构建、非 root、扫描和发布
+    - 项目验收：一条命令启动可验收的全链路环境
+  checklist:
+    - 镜像可复现且不携带密钥
+    - 服务有健康检查、优雅停止和日志策略
+    - 能定位网络、卷挂载和资源不足问题
+  related: [Linux, Git, Spring Boot, MySQL]
+- slug: rocketmq
+  name: RocketMQ
+  category: 基础设施
+  category_en: Infrastructure
+  priority: P1
+  phase: 分布式系统
+  duration: 1 周
+  goal: 能设计可靠消息链路，处理顺序、重复、积压、重试和最终一致性。
+  image: /media/tech-stack/rocketmq-architecture.png
+  article: /blog/spring-boot-production-architecture/
+  prerequisite: Java、网络、数据库事务
+  overview:
+    - 理解 Topic、Tag、Producer、Consumer 与消费位点
+    - 设计幂等消费、重试、死信和积压监控
+    - 用消息解耦库存、订单和异步任务
+  roadmap:
+    - 基础：消息模型、发送方式和消费模式
+    - 核心机制：顺序、事务消息、重试与死信
+    - 工程实践：幂等键、补偿、观测与容量规划
+    - 项目验收：完成订单事件驱动的最终一致性流程
+  checklist:
+    - 生产者重试不会制造不可控重复
+    - 消费者可安全重放且失败可回查
+    - 有积压、延迟、失败率和死信告警
+  related: [Java, Spring Boot, Redis, MySQL]
+- slug: elasticsearch
+  name: Elasticsearch
+  category: 基础设施
+  category_en: Infrastructure
+  priority: P1
+  phase: 搜索与检索
+  duration: 2 周
+  goal: 能设计全文检索与向量检索索引，完成相关性、性能和数据生命周期治理。
+  image: /media/tech-stack/elasticsearch-architecture.png
+  article: /blog/rag-embedding-vector-database/
+  prerequisite: HTTP、JSON、SQL 与索引基础
+  overview:
+    - 掌握 mapping、analyzer、倒排索引与查询 DSL
+    - 能设计过滤、排序、聚合和高亮
+    - 理解分片、副本、刷新、别名与重建索引
+  roadmap:
+    - 基础：文档模型、mapping、分词与查询
+    - 核心机制：倒排、相关性、聚合与向量字段
+    - 工程实践：别名发布、冷热分层、监控与备份
+    - 项目验收：完成商品搜索或混合 RAG 检索服务
+  checklist:
+    - 相关性测试集能证明查询改进
+    - 索引重建不影响线上读流量
+    - 能解释慢查询、分片倾斜和内存压力
+  related: [RAG, MySQL, Docker, Python]
+- slug: git
+  name: Git
+  category: 开发工具
+  category_en: Developer Tools
+  priority: P2
+  phase: 研发协作
+  duration: 3 天
+  goal: 能用分支、提交、变基、评审和回滚保障团队研发交付质量。
+  image: /media/tech-stack/git-workflow.png
+  article: /blog/java-core-architecture/
+  prerequisite: 命令行基础
+  overview:
+    - 掌握 commit、branch、merge、rebase、stash 与 tag
+    - 设计清晰提交、分支保护和 Code Review 流程
+    - 能安全定位回归并恢复线上版本
+  roadmap:
+    - 基础：工作区、暂存区、对象与远程仓库
+    - 核心机制：分支图、冲突解决、rebase 与 cherry-pick
+    - 工程实践：提交规范、PR、版本发布和回滚
+    - 项目验收：为一个服务建立可审计的交付流程
+  checklist:
+    - 每个提交可解释、可测试、可回滚
+    - 冲突解决后能验证行为而非只保证能合并
+    - 密钥和大文件不会进入历史
+  related: [Java, Docker, Linux, Conda]
+- slug: conda
+  name: Conda
+  category: 开发工具
+  category_en: Developer Tools
+  priority: P2
+  phase: 研发协作
+  duration: 3 天
+  goal: 能隔离 Python 环境、锁定依赖并让 AI 项目在不同机器上可复现。
+  image: /media/tech-stack/conda-environment.png
+  article: /blog/python-runtime-architecture/
+  prerequisite: Python、终端与包管理基础
+  overview:
+    - 理解 environment、channel、pip 与 conda 的边界
+    - 导出最小环境文件并区分平台依赖
+    - 让训练、推理、测试使用一致运行时
+  roadmap:
+    - 基础：创建、激活、删除与导出环境
+    - 核心机制：依赖求解、channel 与 pip 混用边界
+    - 工程实践：锁版本、缓存、CI 与环境审计
+    - 项目验收：新机器一条命令复现项目依赖
+  checklist:
+    - 环境文件不包含本机绝对路径
+    - 安装冲突有诊断与回退路径
+    - 文档明确 Python、CUDA 和系统依赖版本
+  related: [Python, Jupyter, Git, Docker]
+- slug: jupyter
+  name: Jupyter
+  category: 开发工具
+  category_en: Developer Tools
+  priority: P2
+  phase: 实验与验证
+  duration: 3 天
+  goal: 能用 Notebook 快速验证数据与模型假设，并将实验沉淀为可复现结果。
+  image: /media/tech-stack/jupyter-workflow.png
+  article: /blog/python-ai-engineering/
+  prerequisite: Python、pandas、基础统计
+  overview:
+    - 理解 Notebook、Kernel、Cell 与环境绑定关系
+    - 记录数据版本、参数、随机种子和实验结论
+    - 将探索性代码整理为脚本、测试或服务
+  roadmap:
+    - 基础：Kernel、Cell、Markdown 与数据读取
+    - 核心机制：pandas、可视化、调试与内核管理
+    - 工程实践：清理状态、参数化、导出与版本控制
+    - 项目验收：提交一份从数据到结论可复跑的实验报告
+  checklist:
+    - 重启内核并按顺序运行仍能得到相同结论
+    - 图表注明数据范围、单位和关键参数
+    - Notebook 产物不会掩盖未经验证的假设
+  related: [Python, Conda, RAG, Git]
+- slug: linux
+  name: Linux
+  category: 开发工具
+  category_en: Developer Tools
+  priority: P2
+  phase: 研发协作
+  duration: 1 周
+  goal: 能用 Linux 命令、进程、网络和权限工具定位服务运行问题并完成基础部署。
+  image: /media/tech-stack/linux-architecture.png
+  article: /blog/spring-boot-production-architecture/
+  prerequisite: 命令行、网络和计算机基础
+  overview:
+    - 掌握文件、权限、进程、服务与日志命令
+    - 使用 ss、curl、top、journalctl 定位故障
+    - 理解 shell、环境变量、信号与资源限制
+  roadmap:
+    - 基础：目录、权限、管道、重定向与 shell
+    - 核心机制：进程、线程、systemd、网络和 DNS
+    - 工程实践：日志轮转、监控、SSH 加固与脚本化
+    - 项目验收：独立部署并诊断一个后端服务
+  checklist:
+    - 能从端口、进程、日志和资源四层排查问题
+    - 脚本具备错误退出、参数校验和幂等性
+    - 服务账户遵守最小权限原则
+  related: [Docker, Git, Spring Boot, MySQL]
