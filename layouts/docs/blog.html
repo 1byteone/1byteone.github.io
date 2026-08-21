@@ -1,0 +1,156 @@
+{{- define "main" -}}
+{{ $page := . }}
+{{ $dateFormat := site.Params.locale.date_format | default "Jan 2, 2006" }}
+
+{{/* Section header */}}
+<section class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 pt-16 pb-8">
+  <div class="text-center mb-8">
+    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">{{ .Title }}</h1>
+    {{ with .Content }}
+    <div class="text-lg text-gray-500 dark:text-gray-400 max-w-3xl mx-auto article-style">{{ . }}</div>
+    {{ end }}
+  </div>
+
+  {{/* Tag cloud filter */}}
+  {{ with site.Taxonomies.tags }}
+  <div class="flex flex-wrap items-center justify-center gap-2 pb-4">
+    <span class="text-xs font-semibold uppercase tracking-widest text-gray-500 dark:text-gray-400 mr-1">{{ i18n "filter" | default "Filter" }}:</span>
+    <a href="{{ $page.RelPermalink }}" class="inline-flex items-center px-3 py-1.5 text-xs font-medium rounded-full bg-primary-600 text-white transition-colors duration-200">{{ i18n "all" | default "All" }}</a>
+    {{ range $name, $taxonomy := . }}
+    <a href="{{ $taxonomy.Page.RelPermalink }}" class="inline-flex items-center px-3 py-1.5 text-xs font-medium rounded-full border border-gray-200 dark:border-white/[0.08] text-gray-600 dark:text-gray-300 bg-white dark:bg-white/[0.04] hover:bg-primary-50 dark:hover:bg-primary-900/20 hover:border-primary-300 dark:hover:border-primary-700 transition-all duration-200">
+      {{ $name }} <span class="ml-1.5 text-gray-400 dark:text-gray-500">({{ $taxonomy.Count }})</span>
+    </a>
+    {{ end }}
+  </div>
+  {{ end }}
+</section>
+
+{{/* Article cards */}}
+<section class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 pb-16">
+  {{/* Featured-first ordering */}}
+  {{ $featured := sort (where .RegularPages "Params.featured" true) "Date" "desc" }}
+  {{ $regular := sort (where .RegularPages "Params.featured" "ne" true) "Date" "desc" }}
+  {{ $all := $featured | append $regular }}
+  {{ $paginator := .Paginate $all 7 }}
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    {{ range $paginator.Pages }}
+    {{ $item := . }}
+    {{ $link := .RelPermalink }}
+    {{ $target := "" }}
+    {{ with .Params.external_link }}{{ $link = . }}{{ $target = "target=\"_blank\" rel=\"noopener\"" }}{{ end }}
+    <article class="group relative overflow-hidden rounded-2xl border border-gray-200 dark:border-white/[0.08] bg-white dark:bg-white/[0.04] shadow-sm hover:-translate-y-1 hover:shadow-xl hover:border-primary-400 dark:hover:border-primary-500/50 transition-all duration-300">
+      {{/* Featured image */}}
+      {{ $image := "" }}
+      {{ with $item.Resources.ByType "image" }}
+        {{ with .GetMatch "*featured*" }}
+          {{ $image = .Fill "918x517 Smart" }}
+        {{ end }}
+      {{ end }}
+      {{ with $image }}
+      <a href="{{ $link }}" class="block aspect-[16/9] overflow-hidden bg-gray-100 dark:bg-white/[0.06]" {{ $target | safeHTMLAttr }}>
+        <img src="{{ .RelPermalink }}" alt="{{ $item.Title }}" loading="lazy" width="{{ .Width }}" height="{{ .Height }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+      </a>
+      {{ end }}
+
+      <div class="p-5">
+        {{/* Featured badge */}}
+        {{ if $item.Params.featured }}
+        <span class="inline-flex items-center px-2 py-0.5 text-xs font-medium rounded-full bg-primary-50 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 mb-2">{{ i18n "featured" | default "Featured" }}</span>
+        {{ end }}
+
+        {{/* Title */}}
+        <h3 class="font-semibold text-gray-900 dark:text-white">
+          <a href="{{ $link }}" {{ $target | safeHTMLAttr }} class="after:absolute after:inset-0">{{ $item.Title }}</a>
+        </h3>
+
+        {{/* Summary */}}
+        <p class="mt-2 text-sm leading-6 text-gray-600 dark:text-gray-300 line-clamp-3">
+          {{ if $item.Params.summary }}
+            {{ $item.Params.summary | plainify | emojify }}
+          {{ else if $item.Params.abstract }}
+            {{ $item.Params.abstract | plainify | emojify | truncate 250 }}
+          {{ else if $item.Summary }}
+            {{ $item.Summary | plainify | emojify }}
+          {{ end }}
+        </p>
+
+        {{/* Meta: date · reading time · tags */}}
+        <div class="mt-4 flex items-center gap-3 text-xs text-gray-500 dark:text-gray-400">
+          <time datetime="{{ $item.Date.Format "2006-01-02" }}">{{ $item.Date.Format $dateFormat }}</time>
+          <span class="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600"></span>
+          <span>{{ $item.ReadingTime }} {{ i18n "minutes" | default "min read" }}</span>
+          {{ with $item.Params.tags }}
+          <span class="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600"></span>
+          <span class="truncate">{{ delimit . ", " }}</span>
+          {{ end }}
+        </div>
+      </div>
+    </article>
+    {{ end }}
+  </div>
+
+  {{/* Custom numbered pagination */}}
+  {{ if gt $paginator.TotalPages 1 }}
+  <nav class="mt-12 flex items-center justify-center gap-1.5" aria-label="Pagination">
+    {{/* Previous */}}
+    {{ if $paginator.HasPrev }}
+    <a href="{{ $paginator.Prev.URL }}" rel="prev" aria-label="Previous page" class="inline-flex items-center justify-center w-10 h-10 rounded-xl text-sm font-medium text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-white/[0.08] bg-white dark:bg-white/[0.04] hover:bg-gray-50 dark:hover:bg-white/[0.08] transition-colors duration-200">&lsaquo;</a>
+    {{ else }}
+    <span aria-hidden="true" class="inline-flex items-center justify-center w-10 h-10 rounded-xl text-sm text-gray-300 dark:text-gray-600 cursor-default">&lsaquo;</span>
+    {{ end }}
+
+    {{ $totalPages := $paginator.TotalPages }}
+    {{ $currentPage := $paginator.PageNumber }}
+    {{/* Show every page when the sequence is short. Otherwise keep the first,
+         last, and current neighbourhood visible, with one ellipsis per gap. */}}
+    {{ if le $totalPages 5 }}
+      {{ range $paginator.Pagers }}
+        {{ if eq .PageNumber $currentPage }}
+        <span aria-current="page" class="inline-flex items-center justify-center w-10 h-10 rounded-xl text-sm font-bold bg-primary-600 text-white">{{ .PageNumber }}</span>
+        {{ else }}
+        <a href="{{ .URL }}" aria-label="Page {{ .PageNumber }}" class="inline-flex items-center justify-center w-10 h-10 rounded-xl text-sm font-medium text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-white/[0.08] bg-white dark:bg-white/[0.04] hover:bg-gray-50 dark:hover:bg-white/[0.08] transition-colors duration-200">{{ .PageNumber }}</a>
+        {{ end }}
+      {{ end }}
+    {{ else }}
+      {{ range $paginator.Pagers }}
+        {{ if eq .PageNumber 1 }}
+          {{ if eq .PageNumber $currentPage }}
+          <span aria-current="page" class="inline-flex items-center justify-center w-10 h-10 rounded-xl text-sm font-bold bg-primary-600 text-white">1</span>
+          {{ else }}
+          <a href="{{ .URL }}" aria-label="Page 1" class="inline-flex items-center justify-center w-10 h-10 rounded-xl text-sm font-medium text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-white/[0.08] bg-white dark:bg-white/[0.04] hover:bg-gray-50 dark:hover:bg-white/[0.08] transition-colors duration-200">1</a>
+          {{ end }}
+        {{ else if eq .PageNumber $totalPages }}
+          {{ if lt $currentPage (sub $totalPages 2) }}
+          <span aria-hidden="true" class="px-1 text-sm text-gray-400 dark:text-gray-500">…</span>
+          {{ end }}
+          {{ if eq .PageNumber $currentPage }}
+          <span aria-current="page" class="inline-flex items-center justify-center w-10 h-10 rounded-xl text-sm font-bold bg-primary-600 text-white">{{ .PageNumber }}</span>
+          {{ else }}
+          <a href="{{ .URL }}" aria-label="Page {{ .PageNumber }}" class="inline-flex items-center justify-center w-10 h-10 rounded-xl text-sm font-medium text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-white/[0.08] bg-white dark:bg-white/[0.04] hover:bg-gray-50 dark:hover:bg-white/[0.08] transition-colors duration-200">{{ .PageNumber }}</a>
+          {{ end }}
+        {{ else if or (and (ge .PageNumber (sub $currentPage 1)) (le .PageNumber (add $currentPage 1))) (and (eq $currentPage 1) (le .PageNumber 3)) (and (eq $currentPage $totalPages) (ge .PageNumber (sub $totalPages 2))) }}
+          {{ if eq .PageNumber $currentPage }}
+          <span aria-current="page" class="inline-flex items-center justify-center w-10 h-10 rounded-xl text-sm font-bold bg-primary-600 text-white">{{ .PageNumber }}</span>
+          {{ else }}
+          <a href="{{ .URL }}" aria-label="Page {{ .PageNumber }}" class="inline-flex items-center justify-center w-10 h-10 rounded-xl text-sm font-medium text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-white/[0.08] bg-white dark:bg-white/[0.04] hover:bg-gray-50 dark:hover:bg-white/[0.08] transition-colors duration-200">{{ .PageNumber }}</a>
+          {{ end }}
+        {{ end }}
+        {{ if and (eq .PageNumber 2) (gt $currentPage 3) }}
+          <span aria-hidden="true" class="px-1 text-sm text-gray-400 dark:text-gray-500">…</span>
+        {{ end }}
+      {{ end }}
+    {{ end }}
+
+    {{/* Next */}}
+    {{ if $paginator.HasNext }}
+    <a href="{{ $paginator.Next.URL }}" rel="next" aria-label="Next page" class="inline-flex items-center justify-center w-10 h-10 rounded-xl text-sm font-medium text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-white/[0.08] bg-white dark:bg-white/[0.04] hover:bg-gray-50 dark:hover:bg-white/[0.08] transition-colors duration-200">&rsaquo;</a>
+    {{ else }}
+    <span aria-hidden="true" class="inline-flex items-center justify-center w-10 h-10 rounded-xl text-sm text-gray-300 dark:text-gray-600 cursor-default">&rsaquo;</span>
+    {{ end }}
+  </nav>
+  {{ end }}
+</section>
+
+{{ partial "site_footer" . }}
+{{- end -}}
