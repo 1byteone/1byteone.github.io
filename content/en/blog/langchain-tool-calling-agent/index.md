@@ -13,7 +13,6 @@ authors:
 featured: true
 ---
 
-![LangChain — LangChain Tool-Calling Agents](featured.png)
 
 *Whiteboard: LangChain — LangChain Tool-Calling Agents.*
 

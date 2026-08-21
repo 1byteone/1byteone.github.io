@@ -13,7 +13,6 @@ authors:
 featured: true
 ---
 
-![FastAPI — FastAPI 请求与响应](featured.png)
 
 *上图：FastAPI — FastAPI 请求与响应。*
 

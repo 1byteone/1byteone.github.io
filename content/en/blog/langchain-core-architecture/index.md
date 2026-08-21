@@ -13,7 +13,6 @@ authors:
 featured: true
 ---
 
-![LangChain — LangChain Core Architecture](featured.png)
 
 *Whiteboard: LangChain — LangChain Core Architecture.*
 

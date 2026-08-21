@@ -12,7 +12,6 @@ authors:
 featured: true
 ---
 
-![MySQL Index & B+Tree — MySQL 索引与 B+Tree：让查询走 Fast Path](featured.png)
 
 *上图：MySQL Index & B+Tree 白板图；重点不是罗列名词，而是把一次真实请求如何穿过系统、在哪些边界失败画清楚。*
 

@@ -13,7 +13,6 @@ authors:
 featured: true
 ---
 
-![OpenAI — OpenAI Multimodal AI](featured.png)
 
 *上图：OpenAI — OpenAI Multimodal AI。*
 

@@ -12,7 +12,6 @@ authors:
 featured: true
 ---
 
-![Java Core Architecture — Java 核心架构：从源码到 JVM 执行](featured.png)
 
 *上图：Java Core Architecture 白板图；重点不是罗列名词，而是把一次真实请求如何穿过系统、在哪些边界失败画清楚。*
 

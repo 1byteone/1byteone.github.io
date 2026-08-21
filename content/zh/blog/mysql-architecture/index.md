@@ -12,7 +12,6 @@ authors:
 featured: true
 ---
 
-![MySQL Architecture — MySQL 内部架构：SQL 层到 InnoDB](featured.png)
 
 *上图：MySQL Architecture 白板图；重点不是罗列名词，而是把一次真实请求如何穿过系统、在哪些边界失败画清楚。*
 

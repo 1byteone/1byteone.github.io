@@ -12,7 +12,6 @@ authors:
 featured: true
 ---
 
-![Production MySQL High-Concurrency Architecture — 生产级 MySQL 高并发架构：缓存、读写分离与分片](featured.png)
 
 *上图：Production MySQL High-Concurrency Architecture 白板图；重点不是罗列名词，而是把一次真实请求如何穿过系统、在哪些边界失败画清楚。*
 

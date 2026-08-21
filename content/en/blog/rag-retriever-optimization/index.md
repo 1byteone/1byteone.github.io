@@ -13,7 +13,6 @@ authors:
 featured: true
 ---
 
-![RAG — Optimizing RAG Retrievers](featured.png)
 
 *Whiteboard: RAG — Optimizing RAG Retrievers.*
 

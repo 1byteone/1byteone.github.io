@@ -13,7 +13,6 @@ authors:
 featured: true
 ---
 
-![LangChain — LangChain Memory](featured.png)
 
 *上图：LangChain — LangChain Memory。*
 

@@ -13,7 +13,6 @@ authors:
 featured: true
 ---
 
-![FastAPI — FastAPI AI Streaming API](featured.png)
 
 *上图：FastAPI — FastAPI AI Streaming API。*
 

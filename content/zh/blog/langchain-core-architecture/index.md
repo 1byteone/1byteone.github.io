@@ -13,7 +13,6 @@ authors:
 featured: true
 ---
 
-![LangChain — LangChain 核心架构](featured.png)
 
 *上图：LangChain — LangChain 核心架构。*
 

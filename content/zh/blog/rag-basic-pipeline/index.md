@@ -13,7 +13,6 @@ authors:
 featured: true
 ---
 
-![RAG — RAG 基础管道](featured.png)
 
 *上图：RAG — RAG 基础管道。*
 

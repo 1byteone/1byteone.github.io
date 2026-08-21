@@ -13,7 +13,6 @@ authors:
 featured: true
 ---
 
-![LangChain — LangChain Memory](featured.png)
 
 *Whiteboard: LangChain — LangChain Memory.*
 

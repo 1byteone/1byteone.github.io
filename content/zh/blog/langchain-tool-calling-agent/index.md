@@ -13,7 +13,6 @@ authors:
 featured: true
 ---
 
-![LangChain — LangChain Tool Calling Agent](featured.png)
 
 *上图：LangChain — LangChain Tool Calling Agent。*
 

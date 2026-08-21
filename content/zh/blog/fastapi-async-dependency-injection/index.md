@@ -13,7 +13,6 @@ authors:
 featured: true
 ---
 
-![FastAPI — FastAPI Async 与依赖注入](featured.png)
 
 *上图：FastAPI — FastAPI Async 与依赖注入。*
 

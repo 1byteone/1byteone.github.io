@@ -12,7 +12,6 @@ authors:
 featured: true
 ---
 
-![Python Data Structures & Decorators — Python 数据结构与装饰器：复用行为而不隐藏边界](featured.png)
 
 *上图：Python Data Structures & Decorators 白板图；重点不是罗列名词，而是把一次真实请求如何穿过系统、在哪些边界失败画清楚。*
 

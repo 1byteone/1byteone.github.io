@@ -13,7 +13,6 @@ authors:
 featured: true
 ---
 
-![OpenAI — OpenAI API 基础](featured.png)
 
 *上图：OpenAI — OpenAI API 基础。*
 

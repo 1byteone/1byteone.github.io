@@ -12,7 +12,6 @@ authors:
 featured: true
 ---
 
-![Spring Boot Application Architecture — Spring Boot 应用架构：Controller 到 Database](featured.png)
 
 *上图：Spring Boot Application Architecture 白板图；重点不是罗列名词，而是把一次真实请求如何穿过系统、在哪些边界失败画清楚。*
 

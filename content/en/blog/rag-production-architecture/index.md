@@ -13,7 +13,6 @@ authors:
 featured: true
 ---
 
-![RAG — Production RAG Architecture](featured.png)
 
 *Whiteboard: RAG — Production RAG Architecture.*
 

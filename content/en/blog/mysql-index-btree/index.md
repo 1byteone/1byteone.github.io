@@ -12,7 +12,6 @@ authors:
 featured: true
 ---
 
-![MySQL Index & B+Tree — Backend Engineering](featured.png)
 
 *Whiteboard note: the goal is not to memorize boxes, but to connect each arrow to a request, a contract, and an operational signal.*
 

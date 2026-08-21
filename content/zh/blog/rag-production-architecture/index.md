@@ -13,7 +13,6 @@ authors:
 featured: true
 ---
 
-![RAG — 生产级 RAG 架构](featured.png)
 
 *上图：RAG — 生产级 RAG 架构。*
 

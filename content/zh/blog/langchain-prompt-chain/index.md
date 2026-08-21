@@ -13,7 +13,6 @@ authors:
 featured: true
 ---
 
-![LangChain — LangChain Prompt Chain](featured.png)
 
 *上图：LangChain — LangChain Prompt Chain。*
 

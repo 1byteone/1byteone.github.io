@@ -13,7 +13,6 @@ authors:
 featured: true
 ---
 
-![FastAPI — FastAPI Request and Response Contracts with Pydantic](featured.png)
 
 *Whiteboard: FastAPI — FastAPI Request and Response Contracts with Pydantic.*
 

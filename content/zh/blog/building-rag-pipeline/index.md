@@ -15,7 +15,6 @@ featured: true
 
 检索增强生成（RAG）已成为构建需要访问特定知识库的AI应用的标准方法。本指南将介绍如何使用LangChain从零开始构建完整的RAG管道。
 
-![生产级RAG管道架构图](featured.png)
 
 *上图：Production RAG Pipeline — 文档摄入 → 向量嵌入 → 检索 → 增强生成 → 输出*
 

@@ -13,7 +13,6 @@ authors:
 featured: true
 ---
 
-![RAG — RAG Embeddings and Vector Databases](featured.png)
 
 *Whiteboard: RAG — RAG Embeddings and Vector Databases.*
 

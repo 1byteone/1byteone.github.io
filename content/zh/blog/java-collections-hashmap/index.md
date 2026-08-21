@@ -12,7 +12,6 @@ authors:
 featured: true
 ---
 
-![Java Collections & HashMap Internals — Java 集合与 HashMap：从 key 到 bucket](featured.png)
 
 *上图：Java Collections & HashMap Internals 白板图；重点不是罗列名词，而是把一次真实请求如何穿过系统、在哪些边界失败画清楚。*
 

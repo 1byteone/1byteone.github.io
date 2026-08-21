@@ -12,7 +12,6 @@ authors:
 featured: true
 ---
 
-![MySQL Transaction & MVCC — MySQL 事务与 MVCC：一致性读如何成立](featured.png)
 
 *上图：MySQL Transaction & MVCC 白板图；重点不是罗列名词，而是把一次真实请求如何穿过系统、在哪些边界失败画清楚。*
 

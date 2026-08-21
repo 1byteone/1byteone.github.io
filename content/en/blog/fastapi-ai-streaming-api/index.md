@@ -13,7 +13,6 @@ authors:
 featured: true
 ---
 
-![FastAPI — FastAPI AI Streaming APIs with Server-Sent Events](featured.png)
 
 *Whiteboard: FastAPI — FastAPI AI Streaming APIs with Server-Sent Events.*
 

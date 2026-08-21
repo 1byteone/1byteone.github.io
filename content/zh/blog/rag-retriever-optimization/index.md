@@ -13,7 +13,6 @@ authors:
 featured: true
 ---
 
-![RAG — RAG Retriever 优化](featured.png)
 
 *上图：RAG — RAG Retriever 优化。*
 

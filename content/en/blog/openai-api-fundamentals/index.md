@@ -13,7 +13,6 @@ authors:
 featured: true
 ---
 
-![OpenAI — OpenAI API Fundamentals](featured.png)
 
 *Whiteboard: OpenAI — OpenAI API Fundamentals.*
 

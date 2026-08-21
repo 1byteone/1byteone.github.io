@@ -15,7 +15,6 @@ featured: true
 
 AI agents are revolutionizing how we build intelligent applications. Unlike simple chatbots, agents can use tools, maintain context, and make decisions. This guide covers building production-ready agents with LangChain.
 
-![LangChain AI Agent Architecture](featured.png)
 
 *Above: LangChain Agent architecture — User Input → Reasoning Loop → Tool Calling → Multi-turn Conversation*
 

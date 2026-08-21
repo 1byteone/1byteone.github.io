@@ -12,7 +12,6 @@ authors:
 featured: true
 ---
 
-![JVM Memory & Garbage Collection — JVM 内存与 GC：对象从 Eden 到回收](featured.png)
 
 *上图：JVM Memory & Garbage Collection 白板图；重点不是罗列名词，而是把一次真实请求如何穿过系统、在哪些边界失败画清楚。*
 

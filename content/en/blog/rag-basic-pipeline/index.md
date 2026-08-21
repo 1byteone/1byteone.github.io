@@ -13,7 +13,6 @@ authors:
 featured: true
 ---
 
-![RAG — The RAG Basics](featured.png)
 
 *Whiteboard: RAG — The RAG Basics.*
 

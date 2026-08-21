@@ -13,7 +13,6 @@ authors:
 featured: true
 ---
 
-![OpenAI — OpenAI Tool Calling](featured.png)
 
 *上图：OpenAI — OpenAI Tool Calling。*
 

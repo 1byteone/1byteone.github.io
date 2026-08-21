@@ -13,7 +13,6 @@ authors:
 featured: true
 ---
 
-![OpenAI — OpenAI Structured Outputs](featured.png)
 
 *Whiteboard: OpenAI — OpenAI Structured Outputs.*
 

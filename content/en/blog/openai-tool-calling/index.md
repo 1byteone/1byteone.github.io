@@ -13,7 +13,6 @@ authors:
 featured: true
 ---
 
-![OpenAI — OpenAI Tool Calling](featured.png)
 
 *Whiteboard: OpenAI — OpenAI Tool Calling.*
 

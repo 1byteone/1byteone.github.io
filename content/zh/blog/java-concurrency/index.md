@@ -12,7 +12,6 @@ authors:
 featured: true
 ---
 
-![Java Concurrency Model — Java 并发模型：线程池、锁与可见性](featured.png)
 
 *上图：Java Concurrency Model 白板图；重点不是罗列名词，而是把一次真实请求如何穿过系统、在哪些边界失败画清楚。*
 

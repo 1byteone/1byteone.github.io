@@ -13,7 +13,6 @@ authors:
 featured: true
 ---
 
-![FastAPI — FastAPI Project Architecture](featured.png)
 
 *Whiteboard: FastAPI — FastAPI Project Architecture.*
 

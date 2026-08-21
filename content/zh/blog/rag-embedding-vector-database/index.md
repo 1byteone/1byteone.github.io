@@ -13,7 +13,6 @@ authors:
 featured: true
 ---
 
-![RAG — RAG Embedding 与向量数据库](featured.png)
 
 *上图：RAG — RAG Embedding 与向量数据库。*
 

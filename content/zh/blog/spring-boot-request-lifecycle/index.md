@@ -12,7 +12,6 @@ authors:
 featured: true
 ---
 
-![Spring Boot Request Lifecycle — Spring Boot 请求生命周期：从 HTTP 到响应](featured.png)
 
 *上图：Spring Boot Request Lifecycle 白板图；重点不是罗列名词，而是把一次真实请求如何穿过系统、在哪些边界失败画清楚。*
 

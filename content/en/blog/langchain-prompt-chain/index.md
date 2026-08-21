@@ -13,7 +13,6 @@ authors:
 featured: true
 ---
 
-![LangChain — LangChain Prompt Chains](featured.png)
 
 *Whiteboard: LangChain — LangChain Prompt Chains.*
 

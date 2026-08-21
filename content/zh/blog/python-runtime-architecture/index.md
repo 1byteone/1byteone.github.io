@@ -12,7 +12,6 @@ authors:
 featured: true
 ---
 
-![Python Runtime & Basics — Python 运行时：源码、字节码与对象模型](featured.png)
 
 *上图：Python Runtime & Basics 白板图；重点不是罗列名词，而是把一次真实请求如何穿过系统、在哪些边界失败画清楚。*
 

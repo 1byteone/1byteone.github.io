@@ -12,7 +12,6 @@ authors:
 featured: true
 ---
 
-![Spring Boot IoC & Dependency Injection — Spring Boot IoC 与依赖注入：让对象可替换](featured.png)
 
 *上图：Spring Boot IoC & Dependency Injection 白板图；重点不是罗列名词，而是把一次真实请求如何穿过系统、在哪些边界失败画清楚。*
 

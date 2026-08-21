@@ -13,7 +13,6 @@ authors:
 featured: true
 ---
 
-![OpenAI — OpenAI Multimodal AI](featured.png)
 
 *Whiteboard: OpenAI — OpenAI Multimodal AI.*
 

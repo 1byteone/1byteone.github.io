@@ -12,7 +12,6 @@ authors:
 featured: true
 ---
 
-![Production Spring Boot Architecture — 生产级 Spring Boot 架构：可观测的服务边界](featured.png)
 
 *上图：Production Spring Boot Architecture 白板图；重点不是罗列名词，而是把一次真实请求如何穿过系统、在哪些边界失败画清楚。*
 

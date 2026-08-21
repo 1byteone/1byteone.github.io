@@ -13,7 +13,6 @@ authors:
 featured: true
 ---
 
-![OpenAI — OpenAI Structured Output](featured.png)
 
 *上图：OpenAI — OpenAI Structured Output。*
 

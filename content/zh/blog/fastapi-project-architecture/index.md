@@ -13,7 +13,6 @@ authors:
 featured: true
 ---
 
-![FastAPI — FastAPI 项目架构](featured.png)
 
 *上图：FastAPI — FastAPI 项目架构。*
 

@@ -13,7 +13,6 @@ authors:
 featured: true
 ---
 
-![FastAPI — FastAPI Async and Dependency Injection](featured.png)
 
 *Whiteboard: FastAPI — FastAPI Async and Dependency Injection.*
 
