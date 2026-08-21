@@ -5,6 +5,9 @@
 {{ if not $item }}
   <div class="max-w-3xl mx-auto px-4 py-24"><h1 class="text-3xl font-bold">Learning page not found</h1></div>
 {{ else }}
+{{ $imageURL := $item.image }}
+{{ $imagePath := strings.TrimPrefix $item.image "/" }}
+{{ with resources.Get $imagePath }}{{ $imageURL = .RelPermalink }}{{ end }}
   <article class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
     <header class="max-w-4xl mx-auto text-center mb-12">
       <p class="text-sm font-semibold uppercase tracking-widest text-primary-600 dark:text-primary-400">{{ $item.category }} · {{ $item.priority }} · {{ $item.phase }}</p>
@@ -14,7 +17,7 @@
     </header>
 
     <div class="overflow-hidden rounded-3xl border border-gray-200 dark:border-white/[0.1] bg-gray-50 dark:bg-white/[0.04] shadow-xl">
-      <img src="{{ $item.image }}" alt="{{ $item.name }} learning architecture diagram" class="w-full aspect-[16/9] object-cover" />
+      <img src="{{ $imageURL }}" alt="{{ $item.name }} learning architecture diagram" class="w-full aspect-[16/9] object-cover" />
       <p class="px-5 py-3 text-center text-sm text-gray-500 dark:text-gray-400">配套架构图：先读懂数据流、模块边界与失败路径，再进入教程实践。</p>
     </div>
 
@@ -22,7 +25,7 @@
       <section class="rounded-2xl border border-gray-200 dark:border-white/[0.1] p-6 sm:p-8 bg-white dark:bg-white/[0.03]">
         <h2 class="text-2xl font-bold text-gray-900 dark:text-white">学习速览</h2>
         <ul class="mt-5 space-y-3 text-gray-700 dark:text-gray-300">{{ range $item.overview }}<li class="flex gap-3"><span class="text-emerald-500">✓</span><span>{{ . }}</span></li>{{ end }}</ul>
-        {{ with $item.article }}<a href="{{ . }}" class="mt-7 inline-flex items-center gap-2 rounded-xl bg-primary-600 px-5 py-3 font-semibold text-white hover:bg-primary-700 transition-colors">进入配套教程 <span aria-hidden="true">→</span></a>{{ end }}
+        {{ with $item.article }}<a href="{{ . | relLangURL }}" class="mt-7 inline-flex items-center gap-2 rounded-xl bg-primary-600 px-5 py-3 font-semibold text-white hover:bg-primary-700 transition-colors">进入配套教程 <span aria-hidden="true">→</span></a>{{ end }}
       </section>
       <aside class="rounded-2xl border border-primary-200 dark:border-primary-500/30 p-6 sm:p-8 bg-primary-50/70 dark:bg-primary-500/[0.08]">
         <h2 class="text-2xl font-bold text-gray-900 dark:text-white">专业 Goal</h2>
@@ -43,7 +46,7 @@
 
     <section class="mt-12">
       <h2 class="text-2xl font-bold text-gray-900 dark:text-white">关联技术栈</h2>
-      <div class="mt-4 flex flex-wrap gap-3">{{ range $item.related }}{{ $relatedMatches := where site.Data.tech_learning "name" . }}{{ $related := index $relatedMatches 0 }}{{ if $related }}<a href="/tech-stack/{{ $related.slug }}/" class="rounded-full border border-gray-300 dark:border-white/[0.15] px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:border-primary-500 hover:text-primary-600 transition-colors">{{ $related.name }}</a>{{ end }}{{ end }}</div>
+      <div class="mt-4 flex flex-wrap gap-3">{{ range $item.related }}{{ $relatedMatches := where site.Data.tech_learning "name" . }}{{ $related := index $relatedMatches 0 }}{{ if $related }}<a href="{{ printf "tech-stack/%s/" $related.slug | relLangURL }}" class="rounded-full border border-gray-300 dark:border-white/[0.15] px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:border-primary-500 hover:text-primary-600 transition-colors">{{ $related.name }}</a>{{ end }}{{ end }}</div>
     </section>
   </article>
 {{ end }}

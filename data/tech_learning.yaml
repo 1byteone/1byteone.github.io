@@ -22,7 +22,7 @@
     - 能画出输入、模型、解析器和失败路径
     - 能运行不依赖网络的 parser 单元测试
     - 能处理限流、超时、空结果与格式错误
-  related: [Python, OpenAI, RAG, FastAPI]
+  related: [Python, OpenAI API, RAG, FastAPI]
 - slug: fastapi
   name: FastAPI
   category: AI 与大模型
@@ -47,7 +47,7 @@
     - API 文档可直接调试且 schema 无歧义
     - 为成功、参数错、超时和上游失败编写测试
     - 流式接口断连后不会泄漏任务或连接
-  related: [Python, LangChain, OpenAI, Docker]
+  related: [Python, LangChain, OpenAI API, Docker]
 - slug: rag
   name: RAG
   category: AI 与大模型
@@ -72,7 +72,7 @@
     - 每条答案都能回指证据片段
     - 有 Recall@K、命中率与延迟基线
     - 对无答案问题明确拒答而不是编造
-  related: [LangChain, OpenAI, Elasticsearch, Python]
+  related: [LangChain, OpenAI API, Elasticsearch, Python]
 - slug: openai
   name: OpenAI API
   category: AI 与大模型

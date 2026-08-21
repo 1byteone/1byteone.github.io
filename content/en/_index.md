@@ -83,58 +83,58 @@ sections:
           items:
             - name: LangChain
               icon: devicon/python
-              url: /tech-stack/langchain/
+              url: /en/tech-stack/langchain/
             - name: FastAPI
               icon: devicon/python
-              url: /tech-stack/fastapi/
+              url: /en/tech-stack/fastapi/
             - name: RAG
               icon: devicon/python
-              url: /tech-stack/rag/
+              url: /en/tech-stack/rag/
             - name: OpenAI
               icon: devicon/python
-              url: /tech-stack/openai/
+              url: /en/tech-stack/openai/
         - name: Backend
           items:
             - name: Java
               icon: devicon/java
-              url: /tech-stack/java/
+              url: /en/tech-stack/java/
             - name: Spring Boot
               icon: devicon/spring
-              url: /tech-stack/spring-boot/
+              url: /en/tech-stack/spring-boot/
             - name: Python
               icon: devicon/python
-              url: /tech-stack/python/
+              url: /en/tech-stack/python/
             - name: MySQL
               icon: devicon/mysql
-              url: /tech-stack/mysql/
+              url: /en/tech-stack/mysql/
         - name: Infrastructure
           items:
             - name: Redis
               icon: devicon/redis
-              url: /tech-stack/redis/
+              url: /en/tech-stack/redis/
             - name: Docker
               icon: devicon/docker
-              url: /tech-stack/docker/
+              url: /en/tech-stack/docker/
             - name: RocketMQ
               icon: devicon/rabbitmq
-              url: /tech-stack/rocketmq/
+              url: /en/tech-stack/rocketmq/
             - name: Elasticsearch
               icon: devicon/elasticsearch
-              url: /tech-stack/elasticsearch/
+              url: /en/tech-stack/elasticsearch/
         - name: DevOps
           items:
             - name: Git
               icon: brands/github
-              url: /tech-stack/git/
+              url: /en/tech-stack/git/
             - name: Conda
               icon: devicon/python
-              url: /tech-stack/conda/
+              url: /en/tech-stack/conda/
             - name: Jupyter
               icon: devicon/jupyter
-              url: /tech-stack/jupyter/
+              url: /en/tech-stack/jupyter/
             - name: Linux
               icon: devicon/linux
-              url: /tech-stack/linux/
+              url: /en/tech-stack/linux/
     design:
       style: grid
       show_levels: false
