@@ -72,56 +72,13 @@ sections:
       spacing:
         padding: ["4rem", "0", "4rem", "0"]
   
-  # 技术栈展示区
-  - block: tech-stack
+  # 可点击技术栈学习区
+  - block: tech-learning
     id: skills
     content:
-      title: "技术栈"
-      subtitle: "我用来构建智能系统的技术"
-      categories:
-        - name: AI与大模型
-          items:
-            - name: LangChain
-              icon: devicon/python
-            - name: FastAPI
-              icon: devicon/python
-            - name: RAG
-              icon: devicon/python
-            - name: OpenAI
-              icon: devicon/python
-        - name: 后端开发
-          items:
-            - name: Java
-              icon: devicon/java
-            - name: Spring Boot
-              icon: devicon/spring
-            - name: Python
-              icon: devicon/python
-            - name: MySQL
-              icon: devicon/mysql
-        - name: 基础设施
-          items:
-            - name: Redis
-              icon: devicon/redis
-            - name: Docker
-              icon: devicon/docker
-            - name: RocketMQ
-              icon: devicon/rabbitmq
-            - name: Elasticsearch
-              icon: devicon/elasticsearch
-        - name: 开发工具
-          items:
-            - name: Git
-              icon: brands/github
-            - name: Conda
-              icon: devicon/python
-            - name: Jupyter
-              icon: devicon/jupyter
-            - name: Linux
-              icon: devicon/linux
+      title: "技术栈学习路线"
+      subtitle: "点击任意卡片，查看配套架构图、教程、学习速览、路线大纲与专业 Goal"
     design:
-      style: grid
-      show_levels: false
       background:
         color:
           light: "#f5f5f5"
@@ -247,3 +204,4 @@ sections:
       spacing:
         padding: ["4rem", "0", "6rem", "0"]
 ---
+

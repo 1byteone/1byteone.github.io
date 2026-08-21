@@ -27,3 +27,9 @@ mounts:
     target: layouts
   - source: assets
     target: assets
+
+  - source: layouts/_partials/hbx/blocks
+    target: layouts/_partials/hbx/blocks
+    files:
+      - '**/*.html'
+

@@ -72,56 +72,13 @@ sections:
       spacing:
         padding: ["4rem", "0", "4rem", "0"]
   
-  # Visual Tech Stack - Icons organized by category
-  - block: tech-stack
+  # Clickable tech stack learning roadmap
+  - block: tech-learning
     id: skills
     content:
-      title: "Tech Stack"
-      subtitle: "Technologies I use to build intelligent systems"
-      categories:
-        - name: AI & LLM
-          items:
-            - name: LangChain
-              icon: devicon/python
-            - name: FastAPI
-              icon: devicon/python
-            - name: RAG
-              icon: devicon/python
-            - name: OpenAI
-              icon: devicon/python
-        - name: Backend
-          items:
-            - name: Java
-              icon: devicon/java
-            - name: Spring Boot
-              icon: devicon/spring
-            - name: Python
-              icon: devicon/python
-            - name: MySQL
-              icon: devicon/mysql
-        - name: Infrastructure
-          items:
-            - name: Redis
-              icon: devicon/redis
-            - name: Docker
-              icon: devicon/docker
-            - name: RocketMQ
-              icon: devicon/rabbitmq
-            - name: Elasticsearch
-              icon: devicon/elasticsearch
-        - name: DevOps
-          items:
-            - name: Git
-              icon: brands/github
-            - name: Conda
-              icon: devicon/python
-            - name: Jupyter
-              icon: devicon/jupyter
-            - name: Linux
-              icon: devicon/linux
+      title: "Tech Stack Learning Roadmap"
+      subtitle: "Open any card for its diagram, tutorial, study overview, roadmap, and professional goal"
     design:
-      style: grid
-      show_levels: false
       background:
         color:
           light: "#f5f5f5"
@@ -235,3 +192,5 @@ sections:
       spacing:
         padding: ["4rem", "0", "6rem", "0"]
 ---
+
+
