@@ -26,6 +26,7 @@
   var emptyState = document.querySelector('[data-empty-state]');
   var paginationSlot = document.querySelector('[data-pagination]');
   var articleCountEl = document.querySelector('[data-article-count]');
+  var backToTopBtn = document.querySelector('[data-back-to-top]');
 
   var allArticles = Array.prototype.slice.call(
     document.querySelectorAll('[data-article]')
@@ -91,15 +92,35 @@
     var totalPages = Math.max(1, Math.ceil(totalArticles / PER_PAGE));
     if (currentPage > totalPages) currentPage = totalPages;
 
-    // Hide everything first, then reveal the current page.
+    // Animate out, then in.
     allArticles.forEach(function (article) {
-      showArticle(article, false);
+      article.style.transition = 'opacity 200ms ease, transform 200ms ease';
+      article.style.opacity = '0';
+      article.style.transform = 'translateY(8px)';
     });
-    var start = (currentPage - 1) * PER_PAGE;
-    var pageSlice = filtered.slice(start, start + PER_PAGE);
-    pageSlice.forEach(function (article) {
-      showArticle(article, true);
-    });
+    setTimeout(function () {
+      // Hide everything, then reveal the current page.
+      allArticles.forEach(function (article) {
+        article.style.display = 'none';
+        article.style.opacity = '';
+        article.style.transform = '';
+      });
+      var start = (currentPage - 1) * PER_PAGE;
+      var pageSlice = filtered.slice(start, start + PER_PAGE);
+      pageSlice.forEach(function (article) {
+        article.style.display = '';
+        article.style.opacity = '0';
+        article.style.transform = 'translateY(8px)';
+      });
+      // Trigger reflow, then fade in.
+      requestAnimationFrame(function () {
+        pageSlice.forEach(function (article) {
+          article.style.transition = 'opacity 300ms ease, transform 300ms ease';
+          article.style.opacity = '1';
+          article.style.transform = 'translateY(0)';
+        });
+      });
+    }, 200);
 
     // Update the hero section: hide when it would be filtered out.
     if (featuredSection) {
@@ -224,6 +245,32 @@
     currentPage = page;
     syncUrl();
     applyState();
+    // Scroll to grid.
+    if (grid) grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    updateHeadLinks();
+  }
+
+  function updateHeadLinks() {
+    var filtered = filteredArticles();
+    var totalPages = Math.max(1, Math.ceil(filtered.length / PER_PAGE));
+    var head = document.querySelector('head');
+    if (!head) return;
+    // Remove existing prev/next.
+    var old = head.querySelectorAll('link[rel="prev"], link[rel="next"]');
+    Array.prototype.forEach.call(old, function (el) { el.remove(); });
+    // Add new.
+    if (currentPage > 1) {
+      var prev = document.createElement('link');
+      prev.rel = 'prev';
+      prev.href = pageHref(currentPage - 1);
+      head.appendChild(prev);
+    }
+    if (currentPage < totalPages) {
+      var next = document.createElement('link');
+      next.rel = 'next';
+      next.href = pageHref(currentPage + 1);
+      head.appendChild(next);
+    }
   }
 
   function setTag(tag) {
@@ -266,9 +313,32 @@
       });
     }
 
+    // Back to top.
+    if (backToTopBtn) {
+      var scrollHandler = function () {
+        var y = window.pageYOffset || document.documentElement.scrollTop;
+        var show = y > 500;
+        backToTopBtn.classList.toggle('opacity-0', !show);
+        backToTopBtn.classList.toggle('translate-y-4', !show);
+        backToTopBtn.classList.toggle('pointer-events-none', !show);
+        backToTopBtn.classList.toggle('opacity-100', show);
+        backToTopBtn.classList.toggle('translate-y-0', show);
+        backToTopBtn.classList.toggle('pointer-events-auto', show);
+        backToTopBtn.setAttribute('aria-hidden', show ? 'false' : 'true');
+        if (show) backToTopBtn.removeAttribute('tabindex');
+        else backToTopBtn.setAttribute('tabindex', '-1');
+      };
+      window.addEventListener('scroll', scrollHandler, { passive: true });
+      scrollHandler();
+      backToTopBtn.addEventListener('click', function () {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+
     selectTagPill(currentTag);
     applyState();
     updateArticleCount(filteredArticles().length);
+    updateHeadLinks();
 
     // Keep a stamped count for the "all" label even when filtered.
     if (articleCountEl && !articleCountEl.hasAttribute('data-total')) {
@@ -281,6 +351,7 @@
     selectTagPill(currentTag);
     applyState();
     updateArticleCount(filteredArticles().length);
+    updateHeadLinks();
   });
 
   if (document.readyState === 'loading') {

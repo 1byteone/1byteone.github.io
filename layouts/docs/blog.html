@@ -3,6 +3,32 @@
 {{ $dateFormat := site.Params.locale.date_format | default "Jan 2, 2006" }}
 {{ $picked := sort (where .RegularPages "Params.picked" true) "Date" "desc" }}
 {{ $pickedCount := len $picked }}
+{{ $paginator := .Paginate (sort .RegularPages "Date" "desc") 7 }}
+
+{{/* ============ JSON-LD for blog list page ============ */}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": {{ .Title | jsonify }},
+  "description": {{ with .Params.summary }}{{ . | jsonify }}{{ else }}{{ .Content | plainify | jsonify }}{{ end }},
+  "url": "{{ .Permalink }}",
+  "mainEntity": {
+    "@type": "ItemList",
+    "itemListElement": [
+      {{ range $i, $article := (sort .RegularPages "Date" "desc") }}
+      {{ if $i }},{{ end }}
+      {
+        "@type": "ListItem",
+        "position": {{ add $i 1 }},
+        "url": "{{ $article.Permalink }}",
+        "name": {{ $article.Title | jsonify }}
+      }
+      {{ end }}
+    ]
+  }
+}
+</script>
 
 {{/* ============ Hero Section ============ */}}
 <section class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pt-16 pb-8" data-blog-hero>
@@ -13,7 +39,7 @@
     {{ end }}
     <div class="mt-5 flex items-center gap-3 text-xs text-gray-400 dark:text-gray-500">
       <span data-article-count>{{ len .RegularPages }} {{ i18n "articles" | default "articles" }}</span>
-      <span class="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600"></span>
+      <span class="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600" aria-hidden="true"></span>
       <span>{{ i18n "last_updated" | default "Updated" }} <span data-last-updated>{{ .Lastmod.Format $dateFormat }}</span></span>
     </div>
   </div>
@@ -22,11 +48,11 @@
 {{/* ============ Tag Filter Bar ============ */}}
 <section class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pb-8">
   <div class="flex flex-wrap items-center gap-2" data-tag-filter role="group" aria-label="{{ i18n "topics" | default "Topics" }}">
-    <span class="mr-1 text-xs font-semibold uppercase tracking-widest text-gray-500 dark:text-gray-400">{{ i18n "topics" | default "Topics" }}:</span>
+    <span class="mr-1 text-xs font-semibold uppercase tracking-widest text-gray-500 dark:text-gray-400 sr-only md:not-sr-only">{{ i18n "topics" | default "Topics" }}:</span>
     <a href="{{ $page.RelPermalink }}" data-tag="all" class="inline-flex items-center px-3 py-1.5 text-xs font-medium rounded-full border border-gray-200 dark:border-white/[0.08] text-gray-600 dark:text-gray-300 bg-white dark:bg-white/[0.04] hover:bg-primary-50 dark:hover:bg-primary-900/20 hover:border-primary-300 dark:hover:border-primary-700 transition-all duration-200" aria-pressed="true">{{ i18n "all" | default "All" }}</a>
     {{ range site.Taxonomies.tags.Alphabetical }}
     <a href="{{ .Page.RelPermalink }}" data-tag="{{ .Page.Title }}" class="inline-flex items-center px-3 py-1.5 text-xs font-medium rounded-full border border-gray-200 dark:border-white/[0.08] text-gray-600 dark:text-gray-300 bg-white dark:bg-white/[0.04] hover:bg-primary-50 dark:hover:bg-primary-900/20 hover:border-primary-300 dark:hover:border-primary-700 transition-all duration-200" aria-pressed="false">
-      {{ .Page.Title }} <span class="ml-1.5 text-gray-400 dark:text-gray-500">{{ .Count }}</span>
+      {{ .Page.Title }} <span class="ml-1.5 text-gray-400 dark:text-gray-500" aria-hidden="true">{{ .Count }}</span>
     </a>
     {{ end }}
   </div>
@@ -39,39 +65,52 @@
   {{ $link := $item.RelPermalink }}
   {{ $target := "" }}
   {{ with $item.Params.external_link }}{{ $link = . }}{{ $target = "target=\"_blank\" rel=\"noopener\"" }}{{ end }}
-  <div class="flex flex-col md:flex-row gap-6 rounded-2xl border border-gray-200 dark:border-white/[0.08] bg-white dark:bg-white/[0.04] overflow-hidden">
-    {{ $image := "" }}
-    {{ with $item.Resources.ByType "image" }}
-      {{ with .GetMatch "*featured*" }}
-        {{ $image = .Fill "918x645 Smart" }}
-      {{ end }}
+  {{ $image := "" }}
+  {{ $imageSm := "" }}{{ $imageMd := "" }}{{ $imageLg := "" }}
+  {{ with $item.Resources.ByType "image" }}
+    {{ with .GetMatch "*featured*" }}
+      {{ $imageSm = .Fill "480x270 Smart" }}
+      {{ $imageMd = .Fill "768x432 Smart" }}
+      {{ $imageLg = .Fill "918x645 Smart" }}
+      {{ $image = $imageLg }}
     {{ end }}
+  {{ end }}
+  <div class="flex flex-col md:flex-row gap-6 rounded-2xl border border-gray-200 dark:border-white/[0.08] bg-white dark:bg-white/[0.04] overflow-hidden" itemscope itemtype="https://schema.org/Article">
+    <meta itemprop="datePublished" content="{{ $item.Date.Format "2006-01-02" }}">
+    <meta itemprop="author" content="{{ with $item.Params.authors }}{{ index . 0 }}{{ end }}">
     <div class="md:w-1/2">
       {{ with $image }}
-      <a href="{{ $link }}" class="block aspect-[16/9] md:aspect-auto md:h-full overflow-hidden bg-gray-100 dark:bg-white/[0.06]" {{ $target | safeHTMLAttr }}>
-        <img src="{{ .RelPermalink }}" alt="{{ $item.Title }}" loading="lazy" width="{{ .Width }}" height="{{ .Height }}" class="w-full h-full object-cover" />
+      <a href="{{ $link }}" class="block aspect-[16/9] md:aspect-auto md:h-full overflow-hidden bg-gray-100 dark:bg-white/[0.06]" {{ $target | safeHTMLAttr }} itemprop="url">
+        <img src="{{ .RelPermalink }}"
+             srcset="{{ $imageSm.RelPermalink }} 480w, {{ $imageMd.RelPermalink }} 768w, {{ $imageLg.RelPermalink }} 918w"
+             sizes="(max-width: 768px) 100vw, 50vw"
+             alt="{{ $item.Title | plainify }}"
+             loading="lazy"
+             width="{{ .Width }}" height="{{ .Height }}"
+             itemprop="image"
+             class="w-full h-full object-cover" />
       </a>
       {{ else }}
-      <a href="{{ $link }}" class="block aspect-[16/9] md:aspect-auto md:h-full bg-gradient-to-br from-primary-50 to-primary-100 dark:from-primary-900/30 dark:to-primary-900/10 flex items-center justify-center" {{ $target | safeHTMLAttr }} aria-hidden="true">
+      <a href="{{ $link }}" class="block aspect-[16/9] md:aspect-auto md:h-full bg-gradient-to-br from-primary-50 to-primary-100 dark:from-primary-900/30 dark:to-primary-900/10 flex items-center justify-center" {{ $target | safeHTMLAttr }} aria-hidden="true" tabindex="-1">
         <span class="text-4xl opacity-30">📖</span>
       </a>
       {{ end }}
     </div>
     <div class="md:w-1/2 flex flex-col justify-center p-6 md:p-8">
       <span class="inline-flex items-center px-2 py-0.5 text-xs font-medium rounded-full bg-primary-50 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 mb-3 w-fit">{{ i18n "picked_article" | default "Featured" }}</span>
-      <h2 class="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white leading-snug mb-3">
+      <h2 class="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white leading-snug mb-3" itemprop="headline">
         <a href="{{ $link }}" {{ $target | safeHTMLAttr }} class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200">{{ $item.Title }}</a>
       </h2>
-      <p class="text-sm leading-6 text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">
+      <p class="text-sm leading-6 text-gray-600 dark:text-gray-300 mb-4 line-clamp-3" itemprop="description">
         {{ if $item.Params.summary }}{{ $item.Params.summary | plainify | emojify }}{{ else if $item.Params.abstract }}{{ $item.Params.abstract | plainify | emojify | truncate 250 }}{{ else if $item.Summary }}{{ $item.Summary | plainify | emojify }}{{ end }}
       </p>
-      <div class="flex items-center gap-2.5 text-xs text-gray-500 dark:text-gray-400 mb-5 flex-wrap">
+      <div class="flex items-center gap-2.5 text-xs text-gray-500 dark:text-gray-400 mb-5 flex-wrap" itemprop="keywords">
         {{ range first 3 $item.Params.tags }}
         <span class="inline-flex items-center px-2 py-0.5 text-xs font-medium rounded-full bg-gray-100 dark:bg-white/[0.06] text-gray-600 dark:text-gray-300">{{ . }}</span>
         {{ end }}
-        <span class="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600"></span>
+        <span class="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600" aria-hidden="true"></span>
         <time datetime="{{ $item.Date.Format "2006-01-02" }}">{{ $item.Date.Format $dateFormat }}</time>
-        <span class="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600"></span>
+        <span class="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600" aria-hidden="true"></span>
         <span>{{ $item.ReadingTime }} {{ i18n "minutes" | default "min read" }}</span>
       </div>
       <a href="{{ $link }}" {{ $target | safeHTMLAttr }} class="inline-flex items-center gap-1.5 text-sm font-medium text-primary-600 dark:text-primary-400 hover:gap-2.5 transition-all duration-200 w-fit">
@@ -84,34 +123,50 @@
 
 {{/* ============ Article Grid ============ */}}
 <section class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pb-16" data-blog-list>
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6" data-article-grid>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6" data-article-grid role="feed" aria-label="{{ i18n "recent_posts" | default "Recent Posts" }}">
     {{ range (sort .RegularPages "Date" "desc") }}
     {{ if not .Params.picked }}
     {{ $item := . }}
     {{ $link := .RelPermalink }}
     {{ $target := "" }}
     {{ with .Params.external_link }}{{ $link = . }}{{ $target = "target=\"_blank\" rel=\"noopener\"" }}{{ end }}
-    <article class="group relative overflow-hidden rounded-2xl border border-gray-200 dark:border-white/[0.08] bg-white dark:bg-white/[0.04] shadow-sm hover:-translate-y-1 hover:shadow-xl hover:border-primary-400 dark:hover:border-primary-500/50 transition-all duration-300" data-article="{{ .File.ContentBaseName }}" data-tags="{{ with .Params.tags }}{{ delimit . "," }}{{ end }}" data-date="{{ .Date.Format "2006-01-02" }}">
-      {{ $image := "" }}
-      {{ with $item.Resources.ByType "image" }}
-        {{ with .GetMatch "*featured*" }}
-          {{ $image = .Fill "918x517 Smart" }}
-        {{ end }}
+    {{ $image := "" }}
+    {{ $imageSm := "" }}{{ $imageMd := "" }}{{ $imageLg := "" }}
+    {{ with $item.Resources.ByType "image" }}
+      {{ with .GetMatch "*featured*" }}
+        {{ $imageSm = .Fill "480x270 Smart" }}
+        {{ $imageMd = .Fill "768x432 Smart" }}
+        {{ $imageLg = .Fill "918x517 Smart" }}
+        {{ $image = $imageLg }}
+      {{ end }}
+    {{ end }}
+    <article class="group relative overflow-hidden rounded-2xl border border-gray-200 dark:border-white/[0.08] bg-white dark:bg-white/[0.04] shadow-sm hover:-translate-y-1 hover:shadow-xl hover:border-primary-400 dark:hover:border-primary-500/50 transition-all duration-300" data-article="{{ .File.ContentBaseName }}" data-tags="{{ with .Params.tags }}{{ delimit . "," }}{{ end }}" data-date="{{ .Date.Format "2006-01-02" }}" itemscope itemtype="https://schema.org/Article">
+      <meta itemprop="datePublished" content="{{ $item.Date.Format "2006-01-02" }}">
+      <meta itemprop="author" content="{{ with $item.Params.authors }}{{ index . 0 }}{{ end }}">
+      {{ with $item.Params.tags }}
+      <meta itemprop="keywords" content="{{ delimit . "," }}">
       {{ end }}
       {{ with $image }}
-      <a href="{{ $link }}" class="block aspect-[16/9] overflow-hidden bg-gray-100 dark:bg-white/[0.06]" {{ $target | safeHTMLAttr }}>
-        <img src="{{ .RelPermalink }}" alt="{{ $item.Title }}" loading="lazy" width="{{ .Width }}" height="{{ .Height }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+      <a href="{{ $link }}" class="block aspect-[16/9] overflow-hidden bg-gray-100 dark:bg-white/[0.06]" {{ $target | safeHTMLAttr }} itemprop="url">
+        <img src="{{ .RelPermalink }}"
+             srcset="{{ $imageSm.RelPermalink }} 480w, {{ $imageMd.RelPermalink }} 768w, {{ $imageLg.RelPermalink }} 918w"
+             sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 459px"
+             alt="{{ $item.Title | plainify }}"
+             loading="lazy"
+             width="{{ .Width }}" height="{{ .Height }}"
+             itemprop="image"
+             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
       </a>
       {{ else }}
-      <a href="{{ $link }}" class="block aspect-[16/9] bg-gradient-to-br from-gray-50 to-gray-100 dark:from-white/[0.06] dark:to-white/[0.02] flex items-center justify-center" {{ $target | safeHTMLAttr }} aria-hidden="true">
+      <a href="{{ $link }}" class="block aspect-[16/9] bg-gradient-to-br from-gray-50 to-gray-100 dark:from-white/[0.06] dark:to-white/[0.02] flex items-center justify-center" {{ $target | safeHTMLAttr }} aria-hidden="true" tabindex="-1">
         <span class="text-3xl opacity-20">📄</span>
       </a>
       {{ end }}
       <div class="p-5">
-        <h3 class="font-semibold text-gray-900 dark:text-white leading-snug mb-2">
+        <h3 class="font-semibold text-gray-900 dark:text-white leading-snug mb-2" itemprop="headline">
           <a href="{{ $link }}" {{ $target | safeHTMLAttr }} class="after:absolute after:inset-0 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200">{{ $item.Title }}</a>
         </h3>
-        <p class="text-sm leading-6 text-gray-600 dark:text-gray-300 line-clamp-3 mb-4">
+        <p class="text-sm leading-6 text-gray-600 dark:text-gray-300 line-clamp-3 mb-4" itemprop="description">
           {{ if $item.Params.summary }}{{ $item.Params.summary | plainify | emojify }}{{ else if $item.Params.abstract }}{{ $item.Params.abstract | plainify | emojify | truncate 250 }}{{ else if $item.Summary }}{{ $item.Summary | plainify | emojify }}{{ end }}
         </p>
         <div class="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400 flex-wrap">
@@ -120,7 +175,7 @@
           {{ end }}
           <span class="ml-auto flex items-center gap-2">
             <time datetime="{{ $item.Date.Format "2006-01-02" }}">{{ $item.Date.Format $dateFormat }}</time>
-            <span class="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600"></span>
+            <span class="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600" aria-hidden="true"></span>
             <span>{{ $item.ReadingTime }} {{ i18n "minutes" | default "min read" }}</span>
           </span>
         </div>
@@ -132,12 +187,18 @@
 
   {{/* Empty state (hidden by default, JS toggles) */}}
   <div data-empty-state class="hidden text-center py-16" aria-live="polite">
+    <div class="text-4xl mb-4 opacity-30" aria-hidden="true">🔍</div>
     <p class="text-gray-500 dark:text-gray-400 text-base">{{ i18n "empty_state" | default "No articles found." }}</p>
   </div>
 
   {{/* Pagination container (populated by JS) */}}
   <div data-pagination></div>
 </section>
+
+{{/* Back to top button (hidden by default, JS toggles) */}}
+<button data-back-to-top aria-label="{{ i18n "back_to_top" | default "Back to top" }}" class="fixed bottom-8 right-8 z-50 w-10 h-10 rounded-xl bg-primary-600 text-white shadow-lg hover:bg-primary-700 transition-all duration-300 opacity-0 translate-y-4 pointer-events-none" aria-hidden="true">
+  <svg class="w-5 h-5 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"/></svg>
+</button>
 
 {{/* Script: client-side filter + pagination */}}
 {{ $js := resources.Get "js/blog-filter.js" }}
