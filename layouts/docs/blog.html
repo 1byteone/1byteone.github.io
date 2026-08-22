@@ -1,46 +1,97 @@
 {{- define "main" -}}
 {{ $page := . }}
 {{ $dateFormat := site.Params.locale.date_format | default "Jan 2, 2006" }}
+{{ $picked := sort (where .RegularPages "Params.picked" true) "Date" "desc" }}
+{{ $pickedCount := len $picked }}
 
-{{/* Section header */}}
-<section class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 pt-16 pb-8">
-  <div class="text-center mb-8">
-    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">{{ .Title }}</h1>
+{{/* ============ Hero Section ============ */}}
+<section class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pt-16 pb-8" data-blog-hero>
+  <div class="max-w-3xl">
+    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-3">{{ .Title }}</h1>
     {{ with .Content }}
-    <div class="text-lg text-gray-500 dark:text-gray-400 max-w-3xl mx-auto article-style">{{ . }}</div>
+    <div class="text-base leading-relaxed text-gray-500 dark:text-gray-400 article-style">{{ . }}</div>
     {{ end }}
+    <div class="mt-5 flex items-center gap-3 text-xs text-gray-400 dark:text-gray-500">
+      <span data-article-count>{{ len .RegularPages }} {{ i18n "articles" | default "articles" }}</span>
+      <span class="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600"></span>
+      <span>{{ i18n "last_updated" | default "Updated" }} <span data-last-updated>{{ .Lastmod.Format $dateFormat }}</span></span>
+    </div>
   </div>
+</section>
 
-  {{/* Tag cloud filter */}}
-  {{ with site.Taxonomies.tags }}
-  <div class="flex flex-wrap items-center justify-center gap-2 pb-4">
-    <span class="text-xs font-semibold uppercase tracking-widest text-gray-500 dark:text-gray-400 mr-1">{{ i18n "filter" | default "Filter" }}:</span>
-    <a href="{{ $page.RelPermalink }}" class="inline-flex items-center px-3 py-1.5 text-xs font-medium rounded-full bg-primary-600 text-white transition-colors duration-200">{{ i18n "all" | default "All" }}</a>
-    {{ range $name, $taxonomy := . }}
-    <a href="{{ $taxonomy.Page.RelPermalink }}" class="inline-flex items-center px-3 py-1.5 text-xs font-medium rounded-full border border-gray-200 dark:border-white/[0.08] text-gray-600 dark:text-gray-300 bg-white dark:bg-white/[0.04] hover:bg-primary-50 dark:hover:bg-primary-900/20 hover:border-primary-300 dark:hover:border-primary-700 transition-all duration-200">
-      {{ $name }} <span class="ml-1.5 text-gray-400 dark:text-gray-500">({{ $taxonomy.Count }})</span>
+{{/* ============ Tag Filter Bar ============ */}}
+<section class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pb-8">
+  <div class="flex flex-wrap items-center gap-2" data-tag-filter role="group" aria-label="{{ i18n "topics" | default "Topics" }}">
+    <span class="mr-1 text-xs font-semibold uppercase tracking-widest text-gray-500 dark:text-gray-400">{{ i18n "topics" | default "Topics" }}:</span>
+    <a href="{{ $page.RelPermalink }}" data-tag="all" class="inline-flex items-center px-3 py-1.5 text-xs font-medium rounded-full border border-gray-200 dark:border-white/[0.08] text-gray-600 dark:text-gray-300 bg-white dark:bg-white/[0.04] hover:bg-primary-50 dark:hover:bg-primary-900/20 hover:border-primary-300 dark:hover:border-primary-700 transition-all duration-200" aria-pressed="true">{{ i18n "all" | default "All" }}</a>
+    {{ range site.Taxonomies.tags.Alphabetical }}
+    <a href="{{ .Page.RelPermalink }}" data-tag="{{ .Page.Title }}" class="inline-flex items-center px-3 py-1.5 text-xs font-medium rounded-full border border-gray-200 dark:border-white/[0.08] text-gray-600 dark:text-gray-300 bg-white dark:bg-white/[0.04] hover:bg-primary-50 dark:hover:bg-primary-900/20 hover:border-primary-300 dark:hover:border-primary-700 transition-all duration-200" aria-pressed="false">
+      {{ .Page.Title }} <span class="ml-1.5 text-gray-400 dark:text-gray-500">{{ .Count }}</span>
     </a>
     {{ end }}
   </div>
-  {{ end }}
 </section>
 
-{{/* Article cards */}}
-<section class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 pb-16">
-  {{/* Featured-first ordering */}}
-  {{ $featured := sort (where .RegularPages "Params.featured" true) "Date" "desc" }}
-  {{ $regular := sort (where .RegularPages "Params.featured" "ne" true) "Date" "desc" }}
-  {{ $all := $featured | append $regular }}
-  {{ $paginator := .Paginate $all 7 }}
+{{/* ============ Featured Picked Article ============ */}}
+{{ if $pickedCount }}
+<section class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pb-10" data-featured-section>
+  {{ $item := index $picked 0 }}
+  {{ $link := $item.RelPermalink }}
+  {{ $target := "" }}
+  {{ with $item.Params.external_link }}{{ $link = . }}{{ $target = "target=\"_blank\" rel=\"noopener\"" }}{{ end }}
+  <div class="flex flex-col md:flex-row gap-6 rounded-2xl border border-gray-200 dark:border-white/[0.08] bg-white dark:bg-white/[0.04] overflow-hidden">
+    {{ $image := "" }}
+    {{ with $item.Resources.ByType "image" }}
+      {{ with .GetMatch "*featured*" }}
+        {{ $image = .Fill "918x645 Smart" }}
+      {{ end }}
+    {{ end }}
+    <div class="md:w-1/2">
+      {{ with $image }}
+      <a href="{{ $link }}" class="block aspect-[16/9] md:aspect-auto md:h-full overflow-hidden bg-gray-100 dark:bg-white/[0.06]" {{ $target | safeHTMLAttr }}>
+        <img src="{{ .RelPermalink }}" alt="{{ $item.Title }}" loading="lazy" width="{{ .Width }}" height="{{ .Height }}" class="w-full h-full object-cover" />
+      </a>
+      {{ else }}
+      <a href="{{ $link }}" class="block aspect-[16/9] md:aspect-auto md:h-full bg-gradient-to-br from-primary-50 to-primary-100 dark:from-primary-900/30 dark:to-primary-900/10 flex items-center justify-center" {{ $target | safeHTMLAttr }} aria-hidden="true">
+        <span class="text-4xl opacity-30">📖</span>
+      </a>
+      {{ end }}
+    </div>
+    <div class="md:w-1/2 flex flex-col justify-center p-6 md:p-8">
+      <span class="inline-flex items-center px-2 py-0.5 text-xs font-medium rounded-full bg-primary-50 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 mb-3 w-fit">{{ i18n "picked_article" | default "Featured" }}</span>
+      <h2 class="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white leading-snug mb-3">
+        <a href="{{ $link }}" {{ $target | safeHTMLAttr }} class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200">{{ $item.Title }}</a>
+      </h2>
+      <p class="text-sm leading-6 text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">
+        {{ if $item.Params.summary }}{{ $item.Params.summary | plainify | emojify }}{{ else if $item.Params.abstract }}{{ $item.Params.abstract | plainify | emojify | truncate 250 }}{{ else if $item.Summary }}{{ $item.Summary | plainify | emojify }}{{ end }}
+      </p>
+      <div class="flex items-center gap-2.5 text-xs text-gray-500 dark:text-gray-400 mb-5 flex-wrap">
+        {{ range first 3 $item.Params.tags }}
+        <span class="inline-flex items-center px-2 py-0.5 text-xs font-medium rounded-full bg-gray-100 dark:bg-white/[0.06] text-gray-600 dark:text-gray-300">{{ . }}</span>
+        {{ end }}
+        <span class="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600"></span>
+        <time datetime="{{ $item.Date.Format "2006-01-02" }}">{{ $item.Date.Format $dateFormat }}</time>
+        <span class="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600"></span>
+        <span>{{ $item.ReadingTime }} {{ i18n "minutes" | default "min read" }}</span>
+      </div>
+      <a href="{{ $link }}" {{ $target | safeHTMLAttr }} class="inline-flex items-center gap-1.5 text-sm font-medium text-primary-600 dark:text-primary-400 hover:gap-2.5 transition-all duration-200 w-fit">
+        {{ i18n "read_full_article" | default "Read More" }} <span aria-hidden="true">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+{{ end }}
 
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-    {{ range $paginator.Pages }}
+{{/* ============ Article Grid ============ */}}
+<section class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pb-16" data-blog-list>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6" data-article-grid>
+    {{ range (sort .RegularPages "Date" "desc") }}
+    {{ if not .Params.picked }}
     {{ $item := . }}
     {{ $link := .RelPermalink }}
     {{ $target := "" }}
     {{ with .Params.external_link }}{{ $link = . }}{{ $target = "target=\"_blank\" rel=\"noopener\"" }}{{ end }}
-    <article class="group relative overflow-hidden rounded-2xl border border-gray-200 dark:border-white/[0.08] bg-white dark:bg-white/[0.04] shadow-sm hover:-translate-y-1 hover:shadow-xl hover:border-primary-400 dark:hover:border-primary-500/50 transition-all duration-300">
-      {{/* Featured image */}}
+    <article class="group relative overflow-hidden rounded-2xl border border-gray-200 dark:border-white/[0.08] bg-white dark:bg-white/[0.04] shadow-sm hover:-translate-y-1 hover:shadow-xl hover:border-primary-400 dark:hover:border-primary-500/50 transition-all duration-300" data-article="{{ .File.ContentBaseName }}" data-tags="{{ with .Params.tags }}{{ delimit . "," }}{{ end }}" data-date="{{ .Date.Format "2006-01-02" }}">
       {{ $image := "" }}
       {{ with $item.Resources.ByType "image" }}
         {{ with .GetMatch "*featured*" }}
@@ -51,106 +102,49 @@
       <a href="{{ $link }}" class="block aspect-[16/9] overflow-hidden bg-gray-100 dark:bg-white/[0.06]" {{ $target | safeHTMLAttr }}>
         <img src="{{ .RelPermalink }}" alt="{{ $item.Title }}" loading="lazy" width="{{ .Width }}" height="{{ .Height }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
       </a>
+      {{ else }}
+      <a href="{{ $link }}" class="block aspect-[16/9] bg-gradient-to-br from-gray-50 to-gray-100 dark:from-white/[0.06] dark:to-white/[0.02] flex items-center justify-center" {{ $target | safeHTMLAttr }} aria-hidden="true">
+        <span class="text-3xl opacity-20">📄</span>
+      </a>
       {{ end }}
-
       <div class="p-5">
-        {{/* Featured badge */}}
-        {{ if $item.Params.featured }}
-        <span class="inline-flex items-center px-2 py-0.5 text-xs font-medium rounded-full bg-primary-50 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 mb-2">{{ i18n "featured" | default "Featured" }}</span>
-        {{ end }}
-
-        {{/* Title */}}
-        <h3 class="font-semibold text-gray-900 dark:text-white">
-          <a href="{{ $link }}" {{ $target | safeHTMLAttr }} class="after:absolute after:inset-0">{{ $item.Title }}</a>
+        <h3 class="font-semibold text-gray-900 dark:text-white leading-snug mb-2">
+          <a href="{{ $link }}" {{ $target | safeHTMLAttr }} class="after:absolute after:inset-0 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200">{{ $item.Title }}</a>
         </h3>
-
-        {{/* Summary */}}
-        <p class="mt-2 text-sm leading-6 text-gray-600 dark:text-gray-300 line-clamp-3">
-          {{ if $item.Params.summary }}
-            {{ $item.Params.summary | plainify | emojify }}
-          {{ else if $item.Params.abstract }}
-            {{ $item.Params.abstract | plainify | emojify | truncate 250 }}
-          {{ else if $item.Summary }}
-            {{ $item.Summary | plainify | emojify }}
-          {{ end }}
+        <p class="text-sm leading-6 text-gray-600 dark:text-gray-300 line-clamp-3 mb-4">
+          {{ if $item.Params.summary }}{{ $item.Params.summary | plainify | emojify }}{{ else if $item.Params.abstract }}{{ $item.Params.abstract | plainify | emojify | truncate 250 }}{{ else if $item.Summary }}{{ $item.Summary | plainify | emojify }}{{ end }}
         </p>
-
-        {{/* Meta: date · reading time · tags */}}
-        <div class="mt-4 flex items-center gap-3 text-xs text-gray-500 dark:text-gray-400">
-          <time datetime="{{ $item.Date.Format "2006-01-02" }}">{{ $item.Date.Format $dateFormat }}</time>
-          <span class="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600"></span>
-          <span>{{ $item.ReadingTime }} {{ i18n "minutes" | default "min read" }}</span>
-          {{ with $item.Params.tags }}
-          <span class="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600"></span>
-          <span class="truncate">{{ delimit . ", " }}</span>
+        <div class="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400 flex-wrap">
+          {{ range first 2 $item.Params.tags }}
+          <span class="inline-flex items-center px-2 py-0.5 text-xs font-medium rounded-full bg-gray-100 dark:bg-white/[0.06] text-gray-600 dark:text-gray-300">{{ . }}</span>
           {{ end }}
+          <span class="ml-auto flex items-center gap-2">
+            <time datetime="{{ $item.Date.Format "2006-01-02" }}">{{ $item.Date.Format $dateFormat }}</time>
+            <span class="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600"></span>
+            <span>{{ $item.ReadingTime }} {{ i18n "minutes" | default "min read" }}</span>
+          </span>
         </div>
       </div>
     </article>
     {{ end }}
+    {{ end }}
   </div>
 
-  {{/* Custom numbered pagination */}}
-  {{ if gt $paginator.TotalPages 1 }}
-  <nav class="mt-12 flex items-center justify-center gap-1.5" aria-label="Pagination">
-    {{/* Previous */}}
-    {{ if $paginator.HasPrev }}
-    <a href="{{ $paginator.Prev.URL }}" rel="prev" aria-label="Previous page" class="inline-flex items-center justify-center w-10 h-10 rounded-xl text-sm font-medium text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-white/[0.08] bg-white dark:bg-white/[0.04] hover:bg-gray-50 dark:hover:bg-white/[0.08] transition-colors duration-200">&lsaquo;</a>
-    {{ else }}
-    <span aria-hidden="true" class="inline-flex items-center justify-center w-10 h-10 rounded-xl text-sm text-gray-300 dark:text-gray-600 cursor-default">&lsaquo;</span>
-    {{ end }}
+  {{/* Empty state (hidden by default, JS toggles) */}}
+  <div data-empty-state class="hidden text-center py-16" aria-live="polite">
+    <p class="text-gray-500 dark:text-gray-400 text-base">{{ i18n "empty_state" | default "No articles found." }}</p>
+  </div>
 
-    {{ $totalPages := $paginator.TotalPages }}
-    {{ $currentPage := $paginator.PageNumber }}
-    {{/* Show every page when the sequence is short. Otherwise keep the first,
-         last, and current neighbourhood visible, with one ellipsis per gap. */}}
-    {{ if le $totalPages 5 }}
-      {{ range $paginator.Pagers }}
-        {{ if eq .PageNumber $currentPage }}
-        <span aria-current="page" class="inline-flex items-center justify-center w-10 h-10 rounded-xl text-sm font-bold bg-primary-600 text-white">{{ .PageNumber }}</span>
-        {{ else }}
-        <a href="{{ .URL }}" aria-label="Page {{ .PageNumber }}" class="inline-flex items-center justify-center w-10 h-10 rounded-xl text-sm font-medium text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-white/[0.08] bg-white dark:bg-white/[0.04] hover:bg-gray-50 dark:hover:bg-white/[0.08] transition-colors duration-200">{{ .PageNumber }}</a>
-        {{ end }}
-      {{ end }}
-    {{ else }}
-      {{ range $paginator.Pagers }}
-        {{ if eq .PageNumber 1 }}
-          {{ if eq .PageNumber $currentPage }}
-          <span aria-current="page" class="inline-flex items-center justify-center w-10 h-10 rounded-xl text-sm font-bold bg-primary-600 text-white">1</span>
-          {{ else }}
-          <a href="{{ .URL }}" aria-label="Page 1" class="inline-flex items-center justify-center w-10 h-10 rounded-xl text-sm font-medium text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-white/[0.08] bg-white dark:bg-white/[0.04] hover:bg-gray-50 dark:hover:bg-white/[0.08] transition-colors duration-200">1</a>
-          {{ end }}
-        {{ else if eq .PageNumber $totalPages }}
-          {{ if lt $currentPage (sub $totalPages 2) }}
-          <span aria-hidden="true" class="px-1 text-sm text-gray-400 dark:text-gray-500">…</span>
-          {{ end }}
-          {{ if eq .PageNumber $currentPage }}
-          <span aria-current="page" class="inline-flex items-center justify-center w-10 h-10 rounded-xl text-sm font-bold bg-primary-600 text-white">{{ .PageNumber }}</span>
-          {{ else }}
-          <a href="{{ .URL }}" aria-label="Page {{ .PageNumber }}" class="inline-flex items-center justify-center w-10 h-10 rounded-xl text-sm font-medium text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-white/[0.08] bg-white dark:bg-white/[0.04] hover:bg-gray-50 dark:hover:bg-white/[0.08] transition-colors duration-200">{{ .PageNumber }}</a>
-          {{ end }}
-        {{ else if or (and (ge .PageNumber (sub $currentPage 1)) (le .PageNumber (add $currentPage 1))) (and (eq $currentPage 1) (le .PageNumber 3)) (and (eq $currentPage $totalPages) (ge .PageNumber (sub $totalPages 2))) }}
-          {{ if eq .PageNumber $currentPage }}
-          <span aria-current="page" class="inline-flex items-center justify-center w-10 h-10 rounded-xl text-sm font-bold bg-primary-600 text-white">{{ .PageNumber }}</span>
-          {{ else }}
-          <a href="{{ .URL }}" aria-label="Page {{ .PageNumber }}" class="inline-flex items-center justify-center w-10 h-10 rounded-xl text-sm font-medium text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-white/[0.08] bg-white dark:bg-white/[0.04] hover:bg-gray-50 dark:hover:bg-white/[0.08] transition-colors duration-200">{{ .PageNumber }}</a>
-          {{ end }}
-        {{ end }}
-        {{ if and (eq .PageNumber 2) (gt $currentPage 3) }}
-          <span aria-hidden="true" class="px-1 text-sm text-gray-400 dark:text-gray-500">…</span>
-        {{ end }}
-      {{ end }}
-    {{ end }}
-
-    {{/* Next */}}
-    {{ if $paginator.HasNext }}
-    <a href="{{ $paginator.Next.URL }}" rel="next" aria-label="Next page" class="inline-flex items-center justify-center w-10 h-10 rounded-xl text-sm font-medium text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-white/[0.08] bg-white dark:bg-white/[0.04] hover:bg-gray-50 dark:hover:bg-white/[0.08] transition-colors duration-200">&rsaquo;</a>
-    {{ else }}
-    <span aria-hidden="true" class="inline-flex items-center justify-center w-10 h-10 rounded-xl text-sm text-gray-300 dark:text-gray-600 cursor-default">&rsaquo;</span>
-    {{ end }}
-  </nav>
-  {{ end }}
+  {{/* Pagination container (populated by JS) */}}
+  <div data-pagination></div>
 </section>
+
+{{/* Script: client-side filter + pagination */}}
+{{ $js := resources.Get "js/blog-filter.js" }}
+{{ if $js }}
+  {{ $js = $js | js.Build (dict "minify" true) | resources.Fingerprint }}
+  <script defer src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" crossorigin="anonymous"></script>
+{{ end }}
 
 {{ partial "site_footer" . }}
 {{- end -}}
