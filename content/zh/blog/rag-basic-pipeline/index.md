@@ -11,6 +11,7 @@ tags:
 authors:
   - me
 featured: true
+picked: true
 ---
 
 
