@@ -60,8 +60,8 @@ sections:
           tag: Java
         - name: AI
           tag: AI
-        - name: Python
-          tag: Python
+        - name: IoT
+          tag: IoT
       default_button_index: 0
     design:
       columns: 3
@@ -152,42 +152,47 @@ sections:
       title: "工作经历"
       date_format: Jan 2006
       items:
-        - title: Java后端 / AI应用开发实习生
+        - title: AI工程实习生
           company: 江西传习教育科技有限公司
           company_url: ''
           company_logo: ''
           location: 南昌，中国
-          date_start: '2026-09-01'
-          date_end: ''
-          description: |2-
-            * 开发AI驱动的搜索与推荐系统
-            * 构建基于RAG的智能检索服务
-            * 集成Python AI服务与Spring Cloud微服务
-            * 实现向量搜索与幻觉控制机制
-        - title: 核心后端负责人（分布式微云商城）
-          company: 4人实训项目
-          company_url: 'https://github.com/1byteone'
-          company_logo: ''
-          location: 远程
           date_start: '2026-05-01'
-          date_end: '2026-09-01'
+          date_end: '2026-08-31'
           description: |2-
-            * 主导秒杀链路、搜索/RAG、分布式一致性与研发规范
-            * 采用Redis预扣库存+Redisson可重入锁+RocketMQ异步落库解决超卖
-            * 商品搜索响应从2s降至20ms内，语义召回准确率提升35%
-            * 统一建表、SQL评审、Git分支与CodeReview规范，联调Bug降低60%
-        - title: 独立开发者（农业知识库问答智能体）
-          company: 个人实训项目
+            **后端研发支持**
+            * 参与公司AI商品搜索与知识库应用研发，负责查询、筛选、服务调用和参数校验等接口开发
+            * 使用Redis、Redisson和RocketMQ完成幂等校验、异步处理、失败重试与异常补偿
+            * 基于Elasticsearch、IK分词和DSL完成多条件筛选、结果排序，接入语义召回能力，召回效果提升约35%
+            **AI应用支持**
+            * 参与企业RAG知识库问答场景，负责PDF/Markdown材料预处理、文本分块、向量化入库和样例整理
+            * 基于LangChain、LCEL验证调用路径，补充来源约束、结构化输出与兜底策略
+            * 使用FastAPI异步接口、SSE流式输出和会话上下文管理联调，支持逐Token展示和多会话访问
+            * 完成20余组并发测试，结合日志定位并修复7类问题，补充异常处理、降级策略和测试记录
+        - title: 后端开发（团队项目）
+          company: 智颐养老护理系统
           company_url: 'https://github.com/1byteone'
           company_logo: ''
           location: 远程
-          date_start: '2026-03-01'
-          date_end: '2026-03-31'
+          date_start: '2025-09-01'
+          date_end: '2026-01-31'
           description: |2-
-            * 独立完成农业病害问答Agent，从PDF文档预处理、向量检索到FastAPI接口闭环
-            * 采用私有知识库优先、通用知识兜底的调度策略
-            * 支持多轮记忆、SSE流式输出和结构化结果
-            * 定位修复向量召回超时、工具调用失效等7类故障
+            面向中型养老院的综合管理平台（B端运营后台 + C端家属小程序），团队6人，负责健康评估引擎、IoT同步服务及统一鉴权三个模块。
+            * 集成百度千帆AI大模型进行语义分析，设计Redis多级缓存策略，单次分析响应时间从8秒降低至1秒以内，护理人员查阅效率提升约30%
+            * 开发华为云IoT平台对接服务，通过异步线程池实现产品列表与本地数据的增量同步，列表同步耗时从3分钟缩短至10秒
+            * 基于拦截器与ThreadLocal实现微信小程序用户的无感登录与上下文传递，支撑小程序端日均2000+次活跃访问
+        - title: 后端开发（个人项目）
+          company: 灵犀智能写作
+          company_url: 'https://github.com/1byteone'
+          company_logo: ''
+          location: 远程
+          date_start: '2025-02-01'
+          date_end: '2026-05-31'
+          description: |2-
+            基于Spring Boot 3 + Spring AI Alibaba构建的AI智能图文创作平台，独立全栈设计与开发。
+            * 基于StateGraph自主设计工作流引擎，实现标题生成、大纲构建、正文撰写等多智能体的串行/并行灵活编排
+            * 整合SSE技术与前端对接，基于ThreadPoolTaskExecutor构建异步任务体系，实现内容的毫秒级首字上屏，接口吞吐量提升50%
+            * 封装Prompt模板引擎与StructuredOutputConverter，设计策略模式动态接入多源配图服务，保证99%以上的生成成功率
     design:
       columns: '1'
       background:

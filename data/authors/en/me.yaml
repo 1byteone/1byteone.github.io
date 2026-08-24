@@ -11,9 +11,11 @@ status:
 role: Java Backend / AI Application Developer
 email: "yjs_0831@qq.com"
 bio: |
-  Java backend and AI application developer with hands-on experience in microservices architecture, caching, message queues, RAG retrieval, and agent tool integration.
-  Focused on quantifiable results, able to identify issues in locks, caching, retrieval, and API through load testing, logging, and link tracing.
-  Values API contracts, CodeReview, and documentation, capable of driving cross-language integration between Java and Python.
+  Solid Java backend engineering and AI application development experience, skilled at integrating LLM capabilities with traditional business systems for low-cost, high-stability deployments.
+  Practiced in packaging complex business logic into stable APIs, familiar with Spring Cloud microservices architecture, JVM tuning, and high-concurrency processing.
+  Proficient in building RAG applications using LangChain and Spring AI frameworks, with expertise in prompt engineering and multi-turn conversation management.
+  Focused on non-functional requirements, effective at controlling AI token consumption and response latency while balancing user experience and cost.
+  Career goal: Becoming a "business-aware AI engineer", not just an API caller.
 
 affiliations:
   - name: Jiangxi Agricultural University
@@ -43,55 +45,82 @@ education:
       Target role: Java Backend / AI Application Development.
 
 experience:
-  - role: Java Backend / AI Application Developer Intern
+  - role: AI Engineering Intern
     org: Jiangxi Chuanxi Education Technology Co., Ltd.
-    start: 2026-09-01
+    start: 2026-05-01
+    end: 2026-08-31
     summary: |
-      Developing AI-powered search and recommendation systems.
-      Building RAG-based intelligent retrieval services.
-      Integrating Python AI services with Spring Cloud microservices.
-      Implementing vector search and hallucination control mechanisms.
+      **Backend Development Support**
+      Participated in AI product search and knowledge base application R&D, responsible for query, filter, service invocation, and parameter validation interfaces.
+      Completed idempotent validation, async processing, failure retry, and exception compensation using Redis, Redisson, and RocketMQ.
+      Completed multi-condition filtering and result ranking based on Elasticsearch, IK tokenizer, and DSL, integrating semantic recall with ~35% improvement.
+      **AI Application Support**
+      Participated in enterprise RAG knowledge base Q&A scenario, responsible for PDF/Markdown preprocessing, text chunking, vectorization, and sample curation.
+      Verified invocation paths based on LangChain and LCEL, supplementing source constraints, structured output, and fallback strategies.
+      Coordinated FastAPI async interfaces, SSE streaming output, and session context management, supporting token-by-token display and multi-session access.
+      Completed 20+ groups of concurrent testing, located and fixed 7 types of issues via log analysis, supplemented exception handling and degradation strategies.
+
+  - role: Backend Developer (Team Project)
+    org: ZhiYi Elderly Care Nursing System
+    start: 2025-09-01
+    end: 2026-01-31
+    summary: |
+      Comprehensive management platform for medium-sized nursing homes (B-end ops dashboard + C-end family mini-program), covering health assessment, IoT device monitoring, and care work orders.
+      Team of 6, responsible for health assessment engine, IoT sync service, and unified auth modules, serving 500+ devices and 2000+ daily family visits.
+      Integrated Baidu Qianfan AI model for semantic analysis, designed Redis multi-level caching, reduced single analysis response from 8s to under 1s, improving nurse efficiency by ~30%.
+      Developed Huawei Cloud IoT platform integration service, achieving incremental sync of product lists and local data via async thread pool, sync time from 3min to 10s.
+      Implemented WeChat mini-program seamless login and context propagation based on interceptors and ThreadLocal, ensuring multi-thread data isolation and security.
+
+  - role: Backend Developer (Personal Project)
+    org: LingXi AI Writing Platform
+    start: 2025-02-01
+    end: 2026-05-31
+    summary: |
+      AI-powered intelligent article creation platform built on Spring Boot 3 + Spring AI Alibaba, independently designed and developed full-stack.
+      Designed StateGraph-based workflow engine for flexible serial/parallel orchestration of multi-agent tasks (title, outline, body generation).
+      Integrated SSE technology with frontend, built async task system with ThreadPoolTaskExecutor, achieving millisecond first-token display and 50% throughput improvement.
+      Wrapped Prompt template engine and StructuredOutputConverter, designed strategy pattern for dynamic multi-source image services, maintaining 99%+ generation success rate.
 
 skills:
-  - name: Java Microservices & High Concurrency
+  - name: Java Backend & High Concurrency
     items:
-      - label: Spring Boot 3
+      - label: Java
         level: 5
-      - label: Spring Cloud Alibaba
+      - label: Spring Boot
         level: 5
-      - label: Redis/Redisson
+      - label: MyBatis
         level: 5
-      - label: RocketMQ
+      - label: Thread Pool & Concurrency
         level: 4
-  - name: Data & Retrieval
+  - name: Data & Caching
     items:
       - label: MySQL
         level: 5
-      - label: Elasticsearch
+      - label: Redis/Redisson
         level: 5
-      - label: RedisStack Vector Search
+      - label: Elasticsearch
+        level: 4
+      - label: RocketMQ
+        level: 4
+  - name: AI Application Development
+    items:
+      - label: Spring AI Alibaba
+        level: 5
+      - label: LangChain
         level: 4
       - label: RAG
         level: 5
-  - name: AI Application Development
-    items:
-      - label: Python
-        level: 5
-      - label: LangChain
-        level: 5
-      - label: FastAPI
-        level: 5
-      - label: Agent
+      - label: SSE Streaming
         level: 5
   - name: Engineering Collaboration
     items:
       - label: Git
         level: 5
-      - label: Docker
-        level: 4
       - label: CodeReview
         level: 5
-      - label: Conda/Jupyter
+      - label: Linux Ops
+        level: 4
+      - label: Networking & Protocols
         level: 4
 
 languages:

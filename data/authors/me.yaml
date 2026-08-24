@@ -11,9 +11,11 @@ status:
 role: Java后端工程师 / AI应用开发
 email: "yjs_0831@qq.com"
 bio: |
-  Java后端与AI应用融合开发，具备从微服务架构、缓存与消息队列到RAG检索、Agent工具调用的完整项目实践。
-  关注可量化指标，能通过压测、日志与链路排查定位锁、缓存、检索和接口问题。
-  重视接口契约、CodeReview和文档沉淀，能在Java/Python跨语言场景中推动联调落地。
+  具备扎实的Java后端工程能力与AI应用开发经验，擅长将大模型能力与传统业务系统进行低成本、高稳定性的融合。
+  有将复杂业务逻辑封装为稳定API的实践经验，熟悉Spring Cloud微服务架构、JVM调优及高并发处理。
+  熟练使用LangChain、Spring AI等框架进行RAG（检索增强生成）应用开发，掌握提示词工程与多轮对话管理。
+  关注非功能性需求，能有效控制AI调用的Token消耗与响应延迟，兼顾业务体验与成本。
+  职业目标：致力于成为"懂业务的AI工程师"，而非仅调用接口的API使用者。
 
 affiliations:
   - name: 江西农业大学
@@ -43,55 +45,82 @@ education:
       求职方向：Java后端 / AI应用开发。
 
 experience:
-  - role: Java后端 / AI应用开发实习生
+  - role: AI工程实习生
     org: 江西传习教育科技有限公司
-    start: 2026-09-01
+    start: 2026-05-01
+    end: 2026-08-31
     summary: |
-      开发AI驱动的搜索与推荐系统。
-      构建RAG智能检索服务。
-      集成Python AI服务与Spring Cloud微服务。
-      实现向量搜索与幻觉控制机制。
+      **后端研发支持**
+      参与公司AI商品搜索与知识库应用研发，负责查询、筛选、服务调用和参数校验等接口开发。
+      使用Redis、Redisson和RocketMQ完成幂等校验、异步处理、失败重试与异常补偿。
+      基于Elasticsearch、IK分词和DSL完成多条件筛选、结果排序，接入语义召回能力，召回效果提升约35%。
+      **AI应用支持**
+      参与企业RAG知识库问答场景，负责PDF/Markdown材料预处理、文本分块、向量化入库和样例整理。
+      基于LangChain、LCEL验证调用路径，补充来源约束、结构化输出与兜底策略。
+      使用FastAPI异步接口、SSE流式输出和会话上下文管理联调，支持逐Token展示和多会话访问。
+      完成20余组并发测试，结合日志定位并修复7类问题，补充异常处理、降级策略和测试记录。
+
+  - role: 后端开发（团队项目）
+    org: 智颐养老护理系统
+    start: 2025-09-01
+    end: 2026-01-31
+    summary: |
+      面向中型养老院的综合管理平台（B端运营后台 + C端家属小程序），覆盖健康评估、IoT设备监控、护理工单等核心业务。
+      团队6人，负责健康评估引擎、IoT同步服务及统一鉴权三个模块，服务于院内500+设备、日均2000+次家属端访问。
+      集成百度千帆AI大模型进行语义分析，设计Redis多级缓存策略，将单次分析响应时间从8秒降低至1秒以内，护理人员查阅效率提升约30%。
+      开发华为云IoT平台对接服务，通过异步线程池实现产品列表与本地数据的增量同步，列表同步耗时从3分钟缩短至10秒。
+      基于拦截器与ThreadLocal实现微信小程序用户的无感登录与上下文传递，确保多线程环境下的数据隔离与安全。
+
+  - role: 后端开发（个人项目）
+    org: 灵犀智能写作
+    start: 2025-02-01
+    end: 2026-05-31
+    summary: |
+      基于Spring Boot 3 + Spring AI Alibaba构建的AI智能图文创作平台，独立全栈设计与开发。
+      基于StateGraph自主设计工作流引擎，实现标题生成、大纲构建、正文撰写等多智能体的串行/并行灵活编排。
+      整合SSE技术与前端对接，基于ThreadPoolTaskExecutor构建异步任务体系，实现内容的毫秒级首字上屏，接口吞吐量提升50%。
+      封装Prompt模板引擎与StructuredOutputConverter，设计策略模式动态接入多源配图服务，保证99%以上的生成成功率。
 
 skills:
-  - name: Java微服务与高并发
+  - name: Java后端与高并发
     items:
-      - label: Spring Boot 3
+      - label: Java
         level: 5
-      - label: Spring Cloud Alibaba
+      - label: Spring Boot
         level: 5
-      - label: Redis/Redisson
+      - label: MyBatis
         level: 5
-      - label: RocketMQ
+      - label: 线程池与并发工具
         level: 4
-  - name: 数据与检索
+  - name: 数据与缓存
     items:
       - label: MySQL
         level: 5
-      - label: Elasticsearch
+      - label: Redis/Redisson
         level: 5
-      - label: RedisStack向量检索
+      - label: Elasticsearch
+        level: 4
+      - label: RocketMQ
+        level: 4
+  - name: AI应用开发
+    items:
+      - label: Spring AI Alibaba
+        level: 5
+      - label: LangChain
         level: 4
       - label: RAG
         level: 5
-  - name: AI应用开发
-    items:
-      - label: Python
-        level: 5
-      - label: LangChain
-        level: 5
-      - label: FastAPI
-        level: 5
-      - label: Agent
+      - label: SSE流式输出
         level: 5
   - name: 工程协作
     items:
       - label: Git
         level: 5
-      - label: Docker
-        level: 4
       - label: CodeReview
         level: 5
-      - label: Conda/Jupyter
+      - label: Linux运维
+        level: 4
+      - label: 协议与网络
         level: 4
 
 languages:

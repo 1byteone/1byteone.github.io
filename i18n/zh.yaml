@@ -52,6 +52,20 @@ recent_posts:
   other: "最新文章"
 all_posts:
   other: "全部文章"
+articles:
+  other: "篇文章"
+last_updated:
+  other: "最近更新"
+picked_article:
+  other: "精选文章"
+read_full_article:
+  other: "阅读全文"
+empty_state:
+  other: "该筛选条件下暂无文章，试试其他标签。"
+all_topics:
+  other: "全部主题"
+topics:
+  other: "主题"
 all_projects:
   other: "全部项目"
 filter:
@@ -114,3 +128,5 @@ awards:
   other: "荣誉"
 click_to_view:
   other: "点击查看"
+back_to_top:
+  other: "返回顶部"
