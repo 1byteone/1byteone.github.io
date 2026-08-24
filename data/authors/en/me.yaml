@@ -11,11 +11,11 @@ status:
 role: Java Backend / AI Application Developer
 email: "yjs_0831@qq.com"
 bio: |
-  Solid Java backend engineering and AI application development experience, skilled at integrating LLM capabilities with traditional business systems for low-cost, high-stability deployments.
-  Practiced in packaging complex business logic into stable APIs, familiar with Spring Cloud microservices architecture, JVM tuning, and high-concurrency processing.
-  Proficient in building RAG applications using LangChain and Spring AI frameworks, with expertise in prompt engineering and multi-turn conversation management.
-  Focused on non-functional requirements, effective at controlling AI token consumption and response latency while balancing user experience and cost.
-  Career goal: Becoming a "business-aware AI engineer", not just an API caller.
+  Java backend developer transitioning to AI Application / Agent development, bringing LLM capabilities to real-world scenarios.
+
+  - 🖥️ **Tech Stack** — Spring Boot microservices + AI Agent applications
+  - 🤖 **Current Focus** — Multi-agent orchestration, RAG knowledge bases
+  - 🎯 **Goal** — Evolve enterprise software from "click-and-operate" to "natural conversation"
 
 affiliations:
   - name: Jiangxi Agricultural University
