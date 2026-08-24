@@ -60,8 +60,8 @@ sections:
           tag: Java
         - name: AI
           tag: AI
-        - name: Python
-          tag: Python
+        - name: IoT
+          tag: IoT
       default_button_index: 0
     design:
       columns: 3

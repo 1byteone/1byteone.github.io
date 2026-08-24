@@ -58,10 +58,10 @@ sections:
           tag: '*'
         - name: AI
           tag: AI
-        - name: RAG
-          tag: RAG
         - name: Backend
           tag: Backend
+        - name: IoT
+          tag: IoT
       default_button_index: 0
     design:
       columns: 3
