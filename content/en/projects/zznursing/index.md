@@ -19,6 +19,7 @@ links:
   - type: github
     url: https://github.com/1byteone/zznursing
     label: Source Code
+    coming_soon: true
 featured: true
 status: "Completed"
 role: "Backend Developer"
@@ -33,7 +34,7 @@ highlights:
 
 Comprehensive management platform for medium-sized nursing homes (B-end ops dashboard + C-end family mini-program), covering health assessment, IoT device monitoring, and care work orders.
 
-> ⚠️ **Repository is being prepared for public release.** Project details below.
+> 🔒 **Repository is not yet public.** Project details below.
 
 ## Project Overview
 
@@ -73,4 +74,15 @@ Team of 6 developers; responsible for the **health assessment engine**, **IoT sy
 ---
 
 **Project Status**: ✅ Completed  
-**GitHub**: [View Source Code](https://github.com/1byteone/zznursing)（Repository being prepared for public release）
+**Repository**: 🔒 Not yet public — coming soon
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('a[href*="zznursing"]').forEach(function(el) {
+    el.addEventListener('click', function(e) {
+      e.preventDefault();
+      alert('🔒 This repository is not yet public. Please check back later!');
+    });
+  });
+});
+</script>

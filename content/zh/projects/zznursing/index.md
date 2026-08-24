@@ -19,6 +19,7 @@ links:
   - type: github
     url: https://github.com/1byteone/zznursing
     label: 查看代码
+    coming_soon: true
 featured: true
 status: "已完成"
 role: "后端开发"
@@ -33,7 +34,7 @@ highlights:
 
 面向中型养老院的综合管理平台（B端运营后台 + C端家属小程序），覆盖健康评估、IoT设备监控、护理工单等核心业务。
 
-> ⚠️ **项目仓库正在整理中，即将公开。** 以下为项目详情。
+> 🔒 **项目仓库暂未公开。** 以下为项目详情。
 
 ## 项目概述
 
@@ -84,4 +85,15 @@ highlights:
 ---
 
 **项目状态**: ✅ 已完成  
-**GitHub**: [查看源代码](https://github.com/1byteone/zznursing)（仓库整理中，即将公开）
+**仓库状态**: 🔒 暂未公开，敬请期待
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('a[href*="zznursing"]').forEach(function(el) {
+    el.addEventListener('click', function(e) {
+      e.preventDefault();
+      alert('🔒 该项目仓库暂未公开，敬请期待！');
+    });
+  });
+});
+</script>
