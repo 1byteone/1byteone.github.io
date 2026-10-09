@@ -251,5 +251,3 @@ sections:
       spacing:
         padding: ["4rem", "0", "6rem", "0"]
 ---
-
-

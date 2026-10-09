@@ -1,0 +1,45 @@
+# Shared presentation data. Content pages remain the source of truth for articles and projects.
+site:
+  theme: oil
+  available_themes:
+    - oil
+    - minimal
+  identity:
+    name: 杨劲松
+    name_en: Jinsong Yang
+    mark: YJ
+    email: yjs_0831@qq.com
+    github: https://github.com/1byteone
+    github_label: github.com/1byteone
+    location: 南昌 / 中国
+    location_en: Nanchang / China
+  copy:
+    zh:
+      role: AI 应用 / 后端工程 / 开源
+      hero_note: 把复杂系统做得清晰、可靠，并真正解决问题。
+      footer_note: 用心构建 · 持续学习
+    en:
+      role: AI APPLICATION / BACKEND / OPEN SOURCE
+      hero_note: Making complex systems clear, reliable, and useful.
+      footer_note: Built with intent · Always learning
+  navigation:
+    - key: projects
+      zh: 项目
+      en: Projects
+      anchor: work
+    - key: skills
+      zh: 技能
+      en: Skills
+      anchor: work
+    - key: articles
+      zh: 文章
+      en: Writing
+      anchor: work
+    - key: about
+      zh: 关于
+      en: About
+      anchor: work
+    - key: contact
+      zh: 联系
+      en: Contact
+      anchor: work

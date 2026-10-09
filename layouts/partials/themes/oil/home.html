@@ -1,0 +1,192 @@
+{{ $zh := not (hasPrefix .RelPermalink "/en/") }}
+{{ $site := .Site.Data.site.site }}
+{{ $copy := index $site.copy (cond $zh "zh" "en") }}
+{{ $commercePage := .Site.GetPage "projects/ecommerce-rag-search" }}
+{{ $agriPage := .Site.GetPage "projects/agricultural-qa-agent" }}
+{{ $ragPage := .Site.GetPage "blog/rag-basic-pipeline" }}
+<!doctype html>
+<html lang="{{ if $zh }}zh-Hans{{ else }}en{{ end }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#fbfaf7">
+    <title>{{ if $zh }}{{ $site.identity.name }} — AI 应用与后端工程{{ else }}{{ $site.identity.name_en }} — AI & Backend Engineering{{ end }}</title>
+    <meta name="description" content="{{ if $zh }}杨劲松，Java 后端与 AI 应用开发工程师，专注于 RAG、智能体与分布式系统。{{ else }}Jinsong Yang builds AI applications and backend systems with Java, RAG, and agent workflows.{{ end }}">
+    <link rel="canonical" href="{{ .Permalink }}">
+    {{ with .OutputFormats.Get "RSS" }}<link rel="alternate" type="application/rss+xml" href="{{ .RelPermalink }}">{{ end }}
+    <link rel="stylesheet" href="{{ "css/oil-theme.css" | relURL }}?v=eye-align-fix-20261009">
+    <script defer src="{{ "js/oil-theme.js" | relURL }}"></script>
+  </head>
+  <body>
+    <div class="grid-field" aria-hidden="true"></div>
+    <div class="field" aria-hidden="true"><span class="blob b1"></span><span class="blob b2"></span></div>
+    <div class="cursor-fx" aria-hidden="true"><svg class="cf-arrow" viewBox="0 0 24 24" width="22" height="22"><path d="M5.5 3.2 L18.8 11.4 L12.6 12.8 L9.9 19.6 Z"></path></svg><i></i></div>
+    <aside class="reading-progress" aria-label="{{ if $zh }}阅读进度{{ else }}Reading progress{{ end }}">
+      <span class="progress-track"><i id="progress-bar"></i></span>
+      <span id="progress-value">00</span>
+    </aside>
+    <div class="site-column">
+      <header class="site-header">
+          <a class="wordmark" href="{{ .Site.Home.RelPermalink }}" aria-label="{{ if $zh }}{{ $site.identity.name }}首页{{ else }}{{ $site.identity.name_en }} home{{ end }}"><i></i>JINSO<span>NG</span></a>
+        <div class="header-tools">
+          <nav class="language-switch" aria-label="{{ if $zh }}语言{{ else }}Language{{ end }}">
+            {{ if $zh }}<a class="is-current" href="{{ "/" | relURL }}" lang="zh-Hans">中</a><a href="{{ "/en/" | relURL }}" lang="en">EN</a>{{ else }}<a href="{{ "/" | relURL }}" lang="zh-Hans">中</a><a class="is-current" href="{{ "/en/" | relURL }}" lang="en">EN</a>{{ end }}
+          </nav>
+          <a class="github-link" href="{{ $site.identity.github }}" target="_blank" rel="noopener noreferrer" aria-label="GitHub {{ $site.identity.name_en }}">{{ $site.identity.github_label }} <span aria-hidden="true">↗</span></a>
+        </div>
+      </header>
+
+      <main>
+        <section class="hero" id="top" aria-labelledby="hero-title">
+          <div class="hero-copy">
+            <h1 id="hero-title"><span class="lmask"><span>Yang<sup>®</sup></span></span><span class="lmask"><span>builds</span></span><span class="lmask"><span>things<i>.</i></span></span><span class="hero-illo" aria-hidden="true"><span class="hero-mascot-motion"><img class="hero-person" src="{{ "assets/hero/person.png" | relURL }}" alt="" fetchpriority="high"><span class="hero-dog-sequence"><span class="hero-dog-sprite"></span></span><span class="hero-eye eye-left"><i></i></span><span class="hero-eye eye-right"><i></i></span></span></span></h1>
+            <div class="hero-sub"><b>{{ if $zh }}{{ $site.identity.name }}{{ else }}{{ upper $site.identity.name_en }}{{ end }}</b><span>{{ $copy.role }}</span></div>
+            <p class="hero-note">{{ $copy.hero_note }}</p>
+          </div>
+          <a class="scroll-cue" href="#work"><span>↓</span>{{ if $zh }}向下探索{{ else }}SCROLL TO EXPLORE{{ end }}</a>
+        </section>
+
+        <section class="work-section" id="work" aria-label="{{ if $zh }}作品与经历{{ else }}Work and profile{{ end }}">
+          <div class="tabs-wrap">
+            <div class="work-tabs" role="tablist" aria-label="{{ if $zh }}内容分类{{ else }}Content categories{{ end }}">
+              <button class="work-tab is-active" id="tab-projects" role="tab" aria-selected="true" aria-controls="panel-projects" data-panel="projects">{{ if $zh }}项目{{ else }}Projects{{ end }}</button>
+              <button class="work-tab" id="tab-skills" role="tab" aria-selected="false" aria-controls="panel-skills" data-panel="skills">{{ if $zh }}技能{{ else }}Skills{{ end }}</button>
+              <button class="work-tab" id="tab-articles" role="tab" aria-selected="false" aria-controls="panel-articles" data-panel="articles">{{ if $zh }}文章{{ else }}Writing{{ end }}</button>
+              <button class="work-tab" id="tab-about" role="tab" aria-selected="false" aria-controls="panel-about" data-panel="about">{{ if $zh }}关于{{ else }}About{{ end }}</button>
+              <button class="work-tab" id="tab-contact" role="tab" aria-selected="false" aria-controls="panel-contact" data-panel="contact">{{ if $zh }}联系{{ else }}Contact{{ end }}</button>
+            </div>
+          </div>
+
+          <div class="work-panel is-visible" id="panel-projects" role="tabpanel" aria-labelledby="tab-projects" tabindex="0">
+            <div class="section-heading"><span class="eyebrow">SELECTED WORK / 2026</span><h2>{{ if $zh }}做过的项目{{ else }}Selected projects{{ end }}</h2><p>{{ if $zh }}从分布式后端到 AI 应用，把想法落进可以运行的系统。{{ else }}From distributed backends to AI applications, ideas made into working systems.{{ end }}</p></div>
+            <div class="project-list">
+              <div class="card-hitbox reveal"><article class="project-card">
+                <a class="project-visual" href="{{ "projects/ecommerce-rag-search/" | relLangURL }}" aria-label="{{ if $zh }}分布式微云商城{{ else }}Micro Cloud Commerce Platform{{ end }}">
+                  {{ with $commercePage.Resources.GetMatch "featured.*" }}<img src="{{ .RelPermalink }}" alt="" loading="lazy">{{ else }}<img src="{{ "assets/products/logos/wolfcha.png" | relURL }}" alt="" loading="lazy">{{ end }}
+                  <span class="visual-number">01</span>
+                  <span class="visual-arrow" aria-hidden="true">↗</span>
+                </a>
+                <div class="project-info">
+                  <span class="project-type">JAVA / SPRING CLOUD / DISTRIBUTED</span>
+                  <h3><a href="{{ "projects/ecommerce-rag-search/" | relLangURL }}">{{ if $zh }}分布式微云商城{{ else }}Micro Cloud Commerce Platform{{ end }}</a></h3>
+                  <p>{{ if $zh }}Spring Cloud Alibaba 电商平台，覆盖高并发秒杀、搜索、消息与分布式事务。{{ else }}A Spring Cloud Alibaba commerce platform covering high-concurrency seckill, search, messaging, and distributed transactions.{{ end }}</p>
+                  <div class="project-meta"><span>{{ if $zh }}核心后端负责人{{ else }}Backend lead{{ end }}</span><a href="{{ "projects/ecommerce-rag-search/" | relLangURL }}">{{ if $zh }}查看项目{{ else }}Explore project{{ end }} <b aria-hidden="true">→</b></a></div>
+                </div>
+              </article></div>
+              <div class="card-hitbox reveal"><article class="project-card">
+                <a class="project-visual" href="{{ "projects/agricultural-qa-agent/" | relLangURL }}" aria-label="{{ if $zh }}农业知识问答系统{{ else }}Agricultural Knowledge Agent{{ end }}">
+                  {{ with $agriPage.Resources.GetMatch "featured.*" }}<img src="{{ .RelPermalink }}" alt="" loading="lazy">{{ else }}<img src="{{ "assets/products/logos/vibe-hub.png" | relURL }}" alt="" loading="lazy">{{ end }}
+                  <span class="visual-number">02</span>
+                  <span class="visual-arrow" aria-hidden="true">↗</span>
+                </a>
+                <div class="project-info">
+                  <span class="project-type">RAG / LANGGRAPH / FASTAPI</span>
+                  <h3><a href="{{ "projects/agricultural-qa-agent/" | relLangURL }}">{{ if $zh }}农业知识问答系统{{ else }}Agricultural Knowledge Agent{{ end }}</a></h3>
+                  <p>{{ if $zh }}带多轮记忆、证据溯源和 SSE 流式输出的领域知识问答 Agent。{{ else }}A domain knowledge agent with memory, grounded citations, and SSE streaming responses.{{ end }}</p>
+                  <div class="project-meta"><span>{{ if $zh }}独立开发{{ else }}Independent build{{ end }}</span><a href="{{ "projects/agricultural-qa-agent/" | relLangURL }}">{{ if $zh }}查看项目{{ else }}Explore project{{ end }} <b aria-hidden="true">→</b></a></div>
+                </div>
+              </article></div>
+              <div class="card-hitbox reveal"><article class="project-card project-card-compact">
+                <a class="project-visual" href="{{ "blog/rag-basic-pipeline/" | relLangURL }}" aria-label="{{ if $zh }}RAG 工程实践笔记{{ else }}RAG Engineering Notes{{ end }}">
+                  {{ with $ragPage.Resources.GetMatch "featured.*" }}<img src="{{ .RelPermalink }}" alt="" loading="lazy">{{ else }}<img src="{{ "assets/articles/covers/five-ai-design-models.webp" | relURL }}" alt="" loading="lazy">{{ end }}
+                  <span class="visual-number">03</span><span class="visual-arrow" aria-hidden="true">↗</span>
+                </a>
+                <div class="project-info"><span class="project-type">RAG / VECTOR SEARCH / EVIDENCE</span><h3><a href="{{ "blog/rag-basic-pipeline/" | relLangURL }}">{{ if $zh }}RAG 工程实践笔记{{ else }}RAG Engineering Notes{{ end }}</a></h3><p>{{ if $zh }}把文档切分、向量检索、重排与证据引用整理成可复用的工程方法。{{ else }}Reusable engineering notes for chunking, retrieval, reranking, and grounded answers.{{ end }}</p><div class="project-meta"><span>{{ if $zh }}持续记录{{ else }}Ongoing notes{{ end }}</span><a href="{{ "blog/rag-basic-pipeline/" | relLangURL }}">{{ if $zh }}阅读笔记{{ else }}Read notes{{ end }} <b aria-hidden="true">→</b></a></div></div>
+              </article></div>
+              <div class="card-hitbox reveal"><article class="project-card project-card-compact">
+                <a class="project-visual project-visual-logo" href="{{ "tech-stack/rag/" | relLangURL }}" aria-label="{{ if $zh }}AI 应用学习路线{{ else }}AI engineering roadmap{{ end }}">
+                  <img src="{{ "assets/products/logos/vibe-hub.png" | relURL }}" alt="" loading="lazy">
+                  <span class="visual-number">04</span><span class="visual-arrow" aria-hidden="true">↗</span>
+                </a>
+                <div class="project-info"><span class="project-type">AI ENGINEERING / LEARNING SYSTEM</span><h3><a href="{{ "tech-stack/rag/" | relLangURL }}">{{ if $zh }}AI 应用学习路线{{ else }}AI Engineering Roadmap{{ end }}</a></h3><p>{{ if $zh }}从 LangChain、FastAPI 到 RAG 生产架构，把学习内容组织成能解释、能实现、能测试的路线。{{ else }}A practical path from LangChain and FastAPI to production RAG architecture.{{ end }}</p><div class="project-meta"><span>{{ if $zh }}结构化学习{{ else }}Structured learning{{ end }}</span><a href="{{ "tech-stack/rag/" | relLangURL }}">{{ if $zh }}查看路线{{ else }}View roadmap{{ end }} <b aria-hidden="true">→</b></a></div></div>
+              </article></div>
+              <div class="card-hitbox reveal"><article class="project-card project-card-compact">
+                <a class="project-visual project-visual-logo" href="{{ "tech-stack/java/" | relLangURL }}" aria-label="{{ if $zh }}Java 后端稳定性路线{{ else }}Java backend reliability roadmap{{ end }}">
+                  <img src="{{ "assets/articles/covers/five-ai-design-models.webp" | relURL }}" alt="" loading="lazy">
+                  <span class="visual-number">05</span><span class="visual-arrow" aria-hidden="true">↗</span>
+                </a>
+                <div class="project-info"><span class="project-type">JAVA / JVM / RELIABILITY</span><h3><a href="{{ "tech-stack/java/" | relLangURL }}">{{ if $zh }}Java 后端稳定性路线{{ else }}Java Backend Reliability{{ end }}</a></h3><p>{{ if $zh }}从并发、JVM、数据库到可观测性，建立面向真实服务的后端基础。{{ else }}Backend foundations for real services: concurrency, JVM, databases, and observability.{{ end }}</p><div class="project-meta"><span>{{ if $zh }}工程基础{{ else }}Engineering foundations{{ end }}</span><a href="{{ "tech-stack/java/" | relLangURL }}">{{ if $zh }}开始学习{{ else }}Start learning{{ end }} <b aria-hidden="true">→</b></a></div></div>
+              </article></div>
+              <div class="card-hitbox reveal"><article class="project-card project-card-compact">
+                <a class="project-visual project-visual-logo" href="{{ "blog/" | relLangURL }}" aria-label="{{ if $zh }}工程写作与公开记录{{ else }}Engineering writing{{ end }}">
+                  <img src="{{ "assets/articles/covers/codex-sidebar-sections.webp" | relURL }}" alt="" loading="lazy">
+                  <span class="visual-number">06</span><span class="visual-arrow" aria-hidden="true">↗</span>
+                </a>
+                <div class="project-info"><span class="project-type">WRITING / OPEN SOURCE / SYSTEMS</span><h3><a href="{{ "blog/" | relLangURL }}">{{ if $zh }}工程写作与公开记录{{ else }}Engineering Writing{{ end }}</a></h3><p>{{ if $zh }}记录踩坑、设计取舍和可复现的工程结论，让每次实践都能被再次使用。{{ else }}A public record of tradeoffs, debugging, and reproducible engineering conclusions.{{ end }}</p><div class="project-meta"><span>{{ if $zh }}公开构建{{ else }}Build in public{{ end }}</span><a href="{{ "blog/" | relLangURL }}">{{ if $zh }}浏览文章{{ else }}Browse writing{{ end }} <b aria-hidden="true">→</b></a></div></div>
+              </article></div>
+            </div>
+            <section class="interaction-lab reveal" aria-labelledby="interaction-lab-title">
+              <div class="interaction-lab-heading"><span class="eyebrow">INTERACTION LAB / 03</span><h3 id="interaction-lab-title">{{ if $zh }}把细节做成可感知的交互{{ else }}Small interactions, made tangible{{ end }}</h3><p>{{ if $zh }}参考 Oil 的演示模块，保留三个最有用的界面反馈：悬停、回弹和毛玻璃。{{ else }}Three useful interface cues inspired by Oil: hover, spring, and backdrop blur.{{ end }}</p></div>
+              <div class="interaction-viewport" aria-live="polite"><div class="interaction-track">
+                <article class="interaction-slide"><div class="interaction-card interaction-hover" data-demo="hover"><div class="interaction-card-head"><span class="interaction-index">N°01</span><span class="interaction-label">{{ if $zh }}悬停{{ else }}Hover{{ end }}</span><span class="interaction-en">Hover</span><span class="interaction-cat">Pointer</span></div><p>{{ if $zh }}鼠标放上去的时候按钮变个色，让人知道它能点。{{ else }}A button changes color on hover to show you can click it.{{ end }}</p><div class="interaction-demo"><div class="demo-hover-row"><span class="demo-hover-card"><b>{{ if $zh }}悬停我{{ else }}Hover me{{ end }}</b><i>{{ if $zh }}浮起 + 变色{{ else }}Lift + color{{ end }}</i></span><button type="button" class="demo-hover-button">{{ if $zh }}悬停这里{{ else }}Hover here{{ end }}</button><span class="demo-hover-card demo-hover-dead"><b>{{ if $zh }}对照组{{ else }}Compare{{ end }}</b><i>{{ if $zh }}不响应{{ else }}No change{{ end }}</i></span></div><small class="demo-caption">{{ if $zh }}逐个悬停，感受“能点”和“不能点”的差别{{ else }}Hover each item to compare its response{{ end }}</small></div></div></article>
+                <article class="interaction-slide"><div class="interaction-card interaction-spring" data-demo="spring"><div class="interaction-card-head"><span class="interaction-index">N°02</span><span class="interaction-label">{{ if $zh }}弹性{{ else }}Spring{{ end }}</span><span class="interaction-en">Spring</span><span class="interaction-cat">Motion</span></div><p>{{ if $zh }}弹窗出现时带一点回弹，像弹簧那样轻轻晃一下。{{ else }}A small bounce makes a dialog feel like it is settling on a spring.{{ end }}</p><div class="interaction-demo"><div class="spring-wrap"><div class="spring-track" role="button" tabindex="0" aria-label="{{ if $zh }}重播弹性动画{{ else }}Replay spring animation{{ end }}"><span class="spring-target"></span><span class="spring-ball"></span></div><div class="spring-note"><span>{{ if $zh }}先越过目标值再回弹{{ else }}Overshoot, then settle{{ end }}</span><button type="button" class="demo-spring-button">{{ if $zh }}重播{{ else }}Replay{{ end }}</button></div></div><small class="demo-caption">{{ if $zh }}点轨道或“重播”再看一次回弹{{ else }}Click the track or Replay to try again{{ end }}</small></div></div></article>
+                <article class="interaction-slide"><div class="interaction-card blur-demo" data-demo="blur"><div class="interaction-card-head"><span class="interaction-index">N°03</span><span class="interaction-label">{{ if $zh }}毛玻璃{{ else }}Glass{{ end }}</span><span class="interaction-en">Backdrop Blur</span><span class="interaction-cat">Style</span></div><p>{{ if $zh }}导航栏做成半透明的，后面的内容滚过去时模模糊糊。{{ else }}A translucent navigation bar blurs the content scrolling behind it.{{ end }}</p><div class="interaction-demo blur-demo-inner"><div class="blur-demo-scene is-blurred"><div class="blur-demo-card"><b>{{ if $zh }}山居民宿 · 云顶{{ else }}Mountain stay · Cloud top{{ end }}</b><span>backdrop-filter: blur(10px)</span></div><button type="button" class="demo-blur-button" aria-pressed="true">blur: on</button></div><small class="demo-caption">{{ if $zh }}点右上角开关，对比有无背景模糊的差别{{ else }}Toggle the switch to compare blur{{ end }}</small></div></div></article>
+              </div></div>
+              <div class="interaction-controls" aria-label="{{ if $zh }}交互演示控制{{ else }}Interaction demo controls{{ end }}"><button type="button" class="interaction-nav interaction-prev" aria-label="{{ if $zh }}上一个术语{{ else }}Previous term{{ end }}">‹</button><button type="button" class="interaction-nav interaction-next" aria-label="{{ if $zh }}下一个术语{{ else }}Next term{{ end }}">›</button><div class="interaction-dots"><button type="button" class="interaction-dot is-active" aria-label="{{ if $zh }}切换到悬停{{ else }}Switch to Hover{{ end }}" data-demo-index="0"></button><button type="button" class="interaction-dot" aria-label="{{ if $zh }}切换到弹性{{ else }}Switch to Spring{{ end }}" data-demo-index="1"></button><button type="button" class="interaction-dot" aria-label="{{ if $zh }}切换到毛玻璃{{ else }}Switch to Backdrop Blur{{ end }}" data-demo-index="2"></button></div><span class="interaction-counter"><b>01</b> / 03</span></div>
+            </section>
+            <a class="text-link panel-more" href="{{ if $zh }}{{ "projects/" | relURL }}{{ else }}{{ "en/projects/" | relURL }}{{ end }}">{{ if $zh }}浏览所有项目{{ else }}Browse all projects{{ end }} <span aria-hidden="true">↗</span></a>
+          </div>
+
+          <div class="work-panel" id="panel-skills" role="tabpanel" aria-labelledby="tab-skills" tabindex="0" hidden>
+            <div class="section-heading"><span class="eyebrow">TOOLS / METHODS / SYSTEMS</span><h2>{{ if $zh }}技能与工具{{ else }}Skills and tools{{ end }}</h2><p>{{ if $zh }}以工程实践为核心，覆盖服务端、数据、检索与生成式 AI。{{ else }}Engineering practice across backend systems, data, retrieval, and generative AI.{{ end }}</p></div>
+            <div class="skill-groups">
+              <section class="skill-group reveal"><div class="skill-group-title"><span>01</span><h3>{{ if $zh }}AI 应用{{ else }}AI applications{{ end }}</h3></div><div class="skill-chips"><span>RAG</span><span>LangChain</span><span>LangGraph</span><span>Agent</span><span>OpenAI API</span><span>FastAPI</span><span>SSE</span></div></section>
+              <section class="skill-group reveal"><div class="skill-group-title"><span>02</span><h3>{{ if $zh }}后端工程{{ else }}Backend engineering{{ end }}</h3></div><div class="skill-chips"><span>Java</span><span>Spring Boot</span><span>Spring Cloud</span><span>Python</span><span>REST API</span><span>MyBatis-Plus</span></div></section>
+              <section class="skill-group reveal"><div class="skill-group-title"><span>03</span><h3>{{ if $zh }}数据与基础设施{{ else }}Data and infrastructure{{ end }}</h3></div><div class="skill-chips"><span>MySQL</span><span>Redis</span><span>Elasticsearch</span><span>ChromaDB</span><span>RocketMQ</span><span>Docker</span><span>Nacos</span><span>Linux</span></div></section>
+              <section class="skill-group reveal"><div class="skill-group-title"><span>04</span><h3>{{ if $zh }}工程协作{{ else }}Engineering practice{{ end }}</h3></div><div class="skill-chips"><span>Git</span><span>Code Review</span><span>API Design</span><span>Observability</span><span>Load Testing</span><span>Technical Writing</span></div></section>
+            </div>
+            <div class="skill-note"><span class="note-mark">✳</span><p>{{ if $zh }}从需求拆解、架构设计到联调排错，我偏好用可验证的工程结果回答问题。{{ else }}I work from problem framing through architecture and debugging, with verifiable engineering outcomes.{{ end }}</p></div>
+          </div>
+
+          <div class="work-panel" id="panel-articles" role="tabpanel" aria-labelledby="tab-articles" tabindex="0" hidden>
+            <div class="section-heading"><span class="eyebrow">FIELD NOTES / SHARED LEARNINGS</span><h2>{{ if $zh }}写下来的东西{{ else }}Notes from the work{{ end }}</h2><p>{{ if $zh }}关于后端基础、AI 工程与系统实践的持续记录。{{ else }}Ongoing notes on backend foundations, AI engineering, and systems practice.{{ end }}</p></div>
+            <div class="article-grid">
+              {{ $notes := slice (dict "slug" "rag-basic-pipeline" "date" "2026-06-10" "title" "RAG 检索增强生成的工程化实践" "en" "Building a dependable RAG pipeline" "summary" "从文档切分、向量检索到答案生成，拆解一条可验证的 RAG 链路。") (dict "slug" "building-ai-agents" "date" "2026-05-22" "title" "AI Agent 的工具调用与状态管理" "en" "Tool calling and state in AI agents" "summary" "用清晰的状态和边界，让智能体从 Demo 走向稳定服务。") (dict "slug" "java-concurrency" "date" "2026-04-18" "title" "Java 并发基础与服务稳定性" "en" "Java concurrency for reliable services" "summary" "从线程模型、锁到可观测性，记录后端服务的并发思考。") }}
+              {{ range $notes }}
+              {{ $notePage := $.Site.GetPage (printf "blog/%s" .slug) }}
+              <article class="article-card reveal"><a class="article-cover" href="{{ printf "blog/%s/" .slug | relLangURL }}">{{ with $notePage.Resources.GetMatch "featured.*" }}<img src="{{ .RelPermalink }}" alt="" loading="lazy">{{ else }}<img src="{{ "assets/articles/covers/five-ai-design-models.webp" | relURL }}" alt="" loading="lazy">{{ end }}<span aria-hidden="true">↗</span></a><div class="article-info"><time datetime="{{ .date }}">{{ replace .date "-" "." }}</time><h3><a href="{{ printf "blog/%s/" .slug | relLangURL }}">{{ if $zh }}{{ .title }}{{ else }}{{ .en }}{{ end }}</a></h3><p>{{ .summary }}</p></div></article>
+              {{ end }}
+            </div>
+            <a class="text-link panel-more" href="{{ if $zh }}{{ "blog/" | relURL }}{{ else }}{{ "en/blog/" | relURL }}{{ end }}">{{ if $zh }}所有文章{{ else }}All articles{{ end }} <span aria-hidden="true">↗</span></a>
+          </div>
+
+          <div class="work-panel" id="panel-about" role="tabpanel" aria-labelledby="tab-about" tabindex="0" hidden>
+            <div class="section-heading"><span class="eyebrow">A LITTLE ABOUT ME</span><h2>{{ if $zh }}你好，我是劲松{{ else }}Hi, I'm Jinsong{{ end }}</h2></div>
+            <div class="about-intro reveal"><div class="about-copy"><p class="about-lead">{{ if $zh }}软件工程专业学生，正在 Java 后端与 AI 应用的交叉处持续构建。{{ else }}A software engineering student building at the intersection of Java backend systems and AI applications.{{ end }}</p><p>{{ if $zh }}我喜欢把模糊的问题拆成清楚的接口、可靠的数据流和可衡量的结果。做过高并发交易链路、企业级中间件集成，也独立搭建过带多轮记忆和证据溯源的知识问答 Agent。{{ else }}I like turning unclear problems into clear interfaces, dependable data flows, and measurable results. My work spans high-concurrency commerce, enterprise middleware, and a knowledge assistant with memory and grounded answers.{{ end }}</p><div class="about-tags"><span>{{ if $zh }}软件工程 · 2027 届{{ else }}Software Engineering · Class of 2027{{ end }}</span><span>{{ if $zh }}南昌 / 中国{{ else }}Nanchang / China{{ end }}</span><span>INFJ</span></div></div><div class="about-mark"><span>Y</span><i>J</i><small>BUILD WITH INTENT</small></div></div>
+            <div class="timeline-heading"><span class="eyebrow">EXPERIENCE / EDUCATION</span><span>2023 — {{ now.Format "2006" }}</span></div>
+            <div class="timeline">
+              <article class="timeline-item reveal"><time>2026 — {{ if $zh }}现在{{ else }}PRESENT{{ end }}</time><div><h3>{{ if $zh }}AI 应用开发实习生{{ else }}AI Application Developer Intern{{ end }}</h3><p>{{ if $zh }}江西传习教育科技有限公司 · 南昌{{ else }}Jiangxi Chuanxi Education Technology · Nanchang{{ end }}</p><small>{{ if $zh }}构建 RAG 检索服务与 AI 搜索推荐能力，连接 Python 服务和 Spring Cloud 微服务。{{ else }}Building RAG retrieval and AI search capabilities across Python services and Spring Cloud microservices.{{ end }}</small></div><span class="timeline-dot"></span></article>
+              <article class="timeline-item reveal"><time>2023 — 2027</time><div><h3>{{ if $zh }}软件工程 · 本科{{ else }}B.S. Software Engineering{{ end }}</h3><p>{{ if $zh }}江西农业大学{{ else }}Jiangxi Agricultural University{{ end }}</p><small>{{ if $zh }}专注分布式系统、后端工程与智能应用。{{ else }}Focused on distributed systems, backend engineering, and intelligent applications.{{ end }}</small></div><span class="timeline-dot"></span></article>
+            </div>
+            <div class="about-download"><p>{{ if $zh }}正在寻找 AI 应用开发或 Java 后端方向的机会。{{ else }}Open to AI application development and Java backend opportunities.{{ end }}</p><a class="pill-link" href="{{ "uploads/resume.pdf" | relURL }}" target="_blank" rel="noopener">{{ if $zh }}查看简历{{ else }}View résumé{{ end }} <span aria-hidden="true">↗</span></a></div>
+          </div>
+
+          <div class="work-panel" id="panel-contact" role="tabpanel" aria-labelledby="tab-contact" tabindex="0" hidden>
+            <div class="section-heading"><span class="eyebrow">SAY HELLO / BUILD TOGETHER</span><h2>{{ if $zh }}保持联系{{ else }}Let's connect{{ end }}</h2><p>{{ if $zh }}欢迎聊项目、工程实践，或下一次值得解决的问题。{{ else }}Reach out about a project, engineering, or the next problem worth solving.{{ end }}</p></div>
+            <a class="contact-feature reveal" href="mailto:yjs_0831@qq.com"><span class="contact-sun">✳</span><span><small>{{ if $zh }}正在寻找{{ else }}OPEN TO{{ end }}</small><strong>{{ if $zh }}有意思的 AI 与后端工程机会{{ else }}Thoughtful AI and backend work{{ end }}</strong></span><b aria-hidden="true">↗</b></a>
+            <div class="contact-list">
+              <a href="mailto:yjs_0831@qq.com"><span>01</span><strong>Email</strong><small>yjs_0831@qq.com</small><b aria-hidden="true">↗</b></a>
+              <a href="https://github.com/1byteone" target="_blank" rel="noopener noreferrer"><span>02</span><strong>GitHub</strong><small>github.com/1byteone</small><b aria-hidden="true">↗</b></a>
+              <a href="{{ "uploads/resume.pdf" | relURL }}" target="_blank" rel="noopener"><span>03</span><strong>{{ if $zh }}简历{{ else }}Résumé{{ end }}</strong><small>{{ if $zh }}项目与经历{{ else }}Projects and experience{{ end }}</small><b aria-hidden="true">↗</b></a>
+            </div>
+            <div class="contact-footer"><span>{{ if $zh }}通常会尽快回复{{ else }}Usually replies soon{{ end }}</span><button type="button" class="copy-email" data-copy="yjs_0831@qq.com">{{ if $zh }}复制邮箱{{ else }}Copy email{{ end }} <span aria-hidden="true">⧉</span></button></div>
+          </div>
+        </section>
+
+        <section class="elsewhere-section" aria-labelledby="elsewhere-title">
+          <div class="elsewhere-heading"><span class="eyebrow">ELSEWHERE / CONTACT</span><h2 id="elsewhere-title">{{ if $zh }}联系 / 其他入口{{ else }}Contact / Elsewhere{{ end }}</h2></div>
+          <div class="elsewhere-list">
+            <a href="{{ $site.identity.github }}" target="_blank" rel="noopener noreferrer"><span>01</span><strong>GitHub</strong><small>@1byteone</small><b aria-hidden="true">→</b></a>
+            <a href="mailto:{{ $site.identity.email }}"><span>02</span><strong>Email</strong><small>{{ $site.identity.email }}</small><b aria-hidden="true">→</b></a>
+            <a href="{{ "uploads/resume.pdf" | relURL }}" target="_blank" rel="noopener"><span>03</span><strong>{{ if $zh }}简历{{ else }}Résumé{{ end }}</strong><small>{{ if $zh }}项目与经历{{ else }}Projects and experience{{ end }}</small><b aria-hidden="true">→</b></a>
+            <a href="{{ "blog/" | relLangURL }}"><span>04</span><strong>{{ if $zh }}博客{{ else }}Writing{{ end }}</strong><small>{{ if $zh }}AI 与后端工程记录{{ else }}AI and backend notes{{ end }}</small><b aria-hidden="true">→</b></a>
+            <a href="{{ "tech-stack/" | relLangURL }}"><span>05</span><strong>{{ if $zh }}技术路线{{ else }}Tech stack{{ end }}</strong><small>{{ if $zh }}学习与验收标准{{ else }}Learning roadmaps{{ end }}</small><b aria-hidden="true">→</b></a>
+            <a href="{{ "projects/" | relLangURL }}"><span>06</span><strong>{{ if $zh }}全部项目{{ else }}All projects{{ end }}</strong><small>{{ if $zh }}可运行的工程结果{{ else }}Working systems{{ end }}</small><b aria-hidden="true">→</b></a>
+          </div>
+        </section>
+      </main>
+      <footer class="site-footer"><a class="footer-mark" href="#top">Y<i>J</i></a><span>© {{ now.Format "2006" }} {{ if $zh }}{{ $site.identity.name }}{{ else }}{{ $site.identity.name_en }}{{ end }}</span><span>{{ $copy.footer_note }}</span><a href="#top" aria-label="Back to top">↑</a></footer>
+    </div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>

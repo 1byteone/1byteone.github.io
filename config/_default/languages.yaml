@@ -6,6 +6,8 @@
 zh:
   contentDir: content/zh
   locale: zh-Hans
+  languageCode: zh-Hans
+  weight: 1
   label: 中文
   title: "杨劲松 - Java后端 / AI应用开发工程师"
   params:
@@ -35,6 +37,8 @@ zh:
 en:
   contentDir: content/en
   locale: en-us
+  languageCode: en-us
+  weight: 2
   label: English
   title: "1byteone - Java Backend / AI Application Developer"
   params:

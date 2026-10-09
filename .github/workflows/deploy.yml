@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - dev_theme_oil
 
   workflow_dispatch:
 
@@ -26,7 +27,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      HUGO_VERSION: 0.161.1
+      HUGO_VERSION: 0.162.0
 
     steps:
       # 安装 Hugo CLI
@@ -54,6 +55,12 @@ jobs:
 
 
       # 安装 Node 依赖
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
       - name: Install dependencies
         run: npm ci
 
@@ -76,6 +83,9 @@ jobs:
             --gc \
             --minify \
             --baseURL "${{ steps.pages.outputs.base_url }}/"
+
+      - name: Build search index
+        run: npm run pagefind
 
 
       # 上传构建产物

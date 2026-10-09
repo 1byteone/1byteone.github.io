@@ -1,53 +1,51 @@
-{{ define "main" }}
-{{ $slug := .Params.tech_slug | default .File.ContentBaseName }}
-{{ $items := where site.Data.tech_learning "slug" $slug }}
-{{ $item := index $items 0 }}
-{{ if not $item }}
-  <div class="max-w-3xl mx-auto px-4 py-24"><h1 class="text-3xl font-bold">Learning page not found</h1></div>
-{{ else }}
-{{ $imageURL := $item.image }}
-{{ $imagePath := strings.TrimPrefix $item.image "/" }}
-{{ with resources.Get $imagePath }}{{ $imageURL = .RelPermalink }}{{ end }}
-  <article class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
-    <header class="max-w-4xl mx-auto text-center mb-12">
-      <p class="text-sm font-semibold uppercase tracking-widest text-primary-600 dark:text-primary-400">{{ $item.category }} · {{ $item.priority }} · {{ $item.phase }}</p>
-      <h1 class="mt-4 text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $item.name }}</h1>
-      <p class="mt-5 text-xl leading-8 text-gray-600 dark:text-gray-300">{{ $item.goal }}</p>
-      <div class="mt-6 flex flex-wrap items-center justify-center gap-3 text-sm text-gray-500 dark:text-gray-400"><span class="rounded-full bg-gray-100 dark:bg-white/[0.08] px-4 py-2">投入：{{ $item.duration }}</span><span class="rounded-full bg-gray-100 dark:bg-white/[0.08] px-4 py-2">前置：{{ $item.prerequisite }}</span></div>
-    </header>
-
-    <div class="overflow-hidden rounded-3xl border border-gray-200 dark:border-white/[0.1] bg-gray-50 dark:bg-white/[0.04] shadow-xl">
-      <img src="{{ $imageURL }}" alt="{{ $item.name }} learning architecture diagram" class="w-full aspect-[16/9] object-cover" />
-      <p class="px-5 py-3 text-center text-sm text-gray-500 dark:text-gray-400">配套架构图：先读懂数据流、模块边界与失败路径，再进入教程实践。</p>
-    </div>
-
-    <div class="grid lg:grid-cols-[1.2fr_0.8fr] gap-8 mt-12">
-      <section class="rounded-2xl border border-gray-200 dark:border-white/[0.1] p-6 sm:p-8 bg-white dark:bg-white/[0.03]">
-        <h2 class="text-2xl font-bold text-gray-900 dark:text-white">学习速览</h2>
-        <ul class="mt-5 space-y-3 text-gray-700 dark:text-gray-300">{{ range $item.overview }}<li class="flex gap-3"><span class="text-emerald-500">✓</span><span>{{ . }}</span></li>{{ end }}</ul>
-        {{ with $item.article }}<a href="{{ . | relLangURL }}" class="mt-7 inline-flex items-center gap-2 rounded-xl bg-primary-600 px-5 py-3 font-semibold text-white hover:bg-primary-700 transition-colors">进入配套教程 <span aria-hidden="true">→</span></a>{{ end }}
-      </section>
-      <aside class="rounded-2xl border border-primary-200 dark:border-primary-500/30 p-6 sm:p-8 bg-primary-50/70 dark:bg-primary-500/[0.08]">
-        <h2 class="text-2xl font-bold text-gray-900 dark:text-white">专业 Goal</h2>
-        <p class="mt-4 leading-7 text-gray-700 dark:text-gray-300">{{ $item.goal }}</p>
-        <p class="mt-5 text-sm font-semibold text-primary-700 dark:text-primary-300">完成定义：能解释、能实现、能测试、能在故障下稳定运行。</p>
-      </aside>
-    </div>
-
-    <section class="mt-12">
-      <h2 class="text-3xl font-bold text-gray-900 dark:text-white">学习路线大纲</h2>
-      <div class="mt-6 grid md:grid-cols-2 gap-4">{{ range $index, $step := $item.roadmap }}<div class="rounded-2xl border border-gray-200 dark:border-white/[0.1] p-6 bg-white dark:bg-white/[0.03]"><div class="text-sm font-semibold text-primary-600 dark:text-primary-400">阶段 {{ add $index 1 }}</div><p class="mt-2 text-lg font-medium text-gray-900 dark:text-white">{{ $step }}</p></div>{{ end }}</div>
-    </section>
-
-    <section class="mt-12 rounded-2xl border border-gray-200 dark:border-white/[0.1] p-6 sm:p-8 bg-gray-50 dark:bg-white/[0.03]">
-      <h2 class="text-2xl font-bold text-gray-900 dark:text-white">练习与验收标准</h2>
-      <ul class="mt-5 grid md:grid-cols-2 gap-4">{{ range $item.checklist }}<li class="rounded-xl bg-white dark:bg-white/[0.05] p-4 text-gray-700 dark:text-gray-300"><span class="mr-2 text-amber-500">□</span>{{ . }}</li>{{ end }}</ul>
-    </section>
-
-    <section class="mt-12">
-      <h2 class="text-2xl font-bold text-gray-900 dark:text-white">关联技术栈</h2>
-      <div class="mt-4 flex flex-wrap gap-3">{{ range $item.related }}{{ $relatedMatches := where site.Data.tech_learning "name" . }}{{ $related := index $relatedMatches 0 }}{{ if $related }}<a href="{{ printf "tech-stack/%s/" $related.slug | relLangURL }}" class="rounded-full border border-gray-300 dark:border-white/[0.15] px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:border-primary-500 hover:text-primary-600 transition-colors">{{ $related.name }}</a>{{ end }}{{ end }}</div>
-    </section>
-  </article>
-{{ end }}
-{{ end }}
+{{- $site := .Site.Data.site.site -}}
+{{- $zh := eq .Site.Language.Lang "zh" -}}
+{{- $home := .Site.Home.RelPermalink -}}
+{{- $slug := .Params.tech_slug | default .File.ContentBaseName -}}
+{{- $items := where site.Data.tech_learning "slug" $slug -}}
+{{- $item := index $items 0 -}}
+{{- $translationURL := "/en/" -}}
+{{- if not $zh }}{{- $translationURL = "/" -}}{{- end -}}
+{{- with .Translations -}}{{- $translationURL = (index . 0).RelPermalink -}}{{- end -}}
+{{- $imageURL := "" -}}
+{{- if $item }}{{- $imageURL = strings.TrimSpace (printf "%v" $item.image) -}}{{- end -}}
+<!doctype html>
+<html lang="{{ if $zh }}zh-Hans{{ else }}en{{ end }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#fbfaf7">
+    <title>{{ if $item }}{{ $item.name }}{{ else }}{{ .Title }}{{ end }} — {{ if $zh }}{{ $site.identity.name }}{{ else }}{{ $site.identity.name_en }}{{ end }}</title>
+    <meta name="description" content="{{ if $item }}{{ $item.goal }}{{ else }}{{ .Title }}{{ end }}">
+    <link rel="canonical" href="{{ .Permalink }}">
+    <link rel="stylesheet" href="{{ "css/oil-theme.css" | relURL }}?v=tech-pages-20261009">
+    <link rel="stylesheet" href="{{ "css/oil-content.css" | relURL }}?v=2">
+    <script defer src="{{ "js/oil-theme.js" | relURL }}"></script>
+  </head>
+  <body>
+    <aside class="reading-progress" aria-label="{{ if $zh }}阅读进度{{ else }}Reading progress{{ end }}"><span class="progress-track"><i id="progress-bar"></i></span><span id="progress-value">00</span></aside>
+    <div class="site-column"><header class="site-header">
+      <a class="wordmark" href="{{ .Site.Home.RelPermalink }}"><i></i>JINSO<span>NG</span></a>
+      <div class="header-tools"><nav class="language-switch" aria-label="{{ if $zh }}语言{{ else }}Language{{ end }}">
+        {{ if $zh }}<a class="is-current" href="{{ .RelPermalink }}" lang="zh-Hans">中</a><a href="{{ $translationURL }}" lang="en">EN</a>{{ else }}<a href="{{ $translationURL }}" lang="zh-Hans">中</a><a class="is-current" href="{{ .RelPermalink }}" lang="en">EN</a>{{ end }}
+      </nav><a class="github-link" href="{{ $site.identity.github }}" target="_blank" rel="noopener noreferrer">{{ $site.identity.github_label }} <span aria-hidden="true">↗</span></a></div>
+    </header></div>
+    <main class="site-column tech-main">
+      <a class="post-back" href="{{ "tech-stack/" | relLangURL }}"><span aria-hidden="true">←</span>{{ if $zh }}全部技术路线{{ else }}All roadmaps{{ end }}</a>
+      {{ if $item }}
+        {{- $category := $item.category -}}{{- if and (not $zh) $item.category_en }}{{- $category = $item.category_en -}}{{- end -}}
+        <header class="tech-head"><span class="eyebrow">{{ $category }} / {{ $item.priority }} / {{ $item.phase }}</span><h1>{{ $item.name }}</h1><p>{{ $item.goal }}</p><div class="post-meta"><span>{{ if $zh }}投入{{ else }}TIME{{ end }} {{ $item.duration }}</span><span>{{ if $zh }}前置{{ else }}PREREQUISITES{{ end }} {{ $item.prerequisite }}</span></div></header>
+        {{ with $imageURL }}<figure class="tech-cover"><img src="{{ . | relURL }}" alt="{{ $item.name }} {{ if $zh }}学习路线架构图{{ else }}learning roadmap diagram{{ end }}" fetchpriority="high"><figcaption>{{ if $zh }}先读懂数据流、模块边界与失败路径，再进入教程实践。{{ else }}Understand the data flow, module boundaries, and failure paths before practicing.{{ end }}</figcaption></figure>{{ end }}
+        <div class="tech-grid">
+          <section class="tech-card"><span class="eyebrow">{{ if $zh }}学习速览{{ else }}LEARNING SNAPSHOT{{ end }}</span><h2>{{ if $zh }}把路线变成可以验收的能力{{ else }}Turn the roadmap into verifiable skills{{ end }}</h2><ul>{{ range $item.overview }}<li>{{ . }}</li>{{ end }}</ul>{{ with $item.article }}<a class="text-link" href="{{ . | relLangURL }}">{{ if $zh }}进入配套教程{{ else }}Open companion tutorial{{ end }} <span aria-hidden="true">↗</span></a>{{ end }}</section>
+          <aside class="tech-card tech-goal"><span class="eyebrow">{{ if $zh }}专业 Goal{{ else }}PROFESSIONAL GOAL{{ end }}</span><p>{{ $item.goal }}</p><strong>{{ if $zh }}完成定义{{ else }}DEFINITION OF DONE{{ end }}</strong><small>{{ if $zh }}能解释、能实现、能测试、能在故障下稳定运行。{{ else }}Explain it, build it, test it, and keep it stable under failure.{{ end }}</small></aside>
+        </div>
+        <section class="tech-section"><span class="eyebrow">{{ if $zh }}学习路线大纲{{ else }}LEARNING ROADMAP{{ end }}</span><h2>{{ if $zh }}从基础到项目验收{{ else }}From foundations to project acceptance{{ end }}</h2><div class="tech-roadmap">{{ range $index, $step := $item.roadmap }}<div><b>{{ printf "%02d" (add $index 1) }}</b><p>{{ $step }}</p></div>{{ end }}</div></section>
+        <section class="tech-section tech-checklist"><span class="eyebrow">{{ if $zh }}练习与验收标准{{ else }}PRACTICE AND ACCEPTANCE{{ end }}</span><h2>{{ if $zh }}完成后应该能证明什么{{ else }}What you should be able to prove{{ end }}</h2><ul>{{ range $item.checklist }}<li>{{ . }}</li>{{ end }}</ul></section>
+        <section class="tech-section"><span class="eyebrow">{{ if $zh }}关联技术栈{{ else }}RELATED TECHNOLOGIES{{ end }}</span><div class="docs-tags tech-related">{{ range $item.related }}{{ $relatedMatches := where site.Data.tech_learning "name" . }}{{ $related := index $relatedMatches 0 }}{{ if $related }}<a href="{{ printf "tech-stack/%s/" $related.slug | relLangURL }}">{{ $related.name }}</a>{{ end }}{{ end }}</div></section>
+      {{ else }}<header class="tech-head"><span class="eyebrow">404 / ROADMAP</span><h1>{{ if $zh }}路线不存在{{ else }}Roadmap not found{{ end }}</h1><p>{{ if $zh }}返回技术路线总览选择一项学习路线。{{ else }}Return to the roadmap index and choose a learning path.{{ end }}</p></header>{{ end }}
+    </main>
+    <footer class="site-column site-footer"><a class="footer-mark" href="{{ $home }}">Y<i>J</i></a><span>© {{ now.Format "2006" }} {{ if $zh }}{{ $site.identity.name }}{{ else }}{{ $site.identity.name_en }}{{ end }}</span><span>{{ if $zh }}{{ $site.copy.zh.footer_note }}{{ else }}{{ $site.copy.en.footer_note }}{{ end }}</span><a href="#top" aria-label="{{ if $zh }}返回顶部{{ else }}Back to top{{ end }}">↑</a></footer>
+    <div class="cursor-fx" aria-hidden="true"><svg class="cf-arrow" viewBox="0 0 24 24" width="22" height="22"><path d="M5.5 3.2 L18.8 11.4 L12.6 12.8 L9.9 19.6 Z"></path></svg><i></i></div>
+  </body>
+</html>

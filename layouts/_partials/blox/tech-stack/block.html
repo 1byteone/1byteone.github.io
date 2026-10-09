@@ -27,6 +27,9 @@
   {{ end }}
 {{ end }}
 {{ $show_levels := partial "functions/coerce_bool" (dict "value" (index $design "show_levels") "default" false) }}
+{{ $is_english := eq $page.Lang "en" }}
+{{ $card_action_label := "查看学习路线" }}
+{{ if $is_english }}{{ $card_action_label = "View learning roadmap" }}{{ end }}
 
 {{ $title := "" }}
 {{ $title_raw := index $content "title" }}
@@ -134,7 +137,7 @@
 
             {{ $item_url := index $item "url" | default "" }}
             {{ if $item_url }}
-            <a href="{{ $item_url }}" class="group relative w-[calc(50%-0.5rem)] sm:w-[calc(33.333%-0.75rem)] md:w-[calc(25%-0.75rem)] lg:w-[140px] bg-gray-50 dark:bg-white/[0.03] backdrop-blur-sm rounded-xl border border-gray-200 dark:border-white/[0.06] p-4 hover:bg-gray-100 dark:hover:bg-white/[0.06] hover:border-primary-300 dark:hover:border-primary-500/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary-500/5 scale-hover">
+            <a href="{{ $item_url }}" aria-label="{{ index $item "name" }} — {{ $card_action_label }}" data-tech-card data-tech-slug="{{ urlize (index $item "name") }}" class="group relative w-[calc(50%-0.5rem)] sm:w-[calc(33.333%-0.75rem)] md:w-[calc(25%-0.75rem)] lg:w-[140px] bg-gray-50 dark:bg-white/[0.03] backdrop-blur-sm rounded-xl border border-gray-200 dark:border-white/[0.06] p-4 hover:bg-gray-100 dark:hover:bg-white/[0.06] hover:border-primary-300 dark:hover:border-primary-500/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary-500/5 scale-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2">
               {{/* Icon */}}
               <div class="flex flex-col items-center text-center">
                 {{ with index $item "icon" }}
@@ -170,8 +173,8 @@
               <div class="absolute inset-0 rounded-xl bg-gradient-to-br from-primary-500/0 via-primary-500/0 to-secondary-500/0 group-hover:from-primary-500/5 group-hover:to-secondary-500/5 transition-all duration-500 pointer-events-none"></div>
             </a>
             {{ else }}
-            <div
-              class="group relative w-[calc(50%-0.5rem)] sm:w-[calc(33.333%-0.75rem)] md:w-[calc(25%-0.75rem)] lg:w-[140px] bg-gray-50 dark:bg-white/[0.03] backdrop-blur-sm rounded-xl border border-gray-200 dark:border-white/[0.06] p-4 hover:bg-gray-100 dark:hover:bg-white/[0.06] hover:border-primary-300 dark:hover:border-primary-500/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary-500/5 scale-hover"
+            <div data-tech-card data-tech-slug="{{ urlize (index $item "name") }}"
+              class="group relative w-[calc(50%-0.5rem)] sm:w-[calc(33.333%-0.75rem)] md:w-[calc(25%-0.75rem)] lg:w-[140px] bg-gray-50 dark:bg-white/[0.03] backdrop-blur-sm rounded-xl border border-gray-200 dark:border-white/[0.06] p-4 hover:bg-gray-100 dark:hover:bg-white/[0.06] hover:border-primary-300 dark:hover:border-primary-500/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary-500/5 scale-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2"
             >
               {{/* Icon */}}
               <div class="flex flex-col items-center text-center">

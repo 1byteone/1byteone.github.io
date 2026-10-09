@@ -27,6 +27,10 @@ mounts:
     target: layouts
   - source: assets
     target: assets
+  - source: static
+    target: static
+  - source: assets/media
+    target: static/media
 
   - source: layouts/_partials/hbx/blocks
     target: layouts/_partials/hbx/blocks

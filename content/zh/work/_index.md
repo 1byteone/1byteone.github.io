@@ -20,7 +20,7 @@ type: docs
 - GitHub: [mall-micro-cloud](https://github.com/1byteone/mall-micro-cloud)
 - 亮点: 11个中间件实战、万级并发压测
 
-[查看项目详情 →](/zh/projects/ecommerce-rag-search/)
+[查看项目详情 →](/projects/ecommerce-rag-search/)
 
 ---
 
@@ -32,7 +32,7 @@ type: docs
 - GitHub: [agri-qa-assistant](https://github.com/1byteone/agri-qa-assistant)
 - 亮点: Apple Liquid Glass UI、证据溯源、MCP集成
 
-[查看项目详情 →](/zh/projects/agricultural-qa-agent/)
+[查看项目详情 →](/projects/agricultural-qa-agent/)
 
 </div>
 

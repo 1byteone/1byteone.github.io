@@ -272,3 +272,7 @@ hugoblox:
     # Affiliate referral code for rewards program
     # Join affiliate program: https://hugoblox.com/affiliates
     affiliate_code: ""
+
+# Select a presentation theme without changing content or data.
+# Available values are: oil, minimal.
+site_theme: oil
