@@ -35,7 +35,7 @@
   layouts/home.html                   主题路由器与安全回退
   layouts/partials/themes/<id>/       首页模板和主题局部
   static/themes/<id>/                 CSS、JS、字体、主题专属图片
-  data/themes.yaml                    主题注册表、能力声明和预览路径
+  data/theme_registry.yaml            主题注册表、能力声明和预览路径
 
 交付层（构建与发布）
   config/_default/                    公共 Hugo 配置
@@ -45,7 +45,7 @@
 
 当前仓库已经采用 `layouts/home.html` 根据 `site_theme` 分发到 `layouts/partials/themes/oil/home.html` 和 `minimal/home.html`，公共内容位于 `content/`，共享资料位于 `data/site.yaml`。当前切换边界主要是首页：博客、项目和技术栈详情页仍可能由共享的 Hugo/HugoBlox 模板渲染，并不等于整个站点已经完成主题隔离。若产品要求“整站换肤”，应继续把列表页、详情页、导航和页脚纳入主题契约；若只需要首页实验，则在产品文档中明确 `home-only` 范围，避免误称为全站主题。
 
-现有的 `static/css/oil-theme.css`、`static/css/minimal-theme.css` 和 `static/js/oil-theme.js` 可以作为迁移到 `static/themes/<id>/` 的起点；迁移期间保留兼容路径，避免已发布页面的资源 URL 失效。当前生效选择器只有 `config/_default/params.yaml` 的 `site_theme`，主题白名单和预览路径统一登记在 `data/themes.yaml`，避免再维护第二个选择器。
+现有的 `static/css/oil-theme.css`、`static/css/minimal-theme.css` 和 `static/js/oil-theme.js` 可以作为迁移到 `static/themes/<id>/` 的起点；迁移期间保留兼容路径，避免已发布页面的资源 URL 失效。当前生效选择器只有 `config/_default/params.yaml` 的 `site_theme`，主题白名单和预览路径统一登记在 `data/theme_registry.yaml`，避免再维护第二个选择器。
 
 ## 3. 公共内容、数据与资源边界
 
@@ -87,7 +87,7 @@ site:
       anchor: work
 ```
 
-主题差异化数据放在 `data/themes.yaml` 的主题条目中；规模扩大后可以拆成 `data/themes/<id>.yaml`，例如主题显示名称、默认动画开关和设计令牌。不要把颜色、字号和间距写进文章 front matter，也不要把同一联系方式复制到每个主题模板。
+主题差异化数据放在 `data/theme_registry.yaml` 的主题条目中；规模扩大后可以拆成 `data/theme_profiles/<id>.yaml`，例如主题显示名称、默认动画开关和设计令牌。不要把颜色、字号和间距写进文章 front matter，也不要把同一联系方式复制到每个主题模板。
 
 ### 资源分类
 
@@ -108,7 +108,7 @@ site:
 layouts/partials/themes/<id>/home.html
 static/themes/<id>/css/theme.css
 static/themes/<id>/js/theme.js       # 无交互时可以省略
-data/themes.yaml                     # 主题注册表
+data/theme_registry.yaml             # 主题注册表
 ```
 
 模板最低契约如下：
@@ -136,7 +136,7 @@ data/themes.yaml                     # 主题注册表
 主题包应声明自己的覆盖范围：
 
 ```yaml
-# data/themes.yaml
+# data/theme_registry.yaml
 id: oil
 scope: site                     # site | home-only
 routes:
@@ -174,7 +174,7 @@ layouts/partials/themes/<id>/
 site_theme: oil
 ```
 
-发布前由 CI 校验该值存在于 `data/themes.yaml` 注册表中，然后执行一次 Hugo 构建。切换生产主题就是修改一个配置值、提交并发布；文章 URL、RSS、Pagefind 索引和 sitemap 均保持稳定。该方式最适合 SEO、缓存和无 JavaScript 访问。
+发布前由 CI 校验该值存在于 `data/theme_registry.yaml` 注册表中，然后执行一次 Hugo 构建。切换生产主题就是修改一个配置值、提交并发布；文章 URL、RSS、Pagefind 索引和 sitemap 均保持稳定。该方式最适合 SEO、缓存和无 JavaScript 访问。
 
 为避免手工改文件，可以为每个主题提供环境覆盖：
 
@@ -249,7 +249,7 @@ jobs:
 
 1. 建立 `layouts/partials/themes/<id>/home.html` 和独立资源目录。
 2. 补齐主题契约中的元数据、导航、语言、内容入口和无障碍要求。
-3. 在 `data/themes.yaml` 与 CI 预览构建登记 ID。
+3. 在 `data/theme_registry.yaml` 与 CI 预览构建登记 ID。
 4. 添加主题预览配置和截图基线，确认桌面、移动、暗色/浅色（如支持）布局。
 5. 构建中英文首页及全部公共详情页，执行 404、链接和 Pagefind 检查。
 6. 先以预览路径发布，确认资源缓存与 SEO；再将 `site_theme` 切换为新主题。

@@ -3,7 +3,7 @@
 {{- $languageSuffix := "" -}}
 {{- if not $zh }}{{- $languageSuffix = "en/" -}}{{- end -}}
 <nav class="theme-switcher" aria-label="{{ if $zh }}主题{{ else }}Theme{{ end }}">
-  {{- range .Site.Data.themes.themes -}}
+  {{- range .Site.Data.theme_registry.themes -}}
     {{- $href := .base_path -}}
     {{- $href = printf "%s%s" $href $languageSuffix -}}
     <a href="{{ $href }}" class="{{ if eq .id $active }}is-current{{ end }}" aria-current="{{ if eq .id $active }}page{{ end }}" title="{{ .label }}">{{ .short_label }}</a>
