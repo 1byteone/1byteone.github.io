@@ -35,7 +35,7 @@
     <main class="alxian-shell">
       <section class="alxian-intro" id="top">
         <div class="alxian-profile-card alxian-reveal">
-          <div class="alxian-profile-art"><span class="alxian-orbit-text">KEEP GOING * DON'T GIVE UP *</span><img src="{{ printf "%simages/keep-going.png" $asset }}" alt="{{ if $zh }}个人头像{{ else }}Profile illustration{{ end }}"></div>
+          <div class="alxian-profile-art"><span class="alxian-orbit-text">KEEP GOING * DON'T GIVE UP *</span><img class="alxian-profile-art-main" src="{{ printf "%simages/keep-going.png" $asset }}" alt="{{ if $zh }}个人头像{{ else }}Profile illustration{{ end }}"><img class="alxian-profile-tw" src="{{ printf "%simages/tw.gif" $asset }}" alt="" aria-hidden="true"><img class="alxian-profile-smoke" src="{{ printf "%simages/smoke.png" $asset }}" alt="" aria-hidden="true"></div>
           <div class="alxian-profile-copy">
             <p class="alxian-kicker">{{ if $zh }}记录一路以来的痕迹{{ else }}A record of the things I build{{ end }}</p>
             <h1>{{ if $zh }}你好，我是{{ $site.identity.name }}<span>。</span>{{ else }}Hello, I'm {{ $site.identity.name_en }}<span>.</span>{{ end }}</h1>
@@ -72,7 +72,7 @@
       </section>
 
       <section class="alxian-lower-grid alxian-reveal" aria-label="{{ if $zh }}主页内容{{ else }}Homepage content{{ end }}">
-        <article class="alxian-panel alxian-gallery"><header><h2>{{ if $zh }}个人图库{{ else }}Gallery{{ end }}</h2><button type="button" data-gallery-next aria-label="{{ if $zh }}下一张{{ else }}Next image{{ end }}">‹ &nbsp; 1 / 4 &nbsp; ›</button></header><div class="alxian-gallery-stage" data-gallery><img src="{{ printf "%simages/img1.jpg" $asset }}" alt="" loading="lazy"><img src="{{ printf "%simages/img2.jpg" $asset }}" alt="" loading="lazy"><img src="{{ printf "%simages/img3.jpg" $asset }}" alt="" loading="lazy"><img src="{{ printf "%simages/img4.jpg" $asset }}" alt="" loading="lazy"></div></article>
+        <article class="alxian-panel alxian-gallery"><header><h2>{{ if $zh }}个人图库{{ else }}Gallery{{ end }}</h2><button type="button" data-gallery-next aria-label="{{ if $zh }}下一张{{ else }}Next image{{ end }}">‹ &nbsp; 1 / 4 &nbsp; ›</button></header><div class="alxian-gallery-stage" data-gallery aria-label="{{ if $zh }}打开图库{{ else }}Open gallery{{ end }}"><img src="{{ printf "%simages/img1.jpg" $asset }}" alt="{{ if $zh }}落日{{ else }}Sunset{{ end }}" loading="lazy"><img src="{{ printf "%simages/img2.jpg" $asset }}" alt="{{ if $zh }}城市{{ else }}City{{ end }}" loading="lazy"><img src="{{ printf "%simages/img3.jpg" $asset }}" alt="{{ if $zh }}临近夜晚{{ else }}Near nightfall{{ end }}" loading="lazy"><img src="{{ printf "%simages/img4.jpg" $asset }}" alt="{{ if $zh }}海珠湿地公园{{ else }}Haizhu Wetland Park{{ end }}" loading="lazy"></div></article>
         <article class="alxian-panel alxian-music"><header><h2>{{ if $zh }}喜欢的音乐{{ else }}Favorite music{{ end }}</h2><span>♫</span></header><div class="alxian-track"><img src="{{ printf "%simages/wuha.jpg" $asset }}" alt=""><div><strong>五哈</strong><small>邓超 & 陈赫 & 鹿晗</small><div class="alxian-progress"><i></i></div><span>00:00 <b>00:00</b></span></div><button type="button" data-music aria-label="{{ if $zh }}播放音乐{{ else }}Play music{{ end }}">▶</button></div><div class="alxian-track-meta">〈 &nbsp; ▶ &nbsp; 〉 <small>1 / 3</small></div></article>
         <article class="alxian-panel alxian-todos"><header><h2>{{ if $zh }}最近正在做的事{{ else }}Currently working on{{ end }}</h2><span>◉</span></header><ol><li><b>{{ if $zh }}doTime 开发{{ else }}Building doTime{{ end }}</b><span class="done">✓</span></li><li><b>code2img {{ if $zh }}开发{{ else }}development{{ end }}</b><span class="done">✓</span></li><li>{{ if $zh }}随心记更新{{ else }}Updating my notes{{ end }}<span>{{ if $zh }}进行中{{ else }}in progress{{ end }}</span></li><li>{{ if $zh }}个人网站更新{{ else }}Personal site refresh{{ end }}<span>{{ if $zh }}进行中{{ else }}in progress{{ end }}</span></li><li>{{ if $zh }}miaoG 建站{{ else }}miaoG launch{{ end }}<span>{{ if $zh }}进行中{{ else }}in progress{{ end }}</span></li></ol></article>
       </section>
@@ -80,9 +80,14 @@
       <section class="alxian-stats alxian-reveal"><div><strong>2</strong><span>{{ if $zh }}今日访客{{ else }}Visitors today{{ end }}</span></div><div><strong>4202</strong><span>{{ if $zh }}总访客{{ else }}Total visits{{ end }}</span></div><div><strong>2025-7-10</strong><span>{{ if $zh }}建站日期{{ else }}Since{{ end }}</span></div></section>
     </main>
 
-    <img class="alxian-character" src="{{ printf "%simages/person.png" $asset }}" alt="" aria-hidden="true">
-    <button class="alxian-guitar" type="button" data-guitar aria-label="{{ if $zh }}拖动吉他角色或播放音符{{ else }}Drag guitar character or play a note{{ end }}"><img src="{{ printf "%simages/gutar.png" $asset }}" alt="" draggable="false"></button>
-    <aside class="alxian-float-actions"><button type="button" aria-label="{{ if $zh }}打开评论{{ else }}Open comments{{ end }}" aria-expanded="false" aria-controls="alxian-comment-popover">▢ <b>88</b></button><button type="button" aria-label="{{ if $zh }}选择反应{{ else }}Choose a reaction{{ end }}" data-reaction>👍</button></aside>
+    <div class="alxian-character-wrap" data-character aria-hidden="true">
+      <img class="alxian-character" src="{{ printf "%simages/person.png" $asset }}" alt="">
+      <span class="alxian-character-eye alxian-character-eye-left"><i><b></b><em></em></i></span>
+      <span class="alxian-character-eye alxian-character-eye-right"><i><b></b><em></em></i></span>
+    </div>
+    <img class="alxian-kx-mark" src="{{ printf "%simages/kx.gif" $asset }}" alt="" aria-hidden="true">
+    <button class="alxian-guitar" type="button" data-guitar data-note-one="{{ printf "%simages/yf1.svg" $asset }}" data-note-two="{{ printf "%simages/yf2.svg" $asset }}" aria-label="{{ if $zh }}拖动吉他角色或播放音符{{ else }}Drag guitar character or play a note{{ end }}"><img src="{{ printf "%simages/gutar.png" $asset }}" alt="" draggable="false"></button>
+    <aside class="alxian-float-actions"><button class="alxian-comment-trigger" type="button" data-comments aria-label="{{ if $zh }}打开评论{{ else }}Open comments{{ end }}" aria-expanded="false" aria-controls="alxian-comment-popover"><img src="{{ printf "%sicons/comment.svg" $asset }}" alt="" aria-hidden="true"><b data-comment-count>0</b></button><button type="button" aria-label="{{ if $zh }}选择反应{{ else }}Choose a reaction{{ end }}" data-reaction>👍</button></aside>
     <div class="alxian-comment-popover" id="alxian-comment-popover" data-comment-popover hidden><strong>{{ if $zh }}留言{{ else }}Leave a note{{ end }}</strong><textarea placeholder="{{ if $zh }}写点什么...{{ else }}Say something...{{ end }}"></textarea><button type="button" data-comment-send>{{ if $zh }}发送{{ else }}Send{{ end }}</button><small class="alxian-comment-status" data-comment-status role="status"></small></div>
     <footer class="alxian-footer"><span>© {{ now.Format "2006" }} {{ if $zh }}{{ $site.identity.name }}{{ else }}{{ $site.identity.name_en }}{{ end }}</span><span>{{ if $zh }}保持热爱，持续更新{{ else }}Keep going, keep building{{ end }}</span><a href="#top">↑</a></footer>
   </body>

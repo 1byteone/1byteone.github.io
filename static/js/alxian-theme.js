@@ -9,32 +9,65 @@
   function qsa(selector, scope) { return Array.prototype.slice.call((scope || document).querySelectorAll(selector)); }
   function langText(zh, en) { return root && root.dataset.lang === 'zh' ? zh : en; }
 
-  /* The original loader leaves the viewport with a vertical wipe. The SVG is
-     injected so every page keeps the same loader contract without duplicating
-     markup in every Hugo template. */
+  /* The original loader leaves the viewport with a vertical wipe. Keep the
+     curtain until the primary illustration is ready, with a hard fallback. */
   var loader = qs('[data-loader]');
   if (loader) {
-    var loaderContent = qs('.alxian-loader-content', loader);
-    if (loaderContent && !qs('.wuxian-loader', loaderContent)) {
-      var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-      svg.setAttribute('class', 'wuxian-loader');
-      svg.setAttribute('viewBox', '0 0 300 80');
-      svg.setAttribute('aria-hidden', 'true');
-      svg.innerHTML = '<defs><linearGradient id="alx-ink-gradient" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#1e293b"></stop><stop offset="30%" stop-color="#334155"></stop><stop offset="70%" stop-color="#475569"></stop><stop offset="100%" stop-color="#64748b"></stop></linearGradient><filter id="alx-ink-blur"><feGaussianBlur stdDeviation=".5" result="blur"></feGaussianBlur><feOffset in="blur" dx="1" dy="1" result="offset"></feOffset><feMerge><feMergeNode in="offset"></feMergeNode><feMergeNode in="SourceGraphic"></feMergeNode></feMerge></filter></defs><g fill="none" stroke="url(#alx-ink-gradient)" stroke-linecap="round" stroke-linejoin="round" filter="url(#alx-ink-blur)"><g transform="translate(40,40)"><path class="wuxian-w" d="M-18-20Q-16-18-12 8Q-10 18-8 16Q-6 12-2-5Q0-8 2-5Q6 12 8 16Q10 18 12 8Q16-18 18-20" stroke-width="2.8" stroke-dasharray="140"></path></g><g transform="translate(85,40)"><path class="wuxian-u" d="M-15-15Q-16-12-15 0Q-15 12-11 16Q-7 18-3 16Q1 14 5 16Q9 18 13 16Q15 12 15 0Q16-12 15-20" stroke-width="2.6" stroke-dasharray="75"></path></g><g transform="translate(130,40)"><path class="wuxian-x1" d="M-15-18Q-10-12-5-6Q0 0 5 6Q10 12 15 18" stroke-width="3" stroke-dasharray="50 50"></path><path class="wuxian-x2" d="M15-18Q10-12 5-6Q0 0-5 6Q-10 12-15 18" stroke-width="3" stroke-dasharray="50 50"></path></g><g transform="translate(170,40)"><circle class="wuxian-i-dot" r="3" cy="-25" stroke-width="2" stroke-dasharray="18.8 18.8" fill="url(#alx-ink-gradient)"></circle><path class="wuxian-i" d="M0-15Q-1-10 0 0Q1 10 0 18" stroke-width="2.8" stroke-dasharray="35 35"></path></g><g transform="translate(210,40)"><path class="wuxian-a" d="M8 18Q9 15 8 5Q8-5 4-12Q0-16-4-14Q-8-12-12-8Q-16-4-14 2Q-12 8-8 12Q-4 16 0 14Q4 12 8 8Q9 5 8 0M8 18L8-15" stroke-width="2.7" stroke-dasharray="85 85"></path></g><g transform="translate(250,40)"><path class="wuxian-n" d="M-15 18Q-16 15-15 5Q-15-5-13-10Q-11-14-7-12Q-3-10 1-8Q5-6 7-2Q9 2 9 8Q10 15 9 18M-15 18L-15-15" stroke-width="2.6" stroke-dasharray="70 70"></path></g></g>';
-      loaderContent.appendChild(svg);
+    var loaderDone = false;
+    var loaderStartedAt = window.performance && window.performance.now ? window.performance.now() : Date.now();
+    var loaderImage = qs('.alxian-loader-content img', loader);
+    var leaveTimer = 0;
+    function leaveLoader() {
+      if (loaderDone) return;
+      loaderDone = true;
+      if (leaveTimer) window.clearTimeout(leaveTimer);
+      var elapsed = (window.performance && window.performance.now ? window.performance.now() : Date.now()) - loaderStartedAt;
+      var wait = Math.max(0, 950 - elapsed);
+      leaveTimer = window.setTimeout(function () {
+        loader.classList.add('is-hidden');
+        window.setTimeout(function () { loader.classList.add('is-gone'); }, reduceMotion ? 0 : 1050);
+      }, reduceMotion ? 0 : wait);
     }
-    var loaderDismissed = false;
-    function hideLoader() {
-      if (loaderDismissed) return;
-      loaderDismissed = true;
-      loader.classList.add('is-hidden');
-      window.setTimeout(function () { loader.classList.add('is-gone'); }, reduceMotion ? 0 : 1050);
+    if (loaderImage) {
+      var preload = new Image();
+      preload.onload = leaveLoader;
+      preload.onerror = leaveLoader;
+      preload.src = loaderImage.currentSrc || loaderImage.src;
+      if (preload.complete) leaveLoader();
+    } else {
+      leaveLoader();
     }
-    function scheduleLoader() { window.setTimeout(hideLoader, reduceMotion ? 0 : 950); }
-    window.addEventListener('load', scheduleLoader, { once: true });
-    if (document.readyState === 'complete') {
-      scheduleLoader();
+    window.setTimeout(leaveLoader, 2500);
+  }
+
+  /* The face is a transparent 448 x 1098 canvas. Keep the eyes in the image's
+     coordinate system so the overlays stay inside the glasses at every size. */
+  var character = qs('[data-character]');
+  if (character) {
+    var eyes = qsa('.alxian-character-eye', character);
+    var targetEyeX = 0; var targetEyeY = 0; var eyeX = 0; var eyeY = 0; var eyeFrame = 0;
+    function renderEyes() {
+      eyeFrame = 0;
+      eyeX += (targetEyeX - eyeX) * 0.1;
+      eyeY += (targetEyeY - eyeY) * 0.1;
+      eyes.forEach(function (eye) { eye.style.setProperty('--eye-x', (3 * eyeX) + 'px'); eye.style.setProperty('--eye-y', (3 * eyeY * 0.55) + 'px'); });
+      if (Math.abs(targetEyeX - eyeX) > 0.002 || Math.abs(targetEyeY - eyeY) > 0.002) eyeFrame = window.requestAnimationFrame(renderEyes);
     }
+    if (finePointer) {
+      document.addEventListener('pointermove', function (event) {
+        targetEyeX = event.clientX / Math.max(1, window.innerWidth) * 2 - 1;
+        targetEyeY = event.clientY / Math.max(1, window.innerHeight) * 2 - 1;
+        if (!eyeFrame) eyeFrame = window.requestAnimationFrame(renderEyes);
+      }, { passive: true });
+    }
+    function blink() {
+      if (!reduceMotion) {
+        character.classList.add('is-blinking');
+        window.setTimeout(function () { character.classList.remove('is-blinking'); }, 130);
+      }
+      window.setTimeout(blink, 2800 + 3500 * Math.random());
+    }
+    window.setTimeout(blink, 2800 + 3500 * Math.random());
   }
 
   /* Reference-style arrow cursor. It is disabled for touch and reduced motion. */
@@ -42,15 +75,15 @@
     var cursor = document.createElement('div');
     cursor.className = 'alxian-cursor';
     cursor.setAttribute('aria-hidden', 'true');
-    cursor.innerHTML = '<svg viewBox="0 0 14 14" focusable="false" aria-hidden="true"><path class="alxian-cursor-fill" d="M13.246 4.973c0-1.126-10.832-5.333-12.222-3.945C-.362 2.413 3.902 13.25 5.02 13.25c1.303 0 2.068-4.965 2.377-5.854c.886-.313 5.849-1.115 5.849-2.423"></path><path class="alxian-cursor-stroke" d="M13.246 4.973c0-1.126-10.832-5.333-12.222-3.945C-.362 2.413 3.902 13.25 5.02 13.25c1.303 0 2.068-4.965 2.377-5.854c.886-.313 5.849-1.115 5.849-2.423"></path></svg>';
+    cursor.innerHTML = '<div class="alxian-cursor-text" aria-hidden="true"></div><div class="alxian-cursor-circle" aria-hidden="true"></div><svg viewBox="0 0 14 14" focusable="false" aria-hidden="true"><path class="alxian-cursor-fill" d="M13.246 4.973c0-1.126-10.832-5.333-12.222-3.945C-.362 2.413 3.902 13.25 5.02 13.25c1.303 0 2.068-4.965 2.377-5.854c.886-.313 5.849-1.115 5.849-2.423"></path><path class="alxian-cursor-stroke" d="M13.246 4.973c0-1.126-10.832-5.333-12.222-3.945C-.362 2.413 3.902 13.25 5.02 13.25c1.303 0 2.068-4.965 2.377-5.854c.886-.313 5.849-1.115 5.849-2.423"></path></svg>';
     root.appendChild(cursor);
     root.classList.add('alxian-cursor-active');
-    var cursorX = -80; var cursorY = -80; var pointerX = -80; var pointerY = -80; var cursorFrame = 0; var cursorMode = 'default';
+    var cursorX = -80; var cursorY = -80; var pointerX = -80; var pointerY = -80; var cursorFrame = 0; var cursorMode = 'default'; var cursorAngle = 0; var targetAngle = 0; var lastPointerX = -80; var lastPointerY = -80; var lastPointerAt = 0;
     function setCursorMode(mode) {
       if (cursorMode === mode) return;
       cursorMode = mode;
-      cursor.classList.remove('is-hover', 'is-text', 'is-drag', 'is-disabled');
-      if (mode === 'interactive') cursor.classList.add('is-hover');
+      cursor.classList.remove('is-hover', 'is-interactive', 'is-text', 'is-drag', 'is-disabled');
+      if (mode === 'interactive') cursor.classList.add('is-interactive');
       if (mode === 'text' || mode === 'drag' || mode === 'disabled') cursor.classList.add('is-' + mode);
     }
     function cursorModeFor(target) {
@@ -61,17 +94,25 @@
       if (element) return 'drag';
       element = target.closest('input:not([type="button"]):not([type="submit"]):not([type="range"]), textarea, [contenteditable="true"]');
       if (element) return 'text';
-      element = target.closest('a,button,[role="button"],input[type="button"],input[type="submit"],input[type="range"],summary,select');
+      element = target.closest('a,button,[role="button"],input[type="button"],input[type="submit"],input[type="range"],summary,select,.cursor-pointer');
       return element ? 'interactive' : 'default';
     }
     function renderCursor() {
       cursorFrame = 0;
       cursorX += (pointerX - cursorX) * 0.27;
       cursorY += (pointerY - cursorY) * 0.27;
-      cursor.style.transform = 'translate3d(' + cursorX + 'px,' + cursorY + 'px,0)';
+      cursorAngle += (targetAngle - cursorAngle) * 0.24;
+      cursor.style.transform = 'translate3d(' + cursorX + 'px,' + cursorY + 'px,0) rotate(' + cursorAngle + 'deg)';
       if (Math.abs(pointerX - cursorX) > 0.2 || Math.abs(pointerY - cursorY) > 0.2) cursorFrame = window.requestAnimationFrame(renderCursor);
     }
     document.addEventListener('pointermove', function (event) {
+      var now = Date.now(); var elapsed = Math.max(1, now - lastPointerAt); var dx = event.clientX - lastPointerX; var dy = event.clientY - lastPointerY;
+      if (lastPointerAt && Math.hypot(dx, dy) > 2 && elapsed > 8) {
+        var angle = (Math.atan2(dy, dx) * 180 / Math.PI) + 90;
+        while (angle > 180) angle -= 360; while (angle < -180) angle += 360;
+        targetAngle = Math.sign(angle) * Math.min(Math.abs(angle), 15);
+      }
+      lastPointerX = event.clientX; lastPointerY = event.clientY; lastPointerAt = now;
       pointerX = event.clientX - 13;
       pointerY = event.clientY - 13;
       setCursorMode(cursorModeFor(event.target));
@@ -125,11 +166,30 @@
     themeButton.setAttribute('aria-label', langText('切换浅色模式', 'Switch to light mode'));
   }
   updateThemeButton();
-  if (themeButton) themeButton.addEventListener('click', function () {
-    root.classList.toggle('is-dark');
-    try { localStorage.setItem('alxian-theme-mode', root.classList.contains('is-dark') ? 'dark' : 'light'); } catch (_) {}
-    updateThemeButton();
-  });
+  var themeTransition = null;
+  function toggleThemeWithTransition() {
+    var nextDark = !root.classList.contains('is-dark');
+    if (reduceMotion || !themeButton) {
+      root.classList.toggle('is-dark', nextDark);
+      try { localStorage.setItem('alxian-theme-mode', nextDark ? 'dark' : 'light'); } catch (_) {}
+      updateThemeButton();
+      return;
+    }
+    var rect = themeButton.getBoundingClientRect(); var x = rect.left + rect.width / 2; var y = rect.top + rect.height / 2;
+    var radius = 1.12 * Math.hypot(Math.max(x, window.innerWidth - x), Math.max(y, window.innerHeight - y));
+    if (!themeTransition) { themeTransition = document.createElement('div'); themeTransition.className = 'alxian-theme-transition'; root.appendChild(themeTransition); }
+    themeTransition.style.background = nextDark ? 'radial-gradient(circle,#06080cc2 0%,#0a0c12a3 48%,#020204ad 100%)' : 'radial-gradient(circle,#ffffffb8 0%,#f8fafca3 48%,#e2e8f0ad 100%)';
+    themeTransition.style.display = 'block'; themeTransition.style.opacity = '1'; themeTransition.style.clipPath = 'circle(0px at ' + x + 'px ' + y + 'px)';
+    window.requestAnimationFrame(function () { themeTransition.style.clipPath = 'circle(' + radius + 'px at ' + x + 'px ' + y + 'px)'; });
+    window.setTimeout(function () {
+      root.classList.toggle('is-dark', nextDark);
+      try { localStorage.setItem('alxian-theme-mode', nextDark ? 'dark' : 'light'); } catch (_) {}
+      updateThemeButton();
+      themeTransition.style.opacity = '0';
+      window.setTimeout(function () { if (themeTransition) { themeTransition.style.display = 'none'; themeTransition.style.clipPath = 'none'; } }, 360);
+    }, 460);
+  }
+  if (themeButton) themeButton.addEventListener('click', toggleThemeWithTransition);
 
   var gallery = qs('[data-gallery]');
   var galleryButton = qs('[data-gallery-next]');
@@ -141,7 +201,14 @@
     if (!images.length) return;
     galleryIndex = (index + images.length) % images.length;
     images.forEach(function (image, itemIndex) {
-      image.classList.toggle('is-current', itemIndex === galleryIndex);
+      var distance = (itemIndex - galleryIndex + images.length) % images.length;
+      var offsets = [{ x: 0, y: 0, r: 0, opacity: 1 }, { x: 14, y: 8, r: 4, opacity: .48 }, { x: 28, y: 16, r: 8, opacity: .36 }, { x: 42, y: 24, r: 12, opacity: .24 }];
+      var offset = offsets[Math.min(distance, offsets.length - 1)];
+      image.classList.toggle('is-current', distance === 0);
+      image.style.zIndex = String(images.length - distance);
+      image.style.opacity = String(offset.opacity);
+      image.style.transform = 'translate(' + offset.x + 'px,' + offset.y + 'px) rotate(' + offset.r + 'deg)';
+      image.style.pointerEvents = distance === 0 ? 'auto' : 'none';
       image.setAttribute('aria-hidden', itemIndex === galleryIndex ? 'false' : 'true');
     });
     if (galleryButton) galleryButton.textContent = '‹  ' + (galleryIndex + 1) + ' / ' + images.length + '  ›';
@@ -149,9 +216,19 @@
   showGallery(0);
   if (galleryButton) galleryButton.addEventListener('click', function () { showGallery(galleryIndex + 1); });
   if (gallery) {
-    gallery.addEventListener('click', function () {
+    var galleryModal = null;
+    function closeGalleryModal() { if (!galleryModal) return; galleryModal.classList.remove('is-open'); window.setTimeout(function () { if (galleryModal) { galleryModal.remove(); galleryModal = null; } }, 300); }
+    function openGalleryModal(image) {
+      closeGalleryModal(); galleryModal = document.createElement('div'); galleryModal.className = 'alxian-gallery-modal'; galleryModal.setAttribute('role', 'dialog'); galleryModal.setAttribute('aria-modal', 'true');
+      var close = document.createElement('button'); close.type = 'button'; close.textContent = '×'; close.setAttribute('aria-label', langText('关闭图库', 'Close gallery'));
+      var preview = document.createElement('img'); preview.src = image.currentSrc || image.src; preview.alt = image.alt;
+      galleryModal.appendChild(preview); galleryModal.appendChild(close); root.appendChild(galleryModal); window.requestAnimationFrame(function () { galleryModal.classList.add('is-open'); });
+      close.addEventListener('click', closeGalleryModal); galleryModal.addEventListener('click', function (event) { if (event.target === galleryModal) closeGalleryModal(); });
+    }
+    gallery.addEventListener('click', function (event) {
       if (gallerySuppressClick) { gallerySuppressClick = false; return; }
-      showGallery(galleryIndex + 1);
+      var image = event.target.closest ? event.target.closest('img') : null;
+      if (image && image.classList.contains('is-current')) openGalleryModal(image); else showGallery(galleryIndex + 1);
     });
     var galleryStartX = 0; var galleryStartY = 0;
     gallery.addEventListener('pointerdown', function (event) {
@@ -169,6 +246,7 @@
       if (event.key === 'ArrowRight' || event.key === 'ArrowDown') { event.preventDefault(); showGallery(galleryIndex + 1); }
       if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') { event.preventDefault(); showGallery(galleryIndex - 1); }
     });
+    document.addEventListener('keydown', function (event) { if (event.key === 'Escape') closeGalleryModal(); });
     gallery.setAttribute('tabindex', '0');
   }
 
@@ -228,6 +306,13 @@
   var commentText = commentPopover && qs('textarea', commentPopover);
   var sendComment = qs('[data-comment-send]');
   var commentStatus = commentPopover && qs('[data-comment-status]', commentPopover);
+  var commentCount = qs('[data-comment-count]');
+  if (commentCount) {
+    fetch('/api/comments', { headers: { Accept: 'application/json' } }).then(function (response) { if (!response.ok) throw new Error('comment count unavailable'); return response.json(); }).then(function (payload) {
+      var count = Array.isArray(payload) ? payload.length : payload && Number(payload.count);
+      if (Number.isFinite(count)) commentCount.textContent = count > 99 ? '99+' : String(Math.max(0, count));
+    }).catch(function () { commentCount.textContent = '0'; });
+  }
   if (commentPopover && !commentStatus) {
     commentStatus = document.createElement('small');
     commentStatus.className = 'alxian-comment-status';
@@ -277,7 +362,8 @@
     window.setTimeout(function () { sendComment.textContent = langText('发送', 'Send'); closeComments(); }, 1500);
   });
 
-  /* Expandable five-choice reaction bar, matching the reference's clip-path reveal. */
+  /* Five reactions use the reference's reversed visual order, clip-path reveal,
+     local persistence, disabled repeat state and transient thanks label. */
   var reaction = qs('[data-reaction]');
   if (reaction && reaction.parentNode) {
     var reactionZone = document.createElement('div');
@@ -291,22 +377,37 @@
     reactionPanel.className = 'alxian-reaction-panel';
     reactionPanel.setAttribute('role', 'group');
     reactionPanel.setAttribute('aria-label', langText('选择反应', 'Choose a reaction'));
-    [['🙂', 'Smile'], ['✨', 'Sparkle'], ['🎉', 'Celebrate'], ['👏🏻', 'Applause']].forEach(function (item) {
-      var button = document.createElement('button');
-      button.type = 'button'; button.className = 'alxian-reaction-option'; button.textContent = item[0]; button.title = langText(item[0], item[1]); button.setAttribute('aria-label', langText('反应：' + item[0], item[1]));
-      button.addEventListener('click', function () {
-        qsa('.alxian-reaction-option', reactionPanel).forEach(function (option) { option.classList.remove('is-selected'); });
-        button.classList.add('is-selected'); reaction.textContent = item[0]; reaction.classList.add('is-reacted');
-        reactionZone.classList.add('is-open'); reaction.setAttribute('aria-expanded', 'true');
-        window.setTimeout(function () { reaction.classList.remove('is-reacted'); }, 420);
-      });
-      reactionPanel.appendChild(button);
+    var reactionItems = [{ key: 'like', emoji: '👍', label: 'Like' }, { key: 'cheer', emoji: '👏🏻', label: 'Cheer' }, { key: 'celebrate', emoji: '🎉', label: 'Celebrate' }, { key: 'appreciate', emoji: '✨', label: 'Appreciate' }, { key: 'smile', emoji: '🙂', label: 'Smile' }];
+    var reactionCounts = {}; var reacted = {};
+    try { reactionCounts = JSON.parse(localStorage.getItem('alxian-reaction-counts') || '{}'); } catch (_) { reactionCounts = {}; }
+    reactionItems.forEach(function (item) { reacted[item.key] = localStorage.getItem('alxian-reacted-' + item.key) === 'true'; reactionCounts[item.key] = Number(reactionCounts[item.key] || 0); });
+    function reactionLabel(item) { var count = reactionCounts[item.key]; return langText(item.label + (count ? ' (' + count + ')' : ''), item.label + (count ? ' (' + count + ')' : '')); }
+    function markReaction(button, item) { button.dataset.reactionKey = item.key; button.title = reactionLabel(item); button.setAttribute('aria-label', langText('反应：' + item.emoji, item.label)); if (reacted[item.key]) { button.dataset.reacted = 'true'; button.disabled = true; } }
+    function showReactionThanks(item) { var thanks = document.createElement('span'); thanks.className = 'alxian-reaction-thanks'; thanks.textContent = langText('谢谢你', 'Thank you'); reactionZone.appendChild(thanks); window.setTimeout(function () { thanks.remove(); }, 1150); }
+    function chooseReaction(item, button) {
+      if (reacted[item.key]) return;
+      reacted[item.key] = true; reactionCounts[item.key] += 1;
+      try { localStorage.setItem('alxian-reacted-' + item.key, 'true'); localStorage.setItem('alxian-reaction-counts', JSON.stringify(reactionCounts)); } catch (_) {}
+      button.dataset.reacted = 'true'; button.disabled = true; button.title = reactionLabel(item); button.classList.add('is-selected');
+      reaction.classList.add('is-reacted'); reactionZone.classList.add('is-open'); reaction.setAttribute('aria-expanded', 'true'); showReactionThanks(item);
+      window.setTimeout(function () { reaction.classList.remove('is-reacted'); }, 420);
+    }
+    markReaction(reaction, reactionItems[0]);
+    reaction.addEventListener('click', function () { var open = reactionZone.classList.contains('is-open'); if (!open) reactionZone.classList.add('is-open'); reaction.setAttribute('aria-expanded', 'true'); chooseReaction(reactionItems[0], reaction); });
+    reactionItems.slice().reverse().slice(0, 4).forEach(function (item) {
+      var button = document.createElement('button'); button.type = 'button'; button.className = 'alxian-reaction-option'; button.textContent = item.emoji; markReaction(button, item);
+      button.addEventListener('click', function (event) { event.stopPropagation(); chooseReaction(item, button); }); reactionPanel.appendChild(button);
     });
+    /* The reference reads shared counts from its API. Static deployments may
+       not expose that endpoint, so local counts remain the deterministic
+       fallback while a successful response updates the accessible labels. */
+    fetch('/api/reactions', { headers: { Accept: 'application/json' } }).then(function (response) { if (!response.ok) throw new Error('reaction counts unavailable'); return response.json(); }).then(function (remoteCounts) {
+      reactionItems.forEach(function (item) { if (remoteCounts && Number.isFinite(Number(remoteCounts[item.key]))) reactionCounts[item.key] = Number(remoteCounts[item.key]); });
+      qsa('.alxian-reaction-option, .alxian-reaction-trigger', reactionZone).forEach(function (button) { var item = reactionItems.find(function (entry) { return entry.key === button.dataset.reactionKey; }); if (item) button.title = reactionLabel(item); });
+    }).catch(function () {});
     reactionZone.appendChild(reactionPanel);
-    reaction.addEventListener('click', function () {
-      var open = reactionZone.classList.toggle('is-open');
-      reaction.setAttribute('aria-expanded', String(open));
-    });
+    document.addEventListener('pointerdown', function (event) { if (!reactionZone.contains(event.target)) { reactionZone.classList.remove('is-open'); reaction.setAttribute('aria-expanded', 'false'); } });
+    document.addEventListener('keydown', function (event) { if (event.key === 'Escape') { reactionZone.classList.remove('is-open'); reaction.setAttribute('aria-expanded', 'false'); } });
   }
 
   /* Draggable guitar with a click-only strum state and a tiny note feedback. */
@@ -328,7 +429,12 @@
       var note = document.createElement('span');
       var flight = ['one', 'two', 'three'][Math.floor(Math.random() * 3)];
       note.className = 'alxian-guitar-note' + (flight === 'two' ? ' note-two' : flight === 'three' ? ' note-three' : '');
-      note.textContent = ['♪', '♫', '♬'][Math.floor(Math.random() * 3)];
+      var selectedSvg = flight === 'two' ? guitar.dataset.noteTwo : guitar.dataset.noteOne;
+      var image = document.createElement('img');
+      image.src = selectedSvg || guitar.dataset.noteOne || '';
+      image.alt = '';
+      image.draggable = false;
+      note.appendChild(image);
       var box = guitar.getBoundingClientRect();
       note.style.left = Math.max(10, box.right - 42) + 'px';
       note.style.top = Math.max(10, box.top + 80) + 'px';
