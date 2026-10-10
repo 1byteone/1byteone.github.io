@@ -13,11 +13,11 @@
     <meta name="description" content="{{ if $zh }}{{ $site.identity.name }}的个人主页，记录前端、后端与 AI 工程实践。{{ else }}{{ $site.identity.name_en }}'s personal homepage for frontend, backend and AI engineering.{{ end }}">
     <link rel="canonical" href="{{ .Permalink }}">
     <title>{{ if $zh }}{{ $site.identity.name }} · 个人主页{{ else }}{{ $site.identity.name_en }} · Personal homepage{{ end }}</title>
-    <link rel="stylesheet" href="{{ "css/alxian-theme.css" | relURL }}?v=1">
-    <script defer src="{{ "js/alxian-theme.js" | relURL }}?v=1"></script>
+    <link rel="stylesheet" href="{{ "css/alxian-theme.css" | relURL }}?v=3">
+    <script defer src="{{ "js/alxian-theme.js" | relURL }}?v=3"></script>
   </head>
   <body class="alxian-theme" data-lang="{{ if $zh }}zh{{ else }}en{{ end }}">
-    <div class="alxian-loader" data-loader aria-hidden="true"><div class="alxian-loader-topline"><span>PERSONAL ARCHIVE</span><span>00 / 01</span></div><div class="alxian-loader-content"><img src="{{ printf "%simages/keep-going.png" $asset }}" alt=""><span>KEEP GOING</span><strong>DON'T GIVE UP</strong><i class="alxian-loader-progress"><b></b></i></div><div class="alxian-loader-footer"><span>ALXIAN.CN</span><span>LOADING / READY</span></div></div>
+    <div class="alxian-loader" data-loader role="status" aria-live="polite" aria-label="{{ if $zh }}正在加载{{ else }}Loading{{ end }}"><div class="alxian-loader-topline"><span>PERSONAL ARCHIVE</span><span>00 / 01</span></div><div class="alxian-loader-content"><img src="{{ printf "%simages/keep-going.png" $asset }}" alt=""><span>KEEP GOING</span><strong>DON'T GIVE UP</strong><i class="alxian-loader-progress"><b></b></i></div><div class="alxian-loader-footer"><span>WUXIAN'S WEB</span><span>LOADING / READY</span></div></div>
     <div class="alxian-grid-bg" aria-hidden="true"></div>
     <header class="alxian-topbar">
       <a class="alxian-logo" href="{{ .Site.Home.RelPermalink }}" aria-label="{{ if $zh }}返回首页{{ else }}Home{{ end }}"><span>Y</span><b>{{ if $zh }}劲松{{ else }}JINSONG{{ end }}</b></a>
@@ -81,9 +81,9 @@
     </main>
 
     <img class="alxian-character" src="{{ printf "%simages/person.png" $asset }}" alt="" aria-hidden="true">
-    <button class="alxian-guitar" type="button" data-guitar aria-label="{{ if $zh }}拖动吉他{{ else }}Drag guitar{{ end }}"><img src="{{ printf "%simages/gutar.png" $asset }}" alt=""></button>
-    <aside class="alxian-float-actions"><button type="button" aria-label="{{ if $zh }}打开评论{{ else }}Open comments{{ end }}" data-comments>▢ <b>88</b></button><button type="button" aria-label="{{ if $zh }}点赞{{ else }}Like{{ end }}" data-reaction>👍</button></aside>
-    <div class="alxian-comment-popover" data-comment-popover hidden><strong>{{ if $zh }}留言{{ else }}Leave a note{{ end }}</strong><textarea placeholder="{{ if $zh }}写点什么...{{ else }}Say something...{{ end }}"></textarea><button type="button" data-comment-send>{{ if $zh }}发送{{ else }}Send{{ end }}</button></div>
+    <button class="alxian-guitar" type="button" data-guitar aria-label="{{ if $zh }}拖动吉他角色或播放音符{{ else }}Drag guitar character or play a note{{ end }}"><img src="{{ printf "%simages/gutar.png" $asset }}" alt="" draggable="false"></button>
+    <aside class="alxian-float-actions"><button type="button" aria-label="{{ if $zh }}打开评论{{ else }}Open comments{{ end }}" aria-expanded="false" aria-controls="alxian-comment-popover">▢ <b>88</b></button><button type="button" aria-label="{{ if $zh }}选择反应{{ else }}Choose a reaction{{ end }}" data-reaction>👍</button></aside>
+    <div class="alxian-comment-popover" id="alxian-comment-popover" data-comment-popover hidden><strong>{{ if $zh }}留言{{ else }}Leave a note{{ end }}</strong><textarea placeholder="{{ if $zh }}写点什么...{{ else }}Say something...{{ end }}"></textarea><button type="button" data-comment-send>{{ if $zh }}发送{{ else }}Send{{ end }}</button><small class="alxian-comment-status" data-comment-status role="status"></small></div>
     <footer class="alxian-footer"><span>© {{ now.Format "2006" }} {{ if $zh }}{{ $site.identity.name }}{{ else }}{{ $site.identity.name_en }}{{ end }}</span><span>{{ if $zh }}保持热爱，持续更新{{ else }}Keep going, keep building{{ end }}</span><a href="#top">↑</a></footer>
   </body>
 </html>
