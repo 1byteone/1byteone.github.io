@@ -1,0 +1,9 @@
+{{- $page := . -}}
+{{- $zh := hasPrefix $page.Lang "zh" -}}
+{{- $site := $page.Site.Data.site.site -}}
+<footer class="alxian-page-footer">
+  <a href="{{ $page.Site.Home.RelPermalink }}" class="alxian-page-footer-mark">YJ</a>
+  <span>© {{ now.Format "2006" }} {{ if $zh }}{{ $site.identity.name }}{{ else }}{{ $site.identity.name_en }}{{ end }}</span>
+  <span>{{ if $zh }}{{ $site.copy.zh.footer_note }}{{ else }}{{ $site.copy.en.footer_note }}{{ end }}</span>
+  <a href="#top" aria-label="{{ if $zh }}返回顶部{{ else }}Back to top{{ end }}">↑</a>
+</footer>

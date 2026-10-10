@@ -63,11 +63,11 @@
       <section class="alxian-navigation alxian-reveal" id="work" aria-labelledby="alxian-nav-title">
         <h2 id="alxian-nav-title"><span>◉</span> {{ if $zh }}导航{{ else }}Explore{{ end }}</h2>
         <div class="alxian-nav-grid">
-          <a href="{{ "projects/" | relLangURL }}"><img src="{{ printf "%sicons/zuopin.svg" $asset }}" alt=""><strong>{{ if $zh }}作品集{{ else }}Projects{{ end }}</strong><small>{{ if $zh }}记录前端作品{{ else }}Selected builds{{ end }}</small><b>↗</b></a>
+          <a href="{{ if .Site.Params.theme_preview }}{{ "works/" | relLangURL }}{{ else }}{{ "projects/" | relLangURL }}{{ end }}"><img src="{{ printf "%sicons/zuopin.svg" $asset }}" alt=""><strong>{{ if $zh }}作品集{{ else }}Projects{{ end }}</strong><small>{{ if $zh }}记录前端作品{{ else }}Selected builds{{ end }}</small><b>↗</b></a>
           <a href="{{ "blog/" | relLangURL }}"><img src="{{ printf "%sicons/docs.svg" $asset }}" alt=""><strong>{{ if $zh }}文章{{ else }}Articles{{ end }}</strong><small>{{ if $zh }}记录前端知识{{ else }}Notes and writing{{ end }}</small><b>↗</b></a>
-          <a href="{{ "tech-stack/" | relLangURL }}"><img src="{{ printf "%sicons/zy.svg" $asset }}" alt=""><strong>{{ if $zh }}资源{{ else }}Resources{{ end }}</strong><small>{{ if $zh }}记录常用资源{{ else }}Tools I use{{ end }}</small><b>↗</b></a>
-          <a href="mailto:{{ $site.identity.email }}"><img src="{{ printf "%sicons/comment.svg" $asset }}" alt=""><strong>{{ if $zh }}聊天室{{ else }}Chat room{{ end }}</strong><small>{{ if $zh }}实时聊天交流{{ else }}Say hello{{ end }}</small><b>↗</b></a>
-          <a href="{{ $site.identity.github }}" target="_blank" rel="noopener"><img src="{{ printf "%sicons/link.svg" $asset }}" alt=""><strong>{{ if $zh }}友链{{ else }}Links{{ end }}</strong><small>{{ if $zh }}友链共享{{ else }}Across the web{{ end }}</small><b>↗</b></a>
+          <a href="{{ "resource/" | relLangURL }}"><img src="{{ printf "%sicons/zy.svg" $asset }}" alt=""><strong>{{ if $zh }}资源{{ else }}Resources{{ end }}</strong><small>{{ if $zh }}记录常用资源{{ else }}Tools I use{{ end }}</small><b>↗</b></a>
+          <a href="{{ "chat/" | relLangURL }}"><img src="{{ printf "%sicons/comment.svg" $asset }}" alt=""><strong>{{ if $zh }}聊天室{{ else }}Chat room{{ end }}</strong><small>{{ if $zh }}实时聊天交流{{ else }}Say hello{{ end }}</small><b>↗</b></a>
+          <a href="{{ "friends/" | relLangURL }}"><img src="{{ printf "%sicons/link.svg" $asset }}" alt=""><strong>{{ if $zh }}友链{{ else }}Links{{ end }}</strong><small>{{ if $zh }}友链共享{{ else }}Across the web{{ end }}</small><b>↗</b></a>
         </div>
       </section>
 

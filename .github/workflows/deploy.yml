@@ -118,6 +118,31 @@ jobs:
             --destination public/themes/alxian \
             --baseURL "${{ steps.pages.outputs.base_url }}/themes/alxian/"
 
+      - name: Verify Alxian route matrix
+        run: |
+          set -euo pipefail
+          for route in \
+            "index.html" \
+            "works/index.html" \
+            "blog/index.html" \
+            "resource/index.html" \
+            "chat/index.html" \
+            "friends/index.html" \
+            "tech-stack/index.html" \
+            "en/index.html" \
+            "en/works/index.html" \
+            "en/blog/index.html" \
+            "en/resource/index.html" \
+            "en/chat/index.html" \
+            "en/friends/index.html" \
+            "en/tech-stack/index.html"; do
+            test -s "public/themes/alxian/$route"
+          done
+          test -s public/themes/alxian/css/alxian-theme.css
+          test -s public/themes/alxian/css/alxian-pages.css
+          test -s public/themes/alxian/js/alxian-theme.js
+          test -s public/themes/alxian/js/alxian-pages.js
+
       - name: Build search index
         run: npm run pagefind
 

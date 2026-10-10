@@ -1,0 +1,47 @@
+{{- $page := . -}}
+{{- $zh := hasPrefix .Lang "zh" -}}
+{{- $site := .Site.Data.site.site -}}
+{{- $pages := .RegularPages.ByDate.Reverse -}}
+{{- $isProject := eq .Section "projects" -}}
+{{- if eq .Section "works" -}}
+  {{- $isProject = true -}}
+  {{- $pages = where site.RegularPages "Section" "projects" -}}
+{{- end -}}
+<!doctype html>
+<html lang="{{ if $zh }}zh-Hans{{ else }}en{{ end }}">
+  <head>
+    <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#e8eff5"><meta name="robots" content="noindex,follow">
+    <title>{{ .Title }} — {{ if $zh }}{{ $site.identity.name }}{{ else }}{{ $site.identity.name_en }}{{ end }}</title>
+    <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Summary | plainify | truncate 160 }}{{ end }}">
+    <link rel="canonical" href="{{ .Permalink }}">
+    <link rel="stylesheet" href="{{ "css/alxian-theme.css" | relURL }}?v=2"><link rel="stylesheet" href="{{ "css/alxian-pages.css" | relURL }}?v=1">
+    <script defer src="{{ "js/alxian-theme.js" | relURL }}?v=2"></script><script defer src="{{ "js/alxian-pages.js" | relURL }}?v=1"></script>
+  </head>
+  <body class="alxian-theme alxian-page" data-lang="{{ if $zh }}zh{{ else }}en{{ end }}" data-pagefind-ignore>
+    <div class="alxian-grid-bg" aria-hidden="true"></div>
+    {{ partial "themes/alxian/shell.html" . }}
+    <main class="alxian-page-main" id="top">
+      <a class="alxian-page-back" href="{{ .Site.Home.RelPermalink }}">← {{ if $zh }}返回主页{{ else }}Back home{{ end }}</a>
+      <header class="alxian-page-heading alxian-reveal"><span class="alxian-page-eyebrow">{{ if $isProject }}WORKS / SELECTED BUILDS{{ else }}NOTES / ENGINEERING{{ end }}</span><h1>{{ .Title }}</h1><p>{{ with .Description }}{{ . }}{{ else }}{{ .Content | plainify | strings.TrimSpace }}{{ end }}</p></header>
+      {{ if $pages }}
+        <div class="alxian-page-toolbar"><span>{{ if $zh }}{{ len $pages }} 项记录{{ else }}{{ len $pages }} entries{{ end }}</span><div class="alxian-filter" role="group" aria-label="{{ if $zh }}筛选{{ else }}Filter{{ end }}"><button class="is-active" type="button" data-filter="all">{{ if $zh }}全部{{ else }}All{{ end }}</button><button type="button" data-filter="featured">{{ if $zh }}精选{{ else }}Featured{{ end }}</button></div></div>
+        <div class="alxian-entry-grid {{ if $isProject }}is-works{{ else }}is-blog{{ end }}">
+          {{ range $index, $item := $pages }}
+            {{- $cover := $item.Resources.GetMatch "featured.*" -}}
+            <article class="alxian-entry-card alxian-reveal" data-entry-card data-featured="{{ if $item.Params.featured }}true{{ else }}false{{ end }}">
+              <a class="alxian-entry-cover" href="{{ $item.RelPermalink }}" aria-label="{{ $item.Title }}">
+                {{ with $cover }}<img src="{{ .RelPermalink }}" alt="" loading="lazy">{{ else }}<span class="alxian-cover-placeholder">{{ printf "%02d" (add $index 1) }}</span>{{ end }}<i>↗</i>
+              </a>
+              <div class="alxian-entry-meta"><time datetime="{{ $item.Date.Format "2006-01-02" }}">{{ $item.Date.Format "2006.01.02" }}</time>{{ if $item.Params.featured }}<span>{{ if $zh }}精选{{ else }}FEATURED{{ end }}</span>{{ end }}</div>
+              <h2><a href="{{ $item.RelPermalink }}">{{ $item.Title }}</a></h2>
+              <p>{{ with $item.Params.summary }}{{ . }}{{ else }}{{ $item.Summary | plainify | truncate 180 }}{{ end }}</p>
+              {{ with $item.Params.tags }}<div class="alxian-entry-tags">{{ range first 4 . }}<span>{{ . }}</span>{{ end }}</div>{{ end }}
+            </article>
+          {{ end }}
+        </div>
+      {{ else }}<div class="alxian-empty"><span>00</span><h2>{{ if $zh }}内容正在整理中{{ else }}Content is being prepared{{ end }}</h2><p>{{ if $zh }}新的记录很快会出现在这里。{{ else }}New entries will appear here soon.{{ end }}</p></div>{{ end }}
+    </main>
+    {{ partial "themes/alxian/footer.html" . }}
+  </body>
+</html>

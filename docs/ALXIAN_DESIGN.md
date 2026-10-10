@@ -55,7 +55,7 @@ The desktop composition is intentionally dense and fills the viewport. At widths
 
 ## Agent Build Instructions
 
-Implement this as an isolated Hugo home theme. Keep all personal content and images outside the theme contract; use a theme-specific CSS/JS pair and a registered `alxian` preview path. Use `relURL` for every static asset so `/themes/alxian/` works on GitHub Pages. The production Oil page must not inherit any alxian global selectors.
+Implement this as an isolated Hugo site theme. Keep all personal content and images outside the theme contract; use a theme-specific CSS/JS pair and a registered `alxian` preview path. Use `relURL` for every static asset so `/themes/alxian/` works on GitHub Pages. The production Oil page must not inherit any alxian global selectors. The static chat, comment, reaction, friend-link application and visitor counters are explicit client-side fallbacks until an external API is connected.
 
 ## Rerun Inputs
 

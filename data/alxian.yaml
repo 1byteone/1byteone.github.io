@@ -1,0 +1,73 @@
+# Alxian page data. Content pages remain the source of truth for projects and articles.
+resources:
+  - title: Hugo
+    title_en: Hugo
+    type: 静态生成
+    type_en: Static generator
+    description: 用内容驱动的方式维护个人网站、文章与项目档案。
+    description_en: Content-driven publishing for a durable personal archive.
+    url: https://gohugo.io/
+    icon: site.svg
+    category: tool
+  - title: GitHub
+    title_en: GitHub
+    type: 代码与协作
+    type_en: Code and collaboration
+    description: 开源项目、提交记录和自动化部署的主工作台。
+    description_en: The workspace for open source, commits, and automated delivery.
+    url: https://github.com/1byteone
+    icon: github.svg
+    category: tool
+  - title: Docker
+    title_en: Docker
+    type: 运行环境
+    type_en: Runtime
+    description: 让本地开发、测试和部署环境保持一致。
+    description_en: Keep development, testing, and deployment environments aligned.
+    url: https://www.docker.com/
+    icon: site.svg
+    category: tool
+  - title: Vue / TypeScript
+    title_en: Vue / TypeScript
+    type: 前端工程
+    type_en: Frontend engineering
+    description: 用清晰的组件边界构建可维护的交互界面。
+    description_en: Build maintainable interfaces with clear component boundaries.
+    url: https://vuejs.org/
+    icon: vue.svg
+    category: frontend
+  - title: LangChain
+    title_en: LangChain
+    type: AI 应用
+    type_en: AI applications
+    description: 探索工具调用、RAG 和智能体的工程化边界。
+    description_en: Explore production boundaries for tool calling, RAG, and agents.
+    url: https://python.langchain.com/
+    icon: docs.svg
+    category: ai
+  - title: Notion
+    title_en: Notion
+    type: 知识管理
+    type_en: Knowledge management
+    description: 整理研究、学习路线和长期积累的思考。
+    description_en: Organize research, learning paths, and long-term notes.
+    url: https://www.notion.so/
+    icon: docs.svg
+    category: tool
+links:
+  - name: GitHub
+    label: github.com/1byteone
+    url: https://github.com/1byteone
+    icon: github.svg
+  - name: 小红书
+    label: AI 工具与工作流分享
+    url: https://www.xiaohongshu.com/
+    icon: xhs.svg
+  - name: Bilibili
+    label: 视频与直播记录
+    url: https://space.bilibili.com/351176014
+    icon: bz.svg
+  - name: Email
+    label: yjs_0831@qq.com
+    url: mailto:yjs_0831@qq.com
+    icon: qq.svg

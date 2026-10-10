@@ -43,7 +43,7 @@
   .github/workflows/                  单主题生产构建和多主题验证
 ```
 
-当前仓库已经采用 `layouts/home.html` 根据 `site_theme` 分发到 `layouts/partials/themes/oil/home.html` 和 `minimal/home.html`，公共内容位于 `content/`，共享资料位于 `data/site.yaml`。当前切换边界主要是首页：博客、项目和技术栈详情页仍可能由共享的 Hugo/HugoBlox 模板渲染，并不等于整个站点已经完成主题隔离。若产品要求“整站换肤”，应继续把列表页、详情页、导航和页脚纳入主题契约；若只需要首页实验，则在产品文档中明确 `home-only` 范围，避免误称为全站主题。
+当前仓库采用 `site_theme` 分发首页、section 列表、详情页、技术栈、资源、聊天室、友链和 404。公共内容位于 `content/`，共享资料位于 `data/site.yaml`；Alxian 的页面壳层和资源位于 `layouts/partials/themes/alxian/`、`static/css/alxian-*` 与 `static/js/alxian-*`。Oil 根站继续使用自己的模板和资源。
 
 现有的 `static/css/oil-theme.css`、`static/css/minimal-theme.css` 和 `static/js/oil-theme.js` 可以作为迁移到 `static/themes/<id>/` 的起点；迁移期间保留兼容路径，避免已发布页面的资源 URL 失效。当前生效选择器只有 `config/_default/params.yaml` 的 `site_theme`，主题白名单和预览路径统一登记在 `data/theme_registry.yaml`，避免再维护第二个选择器。
 
@@ -247,7 +247,7 @@ jobs:
 
 ## 8. 新主题接入清单
 
-1. 建立 `layouts/partials/themes/<id>/home.html` 和独立资源目录。当前 `alxian` 与 `minimal` 均声明为 `home-only`，不会伪装成详情页全站换肤。
+1. 建立 `layouts/partials/themes/<id>/home.html` 和独立资源目录。Alxian 已声明为 `site`，提供首页、列表、详情、资源、聊天室、友链和 404 壳层；Minimal 仍保持 `home-only`。
 2. 补齐主题契约中的元数据、导航、语言、内容入口和无障碍要求。
 3. 在 `data/theme_registry.yaml` 与 CI 预览构建登记 ID。
 4. 添加主题预览配置和截图基线，确认桌面、移动、暗色/浅色（如支持）布局。
