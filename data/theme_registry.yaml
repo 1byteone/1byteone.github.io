@@ -24,3 +24,14 @@ themes:
     base_path: /themes/minimal/
     supports:
       - home
+  - id: alxian
+    label: alxian / wuxian
+    short_label: ALX
+    version: 0.1.0
+    status: preview
+    home_template: themes/alxian/home.html
+    stylesheet: css/alxian-theme.css
+    script: js/alxian-theme.js
+    base_path: /themes/alxian/
+    supports:
+      - home

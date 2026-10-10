@@ -102,7 +102,7 @@ site:
 
 ## 4. 主题契约
 
-主题 ID 是小写、稳定、只含字母数字和连字符的标识，例如 `oil`、`minimal`。每个主题必须提供：
+主题 ID 是小写、稳定、只含字母数字和连字符的标识，例如 `oil`、`minimal`、`alxian`。每个主题必须提供：
 
 ```text
 layouts/partials/themes/<id>/home.html
@@ -124,7 +124,7 @@ data/theme_registry.yaml             # 主题注册表
 
 ```go-html-template
 {{- $theme := lower (default "oil" .Site.Params.site_theme) -}}
-{{- $allowed := slice "oil" "minimal" -}}
+{{- $allowed := slice "oil" "minimal" "alxian" -}}
 {{- if not (in $allowed $theme) -}}{{- $theme = "oil" -}}{{- end -}}
 {{- partial (printf "themes/%s/home.html" $theme) . -}}
 ```
@@ -184,7 +184,7 @@ config/
   minimal/params.yaml
 ```
 
-当前工作流使用 `hugo --configDir config --environment minimal` 生成 Minimal 预览。构建日志必须打印最终主题 ID，产物检查也要确认首页包含对应主题资源。
+当前工作流使用 `hugo --configDir config --environment minimal` 和 `hugo --configDir config --environment alxian` 生成预览。构建日志必须打印最终主题 ID，产物检查也要确认首页包含对应主题资源。
 
 ### 5.2 推荐的同域名快捷切换：主题子路径
 
@@ -247,7 +247,7 @@ jobs:
 
 ## 8. 新主题接入清单
 
-1. 建立 `layouts/partials/themes/<id>/home.html` 和独立资源目录。
+1. 建立 `layouts/partials/themes/<id>/home.html` 和独立资源目录。当前 `alxian` 与 `minimal` 均声明为 `home-only`，不会伪装成详情页全站换肤。
 2. 补齐主题契约中的元数据、导航、语言、内容入口和无障碍要求。
 3. 在 `data/theme_registry.yaml` 与 CI 预览构建登记 ID。
 4. 添加主题预览配置和截图基线，确认桌面、移动、暗色/浅色（如支持）布局。

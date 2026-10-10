@@ -1,0 +1,89 @@
+{{- $zh := hasPrefix .Lang "zh" -}}
+{{- $site := .Site.Data.site.site -}}
+{{- $copy := index $site.copy (cond $zh "zh" "en") -}}
+{{- $asset := "assets/alxian/" | relURL -}}
+{{- $projects := where .Site.RegularPages "Section" "projects" -}}
+{{- $articles := where .Site.RegularPages "Section" "blog" -}}
+<!doctype html>
+<html lang="{{ if $zh }}zh-Hans{{ else }}en{{ end }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#e8eff5">
+    <meta name="description" content="{{ if $zh }}{{ $site.identity.name }}的个人主页，记录前端、后端与 AI 工程实践。{{ else }}{{ $site.identity.name_en }}'s personal homepage for frontend, backend and AI engineering.{{ end }}">
+    <link rel="canonical" href="{{ .Permalink }}">
+    <title>{{ if $zh }}{{ $site.identity.name }} · 个人主页{{ else }}{{ $site.identity.name_en }} · Personal homepage{{ end }}</title>
+    <link rel="stylesheet" href="{{ "css/alxian-theme.css" | relURL }}?v=1">
+    <script defer src="{{ "js/alxian-theme.js" | relURL }}?v=1"></script>
+  </head>
+  <body class="alxian-theme" data-lang="{{ if $zh }}zh{{ else }}en{{ end }}">
+    <div class="alxian-loader" data-loader aria-hidden="true"><div class="alxian-loader-topline"><span>PERSONAL ARCHIVE</span><span>00 / 01</span></div><div class="alxian-loader-content"><img src="{{ printf "%simages/keep-going.png" $asset }}" alt=""><span>KEEP GOING</span><strong>DON'T GIVE UP</strong><i class="alxian-loader-progress"><b></b></i></div><div class="alxian-loader-footer"><span>ALXIAN.CN</span><span>LOADING / READY</span></div></div>
+    <div class="alxian-grid-bg" aria-hidden="true"></div>
+    <header class="alxian-topbar">
+      <a class="alxian-logo" href="{{ .Site.Home.RelPermalink }}" aria-label="{{ if $zh }}返回首页{{ else }}Home{{ end }}"><span>Y</span><b>{{ if $zh }}劲松{{ else }}JINSONG{{ end }}</b></a>
+      <div class="alxian-tools">
+        <a class="alxian-pill" href="{{ $site.identity.github }}" target="_blank" rel="noopener"><img src="{{ printf "%sicons/github.svg" $asset }}" alt="" aria-hidden="true">GitHub</a>
+        <a class="alxian-pill" href="mailto:{{ $site.identity.email }}"><img src="{{ printf "%sicons/qq.svg" $asset }}" alt="" aria-hidden="true">QQ</a>
+        <a class="alxian-pill" href="https://space.bilibili.com/351176014" target="_blank" rel="noopener"><img src="{{ printf "%sicons/bz.svg" $asset }}" alt="" aria-hidden="true">B站</a>
+        <a class="alxian-pill" href="https://www.xiaohongshu.com/" target="_blank" rel="noopener"><img src="{{ printf "%sicons/xhs.svg" $asset }}" alt="" aria-hidden="true">小红书</a>
+        <a class="alxian-pill" href="{{ if $zh }}{{ "/en/" | relURL }}{{ else }}{{ "/" | relURL }}{{ end }}" lang="{{ if $zh }}en{{ else }}zh-Hans{{ end }}"><span>{{ if $zh }}EN{{ else }}中{{ end }}</span></a>
+        {{ partial "theme-switcher.html" . }}
+        <button class="alxian-icon-button" type="button" data-theme-toggle aria-label="{{ if $zh }}切换深色模式{{ else }}Toggle dark mode{{ end }}">☾</button>
+      </div>
+    </header>
+
+    <main class="alxian-shell">
+      <section class="alxian-intro" id="top">
+        <div class="alxian-profile-card alxian-reveal">
+          <div class="alxian-profile-art"><span class="alxian-orbit-text">KEEP GOING * DON'T GIVE UP *</span><img src="{{ printf "%simages/keep-going.png" $asset }}" alt="{{ if $zh }}个人头像{{ else }}Profile illustration{{ end }}"></div>
+          <div class="alxian-profile-copy">
+            <p class="alxian-kicker">{{ if $zh }}记录一路以来的痕迹{{ else }}A record of the things I build{{ end }}</p>
+            <h1>{{ if $zh }}你好，我是{{ $site.identity.name }}<span>。</span>{{ else }}Hello, I'm {{ $site.identity.name_en }}<span>.</span>{{ end }}</h1>
+            <ul class="alxian-facts">
+              <li><b>{{ if $zh }}前端 / 后端 / AI 工程{{ else }}Frontend / backend / AI engineering{{ end }}</b></li>
+              <li>{{ if $zh }}26 岁 · 南昌 / 中国{{ else }}Software engineer · Nanchang, China{{ end }}</li>
+              <li>{{ if $zh }}在做可以长期使用的东西{{ else }}Building things people can keep using{{ end }}</li>
+            </ul>
+            <p class="alxian-signature">Wuxian;</p>
+          </div>
+          <img class="alxian-laptop-character" src="{{ printf "%simages/logo1.png" $asset }}" alt="" aria-hidden="true">
+        </div>
+        <div class="alxian-skill-strip alxian-reveal" aria-label="{{ if $zh }}技能{{ else }}Skills{{ end }}">
+          {{ $skills := slice (dict "name" "HTML" "icon" "html.svg") (dict "name" "CSS" "icon" "css.svg") (dict "name" "JavaScript" "icon" "js.svg") (dict "name" "TypeScript" "icon" "ts.svg") (dict "name" "Vue" "icon" "vue.svg") (dict "name" "Node" "icon" "node.svg") (dict "name" "Koa" "icon" "koa.svg") (dict "name" "Nest.js" "icon" "nest.svg") (dict "name" "Git" "icon" "git.svg") (dict "name" "Nginx" "icon" "nginx.svg") (dict "name" "Uniapp" "icon" "uniapp.svg") (dict "name" "Electron" "icon" "electron.svg") }}
+          <div class="alxian-skill-track">{{ range $repeat := (slice 1 2) }}{{ range $skills }}<span class="alxian-skill"><img src="{{ printf "%sicons/%s" $asset .icon }}" alt=""><small>{{ .name }}</small></span>{{ end }}{{ end }}</div>
+        </div>
+      </section>
+
+      <section class="alxian-contrib alxian-reveal" aria-labelledby="alxian-contrib-title">
+        <div class="alxian-section-head"><div><span class="alxian-section-icon">◉</span><h2 id="alxian-contrib-title">{{ if $zh }}GitHub 提交{{ else }}GitHub contributions{{ end }}</h2><p>{{ if $zh }}{{ now.Format "2006" }} 年已提交 <strong>793</strong> 次{{ else }}<strong>793</strong> contributions in {{ now.Format "2006" }}{{ end }}</p></div><div class="alxian-year">‹ &nbsp; {{ now.Format "2006" }} &nbsp; ›</div></div>
+        <div class="alxian-heatmap" data-heatmap aria-label="{{ if $zh }}GitHub 提交热力图{{ else }}GitHub contribution heatmap{{ end }}"></div>
+        <div class="alxian-heat-legend"><span>{{ if $zh }}少{{ else }}Less{{ end }}</span><i></i><i></i><i></i><i></i><span>{{ if $zh }}多{{ else }}More{{ end }}</span></div>
+      </section>
+
+      <section class="alxian-navigation alxian-reveal" id="work" aria-labelledby="alxian-nav-title">
+        <h2 id="alxian-nav-title"><span>◉</span> {{ if $zh }}导航{{ else }}Explore{{ end }}</h2>
+        <div class="alxian-nav-grid">
+          <a href="{{ "projects/" | relLangURL }}"><img src="{{ printf "%sicons/zuopin.svg" $asset }}" alt=""><strong>{{ if $zh }}作品集{{ else }}Projects{{ end }}</strong><small>{{ if $zh }}记录前端作品{{ else }}Selected builds{{ end }}</small><b>↗</b></a>
+          <a href="{{ "blog/" | relLangURL }}"><img src="{{ printf "%sicons/docs.svg" $asset }}" alt=""><strong>{{ if $zh }}文章{{ else }}Articles{{ end }}</strong><small>{{ if $zh }}记录前端知识{{ else }}Notes and writing{{ end }}</small><b>↗</b></a>
+          <a href="{{ "tech-stack/" | relLangURL }}"><img src="{{ printf "%sicons/zy.svg" $asset }}" alt=""><strong>{{ if $zh }}资源{{ else }}Resources{{ end }}</strong><small>{{ if $zh }}记录常用资源{{ else }}Tools I use{{ end }}</small><b>↗</b></a>
+          <a href="mailto:{{ $site.identity.email }}"><img src="{{ printf "%sicons/comment.svg" $asset }}" alt=""><strong>{{ if $zh }}聊天室{{ else }}Chat room{{ end }}</strong><small>{{ if $zh }}实时聊天交流{{ else }}Say hello{{ end }}</small><b>↗</b></a>
+          <a href="{{ $site.identity.github }}" target="_blank" rel="noopener"><img src="{{ printf "%sicons/link.svg" $asset }}" alt=""><strong>{{ if $zh }}友链{{ else }}Links{{ end }}</strong><small>{{ if $zh }}友链共享{{ else }}Across the web{{ end }}</small><b>↗</b></a>
+        </div>
+      </section>
+
+      <section class="alxian-lower-grid alxian-reveal" aria-label="{{ if $zh }}主页内容{{ else }}Homepage content{{ end }}">
+        <article class="alxian-panel alxian-gallery"><header><h2>{{ if $zh }}个人图库{{ else }}Gallery{{ end }}</h2><button type="button" data-gallery-next aria-label="{{ if $zh }}下一张{{ else }}Next image{{ end }}">‹ &nbsp; 1 / 4 &nbsp; ›</button></header><div class="alxian-gallery-stage" data-gallery><img src="{{ printf "%simages/img1.jpg" $asset }}" alt="" loading="lazy"><img src="{{ printf "%simages/img2.jpg" $asset }}" alt="" loading="lazy"><img src="{{ printf "%simages/img3.jpg" $asset }}" alt="" loading="lazy"><img src="{{ printf "%simages/img4.jpg" $asset }}" alt="" loading="lazy"></div></article>
+        <article class="alxian-panel alxian-music"><header><h2>{{ if $zh }}喜欢的音乐{{ else }}Favorite music{{ end }}</h2><span>♫</span></header><div class="alxian-track"><img src="{{ printf "%simages/wuha.jpg" $asset }}" alt=""><div><strong>五哈</strong><small>邓超 & 陈赫 & 鹿晗</small><div class="alxian-progress"><i></i></div><span>00:00 <b>00:00</b></span></div><button type="button" data-music aria-label="{{ if $zh }}播放音乐{{ else }}Play music{{ end }}">▶</button></div><div class="alxian-track-meta">〈 &nbsp; ▶ &nbsp; 〉 <small>1 / 3</small></div></article>
+        <article class="alxian-panel alxian-todos"><header><h2>{{ if $zh }}最近正在做的事{{ else }}Currently working on{{ end }}</h2><span>◉</span></header><ol><li><b>{{ if $zh }}doTime 开发{{ else }}Building doTime{{ end }}</b><span class="done">✓</span></li><li><b>code2img {{ if $zh }}开发{{ else }}development{{ end }}</b><span class="done">✓</span></li><li>{{ if $zh }}随心记更新{{ else }}Updating my notes{{ end }}<span>{{ if $zh }}进行中{{ else }}in progress{{ end }}</span></li><li>{{ if $zh }}个人网站更新{{ else }}Personal site refresh{{ end }}<span>{{ if $zh }}进行中{{ else }}in progress{{ end }}</span></li><li>{{ if $zh }}miaoG 建站{{ else }}miaoG launch{{ end }}<span>{{ if $zh }}进行中{{ else }}in progress{{ end }}</span></li></ol></article>
+      </section>
+
+      <section class="alxian-stats alxian-reveal"><div><strong>2</strong><span>{{ if $zh }}今日访客{{ else }}Visitors today{{ end }}</span></div><div><strong>4202</strong><span>{{ if $zh }}总访客{{ else }}Total visits{{ end }}</span></div><div><strong>2025-7-10</strong><span>{{ if $zh }}建站日期{{ else }}Since{{ end }}</span></div></section>
+    </main>
+
+    <img class="alxian-character" src="{{ printf "%simages/person.png" $asset }}" alt="" aria-hidden="true">
+    <button class="alxian-guitar" type="button" data-guitar aria-label="{{ if $zh }}拖动吉他{{ else }}Drag guitar{{ end }}"><img src="{{ printf "%simages/gutar.png" $asset }}" alt=""></button>
+    <aside class="alxian-float-actions"><button type="button" aria-label="{{ if $zh }}打开评论{{ else }}Open comments{{ end }}" data-comments>▢ <b>88</b></button><button type="button" aria-label="{{ if $zh }}点赞{{ else }}Like{{ end }}" data-reaction>👍</button></aside>
+    <div class="alxian-comment-popover" data-comment-popover hidden><strong>{{ if $zh }}留言{{ else }}Leave a note{{ end }}</strong><textarea placeholder="{{ if $zh }}写点什么...{{ else }}Say something...{{ end }}"></textarea><button type="button" data-comment-send>{{ if $zh }}发送{{ else }}Send{{ end }}</button></div>
+    <footer class="alxian-footer"><span>© {{ now.Format "2006" }} {{ if $zh }}{{ $site.identity.name }}{{ else }}{{ $site.identity.name_en }}{{ end }}</span><span>{{ if $zh }}保持热爱，持续更新{{ else }}Keep going, keep building{{ end }}</span><a href="#top">↑</a></footer>
+  </body>
+</html>

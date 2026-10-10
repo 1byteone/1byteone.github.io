@@ -102,6 +102,22 @@ jobs:
             --destination public/themes/minimal \
             --baseURL "${{ steps.pages.outputs.base_url }}/themes/minimal/"
 
+      - name: Build alxian theme preview
+        env:
+          HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache
+          HUGO_ENVIRONMENT: alxian
+          TZ: America/New_York
+        run: |
+          rm -rf "public/themes/alxian"
+          hugo \
+            --gc \
+            --minify \
+            --cleanDestinationDir \
+            --environment alxian \
+            --configDir config \
+            --destination public/themes/alxian \
+            --baseURL "${{ steps.pages.outputs.base_url }}/themes/alxian/"
+
       - name: Build search index
         run: npm run pagefind
 
