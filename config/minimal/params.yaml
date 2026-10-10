@@ -1,0 +1,3 @@
+# Environment overlay used by the same-domain preview build.
+site_theme: minimal
+theme_preview: true

@@ -1,0 +1,26 @@
+themes:
+  - id: oil
+    label: Oil
+    short_label: OIL
+    version: 1.0.0
+    status: production
+    home_template: themes/oil/home.html
+    stylesheet: css/oil-theme.css
+    script: js/oil-theme.js
+    base_path: /
+    supports:
+      - home
+      - list
+      - single
+      - tech-stack
+  - id: minimal
+    label: Minimal
+    short_label: MIN
+    version: 0.1.0
+    status: preview
+    home_template: themes/minimal/home.html
+    stylesheet: css/minimal-theme.css
+    script: ''
+    base_path: /themes/minimal/
+    supports:
+      - home

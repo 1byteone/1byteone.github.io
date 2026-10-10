@@ -1,4 +1,4 @@
-{{ $zh := not (hasPrefix .RelPermalink "/en/") }}
+{{ $zh := hasPrefix .Lang "zh" }}
 {{ $site := .Site.Data.site.site }}
 {{ $copy := index $site.copy (cond $zh "zh" "en") }}
 {{ $commercePage := .Site.GetPage "projects/ecommerce-rag-search" }}
@@ -32,6 +32,7 @@
           <nav class="language-switch" aria-label="{{ if $zh }}语言{{ else }}Language{{ end }}">
             {{ if $zh }}<a class="is-current" href="{{ "/" | relURL }}" lang="zh-Hans">中</a><a href="{{ "/en/" | relURL }}" lang="en">EN</a>{{ else }}<a href="{{ "/" | relURL }}" lang="zh-Hans">中</a><a class="is-current" href="{{ "/en/" | relURL }}" lang="en">EN</a>{{ end }}
           </nav>
+          {{ partial "theme-switcher.html" . }}
           <a class="github-link" href="{{ $site.identity.github }}" target="_blank" rel="noopener noreferrer" aria-label="GitHub {{ $site.identity.name_en }}">{{ $site.identity.github_label }} <span aria-hidden="true">↗</span></a>
         </div>
       </header>

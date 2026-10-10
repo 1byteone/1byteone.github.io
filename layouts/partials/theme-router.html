@@ -1,0 +1,6 @@
+{{- $requested := lower (default "oil" (index .Site.Params "site_theme")) -}}
+{{- $theme := "oil" -}}
+{{- range .Site.Data.themes.themes -}}
+  {{- if eq .id $requested }}{{- $theme = .id -}}{{- end -}}
+{{- end -}}
+{{- partial (printf "themes/%s/home.html" $theme) . -}}

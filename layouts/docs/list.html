@@ -13,6 +13,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#fbfaf7">
+    {{ if .Site.Params.theme_preview }}<meta name="robots" content="noindex,follow">{{ end }}
     <title>{{ .Title }} — {{ if $zh }}{{ $site.identity.name }}{{ else }}{{ $site.identity.name_en }}{{ end }}</title>
     <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Summary | plainify | truncate 160 }}{{ end }}">
     <link rel="canonical" href="{{ .Permalink }}">
@@ -20,7 +21,7 @@
     <link rel="stylesheet" href="{{ "css/oil-content.css" | relURL }}?v=1">
     <script defer src="{{ "js/oil-theme.js" | relURL }}"></script>
   </head>
-  <body>
+  <body{{ if .Site.Params.theme_preview }} data-pagefind-ignore{{ end }}>
     <aside class="reading-progress" aria-label="{{ if $zh }}阅读进度{{ else }}Reading progress{{ end }}"><span class="progress-track"><i id="progress-bar"></i></span><span id="progress-value">00</span></aside>
     <div class="site-column"><header class="site-header">
       <a class="wordmark" href="{{ .Site.Home.RelPermalink }}"><i></i>JINSO<span>NG</span></a>

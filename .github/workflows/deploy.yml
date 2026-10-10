@@ -84,6 +84,24 @@ jobs:
             --minify \
             --baseURL "${{ steps.pages.outputs.base_url }}/"
 
+      # Publish the preview theme in the same Pages artifact so the site can
+      # switch themes by URL without requiring a second repository or deploy.
+      - name: Build Minimal theme preview
+        env:
+          HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache
+          HUGO_ENVIRONMENT: minimal
+          TZ: America/New_York
+        run: |
+          rm -rf "public/themes/minimal"
+          hugo \
+            --gc \
+            --minify \
+            --cleanDestinationDir \
+            --environment minimal \
+            --configDir config \
+            --destination public/themes/minimal \
+            --baseURL "${{ steps.pages.outputs.base_url }}/themes/minimal/"
+
       - name: Build search index
         run: npm run pagefind
 

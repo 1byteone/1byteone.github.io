@@ -1,9 +1,5 @@
 # Shared presentation data. Content pages remain the source of truth for articles and projects.
 site:
-  theme: oil
-  available_themes:
-    - oil
-    - minimal
   identity:
     name: 杨劲松
     name_en: Jinsong Yang

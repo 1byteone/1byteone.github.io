@@ -1,6 +1,1 @@
-{{- $theme := lower (default "oil" (index .Site.Params "site_theme")) -}}
-{{- if eq $theme "minimal" -}}
-  {{- partial "themes/minimal/home.html" . -}}
-{{- else -}}
-  {{- partial "themes/oil/home.html" . -}}
-{{- end -}}
+{{- partial "theme-router.html" . -}}

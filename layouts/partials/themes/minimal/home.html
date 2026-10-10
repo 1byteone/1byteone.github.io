@@ -1,4 +1,4 @@
-{{- $zh := not (hasPrefix .RelPermalink "/en/") -}}
+{{- $zh := hasPrefix .Lang "zh" -}}
 {{- $site := .Site.Data.site.site -}}
 {{- $copy := index $site.copy (cond $zh "zh" "en") -}}
 <!doctype html>
@@ -7,17 +7,19 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#f4f1ea">
+    {{ if .Site.Params.theme_preview }}<meta name="robots" content="noindex,follow">{{ end }}
     <title>{{ if $zh }}{{ $site.identity.name }} — AI 应用与后端工程{{ else }}{{ $site.identity.name_en }} — AI & Backend Engineering{{ end }}</title>
     <meta name="description" content="{{ $copy.hero_note }}">
     <link rel="stylesheet" href="{{ "css/minimal-theme.css" | relURL }}">
   </head>
-  <body>
+  <body{{ if .Site.Params.theme_preview }} data-pagefind-ignore{{ end }}>
     <header class="minimal-header">
       <a class="minimal-brand" href="{{ .Site.Home.RelPermalink }}">{{ if $zh }}{{ $site.identity.name }}{{ else }}{{ $site.identity.name_en }}{{ end }}</a>
       <nav aria-label="{{ if $zh }}主要导航{{ else }}Primary navigation{{ end }}">
-        {{ range $item := $site.navigation }}<a href="#{{ $item.key }}">{{ if $zh }}{{ $item.zh }}{{ else }}{{ $item.en }}{{ end }}</a>{{ end }}
+        {{ $supportedNav := slice "projects" "articles" "contact" }}
+        {{ range $item := $site.navigation }}{{ if in $supportedNav $item.key }}<a href="#{{ $item.key }}">{{ if $zh }}{{ $item.zh }}{{ else }}{{ $item.en }}{{ end }}</a>{{ end }}{{ end }}
       </nav>
-      <div class="minimal-tools"><a href="{{ if $zh }}/en/{{ else }}/{{ end }}" lang="{{ if $zh }}en{{ else }}zh-Hans{{ end }}">{{ if $zh }}EN{{ else }}中{{ end }}</a><a href="{{ $site.identity.github }}" target="_blank" rel="noopener">GitHub ↗</a></div>
+      <div class="minimal-tools"><a href="{{ if $zh }}/themes/minimal/en/{{ else }}/themes/minimal/{{ end }}" lang="{{ if $zh }}en{{ else }}zh-Hans{{ end }}">{{ if $zh }}EN{{ else }}中{{ end }}</a>{{ partial "theme-switcher.html" . }}<a href="{{ $site.identity.github }}" target="_blank" rel="noopener">GitHub ↗</a></div>
     </header>
     <main>
       <section class="minimal-hero" id="top">
