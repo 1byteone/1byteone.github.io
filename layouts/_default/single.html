@@ -1,5 +1,5 @@
 {{- $site := .Site.Data.site.site -}}
-{{- $zh := eq .Site.Language.Lang "zh" -}}
+{{- $zh := hasPrefix .Lang "zh" -}}
 {{- $home := .Site.Home.RelPermalink -}}
 {{- $isProject := eq .Section "projects" -}}
 {{- $cover := .Resources.GetMatch "featured.*" -}}

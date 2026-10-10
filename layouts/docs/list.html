@@ -1,5 +1,5 @@
 {{- $site := .Site.Data.site.site -}}
-{{- $zh := eq .Site.Language.Lang "zh" -}}
+{{- $zh := hasPrefix .Lang "zh" -}}
 {{- $isBlog := eq .Section "blog" -}}
 {{- $isTech := eq .Section "tech-stack" -}}
 {{- $home := .Site.Home.RelPermalink -}}
