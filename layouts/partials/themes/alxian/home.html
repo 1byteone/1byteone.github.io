@@ -26,7 +26,7 @@
         <a class="alxian-pill" href="mailto:{{ $site.identity.email }}"><img src="{{ printf "%sicons/qq.svg" $asset }}" alt="" aria-hidden="true">QQ</a>
         <a class="alxian-pill" href="https://space.bilibili.com/351176014" target="_blank" rel="noopener"><img src="{{ printf "%sicons/bz.svg" $asset }}" alt="" aria-hidden="true">B站</a>
         <a class="alxian-pill" href="https://www.xiaohongshu.com/" target="_blank" rel="noopener"><img src="{{ printf "%sicons/xhs.svg" $asset }}" alt="" aria-hidden="true">小红书</a>
-        <a class="alxian-pill" href="{{ if $zh }}{{ "/en/" | relURL }}{{ else }}{{ "/" | relURL }}{{ end }}" lang="{{ if $zh }}en{{ else }}zh-Hans{{ end }}"><span>{{ if $zh }}EN{{ else }}中{{ end }}</span></a>
+        <a class="alxian-pill" href="{{ if .Site.Params.theme_preview }}{{ if $zh }}/themes/alxian/en/{{ else }}/themes/alxian/{{ end }}{{ else }}{{ if $zh }}/en/{{ else }}/{{ end }}{{ end }}" lang="{{ if $zh }}en{{ else }}zh-Hans{{ end }}"><span>{{ if $zh }}EN{{ else }}中{{ end }}</span></a>
         {{ partial "theme-switcher.html" . }}
         <button class="alxian-icon-button" type="button" data-theme-toggle aria-label="{{ if $zh }}切换深色模式{{ else }}Toggle dark mode{{ end }}">☾</button>
       </div>
