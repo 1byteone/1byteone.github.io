@@ -43,7 +43,7 @@
   .github/workflows/                  单主题生产构建和多主题验证
 ```
 
-当前仓库采用 `site_theme` 分发首页、section 列表、详情页、技术栈、资源、聊天室、友链和 404。公共内容位于 `content/`，共享资料位于 `data/site.yaml`；Alxian 的页面壳层和资源位于 `layouts/partials/themes/alxian/`、`static/css/alxian-*` 与 `static/js/alxian-*`。Oil 根站继续使用自己的模板和资源。
+当前仓库已经采用 `layouts/home.html` 根据 `site_theme` 分发到 `layouts/partials/themes/oil/home.html` 和 `minimal/home.html`，公共内容位于 `content/`，共享资料位于 `data/site.yaml`。当前切换边界主要是首页：博客、项目和技术栈详情页仍可能由共享的 Hugo/HugoBlox 模板渲染，并不等于整个站点已经完成主题隔离。若产品要求“整站换肤”，应继续把列表页、详情页、导航和页脚纳入主题契约；若只需要首页实验，则在产品文档中明确 `home-only` 范围，避免误称为全站主题。
 
 现有的 `static/css/oil-theme.css`、`static/css/minimal-theme.css` 和 `static/js/oil-theme.js` 可以作为迁移到 `static/themes/<id>/` 的起点；迁移期间保留兼容路径，避免已发布页面的资源 URL 失效。当前生效选择器只有 `config/_default/params.yaml` 的 `site_theme`，主题白名单和预览路径统一登记在 `data/theme_registry.yaml`，避免再维护第二个选择器。
 
@@ -102,7 +102,7 @@ site:
 
 ## 4. 主题契约
 
-主题 ID 是小写、稳定、只含字母数字和连字符的标识，例如 `oil`、`minimal`、`alxian`。每个主题必须提供：
+主题 ID 是小写、稳定、只含字母数字和连字符的标识，例如 `oil`、`minimal`。每个主题必须提供：
 
 ```text
 layouts/partials/themes/<id>/home.html
@@ -124,7 +124,7 @@ data/theme_registry.yaml             # 主题注册表
 
 ```go-html-template
 {{- $theme := lower (default "oil" .Site.Params.site_theme) -}}
-{{- $allowed := slice "oil" "minimal" "alxian" -}}
+{{- $allowed := slice "oil" "minimal" -}}
 {{- if not (in $allowed $theme) -}}{{- $theme = "oil" -}}{{- end -}}
 {{- partial (printf "themes/%s/home.html" $theme) . -}}
 ```
@@ -163,21 +163,6 @@ layouts/partials/themes/<id>/
 
 主题路由器仍由共享入口负责，主题只实现契约规定的局部。不存在主题专属模板时，路由器可以回退到公共壳层；禁止让一个主题的首页 CSS 隐式控制另一个主题的详情页。
 
-## 4.1 完整站点主题交互契约
-
-参考外部个人网站时，交付范围按“完整站点主题”验收，而不是只复制首页截图。主题实现必须同时提交以下六类资产，并在 PR 中给出可复现的入口矩阵：
-
-| 交付项 | 最低要求 | 验收证据 |
-| --- | --- | --- |
-| 路由矩阵 | 首页、列表、详情、技术栈、资源/联系、友链、语言切换、404、RSS/Feed | 每个入口在中英文下均可打开或明确降级 |
-| 页面壳层 | 统一 head、导航、主题切换、页脚、返回路径和 canonical | 任意详情页刷新不丢失主题资源 |
-| 公共交互脚本 | 加载幕、鼠标/触摸降级、主题切换、焦点与键盘状态、离场反馈 | 桌面、移动、`prefers-reduced-motion` 各有验证 |
-| 页面专属脚本 | 图库/筛选/搜索/评论/聊天等只绑定当前页面元素 | 无对应 DOM 时脚本不报错，控制台无异常 |
-| 共享内容数据 | 身份、导航、文章、项目、资源只来自 `data/` 与 `content/` | 切换主题后内容数量、slug、语言关系一致 |
-| 静态托管策略 | 无后端能力的聊天、评论、音乐和表单明确本地演示或外部服务边界 | 离线刷新、深链接和 GitHub Pages 访问正常 |
-
-每个主题的实现说明还应记录：参考站的关键动效参数（时长、缓动、触发条件）、桌面与移动断点、禁用动画策略、资源加载失败时的占位表现。交付前运行页面入口检查，至少断言中英文首页、所有公共 section、一个详情页和 404 返回 `200/404` 的预期状态，并确认主题 CSS/JS、图片和字体请求没有 404。这样后续复刻其他网站时，视觉相似度和交互完整性有同一套可比较的标准。
-
 ## 5. 主题选择与同域名切换
 
 ### 5.1 生产默认：构建时选择
@@ -199,7 +184,7 @@ config/
   minimal/params.yaml
 ```
 
-当前工作流使用 `hugo --configDir config --environment minimal` 和 `hugo --configDir config --environment alxian` 生成预览。构建日志必须打印最终主题 ID，产物检查也要确认首页包含对应主题资源。
+当前工作流使用 `hugo --configDir config --environment minimal` 生成 Minimal 预览。构建日志必须打印最终主题 ID，产物检查也要确认首页包含对应主题资源。
 
 ### 5.2 推荐的同域名快捷切换：主题子路径
 
@@ -262,7 +247,7 @@ jobs:
 
 ## 8. 新主题接入清单
 
-1. 建立 `layouts/partials/themes/<id>/home.html` 和独立资源目录。Alxian 已声明为 `site`，提供首页、列表、详情、资源、聊天室、友链和 404 壳层；Minimal 仍保持 `home-only`。
+1. 建立 `layouts/partials/themes/<id>/home.html` 和独立资源目录。
 2. 补齐主题契约中的元数据、导航、语言、内容入口和无障碍要求。
 3. 在 `data/theme_registry.yaml` 与 CI 预览构建登记 ID。
 4. 添加主题预览配置和截图基线，确认桌面、移动、暗色/浅色（如支持）布局。

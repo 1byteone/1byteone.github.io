@@ -4,7 +4,6 @@ themes:
     short_label: OIL
     version: 1.0.0
     status: production
-    scope: site
     home_template: themes/oil/home.html
     stylesheet: css/oil-theme.css
     script: js/oil-theme.js
@@ -19,30 +18,9 @@ themes:
     short_label: MIN
     version: 0.1.0
     status: preview
-    scope: home-only
     home_template: themes/minimal/home.html
     stylesheet: css/minimal-theme.css
     script: ''
     base_path: /themes/minimal/
     supports:
       - home
-  - id: alxian
-    label: Alxian / Jinsong
-    short_label: ALX
-    version: 0.2.0
-    status: preview
-    scope: site
-    home_template: themes/alxian/home.html
-    stylesheet: css/alxian-theme.css
-    script: js/alxian-theme.js
-    base_path: /themes/alxian/
-    supports:
-      - home
-      - list
-      - single
-      - resource
-      - chat
-      - friends
-      - tech-stack
-      - works
-      - 404

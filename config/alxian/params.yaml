@@ -1,6 +1,0 @@
-# Environment overlay for the Alxian-inspired personal homepage.
-site_theme: alxian
-theme_preview: true
-# Optional same-origin or external API root for comments, reactions, visitors,
-# chat, and friends. Empty keeps the static local fallback enabled.
-api_base: ""

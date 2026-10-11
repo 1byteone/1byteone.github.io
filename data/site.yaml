@@ -4,20 +4,11 @@ site:
     name: 杨劲松
     name_en: Jinsong Yang
     mark: YJ
-    signature: "Jinsong;"
-    birth_year: 2004
     email: yjs_0831@qq.com
-    qq: "2710556762"
-    qq_url: "https://wpa.qq.com/msgrd?v=3&uin=2710556762&site=qq&menu=yes"
     github: https://github.com/1byteone
     github_label: github.com/1byteone
-    bilibili: "https://space.bilibili.com/3537110254487925"
-    bilibili_label: space.bilibili.com/3537110254487925
-    xiaohongshu: "https://www.xiaohongshu.com/search_result?keyword=18924984161"
-    xiaohongshu_label: "小红书号：18924984161"
     location: 南昌 / 中国
     location_en: Nanchang / China
-    site_created: "2026-8-18"
   copy:
     zh:
       role: AI 应用 / 后端工程 / 开源
