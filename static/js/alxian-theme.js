@@ -493,6 +493,7 @@
     var authorNode = track && qs('[data-music-author]', track);
     var coverNode = track && qs('[data-music-cover]', track);
     var indexNode = track && qs('[data-music-index]', track);
+    var sourceNode = track && track.parentNode && qs('[data-music-source]', track.parentNode);
     var playlist = track && track.parentNode && qs('[data-music-list]', track.parentNode);
     var prevTrack = track && qs('[data-music-prev]', track);
     var nextTrack = track && qs('[data-music-next]', track);
@@ -588,8 +589,52 @@
     if (nextTrack) nextTrack.addEventListener('click', function (event) { event.stopPropagation(); selectMusic(selectedTrack + 1, true); });
     if (track) track.addEventListener('click', function (event) { if (event.target.closest('button,[data-music-progress]')) return; });
 
-    /* Keep the ten bundled tracks intact. Apple's Search API only exposes
-       thirty-second previews, so it must not replace the full audio sources. */
+    function setMusicSource(message) {
+      if (sourceNode) sourceNode.textContent = message;
+    }
+    function loadAudiusTrending() {
+      setMusicSource(langText('正在同步热榜', 'Syncing live charts'));
+      var genres = ['Pop', 'Electronic'];
+      Promise.all(genres.map(function (genre) {
+        var endpoint = 'https://api.audius.co/v1/tracks/trending?limit=6&genre=' + encodeURIComponent(genre) + '&app_name=alxian_personal_site';
+        return fetch(endpoint, { headers: { Accept: 'application/json' } }).then(function (response) {
+          if (!response.ok) throw new Error('Audius chart unavailable');
+          return response.json();
+        });
+      })).then(function (payloads) {
+        var seen = {};
+        var liveItems = payloads.reduce(function (items, payload) {
+          return items.concat(payload && Array.isArray(payload.data) ? payload.data : []);
+        }, []).filter(function (item) {
+          var trackId = String(item && (item.track_id || item.id) || '');
+          var seconds = Number(item && item.duration);
+          return trackId && !seen[trackId] && item.title && item.stream && item.stream.url && seconds >= 60;
+        }).map(function (item) {
+          var trackId = String(item.track_id || item.id);
+          seen[trackId] = true;
+          var artwork = item.artwork && (item.artwork['480x480'] || item.artwork['150x150']);
+          var artist = item.user && (item.user.name || item.user.handle);
+          return {
+            title: item.title,
+            author: (artist || langText('热门音乐人', 'Trending artist')) + ' · Audius',
+            duration: Number(item.duration),
+            url: item.stream.url,
+            cover: artwork || assetCover('wuha.jpg'),
+            source: 'audius'
+          };
+        }).slice(0, 10);
+        if (liveItems.length < 6) throw new Error('Audius chart returned too few full tracks');
+        var wasPlaying = musicButton.getAttribute('aria-pressed') === 'true';
+        var keepIndex = Math.min(selectedTrack, liveItems.length - 1);
+        musicItems = liveItems;
+        renderPlaylist();
+        selectMusic(keepIndex, wasPlaying);
+        setMusicSource(langText('实时热榜 · Audius', 'Live charts · Audius'));
+      }).catch(function () {
+        setMusicSource(langText('完整歌单 · 本地回退', 'Full tracks · fallback'));
+      });
+    }
+    loadAudiusTrending();
 
   }
 
