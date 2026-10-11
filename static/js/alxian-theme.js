@@ -503,13 +503,13 @@
       { title: '五哈', author: '邓超 & 陈赫 & 鹿晗 & 范志毅 & 宝石Gem & 王勉', duration: 224, url: 'https://image.goodjob.cn/image/live/wx/wuha.mp3', cover: assetCover('wuha.jpg') },
       { title: langText('天空中的歌', 'Song in the sky'), author: '崔一乔', duration: 198, url: 'https://image.goodjob.cn/image/live/wx/tkzdg.mp3', cover: assetCover('tkzdg.jpg') },
       { title: langText('鲜花', 'Flowers'), author: '回春丹乐队', duration: 231, url: 'https://image.goodjob.cn/image/live/wx/xh.mp3', cover: assetCover('xh.jpg') },
-      { title: langText('专注时刻 01', 'Focus session 01'), author: 'Free preview · SoundHelix', url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3', cover: assetCover('wuha.jpg') },
-      { title: langText('专注时刻 02', 'Focus session 02'), author: 'Free preview · SoundHelix', url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3', cover: assetCover('tkzdg.jpg') },
-      { title: langText('专注时刻 03', 'Focus session 03'), author: 'Free preview · SoundHelix', url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3', cover: assetCover('xh.jpg') },
-      { title: langText('专注时刻 04', 'Focus session 04'), author: 'Free preview · SoundHelix', url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3', cover: assetCover('wuha.jpg') },
-      { title: langText('专注时刻 05', 'Focus session 05'), author: 'Free preview · SoundHelix', url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3', cover: assetCover('tkzdg.jpg') },
-      { title: langText('专注时刻 06', 'Focus session 06'), author: 'Free preview · SoundHelix', url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3', cover: assetCover('xh.jpg') },
-      { title: langText('专注时刻 07', 'Focus session 07'), author: 'Free preview · SoundHelix', url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3', cover: assetCover('wuha.jpg') },
+      { title: langText('专注时刻 01', 'Focus session 01'), author: 'SoundHelix · T. Schürger', url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3', cover: assetCover('wuha.jpg') },
+      { title: langText('专注时刻 02', 'Focus session 02'), author: 'SoundHelix · T. Schürger', url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3', cover: assetCover('tkzdg.jpg') },
+      { title: langText('专注时刻 03', 'Focus session 03'), author: 'SoundHelix · T. Schürger', url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3', cover: assetCover('xh.jpg') },
+      { title: langText('专注时刻 04', 'Focus session 04'), author: 'SoundHelix · T. Schürger', url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3', cover: assetCover('wuha.jpg') },
+      { title: langText('专注时刻 05', 'Focus session 05'), author: 'SoundHelix · T. Schürger', url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3', cover: assetCover('tkzdg.jpg') },
+      { title: langText('专注时刻 06', 'Focus session 06'), author: 'SoundHelix · T. Schürger', url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3', cover: assetCover('xh.jpg') },
+      { title: langText('专注时刻 07', 'Focus session 07'), author: 'SoundHelix · T. Schürger', url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3', cover: assetCover('wuha.jpg') },
     ];
     var audio = new Audio();
     audio.preload = 'metadata';
@@ -588,33 +588,8 @@
     if (nextTrack) nextTrack.addEventListener('click', function (event) { event.stopPropagation(); selectMusic(selectedTrack + 1, true); });
     if (track) track.addEventListener('click', function (event) { if (event.target.closest('button,[data-music-progress]')) return; });
 
-    /* Fill the ten-slot catalog with free 30-second previews when the public
-       iTunes Search API is reachable. The bundled SoundHelix entries keep the
-       player usable when a static host or network blocks the API. */
-    var catalogTerms = ['Mandopop', 'English indie rock'];
-    Promise.all(catalogTerms.map(function (term) {
-      var endpoint = 'https://itunes.apple.com/search?media=music&entity=song&limit=10&term=' + encodeURIComponent(term);
-      return fetch(endpoint, { headers: { Accept: 'application/json' } }).then(function (response) {
-        if (!response.ok) throw new Error('music catalog unavailable');
-        return response.json();
-      });
-    })).then(function (payloads) {
-      var apiItems = payloads.reduce(function (items, payload) {
-        return items.concat((payload && Array.isArray(payload.results) ? payload.results : []).slice(0, 5));
-      }, []).filter(function (item) { return item && item.previewUrl && item.trackName; }).filter(function (item, index, items) {
-        return items.findIndex(function (candidate) { return candidate.trackId === item.trackId; }) === index;
-      }).slice(0, 10).map(function (item) {
-        return { title: item.trackName, author: item.artistName || 'iTunes preview', url: item.previewUrl, cover: item.artworkUrl100 || assetCover('wuha.jpg') };
-      });
-      if (apiItems.length < 10) return;
-      var wasPlaying = musicButton.getAttribute('aria-pressed') === 'true';
-      var keepIndex = Math.min(selectedTrack, apiItems.length - 1);
-      musicItems = apiItems;
-      renderPlaylist();
-      selectMusic(keepIndex, wasPlaying);
-    }).catch(function () {
-      if (track) track.setAttribute('data-catalog-fallback', 'true');
-    });
+    /* Keep the ten bundled tracks intact. Apple's Search API only exposes
+       thirty-second previews, so it must not replace the full audio sources. */
 
   }
 
