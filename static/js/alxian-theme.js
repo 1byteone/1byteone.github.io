@@ -578,20 +578,43 @@
     var playlist = track && track.parentNode && qs('[data-music-list]', track.parentNode);
     var prevTrack = track && qs('[data-music-prev]', track);
     var nextTrack = track && qs('[data-music-next]', track);
+    var musicModal = qs('[data-music-modal]');
+    var musicModalPanel = musicModal && qs('[data-music-modal-panel]', musicModal);
+    var musicModalTitle = musicModal && qs('[data-music-modal-title]', musicModal);
+    var musicModalAuthor = musicModal && qs('[data-music-modal-author]', musicModal);
+    var musicModalCover = musicModal && qs('[data-music-modal-cover]', musicModal);
+    var musicModalIndex = musicModal && qs('[data-music-modal-index]', musicModal);
+    var musicModalProgress = musicModal && qs('[data-music-modal-progress]', musicModal);
+    var musicModalProgressFill = musicModalProgress && qs('i', musicModalProgress);
+    var musicModalProgressDot = musicModalProgress && qs('b', musicModalProgress);
+    var musicModalCurrent = musicModal && qs('[data-music-modal-current]', musicModal);
+    var musicModalTotal = musicModal && qs('[data-music-modal-total]', musicModal);
+    var musicModalPlay = musicModal && qs('[data-music-modal-play]', musicModal);
+    var musicModalLyrics = musicModal && qs('[data-music-lyrics]', musicModal);
+    var musicModalList = musicModal && qs('[data-music-modal-list]', musicModal);
+    var musicModalDanmaku = musicModal && qs('[data-music-danmaku-stage]', musicModal);
+    var musicModalDanmakuForm = musicModal && qs('[data-music-danmaku-form]', musicModal);
+    var musicMini = qs('[data-music-mini]');
+    var musicMiniTitle = musicMini && qs('[data-music-mini-title]', musicMini);
+    var musicMiniState = musicMini && qs('[data-music-mini-state]', musicMini);
+    var musicMiniIcon = musicMini && qs('[data-music-mini-icon]', musicMini);
+    var musicMiniCover = musicMini && qs('[data-music-mini-cover]', musicMini);
+    var musicLastFocus = null;
+    var musicModalIsOpen = false;
     var assetRoot = root.getAttribute('data-asset-root') || '/assets/alxian/';
     function assetCover(name) { return assetRoot + 'images/' + name; }
     var elapsed = 0; var duration = 0; var selectedTrack = 0;
     var musicItems = [
-      { title: '五哈', author: '邓超 & 陈赫 & 鹿晗 & 范志毅 & 宝石Gem & 王勉', duration: 224, url: 'https://image.goodjob.cn/image/live/wx/wuha.mp3', cover: assetCover('wuha.jpg') },
-      { title: langText('天空中的歌', 'Song in the sky'), author: '崔一乔', duration: 198, url: 'https://image.goodjob.cn/image/live/wx/tkzdg.mp3', cover: assetCover('tkzdg.jpg') },
-      { title: langText('鲜花', 'Flowers'), author: '回春丹乐队', duration: 231, url: 'https://image.goodjob.cn/image/live/wx/xh.mp3', cover: assetCover('xh.jpg') },
-      { title: langText('专注时刻 01', 'Focus session 01'), author: 'SoundHelix · T. Schürger', url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3', cover: assetCover('wuha.jpg') },
-      { title: langText('专注时刻 02', 'Focus session 02'), author: 'SoundHelix · T. Schürger', url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3', cover: assetCover('tkzdg.jpg') },
-      { title: langText('专注时刻 03', 'Focus session 03'), author: 'SoundHelix · T. Schürger', url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3', cover: assetCover('xh.jpg') },
-      { title: langText('专注时刻 04', 'Focus session 04'), author: 'SoundHelix · T. Schürger', url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3', cover: assetCover('wuha.jpg') },
-      { title: langText('专注时刻 05', 'Focus session 05'), author: 'SoundHelix · T. Schürger', url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3', cover: assetCover('tkzdg.jpg') },
-      { title: langText('专注时刻 06', 'Focus session 06'), author: 'SoundHelix · T. Schürger', url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3', cover: assetCover('xh.jpg') },
-      { title: langText('专注时刻 07', 'Focus session 07'), author: 'SoundHelix · T. Schürger', url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3', cover: assetCover('wuha.jpg') },
+      { title: '五哈', author: '邓超 & 陈赫 & 鹿晗 & 范志毅 & 宝石Gem & 王勉', duration: 224, url: 'https://image.goodjob.cn/image/live/wx/wuha.mp3', cover: assetCover('wuha.jpg'), lyrics: ['保持热爱，继续向前', 'Keep going, don\'t give up', '把每一次出发写进歌里'] },
+      { title: langText('天空中的歌', 'Song in the sky'), author: '崔一乔', duration: 198, url: 'https://image.goodjob.cn/image/live/wx/tkzdg.mp3', cover: assetCover('tkzdg.jpg'), lyrics: ['抬头看见天空中的歌', '让风把心事轻轻带走'] },
+      { title: langText('鲜花', 'Flowers'), author: '回春丹乐队', duration: 231, url: 'https://image.goodjob.cn/image/live/wx/xh.mp3', cover: assetCover('xh.jpg'), lyrics: ['总会有鲜花盛开的地方', '愿你一路闪耀'] },
+      { title: langText('专注时刻 01', 'Focus session 01'), author: 'SoundHelix · T. Schürger', url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3', cover: assetCover('wuha.jpg'), lyrics: ['Focus mode', 'One small step at a time'] },
+      { title: langText('专注时刻 02', 'Focus session 02'), author: 'SoundHelix · T. Schürger', url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3', cover: assetCover('tkzdg.jpg'), lyrics: ['Deep work', 'Build something useful'] },
+      { title: langText('专注时刻 03', 'Focus session 03'), author: 'SoundHelix · T. Schürger', url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3', cover: assetCover('xh.jpg'), lyrics: ['Make it clear', 'Make it kind'] },
+      { title: langText('专注时刻 04', 'Focus session 04'), author: 'SoundHelix · T. Schürger', url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3', cover: assetCover('wuha.jpg'), lyrics: ['Stay curious', 'Keep shipping'] },
+      { title: langText('专注时刻 05', 'Focus session 05'), author: 'SoundHelix · T. Schürger', url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3', cover: assetCover('tkzdg.jpg'), lyrics: ['Quiet hours', 'Bright ideas'] },
+      { title: langText('专注时刻 06', 'Focus session 06'), author: 'SoundHelix · T. Schürger', url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3', cover: assetCover('xh.jpg'), lyrics: ['Find your pace', 'Let the work speak'] },
+      { title: langText('专注时刻 07', 'Focus session 07'), author: 'SoundHelix · T. Schürger', url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3', cover: assetCover('wuha.jpg'), lyrics: ['A little progress', 'Every single day'] },
     ];
     var audio = new Audio();
     audio.preload = 'metadata';
@@ -604,6 +627,7 @@
       if (progressTrack) progressTrack.setAttribute('aria-valuenow', String(Math.round(ratio * 100)));
       if (currentNode) currentNode.textContent = formatTime(elapsed);
       if (totalNode) totalNode.textContent = formatTime(duration);
+      syncMusicModal();
     }
     function setMusicState(playing) {
       musicButton.setAttribute('aria-pressed', String(playing));
@@ -612,6 +636,88 @@
       musicButton.setAttribute('aria-label', playing ? langText('暂停音乐', 'Pause music') : langText('播放音乐', 'Play music'));
       if (track) track.classList.toggle('is-playing', playing);
       if (playlist) qsa('[data-track-state]', playlist).forEach(function (state, itemIndex) { state.textContent = itemIndex === selectedTrack ? (playing ? langText('播放中', 'Playing') : langText('已选', 'Selected')) : ''; });
+      syncMusicModal();
+    }
+    var lastLyricsTrack = -1;
+    function renderMusicLyrics() {
+      if (!musicModalLyrics) return;
+      if (lastLyricsTrack === selectedTrack && musicModalLyrics.childNodes.length) return;
+      lastLyricsTrack = selectedTrack;
+      musicModalLyrics.innerHTML = '';
+      var lines = (musicItems[selectedTrack] && musicItems[selectedTrack].lyrics) || [langText('这首歌暂时没有歌词', 'Lyrics are not available for this track')];
+      lines.forEach(function (line, index) {
+        var node = document.createElement('button');
+        node.type = 'button'; node.className = 'alxian-lyric-line'; node.dataset.lyricIndex = String(index); node.textContent = line;
+        node.addEventListener('click', function () { if (duration > 0 && Number.isFinite(audio.duration)) audio.currentTime = Math.min(duration, (duration / Math.max(1, lines.length)) * index); });
+        musicModalLyrics.appendChild(node);
+      });
+    }
+    function syncMusicLyrics() {
+      if (!musicModalLyrics) return;
+      var lines = qsa('.alxian-lyric-line', musicModalLyrics); if (!lines.length) return;
+      var activeIndex = Math.min(lines.length - 1, Math.floor((elapsed / Math.max(1, duration)) * lines.length));
+      lines.forEach(function (line, index) { line.classList.toggle('is-active', index === activeIndex); });
+      var active = lines[activeIndex];
+      if (active && musicModalIsOpen && active.scrollIntoView && !reduceMotion) active.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+    }
+    function renderMusicModalPlaylist() {
+      if (!musicModalList) return;
+      musicModalList.innerHTML = '';
+      musicItems.forEach(function (item, index) {
+        var button = document.createElement('button'); button.type = 'button'; button.dataset.modalTrackIndex = String(index); button.className = index === selectedTrack ? 'is-current' : '';
+        var title = document.createElement('span'); title.textContent = (index + 1) + '. ' + item.title;
+        var state = document.createElement('em'); state.textContent = index === selectedTrack ? (musicButton.getAttribute('aria-pressed') === 'true' ? langText('播放中', 'Playing') : langText('已选', 'Selected')) : '';
+        button.appendChild(title); button.appendChild(state);
+        button.addEventListener('click', function (event) { event.stopPropagation(); selectMusic(index, true); });
+        musicModalList.appendChild(button);
+      });
+    }
+    function syncMusicModal() {
+      if (!musicModal) return;
+      var item = musicItems[selectedTrack] || {};
+      if (musicModalTitle) musicModalTitle.textContent = item.title || '';
+      if (musicModalAuthor) musicModalAuthor.textContent = item.author || '';
+      if (musicModalCover) { musicModalCover.src = item.cover || ''; musicModalCover.alt = item.title || ''; }
+      if (musicModalIndex) musicModalIndex.textContent = (selectedTrack + 1) + ' / ' + musicItems.length;
+      var modalRatio = duration ? Math.min(1, elapsed / duration) : 0;
+      if (musicModalProgressFill) musicModalProgressFill.style.width = (modalRatio * 100) + '%';
+      if (musicModalProgressDot) musicModalProgressDot.style.left = (modalRatio * 100) + '%';
+      if (musicModalProgress) musicModalProgress.setAttribute('aria-valuenow', String(Math.round(modalRatio * 100)));
+      if (musicModalCurrent) musicModalCurrent.textContent = formatTime(elapsed);
+      if (musicModalTotal) musicModalTotal.textContent = formatTime(duration);
+      if (musicModalPlay) { var playing = musicButton.getAttribute('aria-pressed') === 'true'; musicModalPlay.textContent = playing ? 'Ⅱ' : '▶'; musicModalPlay.setAttribute('aria-label', playing ? langText('暂停音乐', 'Pause music') : langText('播放音乐', 'Play music')); }
+      if (musicMiniTitle) musicMiniTitle.textContent = item.title || '';
+      if (musicMiniState) musicMiniState.textContent = musicButton.getAttribute('aria-pressed') === 'true' ? langText('播放中', 'Playing') : langText('已暂停', 'Paused');
+      if (musicMiniIcon) musicMiniIcon.textContent = musicButton.getAttribute('aria-pressed') === 'true' ? 'Ⅱ' : '▶';
+      if (musicMiniCover && item.cover) musicMiniCover.src = item.cover;
+      renderMusicLyrics(); syncMusicLyrics();
+      if (musicModalList) qsa('button[data-modal-track-index]', musicModalList).forEach(function (button) { var current = Number(button.dataset.modalTrackIndex) === selectedTrack; button.classList.toggle('is-current', current); var state = button.querySelector('em'); if (state) state.textContent = current ? (musicButton.getAttribute('aria-pressed') === 'true' ? langText('播放中', 'Playing') : langText('已选', 'Selected')) : ''; });
+    }
+    function openMusicModal() {
+      if (!musicModal) return;
+      musicLastFocus = document.activeElement; musicModal.hidden = false; musicModal.classList.add('is-open'); musicModalIsOpen = true; root.classList.add('alxian-music-open'); syncMusicModal();
+      var closeButton = qs('[data-music-modal-close]:not(.alxian-music-modal-backdrop)', musicModal); if (closeButton) closeButton.focus();
+    }
+    function closeMusicModal() {
+      if (!musicModal) return;
+      musicModal.classList.remove('is-open'); musicModalIsOpen = false; root.classList.remove('alxian-music-open'); musicModal.hidden = true;
+      if (musicMini) musicMini.hidden = true;
+      if (musicLastFocus && musicLastFocus.focus) musicLastFocus.focus(); musicLastFocus = null;
+    }
+    function minimizeMusicModal() {
+      if (!musicModal) return;
+      musicModal.classList.remove('is-open'); musicModalIsOpen = false; root.classList.remove('alxian-music-open'); musicModal.hidden = true;
+      if (musicMini) { musicMini.hidden = false; syncMusicModal(); }
+    }
+    function spawnMusicDanmaku(message) {
+      if (!musicModalDanmaku) return;
+      var item = document.createElement('span'); item.className = 'alxian-danmaku-item'; item.textContent = message;
+      item.style.top = (12 + Math.random() * 68) + '%'; item.style.animationDuration = (6 + Math.random() * 5) + 's'; musicModalDanmaku.appendChild(item);
+      window.setTimeout(function () { if (item.parentNode) item.remove(); }, 11500);
+    }
+    function seekMusicFromEvent(event, progressNode) {
+      var rect = progressNode.getBoundingClientRect(); var ratio = Math.min(1, Math.max(0, (event.clientX - rect.left) / Math.max(1, rect.width))); var next = ratio * duration;
+      if (Number.isFinite(audio.duration)) audio.currentTime = next; renderMusic(next, duration);
     }
     function renderPlaylist() {
       if (!playlist) return;
@@ -647,7 +753,9 @@
       if (coverNode) { coverNode.src = item.cover; coverNode.alt = item.title; }
       if (indexNode) indexNode.textContent = (selectedTrack + 1) + '/' + musicItems.length;
       if (playlist) qsa('button[data-track-index]', playlist).forEach(function (button) { button.classList.toggle('is-current', Number(button.dataset.trackIndex) === selectedTrack); });
+      lastLyricsTrack = -1;
       renderMusic(0, duration);
+      renderMusicModalPlaylist();
       if (autoplay) startMusic();
     }
     function startMusic() {
@@ -681,6 +789,28 @@
     if (prevTrack) prevTrack.addEventListener('click', function (event) { event.stopPropagation(); selectMusic(selectedTrack - 1, true); });
     if (nextTrack) nextTrack.addEventListener('click', function (event) { event.stopPropagation(); selectMusic(selectedTrack + 1, true); });
     if (track) track.addEventListener('click', function (event) { if (event.target.closest('button,[data-music-progress]')) return; });
+    var musicOpenTrigger = qs('[data-music-open]');
+    if (musicOpenTrigger) {
+      musicOpenTrigger.addEventListener('click', function (event) { if (event.target.closest('button,[data-music-progress]')) return; openMusicModal(); });
+      musicOpenTrigger.addEventListener('keydown', function (event) { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); openMusicModal(); } });
+    }
+    if (musicModal) {
+      qsa('[data-music-modal-close]', musicModal).forEach(function (button) { button.addEventListener('click', function (event) { if (event.target === musicModal || event.currentTarget !== musicModal.querySelector('.alxian-music-modal-backdrop')) event.stopPropagation(); closeMusicModal(); }); });
+      var minimizeButton = qs('[data-music-modal-minimize]', musicModal); if (minimizeButton) minimizeButton.addEventListener('click', function (event) { event.stopPropagation(); minimizeMusicModal(); });
+      var modalPrev = qs('[data-music-modal-prev]', musicModal); var modalNext = qs('[data-music-modal-next]', musicModal);
+      if (modalPrev) modalPrev.addEventListener('click', function (event) { event.stopPropagation(); selectMusic(selectedTrack - 1, true); });
+      if (modalNext) modalNext.addEventListener('click', function (event) { event.stopPropagation(); selectMusic(selectedTrack + 1, true); });
+      if (musicModalPlay) musicModalPlay.addEventListener('click', function (event) { event.stopPropagation(); musicButton.getAttribute('aria-pressed') === 'true' ? stopMusic(false) : startMusic(); });
+      if (musicModalProgress) {
+        musicModalProgress.addEventListener('pointerdown', function (event) { event.stopPropagation(); seekMusicFromEvent(event, musicModalProgress); });
+        musicModalProgress.addEventListener('keydown', function (event) { var next = null; if (event.key === 'ArrowRight' || event.key === 'ArrowUp') next = Math.min(duration, elapsed + 5); if (event.key === 'ArrowLeft' || event.key === 'ArrowDown') next = Math.max(0, elapsed - 5); if (next == null) return; event.preventDefault(); if (Number.isFinite(audio.duration)) audio.currentTime = next; renderMusic(next, duration); });
+      }
+      qsa('[data-music-tab]', musicModal).forEach(function (tab) { tab.addEventListener('click', function () { var value = tab.dataset.musicTab; qsa('[data-music-tab]', musicModal).forEach(function (item) { var active = item === tab; item.classList.toggle('is-active', active); item.setAttribute('aria-selected', String(active)); }); qsa('[data-music-modal-content]', musicModal).forEach(function (content) { content.hidden = content.dataset.musicModalContent !== value; }); }); });
+      if (musicModalDanmakuForm) musicModalDanmakuForm.addEventListener('submit', function (event) { event.preventDefault(); var input = musicModalDanmakuForm.querySelector('input[name="message"]'); var value = input && input.value.trim(); if (!value) return; spawnMusicDanmaku(value); input.value = ''; });
+      renderMusicModalPlaylist();
+    }
+    if (musicMini) musicMini.addEventListener('click', function (event) { event.stopPropagation(); openMusicModal(); });
+    document.addEventListener('keydown', function (event) { if (!musicModalIsOpen) return; if (event.key === 'Escape') closeMusicModal(); if ((event.key === 'ArrowLeft' || event.key === 'ArrowRight') && !event.target.closest('input,textarea')) { if (event.key === 'ArrowLeft') selectMusic(selectedTrack - 1, true); else selectMusic(selectedTrack + 1, true); } });
 
     function setMusicSource(message) {
       if (sourceNode) sourceNode.textContent = message;
