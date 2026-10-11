@@ -9,6 +9,18 @@
   function qsa(selector, scope) { return Array.prototype.slice.call((scope || document).querySelectorAll(selector)); }
   function langText(zh, en) { return root && root.dataset.lang === 'zh' ? zh : en; }
 
+  /* Keep the age current even when a static build has not been redeployed yet. */
+  var ageNode = qs('[data-age]');
+  if (ageNode) {
+    var birthYear = Number(ageNode.getAttribute('data-birth-year'));
+    if (Number.isFinite(birthYear) && birthYear > 1900 && birthYear <= new Date().getFullYear()) {
+      var age = Math.max(0, new Date().getFullYear() - birthYear);
+      ageNode.textContent = root.dataset.lang === 'zh'
+        ? age + ' 岁 · 南昌 / 中国'
+        : age + ' years old · Software engineer · Nanchang, China';
+    }
+  }
+
   /* The original loader leaves the viewport with a vertical wipe. Keep the
      curtain until the primary illustration is ready, with a hard fallback. */
   var loader = qs('[data-loader]');

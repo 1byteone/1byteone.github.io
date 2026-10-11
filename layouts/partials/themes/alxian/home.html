@@ -1,6 +1,7 @@
 {{- $zh := hasPrefix .Lang "zh" -}}
 {{- $site := .Site.Data.site.site -}}
 {{- $copy := index $site.copy (cond $zh "zh" "en") -}}
+{{- $age := sub now.Year $site.identity.birth_year -}}
 {{- $asset := "assets/alxian/" | relURL -}}
 {{- $projects := where .Site.RegularPages "Section" "projects" -}}
 {{- $articles := where .Site.RegularPages "Section" "blog" -}}
@@ -14,7 +15,7 @@
     <link rel="canonical" href="{{ .Permalink }}">
     <title>{{ if $zh }}{{ $site.identity.name }} · 个人主页{{ else }}{{ $site.identity.name_en }} · Personal homepage{{ end }}</title>
     <link rel="stylesheet" href="{{ "css/alxian-theme.css" | relURL }}?v=5">
-    <script defer src="{{ "js/alxian-theme.js" | relURL }}?v=5"></script>
+    <script defer src="{{ "js/alxian-theme.js" | relURL }}?v=6"></script>
   </head>
   <body class="alxian-theme" data-lang="{{ if $zh }}zh{{ else }}en{{ end }}" data-asset-root="{{ $asset }}">
     <div class="alxian-loader" data-loader role="status" aria-live="polite" aria-label="{{ if $zh }}正在加载{{ else }}Loading{{ end }}"><div class="alxian-loader-topline"><span>PERSONAL ARCHIVE</span><span>00 / 01</span></div><div class="alxian-loader-content"><img src="{{ printf "%simages/keep-going.png" $asset }}" alt=""><span>KEEP GOING</span><strong>DON'T GIVE UP</strong><i class="alxian-loader-progress"><b></b></i></div><div class="alxian-loader-footer"><span>WUXIAN'S WEB</span><span>LOADING / READY</span></div></div>
@@ -41,7 +42,7 @@
             <h1>{{ if $zh }}你好，我是{{ $site.identity.name }}<span>。</span>{{ else }}Hello, I'm {{ $site.identity.name_en }}<span>.</span>{{ end }}</h1>
             <ul class="alxian-facts">
               <li><b>{{ if $zh }}前端 / 后端 / AI 工程{{ else }}Frontend / backend / AI engineering{{ end }}</b></li>
-              <li>{{ if $zh }}26 岁 · 南昌 / 中国{{ else }}Software engineer · Nanchang, China{{ end }}</li>
+              <li data-age data-birth-year="{{ $site.identity.birth_year }}">{{ if $zh }}{{ $age }} 岁 · 南昌 / 中国{{ else }}{{ $age }} years old · Software engineer · Nanchang, China{{ end }}</li>
               <li>{{ if $zh }}在做可以长期使用的东西{{ else }}Building things people can keep using{{ end }}</li>
             </ul>
             <p class="alxian-signature">Wuxian;</p>
