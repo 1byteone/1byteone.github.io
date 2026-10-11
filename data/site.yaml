@@ -11,6 +11,7 @@ site:
     github_label: github.com/1byteone
     location: 南昌 / 中国
     location_en: Nanchang / China
+    site_created: "2026-8-18"
   copy:
     zh:
       role: AI 应用 / 后端工程 / 开源
