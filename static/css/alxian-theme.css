@@ -69,6 +69,19 @@ body.alxian-theme{background:var(--alx-bg);transition:background-color .7s cubic
 .alxian-gallery-stage img{width:190px;height:120px;border-radius:8px;opacity:0;box-shadow:0 5px 14px #2f3f4914;transition:transform .3s cubic-bezier(.22,1,.36,1),opacity .3s ease;will-change:transform,opacity}
 .alxian-gallery-stage img.is-current{opacity:1}
 .alxian-gallery-stage img:hover{filter:brightness(1.04)}
+
+.alxian-lower-grid{display:flex;align-items:flex-start;flex-wrap:wrap;gap:16px;margin-top:35px}
+.alxian-gallery{flex:0 0 210px;padding:10px}
+.alxian-music{flex:1 1 280px}
+.alxian-todos{flex:1 1 280px}
+.alxian-todos ol{max-height:188px;overflow-y:auto;margin:0;padding:0 4px 0 26px;scrollbar-width:thin}
+.alxian-todos li{min-height:24px;padding:2px 8px;line-height:18px;border:0;border-radius:5px;transition:background-color .2s ease}
+.alxian-todos li:hover{background:#0000000a}
+.alxian-todos li .done{display:grid;flex:none;width:18px;height:18px;place-items:center;border-radius:50%;background:#6f767d;color:#fff}
+.alxian-todos li .done img{width:13px;height:13px;filter:brightness(0) saturate(100%) invert(100%)}
+.alxian-todos li>span:not(.done){display:flex;flex:none;align-items:center;gap:4px;opacity:.6}
+.alxian-todos li>span:not(.done):before{content:"";display:block;width:5px;height:5px;border-radius:50%;background:#6f767d}
+.alxian-theme.is-dark .alxian-todos li:hover{background:#ffffff0f}
 .alxian-comment-trigger{width:40px!important;height:40px!important;border-radius:50%!important;background:#5d676b!important;color:#fff!important;box-shadow:0 10px 20px #2f33383d!important;transition:background-color .3s,box-shadow .3s,transform .3s!important}
 .alxian-comment-trigger:hover{background:#2c363f!important;box-shadow:0 14px 24px #2f33384d!important;transform:translateY(-1px)}
 .alxian-comment-trigger img{width:18px;height:18px;filter:brightness(0) saturate(100%) invert(100%)}
@@ -104,3 +117,94 @@ body.alxian-theme{background:var(--alx-bg);transition:background-color .7s cubic
 @media(max-width:900px){.alxian-character-wrap{right:-20px;height:min(66vh,42.98vw);width:auto}.alxian-character-wrap .alxian-character{width:100%}}
 @media(max-width:620px){.alxian-profile-art .alxian-profile-art-main{width:150px;height:150px}.alxian-profile-smoke{top:-135px;width:150px!important;height:150px!important}.alxian-character-wrap{right:-45px;width:150px;height:auto;aspect-ratio:448/1098;opacity:.34}.alxian-character-wrap .alxian-character{width:100%;height:auto}}
 @media(prefers-reduced-motion:reduce){.alxian-character-wrap{animation:none;opacity:1}.alxian-character-wrap.is-blinking .alxian-character-eye i{transform:none}.alxian-guitar-note{animation:none}}
+
+/* Homepage surface parity: marquee skills, stacked gallery controls and the
+   compact source-site music player. These rules intentionally override the
+   earlier generic cards so the small homepage modules keep the reference
+   dimensions at every breakpoint. */
+.alxian-skill-strip{position:relative;display:block;overflow:hidden;clip-path:inset(-9999px 0);padding:13px 0 2px}
+.alxian-skill-strip:before,.alxian-skill-strip:after{content:"";position:absolute;top:0;bottom:0;width:32px;z-index:2;pointer-events:none}
+.alxian-skill-strip:before{left:0;background:linear-gradient(90deg,var(--alx-bg),transparent)}
+.alxian-skill-strip:after{right:0;background:linear-gradient(270deg,var(--alx-bg),transparent)}
+.alxian-skill-track{display:flex;align-items:flex-start;gap:10px;width:max-content;will-change:transform;animation:alx-skill-marquee 68s linear infinite}
+.alxian-skill{position:relative;display:flex;flex:0 0 44px;min-width:44px;width:44px;flex-direction:column;align-items:center;gap:5px;padding:0;border:0;background:transparent;color:var(--alx-muted);cursor:pointer;outline:none}
+.alxian-skill-icon{position:relative;display:grid;place-items:center;width:44px;height:22px}
+.alxian-skill img{width:22px;height:22px;object-fit:contain;filter:drop-shadow(0 2px 3px #516b7a21);transition:transform .2s ease}
+.alxian-skill-label{position:relative;display:flex;align-items:center;justify-content:center;width:44px;min-width:44px;height:18px}
+.alxian-skill-label small{display:block;width:44px;overflow:hidden;text-overflow:ellipsis;text-align:center;white-space:nowrap;color:var(--alx-ink);font-size:10px;line-height:18px;transition:opacity .2s ease}
+.alxian-skill-label em{position:absolute;left:50%;top:0;z-index:3;padding:1px 4px;border-radius:3px;background:#edf2f6f0;color:#333;font:10px/16px inherit;font-style:normal;white-space:nowrap;opacity:0;transform:translateX(-50%) scale(.82);transition:transform .3s ease,opacity .3s ease;pointer-events:none}
+.alxian-skill:hover,.alxian-skill:focus-visible{z-index:4}
+.alxian-skill:hover img,.alxian-skill:focus-visible img{transform:scale(1.1)}
+.alxian-skill:hover .alxian-skill-label small,.alxian-skill:focus-visible .alxian-skill-label small{opacity:0}
+.alxian-skill:hover .alxian-skill-label em,.alxian-skill:focus-visible .alxian-skill-label em{opacity:1;transform:translateX(-50%) scale(1)}
+.alxian-skill.is-selected{z-index:20;transform:scale(1.45);color:var(--alx-ink);transition:transform .65s cubic-bezier(.22,1,.36,1),opacity .28s ease}
+.alxian-skill-track.has-selection .alxian-skill:not(.is-selected){opacity:.62;transform:scale(.88);transition:transform .28s ease,opacity .28s ease}
+.alxian-skill.is-selected .alxian-skill-label small{opacity:0}.alxian-skill.is-selected .alxian-skill-label em{opacity:1;transform:translateX(-50%) scale(.69)}
+.alxian-skill:focus-visible{outline:2px solid var(--alx-blue);outline-offset:3px;border-radius:3px}
+@keyframes alx-skill-marquee{to{transform:translateX(calc(-50% - 5px))}}
+.alxian-skill-track:hover,.alxian-skill-track:focus-within{animation-play-state:paused}
+.alxian-skill-track.is-focus{animation-play-state:paused}
+.alxian-skill.is-selected{z-index:5;color:var(--alx-ink)}
+.alxian-theme.is-dark .alxian-skill-label em{background:#edf2f6f0;color:#333}
+
+.alxian-gallery header{width:190px}
+.alxian-gallery-controls{display:flex;align-items:center;gap:8px}
+.alxian-gallery-controls button{display:grid;place-items:center;width:24px;height:24px;border-radius:5px;color:var(--alx-ink);font-size:14px;line-height:1;transition:background-color .2s ease}
+.alxian-gallery-controls button:hover,.alxian-gallery-controls button:focus-visible{background:#00000014}
+.alxian-gallery-controls span{min-width:36px;text-align:center;color:var(--alx-muted);font-size:12px;line-height:24px}
+.alxian-gallery-stage{position:relative;width:190px;height:120px;overflow:visible;aspect-ratio:auto;border-radius:8px}
+.alxian-gallery-stage img{position:absolute;inset:0;width:190px;height:120px;object-fit:cover;border-radius:8px;box-shadow:0 5px 14px #2f3f4914;opacity:0;transition:transform .3s cubic-bezier(.22,1,.36,1),opacity .3s ease;will-change:transform,opacity;cursor:pointer}
+.alxian-gallery-stage img.is-current{opacity:1}
+.alxian-gallery-stage img:hover{filter:brightness(1.04)}
+
+.alxian-music{min-width:280px;padding:12px;border-radius:8px;gap:4px;cursor:pointer;transition:background-color .2s ease}
+.alxian-music:hover{background:#0000000a}
+.alxian-music header{min-height:0;margin-bottom:4px}
+.alxian-music .alxian-track{gap:10px;padding:0;border:0;border-radius:0;background:transparent;align-items:flex-start}
+.alxian-track>img{width:64px;height:64px;border-radius:8px}
+.alxian-track>div{min-width:0;flex:1;display:flex;flex-direction:column;gap:0}
+.alxian-track strong{font-size:14px;line-height:20px}.alxian-track small{font-size:12px;line-height:18px;opacity:.7}
+.alxian-progress{position:relative;height:5px;margin:5px 0 2px;border-radius:999px;background:#0000001f;cursor:pointer}
+.alxian-progress i{position:absolute;inset:0 auto 0 0;width:0;height:100%;border-radius:inherit;background:#6f767d;transition:width .1s linear}
+.alxian-progress b{position:absolute;top:50%;left:0;width:9px;height:9px;border-radius:50%;background:#6f767d;box-shadow:0 2px 5px #0003;transform:translate(-50%,-50%);transition:left .1s linear}
+.alxian-track [data-music-current],.alxian-track [data-music-total]{display:inline!important;width:auto!important;color:var(--alx-muted);font-size:10px;line-height:14px;opacity:.7}
+.alxian-track [data-music-total]{float:none}
+.alxian-track-controls{display:flex!important;flex-direction:row!important;align-items:center;gap:8px;margin-top:3px}
+.alxian-track-controls button{display:grid;width:24px;height:24px;place-items:center;border-radius:6px;background:transparent;color:inherit;font-size:16px;line-height:1;transition:background-color .2s ease,transform .2s ease}
+.alxian-track-controls button:hover,.alxian-track-controls button:focus-visible{background:#00000014;transform:translateY(-1px)}
+.alxian-track-controls [data-music]{width:24px;height:24px;border-radius:6px;background:transparent;color:inherit;font-size:14px}
+.alxian-track-controls [data-music][aria-pressed=true]{background:#0000000e}
+.alxian-track-controls [data-music-index]{color:var(--alx-muted);font-size:10px;line-height:1}
+.alxian-playlist{display:flex;max-height:96px;flex-direction:column;gap:4px;overflow-y:auto;margin-top:4px;padding-right:4px;scrollbar-width:thin}
+.alxian-playlist button{display:flex;align-items:center;justify-content:space-between;gap:6px;width:100%;padding:4px 8px;border-radius:5px;color:inherit;text-align:left;font-size:12px;line-height:18px;transition:background-color .2s ease}
+.alxian-playlist button:hover,.alxian-playlist button:focus-visible{background:#0000000a}
+.alxian-playlist button.is-current{background:#0000000f;font-weight:600}
+.alxian-playlist button span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.alxian-playlist button em{flex:none;color:var(--alx-muted);font-size:10px;font-style:normal}
+.alxian-theme.is-dark .alxian-music:hover{background:#ffffff0d}.alxian-theme.is-dark .alxian-progress{background:#ffffff26}.alxian-theme.is-dark .alxian-progress i,.alxian-theme.is-dark .alxian-progress b{background:#fff}.alxian-theme.is-dark .alxian-playlist button:hover{background:#ffffff0f}.alxian-theme.is-dark .alxian-playlist button.is-current{background:#ffffff1a}
+.alxian-track[data-audio-error]{position:relative}.alxian-track[data-audio-error]::after{content:'Audio unavailable';position:absolute;right:12px;bottom:6px;color:var(--alx-muted);font-size:9px}.alxian-theme[data-lang="zh"] .alxian-track[data-audio-error]::after{content:'音频暂不可用'}
+
+.alxian-portfolio-fab{position:fixed;right:32px;bottom:32px;z-index:20}
+.alxian-portfolio-fab a{display:flex;align-items:center;gap:8px;padding:8px;border:1px solid #d1d5db;background:#fffffff2;color:#374151;border-radius:8px;box-shadow:0 4px 12px #00000014;backdrop-filter:blur(8px);font-size:12px;transition:transform .3s ease,background-color .3s ease,box-shadow .3s ease}
+.alxian-portfolio-fab a:hover,.alxian-portfolio-fab a:focus-visible{transform:scale(1.05);background:#fffffff8;box-shadow:0 7px 18px #0000001f}
+.alxian-portfolio-fab img{width:16px;height:16px;filter:brightness(0) saturate(100%) invert(50%)}
+.alxian-footer{position:fixed;inset-inline:0;bottom:0;z-index:20;margin-top:18px;padding:56px 20px 20px;background:linear-gradient(to top,#fffffff2 0%,#ffffff6b 56%,transparent 100%);text-shadow:0 1px 8px #fff;pointer-events:none}
+.alxian-footer>*{pointer-events:auto}
+@media(max-width:620px){.alxian-portfolio-fab{right:16px;bottom:18px}.alxian-footer{padding-top:44px}.alxian-lower-grid{display:grid;grid-template-columns:1fr;gap:23px}.alxian-gallery{padding:10px}.alxian-music,.alxian-todos{min-width:0}.alxian-skill-strip:before,.alxian-skill-strip:after{width:20px}}
+@media(prefers-reduced-motion:reduce){.alxian-skill-track{animation:none}.alxian-skill img,.alxian-portfolio-fab a{transition:none}}
+
+/* Live GitHub contribution levels. These classes replace the old decorative
+   nth-child pattern once the public profile calendar has loaded. */
+.alxian-heatmap i.is-empty{background:transparent!important;box-shadow:none}
+.alxian-heatmap i.is-loading{background:#deebf3!important;opacity:.55;animation:alx-heatmap-pulse 1.2s ease-in-out infinite}
+.alxian-heatmap i.level-0{background:#deebf3!important}
+.alxian-heatmap i.level-1{background:#bfdce9!important}
+.alxian-heatmap i.level-2{background:#9bc7dc!important}
+.alxian-heatmap i.level-3{background:#6da8c5!important}
+.alxian-heatmap i.level-4{background:#477b9a!important}
+.alxian-year{display:flex;align-items:center;gap:7px}
+.alxian-year button{border:0;background:transparent;padding:0 2px;color:inherit;font:inherit;line-height:1;cursor:pointer;transition:opacity .2s ease,transform .2s ease}
+.alxian-year button:hover:not(:disabled){transform:scale(1.2);color:var(--alx-ink)}
+.alxian-year button:disabled{opacity:.3;cursor:not-allowed}
+.alxian-heatmap[data-github-error]{opacity:.62}
+@keyframes alx-heatmap-pulse{0%,100%{opacity:.35}50%{opacity:.8}}
+@media(prefers-reduced-motion:reduce){.alxian-heatmap i.is-loading{animation:none}}

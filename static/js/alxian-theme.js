@@ -143,15 +143,128 @@
     }, { passive: true });
   }
 
+  /* GitHub's contribution graph is not available from the unauthenticated
+     GitHub API. The public contributions service mirrors GitHub's calendar
+     and exposes the actual public profile data with CORS enabled, so the
+     static GitHub Pages build can still render the owner's live activity. */
   var heatmap = qs('[data-heatmap]');
-  if (heatmap && !heatmap.children.length) {
-    var cells = document.createDocumentFragment();
-    for (var i = 0; i < 371; i += 1) {
-      var cell = document.createElement('i');
-      cell.title = (Math.floor(i / 7) + 1) + ' contributions';
-      cells.appendChild(cell);
+  if (heatmap) {
+    var githubTotal = qs('[data-github-total]');
+    var githubSummary = qs('[data-github-summary]');
+    var githubYearNode = qs('[data-github-year]');
+    var githubPrev = qs('[data-github-year-prev]');
+    var githubNext = qs('[data-github-year-next]');
+    var githubUrl = heatmap.getAttribute('data-github-url') || '';
+    var githubMatch = githubUrl.match(/github\.com\/([^/?#]+)/i);
+    var githubUser = githubMatch ? githubMatch[1] : '';
+    var currentYear = new Date().getFullYear();
+    var githubYear = currentYear;
+    var githubRequestId = 0;
+    var githubMinYear = 2008;
+    var githubCacheTtl = 30 * 60 * 1000;
+    var heatmapCells = [];
+
+    function githubText(zh, en) { return root && root.dataset.lang === 'zh' ? zh : en; }
+    function setGithubSummary(total, year, state) {
+      if (githubTotal) githubTotal.textContent = state === 'loading' ? '…' : (state === 'error' ? '--' : String(total));
+      if (!githubSummary) return;
+      if (state === 'loading') githubSummary.textContent = githubText('正在同步 GitHub 数据', 'Syncing GitHub data');
+      else if (state === 'error') githubSummary.textContent = githubText('GitHub 数据暂时不可用', 'GitHub data is temporarily unavailable');
+      else githubSummary.textContent = githubText(year + ' 年已提交', 'contributions in ' + year);
     }
-    heatmap.appendChild(cells);
+    function updateGithubYearButtons() {
+      if (githubYearNode) githubYearNode.textContent = String(githubYear);
+      if (githubPrev) githubPrev.disabled = githubYear <= githubMinYear;
+      if (githubNext) githubNext.disabled = githubYear >= currentYear;
+    }
+    function buildGithubCells() {
+      if (heatmapCells.length) return;
+      var fragment = document.createDocumentFragment();
+      for (var i = 0; i < 371; i += 1) {
+        var cell = document.createElement('i');
+        cell.className = 'is-empty is-loading';
+        cell.setAttribute('aria-hidden', 'true');
+        fragment.appendChild(cell);
+        heatmapCells.push(cell);
+      }
+      heatmap.appendChild(fragment);
+    }
+    function cacheKey(year) { return 'alxian-github-contributions:' + githubUser + ':' + year; }
+    function readGithubCache(year) {
+      try {
+        var cached = JSON.parse(localStorage.getItem(cacheKey(year)) || 'null');
+        if (cached && Array.isArray(cached.contributions) && cached.savedAt && Date.now() - cached.savedAt < githubCacheTtl) return cached;
+      } catch (_) {}
+      return null;
+    }
+    function writeGithubCache(year, payload) {
+      try { localStorage.setItem(cacheKey(year), JSON.stringify({ savedAt: Date.now(), contributions: payload.contributions })); } catch (_) {}
+    }
+    function formatGithubDate(dateValue) {
+      var date = new Date(dateValue + 'T00:00:00Z');
+      if (isNaN(date.getTime())) return dateValue;
+      return date.toISOString().slice(0, 10);
+    }
+    function renderGithubContributions(payload, year) {
+      var records = payload && Array.isArray(payload.contributions) ? payload.contributions : [];
+      var byDate = {};
+      var total = 0;
+      records.forEach(function (record) {
+        if (!record || !record.date) return;
+        var count = Number(record.count) || 0;
+        byDate[record.date] = { count: count, level: Math.max(0, Math.min(4, Number(record.level) || 0)) };
+        total += count;
+      });
+      var firstDay = new Date(Date.UTC(year, 0, 1));
+      var offset = firstDay.getUTCDay();
+      heatmapCells.forEach(function (cell, index) {
+        var dayOffset = index - offset;
+        var date = new Date(Date.UTC(year, 0, 1));
+        date.setUTCDate(date.getUTCDate() + dayOffset);
+        var dateKey = date.toISOString().slice(0, 10);
+        var inYear = date.getUTCFullYear() === year;
+        var item = inYear ? byDate[dateKey] : null;
+        cell.className = item ? 'level-' + item.level : 'is-empty';
+        cell.setAttribute('data-level', item ? String(item.level) : '0');
+        cell.setAttribute('data-date', dateKey);
+        cell.setAttribute('aria-hidden', item ? 'false' : 'true');
+        if (inYear) {
+          cell.title = formatGithubDate(dateKey) + ' · ' + (item ? item.count : 0) + ' ' + githubText('次提交', 'contributions');
+          cell.setAttribute('aria-label', cell.title);
+        } else {
+          cell.removeAttribute('title');
+          cell.removeAttribute('aria-label');
+        }
+      });
+      setGithubSummary(total, year, 'ready');
+    }
+    function loadGithubContributions(year) {
+      if (!githubUser) { setGithubSummary(0, year, 'error'); return; }
+      githubYear = year;
+      updateGithubYearButtons();
+      setGithubSummary(0, year, 'loading');
+      var requestId = ++githubRequestId;
+      var cached = readGithubCache(year);
+      if (cached) renderGithubContributions(cached, year);
+      var endpoint = 'https://github-contributions-api.jogruber.de/v4/' + encodeURIComponent(githubUser) + '?y=' + encodeURIComponent(String(year));
+      fetch(endpoint, { headers: { Accept: 'application/json' }, credentials: 'omit' }).then(function (response) {
+        if (!response.ok) throw new Error('GitHub contribution request failed');
+        return response.json();
+      }).then(function (payload) {
+        if (requestId !== githubRequestId || !payload || !Array.isArray(payload.contributions)) return;
+        writeGithubCache(year, payload);
+        renderGithubContributions(payload, year);
+      }).catch(function () {
+        if (requestId !== githubRequestId || cached) return;
+        setGithubSummary(0, year, 'error');
+        heatmap.setAttribute('data-github-error', 'true');
+      });
+    }
+    buildGithubCells();
+    updateGithubYearButtons();
+    if (githubPrev) githubPrev.addEventListener('click', function () { if (githubYear > githubMinYear) loadGithubContributions(githubYear - 1); });
+    if (githubNext) githubNext.addEventListener('click', function () { if (githubYear < currentYear) loadGithubContributions(githubYear + 1); });
+    loadGithubContributions(githubYear);
   }
 
   var themeButton = qs('[data-theme-toggle]');
@@ -193,6 +306,8 @@
 
   var gallery = qs('[data-gallery]');
   var galleryButton = qs('[data-gallery-next]');
+  var galleryPrevButton = qs('[data-gallery-prev]');
+  var galleryCount = qs('[data-gallery-count]');
   var galleryIndex = 0;
   var gallerySuppressClick = false;
   function showGallery(index) {
@@ -211,10 +326,13 @@
       image.style.pointerEvents = distance === 0 ? 'auto' : 'none';
       image.setAttribute('aria-hidden', itemIndex === galleryIndex ? 'false' : 'true');
     });
-    if (galleryButton) galleryButton.textContent = '‹  ' + (galleryIndex + 1) + ' / ' + images.length + '  ›';
+    if (galleryButton) galleryButton.setAttribute('aria-label', langText('下一张图片', 'Next gallery image'));
+    if (galleryPrevButton) galleryPrevButton.setAttribute('aria-label', langText('上一张图片', 'Previous gallery image'));
+    if (galleryCount) galleryCount.textContent = (galleryIndex + 1) + ' / ' + images.length;
   }
   showGallery(0);
   if (galleryButton) galleryButton.addEventListener('click', function () { showGallery(galleryIndex + 1); });
+  if (galleryPrevButton) galleryPrevButton.addEventListener('click', function () { showGallery(galleryIndex - 1); });
   if (gallery) {
     var galleryModal = null;
     function closeGalleryModal() { if (!galleryModal) return; galleryModal.classList.remove('is-open'); window.setTimeout(function () { if (galleryModal) { galleryModal.remove(); galleryModal = null; } }, 300); }
@@ -250,22 +368,147 @@
     gallery.setAttribute('tabindex', '0');
   }
 
-  /* Music card supports a real source when one is provided and a deterministic
-     visual demo when the static theme has no audio asset. */
+  /* The reference ticker pauses on hover/focus and turns a selected skill
+     into a short-lived focus state: every item dims, the selected item grows,
+     and the repeated track slides it to the centre before returning to its
+     marquee position. Use the Web Animations API when available so the CSS
+     marquee remains smooth and does not jump when a button is clicked. */
+  var skillStrip = qs('.alxian-skill-strip');
+  var skillTrack = skillStrip && qs('.alxian-skill-track', skillStrip);
+  if (skillStrip && skillTrack) {
+    var skillItems = qsa('.alxian-skill', skillTrack);
+    var skillResetTimer = 0;
+    var skillTrackAnimation = null;
+    var skillFocusDuration = reduceMotion ? 0 : 650;
+    function clearSkillFocus() {
+      if (skillResetTimer) window.clearTimeout(skillResetTimer);
+      skillResetTimer = 0;
+      if (skillTrackAnimation) { skillTrackAnimation.cancel(); skillTrackAnimation = null; }
+      skillTrack.style.animation = '';
+      skillTrack.style.transform = '';
+      skillTrack.classList.remove('is-focus');
+      skillItems.forEach(function (item) {
+        item.classList.remove('is-selected');
+        item.setAttribute('aria-pressed', 'false');
+        item.style.opacity = '';
+        item.style.transform = '';
+        item.style.transition = '';
+      });
+    }
+    function focusSkill(item) {
+      if (!item) return;
+      if (skillResetTimer) window.clearTimeout(skillResetTimer);
+      if (skillTrackAnimation) { skillTrackAnimation.cancel(); skillTrackAnimation = null; }
+      skillTrack.classList.add('is-focus');
+      var stripRect = skillStrip.getBoundingClientRect();
+      var itemRect = item.getBoundingClientRect();
+      var currentTranslate = 0;
+      var computedTransform = window.getComputedStyle(skillTrack).transform;
+      if (computedTransform && computedTransform !== 'none') {
+        var matrixMatch = computedTransform.match(/^matrix(?:3d)?\\((.+)\\)$/);
+        if (matrixMatch) {
+          var values = matrixMatch[1].split(',').map(function (value) { return parseFloat(value); });
+          currentTranslate = values.length === 16 ? values[12] : values[4];
+        }
+      }
+      skillTrack.style.animation = 'none';
+      var targetTranslate = currentTranslate + (stripRect.left + stripRect.width / 2) - (itemRect.left + itemRect.width / 2);
+      skillItems.forEach(function (entry) {
+        var selected = entry === item;
+        entry.classList.toggle('is-selected', selected);
+        entry.setAttribute('aria-pressed', selected ? 'true' : 'false');
+        entry.style.opacity = selected ? '1' : '.62';
+        entry.style.transform = selected ? 'scale(1.45)' : 'scale(.88)';
+        entry.style.transition = reduceMotion ? 'none' : 'transform .65s cubic-bezier(.22,1,.36,1), opacity .28s ease';
+      });
+      var from = 'translate3d(' + currentTranslate + 'px,0,0)';
+      var to = 'translate3d(' + targetTranslate + 'px,0,0)';
+      if (skillTrack.animate && !reduceMotion) {
+        skillTrackAnimation = skillTrack.animate([{ transform: from }, { transform: to }], { duration: skillFocusDuration, easing: 'cubic-bezier(.22,1,.36,1)', fill: 'forwards' });
+        skillTrackAnimation.onfinish = function () { skillTrack.style.transform = to; skillTrackAnimation = null; };
+      } else {
+        skillTrack.style.transform = to;
+      }
+      skillResetTimer = window.setTimeout(clearSkillFocus, reduceMotion ? 0 : 1800 + skillFocusDuration);
+    }
+    skillItems.forEach(function (item) {
+      item.addEventListener('click', function () { focusSkill(item); });
+      item.addEventListener('keydown', function (event) {
+        if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); focusSkill(item); }
+      });
+    });
+    skillStrip.addEventListener('mouseleave', function () {
+      if (!skillTrack.querySelector('.is-selected')) return;
+      if (skillResetTimer) window.clearTimeout(skillResetTimer);
+      skillResetTimer = window.setTimeout(clearSkillFocus, 1800);
+    });
+  }
+
+  /* A static GitHub Pages build has no visitor API of its own. Only fetch an
+     explicitly configured endpoint; the empty/default state stays neutral
+     instead of showing numbers copied from the reference site. */
+  var visitorStats = qs('[data-visitors-endpoint]');
+  if (visitorStats) {
+    var visitorsToday = qs('[data-visitors-today]', visitorStats);
+    var visitorsTotal = qs('[data-visitors-total]', visitorStats);
+    var visitorEndpoint = visitorStats.getAttribute('data-visitors-endpoint') || '';
+    function renderVisitors(payload) {
+      if (!payload || typeof payload !== 'object') return false;
+      var today = payload.todayVisitors != null ? payload.todayVisitors : payload.today;
+      var total = payload.totalVisitors != null ? payload.totalVisitors : payload.total;
+      if (visitorsToday && Number.isFinite(Number(today))) visitorsToday.textContent = String(Math.max(0, Number(today)));
+      if (visitorsTotal && Number.isFinite(Number(total))) visitorsTotal.textContent = String(Math.max(0, Number(total)));
+      return Number.isFinite(Number(today)) || Number.isFinite(Number(total));
+    }
+    if (visitorEndpoint) {
+      fetch(visitorEndpoint, { headers: { Accept: 'application/json' }, credentials: 'omit' }).then(function (response) {
+        if (!response.ok) throw new Error('visitor stats unavailable');
+        return response.json();
+      }).then(renderVisitors).catch(function () {});
+    }
+  }
+
+  /* The source site keeps one shared Audio element and a seekable playlist. */
   var musicButton = qs('[data-music]');
   if (musicButton) {
-    var track = musicButton.closest ? musicButton.closest('.alxian-track') : null;
-    var progress = track && qs('.alxian-progress i', track);
-    var timeWrap = track && qs('.alxian-track div > span', track);
-    var currentNode = timeWrap && timeWrap.firstChild;
-    var totalNode = timeWrap && qs('b', timeWrap);
-    var audio = musicButton.dataset.audioSrc ? new Audio(musicButton.dataset.audioSrc) : null;
-    var musicTimer = null; var elapsed = 0; var duration = 224;
+    var track = musicButton.closest ? musicButton.closest('[data-music-track]') : null;
+    var progressTrack = track && qs('[data-music-progress]', track);
+    var progress = progressTrack && qs('i', progressTrack);
+    var progressDot = progressTrack && qs('b', progressTrack);
+    var currentNode = track && qs('[data-music-current]', track);
+    var totalNode = track && qs('[data-music-total]', track);
+    var titleNode = track && qs('[data-music-title]', track);
+    var authorNode = track && qs('[data-music-author]', track);
+    var coverNode = track && qs('[data-music-cover]', track);
+    var indexNode = track && qs('[data-music-index]', track);
+    var playlist = track && track.parentNode && qs('[data-music-list]', track.parentNode);
+    var prevTrack = track && qs('[data-music-prev]', track);
+    var nextTrack = track && qs('[data-music-next]', track);
+    var assetRoot = root.getAttribute('data-asset-root') || '/assets/alxian/';
+    function assetCover(name) { return assetRoot + 'images/' + name; }
+    var elapsed = 0; var duration = 0; var selectedTrack = 0;
+    var musicItems = [
+      { title: '五哈', author: '邓超 & 陈赫 & 鹿晗 & 范志毅 & 宝石Gem & 王勉', duration: 224, url: 'https://image.goodjob.cn/image/live/wx/wuha.mp3', cover: assetCover('wuha.jpg') },
+      { title: langText('天空中的歌', 'Song in the sky'), author: '崔一乔', duration: 198, url: 'https://image.goodjob.cn/image/live/wx/tkzdg.mp3', cover: assetCover('tkzdg.jpg') },
+      { title: langText('鲜花', 'Flowers'), author: '回春丹乐队', duration: 231, url: 'https://image.goodjob.cn/image/live/wx/xh.mp3', cover: assetCover('xh.jpg') },
+      { title: langText('专注时刻 01', 'Focus session 01'), author: 'Free preview · SoundHelix', url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3', cover: assetCover('wuha.jpg') },
+      { title: langText('专注时刻 02', 'Focus session 02'), author: 'Free preview · SoundHelix', url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3', cover: assetCover('tkzdg.jpg') },
+      { title: langText('专注时刻 03', 'Focus session 03'), author: 'Free preview · SoundHelix', url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3', cover: assetCover('xh.jpg') },
+      { title: langText('专注时刻 04', 'Focus session 04'), author: 'Free preview · SoundHelix', url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3', cover: assetCover('wuha.jpg') },
+      { title: langText('专注时刻 05', 'Focus session 05'), author: 'Free preview · SoundHelix', url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3', cover: assetCover('tkzdg.jpg') },
+      { title: langText('专注时刻 06', 'Focus session 06'), author: 'Free preview · SoundHelix', url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3', cover: assetCover('xh.jpg') },
+      { title: langText('专注时刻 07', 'Focus session 07'), author: 'Free preview · SoundHelix', url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3', cover: assetCover('wuha.jpg') },
+    ];
+    var audio = new Audio();
+    audio.preload = 'metadata';
     function formatTime(seconds) { var value = Math.max(0, Math.floor(seconds)); return String(Math.floor(value / 60)).padStart(2, '0') + ':' + String(value % 60).padStart(2, '0'); }
-    function updateMusic(current, total) {
-      elapsed = current; duration = total || duration;
-      if (progress) progress.style.width = Math.min(100, (elapsed / duration) * 100) + '%';
-      if (currentNode) currentNode.nodeValue = formatTime(elapsed) + ' ';
+    function renderMusic(current, total) {
+      elapsed = Math.max(0, current || 0); duration = total || duration;
+      var ratio = duration ? Math.min(1, elapsed / duration) : 0;
+      if (progress) progress.style.width = (ratio * 100) + '%';
+      if (progressDot) progressDot.style.left = (ratio * 100) + '%';
+      if (progressTrack) progressTrack.setAttribute('aria-valuenow', String(Math.round(ratio * 100)));
+      if (currentNode) currentNode.textContent = formatTime(elapsed);
       if (totalNode) totalNode.textContent = formatTime(duration);
     }
     function setMusicState(playing) {
@@ -274,31 +517,93 @@
       musicButton.textContent = playing ? 'Ⅱ' : '▶';
       musicButton.setAttribute('aria-label', playing ? langText('暂停音乐', 'Pause music') : langText('播放音乐', 'Play music'));
       if (track) track.classList.toggle('is-playing', playing);
+      if (playlist) qsa('[data-track-state]', playlist).forEach(function (state, itemIndex) { state.textContent = itemIndex === selectedTrack ? (playing ? langText('播放中', 'Playing') : langText('已选', 'Selected')) : ''; });
     }
-    function stopMusic() {
-      if (musicTimer) { window.clearInterval(musicTimer); musicTimer = null; }
-      if (audio) audio.pause();
+    function renderPlaylist() {
+      if (!playlist) return;
+      playlist.innerHTML = '';
+      musicItems.forEach(function (item, itemIndex) {
+        var button = document.createElement('button');
+        button.type = 'button'; button.dataset.trackIndex = String(itemIndex);
+        button.className = itemIndex === selectedTrack ? 'is-current' : '';
+        var title = document.createElement('span');
+        title.textContent = (itemIndex + 1) + '. ' + item.title;
+        var state = document.createElement('em');
+        state.setAttribute('data-track-state', '');
+        state.textContent = itemIndex === selectedTrack ? langText('已选', 'Selected') : '';
+        button.appendChild(title); button.appendChild(state);
+        button.addEventListener('click', function (event) { event.stopPropagation(); selectMusic(itemIndex, true); });
+        playlist.appendChild(button);
+      });
+    }
+    function stopMusic(reset) {
+      audio.pause();
+      if (reset) renderMusic(0, duration);
       setMusicState(false);
     }
-    if (audio) {
-      audio.addEventListener('loadedmetadata', function () { duration = audio.duration || duration; updateMusic(0, duration); });
-      audio.addEventListener('timeupdate', function () { updateMusic(audio.currentTime, audio.duration || duration); });
-      audio.addEventListener('ended', function () { updateMusic(0, duration); stopMusic(); });
+    function selectMusic(index, autoplay) {
+      selectedTrack = (index + musicItems.length) % musicItems.length;
+      var item = musicItems[selectedTrack];
+      stopMusic(true); duration = item.duration || 224; elapsed = 0;
+      audio.src = item.url;
+      audio.load();
+      if (track) track.removeAttribute('data-audio-error');
+      if (titleNode) titleNode.textContent = item.title;
+      if (authorNode) authorNode.textContent = item.author;
+      if (coverNode) { coverNode.src = item.cover; coverNode.alt = item.title; }
+      if (indexNode) indexNode.textContent = (selectedTrack + 1) + '/' + musicItems.length;
+      if (playlist) qsa('button[data-track-index]', playlist).forEach(function (button) { button.classList.toggle('is-current', Number(button.dataset.trackIndex) === selectedTrack); });
+      renderMusic(0, duration);
+      if (autoplay) startMusic();
     }
-    updateMusic(0, duration);
-    musicButton.addEventListener('click', function () {
-      var playing = musicButton.getAttribute('aria-pressed') === 'true';
-      if (playing) { stopMusic(); return; }
+    function startMusic() {
       setMusicState(true);
-      if (audio) {
-        audio.play().catch(function () { stopMusic(); });
-      } else {
-        musicTimer = window.setInterval(function () {
-          elapsed += 1;
-          if (elapsed >= duration) { updateMusic(0, duration); stopMusic(); } else updateMusic(elapsed, duration);
-        }, 1000);
-      }
+      audio.play().catch(function () { setMusicState(false); if (track) track.setAttribute('data-audio-error', 'true'); });
+    }
+    audio.addEventListener('loadedmetadata', function () { duration = audio.duration || duration; renderMusic(audio.currentTime, duration); if (track) track.removeAttribute('data-audio-error'); });
+    audio.addEventListener('timeupdate', function () { renderMusic(audio.currentTime, audio.duration || duration); });
+    audio.addEventListener('ended', function () { selectMusic(selectedTrack + 1, true); });
+    audio.addEventListener('error', function () { setMusicState(false); if (track) track.setAttribute('data-audio-error', 'true'); });
+    if (progressTrack) {
+      function seekFromEvent(event) { var rect = progressTrack.getBoundingClientRect(); var ratio = Math.min(1, Math.max(0, (event.clientX - rect.left) / Math.max(1, rect.width))); var next = ratio * duration; if (Number.isFinite(audio.duration)) audio.currentTime = next; renderMusic(next, duration); }
+      progressTrack.addEventListener('pointerdown', function (event) { seekFromEvent(event); });
+      progressTrack.addEventListener('keydown', function (event) { var next = null; if (event.key === 'ArrowRight' || event.key === 'ArrowUp') next = Math.min(duration, elapsed + 5); if (event.key === 'ArrowLeft' || event.key === 'ArrowDown') next = Math.max(0, elapsed - 5); if (next == null) return; event.preventDefault(); if (Number.isFinite(audio.duration)) audio.currentTime = next; renderMusic(next, duration); });
+    }
+    renderPlaylist();
+    selectMusic(0, false);
+    musicButton.addEventListener('click', function (event) { event.stopPropagation(); musicButton.getAttribute('aria-pressed') === 'true' ? stopMusic(false) : startMusic(); });
+    if (prevTrack) prevTrack.addEventListener('click', function (event) { event.stopPropagation(); selectMusic(selectedTrack - 1, true); });
+    if (nextTrack) nextTrack.addEventListener('click', function (event) { event.stopPropagation(); selectMusic(selectedTrack + 1, true); });
+    if (track) track.addEventListener('click', function (event) { if (event.target.closest('button,[data-music-progress]')) return; });
+
+    /* Fill the ten-slot catalog with free 30-second previews when the public
+       iTunes Search API is reachable. The bundled SoundHelix entries keep the
+       player usable when a static host or network blocks the API. */
+    var catalogTerms = ['Mandopop', 'English indie rock'];
+    Promise.all(catalogTerms.map(function (term) {
+      var endpoint = 'https://itunes.apple.com/search?media=music&entity=song&limit=10&term=' + encodeURIComponent(term);
+      return fetch(endpoint, { headers: { Accept: 'application/json' } }).then(function (response) {
+        if (!response.ok) throw new Error('music catalog unavailable');
+        return response.json();
+      });
+    })).then(function (payloads) {
+      var apiItems = payloads.reduce(function (items, payload) {
+        return items.concat((payload && Array.isArray(payload.results) ? payload.results : []).slice(0, 5));
+      }, []).filter(function (item) { return item && item.previewUrl && item.trackName; }).filter(function (item, index, items) {
+        return items.findIndex(function (candidate) { return candidate.trackId === item.trackId; }) === index;
+      }).slice(0, 10).map(function (item) {
+        return { title: item.trackName, author: item.artistName || 'iTunes preview', url: item.previewUrl, cover: item.artworkUrl100 || assetCover('wuha.jpg') };
+      });
+      if (apiItems.length < 10) return;
+      var wasPlaying = musicButton.getAttribute('aria-pressed') === 'true';
+      var keepIndex = Math.min(selectedTrack, apiItems.length - 1);
+      musicItems = apiItems;
+      renderPlaylist();
+      selectMusic(keepIndex, wasPlaying);
+    }).catch(function () {
+      if (track) track.setAttribute('data-catalog-fallback', 'true');
     });
+
   }
 
   var commentsButton = qs('[data-comments]');

@@ -15,8 +15,8 @@
     <title>{{ .Title }} — {{ if $zh }}{{ $site.identity.name }}{{ else }}{{ $site.identity.name_en }}{{ end }}</title>
     <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Summary | plainify | truncate 160 }}{{ end }}">
     <link rel="canonical" href="{{ .Permalink }}">
-    <link rel="stylesheet" href="{{ "css/alxian-theme.css" | relURL }}?v=3"><link rel="stylesheet" href="{{ "css/alxian-pages.css" | relURL }}?v=2">
-    <script defer src="{{ "js/alxian-theme.js" | relURL }}?v=3"></script><script defer src="{{ "js/alxian-pages.js" | relURL }}?v=2"></script>
+    <link rel="stylesheet" href="{{ "css/alxian-theme.css" | relURL }}?v=5"><link rel="stylesheet" href="{{ "css/alxian-pages.css" | relURL }}?v=2">
+    <script defer src="{{ "js/alxian-theme.js" | relURL }}?v=5"></script><script defer src="{{ "js/alxian-pages.js" | relURL }}?v=2"></script>
   </head>
   <body class="alxian-theme alxian-page" data-lang="{{ if $zh }}zh{{ else }}en{{ end }}" data-pagefind-ignore>
     <div class="alxian-grid-bg" aria-hidden="true"></div>
