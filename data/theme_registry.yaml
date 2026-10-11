@@ -27,7 +27,7 @@ themes:
     supports:
       - home
   - id: alxian
-    label: alxian / wuxian
+    label: Alxian / Jinsong
     short_label: ALX
     version: 0.2.0
     status: preview

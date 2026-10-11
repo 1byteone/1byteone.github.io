@@ -14,11 +14,11 @@
     <meta name="description" content="{{ if $zh }}{{ $site.identity.name }}的个人主页，记录前端、后端与 AI 工程实践。{{ else }}{{ $site.identity.name_en }}'s personal homepage for frontend, backend and AI engineering.{{ end }}">
     <link rel="canonical" href="{{ .Permalink }}">
     <title>{{ if $zh }}{{ $site.identity.name }} · 个人主页{{ else }}{{ $site.identity.name_en }} · Personal homepage{{ end }}</title>
-    <link rel="stylesheet" href="{{ "css/alxian-theme.css" | relURL }}?v=5">
+    <link rel="stylesheet" href="{{ "css/alxian-theme.css" | relURL }}?v=6">
     <script defer src="{{ "js/alxian-theme.js" | relURL }}?v=7"></script>
   </head>
   <body class="alxian-theme" data-lang="{{ if $zh }}zh{{ else }}en{{ end }}" data-asset-root="{{ $asset }}">
-    <div class="alxian-loader" data-loader role="status" aria-live="polite" aria-label="{{ if $zh }}正在加载{{ else }}Loading{{ end }}"><div class="alxian-loader-topline"><span>PERSONAL ARCHIVE</span><span>00 / 01</span></div><div class="alxian-loader-content"><img src="{{ printf "%simages/keep-going.png" $asset }}" alt=""><span>KEEP GOING</span><strong>DON'T GIVE UP</strong><i class="alxian-loader-progress"><b></b></i></div><div class="alxian-loader-footer"><span>WUXIAN'S WEB</span><span>LOADING / READY</span></div></div>
+    <div class="alxian-loader" data-loader role="status" aria-live="polite" aria-label="{{ if $zh }}正在加载{{ else }}Loading{{ end }}"><div class="alxian-loader-topline"><span>PERSONAL ARCHIVE</span><span>00 / 01</span></div><div class="alxian-loader-content"><img src="{{ printf "%simages/keep-going.png" $asset }}" alt=""><span>KEEP GOING</span><strong>DON'T GIVE UP</strong><i class="alxian-loader-progress"><b></b></i></div><div class="alxian-loader-footer"><span>{{ upper $site.identity.name_en }}'S WEB</span><span>LOADING / READY</span></div></div>
     <div class="alxian-grid-bg" aria-hidden="true"></div>
     <header class="alxian-topbar">
       <a class="alxian-logo" href="{{ .Site.Home.RelPermalink }}" aria-label="{{ if $zh }}返回首页{{ else }}Home{{ end }}"><span>Y</span><b>{{ if $zh }}劲松{{ else }}JINSONG{{ end }}</b></a>
@@ -45,7 +45,7 @@
               <li data-age data-birth-year="{{ $site.identity.birth_year }}">{{ if $zh }}{{ $age }} 岁 · 南昌 / 中国{{ else }}{{ $age }} years old · Software engineer · Nanchang, China{{ end }}</li>
               <li>{{ if $zh }}在做可以长期使用的东西{{ else }}Building things people can keep using{{ end }}</li>
             </ul>
-            <p class="alxian-signature">Wuxian;</p>
+            <p class="alxian-signature">{{ $site.identity.signature }}</p>
           </div>
           <img class="alxian-laptop-character" src="{{ printf "%simages/logo1.png" $asset }}" alt="" aria-hidden="true">
         </div>
