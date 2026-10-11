@@ -1,0 +1,3 @@
+# Preview overlay used when the Alxian branch exposes Oil at /themes/oil/.
+site_theme: oil
+theme_preview: true

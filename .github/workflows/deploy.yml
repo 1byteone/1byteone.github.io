@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - dev_theme_oil
+      - dev_theme_AIxian
 
   workflow_dispatch:
 
@@ -86,6 +87,22 @@ jobs:
 
       # Publish the preview theme in the same Pages artifact so the site can
       # switch themes by URL without requiring a second repository or deploy.
+      - name: Build Oil theme preview
+        env:
+          HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache
+          HUGO_ENVIRONMENT: oil
+          TZ: America/New_York
+        run: |
+          rm -rf "public/themes/oil"
+          hugo \
+            --gc \
+            --minify \
+            --cleanDestinationDir \
+            --environment oil \
+            --configDir config \
+            --destination public/themes/oil \
+            --baseURL "${{ steps.pages.outputs.base_url }}/themes/oil/"
+
       - name: Build Minimal theme preview
         env:
           HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache
@@ -118,7 +135,7 @@ jobs:
             --destination public/themes/alxian \
             --baseURL "${{ steps.pages.outputs.base_url }}/themes/alxian/"
 
-      - name: Verify Alxian route matrix
+      - name: Verify theme route matrix
         run: |
           set -euo pipefail
           for route in \
@@ -142,6 +159,9 @@ jobs:
           test -s public/themes/alxian/css/alxian-pages.css
           test -s public/themes/alxian/js/alxian-theme.js
           test -s public/themes/alxian/js/alxian-pages.js
+          test -s public/themes/oil/index.html
+          test -s public/themes/oil/en/index.html
+          test -s public/themes/oil/css/oil-theme.css
 
       - name: Build search index
         run: npm run pagefind

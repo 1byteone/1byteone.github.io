@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="theme-color" content="#e8eff5">
-    <meta name="robots" content="noindex,follow">
+    {{ if .Site.Params.theme_preview }}<meta name="robots" content="noindex,follow">{{ end }}
     <title>{{ if $zh }}友链{{ else }}Friends{{ end }} — {{ if $zh }}{{ $site.identity.name }}{{ else }}{{ $site.identity.name_en }}{{ end }}</title>
     <meta name="description" content="{{ if $zh }}与优秀的朋友们互相链接，共同成长。{{ else }}Connect with thoughtful people and projects.{{ end }}">
     <link rel="canonical" href="{{ .Permalink }}">
@@ -16,7 +16,7 @@
     <script defer src="{{ "js/alxian-theme.js" | relURL }}?v=11"></script>
     <script defer src="{{ "js/alxian-pages.js" | relURL }}?v=3"></script>
   </head>
-  <body class="alxian-theme alxian-page" data-lang="{{ if $zh }}zh{{ else }}en{{ end }}" data-pagefind-ignore data-api-base="{{ .Site.Params.api_base | default "" }}">
+  <body class="alxian-theme alxian-page" data-lang="{{ if $zh }}zh{{ else }}en{{ end }}"{{ if .Site.Params.theme_preview }} data-pagefind-ignore{{ end }} data-api-base="{{ .Site.Params.api_base | default "" }}">
     <div class="alxian-grid-bg" aria-hidden="true"></div>
     {{ partial "themes/alxian/shell.html" . }}
     <main class="alxian-page-main" id="top">

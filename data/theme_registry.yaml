@@ -3,12 +3,12 @@ themes:
     label: Oil
     short_label: OIL
     version: 1.0.0
-    status: production
+    status: preview
     scope: site
     home_template: themes/oil/home.html
     stylesheet: css/oil-theme.css
     script: js/oil-theme.js
-    base_path: /
+    base_path: /themes/oil/
     supports:
       - home
       - list
@@ -30,12 +30,12 @@ themes:
     label: Alxian / Jinsong
     short_label: ALX
     version: 0.2.0
-    status: preview
+    status: production
     scope: site
     home_template: themes/alxian/home.html
     stylesheet: css/alxian-theme.css
     script: js/alxian-theme.js
-    base_path: /themes/alxian/
+    base_path: /
     supports:
       - home
       - list
