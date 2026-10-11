@@ -13,11 +13,12 @@
     <meta name="theme-color" content="#e8eff5">
     <meta name="description" content="{{ if $zh }}{{ $site.identity.name }}的个人主页，记录前端、后端与 AI 工程实践。{{ else }}{{ $site.identity.name_en }}'s personal homepage for frontend, backend and AI engineering.{{ end }}">
     <link rel="canonical" href="{{ .Permalink }}">
+    <link rel="alternate" type="application/rss+xml" title="{{ if $zh }}{{ $site.identity.name }} 的 RSS{{ else }}{{ $site.identity.name_en }} RSS{{ end }}" href="{{ "rss.xml" | relURL }}">
     <title>{{ if $zh }}{{ $site.identity.name }} · 个人主页{{ else }}{{ $site.identity.name_en }} · Personal homepage{{ end }}</title>
     <link rel="stylesheet" href="{{ "css/alxian-theme.css" | relURL }}?v=6">
     <script defer src="{{ "js/alxian-theme.js" | relURL }}?v=10"></script>
   </head>
-  <body class="alxian-theme" data-lang="{{ if $zh }}zh{{ else }}en{{ end }}" data-asset-root="{{ $asset }}">
+  <body class="alxian-theme" data-lang="{{ if $zh }}zh{{ else }}en{{ end }}" data-asset-root="{{ $asset }}" data-api-base="{{ .Site.Params.api_base | default "" }}">
     <div class="alxian-loader" data-loader role="status" aria-live="polite" aria-label="{{ if $zh }}正在加载{{ else }}Loading{{ end }}"><div class="alxian-loader-topline"><span>PERSONAL ARCHIVE</span><span>00 / 01</span></div><div class="alxian-loader-content"><img src="{{ printf "%simages/keep-going.png" $asset }}" alt=""><span>KEEP GOING</span><strong>DON'T GIVE UP</strong><i class="alxian-loader-progress"><b></b></i></div><div class="alxian-loader-footer"><span>{{ upper $site.identity.name_en }}'S WEB</span><span>LOADING / READY</span></div></div>
     <div class="alxian-grid-bg" aria-hidden="true"></div>
     <header class="alxian-topbar">
@@ -39,7 +40,7 @@
           <div class="alxian-profile-art"><span class="alxian-orbit-text">KEEP GOING * DON'T GIVE UP *</span><img class="alxian-profile-art-main" src="{{ printf "%simages/keep-going.png" $asset }}" alt="{{ if $zh }}个人头像{{ else }}Profile illustration{{ end }}"><img class="alxian-profile-tw" src="{{ printf "%simages/tw.gif" $asset }}" alt="" aria-hidden="true"><img class="alxian-profile-smoke" src="{{ printf "%simages/smoke.png" $asset }}" alt="" aria-hidden="true"></div>
           <div class="alxian-profile-copy">
             <p class="alxian-kicker">{{ if $zh }}记录一路以来的痕迹{{ else }}A record of the things I build{{ end }}</p>
-            <h1>{{ if $zh }}你好，我是{{ $site.identity.name }}<span>。</span>{{ else }}Hello, I'm {{ $site.identity.name_en }}<span>.</span>{{ end }}</h1>
+            <h1 data-typewriter data-typewriter-text="{{ if $zh }}你好，我是{{ $site.identity.name }}。{{ else }}Hello, I'm {{ $site.identity.name_en }}.{{ end }}" aria-live="polite">{{ if $zh }}你好，我是{{ $site.identity.name }}<span>。</span>{{ else }}Hello, I'm {{ $site.identity.name_en }}<span>.</span>{{ end }}</h1>
             <ul class="alxian-facts">
               <li><b>{{ if $zh }}前端 / 后端 / AI 工程{{ else }}Frontend / backend / AI engineering{{ end }}</b></li>
               <li data-age data-birth-year="{{ $site.identity.birth_year }}">{{ if $zh }}{{ $age }} 岁 · 南昌 / 中国{{ else }}{{ $age }} years old · Software engineer · Nanchang, China{{ end }}</li>

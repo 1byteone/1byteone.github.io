@@ -10,6 +10,8 @@
   function t(zh, en) {
     return root.dataset.lang === 'zh' ? zh : en;
   }
+  var apiBase = (root.dataset.apiBase || '').replace(/\/+$/, '');
+  function apiUrl(path) { return apiBase + path; }
 
   function readStorage(key) {
     try { return window.localStorage.getItem(key); } catch (_) { return null; }
@@ -38,6 +40,16 @@
       });
     });
   });
+  var entryCarousel = document.querySelector('.alxian-entry-grid.is-works');
+  if (entryCarousel) {
+    var carouselStep = function () { var card = entryCarousel.querySelector('[data-entry-card]'); return card ? card.getBoundingClientRect().width + 16 : Math.max(280, entryCarousel.clientWidth * .82); };
+    var prevEntry = document.querySelector('[data-entry-carousel-prev]');
+    var nextEntry = document.querySelector('[data-entry-carousel-next]');
+    if (prevEntry) prevEntry.addEventListener('click', function () { entryCarousel.scrollBy({ left: -carouselStep(), behavior: reduceMotion ? 'auto' : 'smooth' }); });
+    if (nextEntry) nextEntry.addEventListener('click', function () { entryCarousel.scrollBy({ left: carouselStep(), behavior: reduceMotion ? 'auto' : 'smooth' }); });
+    entryCarousel.addEventListener('keydown', function (event) { if (event.key === 'ArrowLeft') entryCarousel.scrollBy({ left: -carouselStep(), behavior: 'smooth' }); if (event.key === 'ArrowRight') entryCarousel.scrollBy({ left: carouselStep(), behavior: 'smooth' }); });
+    entryCarousel.setAttribute('tabindex', '0'); entryCarousel.setAttribute('aria-label', t('作品轮播，可使用左右方向键切换', 'Works carousel, use arrow keys to navigate'));
+  }
 
   function setupReveals() {
     var items = Array.prototype.slice.call(document.querySelectorAll('.alxian-reveal'));
@@ -89,6 +101,64 @@
     });
   });
   if (resourceSearch) resourceSearch.addEventListener('input', updateResources);
+
+  /* Resource parity: the reference presents its resource cards as a gentle
+     orbit that can be paused for reading. The grid remains the resilient
+     fallback; this enhancement is opt-in through the toolbar button. */
+  var resourceGrid = document.querySelector('[data-resource-grid]');
+  var resourceOrbitToggle = document.querySelector('[data-resource-orbit-toggle]');
+  var resourceOrbitFrame = 0;
+  var resourceOrbitStarted = 0;
+  function renderResourceOrbit(now) {
+    if (!resourceGrid || !resourceGrid.classList.contains('is-orbit')) { resourceOrbitFrame = 0; return; }
+    var cards = Array.prototype.slice.call(resourceGrid.querySelectorAll('[data-resource-card]:not([hidden])'));
+    var elapsed = (now - resourceOrbitStarted) / 1000;
+    var radiusX = Math.min(310, Math.max(150, resourceGrid.clientWidth * .34));
+    var radiusY = Math.min(100, Math.max(52, radiusX * .28));
+    cards.forEach(function (card, index) {
+      var angle = elapsed * .28 + index * (Math.PI * 2 / Math.max(cards.length, 1));
+      var x = Math.cos(angle) * radiusX;
+      var y = Math.sin(angle) * radiusY;
+      var depth = (Math.sin(angle) + 1) / 2;
+      card.style.transform = 'translate(calc(-50% + ' + x.toFixed(1) + 'px),calc(-50% + ' + y.toFixed(1) + 'px)) rotate(' + (Math.sin(angle) * 2.5).toFixed(2) + 'deg) scale(' + (.86 + depth * .14).toFixed(3) + ')';
+      card.style.zIndex = String(Math.round(depth * 20));
+      card.style.opacity = String(.56 + depth * .44);
+    });
+    resourceOrbitFrame = window.requestAnimationFrame(renderResourceOrbit);
+  }
+  if (resourceGrid && resourceOrbitToggle) {
+    resourceOrbitToggle.addEventListener('click', function () {
+      var orbiting = !resourceGrid.classList.contains('is-orbit');
+      resourceGrid.classList.toggle('is-orbit', orbiting);
+      resourceOrbitToggle.setAttribute('aria-pressed', String(orbiting));
+      resourceOrbitToggle.textContent = orbiting ? t('暂停环绕', 'Pause orbit') : t('环绕', 'Orbit');
+      if (orbiting) { resourceOrbitStarted = performance.now(); if (!resourceOrbitFrame) resourceOrbitFrame = requestAnimationFrame(renderResourceOrbit); }
+      else { if (resourceOrbitFrame) cancelAnimationFrame(resourceOrbitFrame); resourceOrbitFrame = 0; resourceGrid.querySelectorAll('[data-resource-card]').forEach(function (card) { card.style.transform = ''; card.style.zIndex = ''; card.style.opacity = ''; }); }
+    });
+  }
+
+  function setupFriends() {
+    var list = document.querySelector('[data-friends-list]');
+    var stats = document.querySelector('[data-friend-stats]');
+    if (!list && !stats) return;
+    fetch(apiUrl('/api/friends/stats'), { headers: { Accept: 'application/json' }, credentials: 'omit' }).then(function (response) { if (!response.ok) throw new Error('friend stats unavailable'); return response.json(); }).then(function (payload) {
+      if (!stats || !payload) return;
+      stats.querySelectorAll('[data-friend-stat]').forEach(function (node) { var key = node.dataset.friendStat; if (payload[key] != null) node.textContent = String(payload[key]); });
+    }).catch(function () {});
+    fetch(apiUrl('/api/friends'), { headers: { Accept: 'application/json' }, credentials: 'omit' }).then(function (response) { if (!response.ok) throw new Error('friends unavailable'); return response.json(); }).then(function (payload) {
+      if (!list || !Array.isArray(payload) || !payload.length) return;
+      list.innerHTML = '';
+      payload.filter(function (item) { return !item.status || item.status === 'approved'; }).forEach(function (item, index) {
+        var link = document.createElement('a'); link.className = 'alxian-friend-row alxian-reveal is-visible'; link.href = item.url || '#'; link.target = '_blank'; link.rel = 'noopener noreferrer';
+        var icon = item.favicon || '/assets/alxian/icons/link.svg';
+        link.innerHTML = '<span class="alxian-friend-index">' + String(index + 1).padStart(2, '0') + '</span><span class="alxian-friend-icon"><img alt=""></span><span class="alxian-friend-copy"><strong></strong><small></small></span><span class="alxian-friend-arrow">↗</span>';
+        link.querySelector('img').src = icon; link.querySelector('strong').textContent = item.name || item.url; link.querySelector('small').textContent = item.description || item.url;
+        link.addEventListener('click', function () { if (item.id) fetch(apiUrl('/api/friends/' + encodeURIComponent(item.id) + '/visit'), { method: 'POST', credentials: 'omit' }).catch(function () {}); });
+        list.appendChild(link);
+      });
+    }).catch(function () {});
+  }
+  setupFriends();
 
   function setupGalleries() {
     document.querySelectorAll('[data-gallery]').forEach(function (gallery) {
@@ -168,6 +238,30 @@
   var chatMessages = document.querySelector('[data-chat-messages]');
   var chatName = document.querySelector('[data-chat-name]');
   var chatRoom = 'lobby';
+  function renderChatMessages(items) {
+    if (!chatMessages || !Array.isArray(items)) return;
+    chatMessages.innerHTML = '';
+    items.slice(-100).forEach(function (item) {
+      var message = document.createElement('div'); message.className = 'alxian-chat-message'; message.innerHTML = '<b></b><small></small><p></p>';
+      message.querySelector('b').textContent = item.nickname || item.name || 'Guest'; message.querySelector('small').textContent = item.createdAt ? new Date(item.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : ''; message.querySelector('p').textContent = item.content || item.message || '';
+      chatMessages.appendChild(message);
+    });
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }
+  function loadChatRoom(roomId) {
+    if (!chatMessages) return;
+    fetch(apiUrl('/api/chat/messages?roomId=' + encodeURIComponent(roomId)), { headers: { Accept: 'application/json' }, credentials: 'omit' }).then(function (response) { if (!response.ok) throw new Error('chat API unavailable'); return response.json(); }).then(function (payload) { renderChatMessages(Array.isArray(payload) ? payload : payload.messages); }).catch(function () { chatMessages.dataset.room = roomId; });
+  }
+  fetch(apiUrl('/api/chat/rooms'), { headers: { Accept: 'application/json' }, credentials: 'omit' }).then(function (response) { if (!response.ok) throw new Error('rooms unavailable'); return response.json(); }).then(function (payload) {
+    var rooms = Array.isArray(payload) ? payload : payload && payload.rooms;
+    if (!Array.isArray(rooms)) return;
+    var roomButtons = document.querySelector('.alxian-chat-rooms'); if (!roomButtons) return;
+    roomButtons.innerHTML = '';
+    rooms.slice(0, 6).forEach(function (room, index) { var button = document.createElement('button'); button.type = 'button'; button.dataset.chatRoom = room.id || room.slug || 'room-' + index; button.textContent = room.name || room.title || button.dataset.chatRoom; if (index === 0) button.classList.add('is-active'); roomButtons.appendChild(button); });
+    roomButtons.querySelectorAll('[data-chat-room]').forEach(function (button) { button.addEventListener('click', function () { setActive(button, '[data-chat-room]'); chatRoom = button.dataset.chatRoom; loadChatRoom(chatRoom); }); });
+    setActive(roomButtons.querySelector('button'), '[data-chat-room]');
+    chatRoom = roomButtons.querySelector('button').dataset.chatRoom; loadChatRoom(chatRoom);
+  }).catch(function () {});
   if (chatName) chatName.value = readStorage('alxian-chat-name') || '';
   if (chatName) chatName.addEventListener('change', function () {
     writeStorage('alxian-chat-name', chatName.value.trim());
@@ -177,15 +271,18 @@
       setActive(button, '[data-chat-room]');
       chatRoom = button.dataset.chatRoom;
       if (chatMessages) chatMessages.dataset.room = chatRoom;
+      loadChatRoom(chatRoom);
     });
   });
   if (chatForm && chatMessages) chatForm.addEventListener('submit', function (event) {
     event.preventDefault();
     var input = chatForm.querySelector('input[name="message"]');
     if (!input || !input.value.trim()) return;
+    var messageValue = input.value.trim();
+    var name = chatName && chatName.value.trim() ? chatName.value.trim() : t('访客', 'Guest');
+    fetch(apiUrl('/api/chat/messages'), { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify({ roomId: chatRoom, nickname: name, content: messageValue }), credentials: 'omit' }).then(function (response) { if (!response.ok) throw new Error('chat send unavailable'); return response.json(); }).then(function (payload) { if (payload && payload.message) { var messages = Array.prototype.slice.call(chatMessages.querySelectorAll('.alxian-chat-message')).map(function (node) { return { nickname: node.querySelector('b').textContent, content: node.querySelector('p').textContent }; }); messages.push(payload.message); renderChatMessages(messages); } }).catch(function () {});
     var message = document.createElement('div');
     message.className = 'alxian-chat-message';
-    var name = chatName && chatName.value.trim() ? chatName.value.trim() : t('访客', 'Guest');
     var now = new Date();
     var time = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
     message.innerHTML = '<b></b><small></small><p></p>';

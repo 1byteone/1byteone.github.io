@@ -8,6 +8,25 @@
   function qs(selector, scope) { return (scope || document).querySelector(selector); }
   function qsa(selector, scope) { return Array.prototype.slice.call((scope || document).querySelectorAll(selector)); }
   function langText(zh, en) { return root && root.dataset.lang === 'zh' ? zh : en; }
+  function readStorage(key) { try { return window.localStorage.getItem(key); } catch (_) { return null; } }
+  var apiBase = (root && root.dataset.apiBase || '').replace(/\/+$/, '');
+  function apiUrl(path) { return apiBase + path; }
+
+  var typewriter = qs('[data-typewriter]');
+  if (typewriter && !reduceMotion) {
+    var typewriterText = typewriter.getAttribute('data-typewriter-text') || typewriter.textContent.trim();
+    var typewriterIndex = 0; var typewriterDeleting = false;
+    typewriter.textContent = '';
+    typewriter.setAttribute('aria-label', typewriterText);
+    function runTypewriter() {
+      typewriter.textContent = typewriterDeleting ? typewriterText.slice(0, typewriterIndex - 1) : typewriterText.slice(0, typewriterIndex + 1);
+      typewriterIndex += typewriterDeleting ? -1 : 1;
+      if (!typewriterDeleting && typewriterIndex >= typewriterText.length) { typewriterDeleting = true; window.setTimeout(runTypewriter, 2200); return; }
+      if (typewriterDeleting && typewriterIndex <= 0) { typewriterDeleting = false; window.setTimeout(runTypewriter, 500); return; }
+      window.setTimeout(runTypewriter, typewriterDeleting ? 75 : 125);
+    }
+    window.setTimeout(runTypewriter, 700);
+  }
 
   /* Keep the age current even when a static build has not been redeployed yet. */
   var ageNode = qs('[data-age]');
@@ -201,6 +220,29 @@
       }
       heatmap.appendChild(fragment);
     }
+    var githubTooltip = document.createElement('div');
+    githubTooltip.className = 'alxian-github-tooltip';
+    githubTooltip.setAttribute('role', 'status');
+    githubTooltip.hidden = true;
+    document.body.appendChild(githubTooltip);
+    function hideGithubTooltip() { githubTooltip.hidden = true; }
+    function showGithubTooltip(cell, event) {
+      var date = cell.getAttribute('data-date');
+      if (!date || cell.getAttribute('aria-hidden') === 'true') return hideGithubTooltip();
+      githubTooltip.textContent = cell.getAttribute('aria-label') || date;
+      githubTooltip.hidden = false;
+      var rect = cell.getBoundingClientRect();
+      var x = event && event.clientX != null ? event.clientX : rect.left + rect.width / 2;
+      var y = event && event.clientY != null ? event.clientY : rect.top;
+      githubTooltip.style.left = Math.max(8, Math.min(window.innerWidth - githubTooltip.offsetWidth - 8, x - githubTooltip.offsetWidth / 2)) + 'px';
+      githubTooltip.style.top = Math.max(8, y - githubTooltip.offsetHeight - 10) + 'px';
+    }
+    heatmap.addEventListener('pointerover', function (event) { var cell = event.target.closest ? event.target.closest('i') : null; if (cell) showGithubTooltip(cell, event); });
+    heatmap.addEventListener('pointermove', function (event) { var cell = event.target.closest ? event.target.closest('i') : null; if (cell && !githubTooltip.hidden) showGithubTooltip(cell, event); });
+    heatmap.addEventListener('pointerout', function (event) { if (!event.relatedTarget || !heatmap.contains(event.relatedTarget)) hideGithubTooltip(); });
+    heatmap.addEventListener('focusin', function (event) { var cell = event.target.closest ? event.target.closest('i') : null; if (cell) showGithubTooltip(cell); });
+    heatmap.addEventListener('focusout', hideGithubTooltip);
+    window.addEventListener('scroll', hideGithubTooltip, { passive: true });
     function cacheKey(year) { return 'alxian-github-contributions:' + githubUser + ':' + year; }
     function readGithubCache(year) {
       try {
@@ -243,9 +285,11 @@
         if (inYear) {
           cell.title = formatGithubDate(dateKey) + ' · ' + (item ? item.count : 0) + ' ' + githubText('次提交', 'contributions');
           cell.setAttribute('aria-label', cell.title);
+          cell.setAttribute('tabindex', '0');
         } else {
           cell.removeAttribute('title');
           cell.removeAttribute('aria-label');
+          cell.removeAttribute('tabindex');
         }
       });
       setGithubSummary(total, year, 'ready');
@@ -346,14 +390,33 @@
   if (galleryButton) galleryButton.addEventListener('click', function () { showGallery(galleryIndex + 1); });
   if (galleryPrevButton) galleryPrevButton.addEventListener('click', function () { showGallery(galleryIndex - 1); });
   if (gallery) {
-    var galleryModal = null;
-    function closeGalleryModal() { if (!galleryModal) return; galleryModal.classList.remove('is-open'); window.setTimeout(function () { if (galleryModal) { galleryModal.remove(); galleryModal = null; } }, 300); }
+    var galleryModal = null; var galleryModalIndex = 0; var galleryZoom = 1; var galleryPanX = 0; var galleryPanY = 0; var galleryDragging = false; var galleryDragStartX = 0; var galleryDragStartY = 0; var galleryLastFocus = null;
+    function closeGalleryModal() { if (!galleryModal) return; galleryModal.classList.remove('is-open'); var closing = galleryModal; window.setTimeout(function () { if (closing.parentNode) closing.remove(); if (galleryModal === closing) galleryModal = null; if (galleryLastFocus) { galleryLastFocus.focus(); galleryLastFocus = null; } }, 300); }
+    function renderGalleryModal() {
+      if (!galleryModal) return;
+      var preview = qs('[data-gallery-preview]', galleryModal); var counter = qs('[data-gallery-modal-count]', galleryModal);
+      var image = images[galleryModalIndex];
+      if (preview) { preview.src = image.currentSrc || image.src; preview.alt = image.alt; preview.style.transform = 'translate(' + galleryPanX + 'px,' + galleryPanY + 'px) scale(' + galleryZoom + ')'; }
+      if (counter) counter.textContent = (galleryModalIndex + 1) + ' / ' + images.length;
+    }
+    function setGalleryZoom(next) { galleryZoom = Math.max(1, Math.min(3.5, next)); if (galleryZoom === 1) { galleryPanX = 0; galleryPanY = 0; } renderGalleryModal(); }
+    function moveGalleryModal(delta) { galleryModalIndex = (galleryModalIndex + delta + images.length) % images.length; galleryZoom = 1; galleryPanX = 0; galleryPanY = 0; renderGalleryModal(); }
     function openGalleryModal(image) {
-      closeGalleryModal(); galleryModal = document.createElement('div'); galleryModal.className = 'alxian-gallery-modal'; galleryModal.setAttribute('role', 'dialog'); galleryModal.setAttribute('aria-modal', 'true');
-      var close = document.createElement('button'); close.type = 'button'; close.textContent = '×'; close.setAttribute('aria-label', langText('关闭图库', 'Close gallery'));
-      var preview = document.createElement('img'); preview.src = image.currentSrc || image.src; preview.alt = image.alt;
-      galleryModal.appendChild(preview); galleryModal.appendChild(close); root.appendChild(galleryModal); window.requestAnimationFrame(function () { galleryModal.classList.add('is-open'); });
-      close.addEventListener('click', closeGalleryModal); galleryModal.addEventListener('click', function (event) { if (event.target === galleryModal) closeGalleryModal(); });
+      if (galleryModal) closeGalleryModal();
+      galleryLastFocus = document.activeElement;
+      galleryModalIndex = images.indexOf(image); if (galleryModalIndex < 0) galleryModalIndex = galleryIndex;
+      galleryZoom = 1; galleryPanX = 0; galleryPanY = 0;
+      galleryModal = document.createElement('div'); galleryModal.className = 'alxian-gallery-modal'; galleryModal.setAttribute('role', 'dialog'); galleryModal.setAttribute('aria-modal', 'true'); galleryModal.setAttribute('aria-label', langText('图库预览', 'Gallery preview'));
+      galleryModal.innerHTML = '<button type="button" class="alxian-gallery-close" data-gallery-close aria-label="' + langText('关闭图库', 'Close gallery') + '">×</button><button type="button" class="alxian-gallery-prev" data-gallery-modal-prev aria-label="' + langText('上一张', 'Previous image') + '">‹</button><div class="alxian-gallery-viewport" data-gallery-viewport><img data-gallery-preview alt=""><span data-gallery-modal-count></span></div><button type="button" class="alxian-gallery-next" data-gallery-modal-next aria-label="' + langText('下一张', 'Next image') + '">›</button><div class="alxian-gallery-tools"><button type="button" data-gallery-zoom-out aria-label="' + langText('缩小', 'Zoom out') + '">−</button><button type="button" data-gallery-zoom-reset aria-label="' + langText('重置缩放', 'Reset zoom') + '">1:1</button><button type="button" data-gallery-zoom-in aria-label="' + langText('放大', 'Zoom in') + '">+</button></div>';
+      root.appendChild(galleryModal); renderGalleryModal(); window.requestAnimationFrame(function () { if (galleryModal) galleryModal.classList.add('is-open'); });
+      qs('[data-gallery-close]', galleryModal).addEventListener('click', closeGalleryModal); qs('[data-gallery-modal-prev]', galleryModal).addEventListener('click', function () { moveGalleryModal(-1); }); qs('[data-gallery-modal-next]', galleryModal).addEventListener('click', function () { moveGalleryModal(1); }); qs('[data-gallery-zoom-out]', galleryModal).addEventListener('click', function () { setGalleryZoom(galleryZoom - .25); }); qs('[data-gallery-zoom-in]', galleryModal).addEventListener('click', function () { setGalleryZoom(galleryZoom + .25); }); qs('[data-gallery-zoom-reset]', galleryModal).addEventListener('click', function () { setGalleryZoom(1); });
+      var viewport = qs('[data-gallery-viewport]', galleryModal); var preview = qs('[data-gallery-preview]', galleryModal);
+      viewport.addEventListener('wheel', function (event) { event.preventDefault(); setGalleryZoom(galleryZoom + (event.deltaY < 0 ? .2 : -.2)); }, { passive: false });
+      viewport.addEventListener('pointerdown', function (event) { if (galleryZoom <= 1) return; galleryDragging = true; galleryDragStartX = event.clientX - galleryPanX; galleryDragStartY = event.clientY - galleryPanY; viewport.setPointerCapture(event.pointerId); preview.classList.add('is-dragging'); });
+      viewport.addEventListener('pointermove', function (event) { if (!galleryDragging) return; galleryPanX = event.clientX - galleryDragStartX; galleryPanY = event.clientY - galleryDragStartY; renderGalleryModal(); });
+      viewport.addEventListener('pointerup', function () { galleryDragging = false; preview.classList.remove('is-dragging'); }); viewport.addEventListener('pointercancel', function () { galleryDragging = false; preview.classList.remove('is-dragging'); });
+      galleryModal.addEventListener('click', function (event) { if (event.target === galleryModal) closeGalleryModal(); });
+      qs('[data-gallery-close]', galleryModal).focus();
     }
     gallery.addEventListener('click', function (event) {
       if (gallerySuppressClick) { gallerySuppressClick = false; return; }
@@ -376,7 +439,7 @@
       if (event.key === 'ArrowRight' || event.key === 'ArrowDown') { event.preventDefault(); showGallery(galleryIndex + 1); }
       if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') { event.preventDefault(); showGallery(galleryIndex - 1); }
     });
-    document.addEventListener('keydown', function (event) { if (event.key === 'Escape') closeGalleryModal(); });
+    document.addEventListener('keydown', function (event) { if (!galleryModal) return; if (event.key === 'Escape') closeGalleryModal(); if (event.key === 'ArrowLeft') moveGalleryModal(-1); if (event.key === 'ArrowRight') moveGalleryModal(1); if (event.key === '+' || event.key === '=') setGalleryZoom(galleryZoom + .25); if (event.key === '-') setGalleryZoom(galleryZoom - .25); });
     gallery.setAttribute('tabindex', '0');
   }
 
@@ -473,10 +536,28 @@
       return Number.isFinite(Number(today)) || Number.isFinite(Number(total));
     }
     if (visitorEndpoint) {
-      fetch(visitorEndpoint, { headers: { Accept: 'application/json' }, credentials: 'omit' }).then(function (response) {
+      var visitorUrl = visitorEndpoint.indexOf('http') === 0 ? visitorEndpoint : apiUrl(visitorEndpoint);
+      fetch(visitorUrl, { headers: { Accept: 'application/json' }, credentials: 'omit' }).then(function (response) {
         if (!response.ok) throw new Error('visitor stats unavailable');
         return response.json();
       }).then(renderVisitors).catch(function () {});
+      fetch(visitorUrl, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify({ path: window.location.pathname, referrer: document.referrer || '' }), credentials: 'omit' }).then(function (response) {
+        if (!response.ok) throw new Error('visitor record unavailable');
+        return response.json().catch(function () { return {}; });
+      }).then(renderVisitors).catch(function () {});
+    } else {
+      /* Keep the static preview honest and useful when no visitor service is
+         configured: one count per browser session, persisted locally. */
+      var visitorKey = 'alxian-visitor:' + window.location.pathname + ':' + new Date().toISOString().slice(0, 10);
+      var visitorTotalKey = 'alxian-visitor-total';
+      var seenVisitor = readStorage(visitorKey);
+      var localTotal = Number(readStorage(visitorTotalKey) || 0);
+      if (!seenVisitor) {
+        localTotal += 1;
+        try { localStorage.setItem(visitorKey, '1'); localStorage.setItem(visitorTotalKey, String(localTotal)); } catch (_) {}
+      }
+      if (visitorsToday) visitorsToday.textContent = seenVisitor ? '0' : '1';
+      if (visitorsTotal) visitorsTotal.textContent = String(localTotal);
     }
   }
 
@@ -576,7 +657,19 @@
     audio.addEventListener('loadedmetadata', function () { duration = audio.duration || duration; renderMusic(audio.currentTime, duration); if (track) track.removeAttribute('data-audio-error'); });
     audio.addEventListener('timeupdate', function () { renderMusic(audio.currentTime, audio.duration || duration); });
     audio.addEventListener('ended', function () { selectMusic(selectedTrack + 1, true); });
-    audio.addEventListener('error', function () { setMusicState(false); if (track) track.setAttribute('data-audio-error', 'true'); });
+    audio.addEventListener('error', function () {
+      setMusicState(false);
+      if (track) track.setAttribute('data-audio-error', 'true');
+      var failedItem = musicItems[selectedTrack];
+      if (failedItem && failedItem.source && failedItem.source.indexOf('audius') === 0 && musicItems.length > 1) {
+        window.setTimeout(function () {
+          musicItems.splice(selectedTrack, 1);
+          selectedTrack = selectedTrack % musicItems.length;
+          renderPlaylist();
+          selectMusic(selectedTrack, false);
+        }, 180);
+      }
+    });
     if (progressTrack) {
       function seekFromEvent(event) { var rect = progressTrack.getBoundingClientRect(); var ratio = Math.min(1, Math.max(0, (event.clientX - rect.left) / Math.max(1, rect.width))); var next = ratio * duration; if (Number.isFinite(audio.duration)) audio.currentTime = next; renderMusic(next, duration); }
       progressTrack.addEventListener('pointerdown', function (event) { seekFromEvent(event); });
@@ -600,29 +693,34 @@
         { kind: 'global', url: 'https://api.audius.co/v1/tracks/trending?limit=6&genre=Pop&app_name=alxian_personal_site' },
         { kind: 'global', url: 'https://api.audius.co/v1/tracks/trending?limit=6&genre=Electronic&app_name=alxian_personal_site' }
       ];
-      Promise.all(feeds.map(function (feed) {
+      Promise.allSettled(feeds.map(function (feed) {
         var endpoint = feed.url;
         return fetch(endpoint, { headers: { Accept: 'application/json' } }).then(function (response) {
           if (!response.ok) throw new Error('Audius chart unavailable');
           return response.json().then(function (payload) { return { kind: feed.kind, payload: payload }; });
         });
-      })).then(function (payloads) {
+      })).then(function (results) {
         var seen = {};
         var groups = { zh: [], global: [] };
-        payloads.forEach(function (entry) {
+        results.filter(function (result) { return result.status === 'fulfilled'; }).forEach(function (result) {
+          var entry = result.value;
           var items = entry.payload && Array.isArray(entry.payload.data) ? entry.payload.data : [];
           items.forEach(function (item) {
             var trackId = String(item && (item.track_id || item.id) || '');
             var seconds = Number(item && item.duration);
-            if (!trackId || seen[trackId] || !item.title || !item.stream || !item.stream.url || seconds < 60) return;
+            if (!trackId || seen[trackId] || !item.title || seconds < 60) return;
             seen[trackId] = true;
             var artwork = item.artwork && (item.artwork['480x480'] || item.artwork['150x150']);
             var artist = item.user && (item.user.name || item.user.handle);
+            /* Search responses do not always embed `stream`; the track stream
+               endpoint is stable and returns the full-length audio response. */
+            var streamUrl = item.stream && item.stream.url;
+            if (!streamUrl) streamUrl = 'https://api.audius.co/v1/tracks/' + encodeURIComponent(trackId) + '/stream?app_name=alxian_personal_site';
             groups[entry.kind].push({
               title: item.title,
               author: (artist || langText('热门音乐人', 'Trending artist')) + ' · Audius',
               duration: seconds,
-              url: item.stream.url,
+              url: streamUrl,
               cover: artwork || assetCover('wuha.jpg'),
               source: entry.kind === 'zh' ? 'audius-zh' : 'audius-global'
             });
@@ -655,11 +753,22 @@
   var sendComment = qs('[data-comment-send]');
   var commentStatus = commentPopover && qs('[data-comment-status]', commentPopover);
   var commentCount = qs('[data-comment-count]');
+  var commentApi = apiUrl('/api/comments');
+  var commentStorageKey = 'alxian-comments';
+  function readLocalComments() {
+    try { var localComments = JSON.parse(localStorage.getItem(commentStorageKey) || '[]'); return Array.isArray(localComments) ? localComments : []; } catch (_) { return []; }
+  }
+  function renderCommentCount(value) {
+    if (!commentCount) return;
+    var count = Math.max(0, Number(value) || 0);
+    commentCount.textContent = count > 99 ? '99+' : String(count);
+  }
   if (commentCount) {
-    fetch('/api/comments', { headers: { Accept: 'application/json' } }).then(function (response) { if (!response.ok) throw new Error('comment count unavailable'); return response.json(); }).then(function (payload) {
+    renderCommentCount(readLocalComments().length);
+    fetch(commentApi, { headers: { Accept: 'application/json' } }).then(function (response) { if (!response.ok) throw new Error('comment count unavailable'); return response.json(); }).then(function (payload) {
       var count = Array.isArray(payload) ? payload.length : payload && Number(payload.count);
-      if (Number.isFinite(count)) commentCount.textContent = count > 99 ? '99+' : String(Math.max(0, count));
-    }).catch(function () { commentCount.textContent = '0'; });
+      if (Number.isFinite(count)) renderCommentCount(count);
+    }).catch(function () {});
   }
   if (commentPopover && !commentStatus) {
     commentStatus = document.createElement('small');
@@ -703,10 +812,24 @@
   document.addEventListener('keydown', function (event) { if (event.key === 'Escape') closeComments(); });
   if (sendComment) sendComment.addEventListener('click', function () {
     if (!commentText || !commentText.value.trim()) { setCommentStatus(langText('先写点内容，再发送', 'Write a note before sending'), true); if (commentText) commentText.focus(); return; }
+    var value = commentText.value.trim();
+    var record = { content: value, nickname: langText('访客', 'Guest'), createdAt: new Date().toISOString(), path: window.location.pathname };
+    fetch(commentApi, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(record), credentials: 'omit' }).then(function (response) {
+      if (!response.ok) throw new Error('comment API unavailable');
+      return response.json().catch(function () { return {}; });
+    }).then(function (payload) {
+      var count = payload && (payload.count != null ? payload.count : payload.total);
+      if (Number.isFinite(Number(count))) renderCommentCount(count);
+    }).catch(function () {
+      var comments = readLocalComments();
+      comments.push(record);
+      try { localStorage.setItem(commentStorageKey, JSON.stringify(comments.slice(-20))); } catch (_) {}
+      renderCommentCount(comments.length);
+    });
     commentText.value = '';
     try { localStorage.removeItem('alxian-comment-draft'); } catch (_) {}
-    sendComment.textContent = langText('已保存到本地', 'Saved locally');
-    setCommentStatus(langText('已保存到本地', 'Saved to this browser'));
+    sendComment.textContent = langText('已提交', 'Submitted');
+    setCommentStatus(langText('留言已提交，感谢你的反馈', 'Your note was submitted. Thank you.'));
     window.setTimeout(function () { sendComment.textContent = langText('发送', 'Send'); closeComments(); }, 1500);
   });
 
@@ -766,6 +889,15 @@
       if (reacted[item.key]) return;
       reacted[item.key] = true; reactionCounts[item.key] += 1;
       try { localStorage.setItem('alxian-reacted-' + item.key, 'true'); localStorage.setItem('alxian-reaction-counts', JSON.stringify(reactionCounts)); } catch (_) {}
+      fetch(apiUrl('/api/reactions'), { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify({ type: item.key }), credentials: 'omit' }).then(function (response) {
+        if (!response.ok) throw new Error('reaction API unavailable');
+        return response.json().catch(function () { return {}; });
+      }).then(function (payload) {
+        var count = payload && (payload.count != null ? payload.count : payload[item.key]);
+        if (Number.isFinite(Number(count))) reactionCounts[item.key] = Number(count);
+        try { localStorage.setItem('alxian-reaction-counts', JSON.stringify(reactionCounts)); } catch (_) {}
+        button.title = reactionLabel(item);
+      }).catch(function () {});
       button.dataset.reacted = 'true'; button.disabled = true; button.title = reactionLabel(item); button.classList.add('is-selected');
       reaction.classList.add('is-reacted'); reactionZone.classList.add('is-open'); reaction.setAttribute('aria-expanded', 'true'); showReactionThanks(item);
       window.setTimeout(function () { reaction.classList.remove('is-reacted'); }, 420);
@@ -779,7 +911,7 @@
     /* The reference reads shared counts from its API. Static deployments may
        not expose that endpoint, so local counts remain the deterministic
        fallback while a successful response updates the accessible labels. */
-    fetch('/api/reactions', { headers: { Accept: 'application/json' } }).then(function (response) { if (!response.ok) throw new Error('reaction counts unavailable'); return response.json(); }).then(function (remoteCounts) {
+    fetch(apiUrl('/api/reactions'), { headers: { Accept: 'application/json' } }).then(function (response) { if (!response.ok) throw new Error('reaction counts unavailable'); return response.json(); }).then(function (remoteCounts) {
       reactionItems.forEach(function (item) { if (remoteCounts && Number.isFinite(Number(remoteCounts[item.key]))) reactionCounts[item.key] = Number(remoteCounts[item.key]); });
       qsa('.alxian-reaction-option, .alxian-reaction-trigger', reactionZone).forEach(function (button) { var item = reactionItems.find(function (entry) { return entry.key === button.dataset.reactionKey; }); if (item) button.title = reactionLabel(item); });
     }).catch(function () {});
