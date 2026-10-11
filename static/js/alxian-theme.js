@@ -594,42 +594,53 @@
     }
     function loadAudiusTrending() {
       setMusicSource(langText('正在同步热榜', 'Syncing live charts'));
-      var genres = ['Pop', 'Electronic'];
-      Promise.all(genres.map(function (genre) {
-        var endpoint = 'https://api.audius.co/v1/tracks/trending?limit=6&genre=' + encodeURIComponent(genre) + '&app_name=alxian_personal_site';
+      var feeds = [
+        { kind: 'zh', url: 'https://api.audius.co/v1/tracks/search?query=' + encodeURIComponent('Mandopop') + '&limit=8&app_name=alxian_personal_site' },
+        { kind: 'zh', url: 'https://api.audius.co/v1/tracks/search?query=' + encodeURIComponent('华语') + '&limit=8&app_name=alxian_personal_site' },
+        { kind: 'global', url: 'https://api.audius.co/v1/tracks/trending?limit=6&genre=Pop&app_name=alxian_personal_site' },
+        { kind: 'global', url: 'https://api.audius.co/v1/tracks/trending?limit=6&genre=Electronic&app_name=alxian_personal_site' }
+      ];
+      Promise.all(feeds.map(function (feed) {
+        var endpoint = feed.url;
         return fetch(endpoint, { headers: { Accept: 'application/json' } }).then(function (response) {
           if (!response.ok) throw new Error('Audius chart unavailable');
-          return response.json();
+          return response.json().then(function (payload) { return { kind: feed.kind, payload: payload }; });
         });
       })).then(function (payloads) {
         var seen = {};
-        var liveItems = payloads.reduce(function (items, payload) {
-          return items.concat(payload && Array.isArray(payload.data) ? payload.data : []);
-        }, []).filter(function (item) {
-          var trackId = String(item && (item.track_id || item.id) || '');
-          var seconds = Number(item && item.duration);
-          return trackId && !seen[trackId] && item.title && item.stream && item.stream.url && seconds >= 60;
-        }).map(function (item) {
-          var trackId = String(item.track_id || item.id);
-          seen[trackId] = true;
-          var artwork = item.artwork && (item.artwork['480x480'] || item.artwork['150x150']);
-          var artist = item.user && (item.user.name || item.user.handle);
-          return {
-            title: item.title,
-            author: (artist || langText('热门音乐人', 'Trending artist')) + ' · Audius',
-            duration: Number(item.duration),
-            url: item.stream.url,
-            cover: artwork || assetCover('wuha.jpg'),
-            source: 'audius'
-          };
-        }).slice(0, 10);
+        var groups = { zh: [], global: [] };
+        payloads.forEach(function (entry) {
+          var items = entry.payload && Array.isArray(entry.payload.data) ? entry.payload.data : [];
+          items.forEach(function (item) {
+            var trackId = String(item && (item.track_id || item.id) || '');
+            var seconds = Number(item && item.duration);
+            if (!trackId || seen[trackId] || !item.title || !item.stream || !item.stream.url || seconds < 60) return;
+            seen[trackId] = true;
+            var artwork = item.artwork && (item.artwork['480x480'] || item.artwork['150x150']);
+            var artist = item.user && (item.user.name || item.user.handle);
+            groups[entry.kind].push({
+              title: item.title,
+              author: (artist || langText('热门音乐人', 'Trending artist')) + ' · Audius',
+              duration: seconds,
+              url: item.stream.url,
+              cover: artwork || assetCover('wuha.jpg'),
+              source: entry.kind === 'zh' ? 'audius-zh' : 'audius-global'
+            });
+          });
+        });
+        groups.zh.sort(function (left, right) {
+          var leftHasHan = /[\u3400-\u9fff]/.test(left.title) ? 1 : 0;
+          var rightHasHan = /[\u3400-\u9fff]/.test(right.title) ? 1 : 0;
+          return rightHasHan - leftHasHan;
+        });
+        var liveItems = groups.zh.slice(0, 5).concat(groups.global).slice(0, 10);
         if (liveItems.length < 6) throw new Error('Audius chart returned too few full tracks');
         var wasPlaying = musicButton.getAttribute('aria-pressed') === 'true';
         var keepIndex = Math.min(selectedTrack, liveItems.length - 1);
         musicItems = liveItems;
         renderPlaylist();
         selectMusic(keepIndex, wasPlaying);
-        setMusicSource(langText('实时热榜 · Audius', 'Live charts · Audius'));
+        setMusicSource(langText('中文 + 国际热榜 · Audius', 'Mandarin + global charts · Audius'));
       }).catch(function () {
         setMusicSource(langText('完整歌单 · 本地回退', 'Full tracks · fallback'));
       });
