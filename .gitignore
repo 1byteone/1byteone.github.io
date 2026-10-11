@@ -9,6 +9,9 @@
 # Generated site output
 public/
 
+# Local standalone build workspace
+.hugo-standalone/
+
 # Hugo resources (processed assets)
 resources/
 
