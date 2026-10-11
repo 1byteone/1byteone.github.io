@@ -15,8 +15,8 @@
     <link rel="canonical" href="{{ .Permalink }}">
     <link rel="alternate" type="application/rss+xml" title="{{ if $zh }}{{ $site.identity.name }} 的 RSS{{ else }}{{ $site.identity.name_en }} RSS{{ end }}" href="{{ "rss.xml" | relURL }}">
     <title>{{ if $zh }}{{ $site.identity.name }} · 个人主页{{ else }}{{ $site.identity.name_en }} · Personal homepage{{ end }}</title>
-    <link rel="stylesheet" href="{{ "css/alxian-theme.css" | relURL }}?v=6">
-    <script defer src="{{ "js/alxian-theme.js" | relURL }}?v=10"></script>
+    <link rel="stylesheet" href="{{ "css/alxian-theme.css" | relURL }}?v=7">
+    <script defer src="{{ "js/alxian-theme.js" | relURL }}?v=11"></script>
   </head>
   <body class="alxian-theme" data-lang="{{ if $zh }}zh{{ else }}en{{ end }}" data-asset-root="{{ $asset }}" data-api-base="{{ .Site.Params.api_base | default "" }}">
     <div class="alxian-loader" data-loader role="status" aria-live="polite" aria-label="{{ if $zh }}正在加载{{ else }}Loading{{ end }}"><div class="alxian-loader-topline"><span>PERSONAL ARCHIVE</span><span>00 / 01</span></div><div class="alxian-loader-content"><img src="{{ printf "%simages/keep-going.png" $asset }}" alt=""><span>KEEP GOING</span><strong>DON'T GIVE UP</strong><i class="alxian-loader-progress"><b></b></i></div><div class="alxian-loader-footer"><span>{{ upper $site.identity.name_en }}'S WEB</span><span>LOADING / READY</span></div></div>
