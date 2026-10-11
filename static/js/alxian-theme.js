@@ -710,6 +710,36 @@
     window.setTimeout(function () { sendComment.textContent = langText('发送', 'Send'); closeComments(); }, 1500);
   });
 
+  /* QQ opens a local friend-card modal first, so the number is visible and
+     scannable on mobile while desktop visitors still have a direct fallback. */
+  var qqCardButton = qs('[data-qq-card]');
+  var qqCardModal = qs('[data-qq-card-modal]');
+  var qqCardClose = qqCardModal && qs('[data-qq-card-close]', qqCardModal);
+  function closeQqCard() {
+    if (!qqCardModal) return;
+    qqCardModal.classList.remove('is-open');
+    if (qqCardButton) qqCardButton.setAttribute('aria-expanded', 'false');
+    window.setTimeout(function () {
+      if (!qqCardModal.classList.contains('is-open')) qqCardModal.hidden = true;
+    }, 240);
+  }
+  if (qqCardButton && qqCardModal) {
+    qqCardButton.setAttribute('aria-expanded', 'false');
+    qqCardButton.addEventListener('click', function () {
+      qqCardModal.hidden = false;
+      qqCardButton.setAttribute('aria-expanded', 'true');
+      window.requestAnimationFrame(function () { qqCardModal.classList.add('is-open'); });
+      if (qqCardClose) qqCardClose.focus();
+    });
+    if (qqCardClose) qqCardClose.addEventListener('click', closeQqCard);
+    qqCardModal.addEventListener('click', function (event) {
+      if (event.target === qqCardModal) closeQqCard();
+    });
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape' && !qqCardModal.hidden) closeQqCard();
+    });
+  }
+
   /* Five reactions use the reference's reversed visual order, clip-path reveal,
      local persistence, disabled repeat state and transient thanks label. */
   var reaction = qs('[data-reaction]');
