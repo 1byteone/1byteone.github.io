@@ -176,6 +176,7 @@ jobs:
 
 
   deploy:
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/dev_theme_oil'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
