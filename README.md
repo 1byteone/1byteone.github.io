@@ -1,97 +1,79 @@
-# 1byteone - AI Application Developer Portfolio
+# 1byteone 个人主页
 
-Personal portfolio website showcasing AI engineering projects, RAG systems, and intelligent applications.
+这是 1byteone 的个人主页与 AI 工程作品集，基于 Hugo 构建，内容覆盖 AI 应用、RAG、智能体、Java 后端和技术学习记录。
 
-## Features
+## 主题分支
 
-- **Project Showcase** - Featured AI/ML projects with detailed technical breakdowns
-- **Tech Stack Display** - Visual grid of AI tools, frameworks, and technologies
-- **Experience Timeline** - Career history and project experience
-- **Technical Blog** - Articles on RAG, LangChain, and AI engineering
-- **Responsive Design** - Works perfectly on all devices
-- **Dark/Light Mode** - Automatic theme switching based on system preference
+主题代码按分支隔离，公共内容和数据保持一致：
 
-## Projects Featured
+- `dev_theme_oil`：Oil 主题分支，根路径使用 Oil 主页。
+- `dev_theme_AIxian`：Alxian 主题分支，根路径使用 Alxian 主页。
+- `main`：发布基线分支，合并主题变更前用于稳定版本确认。
 
-### E-Commerce AI Search System
-A complete RAG-based natural language search system integrating Python AI services with Spring Cloud microservices.
+两个主题分支共享 `content/`、`data/`、`assets/` 等内容资源；主题模板、样式、脚本和主题专属图片只在对应分支维护，避免跨主题串改。
 
-### Agricultural Knowledge Base Q&A Agent
-An intelligent Q&A agent for agricultural knowledge built with LangChain and FastAPI.
+## 主要内容
 
-## Tech Stack
+- AI 与后端工程项目展示
+- RAG、LangChain、OpenAI 和智能体实践
+- Java、Spring Boot、Python、MySQL 等技术路线
+- 中英文双语页面
+- 响应式布局、深色模式和 GitHub Pages 部署
 
-- **AI & LLM**: LangChain, FastAPI, RAG, OpenAI
-- **Backend**: Java, Spring Boot, Python, MySQL
-- **Infrastructure**: Redis, Docker, RocketMQ, Elasticsearch
-- **DevOps**: Git, Conda, Jupyter, Linux
-
-## Blog Topics
-
-1. Building a RAG Pipeline with LangChain
-2. Building AI Agents with LangChain
-3. Three-Layer Hallucination Prevention in RAG Systems
-
-## Deployment
-
-This site is built with [HugoBlox](https://github.com/HugoBlox/kit) and can be deployed to:
-
-- GitHub Pages
-- Netlify
-- Vercel
-- Cloudflare Pages
-
-## Local Development
-
-```bash
-# Install Hugo
-brew install hugo  # macOS
-# or
-choco install hugo  # Windows
-
-# Run development server
-hugo server
-
-# Build for production
-hugo --minify
-```
-
-## Repository Layout
+## 目录结构
 
 ```text
-content/             Published Chinese and English pages
-data/                Shared profile, theme registry, and learning data
-config/              Default and theme-specific Hugo configuration
-layouts/             Hugo templates and theme partials
-assets/              Source media processed by Hugo
-static/              Public assets, downloads, CSS, and JavaScript
-docs/                Architecture, delivery, operations, and history notes
-scripts/             Content generation and validation utilities
-.github/workflows/   GitHub Pages build and deployment
+content/             中文与英文发布内容
+data/                个人资料、主题注册表和共享数据
+config/              Hugo 默认配置与主题构建覆盖
+layouts/             Hugo 页面模板和主题局部模板
+assets/              Hugo 处理前的源媒体
+static/              公共图片、下载文件、CSS 和 JavaScript
+docs/                架构、设计、交付、运维与历史文档
+scripts/             内容生成与资源校验脚本
+.github/workflows/   GitHub Pages 构建与发布流程
 ```
 
-Generated output and local tooling directories (`public/`, `resources/`,
-`node_modules/`, and `.hugo-standalone/`) are intentionally ignored and are
-recreated locally or in CI.
+`public/`、`resources/`、`node_modules/`、`.hugo-standalone/` 是本地或 CI 生成目录，已加入 `.gitignore`，不会进入远程仓库。
 
-## Customization
+## 本地开发
 
-Edit the following files to customize your portfolio:
+Windows：
 
-- `config/_default/params.yaml` - Site identity, theme, and settings
-- `data/authors/me.yaml` - Author profile and bio
-- `content/zh/_index.md` and `content/en/_index.md` - Homepage sections
-- `content/{zh,en}/projects/` - Project pages
-- `content/{zh,en}/tech-stack/` - Technical learning pages
+```powershell
+choco install hugo-extended
+npm ci
+hugo server --disableFastRender
+```
 
-For the full theme contract and deployment notes, see
-[`docs/README.md`](docs/README.md).
+构建生产文件：
 
-## License
+```powershell
+hugo --gc --minify
+```
 
-MIT License - feel free to use this template for your own portfolio.
+当前分支默认主题由 `config/_default/params.yaml` 的 `site_theme` 控制。主题预览环境位于 `/themes/<theme-id>/`。
 
-## Contact
+## 内容维护
 
-- **GitHub**: [1byteone](https://github.com/1byteone)
-- **Email**: yjs_0831@qq.com
+- `data/site.yaml`：姓名、联系方式、导航和共享文案
+- `data/authors/`：作者资料
+- `content/zh/`、`content/en/`：中英文页面、文章和项目
+- `config/<theme-id>/`：主题预览构建覆盖
+- `layouts/partials/themes/<theme-id>/`：主题模板
+- `static/css/`、`static/js/`、`static/assets/<theme-id>/`：主题运行资源
+
+完整架构说明见 [`docs/README.md`](docs/README.md)。
+
+## 部署
+
+`.github/workflows/deploy.yml` 会在 `main` 和 `dev_theme_oil` 上执行 GitHub Pages 发布；`dev_theme_AIxian` 执行完整构建、主题预览和路由校验，不自动覆盖线上 Pages 环境。
+
+## 联系方式
+
+- GitHub：[1byteone](https://github.com/1byteone)
+- Email：yjs_0831@qq.com
+
+## 许可证
+
+MIT License。

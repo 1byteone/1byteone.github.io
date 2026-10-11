@@ -1,11 +1,8 @@
-# Maintenance Scripts
+# 维护脚本
 
-Scripts are grouped by intent so they can be run without being mistaken for
-Hugo runtime code:
+脚本按用途分组，避免与 Hugo 运行时代码混淆：
 
-- `generate/`: one-off generators for course content and diagrams.
-- `validation/`: checks that inspect source assets without changing the site.
+- `generate/`：课程内容和技术图示生成脚本。
+- `validation/`：图片、资源等只读校验脚本。
 
-Run scripts from the repository root unless a script documents another
-entrypoint. Validation scripts resolve the repository root from their own file
-location where possible.
+默认从仓库根目录执行。校验脚本会根据自身路径定位仓库根目录，不依赖当前终端所在目录。
