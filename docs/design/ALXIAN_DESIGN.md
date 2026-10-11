@@ -8,7 +8,7 @@
 
 ## Reference Screenshot
 
-![alxian.cn reference screenshot](./assets/alxian-reference.png)
+![alxian.cn reference screenshot](../assets/alxian-reference.png)
 
 ## Design Summary
 
@@ -62,4 +62,4 @@ Implement this as an isolated Hugo site theme. Keep all personal content and ima
 workflow: firecrawl-website-design-clone
 source_url: https://alxian.cn/
 target_stack: Hugo static site
-output: docs/ALXIAN_DESIGN.md
+output: docs/design/ALXIAN_DESIGN.md

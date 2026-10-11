@@ -56,15 +56,36 @@ hugo server
 hugo --minify
 ```
 
+## Repository Layout
+
+```text
+content/             Published Chinese and English pages
+data/                Shared profile, theme registry, and learning data
+config/              Default and theme-specific Hugo configuration
+layouts/             Hugo templates and theme partials
+assets/              Source media processed by Hugo
+static/              Public assets, downloads, CSS, and JavaScript
+docs/                Architecture, delivery, operations, and history notes
+scripts/             Content generation and validation utilities
+.github/workflows/   GitHub Pages build and deployment
+```
+
+Generated output and local tooling directories (`public/`, `resources/`,
+`node_modules/`, and `.hugo-standalone/`) are intentionally ignored and are
+recreated locally or in CI.
+
 ## Customization
 
 Edit the following files to customize your portfolio:
 
 - `config/_default/params.yaml` - Site identity, theme, and settings
 - `data/authors/me.yaml` - Author profile and bio
-- `content/_index.md` - Homepage sections
-- `content/projects/` - Project pages
-- `content/blog/` - Blog posts
+- `content/zh/_index.md` and `content/en/_index.md` - Homepage sections
+- `content/{zh,en}/projects/` - Project pages
+- `content/{zh,en}/tech-stack/` - Technical learning pages
+
+For the full theme contract and deployment notes, see
+[`docs/README.md`](docs/README.md).
 
 ## License
 
