@@ -1,0 +1,16 @@
+{{- $zh := hasPrefix .Lang "zh" -}}
+{{- $term := .Data.Term -}}
+{{- $pages := .Pages.ByDate.Reverse -}}
+<!doctype html>
+<html lang="{{ if $zh }}zh-Hans{{ else }}en{{ end }}" data-theme="light">
+  <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="light dark"><link rel="stylesheet" href="{{ "css/bloggpt-theme.css" | relURL }}?v=4"><script defer src="{{ "js/bloggpt-theme.js" | relURL }}?v=3"></script><title>{{ .Title }} · BlogGPT</title></head>
+  <body class="bloggpt-theme bloggpt-page bloggpt-taxonomy-page" data-lang="{{ if $zh }}zh{{ else }}en{{ end }}">
+    {{ partial "themes/bloggpt/shell.html" . }}
+    <main class="bloggpt-main bloggpt-page-main" id="main">
+      <a class="bloggpt-back-link" href="{{ .Data.Plural | relLangURL }}">← {{ if $zh }}返回索引{{ else }}Back to index{{ end }}</a>
+      <header class="bloggpt-page-heading"><div class="bloggpt-eyebrow">TOPIC / {{ upper .Data.Plural }}</div><h1>{{ .Title }}</h1><p>{{ len $pages }} {{ if $zh }}篇文章{{ else }}articles{{ end }}</p></header>
+      <div class="bloggpt-post-list bloggpt-linear-list">{{ range $pages }}<article class="bloggpt-post-row bloggpt-list-row"><div class="bloggpt-post-copy"><div class="bloggpt-post-meta"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time></div><a class="bloggpt-post-title" href="{{ .RelPermalink }}">{{ .Title }} <span>↗</span></a><p>{{ with .Params.summary }}{{ . }}{{ else }}{{ .Summary | plainify | truncate 180 }}{{ end }}</p><div class="bloggpt-tag-row">{{ range first 4 .Params.tags }}<span>{{ . }}</span>{{ end }}</div></div>{{ with .Resources.GetMatch "featured.*" }}<a class="bloggpt-post-cover" href="{{ $.RelPermalink }}" tabindex="-1" aria-hidden="true"><img src="{{ .RelPermalink }}" alt="" loading="lazy"></a>{{ end }}</article>{{ else }}<p class="bloggpt-empty">{{ if $zh }}暂无文章。{{ else }}No articles yet.{{ end }}</p>{{ end }}</div>
+    </main>
+    {{ partial "themes/bloggpt/footer.html" . }}
+  </body>
+</html>

@@ -1,0 +1,7 @@
+{{- if eq (lower (default "oil" (index .Site.Params "site_theme"))) "bloggpt" -}}
+  {{ partial "themes/bloggpt/taxonomy.html" . }}
+{{- else if eq (lower (default "oil" (index .Site.Params "site_theme"))) "alxian" -}}
+  {{ partial "themes/alxian/list.html" . }}
+{{- else -}}
+  {{ partial "themes/oil/list.html" . }}
+{{- end -}}

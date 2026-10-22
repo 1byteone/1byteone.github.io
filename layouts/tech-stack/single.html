@@ -1,4 +1,6 @@
-{{- if eq (lower (default "oil" (index .Site.Params "site_theme"))) "alxian" -}}
+{{- if eq (lower (default "oil" (index .Site.Params "site_theme"))) "bloggpt" -}}
+  {{ partial "themes/bloggpt/tech-stack-single.html" . }}
+{{- else if eq (lower (default "oil" (index .Site.Params "site_theme"))) "alxian" -}}
   {{ partial "themes/alxian/single.html" . }}
 {{- else -}}
   {{ partial "themes/oil/tech-stack.html" . }}

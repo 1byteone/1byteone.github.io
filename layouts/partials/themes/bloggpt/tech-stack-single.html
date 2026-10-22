@@ -1,0 +1,24 @@
+{{- $zh := hasPrefix .Lang "zh" -}}
+{{- $site := .Site.Data.site.site -}}
+{{- $slug := .Params.tech_slug | default .File.ContentBaseName -}}
+{{- $matches := where .Site.Data.tech_learning "slug" $slug -}}
+{{- $item := index $matches 0 -}}
+<!doctype html>
+<html lang="{{ if $zh }}zh-Hans{{ else }}en{{ end }}" data-theme="light">
+  <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="light dark"><link rel="stylesheet" href="{{ "css/bloggpt-theme.css" | relURL }}?v=4"><script defer src="{{ "js/bloggpt-theme.js" | relURL }}?v=3"></script><title>{{ if $item }}{{ $item.name }}{{ else }}{{ .Title }}{{ end }} · BlogGPT</title></head>
+  <body class="bloggpt-theme bloggpt-page bloggpt-tech-detail-page" data-lang="{{ if $zh }}zh{{ else }}en{{ end }}">
+    {{ partial "themes/bloggpt/shell.html" . }}
+    <main class="bloggpt-main bloggpt-page-main bloggpt-tech-detail-main" id="main">
+      <a class="bloggpt-back-link" href="{{ "tech-stack/" | relLangURL }}">← {{ if $zh }}全部技术路线{{ else }}All roadmaps{{ end }}</a>
+      {{ if $item }}
+      <header class="bloggpt-page-heading"><div class="bloggpt-eyebrow">{{ if $zh }}{{ $item.category }}{{ else }}{{ $item.category_en | default $item.category }}{{ end }} / {{ $item.priority }} / {{ $item.phase }}</div><h1>{{ $item.name }}</h1><p>{{ $item.goal }}</p><div class="bloggpt-article-meta"><span>{{ if $zh }}投入{{ else }}TIME{{ end }} {{ $item.duration }}</span><span>{{ if $zh }}前置{{ else }}PREREQUISITES{{ end }} {{ $item.prerequisite }}</span></div></header>
+      {{ with $item.image }}<figure class="bloggpt-article-cover bloggpt-tech-cover"><img src="{{ . | relURL }}" alt="{{ $item.name }} {{ if $zh }}学习路线架构图{{ else }}learning roadmap diagram{{ end }}"></figure>{{ end }}
+      <div class="bloggpt-tech-detail-grid"><section class="bloggpt-tech-card"><div class="bloggpt-eyebrow">{{ if $zh }}学习速览{{ else }}LEARNING SNAPSHOT{{ end }}</div><h2>{{ if $zh }}把路线变成可以验收的能力{{ else }}Turn the roadmap into verifiable skills{{ end }}</h2><ul>{{ range $item.overview }}<li>{{ . }}</li>{{ end }}</ul>{{ with $item.article }}<a class="bloggpt-primary-link" href="{{ . | relLangURL }}">{{ if $zh }}进入配套教程{{ else }}Open companion tutorial{{ end }} ↗</a>{{ end }}</section><aside class="bloggpt-tech-card"><div class="bloggpt-eyebrow">{{ if $zh }}专业 Goal{{ else }}PROFESSIONAL GOAL{{ end }}</div><p>{{ $item.goal }}</p><strong>{{ if $zh }}完成定义{{ else }}DEFINITION OF DONE{{ end }}</strong><small>{{ if $zh }}能解释、能实现、能测试、能在故障下稳定运行。{{ else }}Explain it, build it, test it, and keep it stable under failure.{{ end }}</small></aside></div>
+      <section class="bloggpt-tech-section"><div class="bloggpt-eyebrow">{{ if $zh }}学习路线大纲{{ else }}LEARNING ROADMAP{{ end }}</div><h2>{{ if $zh }}从基础到项目验收{{ else }}From foundations to project acceptance{{ end }}</h2><div class="bloggpt-tech-roadmap">{{ range $index, $step := $item.roadmap }}<div><b>{{ printf "%02d" (add $index 1) }}</b><p>{{ $step }}</p></div>{{ end }}</div></section>
+      <section class="bloggpt-tech-section"><div class="bloggpt-eyebrow">{{ if $zh }}练习与验收标准{{ else }}PRACTICE AND ACCEPTANCE{{ end }}</div><h2>{{ if $zh }}完成后应该能证明什么{{ else }}What you should be able to prove{{ end }}</h2><ul class="bloggpt-tech-checklist">{{ range $item.checklist }}<li>{{ . }}</li>{{ end }}</ul></section>
+      <section class="bloggpt-tech-section"><div class="bloggpt-eyebrow">{{ if $zh }}关联技术栈{{ else }}RELATED TECHNOLOGIES{{ end }}</div><div class="bloggpt-tag-row">{{ range $item.related }}{{ $relatedMatches := where $.Site.Data.tech_learning "name" . }}{{ $related := index $relatedMatches 0 }}{{ if $related }}<a href="{{ printf "tech-stack/%s/" $related.slug | relLangURL }}">{{ $related.name }}</a>{{ end }}{{ end }}</div></section>
+      {{ else }}<header class="bloggpt-page-heading"><div class="bloggpt-eyebrow">404 / ROADMAP</div><h1>{{ if $zh }}路线不存在{{ else }}Roadmap not found{{ end }}</h1><p>{{ if $zh }}返回技术路线总览选择一项学习路线。{{ else }}Return to the roadmap index and choose a learning path.{{ end }}</p></header>{{ end }}
+    </main>
+    {{ partial "themes/bloggpt/footer.html" . }}
+  </body>
+</html>

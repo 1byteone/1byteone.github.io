@@ -1,4 +1,31 @@
-{{- if eq (lower (default "oil" (index .Site.Params "site_theme"))) "alxian" -}}
+{{- $theme := lower (default "oil" (index .Site.Params "site_theme")) -}}
+{{- if eq $theme "bloggpt" -}}
+  {{- if or (eq .Section "blog") (eq .Section "posts") (eq .Section "projects") (eq .Section "works") -}}
+    {{ partial "themes/bloggpt/list.html" . }}
+  {{- else if eq .Section "archives" -}}
+    {{ partial "themes/bloggpt/archives.html" . }}
+  {{- else if eq .Section "search" -}}
+    {{ partial "themes/bloggpt/search.html" . }}
+  {{- else if eq .Section "about" -}}
+    {{ partial "themes/bloggpt/about.html" . }}
+  {{- else if eq .Section "status" -}}
+    {{ partial "themes/bloggpt/status.html" . }}
+  {{- else if eq .Section "resource" -}}
+    {{ partial "themes/bloggpt/resource.html" . }}
+  {{- else if eq .Section "friends" -}}
+    {{ partial "themes/bloggpt/friends.html" . }}
+  {{- else if eq .Section "links" -}}
+    {{ partial "themes/bloggpt/friends.html" . }}
+  {{- else if eq .Section "chat" -}}
+    {{ partial "themes/bloggpt/chat.html" . }}
+  {{- else if eq .Section "tech-stack" -}}
+    {{ partial "themes/bloggpt/tech-stack.html" . }}
+  {{- else if eq .Section "categories" -}}
+    {{ partial "themes/bloggpt/categories.html" . }}
+  {{- else -}}
+    {{ partial "themes/bloggpt/section.html" . }}
+  {{- end -}}
+{{- else if eq $theme "alxian" -}}
   {{- if eq .Section "resource" -}}
     {{ partial "themes/alxian/resource.html" . }}
   {{- else if eq .Section "chat" -}}

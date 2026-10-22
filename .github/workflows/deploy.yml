@@ -6,6 +6,7 @@ on:
       - main
       - dev_theme_oil
       - dev_theme_AIxian
+      - dev_theme_GPT
 
   workflow_dispatch:
 
@@ -162,6 +163,36 @@ jobs:
           test -s public/themes/oil/index.html
           test -s public/themes/oil/en/index.html
           test -s public/themes/oil/css/oil-theme.css
+          test -s public/themes/minimal/index.html
+          test -s public/themes/minimal/en/index.html
+          test -s public/themes/minimal/css/minimal-theme.css
+
+      - name: Verify BlogGPT routes
+        if: github.ref == 'refs/heads/dev_theme_GPT'
+        run: |
+          set -euo pipefail
+          for route in \
+            "index.html" \
+            "blog/index.html" \
+            "projects/index.html" \
+            "resource/index.html" \
+            "friends/index.html" \
+            "categories/index.html" \
+            "archives/index.html" \
+            "about/index.html" \
+            "search/index.html" \
+            "status/index.html" \
+            "chat/index.html" \
+            "tech-stack/index.html" \
+            "en/index.html" \
+            "en/blog/index.html" \
+            "en/projects/index.html" \
+            "en/about/index.html"; do
+            test -s "public/$route"
+          done
+          test -s public/css/bloggpt-theme.css
+          test -s public/js/bloggpt-theme.js
+          test -s public/blog/building-rag-pipeline/index.html
 
       - name: Build search index
         run: npm run pagefind
@@ -179,7 +210,8 @@ jobs:
     if: >-
       github.ref == 'refs/heads/main' ||
       github.ref == 'refs/heads/dev_theme_oil' ||
-      github.ref == 'refs/heads/dev_theme_AIxian'
+      github.ref == 'refs/heads/dev_theme_AIxian' ||
+      github.ref == 'refs/heads/dev_theme_GPT'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

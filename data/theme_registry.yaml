@@ -35,7 +35,7 @@ themes:
     home_template: themes/alxian/home.html
     stylesheet: css/alxian-theme.css
     script: js/alxian-theme.js
-    base_path: /
+    base_path: /themes/alxian/
     supports:
       - home
       - list
@@ -45,4 +45,28 @@ themes:
       - friends
       - tech-stack
       - works
+      - 404
+  - id: bloggpt
+    label: BlogGPT
+    short_label: GPT
+    version: 0.1.0
+    status: production
+    scope: site
+    home_template: themes/bloggpt/home.html
+    stylesheet: css/bloggpt-theme.css
+    script: js/bloggpt-theme.js
+    base_path: /
+    supports:
+      - home
+      - list
+      - single
+      - resource
+      - chat
+      - friends
+      - tech-stack
+      - categories
+      - archives
+      - about
+      - search
+      - status
       - 404

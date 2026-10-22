@@ -1,0 +1,15 @@
+{{- $zh := hasPrefix .Lang "zh" -}}
+{{- $pages := .RegularPages.ByTitle -}}
+<!doctype html>
+<html lang="{{ if $zh }}zh-Hans{{ else }}en{{ end }}" data-theme="light">
+  <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="light dark"><link rel="stylesheet" href="{{ "css/bloggpt-theme.css" | relURL }}?v=4"><script defer src="{{ "js/bloggpt-theme.js" | relURL }}?v=2"></script><title>{{ if $zh }}技术栈{{ else }}Tech stack{{ end }} · BlogGPT</title></head>
+  <body class="bloggpt-theme bloggpt-page bloggpt-tech-page" data-lang="{{ if $zh }}zh{{ else }}en{{ end }}">
+    {{ partial "themes/bloggpt/shell.html" . }}
+    <main class="bloggpt-main bloggpt-page-main" id="main">
+      <a class="bloggpt-back-link" href="{{ .Site.Home.RelPermalink }}">← {{ if $zh }}返回首页{{ else }}Back home{{ end }}</a>
+      <header class="bloggpt-page-heading"><div class="bloggpt-eyebrow">ROADMAPS / PRACTICE / DELIVERY</div><h1>{{ if $zh }}技术栈{{ else }}Tech stack{{ end }}</h1><p>{{ if $zh }}按主题整理学习路线、练习和验收标准。{{ else }}Practical roadmaps with outlines, exercises, and acceptance criteria.{{ end }}</p></header>
+      <div class="bloggpt-post-list bloggpt-linear-list bloggpt-tech-list">{{ range $pages }}<article class="bloggpt-post-row bloggpt-list-row"><div class="bloggpt-post-copy"><div class="bloggpt-post-meta"><span>ROADMAP</span></div><a class="bloggpt-post-title" href="{{ .RelPermalink }}">{{ .Title }} <span>↗</span></a><p>{{ with .Description }}{{ . }}{{ else }}{{ .Summary | plainify | truncate 180 }}{{ end }}</p></div></article>{{ end }}</div>
+    </main>
+    {{ partial "themes/bloggpt/footer.html" . }}
+  </body>
+</html>

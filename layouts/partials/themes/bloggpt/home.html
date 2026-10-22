@@ -1,0 +1,54 @@
+{{- $zh := hasPrefix .Lang "zh" -}}
+{{- $site := .Site.Data.site.site -}}
+{{- $posts := where site.RegularPages "Section" "blog" -}}
+{{- $posts = $posts.ByDate.Reverse -}}
+<!doctype html>
+<html lang="{{ if $zh }}zh-Hans{{ else }}en{{ end }}" data-theme="light">
+  <head>
+    <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark"><meta name="theme-color" content="#fcfcfc">
+    <meta name="description" content="{{ if $zh }}{{ $site.identity.name }}的技术博客，记录 AI 工程、RAG 和后端实践。{{ else }}{{ $site.identity.name_en }}'s notes on AI engineering, RAG, and backend systems.{{ end }}">
+    <link rel="canonical" href="{{ .Permalink }}"><link rel="stylesheet" href="{{ "css/bloggpt-theme.css" | relURL }}?v=4">
+    <title>{{ if $zh }}今天想读点什么？{{ else }}What would you like to read today?{{ end }} · BlogGPT</title>
+    <script defer src="{{ "js/bloggpt-theme.js" | relURL }}?v=1"></script>
+  </head>
+  <body class="bloggpt-theme bloggpt-home" data-lang="{{ if $zh }}zh{{ else }}en{{ end }}">
+    {{ partial "themes/bloggpt/shell.html" . }}
+    <main class="bloggpt-main" id="main">
+      <section class="bloggpt-home-stage" id="top">
+        <h1>{{ if $zh }}今天想读点什么？{{ else }}What would you like to read today?{{ end }}</h1>
+        <form class="bloggpt-search-composer" role="search" data-search-form>
+          <button class="bloggpt-composer-plus" type="button" aria-label="{{ if $zh }}浏览内容{{ else }}Browse content{{ end }}">+</button>
+          <input type="search" name="q" data-search-input placeholder="{{ if $zh }}搜索文章、想法与关键词{{ else }}Search articles, ideas and keywords{{ end }}" autocomplete="off">
+          <button class="bloggpt-composer-scope" type="button" aria-label="{{ if $zh }}搜索范围{{ else }}Search scope{{ end }}">{{ if $zh }}文章{{ else }}Articles{{ end }} <span>⌄</span></button>
+          <a class="bloggpt-composer-random" href="{{ with first 1 $posts }}{{ (index . 0).RelPermalink }}{{ else }}{{ "blog/" | relLangURL }}{{ end }}" aria-label="{{ if $zh }}随机文章{{ else }}Random article{{ end }}">⌁</a>
+          <button class="bloggpt-composer-submit" type="submit" aria-label="{{ if $zh }}搜索{{ else }}Search{{ end }}"><span>⌕</span><b>↵</b></button>
+          <div class="bloggpt-composer-suggestions" data-search-suggestions>
+            <button type="button" data-query="/random"><span>⌁</span><strong>/random</strong><small>{{ if $zh }}阅读一篇最近文章{{ else }}Read a random recent article{{ end }}</small></button>
+            <button type="button" data-query="/lang"><span>文</span><strong>/lang</strong><small>{{ if $zh }}切换语言{{ else }}Switch language{{ end }}</small></button>
+            <button type="button" data-query="/theme"><span>◐</span><strong>/theme</strong><small>{{ if $zh }}切换浅色 / 深色{{ else }}Switch appearance{{ end }}</small></button>
+            <button type="button" data-query="/status"><span>▥</span><strong>/status</strong><small>{{ if $zh }}查看博客统计{{ else }}View blog statistics{{ end }}</small></button>
+            <button type="button" data-query="/categories"><span>◈</span><strong>/categories</strong><small>{{ if $zh }}浏览文章分类{{ else }}Browse categories{{ end }}</small></button>
+            <button type="button" data-query="/archives"><span>◷</span><strong>/archives</strong><small>{{ if $zh }}按年份浏览归档{{ else }}Browse the archive by year{{ end }}</small></button>
+          </div>
+        </form>
+        <div class="bloggpt-suggestion-row"><button type="button" data-query="RAG">RAG</button><button type="button" data-query="LangChain">LangChain</button><button type="button" data-query="Spring Boot">Spring Boot</button><button type="button" data-query="AI Agent">AI Agent</button></div>
+      </section>
+      <section class="bloggpt-home-recent" aria-labelledby="recent-title">
+        <div class="bloggpt-section-heading"><div><span class="bloggpt-section-kicker">{{ if $zh }}最新记录{{ else }}LATEST NOTES{{ end }}</span><h2 id="recent-title">{{ if $zh }}最近文章{{ else }}Recent articles{{ end }}</h2></div><a href="{{ "blog/" | relLangURL }}">{{ if $zh }}查看全部{{ else }}View all{{ end }} <span>→</span></a></div>
+        <div class="bloggpt-post-list bloggpt-home-list" data-search-results>
+          {{ range first 5 $posts }}
+            {{- $post := . -}}
+            {{ $cover := .Resources.GetMatch "featured.*" }}
+            <article class="bloggpt-post-row" data-search-item data-search-text="{{ .Title }} {{ .Summary | plainify }} {{ delimit (default (slice) .Params.tags) " " }}">
+              <div class="bloggpt-post-copy"><div class="bloggpt-post-meta"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time><span>·</span><span>{{ .ReadingTime }} {{ if $zh }}分钟{{ else }}min{{ end }}</span>{{ if .Params.featured }}<span class="bloggpt-featured">{{ if $zh }}精选{{ else }}FEATURED{{ end }}</span>{{ end }}</div><a class="bloggpt-post-title" href="{{ .RelPermalink }}">{{ .Title }} <span>↗</span></a><p>{{ with .Params.summary }}{{ . }}{{ else }}{{ .Summary | plainify | truncate 150 }}{{ end }}</p><div class="bloggpt-tag-row">{{ with .Params.tags }}{{ range first 3 . }}<span>{{ . }}</span>{{ end }}{{ end }}</div></div>
+              {{ with $cover }}<a class="bloggpt-post-cover" href="{{ $post.RelPermalink }}"><img src="{{ .RelPermalink }}" alt="" loading="lazy"></a>{{ end }}
+            </article>
+          {{ end }}
+          <p class="bloggpt-empty" data-search-empty hidden>{{ if $zh }}没有匹配的文章。{{ else }}No matching notes found.{{ end }}</p>
+        </div>
+      </section>
+    </main>
+    {{ partial "themes/bloggpt/footer.html" . }}
+  </body>
+</html>

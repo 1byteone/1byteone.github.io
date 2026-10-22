@@ -8,9 +8,10 @@
 
 - `dev_theme_oil`：Oil 主题分支，根路径使用 Oil 主页。
 - `dev_theme_AIxian`：Alxian 主题分支，根路径使用 Alxian 主页。
+- `dev_theme_GPT`：BlogGPT 主题分支，根路径使用 BlogGPT 博客。
 - `main`：发布基线分支，合并主题变更前用于稳定版本确认。
 
-两个主题分支共享 `content/`、`data/`、`assets/` 等内容资源；主题模板、样式、脚本和主题专属图片只在对应分支维护，避免跨主题串改。
+三个主题分支共享 `content/`、`data/`、`assets/` 等内容资源；主题模板、样式、脚本和主题专属图片只在对应分支维护，避免跨主题串改。
 
 ## 主要内容
 
@@ -67,7 +68,7 @@ hugo --gc --minify
 
 ## 部署
 
-`.github/workflows/deploy.yml` 会在 `main` 和 `dev_theme_oil` 上执行 GitHub Pages 发布；`dev_theme_AIxian` 执行完整构建、主题预览和路由校验，不自动覆盖线上 Pages 环境。
+`.github/workflows/deploy.yml` 会在 `main`、`dev_theme_oil`、`dev_theme_AIxian` 和 `dev_theme_GPT` 上执行 GitHub Pages 发布。各主题分支共享同一个 Pages 站点，最近一次成功发布的分支内容会显示在根路径；Oil、Minimal 和 Alxian 主题预览会随发布产物提供在 `/themes/<theme-id>/`。
 
 ## 联系方式
 

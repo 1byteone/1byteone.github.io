@@ -1,0 +1,19 @@
+{{- $zh := hasPrefix .Lang "zh" -}}
+{{- $links := .Site.Data.alxian.links -}}
+<!doctype html>
+<html lang="{{ if $zh }}zh-Hans{{ else }}en{{ end }}" data-theme="light">
+  <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="light dark"><link rel="stylesheet" href="{{ "css/bloggpt-theme.css" | relURL }}?v=4"><script defer src="{{ "js/bloggpt-theme.js" | relURL }}?v=2"></script><title>{{ if $zh }}友链{{ else }}Friends{{ end }} · BlogGPT</title></head>
+  <body class="bloggpt-theme bloggpt-page bloggpt-friends-page" data-lang="{{ if $zh }}zh{{ else }}en{{ end }}">
+    {{ partial "themes/bloggpt/shell.html" . }}
+    <main class="bloggpt-main bloggpt-page-main bloggpt-friends-main" id="main">
+      <a class="bloggpt-back-link" href="{{ .Site.Home.RelPermalink }}">← {{ if $zh }}返回首页{{ else }}Back home{{ end }}</a>
+      <header class="bloggpt-page-heading"><div class="bloggpt-eyebrow">PEOPLE / PLACES / INSPIRATION</div><h1>{{ if $zh }}友情链接{{ else }}Friends{{ end }}</h1><p>{{ if $zh }}通过友链连接彼此，共同分享知识、经验和想法。{{ else }}Good links make long-term making more interesting. Here are a few places I return to.{{ end }}</p></header>
+      <div class="bloggpt-list-toolbar"><span>{{ len $links }} {{ if $zh }}个链接{{ else }}links{{ end }}</span><label class="bloggpt-inline-search"><span>⌕</span><input type="search" data-friend-search placeholder="{{ if $zh }}筛选友链{{ else }}Filter links{{ end }}"></label></div>
+      <div class="bloggpt-friends-list" data-friends-list>
+        {{ range $index, $item := $links }}<a class="bloggpt-friend-row" data-friend-card data-search-text="{{ $item.name }} {{ $item.label }} {{ $item.url }}" href="{{ $item.url }}" target="_blank" rel="noopener noreferrer"><span class="bloggpt-resource-number">{{ printf "%02d" (add $index 1) }}</span><span><strong>{{ $item.name }}</strong><small>{{ $item.label }}</small></span><b>↗</b></a>{{ end }}
+      </div>
+      <p class="bloggpt-empty" data-friend-empty hidden>{{ if $zh }}没有匹配的友链。{{ else }}No matching links.{{ end }}</p>
+    </main>
+    {{ partial "themes/bloggpt/footer.html" . }}
+  </body>
+</html>

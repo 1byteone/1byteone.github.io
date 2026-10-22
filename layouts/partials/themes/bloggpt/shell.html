@@ -1,0 +1,105 @@
+{{- $page := . -}}
+{{- $zh := hasPrefix $page.Lang "zh" -}}
+{{- $site := $page.Site.Data.site.site -}}
+{{- $avatar := "media/authors/me.png" | relURL -}}
+{{- $translationURL := "/en/" -}}
+{{- if not $zh }}{{- $translationURL = "/" -}}{{- end -}}
+{{- with $page.Translations }}{{- $translationURL = (index . 0).RelPermalink -}}{{- end -}}
+{{- $searchPosts := where site.RegularPages "Section" "blog" -}}
+{{- $searchPosts = $searchPosts.ByDate.Reverse -}}
+{{- $searchProjects := where site.RegularPages "Section" "projects" -}}
+{{- $searchProjects = $searchProjects.ByDate.Reverse -}}
+<aside class="bloggpt-sidebar" id="bloggpt-sidebar">
+  <div class="bloggpt-brand-row">
+    <details class="bloggpt-theme-picker">
+      <summary class="bloggpt-brand" aria-label="{{ if $zh }}选择博客主题{{ else }}Choose a blog theme{{ end }}"><span class="bloggpt-brand-wordmark">BlogGPT</span><span class="bloggpt-brand-chevron" aria-hidden="true">⌄</span></summary>
+      <nav class="bloggpt-theme-menu" aria-label="{{ if $zh }}博客主题{{ else }}Blog themes{{ end }}">
+        {{- $languageSuffix := "" -}}
+        {{- if not $zh }}{{- $languageSuffix = "en/" -}}{{- end -}}
+        {{- range $page.Site.Data.theme_registry.themes -}}
+          {{- $href := printf "%s%s" .base_path $languageSuffix -}}
+          <a href="{{ $href }}" class="{{ if eq .id "bloggpt" }}is-current{{ end }}" {{ if eq .id "bloggpt" }}aria-current="page"{{ end }}><span>{{ .label }}</span><small>{{ if $zh }}{{ if eq .id "bloggpt" }}当前主题{{ else }}预览主题{{ end }}{{ else }}{{ if eq .id "bloggpt" }}Current{{ else }}Preview{{ end }}{{ end }}</small></a>
+        {{- end -}}
+      </nav>
+    </details>
+    <div class="bloggpt-brand-actions">
+      <button class="bloggpt-icon-button bloggpt-sidebar-close" type="button" data-sidebar-close aria-label="{{ if $zh }}关闭菜单{{ else }}Close menu{{ end }}">×</button>
+      <button class="bloggpt-icon-button bloggpt-sidebar-collapse" type="button" data-sidebar-collapse aria-label="{{ if $zh }}收起侧栏{{ else }}Hide sidebar{{ end }}">◧</button>
+    </div>
+  </div>
+  <div class="bloggpt-sidebar-tools">
+    <button class="bloggpt-nav-item bloggpt-search-nav" type="button" data-search-open><span class="bloggpt-nav-icon">⌕</span><span>{{ if $zh }}搜索{{ else }}Search{{ end }}</span><kbd>Ctrl K</kbd></button>
+  </div>
+  <nav class="bloggpt-nav" aria-label="{{ if $zh }}博客导航{{ else }}Blog navigation{{ end }}">
+    <a class="bloggpt-nav-item {{ if eq $page.Kind "home" }}is-active{{ end }}" href="{{ $page.Site.Home.RelPermalink }}"><span class="bloggpt-nav-icon">⌂</span><span>{{ if $zh }}首页{{ else }}Home{{ end }}</span></a>
+    <a class="bloggpt-nav-item {{ if eq $page.Section "blog" }}is-active{{ end }}" href="{{ "blog/" | relLangURL }}"><span class="bloggpt-nav-icon">▤</span><span>{{ if $zh }}文章{{ else }}Articles{{ end }}</span></a>
+    <a class="bloggpt-nav-item {{ if eq $page.Section "projects" }}is-active{{ end }}" href="{{ "projects/" | relLangURL }}"><span class="bloggpt-nav-icon">◈</span><span>{{ if $zh }}项目{{ else }}Projects{{ end }}</span></a>
+    <a class="bloggpt-nav-item {{ if eq $page.Section "resource" }}is-active{{ end }}" href="{{ "resource/" | relLangURL }}"><span class="bloggpt-nav-icon">▥</span><span>{{ if $zh }}资源{{ else }}Resources{{ end }}</span></a>
+    <a class="bloggpt-nav-item {{ if eq $page.Section "friends" }}is-active{{ end }}" href="{{ "friends/" | relLangURL }}"><span class="bloggpt-nav-icon">↗</span><span>{{ if $zh }}友链{{ else }}Friends{{ end }}</span></a>
+    <a class="bloggpt-nav-item {{ if eq $page.Section "categories" }}is-active{{ end }}" href="{{ "categories/" | relLangURL }}"><span class="bloggpt-nav-icon">◈</span><span>{{ if $zh }}分类{{ else }}Categories{{ end }}</span></a>
+    <a class="bloggpt-nav-item {{ if eq $page.Section "archives" }}is-active{{ end }}" href="{{ "archives/" | relLangURL }}"><span class="bloggpt-nav-icon">◷</span><span>{{ if $zh }}归档{{ else }}Archives{{ end }}</span></a>
+    <a class="bloggpt-nav-item {{ if eq $page.Section "about" }}is-active{{ end }}" href="{{ "about/" | relLangURL }}"><span class="bloggpt-nav-icon">ⓘ</span><span>{{ if $zh }}关于{{ else }}About{{ end }}</span></a>
+    <a class="bloggpt-nav-item {{ if eq $page.Section "chat" }}is-active{{ end }}" href="{{ "chat/" | relLangURL }}"><span class="bloggpt-nav-icon">✉</span><span>{{ if $zh }}联系{{ else }}Contact{{ end }}</span></a>
+    <a class="bloggpt-nav-item" href="{{ $site.identity.github }}" target="_blank" rel="noopener noreferrer"><span class="bloggpt-nav-icon">◉</span><span>{{ if $zh }}GitHub 仓库{{ else }}GitHub repository{{ end }}</span><span class="bloggpt-nav-external">↗</span></a>
+    <a class="bloggpt-nav-item" href="https://bloggpt.reincarnatey.net" target="_blank" rel="noopener noreferrer"><span class="bloggpt-nav-icon">▣</span><span>{{ if $zh }}BlogGPT 文档{{ else }}BlogGPT docs{{ end }}</span><span class="bloggpt-nav-external">↗</span></a>
+  </nav>
+  <div class="bloggpt-sidebar-section bloggpt-sidebar-pinned">
+    <div class="bloggpt-sidebar-label">{{ if $zh }}精选{{ else }}Pinned{{ end }}</div>
+    <div class="bloggpt-recent-list">
+      {{- $pinned := where $searchPosts "Params.featured" true -}}
+      {{- range first 2 ($pinned.ByDate.Reverse) -}}
+        <a href="{{ .RelPermalink }}" class="bloggpt-recent-link {{ if eq .RelPermalink $page.RelPermalink }}is-active{{ end }}"><span>{{ .Title }}</span></a>
+      {{- end -}}
+    </div>
+  </div>
+  <div class="bloggpt-sidebar-section">
+    <div class="bloggpt-sidebar-label">{{ if $zh }}最近文章{{ else }}Recent posts{{ end }}</div>
+    <div class="bloggpt-recent-list">
+      {{- $recent := where site.RegularPages "Section" "blog" -}}
+      {{- range first 6 ($recent.ByDate.Reverse) -}}
+        <a href="{{ .RelPermalink }}" class="bloggpt-recent-link {{ if eq .RelPermalink $page.RelPermalink }}is-active{{ end }}"><span>{{ .Title }}</span><time>{{ .Date.Format "01/02" }}</time></a>
+      {{- end -}}
+    </div>
+  </div>
+  <div class="bloggpt-sidebar-bottom">
+    <a class="bloggpt-profile" href="{{ $page.Site.Home.RelPermalink }}"><img src="{{ $avatar }}" alt="" width="32" height="32"><span><strong>{{ if $zh }}{{ $site.identity.name }}{{ else }}{{ $site.identity.name_en }}{{ end }}</strong><small>{{ if $zh }}AI 工程师{{ else }}AI engineer{{ end }}</small></span></a>
+    <div class="bloggpt-sidebar-actions">
+      <a class="bloggpt-small-action" href="{{ $translationURL }}" lang="{{ if $zh }}en{{ else }}zh-Hans{{ end }}">{{ if $zh }}EN{{ else }}中{{ end }}</a>
+      <button class="bloggpt-small-action" type="button" data-theme-toggle aria-label="{{ if $zh }}切换深色模式{{ else }}Toggle dark mode{{ end }}">◐</button>
+      <a class="bloggpt-small-action" href="{{ $site.identity.github }}" target="_blank" rel="noopener noreferrer" aria-label="GitHub">↗</a>
+    </div>
+  </div>
+</aside>
+<button class="bloggpt-sidebar-scrim" type="button" data-sidebar-close aria-label="{{ if $zh }}关闭菜单{{ else }}Close menu{{ end }}"></button>
+<div class="bloggpt-search-index" hidden aria-hidden="true">
+  {{- range $searchPosts -}}
+    <a data-dialog-search-item data-search-text="{{ .Title }} {{ .Summary | plainify }} {{ delimit (default (slice) .Params.tags) " " }}" href="{{ .RelPermalink }}">
+      <span class="bloggpt-dialog-index-title">{{ .Title }}</span>
+      <span class="bloggpt-dialog-index-summary">{{ .Summary | plainify }}</span>
+    </a>
+  {{- end -}}
+  {{- range $searchProjects -}}
+    <a data-dialog-search-item data-search-text="{{ .Title }} {{ .Summary | plainify }} {{ delimit (default (slice) .Params.tags) " " }}" href="{{ .RelPermalink }}">
+      <span class="bloggpt-dialog-index-title">{{ .Title }}</span>
+      <span class="bloggpt-dialog-index-summary">{{ .Summary | plainify }}</span>
+    </a>
+  {{- end -}}
+</div>
+<header class="bloggpt-topbar">
+  <button class="bloggpt-icon-button bloggpt-menu-toggle" type="button" data-sidebar-toggle aria-label="{{ if $zh }}打开菜单{{ else }}Open menu{{ end }}">☰</button>
+  <nav class="bloggpt-view-switcher" aria-label="{{ if $zh }}视图{{ else }}View{{ end }}">
+    <a class="{{ if eq $page.Kind "home" }}is-active{{ end }}" href="{{ $page.Site.Home.RelPermalink }}">{{ if $zh }}阅读{{ else }}Read{{ end }}</a>
+    <a class="{{ if eq $page.Section "blog" }}is-active{{ end }}" href="{{ "blog/" | relLangURL }}">{{ if $zh }}文章{{ else }}Articles{{ end }}</a>
+  </nav>
+  <div class="bloggpt-topbar-actions">
+    <button class="bloggpt-icon-button" type="button" data-search-open aria-label="{{ if $zh }}搜索{{ else }}Search{{ end }}">⌕</button>
+    <a class="bloggpt-icon-button bloggpt-rss-button" href="{{ "rss.xml" | relURL }}" aria-label="RSS">◔</a>
+  </div>
+</header>
+<dialog class="bloggpt-search-dialog" data-search-dialog>
+  <form method="dialog" class="bloggpt-dialog-search">
+    <input type="search" data-dialog-search placeholder="{{ if $zh }}搜索文章…{{ else }}Search articles…{{ end }}">
+    <button value="cancel" aria-label="{{ if $zh }}关闭{{ else }}Close{{ end }}">×</button>
+  </form>
+  <div class="bloggpt-dialog-results" data-dialog-results></div>
+</dialog>
