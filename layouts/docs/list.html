@@ -12,6 +12,8 @@
     {{ partial "themes/bloggpt/status.html" . }}
   {{- else if eq .Section "resource" -}}
     {{ partial "themes/bloggpt/resource.html" . }}
+  {{- else if eq .Section "ui-lab" -}}
+    {{ partial "themes/bloggpt/ui-lab.html" . }}
   {{- else if eq .Section "friends" -}}
     {{ partial "themes/bloggpt/friends.html" . }}
   {{- else if eq .Section "links" -}}

@@ -1,0 +1,52 @@
+{{- $zh := hasPrefix .Lang "zh" -}}
+<!doctype html>
+<html lang="{{ if $zh }}zh-Hans{{ else }}en{{ end }}" data-theme="light">
+  <head>
+    <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark"><link rel="stylesheet" href="{{ "css/bloggpt-theme.css" | relURL }}?v=4">
+    <script defer src="{{ "js/bloggpt-theme.js" | relURL }}?v=3"></script><script defer src="{{ "js/bloggpt-ui-lab.js" | relURL }}?v=1"></script>
+    <title>{{ if $zh }}组件实验室{{ else }}UI Lab{{ end }} · BlogGPT</title>
+  </head>
+  <body class="bloggpt-theme bloggpt-page bloggpt-ui-lab-page" data-lang="{{ if $zh }}zh{{ else }}en{{ end }}">
+    {{ partial "themes/bloggpt/shell.html" . }}
+    <main class="bloggpt-main bloggpt-page-main bloggpt-ui-lab-main" id="main" data-ui-lab>
+      <a class="bloggpt-back-link" href="{{ .Site.Home.RelPermalink }}">← {{ if $zh }}返回首页{{ else }}Back home{{ end }}</a>
+      <header class="bloggpt-page-heading bloggpt-lab-heading">
+        <div class="bloggpt-eyebrow">UI LAB / AI INTERACTION</div>
+        <h1>{{ if $zh }}把组件放进真实的 AI 工作流。{{ else }}Put the components into a real AI workflow.{{ end }}</h1>
+        <p>{{ if $zh }}参考 assistant-ui、Manifest UI、Nexus UI、shadcn AI、LibreChat 与 Vercel AI Elements 的交互方向，做一个可以点击、发送和观察状态的教学样例。{{ else }}A working teaching sample inspired by assistant-ui, Manifest UI, Nexus UI, shadcn AI, LibreChat, and Vercel AI Elements.{{ end }}</p>
+      </header>
+
+      <section class="bloggpt-lab-shell" aria-label="{{ if $zh }}AI 组件实践演示{{ else }}AI component practice demo{{ end }}">
+        <aside class="bloggpt-lab-sessions">
+          <div class="bloggpt-lab-panel-head"><span>{{ if $zh }}会话{{ else }}WORKSPACES{{ end }}</span><button type="button" class="bloggpt-lab-icon-button" data-new-session aria-label="{{ if $zh }}新建会话{{ else }}New session{{ end }}">+</button></div>
+          <div class="bloggpt-lab-session-list" role="list">
+            <button class="bloggpt-lab-session is-active" type="button" data-demo-session="support" role="listitem"><span class="bloggpt-lab-session-dot"></span><span><strong>{{ if $zh }}客服知识库{{ else }}Support copilot{{ end }}</strong><small>{{ if $zh }}引用与检索{{ else }}Citations + retrieval{{ end }}</small></span></button>
+            <button class="bloggpt-lab-session" type="button" data-demo-session="agent" role="listitem"><span class="bloggpt-lab-session-dot"></span><span><strong>{{ if $zh }}Agent 工具调用{{ else }}Agent tools{{ end }}</strong><small>{{ if $zh }}审批与执行{{ else }}Approval + execution{{ end }}</small></span></button>
+            <button class="bloggpt-lab-session" type="button" data-demo-session="code" role="listitem"><span class="bloggpt-lab-session-dot"></span><span><strong>{{ if $zh }}代码助手{{ else }}Code assistant{{ end }}</strong><small>{{ if $zh }}流式与代码块{{ else }}Streaming + code{{ end }}</small></span></button>
+          </div>
+          <div class="bloggpt-lab-session-note"><span class="bloggpt-status-dot"></span>{{ if $zh }}本地演示 · 无 API 请求{{ else }}Local demo · no API calls{{ end }}</div>
+        </aside>
+
+        <section class="bloggpt-lab-chat" aria-live="polite">
+          <header class="bloggpt-lab-chat-head"><div><span class="bloggpt-lab-kicker" data-demo-kicker>{{ if $zh }}学习场景 01{{ else }}LEARNING SCENARIO 01{{ end }}</span><h2 data-demo-title>{{ if $zh }}客服知识库{{ else }}Support copilot{{ end }}</h2></div><label class="bloggpt-lab-model"><span>{{ if $zh }}模型{{ else }}Model{{ end }}</span><select data-model-select aria-label="{{ if $zh }}选择模型{{ else }}Choose model{{ end }}"><option>GPT-4.1 mini</option><option>Claude Sonnet</option><option>Qwen 3</option></select></label></header>
+          <div class="bloggpt-lab-modebar" role="tablist" aria-label="{{ if $zh }}演示模式{{ else }}Demo mode{{ end }}"><button type="button" class="is-active" data-demo-mode="chat" role="tab" aria-selected="true">{{ if $zh }}对话{{ else }}Chat{{ end }}</button><button type="button" data-demo-mode="trace" role="tab" aria-selected="false">{{ if $zh }}运行轨迹{{ else }}Trace{{ end }}</button><span class="bloggpt-lab-live"><i></i>{{ if $zh }}可交互{{ else }}Interactive{{ end }}</span></div>
+          <div class="bloggpt-lab-thread" data-demo-thread></div>
+          <div class="bloggpt-lab-quick-prompts" data-quick-prompts></div>
+          <form class="bloggpt-lab-composer" data-demo-form><textarea data-demo-input rows="1" placeholder="{{ if $zh }}输入一个教学问题…{{ else }}Ask a teaching question…{{ end }}"></textarea><div class="bloggpt-lab-composer-foot"><span>{{ if $zh }}Enter 发送 · Shift + Enter 换行{{ else }}Enter to send · Shift + Enter for a new line{{ end }}</span><button type="submit" class="bloggpt-lab-send" data-send-demo aria-label="{{ if $zh }}发送{{ else }}Send{{ end }}">↑</button></div></form>
+        </section>
+
+        <aside class="bloggpt-lab-inspector">
+          <div class="bloggpt-lab-panel-head"><span>{{ if $zh }}组件观察{{ else }}INSPECTOR{{ end }}</span><span class="bloggpt-lab-inspector-count">06</span></div>
+          <div class="bloggpt-lab-inspector-block"><span class="bloggpt-lab-kicker">{{ if $zh }}当前能力{{ else }}CURRENT PATTERN{{ end }}</span><h3 data-demo-pattern>{{ if $zh }}检索 + 引用{{ else }}Retrieval + citations{{ end }}</h3><p data-demo-pattern-copy>{{ if $zh }}先展示检索状态，再给出带来源的回答，让用户知道答案来自哪里。{{ else }}Show retrieval first, then answer with sources so the user can see where the answer came from.{{ end }}</p></div>
+          <div class="bloggpt-lab-component-list"><div><span class="bloggpt-lab-check">✓</span>{{ if $zh }}会话侧栏{{ else }}Session rail{{ end }}</div><div><span class="bloggpt-lab-check">✓</span>{{ if $zh }}模型选择{{ else }}Model picker{{ end }}</div><div><span class="bloggpt-lab-check">✓</span>{{ if $zh }}消息操作{{ else }}Message actions{{ end }}</div><div><span class="bloggpt-lab-check">✓</span>{{ if $zh }}工具调用状态{{ else }}Tool state{{ end }}</div><div><span class="bloggpt-lab-check">✓</span>{{ if $zh }}来源引用{{ else }}Source citations{{ end }}</div><div><span class="bloggpt-lab-check">✓</span>{{ if $zh }}流式输入{{ else }}Streaming input{{ end }}</div></div>
+          <div class="bloggpt-lab-reference"><span class="bloggpt-lab-kicker">{{ if $zh }}参考项目{{ else }}REFERENCE PROJECTS{{ end }}</span><a href="https://www.assistant-ui.com/" target="_blank" rel="noopener noreferrer">assistant-ui ↗</a><a href="https://ui.manifest.build/" target="_blank" rel="noopener noreferrer">Manifest UI ↗</a><a href="https://nexus-ui.dev/docs" target="_blank" rel="noopener noreferrer">Nexus UI ↗</a><a href="https://www.shadcn.io/ai" target="_blank" rel="noopener noreferrer">shadcn AI ↗</a><a href="https://github.com/danny-avila/LibreChat" target="_blank" rel="noopener noreferrer">LibreChat ↗</a><a href="https://ai-sdk.dev/elements" target="_blank" rel="noopener noreferrer">Vercel AI Elements ↗</a></div>
+          <small class="bloggpt-lab-license">{{ if $zh }}这里只做交互参考，许可证和依赖请以官方项目为准。{{ else }}Interaction references only; check each project's official license and dependencies.{{ end }}</small>
+        </aside>
+      </section>
+
+      <section class="bloggpt-lab-lessons"><div class="bloggpt-lab-lesson-intro"><span class="bloggpt-eyebrow">{{ if $zh }}教学应用场景{{ else }}TEACHING SCENARIOS{{ end }}</span><h2>{{ if $zh }}从一个组件，走到一个可解释的应用。{{ else }}Move from one component to an explainable application.{{ end }}</h2><p>{{ if $zh }}每个场景都对应一个工程问题：信息从哪里来、模型做什么、应用如何校验，以及用户怎样知道系统正在做什么。{{ else }}Each scenario maps to an engineering question: where data comes from, what the model decides, how the app validates it, and how users see the work.{{ end }}</p></div><div class="bloggpt-lab-lesson-list"><article><b>01</b><h3>{{ if $zh }}客服知识库{{ else }}Support copilot{{ end }}</h3><p>{{ if $zh }}练习检索状态、引用来源、低置信度提示和人工复核。{{ else }}Practice retrieval states, citations, low-confidence handling, and review.{{ end }}</p></article><article><b>02</b><h3>{{ if $zh }}Agent 工具调用{{ else }}Agent tool calling{{ end }}</h3><p>{{ if $zh }}练习参数预览、审批按钮、执行结果和失败恢复。{{ else }}Practice parameter previews, approval, execution results, and recovery.{{ end }}</p></article><article><b>03</b><h3>{{ if $zh }}代码助手{{ else }}Code assistant{{ end }}</h3><p>{{ if $zh }}练习流式输出、代码块、复制操作和重新生成。{{ else }}Practice streaming output, code blocks, copy, and regenerate actions.{{ end }}</p></article></div></section>
+    </main>
+    {{ partial "themes/bloggpt/footer.html" . }}
+  </body>
+</html>
