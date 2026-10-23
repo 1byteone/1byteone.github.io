@@ -6,7 +6,7 @@
   {{- range .Site.Data.theme_registry.themes -}}
     {{- if or (eq .scope "site") (eq .id "minimal") -}}
       {{- $href := .base_path -}}
-      {{- if and .preview_path .Site.Params.theme_preview }}{{- $href = .preview_path -}}{{- end -}}
+      {{- if .preview_path }}{{- $href = .preview_path -}}{{- end -}}
       {{- $href = printf "%s%s" $href $languageSuffix -}}
       <a href="{{ $href }}" class="{{ if eq .id $active }}is-current{{ end }}" {{ if eq .id $active }}aria-current="page"{{ end }} title="{{ .label }}">{{ .short_label }}</a>
     {{- end -}}
