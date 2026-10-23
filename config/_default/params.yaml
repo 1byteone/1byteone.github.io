@@ -274,6 +274,8 @@ hugoblox:
     affiliate_code: ""
 
 # Select a presentation theme without changing content or data.
-# Available values are: oil, minimal, alxian, bloggpt.
-site_theme: bloggpt
+# Available values are: minimal, oil, alxian, bloggpt.
+# Minimal child variants are selected with minimal_variant.
+site_theme: minimal
 theme_preview: false
+minimal_variant: minimal

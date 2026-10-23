@@ -1,4 +1,82 @@
 themes:
+  - id: minimal
+    label: Minimal
+    short_label: MIN
+    version: 1.0.0
+    status: production
+    scope: home-only
+    family: minimal
+    variant: minimal
+    home_template: themes/minimal/variants/minimal.html
+    stylesheet: css/minimal-theme.css
+    script: js/minimal-theme.js
+    base_path: /themes/minimal/
+    supports: [home]
+  - id: astro-blog
+    label: Astro Blog
+    short_label: AST
+    version: 1.0.0
+    status: preview
+    scope: home-only
+    family: minimal
+    variant: astro-blog
+    home_template: themes/minimal/variants/astro-blog.html
+    stylesheet: css/minimal-theme.css
+    script: js/minimal-theme.js
+    base_path: /themes/minimal/astro-blog/
+    supports: [home]
+  - id: astropaper
+    label: AstroPaper
+    short_label: PAPER
+    version: 1.0.0
+    status: preview
+    scope: home-only
+    family: minimal
+    variant: astropaper
+    home_template: themes/minimal/variants/astropaper.html
+    stylesheet: css/minimal-theme.css
+    script: js/minimal-theme.js
+    base_path: /themes/minimal/astropaper/
+    supports: [home]
+  - id: astro-erudite
+    label: astro-erudite
+    short_label: ERU
+    version: 1.0.0
+    status: preview
+    scope: home-only
+    family: minimal
+    variant: erudite
+    home_template: themes/minimal/variants/erudite.html
+    stylesheet: css/minimal-theme.css
+    script: js/minimal-theme.js
+    base_path: /themes/minimal/astro-erudite/
+    supports: [home]
+  - id: pudding
+    label: Pudding
+    short_label: PUD
+    version: 1.0.0
+    status: preview
+    scope: home-only
+    family: minimal
+    variant: pudding
+    home_template: themes/minimal/variants/pudding.html
+    stylesheet: css/minimal-theme.css
+    script: js/minimal-theme.js
+    base_path: /themes/minimal/pudding/
+    supports: [home]
+  - id: miniblog
+    label: Miniblog
+    short_label: MINI
+    version: 1.0.0
+    status: preview
+    scope: home-only
+    family: minimal
+    variant: miniblog
+    home_template: themes/minimal/variants/miniblog.html
+    stylesheet: css/minimal-theme.css
+    script: js/minimal-theme.js
+    base_path: /themes/minimal/miniblog/
+    supports: [home]
   - id: oil
     label: Oil
     short_label: OIL
@@ -9,23 +87,7 @@ themes:
     stylesheet: css/oil-theme.css
     script: js/oil-theme.js
     base_path: /themes/oil/
-    supports:
-      - home
-      - list
-      - single
-      - tech-stack
-  - id: minimal
-    label: Minimal
-    short_label: MIN
-    version: 0.1.0
-    status: preview
-    scope: home-only
-    home_template: themes/minimal/home.html
-    stylesheet: css/minimal-theme.css
-    script: ''
-    base_path: /themes/minimal/
-    supports:
-      - home
+    supports: [home, list, single, tech-stack]
   - id: alxian
     label: Alxian / Jinsong
     short_label: ALX
@@ -36,16 +98,7 @@ themes:
     stylesheet: css/alxian-theme.css
     script: js/alxian-theme.js
     base_path: /themes/alxian/
-    supports:
-      - home
-      - list
-      - single
-      - resource
-      - chat
-      - friends
-      - tech-stack
-      - works
-      - 404
+    supports: [home, list, single, resource, chat, friends, tech-stack, works, 404]
   - id: bloggpt
     label: BlogGPT
     short_label: GPT
@@ -56,17 +109,4 @@ themes:
     stylesheet: css/bloggpt-theme.css
     script: js/bloggpt-theme.js
     base_path: /
-    supports:
-      - home
-      - list
-      - single
-      - resource
-      - chat
-      - friends
-      - tech-stack
-      - categories
-      - archives
-      - about
-      - search
-      - status
-      - 404
+    supports: [home, list, single, resource, chat, friends, tech-stack, categories, archives, about, search, status, 404]

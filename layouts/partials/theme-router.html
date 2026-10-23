@@ -1,5 +1,5 @@
-{{- $requested := lower (default "oil" (index .Site.Params "site_theme")) -}}
-{{- $theme := "oil" -}}
+{{- $requested := lower (default "minimal" (index .Site.Params "site_theme")) -}}
+{{- $theme := "minimal" -}}
 {{- range .Site.Data.theme_registry.themes -}}
   {{- if eq .id $requested }}{{- $theme = .id -}}{{- end -}}
 {{- end -}}

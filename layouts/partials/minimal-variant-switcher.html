@@ -1,0 +1,9 @@
+{{- $zh := hasPrefix .Lang "zh" -}}
+{{- $active := lower (default "minimal" (index .Site.Params "minimal_variant")) -}}
+<nav class="theme-switcher minimal-variant-switcher" aria-label="{{ if $zh }}Minimal 子主题{{ else }}Minimal variants{{ end }}">
+  {{- range .Site.Data.theme_registry.themes -}}
+    {{- if eq .family "minimal" -}}
+      <a href="{{ .base_path }}{{ if not $zh }}en/{{ end }}" class="{{ if eq .variant $active }}is-current{{ end }}" aria-current="{{ if eq .variant $active }}page{{ end }}" title="{{ .label }}">{{ .short_label }}</a>
+    {{- end -}}
+  {{- end -}}
+</nav>

@@ -1,3 +1,4 @@
-# Environment overlay used by the same-domain preview build.
+# Minimal parent theme keeps the root route intentionally quiet.
 site_theme: minimal
+minimal_variant: minimal
 theme_preview: true

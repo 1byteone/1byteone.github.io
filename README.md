@@ -9,9 +9,10 @@
 - `dev_theme_oil`：Oil 主题分支，根路径使用 Oil 主页。
 - `dev_theme_AIxian`：Alxian 主题分支，根路径使用 Alxian 主页。
 - `dev_theme_GPT`：BlogGPT 主题分支，根路径使用 BlogGPT 博客。
+- `dev_theme_min`：Minimal 主题分支，根路径使用 Minimal，提供五个 Astro 风格子主题预览。
 - `main`：发布基线分支，合并主题变更前用于稳定版本确认。
 
-三个主题分支共享 `content/`、`data/`、`assets/` 等内容资源；主题模板、样式、脚本和主题专属图片只在对应分支维护，避免跨主题串改。
+四个主题分支共享 `content/`、`data/`、`assets/` 等内容资源；主题模板、样式、脚本和主题专属图片只在对应分支维护，避免跨主题串改。
 
 ## 主要内容
 
@@ -53,7 +54,15 @@ hugo server --disableFastRender
 hugo --gc --minify
 ```
 
-当前分支默认主题由 `config/_default/params.yaml` 的 `site_theme` 控制。主题预览环境位于 `/themes/<theme-id>/`。
+当前分支默认主题由 `config/_default/params.yaml` 的 `site_theme` 与 `minimal_variant` 控制。`dev_theme_min` 的根路径默认是 Minimal，五个子主题预览位于：
+
+- `/themes/minimal/astro-blog/`
+- `/themes/minimal/astropaper/`
+- `/themes/minimal/astro-erudite/`
+- `/themes/minimal/pudding/`
+- `/themes/minimal/miniblog/`
+
+每个预览使用同一套文章、项目和联系方式数据，只替换首页信息架构与视觉令牌。
 
 ## 内容维护
 
@@ -68,7 +77,9 @@ hugo --gc --minify
 
 ## 部署
 
-`.github/workflows/deploy.yml` 会在 `main`、`dev_theme_oil`、`dev_theme_AIxian` 和 `dev_theme_GPT` 上执行 GitHub Pages 发布。各主题分支共享同一个 Pages 站点，最近一次成功发布的分支内容会显示在根路径；Oil、Minimal 和 Alxian 主题预览会随发布产物提供在 `/themes/<theme-id>/`。
+`.github/workflows/deploy.yml` 会在 `main`、`dev_theme_oil`、`dev_theme_AIxian`、`dev_theme_GPT` 和 `dev_theme_min` 上执行 GitHub Pages 发布。各主题分支共享同一个 Pages 站点，最近一次成功发布的分支内容会显示在根路径；Minimal 家族预览会随发布产物提供在 `/themes/minimal/<variant>/`。
+
+Minimal 五个子主题的实现方案与验收矩阵见 [`docs/design/MINIMAL_FAMILY_PLAN.md`](docs/design/MINIMAL_FAMILY_PLAN.md)。
 
 ## 联系方式
 

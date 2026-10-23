@@ -7,6 +7,7 @@ on:
       - dev_theme_oil
       - dev_theme_AIxian
       - dev_theme_GPT
+      - dev_theme_min
 
   workflow_dispatch:
 
@@ -136,6 +137,35 @@ jobs:
             --destination public/themes/alxian \
             --baseURL "${{ steps.pages.outputs.base_url }}/themes/alxian/"
 
+      - name: Build Minimal family previews
+        env:
+          HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache
+          HUGO_ENVIRONMENT: production
+          TZ: America/New_York
+        run: |
+          set -euo pipefail
+          for variant in astro-blog astropaper astro-erudite pudding miniblog; do
+            target="public/themes/minimal/${variant}"
+            rm -rf "$target"
+            hugo --gc --minify --cleanDestinationDir \
+              --environment "minimal-${variant}" \
+              --configDir config \
+              --destination "$target" \
+              --baseURL "${{ steps.pages.outputs.base_url }}/themes/minimal/${variant}/"
+          done
+
+      - name: Verify Minimal family previews
+        run: |
+          set -euo pipefail
+          test -s "public/themes/minimal/index.html"
+          test -s "public/themes/minimal/en/index.html"
+          test -s "public/themes/minimal/css/minimal-theme.css"
+          for variant in astro-blog astropaper astro-erudite pudding miniblog; do
+            test -s "public/themes/minimal/${variant}/index.html"
+            test -s "public/themes/minimal/${variant}/en/index.html"
+            test -s "public/themes/minimal/${variant}/css/minimal-theme.css"
+          done
+
       - name: Verify theme route matrix
         run: |
           set -euo pipefail
@@ -211,7 +241,8 @@ jobs:
       github.ref == 'refs/heads/main' ||
       github.ref == 'refs/heads/dev_theme_oil' ||
       github.ref == 'refs/heads/dev_theme_AIxian' ||
-      github.ref == 'refs/heads/dev_theme_GPT'
+      github.ref == 'refs/heads/dev_theme_GPT' ||
+      github.ref == 'refs/heads/dev_theme_min'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
