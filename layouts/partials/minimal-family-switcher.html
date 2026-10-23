@@ -5,7 +5,23 @@
   {{- $familyBase = "/themes/minimal/" -}}
 {{- end -}}
 {{- $familyHome := printf "%s%s" $familyBase (cond $zh "" "en/") -}}
+{{- $activeTheme := lower (default "minimal" (index .Site.Params "site_theme")) -}}
 <div class="minimal-family-bar">
+  <div class="minimal-global-row">
+    <span class="minimal-global-label">{{ if $zh }}站点主题{{ else }}Site themes{{ end }}</span>
+    <nav class="minimal-global-nav" aria-label="{{ if $zh }}站点主题切换{{ else }}Site theme switcher{{ end }}">
+      {{- range .Site.Data.theme_registry.themes -}}
+        {{- if or (eq .scope "site") (eq .id "minimal") -}}
+          {{- $base := .base_path -}}
+          {{- if and .preview_path $.Site.Params.theme_preview -}}
+            {{- $base = .preview_path -}}
+          {{- end -}}
+          {{- $href := printf "%s%s" $base (cond $zh "" "en/") -}}
+          <a class="minimal-global-link {{ if eq .id $activeTheme }}is-current{{ end }}" href="{{ $href }}" title="{{ .label }}" {{ if eq .id $activeTheme }}aria-current="page"{{ end }}>{{ .label }}</a>
+        {{- end -}}
+      {{- end -}}
+    </nav>
+  </div>
   <div class="minimal-family-inner">
     <a class="minimal-family-parent {{ if eq $active "minimal" }}is-current{{ end }}" href="{{ $familyHome }}">
       <strong>Minimal</strong><span>{{ if $zh }}父主题{{ else }}parent theme{{ end }}</span>

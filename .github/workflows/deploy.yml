@@ -137,6 +137,22 @@ jobs:
             --destination public/themes/alxian \
             --baseURL "${{ steps.pages.outputs.base_url }}/themes/alxian/"
 
+      - name: Build BlogGPT theme preview
+        env:
+          HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache
+          HUGO_ENVIRONMENT: bloggpt
+          TZ: America/New_York
+        run: |
+          rm -rf "public/themes/bloggpt"
+          hugo \
+            --gc \
+            --minify \
+            --cleanDestinationDir \
+            --environment bloggpt \
+            --configDir config \
+            --destination public/themes/bloggpt \
+            --baseURL "${{ steps.pages.outputs.base_url }}/themes/bloggpt/"
+
       - name: Build Minimal family previews
         env:
           HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache
@@ -193,6 +209,9 @@ jobs:
           test -s public/themes/oil/index.html
           test -s public/themes/oil/en/index.html
           test -s public/themes/oil/css/oil-theme.css
+          test -s public/themes/bloggpt/index.html
+          test -s public/themes/bloggpt/en/index.html
+          test -s public/themes/bloggpt/css/bloggpt-theme.css
           test -s public/themes/minimal/index.html
           test -s public/themes/minimal/en/index.html
           test -s public/themes/minimal/css/minimal-theme.css

@@ -87,6 +87,7 @@ themes:
     stylesheet: css/oil-theme.css
     script: js/oil-theme.js
     base_path: /themes/oil/
+    preview_path: /themes/oil/
     supports: [home, list, single, tech-stack]
   - id: alxian
     label: Alxian / Jinsong
@@ -98,6 +99,7 @@ themes:
     stylesheet: css/alxian-theme.css
     script: js/alxian-theme.js
     base_path: /themes/alxian/
+    preview_path: /themes/alxian/
     supports: [home, list, single, resource, chat, friends, tech-stack, works, 404]
   - id: bloggpt
     label: BlogGPT
@@ -109,4 +111,5 @@ themes:
     stylesheet: css/bloggpt-theme.css
     script: js/bloggpt-theme.js
     base_path: /
+    preview_path: /themes/bloggpt/
     supports: [home, list, single, resource, chat, friends, tech-stack, categories, archives, about, search, status, 404]

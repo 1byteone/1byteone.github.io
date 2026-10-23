@@ -16,10 +16,13 @@
 
 /* Minimal is the parent theme. Every child keeps this family bar visible so the relationship stays clear. */
 .minimal-family-bar{position:sticky;top:0;z-index:10;border-bottom:1px solid var(--line);background:color-mix(in srgb,var(--paper) 94%,transparent);backdrop-filter:blur(14px)}
+.minimal-global-row{width:min(1240px,calc(100% - 2.5rem));min-height:40px;margin:auto;display:flex;align-items:center;gap:1rem;border-bottom:1px solid color-mix(in srgb,var(--line) 70%,transparent);overflow:hidden}
+.minimal-global-label{color:var(--muted);font: .62rem ui-monospace,SFMono-Regular,monospace;white-space:nowrap}.minimal-global-nav{display:flex;align-items:center;gap:.2rem;min-width:0;overflow-x:auto;scrollbar-width:none}.minimal-global-nav::-webkit-scrollbar{display:none}
+.minimal-global-link{flex:none;padding:.3rem .6rem;border-radius:999px;color:var(--muted);font-size:.66rem;text-decoration:none;white-space:nowrap}.minimal-global-link:hover{background:color-mix(in srgb,var(--accent) 12%,transparent);color:var(--accent)}.minimal-global-link.is-current{background:var(--ink);color:var(--paper)}
 .minimal-family-inner{width:min(1240px,calc(100% - 2.5rem));min-height:44px;margin:auto;display:flex;align-items:center;gap:1rem;overflow:hidden}
 .minimal-family-parent{display:flex;align-items:baseline;gap:.45rem;flex:none;color:var(--ink);text-decoration:none;padding:.45rem .7rem;border:1px solid var(--line);border-radius:999px;font-size:.72rem}
 .minimal-family-parent strong{letter-spacing:.05em}.minimal-family-parent span,.minimal-family-label{color:var(--muted);font: .62rem ui-monospace,SFMono-Regular,monospace;white-space:nowrap}.minimal-family-parent.is-current{background:var(--ink);border-color:var(--ink);color:var(--paper)}
 .minimal-family-nav{display:flex;align-items:center;gap:.2rem;min-width:0;overflow-x:auto;scrollbar-width:none}.minimal-family-nav::-webkit-scrollbar{display:none}
 .minimal-family-link{flex:none;padding:.4rem .65rem;border-radius:999px;color:var(--muted);font-size:.68rem;text-decoration:none;white-space:nowrap}.minimal-family-link:hover{background:color-mix(in srgb,var(--accent) 12%,transparent);color:var(--accent)}.minimal-family-link.is-current{background:var(--accent);color:#fff}
-.minimal-page .minimal-header{top:44px}
-@media(max-width:760px){.minimal-family-inner{width:calc(100% - 1.25rem);gap:.55rem}.minimal-family-label{display:none}.minimal-family-parent{padding:.38rem .55rem}.minimal-family-link{font-size:.62rem;padding:.38rem .5rem}.minimal-page .minimal-header{top:42px}}
+.minimal-page .minimal-header{top:86px}
+@media(max-width:760px){.minimal-global-row,.minimal-family-inner{width:calc(100% - 1.25rem);gap:.55rem}.minimal-family-label,.minimal-global-label{display:none}.minimal-family-parent{padding:.38rem .55rem}.minimal-family-link,.minimal-global-link{font-size:.62rem;padding:.38rem .5rem}.minimal-page .minimal-header{top:78px}}
