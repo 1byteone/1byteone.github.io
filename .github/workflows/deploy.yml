@@ -175,10 +175,14 @@ jobs:
           set -euo pipefail
           test -s "public/themes/minimal/index.html"
           test -s "public/themes/minimal/en/index.html"
+          test -s "public/themes/minimal/blog/rag-basic-pipeline/index.html"
+          test -s "public/themes/minimal/en/blog/rag-basic-pipeline/index.html"
           test -s "public/themes/minimal/css/minimal-theme.css"
           for variant in astro-blog astropaper astro-erudite pudding miniblog; do
             test -s "public/themes/minimal/${variant}/index.html"
             test -s "public/themes/minimal/${variant}/en/index.html"
+            test -s "public/themes/minimal/${variant}/blog/rag-basic-pipeline/index.html"
+            test -s "public/themes/minimal/${variant}/en/blog/rag-basic-pipeline/index.html"
             test -s "public/themes/minimal/${variant}/css/minimal-theme.css"
           done
 
@@ -214,6 +218,8 @@ jobs:
           test -s public/themes/bloggpt/css/bloggpt-theme.css
           test -s public/themes/minimal/index.html
           test -s public/themes/minimal/en/index.html
+          test -s public/themes/minimal/blog/rag-basic-pipeline/index.html
+          test -s public/themes/minimal/en/blog/rag-basic-pipeline/index.html
           test -s public/themes/minimal/css/minimal-theme.css
 
       - name: Verify BlogGPT routes
