@@ -1,11 +1,10 @@
-{{- if eq (lower (default "oil" (index .Site.Params "site_theme"))) "bloggpt" -}}
-  {{- if eq .Type "tech-stack" -}}
-    {{ partial "themes/bloggpt/tech-stack-single.html" . }}
-  {{- else -}}
-    {{ partial "themes/bloggpt/single.html" . }}
-  {{- end -}}
-{{- else if eq (lower (default "oil" (index .Site.Params "site_theme"))) "alxian" -}}
+{{- $theme := lower (default "oil" (index .Site.Params "site_theme")) -}}
+{{- if eq $theme "bloggpt" -}}
+  {{- if eq .Type "tech-stack" -}}{{ partial "themes/bloggpt/tech-stack-single.html" . }}{{- else -}}{{ partial "themes/bloggpt/single.html" . }}{{- end -}}
+{{- else if eq $theme "alxian" -}}
   {{ partial "themes/alxian/single.html" . }}
+{{- else if eq $theme "minimal" -}}
+  {{ partial "themes/minimal-article-router.html" . }}
 {{- else -}}
   {{ partial "themes/oil/single.html" . }}
 {{- end -}}

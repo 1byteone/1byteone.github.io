@@ -1,7 +1,10 @@
-{{- if eq (lower (default "oil" (index .Site.Params "site_theme"))) "bloggpt" -}}
+{{- $theme := lower (default "oil" (index .Site.Params "site_theme")) -}}
+{{- if eq $theme "bloggpt" -}}
   {{ partial "themes/bloggpt/tech-stack-single.html" . }}
-{{- else if eq (lower (default "oil" (index .Site.Params "site_theme"))) "alxian" -}}
+{{- else if eq $theme "alxian" -}}
   {{ partial "themes/alxian/single.html" . }}
+{{- else if eq $theme "minimal" -}}
+  {{ partial "themes/minimal-article-router.html" . }}
 {{- else -}}
   {{ partial "themes/oil/tech-stack.html" . }}
 {{- end -}}

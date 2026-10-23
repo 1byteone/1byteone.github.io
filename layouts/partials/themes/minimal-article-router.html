@@ -1,0 +1,4 @@
+{{- $variant := lower (default "minimal" (index .Site.Params "minimal_variant")) -}}
+{{- $allowed := slice "minimal" "astro-blog" "astropaper" "erudite" "pudding" "miniblog" -}}
+{{- if not (in $allowed $variant) -}}{{- $variant = "minimal" -}}{{- end -}}
+{{- partial (printf "themes/minimal/articles/%s.html" $variant) . -}}
