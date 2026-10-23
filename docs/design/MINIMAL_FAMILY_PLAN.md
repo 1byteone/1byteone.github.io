@@ -2,6 +2,10 @@
 
 `dev_theme_min` 将 Minimal 定为站点根路径的默认主题，并在同一套 Hugo 内容上实现五个 Astro 风格子主题。这里的“模板”指视觉与信息架构的实现方向，不复制外部仓库代码；文章、项目和联系方式继续由 `content/` 与 `data/site.yaml` 统一提供。
 
+## 父子主题关系
+
+`Minimal` 是主题家族的父主题和默认入口，地址为 `/themes/minimal/`；五个模板是同一内容模型上的子主题预览，不是五个互相独立的站点。每个页面顶部都显示统一的家族栏：左侧回到 Minimal 父主题，右侧切换 Astro Blog、AstroPaper、astro-erudite、Pudding 和 Miniblog。当前子主题使用高亮状态，移动端保持横向滚动，避免把切换入口隐藏掉。
+
 ## 主题矩阵
 
 | 预览路径 | 模板方向 | 首页重点 | 适合场景 |
@@ -13,6 +17,16 @@
 | `/themes/minimal/pudding/` | Pudding | 知识花园、项目到笔记的关联路径 | 知识库与反向链接扩展 |
 | `/themes/minimal/miniblog/` | Miniblog | 精选文章、写作归档、作者简介 | 专注写作与阅读 |
 
+## 五个子主题的博客设计特点
+
+| 子主题 | 设计特点 | 适合承载的内容 |
+| --- | --- | --- |
+| Astro Blog | 开放式编辑网格、宽松留白、`Currently exploring` 状态卡，首页先展示最近写作，再展示项目实验。 | 快速发布的技术文章、实验记录、项目进展 |
+| AstroPaper | 文档化的信息架构，文章主列表配主题侧栏、文章数量和学习路线统计。 | 长期维护的 RAG、Agent、MCP、Spring AI 系列文章 |
+| astro-erudite | 研究札记风格，衬线字体、目录索引、词汇表和“问题—约束—实现—验证”的文章组织。 | 原理拆解、源码阅读、工程取舍与复盘 |
+| Pudding | 知识花园视觉，使用主题节点、术语轨道和项目到笔记的关联路径。 | 知识卡片、主题地图、反向链接和学习路径 |
+| Miniblog | 写作优先，单篇精选文章占据首屏，下面接时间归档和作者简介，阅读节奏最安静。 | 深度长文、周刊式更新、个人技术随笔 |
+
 ## 技术结构
 
 ```text
@@ -22,7 +36,7 @@ config/minimal-<variant>/params.yaml  # 五个子主题预览构建
 data/theme_registry.yaml              # Minimal 家族白名单、标签、预览地址
 layouts/partials/themes/minimal/home.html
 layouts/partials/themes/minimal/variants/*.html
-layouts/partials/minimal-variant-switcher.html
+layouts/partials/minimal-family-switcher.html
 static/css/minimal-theme.css          # 共用基础令牌 + 五套 variant 命名空间
 ```
 

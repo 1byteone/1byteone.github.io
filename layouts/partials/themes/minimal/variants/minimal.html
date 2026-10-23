@@ -13,10 +13,11 @@
   <link rel="stylesheet" href="{{ "css/minimal-theme.css" | relURL }}">
 </head>
 <body class="minimal-page variant-minimal"{{ if .Site.Params.theme_preview }} data-pagefind-ignore{{ end }}>
+  {{ partial "minimal-family-switcher.html" . }}
   <header class="minimal-header">
     <a class="minimal-brand" href="{{ .Site.Home.RelPermalink }}">{{ if $zh }}{{ $site.identity.name }}{{ else }}{{ $site.identity.name_en }}{{ end }}</a>
     <nav aria-label="{{ if $zh }}主要导航{{ else }}Primary navigation{{ end }}"><a href="#projects">{{ if $zh }}项目{{ else }}Projects{{ end }}</a><a href="#articles">{{ if $zh }}文章{{ else }}Writing{{ end }}</a><a href="#contact">{{ if $zh }}关于{{ else }}About{{ end }}</a></nav>
-    <div class="minimal-tools"><a href="{{ if .Site.Params.theme_preview }}{{ if $zh }}/themes/minimal/en/{{ else }}/themes/minimal/{{ end }}{{ else }}{{ if $zh }}/en/{{ else }}/{{ end }}{{ end }}" lang="{{ if $zh }}en{{ else }}zh-Hans{{ end }}">{{ if $zh }}EN{{ else }}中{{ end }}</a>{{ partial "minimal-variant-switcher.html" . }}<a href="{{ $site.identity.github }}" target="_blank" rel="noopener">GitHub ↗</a></div>
+    <div class="minimal-tools"><a href="{{ if .Site.Params.theme_preview }}{{ if $zh }}/themes/minimal/en/{{ else }}/themes/minimal/{{ end }}{{ else }}{{ if $zh }}/en/{{ else }}/{{ end }}{{ end }}" lang="{{ if $zh }}en{{ else }}zh-Hans{{ end }}">{{ if $zh }}EN{{ else }}中{{ end }}</a><a href="{{ $site.identity.github }}" target="_blank" rel="noopener">GitHub ↗</a></div>
   </header>
   <main>
     <section class="minimal-hero" id="top"><p class="minimal-kicker">PERSONAL ENGINEERING ARCHIVE / 2026</p><h1>{{ if $zh }}把复杂系统做成可靠的产品。{{ else }}I turn complex systems into reliable products.{{ end }}</h1><p class="minimal-lede">{{ $copy.hero_note }}</p><div class="minimal-meta"><span>{{ $copy.role }}</span><span>{{ if $zh }}{{ $site.identity.location }}{{ else }}{{ $site.identity.location_en }}{{ end }}</span></div></section>

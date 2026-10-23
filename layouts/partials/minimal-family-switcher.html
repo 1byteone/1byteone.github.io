@@ -1,0 +1,23 @@
+{{- $zh := hasPrefix .Lang "zh" -}}
+{{- $active := lower (default "minimal" (index .Site.Params "minimal_variant")) -}}
+{{- $familyBase := .Site.Home.RelPermalink -}}
+{{- if .Site.Params.theme_preview -}}
+  {{- $familyBase = "/themes/minimal/" -}}
+{{- end -}}
+{{- $familyHome := printf "%s%s" $familyBase (cond $zh "" "en/") -}}
+<div class="minimal-family-bar">
+  <div class="minimal-family-inner">
+    <a class="minimal-family-parent {{ if eq $active "minimal" }}is-current{{ end }}" href="{{ $familyHome }}">
+      <strong>Minimal</strong><span>{{ if $zh }}父主题{{ else }}parent theme{{ end }}</span>
+    </a>
+    <span class="minimal-family-label">{{ if $zh }}五个子主题{{ else }}Five child themes{{ end }}</span>
+    <nav class="minimal-family-nav" aria-label="{{ if $zh }}Minimal 子主题切换{{ else }}Minimal child theme switcher{{ end }}">
+      {{- range .Site.Data.theme_registry.themes -}}
+        {{- if and (eq .family "minimal") (ne .variant "minimal") -}}
+          {{- $href := printf "%s%s" .base_path (cond $zh "" "en/") -}}
+          <a class="minimal-family-link {{ if eq .variant $active }}is-current{{ end }}" href="{{ $href }}" title="{{ .label }}" {{ if eq .variant $active }}aria-current="page"{{ end }}>{{ .label }}</a>
+        {{- end -}}
+      {{- end -}}
+    </nav>
+  </div>
+</div>
