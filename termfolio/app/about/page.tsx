@@ -47,8 +47,8 @@ export default function AboutPage() {
 
           <section className="rounded-xl overflow-hidden border border-[var(--term-line)]">
             <div className="flex items-center justify-between border-b border-[var(--term-line)] px-4 py-3 text-xs uppercase tracking-[0.16em] text-[var(--term-gray)]">
-              <span>resume.md</span>
-              <span>personal dossier</span>
+              <span>about.md</span>
+              <span>engineering profile</span>
             </div>
 
             <div className="grid gap-8 p-5 md:grid-cols-[280px_minmax(0,1fr)] md:p-6">
@@ -91,17 +91,6 @@ export default function AboutPage() {
                   </div>
                 </div>
 
-                {/* CV Download */}
-                <a
-                  href="/cv.pdf"
-                  download="waleed-h-alghamdi-cv.pdf"
-                  className="flex items-center gap-3 rounded-lg border border-[var(--term-line)] bg-[var(--term-darker)] px-4 py-3 hover:border-[var(--term-cyan)] hover:bg-[var(--term-cyan)]/5 transition-all group"
-                >
-                  <div className="text-sm text-[var(--term-gray)] group-hover:text-[var(--term-cyan)] transition-colors">
-                    <span className="text-[var(--term-green)]">$</span> download --resume
-                  </div>
-                  <span className="ml-auto text-[var(--term-cyan)] text-xs">↓ PDF</span>
-                </a>
               </aside>
 
               <div className="space-y-8">
@@ -154,9 +143,9 @@ export default function AboutPage() {
                 <AnimateOnScroll>
                 <div className="rounded-lg border border-[var(--term-line)] bg-[var(--term-darker)] px-4 py-5 whitespace-pre-wrap font-mono text-sm leading-[1.8] text-[var(--term-gray)]">
                   <div className="text-[var(--term-white)] mb-4">
-                    <span className="text-[var(--term-green)]">$</span> tree ./advisory-engagements
+                    <span className="text-[var(--term-green)]">$</span> tree ./engineering-projects
                   </div>
-                  <div className="text-[var(--term-white)]">./advisory-engagements</div>
+                  <div className="text-[var(--term-white)]">./engineering-projects</div>
                   {siteConfig.engagements.map((item, idx) => {
                     const isLast = idx === siteConfig.engagements.length - 1
                     return (

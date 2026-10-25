@@ -3,16 +3,15 @@ import Link from "next/link"
 import { ArrowLeft, ArrowUpRight } from "lucide-react"
 import MinimalNav from "@/components/minimal-nav"
 import TerminalFooter from "@/components/terminal-footer"
-import CalEmbed from "@/components/cal-embed"
 import NewsletterSignup from "@/components/newsletter-signup"
 import { siteConfig } from "@/content/site"
 
 export const metadata: Metadata = {
   title: `Contact — ${siteConfig.name}`,
-  description: `Get in touch with ${siteConfig.name}. Book a 30-minute session or send an email.`,
+  description: `Get in touch with ${siteConfig.name} about AI application engineering and backend systems.`,
   openGraph: {
     title: `Contact — ${siteConfig.name}`,
-    description: `Get in touch with ${siteConfig.name}.`,
+    description: `Discuss AI application engineering and backend systems with ${siteConfig.name}.`,
     url: `${siteConfig.siteUrl}/contact`,
     siteName: siteConfig.name,
     type: "website",
@@ -20,7 +19,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary",
     title: `Contact — ${siteConfig.name}`,
-    description: `Get in touch with ${siteConfig.name}.`,
+    description: `Discuss AI application engineering and backend systems with ${siteConfig.name}.`,
   },
 }
 
@@ -49,9 +48,9 @@ export default function ContactPage() {
                   <div className="text-sm text-term-gray">
                     <span className="text-term-green">$</span> <span className="text-term-cyan">ping</span> me
                   </div>
-                  <h1 className="mt-4 text-3xl font-semibold tracking-[-0.04em] text-term-white md:text-4xl">Open a clean line.</h1>
+                  <h1 className="mt-4 text-3xl font-semibold tracking-[-0.04em] text-term-white md:text-4xl">Open an engineering channel.</h1>
                   <p className="mt-5 cli-soft-copy max-w-xl">
-                    If you want to work together, compare notes, or explore a transformation problem, this is the simplest way in.
+                    For AI application projects, backend architecture reviews, or a focused technical exchange, email is the fastest way to reach me.
                   </p>
                 </div>
 
@@ -64,7 +63,7 @@ export default function ContactPage() {
                     {[
                       ["email", siteConfig.email],
                       ["location", siteConfig.location],
-                      ["availability", "select strategy, transformation, and product collaborations"],
+                      ["availability", "focused AI engineering collaborations and technical exchanges"],
                     ].map(([label, value]) => (
                       <div key={label} className="cli-table-row grid gap-3 px-4 py-4 md:grid-cols-[120px_minmax(0,1fr)]">
                         <div className="text-xs uppercase tracking-[0.14em] text-term-gray">{label}</div>
@@ -90,10 +89,10 @@ export default function ContactPage() {
                 <div className="cli-panel px-4 py-4">
                   <div className="cli-topline">good reasons to reach out</div>
                   <div className="mt-3 space-y-2 text-sm leading-7 text-term-gray">
-                    <p>- organizational transformation that needs sharper execution</p>
-                    <p>- product or service ideas that need a clearer operating model</p>
-                    <p>- ai-enabled internal tools or decision systems</p>
-                    <p>- advisory, speaking, or focused strategy conversations</p>
+                    <p>- RAG or agent prototypes that need a production path</p>
+                    <p>- Spring AI, FastAPI, or backend architecture reviews</p>
+                    <p>- evaluation, observability, and deployment problems</p>
+                    <p>- technical writing and open-source engineering projects</p>
                   </div>
                 </div>
 
@@ -101,16 +100,16 @@ export default function ContactPage() {
                   <div className="cli-topline">quick links</div>
                   <div className="mt-4 flex flex-wrap gap-3">
                     <a
-                      href={siteConfig.calUrl}
+                      href={`mailto:${siteConfig.email}?subject=AI%20engineering%20collaboration`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 border border-term-white bg-term-white px-4 py-3 text-sm text-term-black transition-colors hover:bg-term-cyan hover:border-term-cyan hover:text-term-black font-semibold"
                     >
-                      book a 30-minute session
+                      send a project brief
                       <ArrowUpRight className="h-4 w-4" />
                     </a>
-                    <a href={`mailto:${siteConfig.email}`} className="inline-flex items-center gap-2 border border-term-line px-4 py-3 text-sm text-term-white transition-colors hover:bg-term-white hover:text-term-black hover:border-term-white">
-                      email instead
+                    <a href={siteConfig.socials.github.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 border border-term-line px-4 py-3 text-sm text-term-white transition-colors hover:bg-term-white hover:text-term-black hover:border-term-white">
+                      view GitHub
                     </a>
                   </div>
                 </div>
@@ -118,13 +117,6 @@ export default function ContactPage() {
             </div>
           </section>
 
-          {/* Cal.com Embed Section */}
-          <section className="mt-8">
-            <div className="text-sm text-term-gray mb-4">
-              <span className="text-term-green">$</span> <span className="text-term-cyan">open</span> calendar
-            </div>
-            <CalEmbed />
-          </section>
         </div>
       </main>
 

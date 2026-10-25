@@ -40,6 +40,20 @@ const nextConfig = {
       },
     ]
   },
+  async redirects() {
+    return [
+      {
+        source: '/ar',
+        destination: '/',
+        permanent: false,
+      },
+      {
+        source: '/ar/:path*',
+        destination: '/',
+        permanent: false,
+      },
+    ]
+  },
 }
 
 mergeConfig(nextConfig, userConfig)

@@ -10,7 +10,7 @@ links:
     url: "https://github.com/1byteone"
     icon: "github"
   - label: "Portfolio"
-    url: "http://localhost:1314"
+    url: "http://localhost:1315"
     icon: "website"
 contacts:
   - type: email

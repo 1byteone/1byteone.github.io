@@ -7,7 +7,6 @@ import { formatPostDate } from "@/lib/format-post-date"
 import { getAllPosts } from "@/lib/posts"
 import BootTerminal from "@/components/boot-terminal"
 import HalftoneImage from "@/components/halftone-image"
-import SpotifyWidget from "@/components/spotify-widget"
 import ApodWidget from "@/components/apod-widget"
 import AnimateOnScroll from "@/components/animate-on-scroll"
 import LabBench from "@/components/lab-bench"
@@ -91,7 +90,6 @@ export default async function ArabicHome() {
                     </div>
                   </div>
 
-                  <SpotifyWidget />
                 </div>
               </div>
 

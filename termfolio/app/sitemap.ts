@@ -14,25 +14,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }))
 
-  const arabicToolEntries: MetadataRoute.Sitemap = utilityTools.map((tool) => ({
-    url: `${siteUrl}/ar${tool.href}`,
-    lastModified: new Date(),
-    changeFrequency: "monthly",
-    priority: 0.65,
-  }))
-
   const blogEntries: MetadataRoute.Sitemap = posts.map((post) => ({
     url: `${siteUrl}/blog/${post.slug}`,
     lastModified: new Date(post.date),
     changeFrequency: "monthly",
     priority: 0.7,
-  }))
-
-  const arabicBlogEntries: MetadataRoute.Sitemap = posts.map((post) => ({
-    url: `${siteUrl}/ar/blog/${post.slug}`,
-    lastModified: new Date(post.date),
-    changeFrequency: "monthly",
-    priority: 0.65,
   }))
 
   return [
@@ -78,51 +64,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "monthly",
       priority: 0.5,
     },
-    {
-      url: `${siteUrl}/ar`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.95,
-    },
-    {
-      url: `${siteUrl}/ar/about`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.75,
-    },
-    {
-      url: `${siteUrl}/ar/blog`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.85,
-    },
-    {
-      url: `${siteUrl}/ar/contact`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.55,
-    },
-    {
-      url: `${siteUrl}/ar/lab`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.65,
-    },
-    {
-      url: `${siteUrl}/ar/tools`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.65,
-    },
-    {
-      url: `${siteUrl}/ar/card`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.45,
-    },
     ...toolEntries,
-    ...arabicToolEntries,
     ...blogEntries,
-    ...arabicBlogEntries,
   ]
 }

@@ -18,11 +18,10 @@ export const siteConfig = {
   location: "Nanchang, China",
   email: "yjs_0831@qq.com",
   phone: "",
-  siteUrl: "http://localhost:1314",
+  siteUrl: "http://localhost:1315",
   twitterHandle: "",
   calUrl: "mailto:yjs_0831@qq.com",
   calEmbedUrl: "",
-  spotifyUrl: "https://github.com/1byteone",
 
   socials: {
     github: { url: "https://github.com/1byteone", label: "GitHub", icon: "</>" },

@@ -47,13 +47,15 @@ export default function MinimalNav({ locale = "en" }: MinimalNavProps) {
 
           <div className="flex items-center gap-6">
             <ThemePicker />
-            <Link
-              href={languageHref}
-              className="text-xs uppercase tracking-[0.16em] text-term-gray transition-colors hover:text-term-cyan"
-              title={copy.languageSwitchTitle}
-            >
-              {copy.languageLabel}
-            </Link>
+            {locale === "ar" && (
+              <Link
+                href={languageHref}
+                className="text-xs uppercase tracking-[0.16em] text-term-gray transition-colors hover:text-term-cyan"
+                title={copy.languageSwitchTitle}
+              >
+                {copy.languageLabel}
+              </Link>
+            )}
             <div className="hidden lg:flex items-center gap-4 text-xs tracking-[0.16em] text-term-gray uppercase">
               {Object.values(siteConfig.socials).map((social) => (
                 <a key={social.label} href={social.url} target="_blank" rel="noopener noreferrer" className="hover:text-term-cyan focus:text-term-cyan outline-none transition-colors flex items-center gap-1.5">
@@ -97,13 +99,15 @@ export default function MinimalNav({ locale = "en" }: MinimalNavProps) {
                   </Link>
                 )
               })}
-              <Link
-                href={languageHref}
-                onClick={() => setOpen(false)}
-                className="border border-term-line px-4 py-4 min-h-[48px] text-term-gray hover:text-term-cyan"
-              >
-                {copy.languageLabel}
-              </Link>
+              {locale === "ar" && (
+                <Link
+                  href={languageHref}
+                  onClick={() => setOpen(false)}
+                  className="border border-term-line px-4 py-4 min-h-[48px] text-term-gray hover:text-term-cyan"
+                >
+                  {copy.languageLabel}
+                </Link>
+              )}
               <div className="flex items-center gap-4 px-4 py-2 text-xs tracking-[0.16em] text-term-gray uppercase">
                 {Object.values(siteConfig.socials).map((social) => (
                   <a key={social.label} href={social.url} target="_blank" rel="noopener noreferrer" className="hover:text-term-cyan flex items-center gap-1.5">
