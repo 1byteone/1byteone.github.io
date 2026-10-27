@@ -1,0 +1,602 @@
+[
+  {
+    "slug": "bitmap-film-reel",
+    "title": "Film reel",
+    "src": "/images/blog/bitmap/catalog/bitmap-film-reel.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-film-reel"
+  },
+  {
+    "slug": "bitmap-hourglass-with-sand-flowing-in-classic-wooden-frame",
+    "title": "Hourglass",
+    "src": "/images/blog/bitmap/catalog/bitmap-hourglass-with-sand-flowing-in-classic-wooden-frame.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-hourglass-with-sand-flowing-in-classic-wooden-frame"
+  },
+  {
+    "slug": "bitmap-dice-game",
+    "title": "Dice game",
+    "src": "/images/blog/bitmap/catalog/bitmap-dice-game.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-dice-game"
+  },
+  {
+    "slug": "bitmap-halloween-pumpkin-with-hat",
+    "title": "Halloween pumpkin",
+    "src": "/images/blog/bitmap/catalog/bitmap-halloween-pumpkin-with-hat.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-halloween-pumpkin-with-hat"
+  },
+  {
+    "slug": "bitmap-audio-boombox",
+    "title": "Audio boombox",
+    "src": "/images/blog/bitmap/catalog/bitmap-audio-boombox.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-audio-boombox"
+  },
+  {
+    "slug": "bitmap-scales",
+    "title": "Scales",
+    "src": "/images/blog/bitmap/catalog/bitmap-scales.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-scales"
+  },
+  {
+    "slug": "bitmap-eyes",
+    "title": "Eyes",
+    "src": "/images/blog/bitmap/catalog/bitmap-eyes.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-eyes"
+  },
+  {
+    "slug": "bitmap-cherry",
+    "title": "Cherry",
+    "src": "/images/blog/bitmap/catalog/bitmap-cherry.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-cherry"
+  },
+  {
+    "slug": "bitmap-shell",
+    "title": "Shell",
+    "src": "/images/blog/bitmap/catalog/bitmap-shell.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-shell"
+  },
+  {
+    "slug": "bitmap-pocket-watch",
+    "title": "Pocket watch",
+    "src": "/images/blog/bitmap/catalog/bitmap-pocket-watch.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-pocket-watch"
+  },
+  {
+    "slug": "bitmap-young-man-riding-a-skateboard",
+    "title": "Skateboard",
+    "src": "/images/blog/bitmap/catalog/bitmap-young-man-riding-a-skateboard.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-young-man-riding-a-skateboard"
+  },
+  {
+    "slug": "bitmap-mirror",
+    "title": "Mirror",
+    "src": "/images/blog/bitmap/catalog/bitmap-mirror.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-mirror"
+  },
+  {
+    "slug": "bitmap-cassette",
+    "title": "Cassette",
+    "src": "/images/blog/bitmap/catalog/bitmap-cassette.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-cassette"
+  },
+  {
+    "slug": "bitmap-microphone",
+    "title": "Microphone",
+    "src": "/images/blog/bitmap/catalog/bitmap-microphone.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-microphone"
+  },
+  {
+    "slug": "bitmap-winners-cup",
+    "title": "Winner's cup",
+    "src": "/images/blog/bitmap/catalog/bitmap-winners-cup.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-winners-cup"
+  },
+  {
+    "slug": "bitmap-photographic-film",
+    "title": "Photographic film",
+    "src": "/images/blog/bitmap/catalog/bitmap-photographic-film.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-photographic-film"
+  },
+  {
+    "slug": "bitmap-street-light",
+    "title": "Street light",
+    "src": "/images/blog/bitmap/catalog/bitmap-street-light.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-street-light"
+  },
+  {
+    "slug": "bitmap-old-mobile-phone",
+    "title": "Old mobile phone",
+    "src": "/images/blog/bitmap/catalog/bitmap-old-mobile-phone.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-old-mobile-phone"
+  },
+  {
+    "slug": "bitmap-game-boy",
+    "title": "Game Boy",
+    "src": "/images/blog/bitmap/catalog/bitmap-game-boy.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-game-boy"
+  },
+  {
+    "slug": "bitmap-knight-chess",
+    "title": "Knight chess",
+    "src": "/images/blog/bitmap/catalog/bitmap-knight-chess.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-knight-chess"
+  },
+  {
+    "slug": "bitmap-handcuffs",
+    "title": "Handcuffs",
+    "src": "/images/blog/bitmap/catalog/bitmap-handcuffs.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-handcuffs"
+  },
+  {
+    "slug": "bitmap-sewing-machine",
+    "title": "Sewing machine",
+    "src": "/images/blog/bitmap/catalog/bitmap-sewing-machine.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-sewing-machine"
+  },
+  {
+    "slug": "bitmap-pigeon",
+    "title": "Pigeon",
+    "src": "/images/blog/bitmap/catalog/bitmap-pigeon.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-pigeon"
+  },
+  {
+    "slug": "bitmap-silhouette-of-people-against-the-background-of-a-window",
+    "title": "Window silhouettes",
+    "src": "/images/blog/bitmap/catalog/bitmap-silhouette-of-people-against-the-background-of-a-window.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-silhouette-of-people-against-the-background-of-a-window"
+  },
+  {
+    "slug": "bitmap-deer-head",
+    "title": "Deer head",
+    "src": "/images/blog/bitmap/catalog/bitmap-deer-head.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-deer-head"
+  },
+  {
+    "slug": "bitmap-chess",
+    "title": "Chess",
+    "src": "/images/blog/bitmap/catalog/bitmap-chess.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-chess"
+  },
+  {
+    "slug": "bitmap-ballerina",
+    "title": "Ballerina",
+    "src": "/images/blog/bitmap/catalog/bitmap-ballerina.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-ballerina"
+  },
+  {
+    "slug": "bitmap-hot-air-balloon-with-striped-pattern-and-basket",
+    "title": "Hot air balloon",
+    "src": "/images/blog/bitmap/catalog/bitmap-hot-air-balloon-with-striped-pattern-and-basket.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-hot-air-balloon-with-striped-pattern-and-basket"
+  },
+  {
+    "slug": "bitmap-alarm",
+    "title": "Alarm",
+    "src": "/images/blog/bitmap/catalog/bitmap-alarm.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-alarm"
+  },
+  {
+    "slug": "bitmap-classic-compact-automobile-with-black-and-white-shading",
+    "title": "Compact automobile",
+    "src": "/images/blog/bitmap/catalog/bitmap-classic-compact-automobile-with-black-and-white-shading.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-classic-compact-automobile-with-black-and-white-shading"
+  },
+  {
+    "slug": "bitmap-disco-ball",
+    "title": "Disco ball",
+    "src": "/images/blog/bitmap/catalog/bitmap-disco-ball.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-disco-ball"
+  },
+  {
+    "slug": "bitmap-colosseum",
+    "title": "Colosseum",
+    "src": "/images/blog/bitmap/catalog/bitmap-colosseum.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-colosseum"
+  },
+  {
+    "slug": "bitmap-human-brain-silhouette-with-detailed-black-and-white-shading",
+    "title": "Human brain",
+    "src": "/images/blog/bitmap/catalog/bitmap-human-brain-silhouette-with-detailed-black-and-white-shading.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-human-brain-silhouette-with-detailed-black-and-white-shading"
+  },
+  {
+    "slug": "bitmap-crown",
+    "title": "Crown",
+    "src": "/images/blog/bitmap/catalog/bitmap-crown.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-crown"
+  },
+  {
+    "slug": "bitmap-butterfly",
+    "title": "Butterfly",
+    "src": "/images/blog/bitmap/catalog/bitmap-butterfly.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-butterfly"
+  },
+  {
+    "slug": "bitmap-planet-earth",
+    "title": "Planet earth",
+    "src": "/images/blog/bitmap/catalog/bitmap-planet-earth.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-planet-earth"
+  },
+  {
+    "slug": "bitmap-cupid",
+    "title": "Cupid",
+    "src": "/images/blog/bitmap/catalog/bitmap-cupid.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-cupid"
+  },
+  {
+    "slug": "bitmap-gypsum-statue-of-apollos-head",
+    "title": "Apollo statue",
+    "src": "/images/blog/bitmap/catalog/bitmap-gypsum-statue-of-apollos-head.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-gypsum-statue-of-apollos-head"
+  },
+  {
+    "slug": "bitmap-lighthouse",
+    "title": "Lighthouse",
+    "src": "/images/blog/bitmap/catalog/bitmap-lighthouse.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-lighthouse"
+  },
+  {
+    "slug": "bitmap-angel-sculpture",
+    "title": "Angel sculpture",
+    "src": "/images/blog/bitmap/catalog/bitmap-angel-sculpture.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-angel-sculpture"
+  },
+  {
+    "slug": "bitmap-light-bulb-with-halftone-dots-and-detailed-metal-socket",
+    "title": "Light bulb",
+    "src": "/images/blog/bitmap/catalog/bitmap-light-bulb-with-halftone-dots-and-detailed-metal-socket.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-light-bulb-with-halftone-dots-and-detailed-metal-socket"
+  },
+  {
+    "slug": "bitmap-frame",
+    "title": "Frame",
+    "src": "/images/blog/bitmap/catalog/bitmap-frame.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-frame"
+  },
+  {
+    "slug": "bitmap-old-key",
+    "title": "Old key",
+    "src": "/images/blog/bitmap/catalog/bitmap-old-key.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-old-key"
+  },
+  {
+    "slug": "bitmap-vintage-skeleton-key-with-oval-bow",
+    "title": "Skeleton key",
+    "src": "/images/blog/bitmap/catalog/bitmap-vintage-skeleton-key-with-oval-bow.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-vintage-skeleton-key-with-oval-bow"
+  },
+  {
+    "slug": "bitmap-eiffel-tower",
+    "title": "Eiffel tower",
+    "src": "/images/blog/bitmap/catalog/bitmap-eiffel-tower.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-eiffel-tower"
+  },
+  {
+    "slug": "bitmap-city-silhouette",
+    "title": "City silhouette",
+    "src": "/images/blog/bitmap/catalog/bitmap-city-silhouette.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-city-silhouette"
+  },
+  {
+    "slug": "bitmap-wooden-house",
+    "title": "Wooden house",
+    "src": "/images/blog/bitmap/catalog/bitmap-wooden-house.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-wooden-house"
+  },
+  {
+    "slug": "bitmap-open-mouth-with-tongue",
+    "title": "Open mouth",
+    "src": "/images/blog/bitmap/catalog/bitmap-open-mouth-with-tongue.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-open-mouth-with-tongue"
+  },
+  {
+    "slug": "bitmap-ear",
+    "title": "Ear",
+    "src": "/images/blog/bitmap/catalog/bitmap-ear.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-ear"
+  },
+  {
+    "slug": "bitmap-retro-monochrome-heart-with-textured-pattern-fill",
+    "title": "Retro heart",
+    "src": "/images/blog/bitmap/catalog/bitmap-retro-monochrome-heart-with-textured-pattern-fill.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-retro-monochrome-heart-with-textured-pattern-fill"
+  },
+  {
+    "slug": "bitmap-arrow-with-halftone-shadow-and-bold-volumetric-shape",
+    "title": "Arrow",
+    "src": "/images/blog/bitmap/catalog/bitmap-arrow-with-halftone-shadow-and-bold-volumetric-shape.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-arrow-with-halftone-shadow-and-bold-volumetric-shape"
+  },
+  {
+    "slug": "bitmap-hashtag-symbol",
+    "title": "Hashtag",
+    "src": "/images/blog/bitmap/catalog/bitmap-hashtag-symbol.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-hashtag-symbol"
+  },
+  {
+    "slug": "bitmap-floral-bead",
+    "title": "Floral bead",
+    "src": "/images/blog/bitmap/catalog/bitmap-floral-bead.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-floral-bead"
+  },
+  {
+    "slug": "bitmap-twisted-cuboid",
+    "title": "Twisted cuboid",
+    "src": "/images/blog/bitmap/catalog/bitmap-twisted-cuboid.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-twisted-cuboid"
+  },
+  {
+    "slug": "bitmap-lego-cube",
+    "title": "Lego cube",
+    "src": "/images/blog/bitmap/catalog/bitmap-lego-cube.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-lego-cube"
+  },
+  {
+    "slug": "bitmap-mechanical-gear-wheel-with-pixelated-halftone-texture",
+    "title": "Mechanical gear",
+    "src": "/images/blog/bitmap/catalog/bitmap-mechanical-gear-wheel-with-pixelated-halftone-texture.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-mechanical-gear-wheel-with-pixelated-halftone-texture"
+  },
+  {
+    "slug": "bitmap-flower-shaped-tube",
+    "title": "Flower tube",
+    "src": "/images/blog/bitmap/catalog/bitmap-flower-shaped-tube.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-flower-shaped-tube"
+  },
+  {
+    "slug": "bitmap-sparkles-with-halftone-pixel-effect",
+    "title": "Sparkles",
+    "src": "/images/blog/bitmap/catalog/bitmap-sparkles-with-halftone-pixel-effect.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-sparkles-with-halftone-pixel-effect"
+  },
+  {
+    "slug": "bitmap-black-curve",
+    "title": "Black curve",
+    "src": "/images/blog/bitmap/catalog/bitmap-black-curve.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-black-curve"
+  },
+  {
+    "slug": "bitmap-vintage-eyewear-with-circular-black-lenses",
+    "title": "Vintage eyewear",
+    "src": "/images/blog/bitmap/catalog/bitmap-vintage-eyewear-with-circular-black-lenses.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-vintage-eyewear-with-circular-black-lenses"
+  },
+  {
+    "slug": "bitmap-couple-in-front-of-the-eiffel-tower",
+    "title": "Eiffel couple",
+    "src": "/images/blog/bitmap/catalog/bitmap-couple-in-front-of-the-eiffel-tower.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-couple-in-front-of-the-eiffel-tower"
+  },
+  {
+    "slug": "bitmap-candle-in-a-candlestick",
+    "title": "Candle",
+    "src": "/images/blog/bitmap/catalog/bitmap-candle-in-a-candlestick.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-candle-in-a-candlestick"
+  },
+  {
+    "slug": "bitmap-poppy-flower",
+    "title": "Poppy flower",
+    "src": "/images/blog/bitmap/catalog/bitmap-poppy-flower.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-poppy-flower"
+  },
+  {
+    "slug": "bitmap-mount-rushmore-national-memorial",
+    "title": "Mount Rushmore",
+    "src": "/images/blog/bitmap/catalog/bitmap-mount-rushmore-national-memorial.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-mount-rushmore-national-memorial"
+  },
+  {
+    "slug": "bitmap-angel-of-sorrow",
+    "title": "Angel of sorrow",
+    "src": "/images/blog/bitmap/catalog/bitmap-angel-of-sorrow.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-angel-of-sorrow"
+  },
+  {
+    "slug": "bitmap-airship",
+    "title": "Airship",
+    "src": "/images/blog/bitmap/catalog/bitmap-airship.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-airship"
+  },
+  {
+    "slug": "bitmap-typewriter",
+    "title": "Typewriter",
+    "src": "/images/blog/bitmap/catalog/bitmap-typewriter.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-typewriter"
+  },
+  {
+    "slug": "bitmap-statue-of-liberty",
+    "title": "Statue of liberty",
+    "src": "/images/blog/bitmap/catalog/bitmap-statue-of-liberty.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-statue-of-liberty"
+  },
+  {
+    "slug": "bitmap-mosque",
+    "title": "Mosque",
+    "src": "/images/blog/bitmap/catalog/bitmap-mosque.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-mosque"
+  },
+  {
+    "slug": "bitmap-fossil-shell",
+    "title": "Fossil shell",
+    "src": "/images/blog/bitmap/catalog/bitmap-fossil-shell.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-fossil-shell"
+  },
+  {
+    "slug": "bitmap-avocado",
+    "title": "Avocado",
+    "src": "/images/blog/bitmap/catalog/bitmap-avocado.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-avocado"
+  },
+  {
+    "slug": "bitmap-violin",
+    "title": "Violin",
+    "src": "/images/blog/bitmap/catalog/bitmap-violin.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-violin"
+  },
+  {
+    "slug": "bitmap-old-camera",
+    "title": "Old camera",
+    "src": "/images/blog/bitmap/catalog/bitmap-old-camera.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-old-camera"
+  },
+  {
+    "slug": "bitmap-betta-fish-with-flowing-tail-and-curved-body",
+    "title": "Betta fish",
+    "src": "/images/blog/bitmap/catalog/bitmap-betta-fish-with-flowing-tail-and-curved-body.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-betta-fish-with-flowing-tail-and-curved-body"
+  },
+  {
+    "slug": "bitmap-pineapple",
+    "title": "Pineapple",
+    "src": "/images/blog/bitmap/catalog/bitmap-pineapple.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-pineapple"
+  },
+  {
+    "slug": "bitmap-lantern",
+    "title": "Lantern",
+    "src": "/images/blog/bitmap/catalog/bitmap-lantern.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-lantern"
+  },
+  {
+    "slug": "bitmap-guy-with-glasses-and-cap",
+    "title": "Guy with glasses",
+    "src": "/images/blog/bitmap/catalog/bitmap-guy-with-glasses-and-cap.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-guy-with-glasses-and-cap"
+  },
+  {
+    "slug": "bitmap-big-ben",
+    "title": "Big Ben",
+    "src": "/images/blog/bitmap/catalog/bitmap-big-ben.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-big-ben"
+  },
+  {
+    "slug": "bitmap-red-telephone-box",
+    "title": "Telephone box",
+    "src": "/images/blog/bitmap/catalog/bitmap-red-telephone-box.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-red-telephone-box"
+  },
+  {
+    "slug": "bitmap-srow",
+    "title": "Crow",
+    "src": "/images/blog/bitmap/catalog/bitmap-srow.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-srow"
+  },
+  {
+    "slug": "bitmap-airplane-top-view-with-twin-engines",
+    "title": "Airplane",
+    "src": "/images/blog/bitmap/catalog/bitmap-airplane-top-view-with-twin-engines.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-airplane-top-view-with-twin-engines"
+  },
+  {
+    "slug": "bitmap-motorcycle",
+    "title": "Motorcycle",
+    "src": "/images/blog/bitmap/catalog/bitmap-motorcycle.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-motorcycle"
+  },
+  {
+    "slug": "bitmap-scissors",
+    "title": "Scissors",
+    "src": "/images/blog/bitmap/catalog/bitmap-scissors.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-scissors"
+  },
+  {
+    "slug": "bitmap-leaning-tower-of-pisa",
+    "title": "Leaning tower",
+    "src": "/images/blog/bitmap/catalog/bitmap-leaning-tower-of-pisa.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-leaning-tower-of-pisa"
+  },
+  {
+    "slug": "bitmap-dog-balloon",
+    "title": "Dog balloon",
+    "src": "/images/blog/bitmap/catalog/bitmap-dog-balloon.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-dog-balloon"
+  },
+  {
+    "slug": "bitmap-sompass",
+    "title": "Compass",
+    "src": "/images/blog/bitmap/catalog/bitmap-sompass.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-sompass"
+  },
+  {
+    "slug": "bitmap-old-phone",
+    "title": "Old phone",
+    "src": "/images/blog/bitmap/catalog/bitmap-old-phone.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-old-phone"
+  },
+  {
+    "slug": "bitmap-horn",
+    "title": "Horn",
+    "src": "/images/blog/bitmap/catalog/bitmap-horn.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-horn"
+  },
+  {
+    "slug": "bitmap-clover",
+    "title": "Clover",
+    "src": "/images/blog/bitmap/catalog/bitmap-clover.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-clover"
+  },
+  {
+    "slug": "bitmap-cat-portrait-with-front-paws-on-ledge-black-and-white",
+    "title": "Cat portrait",
+    "src": "/images/blog/bitmap/catalog/bitmap-cat-portrait-with-front-paws-on-ledge-black-and-white.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-cat-portrait-with-front-paws-on-ledge-black-and-white"
+  },
+  {
+    "slug": "bitmap-compact-cassette",
+    "title": "Compact cassette",
+    "src": "/images/blog/bitmap/catalog/bitmap-compact-cassette.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-compact-cassette"
+  },
+  {
+    "slug": "bitmap-tulip",
+    "title": "Tulip",
+    "src": "/images/blog/bitmap/catalog/bitmap-tulip.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-tulip"
+  },
+  {
+    "slug": "bitmap-single-rose-silhouette-for-romantic-occasions",
+    "title": "Rose silhouette",
+    "src": "/images/blog/bitmap/catalog/bitmap-single-rose-silhouette-for-romantic-occasions.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-single-rose-silhouette-for-romantic-occasions"
+  },
+  {
+    "slug": "bitmap-caravan",
+    "title": "Caravan",
+    "src": "/images/blog/bitmap/catalog/bitmap-caravan.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-caravan"
+  },
+  {
+    "slug": "bitmap-paper-ship",
+    "title": "Paper ship",
+    "src": "/images/blog/bitmap/catalog/bitmap-paper-ship.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-paper-ship"
+  },
+  {
+    "slug": "bitmap-hourglass-timekeeper-with-falling-sand-and-glass-bulbs",
+    "title": "Hourglass timekeeper",
+    "src": "/images/blog/bitmap/catalog/bitmap-hourglass-timekeeper-with-falling-sand-and-glass-bulbs.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-hourglass-timekeeper-with-falling-sand-and-glass-bulbs"
+  },
+  {
+    "slug": "bitmap-hungarian-parliament-building",
+    "title": "Hungarian parliament",
+    "src": "/images/blog/bitmap/catalog/bitmap-hungarian-parliament-building.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-hungarian-parliament-building"
+  },
+  {
+    "slug": "bitmap-sat",
+    "title": "Cat",
+    "src": "/images/blog/bitmap/catalog/bitmap-sat.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-sat"
+  },
+  {
+    "slug": "bitmap-spatial-computer",
+    "title": "Spatial computer",
+    "src": "/images/blog/bitmap/catalog/bitmap-spatial-computer.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-spatial-computer"
+  },
+  {
+    "slug": "bitmap-old-car",
+    "title": "Old car",
+    "src": "/images/blog/bitmap/catalog/bitmap-old-car.png",
+    "source": "https://icons8.com/illustrations/illustration/bitmap-old-car"
+  }
+]

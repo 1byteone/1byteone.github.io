@@ -26,6 +26,14 @@ termfolio/public/images/blog/tutorial/*
 !termfolio/public/images/blog/tutorial/blog-post.png
 !termfolio/public/images/blog/tutorial/blog-reading-terminal.png
 !termfolio/public/images/blog/tutorial/blog-reading-light.png
+!termfolio/public/fonts/
+!termfolio/public/fonts/thmanyah/
+!termfolio/public/fonts/thmanyah/*.woff2
+!termfolio/public/images/blog/bitmap/
+!termfolio/public/images/blog/bitmap/catalog/
+!termfolio/public/images/blog/bitmap/catalog/*.png
+!termfolio/public/images/blog/bitmap/catalog/index.json
+!termfolio/public/images/blog/bitmap/*.png
 termfolio/public/cv.pdf
 termfolio/public/University-Wordmark-Full-Color-RGB-1.png
 termfolio/public/جامعة_جدة.png
