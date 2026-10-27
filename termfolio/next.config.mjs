@@ -6,7 +6,14 @@ try {
 }
 
 /** @type {import('next').NextConfig} */
+const isStaticExport = process.env.TERMFOLIO_STATIC_EXPORT === '1'
+const basePath = process.env.TERMFOLIO_BASE_PATH || ''
+
 const nextConfig = {
+  output: isStaticExport ? 'export' : undefined,
+  trailingSlash: isStaticExport,
+  basePath,
+  assetPrefix: basePath ? `${basePath}/` : undefined,
   images: {
     unoptimized: true,
     remotePatterns: [

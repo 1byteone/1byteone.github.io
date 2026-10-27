@@ -188,6 +188,19 @@ jobs:
             --destination public/themes/engineer-terminal/astro-tui-portfolio \
             --baseURL "${{ steps.pages.outputs.base_url }}/themes/engineer-terminal/astro-tui-portfolio/"
 
+      - name: Build Termfolio static terminal preview
+        if: github.ref == 'refs/heads/dev_termfolio'
+        working-directory: termfolio
+        env:
+          TERMFOLIO_BASE_PATH: /themes/engineer-terminal/termfolio
+        run: |
+          set -euo pipefail
+          npm ci
+          bash scripts/build-pages-preview.sh
+          rm -rf ../public/themes/engineer-terminal/termfolio
+          mkdir -p ../public/themes/engineer-terminal/termfolio
+          cp -R out/. ../public/themes/engineer-terminal/termfolio/
+
       - name: Build Minimal family previews
         env:
           HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache
@@ -272,6 +285,13 @@ jobs:
           test -s public/themes/engineer-terminal/astro-tui-portfolio/en/blog/fastapi-ai-streaming-api/index.html
           test -s public/themes/engineer-terminal/astro-tui-portfolio/css/astro-tui.css
           test -s public/themes/engineer-terminal/astro-tui-portfolio/js/astro-tui.js
+          if [[ "${{ github.ref }}" == "refs/heads/dev_termfolio" ]]; then
+            test -s public/themes/engineer-terminal/termfolio/index.html
+            test -s public/themes/engineer-terminal/termfolio/blog/index.html
+            test -s public/themes/engineer-terminal/termfolio/blog/fastapi-ai-streaming-api/index.html
+            test -s public/themes/engineer-terminal/termfolio/engineer-terminal-avatar.png
+            test -s public/themes/engineer-terminal/termfolio/images/blog/bitmap/bitmap-planet-earth.png
+          fi
           test -s public/themes/minimal/index.html
           test -s public/themes/minimal/en/index.html
           test -s public/themes/minimal/blog/rag-basic-pipeline/index.html

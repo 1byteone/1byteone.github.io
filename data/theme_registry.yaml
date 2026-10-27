@@ -85,6 +85,32 @@ themes:
     reference_note: Astro/Tailwind reference adapted into the Hugo terminal family; content remains shared with the core site
     reference_note_zh: 已将 Astro/Tailwind 参考实现适配到 Hugo 终端家族，文章与项目继续复用主站内容
     supports: [home, list, single, projects, logs]
+  - id: termfolio
+    label: Termfolio Terminal Portfolio
+    label_zh: Termfolio 终端作品集
+    description: A terminal-native AI engineering portfolio with local Bitmap article covers and browser tools
+    description_zh: 基于 Termfolio 二创的终端工程作品集，包含本地 Bitmap 文章封面与浏览器工具
+    short_label: TERMFOLIO
+    version: 1.0.0
+    status: preview
+    scope: site
+    category: terminal
+    preview_style: terminal
+    tags: [termfolio, terminal, bitmap, tools]
+    family: ai-engineering
+    parent: ai-terminal
+    role: child
+    focus: Terminal-native engineering archive and local visual assets
+    focus_zh: 终端工程档案、本地图片素材与可交互工具
+    base_path: /themes/engineer-terminal/termfolio/
+    preview_path: /themes/engineer-terminal/termfolio/
+    dev_preview_path: http://localhost:1315/
+    source_repository: https://github.com/wa1939/termfolio
+    reference_note: Termfolio source adapted for Jinsong Yang with local Bitmap covers and Chinese-first content
+    reference_note_zh: 基于 Termfolio 源码二创，加入中文优先内容、本地 Bitmap 封面与个人工程素材
+    available: true
+    default_selectable: true
+    supports: [home, list, single, blog, tools, lab]
   - id: ai-lab
     label: AI Engineering Lab
     label_zh: AI 实验室
