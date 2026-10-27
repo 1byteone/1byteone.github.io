@@ -1,0 +1,41 @@
+id: ai-engineering
+name: AI Engineering Core
+name_zh: AI 工程师主题底座
+description: A shared content model and evidence chain for six distinct visual themes.
+description_zh: 六种视觉表达共用一套内容模型和能力证据链，各自保留独立的信息架构与视觉语言。
+capabilities:
+  - id: business
+    label: Business context
+    label_zh: 业务理解
+  - id: ai
+    label: AI systems
+    label_zh: AI 技术
+  - id: engineering
+    label: Software engineering
+    label_zh: 软件工程
+  - id: evaluation
+    label: Evaluation
+    label_zh: 效果评测
+  - id: operations
+    label: Delivery and operations
+    label_zh: 部署运维
+  - id: learning
+    label: Reflection and transfer
+    label_zh: 复盘迁移
+article_flow:
+  - id: problem
+    label: Problem
+    label_zh: 问题
+  - id: design
+    label: Principles and design
+    label_zh: 原理与设计
+  - id: implementation
+    label: Implementation
+    label_zh: 实现
+  - id: verification
+    label: Verification
+    label_zh: 验证
+  - id: reflection
+    label: Reflection
+    label_zh: 复盘
+shared_entities: [articles, projects, experiments, product-demos, learning-journal]
