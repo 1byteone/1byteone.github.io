@@ -83,7 +83,7 @@ hugo --gc --minify
 
 ## 部署
 
-`.github/workflows/deploy.yml` 会在 `main`、`dev_theme_oil`、`dev_theme_AIxian`、`dev_theme_GPT`、`dev_theme_min`、`dev_theme_minimal-tech`、`dev_theme_engineer-terminal` 和 `dev_termfolio` 上执行 GitHub Pages 发布。各主题分支共享同一个 Pages 站点，最近一次成功发布的分支内容会显示在根路径；Minimal 家族预览位于 `/themes/minimal/<variant>/`，Engineer Terminal 预览位于 `/themes/engineer-terminal/`，Astro TUI 预览位于 `/themes/engineer-terminal/astro-tui-portfolio/`。当前工作区已接入构建矩阵，但尚未推送并确认新的线上 Actions 成功运行。
+`.github/workflows/deploy.yml` 会在 `main`、`dev_theme_oil`、`dev_theme_AIxian`、`dev_theme_GPT`、`dev_theme_min`、`dev_theme_minimal-tech`、`dev_theme_engineer-terminal`、`dev_theme_ai-lab`、`dev_theme_ai-product-studio`、`dev_theme_pixel-world`、`dev_theme_tech-editorial` 和 `dev_termfolio` 上执行 GitHub Pages 发布。各主题分支共享同一个 Pages 站点，最近一次成功发布的分支内容会显示在根路径；主题中心位于 `/theme-center/`，Minimal 家族预览位于 `/themes/minimal/<variant>/`，Engineer Terminal 预览位于 `/themes/engineer-terminal/`，Astro TUI 预览位于 `/themes/engineer-terminal/astro-tui-portfolio/`。`dev_termfolio` 已完成线上构建与部署，其他主题分支已同步主题中心共享层。
 
 Minimal 五个子主题的实现方案与验收矩阵见 [`docs/design/MINIMAL_FAMILY_PLAN.md`](docs/design/MINIMAL_FAMILY_PLAN.md)。
 
