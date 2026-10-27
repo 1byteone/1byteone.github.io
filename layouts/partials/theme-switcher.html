@@ -1,11 +1,64 @@
 {{- $zh := hasPrefix .Lang "zh" -}}
-{{- $active := lower (default "oil" (index .Site.Params "site_theme")) -}}
-{{- $languageSuffix := "" -}}
-{{- if not $zh }}{{- $languageSuffix = "en/" -}}{{- end -}}
-<nav class="theme-switcher" aria-label="{{ if $zh }}主题{{ else }}Theme{{ end }}">
-  {{- range .Site.Data.theme_registry.themes -}}
-    {{- $href := .base_path -}}
-    {{- $href = printf "%s%s" $href $languageSuffix -}}
-    <a href="{{ $href }}" class="{{ if eq .id $active }}is-current{{ end }}" aria-current="{{ if eq .id $active }}page{{ end }}" title="{{ .label }}">{{ .short_label }}</a>
+{{- $themes := .Site.Data.theme_registry.themes -}}
+{{- $catalog := where $themes "id" "ne" "ai-engineering" -}}
+{{- $activeTheme := lower (default "minimal" (index .Site.Params "site_theme")) -}}
+{{- $activeVariant := lower (default "minimal" (index .Site.Params "minimal_variant")) -}}
+{{- $activeID := $activeTheme -}}
+{{- if and (eq $activeTheme "minimal") (ne $activeVariant "minimal") -}}{{- $activeID = printf "minimal-%s" $activeVariant -}}{{- end -}}
+{{- $activeLabel := $activeTheme -}}
+{{- $activePath := "/" -}}
+{{- range $catalog -}}
+  {{- $matchesActive := eq .id $activeID -}}
+  {{- if and (eq $activeTheme "minimal") (eq .family "minimal") (eq .variant $activeVariant) -}}{{- $matchesActive = true -}}{{- end -}}
+  {{- if $matchesActive -}}
+    {{- $activeLabel = .label -}}
+    {{- if and $zh .label_zh -}}{{- $activeLabel = .label_zh -}}{{- end -}}
+    {{- $activePath = default "/" .preview_path -}}
+    {{- if and hugo.IsServer .dev_preview_path -}}{{- $activePath = .dev_preview_path -}}{{- end -}}
   {{- end -}}
-</nav>
+{{- end -}}
+{{- $languageSuffix := "" -}}
+{{- if not $zh -}}{{- $languageSuffix = "en/" -}}{{- end -}}
+{{- $activePath = printf "%s%s" $activePath $languageSuffix -}}
+<details class="theme-manager" data-theme-manager data-theme-current="{{ $activeID }}" data-theme-fallback="{{ $activeID }}" data-theme-ui-lang="{{ if $zh }}zh{{ else }}en{{ end }}"{{ if and .IsHome (not .Site.Params.theme_preview) (not hugo.IsServer) }} data-theme-root-home data-theme-lang="{{ if $zh }}zh{{ else }}en{{ end }}"{{ end }}>
+  <summary class="theme-manager-trigger" aria-label="{{ if $zh }}主题切换，当前为{{ $activeLabel }}{{ else }}Theme switcher, current theme: {{ $activeLabel }}{{ end }}">
+    <span class="theme-manager-trigger-icon" aria-hidden="true">◈</span>
+    <span class="theme-manager-trigger-copy"><span>{{ if $zh }}主题{{ else }}Theme{{ end }}</span><strong data-theme-current-label>{{ $activeLabel }}</strong></span>
+    <span class="theme-manager-trigger-chevron" aria-hidden="true">⌄</span>
+  </summary>
+  <div class="theme-manager-panel">
+    <header class="theme-manager-heading">
+      <div><span class="theme-manager-eyebrow">{{ if $zh }}快捷切换{{ else }}QUICK SWITCH{{ end }}</span><strong>{{ if $zh }}浏览外观主题{{ else }}Browse visual themes{{ end }}</strong></div>
+      <a class="theme-manager-center-link" href="{{ "theme-center/" | relLangURL }}">{{ if $zh }}主题中心{{ else }}Theme center{{ end }} <span aria-hidden="true">↗</span></a>
+    </header>
+    <label class="theme-manager-search"><span aria-hidden="true">⌕</span><input type="search" data-theme-quick-search placeholder="{{ if $zh }}搜索可预览主题{{ else }}Search previewable themes{{ end }}" aria-label="{{ if $zh }}搜索主题{{ else }}Search themes{{ end }}"></label>
+    <section class="theme-manager-shortlist" aria-labelledby="theme-manager-recent-title">
+      <div class="theme-manager-list-heading"><h2 id="theme-manager-recent-title">{{ if $zh }}最近使用{{ else }}Recent{{ end }}</h2><span>{{ if $zh }}最多 5 个{{ else }}UP TO 5{{ end }}</span></div>
+      <div class="theme-manager-quick-list" data-theme-recent-list></div>
+    </section>
+    <section class="theme-manager-shortlist" aria-labelledby="theme-manager-favorites-title">
+      <div class="theme-manager-list-heading"><h2 id="theme-manager-favorites-title">{{ if $zh }}收藏{{ else }}Favorites{{ end }}</h2><span>{{ if $zh }}此浏览器保存{{ else }}SAVED HERE{{ end }}</span></div>
+      <div class="theme-manager-quick-list" data-theme-favorites-list></div>
+    </section>
+    <div class="theme-manager-default-row">
+      <span data-theme-default-status aria-live="polite">{{ if $zh }}浏览器默认：{{ $activeLabel }}{{ else }}Browser default: {{ $activeLabel }}{{ end }}</span>
+      <button class="theme-manager-set-default" type="button" data-theme-set-default data-theme-id="{{ $activeID }}" data-theme-label="{{ $activeLabel }}" data-theme-path="{{ $activePath }}" data-label-default="{{ if $zh }}默认{{ else }}Default{{ end }}" data-label-set="{{ if $zh }}设为默认{{ else }}Set default{{ end }}" aria-pressed="false">{{ if $zh }}设为默认{{ else }}Set default{{ end }}</button>
+    </div>
+    <div class="theme-manager-option-source" hidden>
+      {{- range $catalog -}}
+        {{- if and .available .default_selectable -}}
+          {{- $label := .label -}}
+          {{- $description := .description -}}
+          {{- if and $zh .label_zh -}}{{- $label = .label_zh -}}{{- end -}}
+          {{- if and $zh .description_zh -}}{{- $description = .description_zh -}}{{- end -}}
+          {{- $path := default "/" .preview_path -}}
+          {{- if and hugo.IsServer .dev_preview_path -}}{{- $path = .dev_preview_path -}}{{- end -}}
+          {{- $selectionID := .id -}}
+          {{- if and (eq .id "minimal") (eq $activeVariant "minimal") -}}{{- $selectionID = "minimal" -}}{{- else if and (eq .family "minimal") (ne .id "minimal") -}}{{- $selectionID = printf "minimal-%s" .variant -}}{{- end -}}
+          <span data-theme-option data-theme-id="{{ $selectionID }}" data-theme-label="{{ $label }}" data-theme-description="{{ $description }}" data-theme-path="{{ printf "%s%s" $path $languageSuffix }}"></span>
+        {{- end -}}
+      {{- end -}}
+    </div>
+  </div>
+</details>
+<script defer src="{{ "js/theme-manager.js" | relURL }}"></script>
