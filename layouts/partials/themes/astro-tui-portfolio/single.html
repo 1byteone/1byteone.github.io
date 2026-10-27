@@ -1,0 +1,21 @@
+{{- $zh := hasPrefix .Lang "zh" -}}
+{{- $isProject := eq .Section "projects" -}}
+{{- $cover := .Resources.GetMatch "featured.*" -}}
+{{- partial "themes/astro-tui-portfolio/head.html" . -}}
+<body class="astro-tui"{{ if .Site.Params.theme_preview }} data-pagefind-ignore{{ end }}>
+  {{ partial "themes/astro-tui-portfolio/header.html" . }}
+  <main class="at-main at-article-main">
+    <div class="at-breadcrumb"><a href="{{ .Site.Home.RelPermalink }}">~/</a><span>/</span><a href="{{ .CurrentSection.RelPermalink }}">{{ if $isProject }}projects{{ else }}notes{{ end }}</a><span>/</span><span>{{ .Title }}</span></div>
+    <article class="at-article-layout">
+      <div class="at-article-content">
+        <header class="at-article-heading"><span>{{ upper .Section }} / {{ .Date.Format "2006-01-02" }}</span><h1>{{ .Title }}</h1>{{ with .Description }}<p>{{ . }}</p>{{ else }}{{ with .Summary }}<p>{{ . | plainify }}</p>{{ end }}{{ end }}{{ with .Params.tags }}<div class="at-tags">{{ range . }}<i>{{ . }}</i>{{ end }}</div>{{ end }}</header>
+        {{ with $cover }}<figure class="at-article-cover"><img src="{{ .RelPermalink }}" alt="{{ $.Title }}" fetchpriority="high"><figcaption>{{ if $zh }}本地文章素材 / {{ else }}LOCAL ARTICLE ASSET / {{ end }}{{ $.Date.Format "2006.01.02" }}</figcaption></figure>{{ end }}
+        <div class="at-prose">{{ .Content }}</div>
+        <nav class="at-article-nav" aria-label="{{ if $zh }}相邻文章{{ else }}Adjacent articles{{ end }}">{{ with .PrevInSection }}<a href="{{ .RelPermalink }}"><span>{{ if $zh }}上一篇{{ else }}previous{{ end }}</span><strong>{{ .Title }}</strong></a>{{ end }}{{ with .NextInSection }}<a href="{{ .RelPermalink }}"><span>{{ if $zh }}下一篇{{ else }}next{{ end }}</span><strong>{{ .Title }}</strong></a>{{ end }}</nav>
+      </div>
+      {{ with .TableOfContents }}<aside class="at-aside"><span>{{ if $zh }}本页目录{{ else }}on this page{{ end }}</span>{{ . }}</aside>{{ end }}
+    </article>
+  </main>
+  {{ partial "themes/astro-tui-portfolio/footer.html" . }}
+</body>
+</html>

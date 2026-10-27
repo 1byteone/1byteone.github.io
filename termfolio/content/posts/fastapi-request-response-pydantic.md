@@ -1,8 +1,8 @@
 ---
 status: published
-title: "FastAPI Request and Response Contracts with Pydantic"
+title: "使用 Pydantic 定义 FastAPI 请求与响应契约"
 date: 2026-08-21
-excerpt: "Use Pydantic schemas, field validation, response shaping, and consistent errors instead of fragile dictionary conventions."
+excerpt: "使用 Pydantic Schema、字段校验、响应整形与统一错误处理，替代脆弱的字典约定。"
 tags:
   - FastAPI
   - Pydantic

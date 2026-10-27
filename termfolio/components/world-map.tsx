@@ -290,7 +290,7 @@ export default function WorldMap({ onClose }: WorldMapProps) {
     ctx.textAlign = "left"
     const coordStr = mouseCoords
       ? `${mouseCoords.lat >= 0 ? "N" : "S"}${Math.abs(mouseCoords.lat).toFixed(2)}  ${mouseCoords.lng >= 0 ? "E" : "W"}${Math.abs(mouseCoords.lng).toFixed(2)}`
-      : "hover for coords"
+      : "悬停查看坐标"
     ctx.fillText(coordStr, 10, h - 10)
     ctx.textAlign = "right"
     ctx.fillText(`zoom: ${z.toFixed(1)}x`, w - 10, 18)
@@ -380,10 +380,10 @@ export default function WorldMap({ onClose }: WorldMapProps) {
       <div className="w-full max-w-4xl border border-[var(--term-line)] bg-[var(--term-darker)] rounded-xl overflow-hidden shadow-2xl mx-4 animate-in fade-in zoom-in-95 duration-200">
         <div className="flex items-center justify-between px-5 py-3 border-b border-[var(--term-line)]">
           <span className="text-[var(--term-white)] text-xs uppercase tracking-[0.14em]">
-            World Map — Mercator Projection
+            世界地图 — 墨卡托投影
           </span>
           <div className="flex items-center gap-4 text-xs">
-            <span className="text-[var(--term-gray)] hidden sm:inline">arrows:pan  +/-:zoom  0:reset</span>
+            <span className="text-[var(--term-gray)] hidden sm:inline">方向键：平移　+/-：缩放　0：重置</span>
             <button onClick={onClose} className="text-[var(--term-gray)] hover:text-[var(--term-white)] text-xs">[esc]</button>
           </div>
         </div>
@@ -398,8 +398,8 @@ export default function WorldMap({ onClose }: WorldMapProps) {
           onWheel={handleWheel}
         />
         <div className="flex items-center justify-between px-5 py-2 border-t border-[var(--term-line)] text-[10px] uppercase tracking-widest text-[var(--term-gray)]">
-          <span>{CITIES.length} markers{mouseCoords ? ` — ${mouseCoords.lat >= 0 ? "N" : "S"}${Math.abs(mouseCoords.lat).toFixed(2)} ${mouseCoords.lng >= 0 ? "E" : "W"}${Math.abs(mouseCoords.lng).toFixed(2)}` : ""}</span>
-          <span>zoom {zoom.toFixed(1)}x — drag to pan</span>
+          <span>{CITIES.length} 个标记{mouseCoords ? ` — ${mouseCoords.lat >= 0 ? "N" : "S"}${Math.abs(mouseCoords.lat).toFixed(2)} ${mouseCoords.lng >= 0 ? "E" : "W"}${Math.abs(mouseCoords.lng).toFixed(2)}` : ""}</span>
+          <span>缩放 {zoom.toFixed(1)}x — 拖动平移</span>
         </div>
       </div>
     </div>

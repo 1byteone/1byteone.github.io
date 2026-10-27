@@ -2,20 +2,20 @@ export const siteConfig = {
   name: "Jinsong Yang",
   professionalName: "Yang Jinsong / 杨劲松",
   handle: "1byteone",
-  title: "AI Application Engineer · RAG & Backend Systems",
-  headline: "I build AI applications and backend systems that stay understandable, verifiable, and maintainable.",
-  tagline: "ai applications · rag · backend engineering",
+  title: "AI 应用开发工程师 · RAG 与后端系统",
+  headline: "我构建可理解、可验证、可持续维护的 AI 应用与后端系统。",
+  tagline: "AI 应用 · RAG · 后端工程",
   description:
-    "The engineering archive of Jinsong Yang, covering RAG, agents, Spring AI, backend systems, deployment, and open-source practice.",
+    "杨劲松的工程档案，记录 RAG、Agent、Spring AI、后端系统、部署与开源实践。",
   bio: [
-    "I build AI application backends from the request boundary to retrieval, model orchestration, and production verification.",
-    "My current focus is practical engineering: make system behavior observable, keep evidence close to decisions, and turn experiments into maintainable services.",
-    "This terminal portfolio is a living archive of projects, technical notes, experiments, and the trade-offs behind them.",
+    "我从请求边界、检索、模型编排到生产验证，完整构建 AI 应用后端。",
+    "当前关注可落地的工程实践：让系统行为可观测，让证据贴近决策，并把实验沉淀为可维护的服务。",
+    "这是一个持续更新的终端式工程档案，记录项目、技术文章、实验和背后的取舍。",
   ],
 
   avatar: "/engineer-terminal-avatar.png",
 
-  location: "Nanchang, China",
+  location: "中国 · 南昌",
   email: "yjs_0831@qq.com",
   phone: "",
   siteUrl: "http://localhost:1315",
@@ -46,8 +46,8 @@ export const siteConfig = {
   },
 
   whoami: {
-    focus: "RAG, agents, backend systems, engineering verification",
-    status: "building AI applications and open-source engineering notes",
+    focus: "RAG、Agent、后端系统、工程验证",
+    status: "构建 AI 应用并记录开源工程实践",
   },
 
   terminalSkills: [
@@ -67,63 +67,63 @@ export const siteConfig = {
   },
 
   stats: [
-    { label: "published notes", value: "20+" },
-    { label: "project records", value: "2" },
-    { label: "engineering focus", value: "RAG + Agent" },
-    { label: "site modes", value: "4" },
+    { label: "已发布文章", value: "20+" },
+    { label: "项目档案", value: "2" },
+    { label: "工程重点", value: "RAG + Agent" },
+    { label: "站点模式", value: "4" },
   ],
   experience: [
     {
-      period: "2026 - present",
-      role: "AI application engineer",
-      company: "Independent engineering practice",
+      period: "2026 - 至今",
+      role: "AI 应用开发工程师",
+      company: "独立工程实践",
       summary:
-        "Building RAG and agent systems with a focus on request boundaries, evidence, observability, and maintainable backend services.",
+        "构建 RAG 与 Agent 系统，关注请求边界、证据链、可观测性和可维护的后端服务。",
     },
     {
-      period: "2025 - present",
-      role: "Backend systems builder",
+      period: "2025 - 至今",
+      role: "后端系统工程实践者",
       company: "Java / Spring Boot / Python",
       summary:
-        "Designing service boundaries, dependency injection, distributed systems, retrieval pipelines, and deployment workflows through project work and technical notes.",
+        "通过项目与技术文章实践服务边界、依赖注入、分布式系统、检索流水线和部署流程。",
     },
   ],
   engagements: [
     {
-      period: "Project 01",
-      role: "Independent developer",
-      company: "Agricultural QA Agent",
+      period: "项目 01",
+      role: "独立开发者",
+      company: "农业知识问答 Agent",
       summary:
-        "A LangGraph, FastAPI, ChromaDB, and MCP based knowledge assistant with citation-aware answers and evidence scoring.",
+        "基于 LangGraph、FastAPI、ChromaDB 与 MCP 的知识助手，支持带引用回答和证据评分。",
     },
     {
-      period: "Project 02",
-      role: "Core backend lead",
-      company: "Distributed Micro Cloud Mall",
+      period: "项目 02",
+      role: "核心后端负责人",
+      company: "分布式微云商城",
       summary:
-        "A Spring Cloud Alibaba practice covering service decomposition, gateway, search, caching, messaging, and distributed consistency.",
+        "Spring Cloud Alibaba 实践项目，覆盖服务拆分、网关、搜索、缓存、消息和分布式一致性。",
     },
   ],
   hackathons: [
     {
-      place: "OPEN SOURCE",
-      name: "Engineering archive",
-      summary: "A public record of implementation details, failures, decisions, and verification steps.",
+      place: "开源实践",
+      name: "工程档案",
+      summary: "公开记录实现细节、失败现场、关键决策和验证步骤。",
     },
     {
-      place: "METHOD",
-      name: "Evidence before confidence",
-      summary: "Every conclusion should point back to a scenario, signal, test, or published artifact.",
+      place: "方法",
+      name: "证据先于结论",
+      summary: "每个结论都应回到具体场景、信号、测试或已发布的工程产物。",
     },
     {
-      place: "DIRECTION",
-      name: "AI systems that ship",
-      summary: "Move from a promising demo to a service that can be explained, observed, and maintained.",
+      place: "方向",
+      name: "真正上线的 AI 系统",
+      summary: "把有潜力的 Demo 推进为可解释、可观测、可维护的服务。",
     },
   ],
   skills: [
     "RAG",
-    "AI agents",
+    "AI Agent",
     "Spring AI",
     "LangGraph",
     "Java",
@@ -135,20 +135,20 @@ export const siteConfig = {
     "Redis",
     "Elasticsearch",
     "Docker",
-    "observability",
-    "technical writing",
+    "可观测性",
+    "技术写作",
   ],
   certifications: [
-    { name: "RAG", desc: "Retrieval augmented generation", mark: "RAG", image: "" },
-    { name: "AGENT", desc: "Goal-oriented agent workflows", mark: "AI", image: "" },
-    { name: "BACKEND", desc: "Reliable service boundaries", mark: "API", image: "" },
-    { name: "JAVA", desc: "Spring Boot and distributed systems", mark: "JVM", image: "" },
-    { name: "PYTHON", desc: "FastAPI and AI tooling", mark: "PY", image: "" },
-    { name: "OPEN SOURCE", desc: "Public engineering practice", mark: "OSS", image: "" },
+    { name: "RAG", desc: "检索增强生成", mark: "RAG", image: "" },
+    { name: "AGENT", desc: "目标驱动的 Agent 工作流", mark: "AI", image: "" },
+    { name: "BACKEND", desc: "可靠的服务边界", mark: "API", image: "" },
+    { name: "JAVA", desc: "Spring Boot 与分布式系统", mark: "JVM", image: "" },
+    { name: "PYTHON", desc: "FastAPI 与 AI 工具链", mark: "PY", image: "" },
+    { name: "OPEN SOURCE", desc: "公开的工程实践", mark: "OSS", image: "" },
   ],
   credentials: [
     { name: "GitHub", icon: "</>", desc: "github.com/1byteone", image: "" },
-    { name: "Nanchang", icon: "LOC", desc: "Jiangxi / China", image: "" },
-    { name: "Archive", icon: "LOG", desc: "Static notes and project records", image: "" },
+    { name: "南昌", icon: "LOC", desc: "江西 / 中国", image: "" },
+    { name: "工程档案", icon: "LOG", desc: "技术文章与项目记录", image: "" },
   ],
 } as const

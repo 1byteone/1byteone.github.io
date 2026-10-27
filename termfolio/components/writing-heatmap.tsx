@@ -39,12 +39,12 @@ export default function WritingHeatmap({ posts }: WritingHeatmapProps) {
       if (v.count > maxCount) maxCount = v.count
     })
 
-    // Last 26 weeks (~6 months), each week = 1 row of 7 cells
+    // 最近 26 周（约 6 个月），每周一行、每天一个单元格
     const today = new Date()
     const weeks: string[][] = []
     const startDay = new Date(today)
     startDay.setDate(today.getDate() - 26 * 7)
-    // Align to Sunday
+    // 从周日开始对齐
     startDay.setDate(startDay.getDate() - startDay.getDay())
 
     let current = new Date(startDay)
@@ -59,8 +59,8 @@ export default function WritingHeatmap({ posts }: WritingHeatmapProps) {
       weeks.push(week)
     }
 
-    // Build month labels — mark first week of each month
-    const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+    // 构建月份标签，标记每月的第一周
+    const MONTHS = ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"]
     const monthLabels: { label: string; row: number }[] = []
     let lastMonth = -1
     weeks.forEach((week, wi) => {
@@ -96,17 +96,17 @@ export default function WritingHeatmap({ posts }: WritingHeatmapProps) {
             ? "color-mix(in srgb, var(--term-green) 80%, var(--term-line))"
             : "var(--term-green, #98C379)"
 
-  const DAYS = ["S", "M", "T", "W", "T", "F", "S"]
+  const DAYS = ["日", "一", "二", "三", "四", "五", "六"]
   const totalPosts = posts.length
 
   return (
     <div className="border border-term-line bg-term-darker p-3 relative">
       <div className="flex items-center justify-between mb-3">
         <div className="text-xs uppercase tracking-[0.14em] text-term-gray">
-          writing activity
+          写作活动
         </div>
         <div className="text-[10px] text-term-gray">
-          {totalPosts} post{totalPosts !== 1 ? "s" : ""} · 6 months
+          已发布 {totalPosts} 篇 · 近 6 个月
         </div>
       </div>
 
@@ -132,7 +132,7 @@ export default function WritingHeatmap({ posts }: WritingHeatmapProps) {
 
         {/* Grid area: day labels + cells */}
         <div className="flex-1 overflow-hidden">
-          {/* Day labels row (S M T W T F S) */}
+          {/* 星期标签行（日 一 二 三 四 五 六） */}
           <div
             className="grid mb-[2px]"
             style={{
@@ -219,18 +219,18 @@ export default function WritingHeatmap({ posts }: WritingHeatmapProps) {
           <div className="text-term-gray">{hoveredDay.date}</div>
           {hoveredDay.count > 0 ? (
             <div className="text-term-green">
-              {hoveredDay.count} post{hoveredDay.count > 1 ? "s" : ""}:{" "}
+              {hoveredDay.count} 篇文章：{" "}
               {hoveredDay.titles.join(", ")}
             </div>
           ) : (
-            <div className="text-term-gray">no posts</div>
+            <div className="text-term-gray">暂无文章</div>
           )}
         </div>
       )}
 
       {/* Legend */}
       <div className="flex items-center gap-2 mt-2 text-[8px] text-term-gray">
-        <span>less</span>
+        <span>少</span>
         {[0, 1, 2, 3, 4].map((level) => (
           <div
             key={level}
@@ -242,7 +242,7 @@ export default function WritingHeatmap({ posts }: WritingHeatmapProps) {
             }}
           />
         ))}
-        <span>more</span>
+        <span>多</span>
       </div>
     </div>
   )

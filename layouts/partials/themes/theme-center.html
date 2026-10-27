@@ -1,0 +1,146 @@
+{{- $page := . -}}
+{{- $zh := hasPrefix .Lang "zh" -}}
+{{- $catalog := where .Site.Data.theme_registry.themes "id" "ne" "ai-engineering" -}}
+{{- $categories := .Site.Data.theme_categories.categories -}}
+{{- $activeTheme := lower (default "minimal" (index .Site.Params "site_theme")) -}}
+{{- $activeVariant := lower (default "minimal" (index .Site.Params "minimal_variant")) -}}
+{{- $activeID := $activeTheme -}}
+{{- if and (eq $activeTheme "minimal") (ne $activeVariant "minimal") -}}{{- $activeID = printf "minimal-%s" $activeVariant -}}{{- end -}}
+{{- $currentLabel := $activeTheme -}}
+{{- range $catalog -}}
+  {{- $matchesActive := eq .id $activeID -}}
+  {{- if and (eq $activeTheme "minimal") (eq .family "minimal") (eq .variant $activeVariant) -}}{{- $matchesActive = true -}}{{- end -}}
+  {{- if $matchesActive -}}{{- $currentLabel = .label -}}{{- if and $zh .label_zh -}}{{- $currentLabel = .label_zh -}}{{- end -}}{{- end -}}
+{{- end -}}
+{{- $languageSuffix := "" -}}
+{{- if not $zh -}}{{- $languageSuffix = "en/" -}}{{- end -}}
+<!doctype html>
+<html lang="{{ if $zh }}zh-Hans{{ else }}en{{ end }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f6f5">
+  <meta name="description" content="{{ .Description | plainify }}">
+  {{ if .Site.Params.theme_preview }}<meta name="robots" content="noindex,follow">{{ end }}
+  <link rel="canonical" href="{{ .Permalink }}">
+  <link rel="stylesheet" href="{{ "css/theme-center.css" | relURL }}">
+  <title>{{ if $zh }}主题中心{{ else }}Theme Center{{ end }} · YOYO / DEV SPACE</title>
+</head>
+<body class="theme-center-page"{{ if .Site.Params.theme_preview }} data-pagefind-ignore{{ end }}>
+  <header class="tc-header">
+    <a class="tc-brand" href="{{ .Site.Home.RelPermalink }}" aria-label="YOYO Dev Space home"><span>YOYO</span><i>/</i> DEV SPACE</a>
+    <nav class="tc-primary-nav" aria-label="{{ if $zh }}主要导航{{ else }}Primary navigation{{ end }}">
+      <a href="{{ .Site.Home.RelPermalink }}">{{ if $zh }}首页{{ else }}Home{{ end }}</a>
+      <a href="{{ "blog/" | relLangURL }}">{{ if $zh }}技术文章{{ else }}Articles{{ end }}</a>
+      <a href="{{ "projects/" | relLangURL }}">{{ if $zh }}项目{{ else }}Projects{{ end }}</a>
+      <a href="{{ "ui-lab/" | relLangURL }}">{{ if $zh }}实验室{{ else }}Lab{{ end }}</a>
+      <a href="{{ "theme-center/" | relLangURL }}" aria-current="page">{{ if $zh }}主题中心{{ else }}Themes{{ end }}</a>
+      <a href="{{ "about/" | relLangURL }}">{{ if $zh }}关于{{ else }}About{{ end }}</a>
+    </nav>
+    <div class="tc-header-tools">
+      {{ partial "theme-switcher.html" $page }}
+      {{- $translationURL := "/en/theme-center/" -}}
+      {{- if not $zh -}}{{- $translationURL = "/theme-center/" -}}{{- end -}}
+      {{- with .Translations -}}{{- $translationURL = (index . 0).RelPermalink -}}{{- end -}}
+      <a class="tc-language" href="{{ $translationURL }}" lang="{{ if $zh }}en{{ else }}zh-Hans{{ end }}">{{ if $zh }}EN{{ else }}中{{ end }}</a>
+    </div>
+  </header>
+
+  <main class="tc-main" data-theme-catalog>
+    <section class="tc-intro" aria-labelledby="tc-title">
+      <div class="tc-intro-copy">
+        <p class="tc-eyebrow">YOYO / DESIGN SYSTEM <span>CATALOG {{ printf "%02d" (len $catalog) }}</span></p>
+        <h1 id="tc-title">{{ if $zh }}让内容决定它的呈现方式。{{ else }}Explore themes by the work they present.{{ end }}</h1>
+        <p>{{ if $zh }}主题按阅读、工程、实验、观点与作品场景组织。选择视觉风格时，文章和项目仍来自同一套内容。{{ else }}Browse by reading, engineering, experiments, editorial work, and portfolios. Themes share the same articles and projects.{{ end }}</p>
+      </div>
+      <dl class="tc-summary">
+        <div><dt>{{ if $zh }}主题{{ else }}Themes{{ end }}</dt><dd>{{ len $catalog }}</dd></div>
+        <div><dt>{{ if $zh }}可预览{{ else }}Previewable{{ end }}</dt><dd>{{ len (where $catalog "available" true) }}</dd></div>
+        <div><dt>{{ if $zh }}规划中{{ else }}Planned{{ end }}</dt><dd>{{ len (where $catalog "available" false) }}</dd></div>
+      </dl>
+    </section>
+
+    {{- $family := .Site.Data.theme_families.ai_engineering -}}
+    <aside class="tc-family-note" aria-label="{{ if $zh }}AI 工程主题家族{{ else }}AI engineering theme family{{ end }}">
+      <div><span>{{ if $zh }}共享主题底座{{ else }}SHARED THEME FOUNDATION{{ end }}</span><strong>{{ if $zh }}{{ $family.name_zh }}{{ else }}{{ $family.name }}{{ end }}</strong><p>{{ if $zh }}六种表达方向共用同一套文章、项目、实验与学习记录模型。{{ else }}Six visual directions share the same model for articles, projects, experiments, and learning notes.{{ end }}</p></div>
+      <div class="tc-family-capabilities">{{- range $family.capabilities -}}<span>{{ if $zh }}{{ .label_zh }}{{ else }}{{ .label }}{{ end }}</span>{{- end -}}</div>
+    </aside>
+
+    <section class="tc-controls" aria-label="{{ if $zh }}主题筛选{{ else }}Theme filters{{ end }}">
+      <label class="tc-search">
+        <span aria-hidden="true">⌕</span>
+        <input type="search" data-theme-search placeholder="{{ if $zh }}搜索名称、场景或标签{{ else }}Search name, use case, or tag{{ end }}" aria-label="{{ if $zh }}搜索主题{{ else }}Search themes{{ end }}">
+        <kbd>Ctrl K</kbd>
+      </label>
+      <div class="tc-categories" role="group" aria-label="{{ if $zh }}按场景筛选{{ else }}Filter by use case{{ end }}">
+        <button type="button" data-theme-filter="all" aria-pressed="true">{{ if $zh }}全部{{ else }}All{{ end }} <span>{{ len $catalog }}</span></button>
+        {{- range $categories -}}
+          {{- $count := len (where $catalog "category" .id) -}}
+          {{- $label := .label -}}
+          {{- if and $zh .label_zh -}}{{- $label = .label_zh -}}{{- end -}}
+          <button type="button" data-theme-filter="{{ .id }}" aria-pressed="false">{{ $label }} <span>{{ $count }}</span></button>
+        {{- end -}}
+      </div>
+      <div class="tc-status-filter" role="group" aria-label="{{ if $zh }}按状态筛选{{ else }}Filter by availability{{ end }}">
+        <button type="button" data-status-filter="all" aria-pressed="true">{{ if $zh }}全部状态{{ else }}All status{{ end }}</button>
+        <button type="button" data-status-filter="available" aria-pressed="false">{{ if $zh }}可预览{{ else }}Previewable{{ end }}</button>
+        <button type="button" data-status-filter="planned" aria-pressed="false">{{ if $zh }}规划中{{ else }}Planned{{ end }}</button>
+      </div>
+    </section>
+
+    <section class="tc-results" aria-live="polite">
+      <div class="tc-results-heading"><h2>{{ if $zh }}主题目录{{ else }}Theme directory{{ end }}</h2><span data-theme-result-label>{{ if $zh }}显示 {{ len $catalog }} 个主题{{ else }}Showing {{ len $catalog }} themes{{ end }}</span></div>
+      <div class="tc-grid" data-theme-grid>
+        {{- range $index, $theme := $catalog -}}
+          {{- $label := $theme.label -}}
+          {{- $description := $theme.description -}}
+          {{- if and $zh $theme.label_zh -}}{{- $label = $theme.label_zh -}}{{- end -}}
+          {{- if and $zh $theme.description_zh -}}{{- $description = $theme.description_zh -}}{{- end -}}
+          {{- $path := default "/" $theme.preview_path -}}
+          {{- if and hugo.IsServer $theme.dev_preview_path -}}{{- $path = $theme.dev_preview_path -}}{{- end -}}
+          {{- $href := printf "%s%s" $path $languageSuffix -}}
+          {{- $isAvailable := $theme.available -}}
+          {{- $tags := delimit $theme.tags " " -}}
+          {{- $focus := default "" $theme.focus -}}
+          {{- $searchText := lower (printf "%s %s %s %s %s %s %s %s" $theme.id $theme.label $label $theme.description $description $tags $focus $theme.focus_zh) -}}
+          {{- $selectionID := $theme.id -}}
+          {{- if and (eq $theme.family "minimal") (ne $theme.id "minimal") -}}{{- $selectionID = printf "minimal-%s" $theme.variant -}}{{- end -}}
+          {{- $isCurrent := eq $selectionID $activeID -}}
+          <article class="tc-card{{ if $isCurrent }} is-current{{ end }}" data-theme-card data-theme-category="{{ $theme.category }}" data-theme-available="{{ $isAvailable }}" data-theme-search-text="{{ $searchText | htmlEscape }}">
+            <div class="tc-preview tc-preview--{{ $theme.preview_style }}" aria-hidden="true">
+              <div class="tc-preview-window">
+                <div class="tc-preview-bar"><span class="tc-preview-mark">{{ printf "%02d" (add $index 1) }}</span><span>{{ $theme.short_label }}</span><i></i></div>
+                <div class="tc-preview-body">
+                  <div class="tc-preview-title">{{ if eq $theme.preview_style "terminal" }}<b>yoyo@engineering-lab</b><span>$ build reliable systems</span>{{ else if eq $theme.preview_style "lab" }}<b>Evaluation</b><span>retrieval experiments</span>{{ else if eq $theme.preview_style "editorial" }}<b>Notes on systems</b><span>Review / technical perspective</span>{{ else if eq $theme.preview_style "studio" }}<b>Selected work</b><span>Product / engineering</span>{{ else if eq $theme.preview_style "pixel" }}<b>Field archive</b><span>Projects / paths / quests</span>{{ else if eq $theme.preview_style "garden" }}<b>Knowledge garden</b><span>Linked notes / learning</span>{{ else if eq $theme.preview_style "research" }}<b>Research index</b><span>Concepts / references</span>{{ else if eq $theme.preview_style "paper" }}<b>Technical notes</b><span>Archive / articles</span>{{ else }}<b>Engineering notes</b><span>Projects / writing / about</span>{{ end }}</div>
+                  <div class="tc-preview-lines"><i></i><i></i><i></i><i></i></div>
+                  <div class="tc-preview-blocks"><i></i><i></i><i></i></div>
+                </div>
+              </div>
+            </div>
+            <div class="tc-card-content">
+              <div class="tc-card-meta"><span>{{ printf "%02d" (add $index 1) }} / {{ upper $theme.category }}</span><span class="tc-card-status {{ if not $isAvailable }}is-planned{{ else if eq $theme.status "production" }}is-stable{{ end }}">{{ if not $isAvailable }}{{ if $zh }}规划中{{ else }}Planned{{ end }}{{ else if eq $theme.status "production" }}{{ if $zh }}稳定{{ else }}Stable{{ end }}{{ else }}{{ if $zh }}预览{{ else }}Preview{{ end }}{{ end }}</span></div>
+              <div class="tc-card-title-row"><h3>{{ $label }}</h3><button type="button" class="tc-favorite" data-theme-favorite data-theme-id="{{ $selectionID }}" data-theme-label="{{ $label }}" title="{{ if $zh }}收藏主题{{ else }}Favorite theme{{ end }}" aria-label="{{ if $zh }}收藏{{ $label }}{{ else }}Favorite {{ $label }}{{ end }}" aria-pressed="false">☆</button></div>
+              <p class="tc-card-description">{{ $description }}</p>
+              {{ with $theme.tags }}<div class="tc-tags">{{ range first 3 . }}<span>{{ . }}</span>{{ end }}</div>{{ end }}
+              <div class="tc-card-actions">
+                {{- if $isAvailable -}}
+                  <a class="tc-preview-link" href="{{ $href }}" data-theme-visit data-theme-id="{{ $selectionID }}">{{ if $zh }}预览主题{{ else }}Preview theme{{ end }} <span aria-hidden="true">↗</span></a>
+                  <button class="tc-default-button" type="button" data-theme-set-default data-theme-id="{{ $selectionID }}" data-theme-label="{{ $label }}" data-theme-path="{{ $href }}" data-label-default="{{ if $zh }}默认{{ else }}Default{{ end }}" data-label-set="{{ if $zh }}设为默认{{ else }}Set default{{ end }}" aria-pressed="{{ if $isCurrent }}true{{ else }}false{{ end }}">{{ if $isCurrent }}{{ if $zh }}默认{{ else }}Default{{ end }}{{ else }}{{ if $zh }}设为默认{{ else }}Set default{{ end }}{{ end }}</button>
+                {{- else -}}
+                  <span class="tc-planned-note">{{ if $zh }}尚未开放预览{{ else }}Preview not available yet{{ end }}</span>
+                  {{ if or $theme.remote_demo $theme.reference_url $theme.source_repository }}<span class="tc-reference-links">{{ with $theme.remote_demo }}<a class="tc-preview-link" href="{{ . }}" target="_blank" rel="noopener noreferrer">{{ if $zh }}在线演示{{ else }}Live demo{{ end }} <span aria-hidden="true">↗</span></a>{{ end }}{{ with $theme.reference_url }}<a class="tc-preview-link" href="{{ . }}" target="_blank" rel="noopener noreferrer">{{ if $zh }}参考项目{{ else }}Reference{{ end }} <span aria-hidden="true">↗</span></a>{{ end }}{{ with $theme.source_repository }}<a class="tc-preview-link" href="{{ . }}" target="_blank" rel="noopener noreferrer">{{ if $zh }}源码仓库{{ else }}Source{{ end }} <span aria-hidden="true">↗</span></a>{{ end }}</span>{{ end }}
+                {{- end -}}
+              </div>
+            </div>
+          </article>
+        {{- end -}}
+      </div>
+      <p class="tc-empty" data-theme-empty hidden>{{ if $zh }}没有符合条件的主题。试试其他关键词或分类。{{ else }}No themes match. Try another search or category.{{ end }}</p>
+    </section>
+    <p class="tc-default-status" data-theme-default-status aria-live="polite">{{ if $zh }}当前浏览器默认主题：{{ $currentLabel }}{{ else }}Browser default: {{ $currentLabel }}{{ end }}</p>
+  </main>
+
+  <footer class="tc-footer"><span>YOYO / DEV SPACE</span><span>{{ if $zh }}共用内容 · 独立表达{{ else }}Shared content · distinct presentation{{ end }}</span></footer>
+  <script defer src="{{ "js/theme-center.js" | relURL }}"></script>
+</body>
+</html>

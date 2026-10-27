@@ -1,8 +1,8 @@
 ---
 status: published
-title: "MySQL Architecture"
+title: "MySQL 核心架构"
 date: 2026-08-21
-excerpt: "A scenario-driven guide to MySQL Architecture, including boundaries, failure paths, and production trade-offs."
+excerpt: "从实际场景出发，梳理 MySQL 架构的边界条件、故障路径和生产环境取舍。"
 tags:
   - MySQL
   - InnoDB

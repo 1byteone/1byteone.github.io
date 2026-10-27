@@ -72,7 +72,7 @@ export default function MinimalNav({ locale = "en" }: MinimalNavProps) {
             type="button"
             onClick={() => setOpen((value) => !value)}
             className="inline-flex items-center justify-center border border-term-line px-4 py-3 min-w-[44px] min-h-[44px] text-term-white lg:hidden"
-            aria-label={open ? "Close navigation" : "Open navigation"}
+            aria-label={open ? "关闭导航" : "打开导航"}
             aria-expanded={open}
             aria-controls="mobile-nav"
           >

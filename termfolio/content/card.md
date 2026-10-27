@@ -1,19 +1,19 @@
 ---
 name: "Jinsong Yang / 杨劲松"
-title: "AI Application Engineer"
-company: "Independent engineering practice"
-location: "Nanchang, China"
+title: "AI 应用开发工程师"
+company: "独立工程实践"
+location: "南昌，中国"
 avatar: "/engineer-terminal-avatar.png"
-bio: "AI application engineer focused on RAG, agents, backend systems, and evidence-driven engineering practice."
+bio: "专注 RAG、Agent、后端系统与证据驱动工程实践的 AI 应用开发工程师。"
 links:
   - label: "GitHub"
     url: "https://github.com/1byteone"
     icon: "github"
-  - label: "Portfolio"
+  - label: "个人主页"
     url: "http://localhost:1315"
     icon: "website"
 contacts:
   - type: email
-    label: "Email"
+    label: "邮箱"
     value: "yjs_0831@qq.com"
 ---

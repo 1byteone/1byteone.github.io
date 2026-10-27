@@ -1,8 +1,8 @@
 ---
 status: published
-title: "The RAG Basics: From Documents to Cited Answers"
+title: "RAG 基础：从文档到带引用的答案"
 date: 2026-08-21
-excerpt: "Understand ingestion, chunking, retrieval, and grounded generation, with citations that constrain answers."
+excerpt: "理解数据导入、切分、检索与有依据的生成，并通过引用约束答案内容。"
 tags:
   - AI
   - RAG

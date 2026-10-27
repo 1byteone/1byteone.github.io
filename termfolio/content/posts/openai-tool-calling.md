@@ -1,8 +1,8 @@
 ---
 status: published
-title: "OpenAI Tool Calling: Schemas, Execution Loops, and Safety Boundaries"
+title: "OpenAI Tool Calling：Schema、执行循环与安全边界"
 date: 2026-08-21
-excerpt: "Build auditable function-calling loops with explicit schemas, model decisions, application execution, and result handoff."
+excerpt: "通过明确的 Schema、模型决策、应用执行与结果交接，构建可审计的 Function Calling 循环。"
 tags:
   - AI
   - OpenAI API

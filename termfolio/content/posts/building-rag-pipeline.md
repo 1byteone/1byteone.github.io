@@ -1,8 +1,8 @@
 ---
 status: published
-title: "Building a RAG Pipeline with LangChain: From Document Processing to Vector Search"
+title: "使用 LangChain 构建 RAG Pipeline：从文档处理到向量检索"
 date: 2026-06-15
-excerpt: "A comprehensive guide to building a production-ready RAG (Retrieval-Augmented Generation) pipeline using LangChain, covering document preprocessing, vector storage, and retrieval optimization"
+excerpt: "全面介绍如何使用 LangChain 构建可用于生产环境的 RAG（Retrieval-Augmented Generation）Pipeline，覆盖文档预处理、向量存储与检索优化。"
 tags:
   - AI
   - RAG

@@ -18,7 +18,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params
   const tool = getUtilityTool(slug)
-  if (!tool || tool.slug === "splitter") return { title: "Tool not found" }
+  if (!tool || tool.slug === "splitter") return { title: "工具不存在" }
 
   return {
     title: `${tool.title.en} — ${siteConfig.name}`,
@@ -60,7 +60,7 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
               {tool.summary.en}
             </p>
             <p className="mt-3 text-xs leading-6 text-term-gray">
-              No login. No database. Files stay in your browser unless the short-link tool asks TinyURL for a redirect.
+              无需登录，无数据库。文件会保留在浏览器本地；短链接工具会请求 TinyURL 创建跳转。
             </p>
           </header>
 

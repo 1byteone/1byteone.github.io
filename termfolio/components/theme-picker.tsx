@@ -264,7 +264,7 @@ export default function ThemePicker() {
       >
         {/* Modal Header */}
         <div className="flex items-center justify-between border-b border-term-line px-4 py-3">
-          <span className="text-xs font-semibold uppercase tracking-[0.16em] text-term-white">Themes</span>
+          <span className="text-xs font-semibold uppercase tracking-[0.16em] text-term-white">主题</span>
           <button
             onClick={() => setIsOpen(false)}
             className="text-xs uppercase tracking-[0.16em] text-term-gray hover:text-term-white"
@@ -278,7 +278,7 @@ export default function ThemePicker() {
           <input
             ref={searchRef}
             type="text"
-            placeholder="Search"
+            placeholder="搜索主题"
             value={search}
             onChange={(e) => {
               setSearch(e.target.value)
@@ -328,12 +328,12 @@ export default function ThemePicker() {
       <button
         onClick={() => setIsOpen(true)}
         className="flex items-center gap-2 text-xs uppercase tracking-[0.16em] text-term-gray transition-colors hover:text-term-cyan"
-        aria-label="Open theme picker"
+        aria-label="打开主题选择器"
         aria-expanded={isOpen}
         aria-haspopup="dialog"
       >
         <span className="inline-block h-2 w-2 rounded-full border border-current" />
-        <span className="hidden sm:inline">themes</span>
+        <span className="hidden sm:inline">主题</span>
       </button>
 
       {/* Modal Backdrop + Panel */}

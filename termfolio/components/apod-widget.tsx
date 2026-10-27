@@ -38,7 +38,7 @@ export default function ApodWidget() {
     return (
       <div className="border border-term-line bg-term-darker overflow-hidden rounded-lg">
         <div className="flex items-center justify-between px-4 py-2 border-b border-term-line text-xs uppercase tracking-[0.14em] text-term-gray">
-          <span className="animate-pulse">fetching signal from deep space...</span>
+          <span className="animate-pulse">正在从深空获取信号...</span>
         </div>
         <div className="aspect-[21/9] bg-term-black animate-pulse" />
         <div className="px-4 py-3 space-y-2">
@@ -56,8 +56,8 @@ export default function ApodWidget() {
     <div className="border border-term-line bg-term-darker overflow-hidden rounded-lg">
       {/* Terminal chrome */}
       <div className="flex items-center justify-between px-4 py-2 border-b border-term-line text-xs uppercase tracking-[0.14em] text-term-gray">
-        <span>
-          <span className="text-term-cyan">★</span> nasa/apod — astronomy picture of the day
+          <span>
+          <span className="text-term-cyan">★</span> nasa/apod — 每日天文图片
         </span>
         <span>{apod.date}</span>
       </div>
@@ -92,7 +92,7 @@ export default function ApodWidget() {
           onClick={() => setExpanded((e) => !e)}
           className="mt-1 text-xs text-term-cyan hover:text-term-white transition-colors"
         >
-          {expanded ? "[collapse]" : "[expand]"}
+          {expanded ? "[收起]" : "[展开]"}
         </button>
       </div>
     </div>

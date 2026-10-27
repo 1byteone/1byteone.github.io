@@ -3,4 +3,10 @@
 {{- range .Site.Data.theme_registry.themes -}}
   {{- if eq .id $requested }}{{- $theme = .id -}}{{- end -}}
 {{- end -}}
+{{- if eq $theme "ai-terminal" -}}
+  {{- partial "themes/engineer-terminal/home.html" . -}}
+{{- else if eq $theme "astro-tui-portfolio" -}}
+  {{- partial "themes/astro-tui-portfolio/home.html" . -}}
+{{- else -}}
 {{- partial (printf "themes/%s/home.html" $theme) . -}}
+{{- end -}}

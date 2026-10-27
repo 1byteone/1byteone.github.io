@@ -1,0 +1,18 @@
+{{- $zh := hasPrefix .Lang "zh" -}}
+{{- $site := .Site.Data.site.site -}}
+<!doctype html>
+<html lang="{{ if $zh }}zh-Hans{{ else }}en{{ end }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0c0f12">
+  <meta name="author" content="{{ $site.identity.name_en }}">
+  <meta name="description" content="{{ .Description | default .Summary | plainify | htmlEscape }}">
+  {{ if .Site.Params.theme_preview }}<meta name="robots" content="noindex,follow">{{ end }}
+  <link rel="canonical" href="{{ .Permalink }}">
+  <meta property="og:title" content="{{ .Title }} · YOYO Engineering Lab">
+  <meta property="og:description" content="{{ .Description | default .Summary | plainify | htmlEscape }}">
+  <meta property="og:url" content="{{ .Permalink }}">
+  <link rel="stylesheet" href="{{ "css/engineer-terminal.css" | relURL }}">
+  <title>{{ if .IsHome }}YOYO Engineering Lab{{ else }}{{ .Title }} · YOYO Engineering Lab{{ end }}</title>
+</head>

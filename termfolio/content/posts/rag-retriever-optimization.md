@@ -1,8 +1,8 @@
 ---
 status: published
-title: "Optimizing RAG Retrievers: Top-K, Hybrid Search, and Reranking"
+title: "优化 RAG Retriever：Top-K、混合检索与 Reranking"
 date: 2026-08-21
-excerpt: "Tune RAG retrievers with BM25, vector search, hybrid recall, reranking, and context compression trade-offs."
+excerpt: "通过 BM25、向量检索、混合召回、Reranking 与上下文压缩，调优 RAG Retriever。"
 tags:
   - AI
   - RAG

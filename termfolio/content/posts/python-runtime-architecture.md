@@ -1,8 +1,8 @@
 ---
 status: published
-title: "Python Runtime & Basics"
+title: "Python 运行时与基础机制"
 date: 2026-08-21
-excerpt: "A scenario-driven guide to Python Runtime & Basics, including boundaries, failure paths, and production trade-offs."
+excerpt: "从实际场景出发，梳理 Python 运行时与基础机制的边界条件、故障路径和生产环境取舍。"
 tags:
   - Python
   - CPython

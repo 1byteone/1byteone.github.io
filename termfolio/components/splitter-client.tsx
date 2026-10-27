@@ -16,42 +16,42 @@ interface SplitterClientProps {
 }
 
 const initialPeople: Person[] = [
-  { id: 1, name: "Jinsong", weight: 1, paid: 138 },
-  { id: 2, name: "Friend", weight: 1, paid: 0 },
+  { id: 1, name: "杨劲松", weight: 1, paid: 138 },
+  { id: 2, name: "朋友", weight: 1, paid: 0 },
 ]
 
 const labels = {
   en: {
-    bill: "Bill total",
-    service: "Service",
-    tax: "Tax",
-    people: "People",
-    addPerson: "Add person",
-    reset: "Reset",
-    copy: "Copy result",
-    copied: "Copied",
-    name: "Name",
-    weight: "Portions",
-    weightHelp: "1 = one equal portion. Use 2 if someone covers two people, or 0.5 for a half portion.",
-    total: "Total",
-    each: "Balance",
-    note: "Message for the group",
-    messagePreview: "Ready-to-send note",
-    paid: "Paid already",
-    paidTotal: "Paid so far",
-    shareAmount: "Bill portion",
-    owes: "needs to pay",
-    gets: "gets back",
-    even: "settled",
-    personLabel: "Person",
-    finalBalance: "Result",
-    peopleDetails: "People",
-    settlement: "Final transfers",
-    noTransfers: "No transfers needed.",
-    paysTo: "pays",
-    unpaid: "Still unpaid",
-    overpaid: "Paid above bill",
-    empty: "Add at least one person to split the bill.",
+    bill: "账单总额",
+    service: "服务费",
+    tax: "税费",
+    people: "参与人",
+    addPerson: "添加参与人",
+    reset: "重置",
+    copy: "复制结果",
+    copied: "已复制",
+    name: "姓名",
+    weight: "份数",
+    weightHelp: "1 = 一份均摊；承担两个人时填 2，半份填 0.5。",
+    total: "合计",
+    each: "分摊结果",
+    note: "群聊消息",
+    messagePreview: "可直接发送的说明",
+    paid: "已支付",
+    paidTotal: "已支付合计",
+    shareAmount: "应承担金额",
+    owes: "还需支付",
+    gets: "应收回",
+    even: "已结清",
+    personLabel: "参与人",
+    finalBalance: "结算结果",
+    peopleDetails: "参与人明细",
+    settlement: "最终转账",
+    noTransfers: "无需转账。",
+    paysTo: "支付给",
+    unpaid: "尚未支付",
+    overpaid: "已超额支付",
+    empty: "至少添加一名参与人才能分摊账单。",
   },
   ar: {
     bill: "إجمالي الفاتورة",
@@ -88,9 +88,9 @@ const labels = {
 } as const
 
 function formatMoney(value: number, locale: Locale) {
-  return new Intl.NumberFormat(locale === "ar" ? "ar-SA" : "en-US", {
+  return new Intl.NumberFormat(locale === "ar" ? "ar-SA" : "zh-CN", {
     style: "currency",
-    currency: "SAR",
+    currency: "CNY",
     maximumFractionDigits: 2,
   }).format(value || 0)
 }
@@ -246,7 +246,7 @@ export default function SplitterClient({ locale = "en" }: SplitterClientProps) {
         <div className="space-y-6 p-5">
           <div className="grid gap-4 md:grid-cols-3">
             {[
-              { id: "splitter-bill", testId: "splitter-bill", label: t.bill, value: bill, suffix: "SAR", set: setBill },
+              { id: "splitter-bill", testId: "splitter-bill", label: t.bill, value: bill, suffix: "元", set: setBill },
               { id: "splitter-service", testId: "splitter-service", label: t.service, value: servicePercent, suffix: "%", set: setServicePercent },
               { id: "splitter-tax", testId: "splitter-tax", label: t.tax, value: taxPercent, suffix: "%", set: setTaxPercent },
             ].map((field) => (

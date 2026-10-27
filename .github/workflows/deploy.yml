@@ -8,6 +8,9 @@ on:
       - dev_theme_AIxian
       - dev_theme_GPT
       - dev_theme_min
+      - dev_theme_minimal-tech
+      - dev_theme_engineer-terminal
+      - dev_termfolio
 
   workflow_dispatch:
 
@@ -153,6 +156,38 @@ jobs:
             --destination public/themes/bloggpt \
             --baseURL "${{ steps.pages.outputs.base_url }}/themes/bloggpt/"
 
+      - name: Build Engineer Terminal theme preview
+        env:
+          HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache
+          HUGO_ENVIRONMENT: engineer-terminal
+          TZ: America/New_York
+        run: |
+          rm -rf "public/themes/engineer-terminal"
+          hugo \
+            --gc \
+            --minify \
+            --cleanDestinationDir \
+            --environment engineer-terminal \
+            --configDir config \
+            --destination public/themes/engineer-terminal \
+            --baseURL "${{ steps.pages.outputs.base_url }}/themes/engineer-terminal/"
+
+      - name: Build Astro TUI terminal preview
+        env:
+          HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache
+          HUGO_ENVIRONMENT: astro-tui-portfolio
+          TZ: America/New_York
+        run: |
+          rm -rf "public/themes/engineer-terminal/astro-tui-portfolio"
+          hugo \
+            --gc \
+            --minify \
+            --cleanDestinationDir \
+            --environment astro-tui-portfolio \
+            --configDir config \
+            --destination public/themes/engineer-terminal/astro-tui-portfolio \
+            --baseURL "${{ steps.pages.outputs.base_url }}/themes/engineer-terminal/astro-tui-portfolio/"
+
       - name: Build Minimal family previews
         env:
           HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache
@@ -177,6 +212,8 @@ jobs:
           test -s "public/themes/minimal/en/index.html"
           test -s "public/themes/minimal/blog/rag-basic-pipeline/index.html"
           test -s "public/themes/minimal/en/blog/rag-basic-pipeline/index.html"
+          test -s "public/theme-center/index.html"
+          test -s "public/en/theme-center/index.html"
           test -s "public/themes/minimal/css/minimal-theme.css"
           for variant in astro-blog astropaper astro-erudite pudding miniblog; do
             test -s "public/themes/minimal/${variant}/index.html"
@@ -216,6 +253,25 @@ jobs:
           test -s public/themes/bloggpt/index.html
           test -s public/themes/bloggpt/en/index.html
           test -s public/themes/bloggpt/css/bloggpt-theme.css
+          test -s public/themes/engineer-terminal/index.html
+          test -s public/themes/engineer-terminal/en/index.html
+          test -s public/themes/engineer-terminal/blog/index.html
+          test -s public/themes/engineer-terminal/projects/index.html
+          test -s public/themes/engineer-terminal/logs/index.html
+          test -s public/themes/engineer-terminal/incidents/index.html
+          test -s public/themes/engineer-terminal/decisions/index.html
+          test -s public/themes/engineer-terminal/en/incidents/index.html
+          test -s public/themes/engineer-terminal/en/decisions/index.html
+          test -s public/themes/engineer-terminal/css/engineer-terminal.css
+          test -s public/themes/engineer-terminal/js/engineer-terminal.js
+          test -s public/themes/engineer-terminal/css/theme-center.css
+          test -s public/themes/engineer-terminal/astro-tui-portfolio/index.html
+          test -s public/themes/engineer-terminal/astro-tui-portfolio/en/index.html
+          test -s public/themes/engineer-terminal/astro-tui-portfolio/blog/index.html
+          test -s public/themes/engineer-terminal/astro-tui-portfolio/blog/fastapi-ai-streaming-api/index.html
+          test -s public/themes/engineer-terminal/astro-tui-portfolio/en/blog/fastapi-ai-streaming-api/index.html
+          test -s public/themes/engineer-terminal/astro-tui-portfolio/css/astro-tui.css
+          test -s public/themes/engineer-terminal/astro-tui-portfolio/js/astro-tui.js
           test -s public/themes/minimal/index.html
           test -s public/themes/minimal/en/index.html
           test -s public/themes/minimal/blog/rag-basic-pipeline/index.html
@@ -267,7 +323,10 @@ jobs:
       github.ref == 'refs/heads/dev_theme_oil' ||
       github.ref == 'refs/heads/dev_theme_AIxian' ||
       github.ref == 'refs/heads/dev_theme_GPT' ||
-      github.ref == 'refs/heads/dev_theme_min'
+      github.ref == 'refs/heads/dev_theme_min' ||
+      github.ref == 'refs/heads/dev_theme_minimal-tech' ||
+      github.ref == 'refs/heads/dev_theme_engineer-terminal' ||
+      github.ref == 'refs/heads/dev_termfolio'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

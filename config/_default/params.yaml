@@ -276,6 +276,6 @@ hugoblox:
 # Select a presentation theme without changing content or data.
 # Available values are: minimal, oil, alxian, bloggpt.
 # Minimal child variants are selected with minimal_variant.
-site_theme: minimal
+site_theme: ai-terminal
 theme_preview: false
-minimal_variant: minimal
+minimal_variant: astropaper

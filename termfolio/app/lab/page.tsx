@@ -9,11 +9,11 @@ import { localeCopy } from "@/content/locale"
 import { siteConfig } from "@/content/site"
 
 export const metadata: Metadata = {
-  title: `Lab — ${siteConfig.name}`,
-  description: "Small public experiments and useful no-login tools by Jinsong Yang.",
+  title: `实验室 — ${siteConfig.name}`,
+  description: "杨劲松公开的小型实验与实用工具，无需登录即可体验。",
   openGraph: {
-    title: `Lab — ${siteConfig.name}`,
-    description: "Small public experiments and useful no-login tools by Jinsong Yang.",
+    title: `实验室 — ${siteConfig.name}`,
+    description: "杨劲松公开的小型实验与实用工具，无需登录即可体验。",
     url: `${siteConfig.siteUrl}/lab`,
     siteName: siteConfig.name,
     type: "website",

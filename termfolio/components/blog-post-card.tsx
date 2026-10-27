@@ -3,7 +3,7 @@ import Image from "next/image"
 import { Calendar, Clock } from "lucide-react"
 import { formatPostDate } from "@/lib/format-post-date"
 import type { Post } from "@/lib/posts"
-import { getLocalePath, type Locale } from "@/content/locale"
+import { getLocalePath, getTagLabel, type Locale } from "@/content/locale"
 
 interface BlogPostCardProps {
   post: Post
@@ -21,7 +21,7 @@ export default function BlogPostCard({ post, locale = "en" }: BlogPostCardProps)
               alt={post.title}
               width={560}
               height={320}
-              className="h-full w-full object-cover"
+              className="h-full w-full object-contain bg-[var(--term-black)] p-4"
             />
             <div className="absolute inset-0 bg-gradient-to-b from-transparent to-term-black/40" />
           </div>
@@ -35,7 +35,7 @@ export default function BlogPostCard({ post, locale = "en" }: BlogPostCardProps)
             </span>
             <span className="inline-flex items-center gap-1">
               <Clock className="h-3.5 w-3.5" />
-              {post.readingTime} min
+              {post.readingTime} 分钟
             </span>
           </div>
 
@@ -45,7 +45,7 @@ export default function BlogPostCard({ post, locale = "en" }: BlogPostCardProps)
           </div>
 
           <div className="text-xs uppercase tracking-[0.16em] text-term-cyan">
-            {post.tags.slice(0, 2).join(" // ") || "open dispatch"}
+            {post.tags.slice(0, 2).map((tag) => getTagLabel(tag, locale)).join(" // ") || "打开文章"}
           </div>
         </div>
       </Link>

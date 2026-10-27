@@ -10,9 +10,11 @@
 - `dev_theme_AIxian`：Alxian 主题分支，根路径使用 Alxian 主页。
 - `dev_theme_GPT`：BlogGPT 主题分支，根路径使用 BlogGPT 博客。
 - `dev_theme_min`：Minimal 主题分支，根路径使用 Minimal，提供五个 Astro 风格子主题预览。
+- `dev_theme_minimal-tech`：YOYO Engineering Notes 方案 1，根路径使用 AstroPaper-inspired AI 工程作品集与知识库。
+- `dev_theme_engineer-terminal`：Engineer Terminal 主题分支，根路径使用终端风格，记录部署、故障、工程日志与架构决策，并提供白名单导航命令演示。
 - `main`：发布基线分支，合并主题变更前用于稳定版本确认。
 
-四个主题分支共享 `content/`、`data/`、`assets/` 等内容资源；主题模板、样式、脚本和主题专属图片只在对应分支维护，避免跨主题串改。
+各主题分支共享 `content/`、`data/`、`assets/` 等内容资源；主题模板、样式、脚本和主题专属图片只在对应分支维护，避免跨主题串改。
 
 ## 主要内容
 
@@ -54,7 +56,7 @@ hugo server --disableFastRender
 hugo --gc --minify
 ```
 
-当前分支默认主题由 `config/_default/params.yaml` 的 `site_theme` 与 `minimal_variant` 控制。`dev_theme_min` 的根路径默认是 Minimal，五个子主题预览位于：
+当前分支根路径默认使用 `ai-terminal`；`config/_default/params.yaml` 中的 `site_theme` 控制默认主题，Minimal 的 `minimal_variant` 仅在 Minimal 主题下生效。`dev_theme_min` 的根路径默认是 Minimal，五个子主题预览位于：
 
 - `/themes/minimal/astro-blog/`
 - `/themes/minimal/astropaper/`
@@ -63,6 +65,10 @@ hugo --gc --minify
 - `/themes/minimal/miniblog/`
 
 每个预览使用同一套文章、项目和联系方式数据，只替换首页信息架构与视觉令牌。
+
+`dev_theme_minimal-tech` 将 `minimal_variant` 设为 `astropaper`，根路径提供 YOYO Engineering Notes 首页、`/blog` 文章搜索与分页、`/projects` 项目案例、`/about` 关于页面，以及带目录、阅读进度和代码复制的文章详情页。
+
+`ai-engineering` 是六种 AI 工程视觉方向共用的父级底座，统一内容模型与能力证据链，不依赖 Minimal 主题。当前分支以 Engineer Terminal 作为根路径主题，并提供文章、项目、工程日志、故障复盘与架构决策页面。主题中心 `/theme-center/` 汇总 16 个注册主题（11 个可预览、5 个规划中），支持按场景和状态筛选、双语名称搜索、收藏、预览及设置浏览器默认主题；主题默认值保存在当前浏览器中。`Astro TUI 终端作品集` 已作为终端家族的可预览子主题接入 `/themes/engineer-terminal/astro-tui-portfolio/`，复用同一套文章、项目和双语内容源。
 
 ## 内容维护
 
@@ -77,7 +83,7 @@ hugo --gc --minify
 
 ## 部署
 
-`.github/workflows/deploy.yml` 会在 `main`、`dev_theme_oil`、`dev_theme_AIxian`、`dev_theme_GPT` 和 `dev_theme_min` 上执行 GitHub Pages 发布。各主题分支共享同一个 Pages 站点，最近一次成功发布的分支内容会显示在根路径；Minimal 家族预览会随发布产物提供在 `/themes/minimal/<variant>/`。
+`.github/workflows/deploy.yml` 会在 `main`、`dev_theme_oil`、`dev_theme_AIxian`、`dev_theme_GPT`、`dev_theme_min`、`dev_theme_minimal-tech`、`dev_theme_engineer-terminal` 和 `dev_termfolio` 上执行 GitHub Pages 发布。各主题分支共享同一个 Pages 站点，最近一次成功发布的分支内容会显示在根路径；Minimal 家族预览位于 `/themes/minimal/<variant>/`，Engineer Terminal 预览位于 `/themes/engineer-terminal/`，Astro TUI 预览位于 `/themes/engineer-terminal/astro-tui-portfolio/`。当前工作区已接入构建矩阵，但尚未推送并确认新的线上 Actions 成功运行。
 
 Minimal 五个子主题的实现方案与验收矩阵见 [`docs/design/MINIMAL_FAMILY_PLAN.md`](docs/design/MINIMAL_FAMILY_PLAN.md)。
 

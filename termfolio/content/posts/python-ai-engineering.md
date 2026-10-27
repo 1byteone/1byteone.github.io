@@ -1,8 +1,8 @@
 ---
 status: published
-title: "AI Engineering with Python"
+title: "使用 Python 进行 AI 工程开发"
 date: 2026-08-21
-excerpt: "A scenario-driven guide to AI Engineering with Python, including boundaries, failure paths, and production trade-offs."
+excerpt: "从实际场景出发，梳理 Python AI 工程开发中的边界条件、故障路径和生产环境取舍。"
 tags:
   - Python
   - AI Engineering

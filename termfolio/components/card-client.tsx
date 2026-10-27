@@ -63,15 +63,15 @@ export default function CardClient({ card, siteUrl, locale = "en" }: CardClientP
         send: "إرسال",
       }
     : {
-        links: "links",
-        contact: "contact",
-        save: "save contact",
-        copied: "copied!",
-        share: "share",
-        qr: "qr code",
-        scan: "scan to open this card",
-        powered: "powered by termfolio",
-        send: "send",
+        links: "链接",
+        contact: "联系方式",
+        save: "保存联系人",
+        copied: "已复制",
+        share: "分享",
+        qr: "二维码",
+        scan: "扫码打开数字名片",
+        powered: "由 termfolio 提供支持",
+        send: "发送",
       }
 
   const handleShare = useCallback(async () => {
@@ -282,7 +282,7 @@ export default function CardClient({ card, siteUrl, locale = "en" }: CardClientP
             <div className="cli-statusbar px-4 py-2 flex items-center justify-between">
               <span>{labels.powered}</span>
               <span>
-                {card.links.length} links · {card.contacts.length} contacts
+                {card.links.length} 个链接 · {card.contacts.length} 个联系方式
               </span>
             </div>
           </section>

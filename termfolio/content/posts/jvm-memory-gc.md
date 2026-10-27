@@ -1,8 +1,8 @@
 ---
 status: published
-title: "JVM Memory & Garbage Collection"
+title: "JVM 内存与垃圾回收"
 date: 2026-08-21
-excerpt: "A scenario-driven guide to JVM Memory & Garbage Collection, including boundaries, failure paths, and production trade-offs."
+excerpt: "从实际场景出发，解析 JVM 内存与垃圾回收的边界条件、故障路径和生产环境取舍。"
 tags:
   - Java
   - JVM

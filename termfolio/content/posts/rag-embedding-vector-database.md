@@ -1,8 +1,8 @@
 ---
 status: published
-title: "RAG Embeddings and Vector Databases: The Engineering Behind Similarity"
+title: "RAG Embedding 与向量数据库：相似度背后的工程实现"
 date: 2026-08-21
-excerpt: "Understand embeddings, distance metrics, metadata, indexing, and incremental updates for reliable vector retrieval."
+excerpt: "理解 Embedding、距离度量、Metadata、索引与增量更新，构建可靠的向量检索。"
 tags:
   - AI
   - RAG

@@ -1,0 +1,23 @@
+{{- $zh := hasPrefix .Lang "zh" -}}
+{{- $pages := .RegularPages.ByDate.Reverse -}}
+{{- if not $pages -}}{{- $pages = .Pages.ByDate.Reverse -}}{{- end -}}
+{{- if and (eq .Section "logs") (not $pages) -}}
+  {{- $pages = where .Site.RegularPages "Section" "blog" -}}
+  {{- $pages = $pages.ByDate.Reverse -}}
+{{- end -}}
+{{- partial "themes/engineer-terminal/head.html" . -}}
+<body class="engineer-terminal"{{ if .Site.Params.theme_preview }} data-pagefind-ignore{{ end }}>
+  {{ partial "themes/engineer-terminal/header.html" . }}
+  <main class="et-main et-page-main">
+    <div class="et-breadcrumb"><a href="{{ .Site.Home.RelPermalink }}">{{ if $zh }}首页{{ else }}Home{{ end }}</a><span>/</span><span>{{ .Title }}</span></div>
+    <header class="et-page-heading"><span>ARCHIVE / {{ upper .Section }}</span><h1>{{ .Title }}</h1>{{ with .Description }}<p>{{ . }}</p>{{ end }}</header>
+    {{ with .Content }}<div class="et-section-intro et-prose">{{ . }}</div>{{ end }}
+    <div class="et-log-list et-archive-list">
+      {{- range $pages -}}
+        <a class="et-log-row" href="{{ .RelPermalink }}"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time><span class="et-log-dot" aria-hidden="true"></span><span class="et-log-copy"><strong>{{ .Title }}</strong><small>{{ .Summary | plainify | truncate 190 }}</small>{{ with .Params.tags }}<span class="et-tags">{{ range first 4 . }}<i>{{ . }}</i>{{ end }}</span>{{ end }}</span><span class="et-row-arrow" aria-hidden="true">↗</span></a>
+      {{- else -}}
+        <p class="et-empty">{{ if $zh }}这个目录目前还没有公开条目。{{ else }}There are no published entries in this directory yet.{{ end }}</p>
+      {{- end -}}
+    </div>
+  </main>
+  {{ partial "themes/engineer-terminal/footer.html" . }}

@@ -24,39 +24,39 @@ interface EverydayToolClientProps {
 
 const toolText = {
   en: {
-    copy: "Copy",
-    copied: "Copied",
-    download: "Download",
-    open: "Open",
-    privacy: "No login. No database. This runs in your browser unless noted.",
+    copy: "复制",
+    copied: "已复制",
+    download: "下载",
+    open: "打开",
+    privacy: "无需登录，无数据库。除非特别说明，所有处理都在浏览器本地完成。",
     urlPlaceholder: "https://example.com/really/long/link?utm_source=noise",
-    shorten: "Shorten",
-    clean: "Clean link",
-    shortNote: "Short links are created through TinyURL. This site stores nothing.",
-    failedShort: "Could not create a short link. The cleaned link is still ready.",
-    qrInput: "Text, link, phone number, or Wi-Fi details",
-    qrDownload: "Download QR",
-    whatsappPhone: "Phone number",
-    whatsappMessage: "Ready message",
-    whatsappCountry: "Country code",
-    eventTitle: "Event title",
-    eventLocation: "Location",
-    eventDescription: "Description",
-    eventDate: "Date",
-    eventTime: "Time",
-    eventDuration: "Duration",
-    minutes: "minutes",
-    makeEvent: "Make .ics file",
-    imagePick: "Choose image",
-    imageWidth: "New width",
-    imageQuality: "Quality",
-    imageRun: "Shrink image",
-    imageReady: "Ready to download",
-    cardText: "Main text",
-    cardByline: "Small line",
-    cardTheme: "Style",
-    cardDownload: "Download card",
-    themes: ["Terminal", "Editorial", "Warm"],
+    shorten: "缩短链接",
+    clean: "清理链接",
+    shortNote: "短链接通过 TinyURL 创建，本网站不会保存链接。",
+    failedShort: "短链接创建失败，但清理后的链接仍可使用。",
+    qrInput: "文本、链接、电话号码或 Wi-Fi 信息",
+    qrDownload: "下载二维码",
+    whatsappPhone: "电话号码",
+    whatsappMessage: "预置消息",
+    whatsappCountry: "国家代码",
+    eventTitle: "日程标题",
+    eventLocation: "地点",
+    eventDescription: "描述",
+    eventDate: "日期",
+    eventTime: "时间",
+    eventDuration: "时长",
+    minutes: "分钟",
+    makeEvent: "生成 .ics 文件",
+    imagePick: "选择图片",
+    imageWidth: "新宽度",
+    imageQuality: "质量",
+    imageRun: "压缩图片",
+    imageReady: "图片已准备下载",
+    cardText: "主文本",
+    cardByline: "副标题",
+    cardTheme: "样式",
+    cardDownload: "下载卡片",
+    themes: ["终端", "编辑", "暖色"],
   },
   ar: {
     copy: "نسخ",
@@ -220,7 +220,7 @@ function ShortLinkTool({ locale }: { locale: Locale }) {
         {shortUrl && <ResultBlock label={t.shorten} value={shortUrl} locale={locale} />}
         {cleaned.removed.length > 0 && (
           <div className="rounded-md border border-term-line bg-term-darker p-3 text-xs leading-6 text-term-gray">
-            removed: <span dir="ltr">{cleaned.removed.join(", ")}</span>
+            已移除：<span dir="ltr">{cleaned.removed.join(", ")}</span>
           </div>
         )}
       </aside>
@@ -495,7 +495,7 @@ function ensureThmanyahCanvasFonts() {
 function ShareCardTool({ locale }: { locale: Locale }) {
   const t = toolText[locale]
   const canvasRef = useRef<HTMLCanvasElement>(null)
-  const [text, setText] = useState(locale === "ar" ? "الفكرة الجيدة لا تحتاج ضجيجًا كثيرًا." : "Good ideas do not need much noise.")
+  const [text, setText] = useState(locale === "ar" ? "الفكرة الجيدة لا تحتاج ضجيجًا كثيرًا." : "好想法不需要太多噪音。")
   const [byline, setByline] = useState(locale === "ar" ? "1byteone" : "1byteone")
   const [theme, setTheme] = useState(0)
 
@@ -539,7 +539,7 @@ function ShareCardTool({ locale }: { locale: Locale }) {
         bg: current.bg,
         fg: current.fg,
         inset,
-        label: rtl ? "بطاقة مشاركة" : "share card",
+        label: rtl ? "بطاقة مشاركة" : "分享卡片",
         makerHost,
         monoFont,
         rtl,
@@ -736,7 +736,7 @@ function drawShareCardMaker(
   }
 ) {
   const { accent, makerHost, monoFont, rtl, textFont, width, y } = options
-  const makerLabel = rtl ? "صُنعت في" : "made at"
+  const makerLabel = rtl ? "صُنعت في" : "制作于"
   const x = rtl ? width - 74 : 74
 
   ctx.save()

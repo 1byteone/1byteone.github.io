@@ -1,8 +1,8 @@
 ---
 status: published
-title: "FastAPI AI Streaming APIs with Server-Sent Events"
+title: "FastAPI AI 流式 API：使用 Server-Sent Events 推送响应"
 date: 2026-08-21
-excerpt: "Build cancellable and observable AI streaming endpoints with generators, SSE framing, and disconnect handling."
+excerpt: "使用生成器、SSE 分帧和断开连接处理，构建支持取消且可观测的 AI 流式接口。"
 tags:
   - FastAPI
   - Streaming

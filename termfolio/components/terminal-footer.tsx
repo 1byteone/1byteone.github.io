@@ -12,7 +12,7 @@ export default function TerminalFooter({ locale = "en" }: { locale?: Locale }) {
     const update = () => {
       const now = new Date()
       setTime(
-        now.toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit", hour12: false })
+        now.toLocaleTimeString("zh-CN", { hour: "2-digit", minute: "2-digit", hour12: false })
       )
     }
     update()

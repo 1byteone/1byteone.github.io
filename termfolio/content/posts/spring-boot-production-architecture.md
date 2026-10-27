@@ -1,8 +1,8 @@
 ---
 status: published
-title: "Production Spring Boot Architecture"
+title: "生产级 Spring Boot 架构"
 date: 2026-08-21
-excerpt: "A scenario-driven guide to Production Spring Boot Architecture, including boundaries, failure paths, and production trade-offs."
+excerpt: "从实际场景出发，分析生产级 Spring Boot 架构的边界条件、故障路径和技术取舍。"
 tags:
   - Spring Boot
   - Microservices

@@ -1,8 +1,8 @@
 ---
 status: published
-title: "LangChain Prompt Chains: Treat Prompts as Maintainable Programs"
+title: "LangChain Prompt Chain：把 Prompt 当作可维护的程序"
 date: 2026-08-21
-excerpt: "Use templates, variable contracts, message roles, and composition to build versioned and evaluable prompt chains."
+excerpt: "使用模板、变量契约、消息角色与组合能力，构建可版本化、可评估的 Prompt Chain。"
 tags:
   - AI
   - LangChain

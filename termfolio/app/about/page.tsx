@@ -7,10 +7,10 @@ import AnimateOnScroll from "@/components/animate-on-scroll"
 import { siteConfig } from "@/content/site"
 
 export const metadata: Metadata = {
-  title: `About — ${siteConfig.name}`,
+  title: `关于我 — ${siteConfig.name}`,
   description: siteConfig.description,
   openGraph: {
-    title: `About — ${siteConfig.name}`,
+    title: `关于我 — ${siteConfig.name}`,
     description: siteConfig.title,
     url: `${siteConfig.siteUrl}/about`,
     siteName: siteConfig.name,
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    title: `About — ${siteConfig.name}`,
+    title: `关于我 — ${siteConfig.name}`,
     description: siteConfig.title,
   },
 }
@@ -32,7 +32,7 @@ export default function AboutPage() {
       <main className="flex-grow pt-24 pb-12">
         <div className="container mx-auto px-4 max-w-6xl">
           <Link href="/" className="mb-8 inline-flex items-center gap-2 text-[var(--term-gray)] transition-colors hover:text-[var(--term-cyan)]">
-            ← back to home
+            ← 返回首页
           </Link>
 
           {/* ASCII Name Header */}
@@ -48,7 +48,7 @@ export default function AboutPage() {
           <section className="rounded-xl overflow-hidden border border-[var(--term-line)]">
             <div className="flex items-center justify-between border-b border-[var(--term-line)] px-4 py-3 text-xs uppercase tracking-[0.16em] text-[var(--term-gray)]">
               <span>about.md</span>
-              <span>engineering profile</span>
+              <span>工程档案</span>
             </div>
 
             <div className="grid gap-8 p-5 md:grid-cols-[280px_minmax(0,1fr)] md:p-6">
@@ -61,15 +61,15 @@ export default function AboutPage() {
 
                 <div className="space-y-3 text-sm leading-7 text-[var(--term-gray)]">
                   <div>
-                    <div className="text-[10px] uppercase tracking-widest text-[var(--term-gray)] mb-1">name</div>
+                    <div className="text-[10px] uppercase tracking-widest text-[var(--term-gray)] mb-1">姓名</div>
                     <div className="text-[var(--term-white)]">{siteConfig.professionalName}</div>
                   </div>
                   <div>
-                    <div className="text-[10px] uppercase tracking-widest text-[var(--term-gray)] mb-1">location</div>
+                    <div className="text-[10px] uppercase tracking-widest text-[var(--term-gray)] mb-1">位置</div>
                     <div className="text-[var(--term-white)]">{siteConfig.location}</div>
                   </div>
                   <div>
-                    <div className="text-[10px] uppercase tracking-widest text-[var(--term-gray)] mb-1">contact</div>
+                    <div className="text-[10px] uppercase tracking-widest text-[var(--term-gray)] mb-1">联系</div>
                     <a href={`mailto:${siteConfig.email}`} className="text-[var(--term-cyan)] hover:underline">
                       {siteConfig.email}
                     </a>
@@ -80,7 +80,7 @@ export default function AboutPage() {
                     )}
                   </div>
                   <div>
-                    <div className="text-[10px] uppercase tracking-widest text-[var(--term-gray)] mb-1">links</div>
+                    <div className="text-[10px] uppercase tracking-widest text-[var(--term-gray)] mb-1">链接</div>
                     <div className="mt-1 space-y-1">
                       {Object.values(siteConfig.socials).map((social) => (
                         <a key={social.label} href={social.url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-[var(--term-cyan)] hover:underline">
@@ -162,7 +162,7 @@ export default function AboutPage() {
                 {/* Hackathons */}
                 <AnimateOnScroll>
                 <div>
-                  <div className="text-[10px] uppercase tracking-widest text-[var(--term-gray)] mb-3">Hackathon achievements</div>
+                  <div className="text-[10px] uppercase tracking-widest text-[var(--term-gray)] mb-3">工程成果</div>
                   <div className="grid gap-3 md:grid-cols-3">
                     {siteConfig.hackathons.map((item) => (
                       <div key={item.name} className="rounded-lg border border-[var(--term-line)] bg-[var(--term-darker)] p-4">
@@ -178,7 +178,7 @@ export default function AboutPage() {
                 {/* Skills */}
                 <AnimateOnScroll>
                 <div className="rounded-lg border border-[var(--term-line)] bg-[var(--term-darker)] px-4 py-4">
-                  <div className="text-[10px] uppercase tracking-widest text-[var(--term-gray)] mb-3">Skills</div>
+                  <div className="text-[10px] uppercase tracking-widest text-[var(--term-gray)] mb-3">技术能力</div>
                   <div className="flex flex-wrap gap-2">
                     {siteConfig.skills.map((skill) => (
                       <span key={skill} className="border border-[var(--term-line)] px-3 py-1.5 text-xs uppercase tracking-[0.12em] text-[var(--term-gray)] rounded-full hover:border-[var(--term-cyan)] hover:text-[var(--term-cyan)] transition-colors">
@@ -192,7 +192,7 @@ export default function AboutPage() {
                 {/* Certification Badges */}
                 <AnimateOnScroll>
                 <div>
-                  <div className="text-[10px] uppercase tracking-widest text-[var(--term-gray)] mb-3">Certifications</div>
+                  <div className="text-[10px] uppercase tracking-widest text-[var(--term-gray)] mb-3">能力标签</div>
                   <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 pb-2">
                     {siteConfig.certifications.map((badge) => (
                       <div key={badge.name} className="group text-center">

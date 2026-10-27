@@ -9,8 +9,30 @@
 # Generated site output
 public/
 
+# Next.js termfolio runtime assets that are safe and required for the public site.
+!termfolio/public/
+termfolio/public/*
+!termfolio/public/engineer-terminal-avatar.png
+!termfolio/public/noise.png
+!termfolio/public/placeholder.svg
+!termfolio/public/images/
+termfolio/public/images/*
+!termfolio/public/images/blog/
+termfolio/public/images/blog/*
+!termfolio/public/images/blog/building-terminal-website.png
+!termfolio/public/images/blog/tutorial/
+termfolio/public/images/blog/tutorial/*
+!termfolio/public/images/blog/tutorial/terminal-stars.png
+!termfolio/public/images/blog/tutorial/blog-post.png
+!termfolio/public/images/blog/tutorial/blog-reading-terminal.png
+!termfolio/public/images/blog/tutorial/blog-reading-light.png
+termfolio/public/cv.pdf
+termfolio/public/University-Wordmark-Full-Color-RGB-1.png
+termfolio/public/جامعة_جدة.png
+
 # Local standalone build workspace
 .hugo-standalone/
+.hugo-preview-*/
 
 # Hugo resources (processed assets)
 resources/

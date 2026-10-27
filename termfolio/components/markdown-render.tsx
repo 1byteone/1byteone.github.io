@@ -82,10 +82,29 @@ function MdCode({ children, className }: { children?: ReactNode; className?: str
   )
 }
 
+function resolveMarkdownImageSrc(value?: string): string {
+  if (!value?.trim()) return "/placeholder.svg"
+
+  const raw = value.trim().replaceAll("\\", "/")
+  if (/^(?:https?:|data:|blob:|\/\/)/i.test(raw)) return raw
+
+  const withoutPublic = raw.replace(/^public\//i, "")
+  if (withoutPublic.startsWith("/")) return withoutPublic
+  if (withoutPublic.startsWith("images/")) return `/${withoutPublic}`
+
+  const imageSegment = withoutPublic.indexOf("images/")
+  if (imageSegment >= 0) return `/${withoutPublic.slice(imageSegment)}`
+
+  // Article Markdown is stored in content/posts, while static files are
+  // served from public/. Keep a relative image usable after the Markdown is
+  // rendered by resolving it against the blog asset directory.
+  return `/images/blog/${withoutPublic.replace(/^(?:\.\.\/|\.\/)+/, "")}`
+}
+
 function MdImage({ src, alt }: { src?: string; alt?: string }) {
   return (
     <div className="my-6 max-w-2xl mx-auto">
-      <Image src={src || "/placeholder.svg"} alt={alt || ""} className="rounded-lg" />
+      <Image src={resolveMarkdownImageSrc(src)} alt={alt || ""} className="rounded-lg" />
     </div>
   )
 }

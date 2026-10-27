@@ -1,0 +1,113 @@
+{{- $zh := hasPrefix .Lang "zh" -}}
+{{- $site := .Site.Data.site.site -}}
+{{- $posts := where .Site.RegularPages "Section" "blog" -}}
+{{- $posts = $posts.ByDate.Reverse -}}
+{{- $projects := where .Site.RegularPages "Section" "projects" -}}
+{{- $projects = $projects.ByDate.Reverse -}}
+{{- partial "themes/engineer-terminal/head.html" . -}}
+<body class="engineer-terminal"{{ if .Site.Params.theme_preview }} data-pagefind-ignore{{ end }}>
+  {{ partial "themes/engineer-terminal/header.html" . }}
+  <main class="et-main">
+    <section class="et-hero" aria-labelledby="et-hero-title">
+      <div class="et-hero-copy">
+        <p class="et-eyebrow"><span class="et-led" aria-hidden="true"></span> YOYO / ENGINEERING LAB <span>PUBLIC ARCHIVE</span></p>
+        <h1 id="et-hero-title">{{ if $zh }}构建可靠的 AI 系统，<br>一次解决一个真实问题。{{ else }}Building reliable AI systems,<br>one real problem at a time.{{ end }}</h1>
+        <p class="et-hero-summary">{{ if $zh }}从 RAG、Agent 到后端服务与部署运维，记录实现依据、故障现场、技术取舍和验证过程。{{ else }}A working record of RAG, agents, backend systems, and operations: evidence, failures, design choices, and verification.{{ end }}</p>
+        <div class="et-hero-meta"><span>{{ if $zh }}AI 应用工程{{ else }}AI APPLICATION ENGINEERING{{ end }}</span><span>{{ if $zh }}后端系统{{ else }}BACKEND SYSTEMS{{ end }}</span><span>{{ if $zh }}开源实践{{ else }}OPEN SOURCE{{ end }}</span></div>
+        <div class="et-hero-actions"><a class="et-primary-link" href="{{ "blog/" | relLangURL }}">{{ if $zh }}浏览工程记录{{ else }}Browse engineering notes{{ end }} <span aria-hidden="true">↗</span></a><a class="et-secondary-link" href="{{ "projects/" | relLangURL }}">{{ if $zh }}查看项目{{ else }}View projects{{ end }}</a></div>
+      </div>
+      <div class="et-hero-workspace">
+      <section class="et-console" aria-labelledby="et-console-title" data-terminal-shell>
+        <div class="et-console-bar"><span class="et-console-dots" aria-hidden="true"><i></i><i></i><i></i></span><span id="et-console-title">yoyo@engineering-lab — archive shell</span><button type="button" class="et-console-skip" data-terminal-skip hidden>{{ if $zh }}跳过启动{{ else }}Skip boot{{ end }}</button><span class="et-console-mode" data-terminal-status>STARTING</span></div>
+        <div class="et-console-body">
+          <div class="et-console-output" data-terminal-output aria-live="polite" aria-relevant="additions text" aria-label="{{ if $zh }}终端输出{{ else }}Terminal output{{ end }}">
+            <p class="et-console-welcome">{{ if $zh }}正在读取已发布的工程档案…{{ else }}Indexing published engineering records…{{ end }}</p>
+          </div>
+          <form class="et-console-form" data-terminal-form autocomplete="off">
+            <label for="et-command-input"><span data-terminal-prompt>yoyo@engineering-lab:~$</span><input id="et-command-input" name="command" data-terminal-input type="text" spellcheck="false" autocapitalize="off" aria-label="{{ if $zh }}输入终端命令{{ else }}Enter a terminal command{{ end }}"></label>
+            <button type="submit" aria-label="{{ if $zh }}执行命令{{ else }}Run command{{ end }}">{{ if $zh }}运行{{ else }}Run{{ end }}</button>
+          </form>
+          <div class="et-console-shortcuts" aria-label="{{ if $zh }}命令快捷方式{{ else }}Command shortcuts{{ end }}">
+            <button type="button" data-terminal-command="help">help</button>
+            <button type="button" data-terminal-command="ls projects">ls projects</button>
+            <button type="button" data-terminal-command="posts">posts</button>
+            <button type="button" data-terminal-command="find RAG">find RAG</button>
+          </div>
+          <p class="et-console-disclaimer"><span data-terminal-location>~/</span><span>{{ if $zh }}只读站点档案 · ↑↓ 历史 · Tab 补全 · Ctrl+L 清屏{{ else }}Read-only site archive · ↑↓ history · Tab complete · Ctrl+L clear{{ end }}</span></p>
+        </div>
+      </section>
+      <aside class="et-identity-panel" aria-labelledby="et-identity-title">
+        <div class="et-identity-image-wrap">
+          <img class="et-identity-image" src="{{ "images/engineer-terminal-avatar.png" | relURL }}" alt="{{ if $zh }}非真人工程师 IP：终端工作站猫头鹰狐{{ else }}Non-human engineer IP mascot at a terminal workstation{{ end }}" width="512" height="512" fetchpriority="high">
+          <span class="et-identity-signal" aria-hidden="true"></span>
+        </div>
+        <div class="et-identity-copy">
+          <span class="et-identity-kicker">PROFILE / 01</span>
+          <h2 id="et-identity-title">{{ if $zh }}{{ $site.identity.name }}{{ else }}{{ $site.identity.name_en }}{{ end }}</h2>
+          <p>{{ if $zh }}AI 应用开发工程师{{ else }}AI application engineer{{ end }}</p>
+        </div>
+        <dl class="et-identity-facts">
+          <div><dt>STATUS</dt><dd><i></i>{{ if $zh }}持续构建{{ else }}BUILDING{{ end }}</dd></div>
+          <div><dt>BASED IN</dt><dd>{{ if $zh }}{{ $site.identity.location }}{{ else }}{{ $site.identity.location_en }}{{ end }}</dd></div>
+          <div><dt>FOCUS</dt><dd>RAG · Agent · Backend</dd></div>
+        </dl>
+        <nav class="et-identity-links" aria-label="{{ if $zh }}快速入口{{ else }}Quick links{{ end }}">
+          <a href="{{ "about/" | relLangURL }}"><span>01</span>{{ if $zh }}关于我{{ else }}About me{{ end }}<b aria-hidden="true">↗</b></a>
+          <a href="{{ $site.identity.github }}" target="_blank" rel="noopener noreferrer"><span>02</span>GitHub<b aria-hidden="true">↗</b></a>
+        </nav>
+      </aside>
+      </div>
+    </section>
+
+    <section class="et-record-strip" aria-label="{{ if $zh }}档案概览{{ else }}Archive overview{{ end }}">
+      <div><span>01 / NOTES</span><strong>{{ len $posts }}</strong><small>{{ if $zh }}篇公开文章{{ else }}published articles{{ end }}</small></div>
+      <div><span>02 / PROJECTS</span><strong>{{ len $projects }}</strong><small>{{ if $zh }}个项目案例{{ else }}project records{{ end }}</small></div>
+      <div><span>03 / METHOD</span><strong>6</strong><small>{{ if $zh }}步证据链{{ else }}steps of evidence{{ end }}</small></div>
+      <div class="et-record-note"><span>{{ if $zh }}工作原则{{ else }}WORKING PRINCIPLE{{ end }}</span><p>{{ if $zh }}结论附带上下文，状态来自已发布内容。{{ else }}Keep conclusions in context; report only what published records support.{{ end }}</p></div>
+    </section>
+
+    <section class="et-observability" data-observability aria-labelledby="et-observability-title">
+      <div class="et-section-heading"><div><span>00 / OBSERVABILITY SNAPSHOT</span><h2 id="et-observability-title">{{ if $zh }}工程信号{{ else }}Engineering signals{{ end }}</h2></div><span class="et-simulated-badge">{{ if $zh }}示例数据 · 非线上监控{{ else }}SIMULATED · NOT LIVE{{ end }}</span></div>
+      <div class="et-observability-grid">
+        <article class="et-signal-card"><span>{{ if $zh }}服务状态{{ else }}SERVICE STATUS{{ end }}</span><strong class="et-signal-value is-online"><i></i>{{ if $zh }}可用{{ else }}ONLINE{{ end }}</strong><small>{{ if $zh }}静态内容构建状态{{ else }}Static content build state{{ end }}</small></article>
+        <article class="et-signal-card"><span>REQUEST P95</span><strong class="et-signal-value">184<em>ms</em></strong><small>{{ if $zh }}示例请求窗口 · P50 92ms{{ else }}Sample request window · P50 92ms{{ end }}</small></article>
+        <article class="et-signal-card"><span>RAG RETRIEVAL</span><strong class="et-signal-value">0.94<em>hit</em></strong><small>{{ if $zh }}Top-K 命中率示例{{ else }}Sample Top-K hit rate{{ end }}</small></article>
+      <article class="et-signal-card et-signal-chart"><div><span>TRACE / SAMPLE-7F2A</span><small>{{ if $zh }}最近一次示例链路{{ else }}Latest sample trace{{ end }}</small></div><div class="et-trace-bars" aria-label="{{ if $zh }}示例请求阶段耗时{{ else }}Sample request stage timings{{ end }}"><button type="button" data-trace-stage="gateway" style="--bar: 28%" aria-label="gateway 18ms" aria-expanded="false"></button><button type="button" data-trace-stage="retrieval" style="--bar: 46%" aria-label="retrieval 42ms" aria-expanded="false"></button><button type="button" data-trace-stage="model" style="--bar: 74%" aria-label="model 88ms" aria-expanded="false"></button><button type="button" data-trace-stage="response" style="--bar: 34%" aria-label="response 36ms" aria-expanded="false"></button></div><p class="et-trace-detail" data-trace-detail>{{ if $zh }}点击阶段查看示例证据。{{ else }}Select a stage to inspect sample evidence.{{ end }}</p><small>gateway → retrieval → model → response</small></article>
+      </div>
+    </section>
+
+    <section class="et-section" id="projects" aria-labelledby="et-projects-title">
+      <div class="et-section-heading"><div><span>01 / PROJECT REGISTRY</span><h2 id="et-projects-title">{{ if $zh }}项目档案{{ else }}Project registry{{ end }}</h2></div><a href="{{ "projects/" | relLangURL }}">{{ if $zh }}查看全部{{ else }}All projects{{ end }} <span aria-hidden="true">↗</span></a></div>
+      <div class="et-project-list">
+        {{- range first 4 $projects -}}
+          <a class="et-project-row" href="{{ .RelPermalink }}"><span class="et-row-mark" aria-hidden="true">▰</span><span class="et-project-copy"><strong>{{ .Title }}</strong><small>{{ .Summary | plainify | truncate 160 }}</small>{{ with .Params.tags }}<span class="et-tags">{{ range first 3 . }}<i>{{ . }}</i>{{ end }}</span>{{ end }}</span><span class="et-row-arrow" aria-hidden="true">↗</span></a>
+        {{- end -}}
+      </div>
+    </section>
+
+    <section class="et-section" id="logs" aria-labelledby="et-logs-title">
+      <div class="et-section-heading"><div><span>02 / ENGINEERING JOURNAL</span><h2 id="et-logs-title">{{ if $zh }}工程记录{{ else }}Engineering journal{{ end }}</h2></div><a href="{{ "blog/" | relLangURL }}">{{ if $zh }}浏览文章{{ else }}Browse articles{{ end }} <span aria-hidden="true">↗</span></a></div>
+      <div class="et-log-list">
+        {{- range first 6 $posts -}}
+          <a class="et-log-row" href="{{ .RelPermalink }}"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time><span class="et-log-dot" aria-hidden="true"></span><span class="et-log-copy"><strong>{{ .Title }}</strong><small>{{ .Summary | plainify | truncate 150 }}</small></span><span class="et-row-arrow" aria-hidden="true">↗</span></a>
+        {{- end -}}
+      </div>
+    </section>
+
+    <section class="et-method" aria-labelledby="et-method-title">
+      <div><span>03 / INCIDENT METHOD</span><h2 id="et-method-title">{{ if $zh }}记录问题，也留下证据。{{ else }}Record the problem. Keep the evidence.{{ end }}</h2><p>{{ if $zh }}工程文章围绕上下文、现象、证据、假设、调查、根因、修复与验证组织；没有真实记录时，不展示虚构故障或运行状态。{{ else }}Engineering notes are organized around context, symptoms, evidence, hypotheses, investigation, cause, fix, and verification. No synthetic incidents or runtime status are shown.{{ end }}</p></div>
+      <ol><li>Context</li><li>Symptom</li><li>Evidence</li><li>Investigation</li><li>Fix</li><li>Verification</li></ol>
+    </section>
+    <section class="et-about" id="about"><span>04 / ABOUT</span><h2>{{ if $zh }}{{ $site.identity.name }} <i>·</i> AI 应用开发工程师{{ else }}{{ $site.identity.name_en }} <i>·</i> AI application engineer{{ end }}</h2><p>{{ if $zh }}专注构建可理解、可验证、可持续维护的 AI 与后端系统。{{ else }}Building AI and backend systems that remain understandable, verifiable, and maintainable.{{ end }}</p><a href="{{ "about/" | relLangURL }}">{{ if $zh }}个人经历与联系方式{{ else }}Profile and contact{{ end }} <span aria-hidden="true">↗</span></a></section>
+  </main>
+  <div class="et-command-source" hidden>
+    <div data-terminal-source="projects">{{ range $projects }}<a href="{{ .RelPermalink }}" data-summary="{{ .Summary | plainify | htmlEscape }}" data-tags="{{ delimit .Params.tags "," }}">{{ .Title }}</a>{{ end }}</div>
+    <div data-terminal-source="logs">{{ range $posts }}<a href="{{ .RelPermalink }}" data-summary="{{ .Summary | plainify | htmlEscape }}" data-tags="{{ delimit .Params.tags "," }}">{{ .Title }}</a>{{ end }}</div>
+    <div data-terminal-source="about"><a href="{{ "about/" | relLangURL }}">{{ if $zh }}{{ $site.identity.name }} · AI 应用开发工程师{{ else }}{{ $site.identity.name_en }} · AI application engineer{{ end }}</a></div>
+    <div data-terminal-source="incidents"><a href="{{ "incidents/" | relLangURL }}" data-archive-only="true">{{ if $zh }}故障复盘目录{{ else }}Incident report archive{{ end }}</a></div>
+    <div data-terminal-source="decisions"><a href="{{ "decisions/" | relLangURL }}" data-archive-only="true">{{ if $zh }}架构决策目录{{ else }}Architecture decision archive{{ end }}</a></div>
+    <div data-terminal-source="docs"><a href="{{ "blog/" | relLangURL }}">{{ if $zh }}技术文章目录{{ else }}Technical article archive{{ end }}</a></div>
+    <div data-terminal-source="stack"><a href="{{ "tech-stack/" | relLangURL }}">{{ if $zh }}技术栈与学习路线{{ else }}Technology stack and learning path{{ end }}</a></div>
+    <div data-terminal-source="contact"><a href="mailto:{{ $site.identity.email }}">{{ $site.identity.email }}</a><a href="{{ $site.identity.github }}">{{ $site.identity.github_label }}</a></div>
+  </div>
+  {{ partial "themes/engineer-terminal/footer.html" . }}

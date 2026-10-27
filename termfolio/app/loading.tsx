@@ -4,7 +4,7 @@ export default function Loading() {
       <div className="text-center space-y-4">
         <div className="flex items-center gap-2 text-[var(--term-gray)] text-sm">
           <span className="text-[var(--term-green)]">$</span>
-          <span className="animate-pulse">loading...</span>
+          <span className="animate-pulse">正在加载...</span>
         </div>
         <div className="flex gap-1 justify-center">
           {[0, 1, 2].map((i) => (

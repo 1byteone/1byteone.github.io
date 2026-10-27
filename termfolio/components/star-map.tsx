@@ -484,7 +484,7 @@ export default function StarMap({ onClose }: StarMapProps) {
     <div className="absolute inset-0 z-20 flex items-center justify-center bg-[var(--term-black)]/80 backdrop-blur-sm">
       <div className="w-full max-w-3xl border border-[var(--term-line)] bg-[var(--term-darker)] rounded-xl overflow-hidden shadow-2xl mx-4 animate-in fade-in zoom-in-95 duration-200">
         <div className="flex items-center justify-between px-5 py-3 border-b border-[var(--term-line)]">
-          <span className="text-[var(--term-white)] text-xs uppercase tracking-[0.14em]">Star Map — Azimuthal Projection</span>
+          <span className="text-[var(--term-white)] text-xs uppercase tracking-[0.14em]">星图 — 方位角投影</span>
           <button onClick={onClose} className="text-[var(--term-gray)] hover:text-[var(--term-white)] text-xs">[esc]</button>
         </div>
         <canvas
@@ -495,8 +495,8 @@ export default function StarMap({ onClose }: StarMapProps) {
           onMouseLeave={() => setHovered(null)}
         />
         <div className="flex items-center justify-between px-5 py-2 border-t border-[var(--term-line)] text-[10px] uppercase tracking-widest text-[var(--term-gray)]">
-          <span>{CONSTELLATIONS.length} constellations · {CONSTELLATIONS.reduce((a, c) => a + c.stars.length, 0)} stars · {bgStars.current.length} background</span>
-          <span>{hovered ? `hovering: ${hovered}` : "live twinkling simulation"}</span>
+          <span>{CONSTELLATIONS.length} 个星座 · {CONSTELLATIONS.reduce((a, c) => a + c.stars.length, 0)} 颗星 · {bgStars.current.length} 颗背景星</span>
+          <span>{hovered ? `当前指向：${hovered}` : "实时闪烁模拟"}</span>
         </div>
       </div>
     </div>

@@ -1,8 +1,8 @@
 ---
 status: published
-title: "Spring Boot IoC & Dependency Injection"
+title: "Spring Boot IoC 与依赖注入"
 date: 2026-08-21
-excerpt: "A scenario-driven guide to Spring Boot IoC & Dependency Injection, including boundaries, failure paths, and production trade-offs."
+excerpt: "从实际场景出发，理解 Spring Boot IoC 与依赖注入的边界条件、故障路径和生产环境取舍。"
 tags:
   - Spring Boot
   - IoC

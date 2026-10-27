@@ -19,14 +19,14 @@ export default function NewsletterSignup({ locale = "en" }: { locale?: Locale })
         newsletter: "النشرة",
       }
     : {
-        success: "subscribed! check your inbox.",
-        error: "something went wrong. try again.",
-        lead: "Occasional essays on strategy, systems thinking, and building things that matter.",
-        email: "Email address",
+        success: "订阅成功，请查看你的邮箱。",
+        error: "出了点问题，请稍后重试。",
+        lead: "不定期分享 AI 工程、系统思考和真实项目实践。",
+        email: "邮箱地址",
         placeholder: "you@email.com",
-        loading: "subscribing...",
-        submit: "[ENTER] subscribe",
-        newsletter: "newsletter",
+        loading: "正在订阅...",
+        submit: "[ENTER] 订阅",
+        newsletter: "订阅更新",
       }
 
   const handleSubmit = async (e: FormEvent) => {
@@ -42,7 +42,7 @@ export default function NewsletterSignup({ locale = "en" }: { locale?: Locale })
       })
       if (!res.ok) {
         const data = await res.json().catch(() => ({}))
-        throw new Error(data.error || "Subscription failed")
+        throw new Error(data.error || "订阅失败")
       }
       setStatus("success")
       setMessage(copy.success)

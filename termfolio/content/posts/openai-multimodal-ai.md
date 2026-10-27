@@ -1,8 +1,8 @@
 ---
 status: published
-title: "OpenAI Multimodal AI: Working with Text, Images, and Documents"
+title: "OpenAI 多模态 AI：处理文本、图像与文档"
 date: 2026-08-21
-excerpt: "Design multimodal input pipelines with preprocessing, cost, privacy, and structured output for images and documents."
+excerpt: "围绕图像与文档的预处理、成本、隐私和结构化输出，设计多模态输入 Pipeline。"
 tags:
   - AI
   - OpenAI API

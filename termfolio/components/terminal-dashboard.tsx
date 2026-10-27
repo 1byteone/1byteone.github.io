@@ -118,14 +118,14 @@ function buildClockLines(time: string): string[] {
 
 // ── Quick-link commands ─────────────────────────────────────────────
 const COMMANDS = [
-  { label: "about", desc: "dossier" },
-  { label: "blog", desc: "journal" },
-  { label: "contact", desc: "reach out" },
-  { label: "type", desc: "typing game" },
-  { label: "stars", desc: "star map" },
-  { label: "json", desc: "data view" },
-  { label: "help", desc: "all commands" },
-  { label: "theme", desc: "change theme" },
+  { label: "about", desc: "个人档案" },
+  { label: "blog", desc: "技术日志" },
+  { label: "contact", desc: "联系交流" },
+  { label: "type", desc: "打字测试" },
+  { label: "stars", desc: "星图" },
+  { label: "json", desc: "数据视图" },
+  { label: "help", desc: "全部命令" },
+  { label: "theme", desc: "切换主题" },
 ] as const
 
 // ── Component ───────────────────────────────────────────────────────
@@ -195,7 +195,7 @@ export default function TerminalDashboard({ onClose, onCommand }: TerminalDashbo
         {/* Header */}
         <div className="flex items-center justify-between px-5 py-3 border-b border-[var(--term-line)]">
           <span className="text-[var(--term-white)] text-xs uppercase tracking-[0.14em]">
-            System Dashboard
+            系统仪表盘
           </span>
           <button
             onClick={onClose}
@@ -211,7 +211,7 @@ export default function TerminalDashboard({ onClose, onCommand }: TerminalDashbo
           <div className="flex justify-center">
             <pre
               className="text-[var(--term-cyan)] text-[10px] sm:text-xs md:text-sm leading-tight font-mono select-none"
-              aria-label={`Current time: ${timeStr}`}
+              aria-label={`当前时间：${timeStr}`}
             >
               {clockLines.map((line, i) => (
                 <span key={i}>
@@ -228,23 +228,23 @@ export default function TerminalDashboard({ onClose, onCommand }: TerminalDashbo
               className="inline-block w-1.5 h-1.5 rounded-full bg-[var(--term-green)]"
               style={{ animation: "pulse 2s ease-in-out infinite" }}
             />
-            <span>live</span>
+            <span>在线</span>
             <span className="text-[var(--term-line)]">|</span>
             <span>{route}</span>
           </div>
 
           {/* Info cards grid */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-            <InfoCard label="Session Uptime" value={formatUptime(uptime)} accent />
-            <InfoCard label="Visits" value={String(visits)} />
-            <InfoCard label="Theme" value={theme} />
-            <InfoCard label="Browser" value={browser} />
+            <InfoCard label="会话运行时间" value={formatUptime(uptime)} accent />
+            <InfoCard label="访问次数" value={String(visits)} />
+            <InfoCard label="主题" value={theme} />
+            <InfoCard label="浏览器" value={browser} />
           </div>
 
           {/* Quick links */}
           <div className="space-y-2">
             <p className="text-[10px] uppercase tracking-[0.18em] text-[var(--term-gray)]">
-              Quick Commands
+              快捷命令
             </p>
             <div className="flex flex-wrap gap-2">
               {COMMANDS.map((cmd) => (
@@ -268,10 +268,10 @@ export default function TerminalDashboard({ onClose, onCommand }: TerminalDashbo
         {/* Footer */}
         <div className="flex items-center justify-between px-5 py-2 border-t border-[var(--term-line)] text-[10px] uppercase tracking-widest text-[var(--term-gray)]">
           <span>
-            uptime {formatUptime(uptime)}
+            运行时间 {formatUptime(uptime)}
           </span>
           <span>
-            {now.toLocaleDateString("en-US", {
+            {now.toLocaleDateString("zh-CN", {
               year: "numeric",
               month: "short",
               day: "numeric",

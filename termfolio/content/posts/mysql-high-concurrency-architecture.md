@@ -1,8 +1,8 @@
 ---
 status: published
-title: "Production MySQL High-Concurrency Architecture"
+title: "生产环境 MySQL 高并发架构"
 date: 2026-08-21
-excerpt: "A scenario-driven guide to Production MySQL High-Concurrency Architecture, including boundaries, failure paths, and production trade-offs."
+excerpt: "从实际场景出发，分析生产环境 MySQL 高并发架构的边界条件、故障路径和技术取舍。"
 tags:
   - MySQL
   - High Concurrency

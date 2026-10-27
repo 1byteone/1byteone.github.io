@@ -1,8 +1,8 @@
 ---
 status: published
-title: "Python Data Structures & Decorators"
+title: "Python 数据结构与装饰器"
 date: 2026-08-21
-excerpt: "A scenario-driven guide to Python Data Structures & Decorators, including boundaries, failure paths, and production trade-offs."
+excerpt: "从实际场景出发，理解 Python 数据结构与装饰器的边界条件、故障路径和生产环境取舍。"
 tags:
   - Python
   - Data Structures

@@ -1,7 +1,13 @@
-{{- if eq (lower (default "oil" (index .Site.Params "site_theme"))) "bloggpt" -}}
+{{- if eq (lower (default "oil" (index .Site.Params "site_theme"))) "ai-terminal" -}}
+  {{ partial "themes/engineer-terminal/list.html" . }}
+{{- else if eq (lower (default "oil" (index .Site.Params "site_theme"))) "astro-tui-portfolio" -}}
+  {{ partial "themes/astro-tui-portfolio/list.html" . }}
+{{- else if eq (lower (default "oil" (index .Site.Params "site_theme"))) "bloggpt" -}}
   {{ partial "themes/bloggpt/terms.html" . }}
 {{- else if eq (lower (default "oil" (index .Site.Params "site_theme"))) "alxian" -}}
   {{ partial "themes/alxian/list.html" . }}
+{{- else if eq (lower (default "oil" (index .Site.Params "site_theme"))) "minimal" -}}
+  {{ partial "themes/minimal/list.html" . }}
 {{- else -}}
   {{ partial "themes/oil/list.html" . }}
 {{- end -}}

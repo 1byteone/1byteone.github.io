@@ -1,5 +1,7 @@
 {{- $theme := lower (default "oil" (index .Site.Params "site_theme")) -}}
-{{- if eq $theme "bloggpt" -}}
+{{- if eq $theme "ai-terminal" -}}
+  {{ partial "themes/engineer-terminal/single.html" . }}
+{{- else if eq $theme "bloggpt" -}}
   {{ partial "themes/bloggpt/tech-stack-single.html" . }}
 {{- else if eq $theme "alxian" -}}
   {{ partial "themes/alxian/single.html" . }}

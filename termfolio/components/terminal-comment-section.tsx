@@ -10,7 +10,7 @@ const Giscus = dynamic(() => import("@giscus/react"), {
   ssr: false,
   loading: () => (
     <div className="cli-frame p-6 text-center text-term-gray">
-      Initializing comment system...
+      正在初始化评论系统...
     </div>
   ),
 })
@@ -31,7 +31,7 @@ export default function TerminalCommentSection({ locale = "en" }: { locale?: Loc
         <span className="inline-flex items-center gap-2">
           <MessageSquare className="h-3.5 w-3.5 text-term-cyan" /> comments.sh
         </span>
-        <span>{locale === "ar" ? "النقاش" : "discussion"}</span>
+        <span>{locale === "ar" ? "النقاش" : "讨论"}</span>
       </div>
 
       <div className="p-4">
@@ -51,7 +51,7 @@ export default function TerminalCommentSection({ locale = "en" }: { locale?: Loc
             loading="lazy"
             theme={theme === "dark" ? "dark_high_contrast" : "light_high_contrast"}
             host="https://giscus.app"
-            lang={locale}
+            lang={locale === "ar" ? "ar" : "zh-CN"}
           />
         ) : (
           <div className="flex items-start gap-3 text-sm leading-7 text-term-gray">
@@ -59,7 +59,7 @@ export default function TerminalCommentSection({ locale = "en" }: { locale?: Loc
             <p>
               {locale === "ar"
                 ? "التعليقات غير مفعلة حتى يتم إعداد Giscus. يمكنك إرسال ملاحظاتك مباشرة عبر "
-                : "Comments are offline until Giscus is configured. You can still send feedback directly at "}
+                : "评论系统尚未配置 Giscus。你仍可以直接通过邮箱反馈："}
               <a href={`mailto:${siteConfig.email}`} className="cli-link">
                 {siteConfig.email}
               </a>

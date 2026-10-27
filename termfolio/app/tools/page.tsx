@@ -8,10 +8,10 @@ import { localeCopy } from "@/content/locale"
 import { siteConfig } from "@/content/site"
 
 export const metadata: Metadata = {
-  title: `Tools — ${siteConfig.name}`,
+  title: `实用工具 — ${siteConfig.name}`,
   description: localeCopy.en.tools.indexDescription,
   openGraph: {
-    title: `Tools — ${siteConfig.name}`,
+    title: `实用工具 — ${siteConfig.name}`,
     description: localeCopy.en.tools.indexDescription,
     url: `${siteConfig.siteUrl}/tools`,
     siteName: siteConfig.name,
@@ -37,7 +37,7 @@ export default function ToolsPage() {
           <section className="cli-frame overflow-hidden rounded-xl">
             <div className="flex items-center justify-between border-b border-term-line px-4 py-3 text-xs uppercase tracking-[0.16em] text-term-gray">
               <span dir="ltr">tools.md</span>
-              <span>no login · no database</span>
+              <span>无需登录 · 不存储数据</span>
             </div>
             <div className="space-y-8 p-5 md:p-6">
               <header className="max-w-3xl">

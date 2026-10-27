@@ -1,8 +1,8 @@
 ---
 status: published
-title: "Three-Layer Hallucination Prevention in RAG Systems: A Practical Guide"
+title: "RAG 系统的三层幻觉防护：实践指南"
 date: 2026-08-05
-excerpt: "Learn how to prevent LLM hallucinations in RAG systems with a three-layer approach: retrieval filtering, prompt engineering, and output validation"
+excerpt: "通过检索过滤、Prompt Engineering 与输出校验三层策略，降低 RAG 系统中的 LLM 幻觉。"
 tags:
   - AI
   - RAG

@@ -8,8 +8,8 @@ export default function LiveClock() {
   useEffect(() => {
     const update = () => {
       const now = new Date()
-      const day = now.toLocaleDateString("en-US", { weekday: "long" })
-      const time = now.toLocaleTimeString("en-US", { hour12: false })
+      const day = now.toLocaleDateString("zh-CN", { weekday: "long" })
+      const time = now.toLocaleTimeString("zh-CN", { hour12: false })
       setStamp(`${day} // ${time}`)
     }
 
@@ -18,5 +18,5 @@ export default function LiveClock() {
     return () => window.clearInterval(timer)
   }, [])
 
-  return <span>{stamp || "loading // --:--:--"}</span>
+  return <span>{stamp || "加载中 // --:--:--"}</span>
 }

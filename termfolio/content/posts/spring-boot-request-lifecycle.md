@@ -1,8 +1,8 @@
 ---
 status: published
-title: "Spring Boot Request Lifecycle"
+title: "Spring Boot 请求生命周期"
 date: 2026-08-21
-excerpt: "A scenario-driven guide to Spring Boot Request Lifecycle, including boundaries, failure paths, and production trade-offs."
+excerpt: "从实际场景出发，梳理 Spring Boot 请求生命周期中的边界条件、故障路径和生产环境取舍。"
 tags:
   - Spring Boot
   - HTTP

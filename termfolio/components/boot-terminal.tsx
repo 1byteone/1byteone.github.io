@@ -9,46 +9,52 @@ import WorldMap from "@/components/world-map"
 import SnakeGame from "@/components/snake-game"
 import Pokedex from "@/components/pokedex"
 import TerminalDashboard from "@/components/terminal-dashboard"
+import AgnesChat from "@/components/agnes-chat"
+import AiResponseRenderer from "@/components/ai/ai-response-renderer"
+import { createAgnesRouteClient } from "@/lib/agnes"
+import { parseAIBlocks, type AIBlock, type AIMessage } from "@/lib/agnes/protocol"
 import { siteConfig } from "@/content/site"
 
 // ── Boot Lines ─────────────────────────────────────────────────────
 const BOOT_LINES = [
-  { text: "[sys] loading kernel modules...", color: "gray", delay: 0 },
-  { text: "[sys] mounting /dev/strategy", color: "gray", delay: 200 },
-  { text: "[ok]  ready", color: "green", delay: 500 },
+  { text: "[sys] 正在加载内核模块...", color: "gray", delay: 0 },
+  { text: "[sys] 正在挂载 /dev/engineering", color: "gray", delay: 200 },
+  { text: "[ok]  系统就绪", color: "green", delay: 500 },
   { text: "", color: "white", delay: 700 },
 ]
 
 // ── Help Menu ──────────────────────────────────────────────────────
 const COMMANDS: { cmd: string; desc: string; action: string; icon: string }[] = [
-  { cmd: "about", desc: "open the dossier", action: "/about", icon: "📋" },
-  { cmd: "blog", desc: "read the journal", action: "/blog", icon: "📝" },
-  { cmd: "lab", desc: "browse public experiments", action: "/lab", icon: "⌁" },
-  { cmd: "tools", desc: "open no-login tools", action: "/tools", icon: "▦" },
-  { cmd: "split", desc: "split a bill", action: "/tools/splitter", icon: "÷" },
-  { cmd: "short", desc: "shorten or clean a link", action: "/tools/short-link", icon: "↗" },
-  { cmd: "qr", desc: "make a QR code", action: "/tools/qr", icon: "▣" },
-  { cmd: "wa", desc: "make a WhatsApp link", action: "/tools/whatsapp", icon: "wa" },
-  { cmd: "event", desc: "make a calendar file", action: "/tools/event", icon: "cal" },
-  { cmd: "image", desc: "shrink an image", action: "/tools/image", icon: "img" },
-  { cmd: "sharecard", desc: "make a share card", action: "/tools/share-card", icon: "▤" },
-  { cmd: "card", desc: "open digital card", action: "/card", icon: "▣" },
-  { cmd: "contact", desc: "book a conversation", action: "/contact", icon: "✉" },
-  { cmd: "skills", desc: "cat skills.txt", action: "skills", icon: "⚡" },
-  { cmd: "theme", desc: "switch color theme", action: "theme", icon: "🎨" },
-  { cmd: "whoami", desc: "who is 1byteone?", action: "whoami", icon: "👤" },
-  { cmd: "json", desc: "format & validate JSON", action: "json", icon: "{ }" },
-  { cmd: "base64", desc: "encode/decode base64", action: "base64", icon: "🔐" },
-  { cmd: "wordcount", desc: "count words in text", action: "wordcount", icon: "📊" },
-  { cmd: "uuid", desc: "generate a UUID", action: "uuid", icon: "🆔" },
-  { cmd: "epoch", desc: "timestamp converter", action: "epoch", icon: "⏱" },
-  { cmd: "type", desc: "typing speed test", action: "type", icon: "⌨" },
-  { cmd: "stars", desc: "constellation map", action: "stars", icon: "✦" },
-  { cmd: "map", desc: "ASCII world map", action: "map", icon: "🗺" },
-  { cmd: "snake", desc: "play snake game", action: "snake", icon: "🐍" },
-  { cmd: "pokedex", desc: "browse creatures", action: "pokedex", icon: "📖" },
-  { cmd: "dashboard", desc: "system dashboard", action: "dashboard", icon: "📊" },
-  { cmd: "clear", desc: "clear terminal", action: "clear", icon: "🧹" },
+  { cmd: "about", desc: "打开个人档案", action: "/about", icon: "📋" },
+  { cmd: "blog", desc: "阅读技术文章", action: "/blog", icon: "📝" },
+  { cmd: "lab", desc: "浏览公开实验", action: "/lab", icon: "⌁" },
+  { cmd: "tools", desc: "打开免登录工具", action: "/tools", icon: "▦" },
+  { cmd: "split", desc: "分摊账单", action: "/tools/splitter", icon: "÷" },
+  { cmd: "short", desc: "缩短或清理链接", action: "/tools/short-link", icon: "↗" },
+  { cmd: "qr", desc: "生成二维码", action: "/tools/qr", icon: "▣" },
+  { cmd: "wa", desc: "生成 WhatsApp 链接", action: "/tools/whatsapp", icon: "wa" },
+  { cmd: "event", desc: "生成日历文件", action: "/tools/event", icon: "cal" },
+  { cmd: "image", desc: "压缩图片", action: "/tools/image", icon: "img" },
+  { cmd: "sharecard", desc: "制作分享卡片", action: "/tools/share-card", icon: "▤" },
+  { cmd: "card", desc: "打开数字名片", action: "/card", icon: "▣" },
+  { cmd: "contact", desc: "发起工程交流", action: "/contact", icon: "✉" },
+  { cmd: "skills", desc: "查看 skills.txt", action: "skills", icon: "⚡" },
+  { cmd: "theme", desc: "切换颜色主题", action: "theme", icon: "🎨" },
+  { cmd: "whoami", desc: "查看 1byteone 信息", action: "whoami", icon: "👤" },
+  { cmd: "json", desc: "格式化并校验 JSON", action: "json", icon: "{ }" },
+  { cmd: "base64", desc: "编码或解码 Base64", action: "base64", icon: "🔐" },
+  { cmd: "wordcount", desc: "统计文本字数", action: "wordcount", icon: "📊" },
+  { cmd: "uuid", desc: "生成 UUID", action: "uuid", icon: "🆔" },
+  { cmd: "epoch", desc: "转换时间戳", action: "epoch", icon: "⏱" },
+  { cmd: "type", desc: "测试打字速度", action: "type", icon: "⌨" },
+  { cmd: "stars", desc: "查看星座图", action: "stars", icon: "✦" },
+  { cmd: "map", desc: "查看 ASCII 世界地图", action: "map", icon: "🗺" },
+  { cmd: "snake", desc: "玩贪吃蛇游戏", action: "snake", icon: "🐍" },
+  { cmd: "pokedex", desc: "浏览数字生物", action: "pokedex", icon: "📖" },
+  { cmd: "dashboard", desc: "打开系统仪表盘", action: "dashboard", icon: "📊" },
+  { cmd: "agnes", desc: "连接 Agnes AI 工程助手", action: "agnes", icon: "✦" },
+  { cmd: "chat", desc: "打开 AI 对话终端", action: "agnes", icon: "⌁" },
+  { cmd: "clear", desc: "清空终端", action: "clear", icon: "🧹" },
 ]
 
 const SKILLS_OUTPUT = siteConfig.terminalSkills
@@ -69,12 +75,31 @@ const COLOR_MAP: Record<string, string> = {
   amber: "text-[#E5C07B]",
 }
 
-type ModalType = "theme" | "json" | "base64" | "wordcount" | "typing" | "stars" | "map" | "snake" | "pokedex" | "dashboard" | null
+type ModalType = "theme" | "json" | "base64" | "wordcount" | "typing" | "stars" | "map" | "snake" | "pokedex" | "dashboard" | "agnes" | null
 
 interface OutputLine {
   text: string
   color: string
+  kind?: "agnes-prompt"
+  agnesId?: string
 }
+
+type AgnesInlineResponse = {
+  content: string
+  blocks?: AIBlock[]
+}
+
+type AgnesInlineTurn = {
+  id: string
+  prompt: string
+  response?: AgnesInlineResponse
+}
+
+const agnesRouteClient = createAgnesRouteClient({
+  // The server route owns upstream retries. Avoid replaying a provider 429
+  // from the browser and multiplying the request volume.
+  retry: { maxAttempts: 1 },
+})
 
 export default function BootTerminal() {
   const router = useRouter()
@@ -90,6 +115,12 @@ export default function BootTerminal() {
   const [showHelp, setShowHelp] = useState(false)
   const [modalInput, setModalInput] = useState("")
   const [modalOutput, setModalOutput] = useState("")
+  // Natural-language input stays in the terminal. Keep its history in this
+  // component so Agnes can answer follow-ups without opening another window.
+  const [agnesHistory, setAgnesHistory] = useState<AIMessage[]>([])
+  const [agnesTurns, setAgnesTurns] = useState<AgnesInlineTurn[]>([])
+  const [agnesLoading, setAgnesLoading] = useState(false)
+  const [agnesError, setAgnesError] = useState("")
   const scrollRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
   const modalInputRef = useRef<HTMLTextAreaElement>(null)
@@ -107,7 +138,7 @@ export default function BootTerminal() {
   // ── Auto-scroll ─────────────────────────────────────────────────
   useEffect(() => {
     if (scrollRef.current) scrollRef.current.scrollTop = scrollRef.current.scrollHeight
-  }, [output, bootLines, showHelp])
+  }, [output, bootLines, showHelp, agnesTurns, agnesLoading, agnesError])
 
   // ── Focus input on click ────────────────────────────────────────
   const focusInput = useCallback(() => {
@@ -142,7 +173,7 @@ export default function BootTerminal() {
       const parsed = JSON.parse(text)
       setModalOutput(JSON.stringify(parsed, null, 2))
     } catch {
-      setModalOutput("❌ Invalid JSON: " + (text ? "check syntax" : "paste JSON above"))
+      setModalOutput("❌ JSON 无效：" + (text ? "请检查语法" : "请先粘贴 JSON"))
     }
   }, [])
 
@@ -154,7 +185,7 @@ export default function BootTerminal() {
         setModalOutput(decodeURIComponent(escape(atob(text))))
       }
     } catch {
-      setModalOutput("❌ Invalid input for " + mode)
+      setModalOutput("❌ 输入无法进行 " + (mode === "encode" ? "编码" : "解码"))
     }
   }, [])
 
@@ -165,14 +196,57 @@ export default function BootTerminal() {
     const sentences = text.split(/[.!?]+/).filter(Boolean).length
     const readTime = Math.max(1, Math.ceil(words / 200))
     setModalOutput(
-      `words:     ${words}\nchars:     ${chars}\nlines:     ${lines}\nsentences: ${sentences}\nread time: ~${readTime} min`
+      `字数：     ${words}\n字符：     ${chars}\n行数：     ${lines}\n句子：     ${sentences}\n阅读时长：约 ${readTime} 分钟`
     )
   }, [])
 
+  // Plain text is an Agnes message. Slash-prefixed input is handled by the
+  // command dispatcher below, keeping the terminal's command surface explicit.
+  const askAgnes = useCallback(async (raw: string) => {
+    const content = raw.trim()
+    if (!content || agnesLoading) return
+
+    const turnId = `agnes-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`
+    setOutput((prev) => [...prev, { text: `$ ${content}`, color: "green", kind: "agnes-prompt", agnesId: turnId }])
+    setInput("")
+    setShowHelp(false)
+    setAgnesError("")
+    setAgnesTurns((current) => [...current, { id: turnId, prompt: content }])
+
+    const nextHistory: AIMessage[] = [...agnesHistory, { role: "user", content } as AIMessage].slice(-12)
+    setAgnesHistory(nextHistory)
+    setAgnesLoading(true)
+
+    try {
+      const result = await agnesRouteClient.chat(nextHistory, {
+        metadata: {
+          surface: "terminal",
+          path: typeof window !== "undefined" ? window.location.pathname : "/",
+        },
+      })
+      const blocks = result.blocks.length ? parseAIBlocks(result.blocks) : undefined
+      setAgnesTurns((current) => {
+        const next = [...current]
+        const turnIndex = next.findIndex((turn) => turn.id === turnId)
+        if (turnIndex >= 0) next[turnIndex] = { ...next[turnIndex], response: { content: result.message, blocks } }
+        return next
+      })
+      setAgnesHistory((current) => [...current, { role: "assistant", content: result.message } as AIMessage].slice(-12))
+    } catch (error) {
+      const message = error instanceof Error ? error.message : "Agnes AI 暂时无法响应，请稍后再试。"
+      setAgnesError(message)
+      setOutput((prev) => [...prev, { text: `agnes: ${message}`, color: "amber" }])
+    } finally {
+      setAgnesLoading(false)
+      setTimeout(() => inputRef.current?.focus(), 0)
+    }
+  }, [agnesHistory, agnesLoading])
+
   // ── Execute command ─────────────────────────────────────────────
   const execCommand = useCallback((raw: string) => {
-    const cmd = raw.trim().toLowerCase()
-    const prompt: OutputLine = { text: `$ ${raw}`, color: "green" }
+    const typed = raw.trim()
+    const cmd = typed.replace(/^\/+/, "").toLowerCase()
+    const prompt: OutputLine = { text: `$ /${cmd}`, color: "green" }
 
     if (!cmd) return
 
@@ -181,7 +255,13 @@ export default function BootTerminal() {
     setShowHelp(false)
 
     if (cmd === "help") { setShowHelp(true); return }
-    if (cmd === "clear") { setOutput([]); return }
+    if (cmd === "clear") {
+      setOutput([])
+      setAgnesTurns([])
+      setAgnesHistory([])
+      setAgnesError("")
+      return
+    }
     if (cmd === "theme" || cmd === "themes") {
       setActiveModal("theme")
       const saved = localStorage.getItem("site-theme") ?? DEFAULT_THEME_NAME
@@ -198,11 +278,12 @@ export default function BootTerminal() {
     if (cmd === "snake") { setActiveModal("snake"); return }
     if (cmd === "pokedex" || cmd === "dex") { setActiveModal("pokedex"); return }
     if (cmd === "dashboard" || cmd === "dash") { setActiveModal("dashboard"); return }
+    if (cmd === "agnes" || cmd === "chat") { setActiveModal("agnes"); return }
     if (cmd === "uuid") {
       const uuid = crypto.randomUUID()
       setOutput((prev) => [...prev, { text: uuid, color: "cyan" }])
       navigator.clipboard?.writeText(uuid)
-      setOutput((prev) => [...prev, { text: "(copied to clipboard)", color: "gray" }])
+      setOutput((prev) => [...prev, { text: "（已复制到剪贴板）", color: "gray" }])
       return
     }
     if (cmd === "epoch") {
@@ -226,15 +307,26 @@ export default function BootTerminal() {
     }
     const match = COMMANDS.find((c) => c.cmd === cmd)
     if (match && match.action.startsWith("/")) {
-      setOutput((prev) => [...prev, { text: `navigating to ${match.action}...`, color: "cyan" }])
+      setOutput((prev) => [...prev, { text: `正在前往 ${match.action}...`, color: "cyan" }])
       setTimeout(() => router.push(match.action), 400)
       return
     }
     setOutput((prev) => [
       ...prev,
-      { text: `command not found: ${cmd}. type 'help' for available commands.`, color: "amber" },
+      { text: `找不到命令：${cmd}。输入 /help 查看可用命令。`, color: "amber" },
     ])
   }, [router])
+
+  const submitInput = useCallback(() => {
+    const raw = input.trim()
+    if (!raw) return
+    if (raw.startsWith("/")) {
+      const command = raw.slice(1).trim()
+      if (command) execCommand(command)
+      return
+    }
+    void askAgnes(raw)
+  }, [askAgnes, execCommand, input])
 
   // ── Modal keyboard ──────────────────────────────────────────────
   const handleGlobalKey = useCallback(
@@ -246,7 +338,7 @@ export default function BootTerminal() {
         else if (e.key === "Enter") {
           e.preventDefault()
           applyTheme(THEMES[themeIdx])
-          setOutput((prev) => [...prev, { text: `theme set to '${THEMES[themeIdx].label}'`, color: "cyan" }])
+          setOutput((prev) => [...prev, { text: `主题已切换为「${THEMES[themeIdx].label}」`, color: "cyan" }])
           closeModal()
         }
       }
@@ -263,8 +355,8 @@ export default function BootTerminal() {
         <div className="absolute inset-0 z-20 flex items-center justify-center bg-term-black/80 backdrop-blur-sm">
           <div className="w-full max-w-sm border border-term-line bg-term-darker rounded-lg overflow-hidden shadow-2xl mx-4 animate-in fade-in zoom-in-95 duration-200">
             <div className="flex items-center justify-between px-4 py-3 border-b border-term-line">
-              <span className="text-term-white text-xs uppercase tracking-[0.14em]">🎨 select theme</span>
-              <span className="text-term-gray text-[10px]">↑/↓ enter · esc close</span>
+              <span className="text-term-white text-xs uppercase tracking-[0.14em]">🎨 选择主题</span>
+              <span className="text-term-gray text-[10px]">↑/↓ 选择 · enter 确认 · esc 关闭</span>
             </div>
             <div className="max-h-72 overflow-y-auto p-2">
               {THEMES.map((theme, idx) => {
@@ -274,7 +366,7 @@ export default function BootTerminal() {
                     key={theme.name}
                     onClick={() => {
                       applyTheme(theme)
-                      setOutput((prev) => [...prev, { text: `theme set to '${theme.label}'`, color: "cyan" }])
+                      setOutput((prev) => [...prev, { text: `主题已切换为「${theme.label}」`, color: "cyan" }])
                       closeModal()
                     }}
                     className={`w-full text-left flex items-center gap-3 py-2 px-3 text-sm rounded transition-colors ${
@@ -335,11 +427,17 @@ export default function BootTerminal() {
       )
     }
 
+    // Explicit `/agnes` and `/chat` commands keep the full chat modal
+    // available. Plain text uses the inline conversation path below.
+    if (activeModal === "agnes") {
+      return <AgnesChat onClose={closeModal} />
+    }
+
     // Tool modals (JSON, Base64, Word Count)
     const titles: Record<string, string> = {
-      json: "{ } JSON Formatter",
-      base64: "🔐 Base64 Encode/Decode",
-      wordcount: "📊 Word Counter",
+      json: "{ } JSON 格式化器",
+      base64: "🔐 Base64 编码/解码",
+      wordcount: "📊 字数统计",
     }
 
     return (
@@ -355,9 +453,9 @@ export default function BootTerminal() {
               value={modalInput}
               onChange={(e) => setModalInput(e.target.value)}
               placeholder={
-                activeModal === "json" ? '{"paste": "json here"}' :
-                activeModal === "base64" ? "text to encode/decode" :
-                "paste text to analyze..."
+                activeModal === "json" ? '{"paste": "在这里粘贴 JSON"}' :
+                activeModal === "base64" ? "输入要编码或解码的文本" :
+                "粘贴要分析的文本..."
               }
               className="w-full h-28 bg-term-black border border-term-line rounded p-3 text-sm text-term-white font-mono resize-none outline-none focus:border-term-cyan transition-colors"
               spellCheck={false}
@@ -365,22 +463,22 @@ export default function BootTerminal() {
             <div className="flex gap-2">
               {activeModal === "json" && (
                 <button onClick={() => runJsonFormat(modalInput)} className="px-3 py-1.5 bg-term-line text-term-white text-xs rounded hover:bg-term-cyan/20 transition-colors">
-                  format & validate
+                  格式化并校验
                 </button>
               )}
               {activeModal === "base64" && (
                 <>
                   <button onClick={() => runBase64(modalInput, "encode")} className="px-3 py-1.5 bg-term-line text-term-white text-xs rounded hover:bg-term-cyan/20 transition-colors">
-                    encode
+                    编码
                   </button>
                   <button onClick={() => runBase64(modalInput, "decode")} className="px-3 py-1.5 bg-term-line text-term-white text-xs rounded hover:bg-term-cyan/20 transition-colors">
-                    decode
+                    解码
                   </button>
                 </>
               )}
               {activeModal === "wordcount" && (
                 <button onClick={() => runWordCount(modalInput)} className="px-3 py-1.5 bg-term-line text-term-white text-xs rounded hover:bg-term-cyan/20 transition-colors">
-                  analyze
+                  分析
                 </button>
               )}
               {modalOutput && (
@@ -388,7 +486,7 @@ export default function BootTerminal() {
                   onClick={() => { navigator.clipboard?.writeText(modalOutput) }}
                   className="ml-auto px-3 py-1.5 text-term-gray text-xs hover:text-term-cyan transition-colors"
                 >
-                  [copy]
+                  [复制]
                 </button>
               )}
             </div>
@@ -410,7 +508,7 @@ export default function BootTerminal() {
       onKeyDown={handleGlobalKey}
       tabIndex={-1}
       dir="ltr"
-      lang="en"
+      lang="zh-CN"
     >
       {/* ── Terminal Chrome ─────────────────────────────────────── */}
       <div className="flex items-center justify-between px-4 py-2.5 border-b border-term-line bg-term-black text-xs uppercase tracking-[0.14em] text-term-gray">
@@ -447,36 +545,45 @@ export default function BootTerminal() {
               {siteConfig.tagline}
             </div>
             <div className="text-term-gray text-xs mb-1">
-              type{" "}
-              <button onClick={() => execCommand("help")} className="text-term-cyan font-bold hover:underline cursor-pointer">help</button>
-              {" "}for commands ·{" "}
-              <button onClick={() => execCommand("theme")} className="text-term-cyan font-bold hover:underline cursor-pointer">theme</button>
-              {" "}to switch colors
+              输入{" "}
+              <button onClick={() => execCommand("help")} className="text-term-cyan font-bold hover:underline cursor-pointer">/help</button>
+              {" "}查看命令 ·{" "}
+              <button onClick={() => execCommand("theme")} className="text-term-cyan font-bold hover:underline cursor-pointer">/theme</button>
+              {" "}切换颜色
             </div>
             <div className="text-term-gray text-xs mb-1">
-              site tools{" "}
+              站点工具{" "}
               {["tools", "split", "short", "qr", "wa", "event", "image", "sharecard"].map((cmd, i) => (
                 <span key={cmd}>
                   {i > 0 && " · "}
-                  <button onClick={() => execCommand(cmd)} className="text-term-cyan hover:underline cursor-pointer">{cmd}</button>
+                  <button onClick={() => execCommand(cmd)} className="text-term-cyan hover:underline cursor-pointer">/{cmd}</button>
                 </span>
               ))}
             </div>
             <div className="text-term-gray text-xs mb-1">
-              terminal tools{" "}
+              终端工具{" "}
               {["json", "base64", "wordcount", "uuid", "epoch"].map((cmd, i) => (
                 <span key={cmd}>
                   {i > 0 && " · "}
-                  <button onClick={() => execCommand(cmd)} className="text-term-cyan hover:underline cursor-pointer">{cmd}</button>
+                  <button onClick={() => execCommand(cmd)} className="text-term-cyan hover:underline cursor-pointer">/{cmd}</button>
                 </span>
               ))}
             </div>
             <div className="text-term-gray text-xs mb-2">
-              play{" "}
+              游戏{" "}
               {["type", "stars", "map", "snake", "pokedex", "dashboard"].map((cmd, i) => (
                 <span key={cmd}>
                   {i > 0 && " · "}
-                  <button onClick={() => execCommand(cmd)} className="text-term-cyan hover:underline cursor-pointer">{cmd}</button>
+                  <button onClick={() => execCommand(cmd)} className="text-term-cyan hover:underline cursor-pointer">/{cmd}</button>
+                </span>
+              ))}
+            </div>
+            <div className="text-term-gray text-xs mb-2">
+              AI 助手{" "}
+              {["agnes", "chat"].map((cmd, i) => (
+                <span key={cmd}>
+                  {i > 0 && " · "}
+                  <button onClick={() => execCommand(cmd)} className="text-term-cyan hover:underline cursor-pointer">/{cmd}</button>
                 </span>
               ))}
             </div>
@@ -484,16 +591,38 @@ export default function BootTerminal() {
         )}
 
         {/* Command Output */}
-        {output.map((line, i) => (
-          <div key={`out-${i}`} className={COLOR_MAP[line.color] || "text-term-white"}>
-            {line.text || "\u00A0"}
+        {output.map((line, i) => {
+          const agnesTurn = line.kind === "agnes-prompt" && line.agnesId
+            ? agnesTurns.find((turn) => turn.id === line.agnesId)
+            : undefined
+          return (
+            <div key={`out-${i}`} className={COLOR_MAP[line.color] || "text-term-white"}>
+              {line.text || "\u00A0"}
+              {agnesTurn?.response && (
+                <div className="mt-1 border-l-2 border-term-cyan/50 pl-3 text-term-cyan">
+                  <span className="mr-2 text-term-gray">agnes&gt;</span>
+                  <AiResponseRenderer content={agnesTurn.response.blocks?.length ? agnesTurn.response.blocks : agnesTurn.response.content} />
+                </div>
+              )}
+            </div>
+          )
+        })}
+        {agnesLoading && (
+          <div className="mt-2 text-term-gray" aria-live="polite">
+            <span className="mr-2 text-term-green">agnes&gt;</span>
+            正在思考<span className="animate-pulse">...</span>
           </div>
-        ))}
+        )}
+        {agnesError && (
+          <div className="mt-2 border-l-2 border-[#E5C07B] pl-3 text-[#E5C07B]" role="alert">
+            {agnesError}
+          </div>
+        )}
 
         {/* Help Menu (pop-out) */}
         {showHelp && (
           <div className="my-2 border border-term-line bg-term-black rounded-lg p-4">
-            <div className="text-term-white text-xs uppercase tracking-[0.14em] mb-3">available commands</div>
+            <div className="text-term-white text-xs uppercase tracking-[0.14em] mb-3">可用命令</div>
             <div className="grid gap-0.5">
               {COMMANDS.map((c) => (
                 <button
@@ -502,7 +631,7 @@ export default function BootTerminal() {
                   className="flex items-center gap-3 text-sm py-1 px-2 rounded hover:bg-term-line/50 transition-colors text-left"
                 >
                   <span className="w-5 text-center">{c.icon}</span>
-                  <span className="text-term-cyan w-20 font-bold">{c.cmd}</span>
+                  <span className="text-term-cyan w-20 font-bold">/{c.cmd}</span>
                   <span className="text-term-gray">{c.desc}</span>
                 </button>
               ))}
@@ -519,7 +648,13 @@ export default function BootTerminal() {
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              onKeyDown={(e) => { if (e.key === "Enter") execCommand(input) }}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  e.preventDefault()
+                  submitInput()
+                }
+              }}
+              placeholder="输入问题与 Agnes 对话，或使用 /help 查看命令"
               className="flex-1 bg-transparent text-term-white outline-none caret-term-white text-sm"
               autoFocus
               spellCheck={false}

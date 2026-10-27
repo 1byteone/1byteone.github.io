@@ -224,21 +224,21 @@ export default function TypingGame({ onClose }: TypingGameProps) {
       <div className="absolute inset-0 z-20 flex items-center justify-center bg-[var(--term-black)]/80 backdrop-blur-sm">
         <div className="w-full max-w-lg border border-[var(--term-line)] bg-[var(--term-darker)] rounded-xl overflow-hidden shadow-2xl mx-4 animate-in fade-in zoom-in-95 duration-200">
           <div className="flex items-center justify-between px-5 py-3 border-b border-[var(--term-line)]">
-            <span className="text-[var(--term-white)] text-xs uppercase tracking-[0.14em]">Typing Speed Test</span>
+            <span className="text-[var(--term-white)] text-xs uppercase tracking-[0.14em]">打字速度测试</span>
             <button onClick={onClose} className="text-[var(--term-gray)] hover:text-[var(--term-white)] text-xs">[esc]</button>
           </div>
           <div className="p-6 space-y-5">
             {personalBest > 0 && (
               <div className="text-center text-xs text-[var(--term-gray)]">
-                Personal Best: <span className="text-[var(--term-cyan)] font-bold">{personalBest} WPM</span>
+                个人最佳：<span className="text-[var(--term-cyan)] font-bold">{personalBest} WPM</span>
               </div>
             )}
 
             {/* Mode */}
             <div className="space-y-2">
-              <div className="text-[10px] uppercase tracking-widest text-[var(--term-gray)]">Mode</div>
+              <div className="text-[10px] uppercase tracking-widest text-[var(--term-gray)]">模式</div>
               <div className="flex gap-2">
-                {([["quote", "Quote"], ["timed", "Timed"], ["words", "Words"]] as const).map(([key, label]) => (
+                {([["quote", "名言"], ["timed", "计时"], ["words", "单词"]] as const).map(([key, label]) => (
                   <button
                     key={key}
                     onClick={() => setMode(key)}
@@ -257,7 +257,7 @@ export default function TypingGame({ onClose }: TypingGameProps) {
             {/* Time duration (only for timed) */}
             {mode === "timed" && (
               <div className="space-y-2">
-                <div className="text-[10px] uppercase tracking-widest text-[var(--term-gray)]">Duration</div>
+                <div className="text-[10px] uppercase tracking-widest text-[var(--term-gray)]">时长</div>
                 <div className="flex gap-2">
                   {([15, 30, 60] as const).map((t) => (
                     <button
@@ -278,9 +278,9 @@ export default function TypingGame({ onClose }: TypingGameProps) {
 
             {/* Difficulty */}
             <div className="space-y-2">
-              <div className="text-[10px] uppercase tracking-widest text-[var(--term-gray)]">Difficulty</div>
+              <div className="text-[10px] uppercase tracking-widest text-[var(--term-gray)]">难度</div>
               <div className="flex gap-2">
-                {([["normal", "Normal"], ["strict", "Strict"], ["blind", "Blind"]] as const).map(([key, label]) => (
+                {([["normal", "标准"], ["strict", "严格"], ["blind", "盲打"]] as const).map(([key, label]) => (
                   <button
                     key={key}
                     onClick={() => setDifficulty(key)}
@@ -295,9 +295,9 @@ export default function TypingGame({ onClose }: TypingGameProps) {
                 ))}
               </div>
               <div className="text-[10px] text-[var(--term-gray)]">
-                {difficulty === "normal" && "Standard typing with backspace allowed"}
-                {difficulty === "strict" && "No backspace — every keystroke counts"}
-                {difficulty === "blind" && "No error highlighting — type by feel"}
+                {difficulty === "normal" && "允许使用退格键的标准模式"}
+                {difficulty === "strict" && "不允许退格键，每次按键都会计入"}
+                {difficulty === "blind" && "不显示错误提示，凭感觉输入"}
               </div>
             </div>
 
@@ -305,7 +305,7 @@ export default function TypingGame({ onClose }: TypingGameProps) {
               onClick={initGame}
               className="w-full py-3 bg-[var(--term-cyan)] text-[var(--term-black)] rounded-lg text-sm font-bold uppercase tracking-wider hover:opacity-90 transition-opacity"
             >
-              Start Test
+              开始测试
             </button>
           </div>
         </div>
@@ -319,7 +319,7 @@ export default function TypingGame({ onClose }: TypingGameProps) {
         {/* Header */}
         <div className="flex items-center justify-between px-5 py-3 border-b border-[var(--term-line)]">
           <span className="text-[var(--term-white)] text-xs uppercase tracking-[0.14em]">
-            Typing — {mode === "timed" ? `${timeDuration}s` : mode} · {difficulty}
+            打字测试 · {mode === "timed" ? `${timeDuration}s` : mode} · {difficulty}
           </span>
           <div className="flex items-center gap-4 text-xs">
             {started && !finished && mode === "timed" && (
@@ -363,7 +363,7 @@ export default function TypingGame({ onClose }: TypingGameProps) {
               onChange={handleInput}
               onKeyDown={(e) => { if (e.key === "Escape") onClose() }}
               className="w-full bg-[var(--term-black)] border border-[var(--term-line)] rounded-lg px-4 py-3 text-sm text-[var(--term-white)] font-mono outline-none focus:border-[var(--term-cyan)] transition-colors"
-              placeholder="start typing..."
+              placeholder="开始输入..."
               autoFocus
               spellCheck={false}
               autoComplete="off"
@@ -377,35 +377,35 @@ export default function TypingGame({ onClose }: TypingGameProps) {
                 </div>
                 <div className="text-center rounded-lg bg-[var(--term-black)] border border-[var(--term-line)] p-3">
                   <div className="text-2xl font-bold text-[var(--term-green)]">{accuracy}%</div>
-                  <div className="text-[10px] uppercase tracking-widest text-[var(--term-gray)] mt-1">Accuracy</div>
+                  <div className="text-[10px] uppercase tracking-widest text-[var(--term-gray)] mt-1">准确率</div>
                 </div>
                 <div className="text-center rounded-lg bg-[var(--term-black)] border border-[var(--term-line)] p-3">
                   <div className="text-2xl font-bold text-[var(--term-white)]">{elapsed.toFixed(1)}s</div>
-                  <div className="text-[10px] uppercase tracking-widest text-[var(--term-gray)] mt-1">Time</div>
+                  <div className="text-[10px] uppercase tracking-widest text-[var(--term-gray)] mt-1">用时</div>
                 </div>
                 <div className="text-center rounded-lg bg-[var(--term-black)] border border-[var(--term-line)] p-3">
                   <div className="text-2xl font-bold text-[var(--term-cyan)]">{personalBest}</div>
-                  <div className="text-[10px] uppercase tracking-widest text-[var(--term-gray)] mt-1">Best</div>
+                  <div className="text-[10px] uppercase tracking-widest text-[var(--term-gray)] mt-1">最佳</div>
                 </div>
               </div>
 
               {/* WPM sparkline */}
               {wpmHistory.length > 1 && (
                 <div className="rounded-lg bg-[var(--term-black)] border border-[var(--term-line)] p-3">
-                  <div className="text-[10px] uppercase tracking-widest text-[var(--term-gray)] mb-2">WPM Over Time</div>
+                  <div className="text-[10px] uppercase tracking-widest text-[var(--term-gray)] mb-2">WPM 变化</div>
                   {renderSparkline()}
                 </div>
               )}
 
               <div className="flex gap-2">
                 <button onClick={initGame} className="flex-1 py-2.5 bg-[var(--term-cyan)] text-[var(--term-black)] rounded-lg text-xs font-bold uppercase tracking-wider hover:opacity-90 transition-opacity">
-                  Try Again
+                  再试一次
                 </button>
                 <button onClick={() => setShowConfig(true)} className="px-4 py-2.5 bg-[var(--term-line)] text-[var(--term-gray)] rounded-lg text-xs uppercase tracking-wider hover:text-[var(--term-white)] transition-colors">
-                  Settings
+                  设置
                 </button>
                 <button onClick={onClose} className="px-4 py-2.5 bg-[var(--term-line)] text-[var(--term-gray)] rounded-lg text-xs uppercase tracking-wider hover:text-[var(--term-white)] transition-colors">
-                  Close
+                  关闭
                 </button>
               </div>
             </div>
@@ -415,8 +415,8 @@ export default function TypingGame({ onClose }: TypingGameProps) {
           {started && !finished && (
             <div className="flex items-center gap-6 text-xs text-[var(--term-gray)]">
               <span>WPM: <span className="text-[var(--term-cyan)] tabular-nums">{elapsed > 0 ? Math.round((typed.split(" ").filter(Boolean).length / (elapsed / 60))) : 0}</span></span>
-              <span>Accuracy: <span className="text-[var(--term-green)] tabular-nums">{accuracy}%</span></span>
-              <span>Errors: <span className={errors > 0 ? "text-red-400" : "text-[var(--term-green)]"}>{errors}</span></span>
+              <span>准确率：<span className="text-[var(--term-green)] tabular-nums">{accuracy}%</span></span>
+              <span>错误：<span className={errors > 0 ? "text-red-400" : "text-[var(--term-green)]"}>{errors}</span></span>
               <span className="ml-auto">{typed.length}/{quote.length}</span>
               <div className="w-20">{renderSparkline()}</div>
             </div>

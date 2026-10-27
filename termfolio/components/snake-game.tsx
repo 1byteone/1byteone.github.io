@@ -225,16 +225,16 @@ export default function SnakeGame({ onClose }: SnakeGameProps) {
       <div className="w-full max-w-2xl border border-[var(--term-line)] bg-[var(--term-darker)] rounded-xl overflow-hidden shadow-2xl mx-4 animate-in fade-in zoom-in-95 duration-200">
         {/* Header */}
         <div className="flex items-center justify-between px-5 py-3 border-b border-[var(--term-line)]">
-          <span className="text-[var(--term-white)] text-xs uppercase tracking-[0.14em]">Snake</span>
+          <span className="text-[var(--term-white)] text-xs uppercase tracking-[0.14em]">贪吃蛇</span>
           <div className="flex items-center gap-4 text-xs">
             <span className="text-[var(--term-gray)] tabular-nums">
-              Score: <span className="text-[var(--term-cyan)]">{score}</span>
+              得分：<span className="text-[var(--term-cyan)]">{score}</span>
             </span>
             <span className="text-[var(--term-gray)] tabular-nums">
-              Best: <span className="text-[var(--term-green)]">{highScore}</span>
+              最高分：<span className="text-[var(--term-green)]">{highScore}</span>
             </span>
             <span className="text-[var(--term-gray)] tabular-nums">
-              Speed: <span className="text-[var(--term-white)]">{speedLevel}</span>
+              速度：<span className="text-[var(--term-white)]">{speedLevel}</span>
             </span>
             <button onClick={onClose} className="text-[var(--term-gray)] hover:text-[var(--term-white)] text-xs">
               [esc]
@@ -293,23 +293,23 @@ export default function SnakeGame({ onClose }: SnakeGameProps) {
             {/* Overlay messages */}
             {gameState === "waiting" && (
               <div className="absolute inset-0 flex flex-col items-center justify-center bg-[var(--term-black)]/60">
-                <p className="text-[var(--term-white)] text-sm font-mono mb-1">Press any key to start</p>
-                <p className="text-[var(--term-gray)] text-xs font-mono">Arrow keys or WASD to move</p>
+                <p className="text-[var(--term-white)] text-sm font-mono mb-1">按任意键开始</p>
+                <p className="text-[var(--term-gray)] text-xs font-mono">方向键或 WASD 移动</p>
               </div>
             )}
 
             {gameState === "gameover" && (
               <div className="absolute inset-0 flex flex-col items-center justify-center bg-[var(--term-black)]/70 gap-3">
-                <p className="text-red-400 text-sm font-mono uppercase tracking-wider">Game Over</p>
+                <p className="text-red-400 text-sm font-mono uppercase tracking-wider">游戏结束</p>
                 <div className="flex gap-6 text-xs font-mono">
                   <span className="text-[var(--term-gray)]">
-                    Score: <span className="text-[var(--term-cyan)]">{score}</span>
+                    得分：<span className="text-[var(--term-cyan)]">{score}</span>
                   </span>
                   <span className="text-[var(--term-gray)]">
-                    Best: <span className="text-[var(--term-green)]">{highScore}</span>
+                    最高分：<span className="text-[var(--term-green)]">{highScore}</span>
                   </span>
                 </div>
-                <p className="text-[var(--term-gray)] text-xs font-mono mt-1">Press R to restart</p>
+                <p className="text-[var(--term-gray)] text-xs font-mono mt-1">按 R 重新开始</p>
               </div>
             )}
           </div>
@@ -317,8 +317,8 @@ export default function SnakeGame({ onClose }: SnakeGameProps) {
           {/* Controls hint */}
           {gameState === "playing" && (
             <div className="flex gap-6 text-xs text-[var(--term-gray)] font-mono">
-              <span>Direction: <span className="text-[var(--term-white)]">{direction}</span></span>
-              <span>Length: <span className="text-[var(--term-cyan)] tabular-nums">{snake.length}</span></span>
+              <span>方向：<span className="text-[var(--term-white)]">{direction}</span></span>
+              <span>长度：<span className="text-[var(--term-cyan)] tabular-nums">{snake.length}</span></span>
             </div>
           )}
         </div>

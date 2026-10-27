@@ -1,8 +1,8 @@
 ---
 status: published
-title: "LangChain Core Architecture: Runnables, Models, and Composable Chains"
+title: "LangChain 核心架构：Runnables、Models 与可组合 Chain"
 date: 2026-08-21
-excerpt: "Understand how LangChain composes prompts, models, parsers, and Runnable stages into testable AI workflows."
+excerpt: "理解 LangChain 如何将 Prompt、Model、Parser 与 Runnable 阶段组合为可测试的 AI 工作流。"
 tags:
   - AI
   - LangChain

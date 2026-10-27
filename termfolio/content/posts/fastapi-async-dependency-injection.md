@@ -1,8 +1,8 @@
 ---
 status: published
-title: "FastAPI Async and Dependency Injection: Keep the Event Loop Healthy"
+title: "FastAPI 异步与依赖注入：保持事件循环健康"
 date: 2026-08-21
-excerpt: "Understand async/sync boundaries, pool lifecycles, dependency scopes, and concurrency control in FastAPI."
+excerpt: "理解 FastAPI 中的 async/sync 边界、连接池生命周期、依赖作用域与并发控制。"
 tags:
   - FastAPI
   - Async Python

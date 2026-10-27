@@ -1,8 +1,8 @@
 ---
 status: published
-title: "LangChain Tool-Calling Agents: Separate Decisions from Execution"
+title: "LangChain Tool-Calling Agent：分离决策与执行"
 date: 2026-08-21
-excerpt: "Design controllable agents with explicit tool schemas, decision loops, execution boundaries, and error recovery."
+excerpt: "通过明确的工具 Schema、决策循环、执行边界与错误恢复，设计可控的 Agent。"
 tags:
   - AI
   - Agent

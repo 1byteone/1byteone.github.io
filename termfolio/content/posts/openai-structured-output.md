@@ -1,8 +1,8 @@
 ---
 status: published
-title: "OpenAI Structured Outputs: Make Model Results Verifiable"
+title: "OpenAI Structured Outputs：让模型结果可验证"
 date: 2026-08-21
-excerpt: "Constrain model output with JSON Schema and Pydantic while handling refusals, parse failures, and schema evolution."
+excerpt: "使用 JSON Schema 与 Pydantic 约束模型输出，并处理拒答、解析失败和 Schema 演进。"
 tags:
   - AI
   - OpenAI API

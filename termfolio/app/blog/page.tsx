@@ -5,33 +5,35 @@ import SearchPosts from "@/components/search-posts"
 import TerminalFooter from "@/components/terminal-footer"
 import { getAllPosts } from "@/lib/posts"
 import JournalClient from "@/components/journal-client"
+import BitmapIllustrations from "@/components/bitmap-illustrations"
 import { siteConfig } from "@/content/site"
 
 export const metadata: Metadata = {
-  title: `Journal — ${siteConfig.name}`,
-  description: `${siteConfig.name}'s journal on strategy, technology, and digital transformation.`,
+  title: `技术文章 — ${siteConfig.name}`,
+  description: `${siteConfig.name} 关于工程实践、AI 应用与后端系统的技术文章。`,
   openGraph: {
-    title: `Journal — ${siteConfig.name}`,
-    description: `${siteConfig.name}'s journal on strategy, technology, and digital transformation.`,
+    title: `技术文章 — ${siteConfig.name}`,
+    description: `${siteConfig.name} 关于工程实践、AI 应用与后端系统的技术文章。`,
     url: `${siteConfig.siteUrl}/blog`,
     siteName: siteConfig.name,
     type: "website",
   },
   twitter: {
     card: "summary",
-    title: `Journal — ${siteConfig.name}`,
-    description: `${siteConfig.name}'s journal on strategy, technology, and digital transformation.`,
+    title: `技术文章 — ${siteConfig.name}`,
+    description: `${siteConfig.name} 关于工程实践、AI 应用与后端系统的技术文章。`,
   },
 }
 
 interface BlogPageProps {
-  searchParams?: Promise<{ q?: string }>
+  searchParams?: Promise<{ q?: string; lang?: string }>
 }
 
 export default async function BlogPage({ searchParams }: BlogPageProps) {
   const resolvedSearchParams = searchParams ? await searchParams : undefined
   const query = resolvedSearchParams?.q?.trim().toLowerCase() ?? ""
-  const allPosts = await getAllPosts()
+  const language = resolvedSearchParams?.lang === "en" ? "en" : "zh"
+  const allPosts = await getAllPosts(language)
 
   const posts = query
     ? allPosts.filter((post) => {
@@ -48,23 +50,35 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
       <main className="flex-grow pt-24 pb-12">
         <div className="container mx-auto px-4 max-w-6xl">
           <Link href="/" className="mb-8 inline-flex items-center gap-2 text-[var(--term-gray)] transition-colors hover:text-[var(--term-cyan)]">
-            ← back to home
+            ← 返回首页
           </Link>
 
           {/* Header */}
           <div className="mb-8 space-y-4">
             <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-[var(--term-white)]">
-              Journal
+              技术文章
             </h1>
             <p className="text-lg leading-relaxed text-[var(--term-gray)] max-w-2xl">
-              Thoughts on strategy, technology, digital transformation, and the craft of making complicated things feel clear.
+              记录 AI 应用、后端工程与技术实践，让复杂系统变得清晰可验证。
             </p>
-            <SearchPosts locale="en" />
+            <div className="flex flex-wrap items-center gap-3">
+              <SearchPosts locale="en" />
+              <Link
+                href={language === "zh" ? "/blog?lang=en" : "/blog"}
+                className="rounded border border-[var(--term-line)] px-3 py-2 text-xs text-[var(--term-gray)] transition-colors hover:border-[var(--term-cyan)] hover:text-[var(--term-cyan)]"
+              >
+                {language === "zh" ? "English" : "中文"}
+              </Link>
+            </div>
           </div>
 
           {/* Client-side interactive section */}
           <div className="space-y-6">
             <JournalClient posts={posts} locale="en" />
+          </div>
+
+          <div className="mt-14 border-t border-[var(--term-line)] pt-8">
+            <BitmapIllustrations />
           </div>
         </div>
       </main>

@@ -8,11 +8,11 @@ import { localeCopy } from "@/content/locale"
 import { siteConfig } from "@/content/site"
 
 export const metadata: Metadata = {
-  title: `Bill Splitter — ${siteConfig.name}`,
-  description: "Split a bill with service charge and tax, no login required.",
+  title: `账单分摊 — ${siteConfig.name}`,
+  description: "分摊账单并计算服务费和税费，无需登录。",
   openGraph: {
-    title: `Bill Splitter — ${siteConfig.name}`,
-    description: "Split a bill with service charge and tax, no login required.",
+    title: `账单分摊 — ${siteConfig.name}`,
+    description: "分摊账单并计算服务费和税费，无需登录。",
     url: `${siteConfig.siteUrl}/tools/splitter`,
     siteName: siteConfig.name,
     type: "website",

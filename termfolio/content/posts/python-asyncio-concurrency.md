@@ -1,8 +1,8 @@
 ---
 status: published
-title: "Python asyncio & Concurrency"
+title: "Python asyncio 与并发"
 date: 2026-08-21
-excerpt: "A scenario-driven guide to Python asyncio & Concurrency, including boundaries, failure paths, and production trade-offs."
+excerpt: "从实际场景出发，理解 Python asyncio 与并发的边界条件、故障路径和生产环境取舍。"
 tags:
   - Python
   - Asyncio

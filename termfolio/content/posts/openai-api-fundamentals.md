@@ -1,8 +1,8 @@
 ---
 status: published
-title: "OpenAI API Fundamentals: Requests, Messages, Parameters, and Reliability"
+title: "OpenAI API 基础：请求、消息、参数与可靠性"
 date: 2026-08-21
-excerpt: "Build a reliable model API foundation with client setup, message structure, timeouts, retries, and cost controls."
+excerpt: "从客户端配置、消息结构、超时、重试与成本控制入手，搭建可靠的模型 API 基础。"
 tags:
   - AI
   - OpenAI API

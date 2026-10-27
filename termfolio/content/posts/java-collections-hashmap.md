@@ -1,8 +1,8 @@
 ---
 status: published
-title: "Java Collections & HashMap Internals"
+title: "Java 集合与 HashMap 内部实现"
 date: 2026-08-21
-excerpt: "A scenario-driven guide to Java Collections & HashMap Internals, including boundaries, failure paths, and production trade-offs."
+excerpt: "从实际场景出发，解析 Java 集合与 HashMap 的内部实现、边界条件、故障路径和生产环境取舍。"
 tags:
   - Java
   - Collections

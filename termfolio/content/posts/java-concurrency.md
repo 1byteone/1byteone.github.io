@@ -1,8 +1,8 @@
 ---
 status: published
-title: "Java Concurrency Model"
+title: "Java 并发模型"
 date: 2026-08-21
-excerpt: "A scenario-driven guide to Java Concurrency Model, including boundaries, failure paths, and production trade-offs."
+excerpt: "从实际场景出发，理解 Java 并发模型的边界条件、故障路径和生产环境取舍。"
 tags:
   - Java
   - Concurrency

@@ -39,7 +39,7 @@ export default function SearchPosts({ locale = "en" }: { locale?: Locale }) {
         <input
           id="search-posts"
           type="search"
-          aria-label="Search blog posts"
+          aria-label="搜索技术文章"
           placeholder={copy.blog.searchPlaceholder}
           value={searchQuery}
           onChange={(event) => setSearchQuery(event.target.value)}

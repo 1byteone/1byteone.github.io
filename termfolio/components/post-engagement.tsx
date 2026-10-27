@@ -69,7 +69,7 @@ export default function PostEngagement({ slug, locale = "en" }: PostEngagementPr
         {/* Views */}
         <span className="flex items-center gap-1.5 text-[var(--term-gray)]">
           <span>👁</span>
-          <span>{views.toLocaleString(locale === "ar" ? "ar-SA" : "en-US")} {locale === "ar" ? "قراءة" : "reads"}</span>
+          <span>{views.toLocaleString(locale === "ar" ? "ar-SA" : "zh-CN")} {locale === "ar" ? "قراءة" : "次阅读"}</span>
         </span>
 
         {/* Likes */}
@@ -80,7 +80,7 @@ export default function PostEngagement({ slug, locale = "en" }: PostEngagementPr
           }`}
         >
           <span>{liked ? "♥" : "♡"}</span>
-          <span>{likes > 0 ? likes.toLocaleString(locale === "ar" ? "ar-SA" : "en-US") : ""} {locale === "ar" ? "إعجاب" : likes === 1 ? "like" : likes > 1 ? "likes" : "like"}</span>
+          <span>{likes > 0 ? likes.toLocaleString(locale === "ar" ? "ar-SA" : "zh-CN") : ""} {locale === "ar" ? "إعجاب" : "次点赞"}</span>
         </button>
       </div>
 
@@ -90,7 +90,7 @@ export default function PostEngagement({ slug, locale = "en" }: PostEngagementPr
         className="flex items-center gap-1.5 text-[var(--term-gray)] hover:text-[var(--term-cyan)] transition-colors"
       >
         <span>↗</span>
-        <span>{copied ? (locale === "ar" ? "تم النسخ" : "copied!") : locale === "ar" ? "مشاركة" : "share"}</span>
+        <span>{copied ? (locale === "ar" ? "تم النسخ" : "已复制") : locale === "ar" ? "مشاركة" : "分享"}</span>
       </button>
     </div>
   )

@@ -1,8 +1,8 @@
 ---
 status: published
-title: "Building AI Agents with LangChain: Tool Integration and Multi-Turn Conversations"
+title: "使用 LangChain 构建 AI Agent：工具集成与多轮对话"
 date: 2026-07-10
-excerpt: "Learn how to build intelligent AI agents using LangChain, including tool integration, memory management, and multi-turn conversation support"
+excerpt: "学习使用 LangChain 构建 AI Agent，覆盖工具集成、记忆管理与多轮对话支持。"
 tags:
   - AI
   - Agent

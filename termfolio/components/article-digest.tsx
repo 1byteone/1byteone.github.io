@@ -54,6 +54,13 @@ function stripMarkdown(markdown: string) {
     .replace(/`([^`]+)`/g, "$1")
     .replace(/^#{1,6}\s+/gm, "")
     .replace(/^>\s?/gm, "")
+    // Digest cards are plain text, so remove Markdown delimiters after the
+    // structural markers have been stripped. Keep the enclosed words.
+    .replace(/\*\*|__/g, "")
+    .replace(/~~/g, "")
+    .replace(/(^|[\s([{])[*_](?=\S)/gm, "$1")
+    .replace(/[*_](?=[\s),.!?:;]|$)/gm, "")
+    .replace(/^\s*[-*+]\s+\[[ xX]\]\s*/gm, "")
     .replace(/^[\s-*+\d.)]+/gm, "")
     .replace(/\|/g, " ")
     .replace(/\s+/g, " ")
@@ -181,7 +188,7 @@ export default function ArticleDigest({ post, locale = "en" }: ArticleDigestProp
           </p>
         </div>
         <div className="rounded-md border border-term-line bg-term-black px-3 py-2 text-xs leading-6 text-term-gray">
-          <span dir="ltr">{post.readingTime} min</span> {copy.digest.fullRead}
+          <span dir="ltr">{post.readingTime} 分钟</span> {copy.digest.fullRead}
           <br />
           <span dir="ltr">~{savedMinutes} min</span> {copy.digest.savedTime}
         </div>
@@ -227,7 +234,7 @@ export default function ArticleDigest({ post, locale = "en" }: ArticleDigestProp
       </div>
       <div className="mt-4 flex items-center gap-2 text-xs leading-6 text-term-gray">
         <BookOpen className="h-4 w-4 text-term-cyan" />
-        <span>{locale === "ar" ? "الخلاصة مولّدة من نص المقال نفسه، لا من خدمة خارجية." : "Digest generated from the post text itself, not an external service."}</span>
+        <span>{locale === "ar" ? "الخلاصة مولّدة من نص المقال نفسه، لا من خدمة خارجية." : "摘要直接根据文章内容生成，不依赖外部服务。"}</span>
       </div>
     </section>
   )

@@ -5,7 +5,7 @@ import KnowledgeGraph from "@/components/knowledge-graph"
 import WritingHeatmap from "@/components/writing-heatmap"
 import Link from "next/link"
 import { formatPostDate } from "@/lib/format-post-date"
-import { getLocalePath, localeCopy, type Locale } from "@/content/locale"
+import { getLocalePath, getTagLabel, localeCopy, type Locale } from "@/content/locale"
 
 interface Post {
   id: string
@@ -62,7 +62,7 @@ export default function JournalClient({ posts, locale = "en" }: { posts: Post[];
                   : "bg-[var(--term-line)] text-[var(--term-gray)] hover:text-[var(--term-white)]"
               }`}
             >
-              {tag} <span className="opacity-60 ml-0.5">({count})</span>
+              {getTagLabel(tag, locale)} <span className="opacity-60 ml-0.5">({count})</span>
             </button>
           ))}
           <button
@@ -87,7 +87,7 @@ export default function JournalClient({ posts, locale = "en" }: { posts: Post[];
                   <img
                     src={featured.coverImage}
                     alt={featured.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="w-full h-full object-contain bg-[var(--term-black)] p-5 transition-transform duration-700 group-hover:scale-105"
                   />
                 ) : (
                   <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-[var(--term-darker)] to-[var(--term-black)]">
@@ -106,7 +106,7 @@ export default function JournalClient({ posts, locale = "en" }: { posts: Post[];
                 <div className="flex flex-wrap gap-2 mb-3">
                   {featured.tags.map((tag) => (
                     <span key={tag} className="text-[10px] uppercase tracking-[0.12em] px-2 py-0.5 rounded-full bg-[var(--term-line)] text-[var(--term-cyan)]">
-                      {tag}
+                      {getTagLabel(tag, locale)}
                     </span>
                   ))}
                 </div>
@@ -119,7 +119,7 @@ export default function JournalClient({ posts, locale = "en" }: { posts: Post[];
                 <div className="flex items-center gap-4 text-[11px] uppercase tracking-[0.12em] text-[var(--term-gray)] mt-auto">
                   <span>{formatPostDate(featured.date, locale)}</span>
                   <span>·</span>
-                  <span>{featured.readingTime} min read</span>
+                  <span>阅读约 {featured.readingTime} 分钟</span>
                   <span className="ml-auto text-[var(--term-cyan)] group-hover:translate-x-1 transition-transform">
                     {copy.blog.read} →
                   </span>
@@ -146,7 +146,7 @@ export default function JournalClient({ posts, locale = "en" }: { posts: Post[];
                     <img
                       src={post.coverImage}
                       alt={post.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 opacity-90 group-hover:opacity-100"
+                      className="w-full h-full object-contain bg-[var(--term-black)] p-4 transition-transform duration-500 group-hover:scale-105 opacity-90 group-hover:opacity-100"
                       loading="lazy"
                     />
                   ) : (
@@ -157,7 +157,7 @@ export default function JournalClient({ posts, locale = "en" }: { posts: Post[];
                     </div>
                   )}
                   <div className="absolute top-2 right-2 bg-[var(--term-black)]/80 backdrop-blur-sm px-2 py-0.5 rounded-full text-[10px] text-[var(--term-gray)]">
-                    {post.readingTime} min
+                    {post.readingTime} 分钟
                   </div>
                 </div>
 
@@ -166,7 +166,7 @@ export default function JournalClient({ posts, locale = "en" }: { posts: Post[];
                   <div className="flex flex-wrap gap-1.5">
                     {post.tags.slice(0, 2).map((tag) => (
                       <span key={tag} className="text-[10px] uppercase tracking-[0.1em] px-2 py-0.5 rounded-full bg-[var(--term-line)] text-[var(--term-cyan)]">
-                        {tag}
+                        {getTagLabel(tag, locale)}
                       </span>
                     ))}
                   </div>
@@ -207,8 +207,8 @@ export default function JournalClient({ posts, locale = "en" }: { posts: Post[];
             <WritingHeatmap posts={posts} />
           </div>
           <div className="md:hidden border border-term-line bg-term-darker p-3">
-            <div className="text-xs uppercase tracking-[0.14em] text-term-gray mb-1">writing activity</div>
-            <div className="text-sm text-term-white">{posts.length} post{posts.length !== 1 ? "s" : ""} published</div>
+            <div className="text-xs uppercase tracking-[0.14em] text-term-gray mb-1">写作活动</div>
+            <div className="text-sm text-term-white">已发布 {posts.length} 篇文章</div>
           </div>
         </aside>
       )}

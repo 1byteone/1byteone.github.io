@@ -7,7 +7,7 @@ export function formatPostDate(value: string, locale: Locale = "en") {
     return value
   }
 
-  return date.toLocaleDateString(locale === "ar" ? "ar-SA" : "en-US", {
+  return date.toLocaleDateString(locale === "ar" ? "ar-SA" : "zh-CN", {
     year: "numeric",
     month: "short",
     day: "numeric",

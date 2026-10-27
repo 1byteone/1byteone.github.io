@@ -1,8 +1,8 @@
 ---
 status: published
-title: "Java Core Architecture"
+title: "Java 核心架构"
 date: 2026-08-21
-excerpt: "A scenario-driven guide to Java Core Architecture, including boundaries, failure paths, and production trade-offs."
+excerpt: "从实际场景出发，梳理 Java 核心架构的边界条件、故障路径和生产环境取舍。"
 tags:
   - Java
   - JVM

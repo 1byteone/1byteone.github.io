@@ -21,14 +21,14 @@ export default function NotFound() {
 
           <div className="space-y-2">
             <div className="text-xs uppercase tracking-[0.3em] text-[var(--term-gray)]">
-              file not found
+              找不到文件
             </div>
             <p className="text-sm text-[var(--term-gray)]">
               <span className="text-[var(--term-green)]">$</span>{" "}
               <span className="text-[var(--term-cyan)]">cat</span> page.md
             </p>
             <p className="text-sm text-[var(--term-amber)]">
-              error: No such file or directory
+              错误：没有这个文件或目录
             </p>
           </div>
 
@@ -43,7 +43,7 @@ export default function NotFound() {
               href="/blog"
               className="border border-[var(--term-line)] px-4 py-2 text-sm text-[var(--term-gray)] hover:text-[var(--term-white)] hover:border-[var(--term-white)] transition-colors"
             >
-              ls ./journal
+              ls ./posts
             </Link>
           </div>
         </div>

@@ -5,7 +5,7 @@ export default function Loading() {
         <div className="h-4 w-32 animate-pulse bg-[var(--term-dark)] rounded mb-8" />
         <div className="rounded-xl overflow-hidden border border-[var(--term-line)]">
           <div className="border-b border-[var(--term-line)] px-4 py-3 text-xs uppercase tracking-[0.16em] text-[var(--term-gray)]">
-            loading // personal dossier
+            正在加载 // 个人档案
           </div>
           <div className="grid gap-8 p-5 md:grid-cols-[280px_minmax(0,1fr)] md:p-6">
             <div className="space-y-4">

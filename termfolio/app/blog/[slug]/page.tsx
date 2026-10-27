@@ -12,9 +12,10 @@ import ReadingControls from "@/components/reading-controls"
 import NewsletterSignup from "@/components/newsletter-signup"
 import PostEngagement from "@/components/post-engagement"
 import ArticleDigest from "@/components/article-digest"
+import BitmapIllustrations from "@/components/bitmap-illustrations"
 import { formatPostDate } from "@/lib/format-post-date"
 import { getPostBySlug, getAllPosts } from "@/lib/posts"
-import { localeCopy } from "@/content/locale"
+import { getTagLabel, localeCopy } from "@/content/locale"
 import { siteConfig } from "@/content/site"
 
 export async function generateMetadata({
@@ -24,13 +25,13 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params
   const post = await getPostBySlug(slug)
-  if (!post) return { title: "Post Not Found" }
+  if (!post) return { title: "文章不存在" }
 
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || siteConfig.siteUrl
 
   return {
     title: `${post.title} — ${siteConfig.name}`,
-    description: post.excerpt || `Read ${post.title} on ${siteConfig.name}'s journal.`,
+    description: post.excerpt || `阅读 ${siteConfig.name} 的技术文章：${post.title}。`,
     openGraph: {
       title: post.title,
       description: post.excerpt,
@@ -56,15 +57,23 @@ export async function generateStaticParams() {
   return posts.map((post) => ({ slug: post.slug }))
 }
 
-export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
+export default async function BlogPostPage({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ slug: string }>
+  searchParams?: Promise<{ lang?: string }>
+}) {
   const { slug } = await params
-  const post = await getPostBySlug(slug)
+  const resolvedSearchParams = searchParams ? await searchParams : undefined
+  const language = resolvedSearchParams?.lang === "en" ? "en" : "zh"
+  const post = await getPostBySlug(slug, language)
 
   if (!post) {
     notFound()
   }
 
-  const allPosts = await getAllPosts()
+  const allPosts = await getAllPosts(language)
   const relatedPosts = allPosts.filter((candidate) => candidate.id !== post.id && candidate.tags.some((tag: string) => post.tags.includes(tag))).slice(0, 2)
   const copy = localeCopy.en
 
@@ -77,6 +86,12 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         <div className="container mx-auto px-3 sm:px-4 max-w-6xl">
           <Link href="/blog" className="mb-8 inline-flex items-center gap-2 text-[var(--term-gray)] transition-colors hover:text-[var(--term-cyan)]">
             ← {copy.post.back}
+          </Link>
+          <Link
+            href={language === "zh" ? `/blog/${post.slug}?lang=en` : `/blog/${post.slug}`}
+            className="mb-8 ml-4 inline-flex items-center gap-2 text-xs text-[var(--term-cyan)] transition-colors hover:text-[var(--term-white)]"
+          >
+            {language === "zh" ? "阅读 English 版本 →" : "← 阅读中文版本"}
           </Link>
 
           <article className="cli-frame overflow-hidden rounded-xl">
@@ -96,7 +111,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                         alt={post.title}
                         width={1200}
                         height={680}
-                        className="h-auto w-full object-cover"
+                        className="h-auto max-h-[32rem] w-full object-contain bg-[var(--term-black)] p-6"
                       />
                     </div>
                   )}
@@ -105,7 +120,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                   <div className="flex flex-wrap gap-2">
                     {post.tags.map((tag: string, index: number) => (
                       <span key={`${tag}-${index}`} className="text-[10px] uppercase tracking-[0.12em] px-2.5 py-1 rounded-full bg-[var(--term-line)] text-[var(--term-cyan)]">
-                        {tag}
+                        {getTagLabel(tag, "en")}
                       </span>
                     ))}
                   </div>
@@ -122,7 +137,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                   <div className="flex flex-wrap gap-4 text-xs text-[var(--term-gray)]">
                     <span>📅 {formatPostDate(post.date, "en")}</span>
                     <span>✍ {post.author}</span>
-                    <span>⏱ {post.readingTime} min read</span>
+                    <span>⏱ 阅读约 {post.readingTime} 分钟</span>
                   </div>
 
                   {post.excerpt && <p className="text-sm leading-7 text-[var(--term-gray)] max-w-3xl">{post.excerpt}</p>}
@@ -146,7 +161,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                   <span className="mr-2">{copy.post.tags}</span>
                   {post.tags.map((tag: string, index: number) => (
                     <span key={`${tag}-${index}`} className="border border-[var(--term-line)] px-2.5 py-1 rounded-full">
-                      {tag}
+                      {getTagLabel(tag, "en")}
                     </span>
                   ))}
                 </div>
@@ -192,6 +207,10 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               </div>
             </section>
           )}
+
+          <section className="mt-10 border-t border-[var(--term-line)] pt-8">
+            <BitmapIllustrations compact />
+          </section>
 
           <section className="mt-10 max-w-2xl mx-auto">
             <div className="cli-frame rounded-xl overflow-hidden border border-[var(--term-line)]">

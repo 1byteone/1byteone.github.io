@@ -1,0 +1,35 @@
+{{- $zh := hasPrefix .Lang "zh" -}}
+{{- $isProject := eq .Section "projects" -}}
+{{- $cover := .Resources.GetMatch "featured.*" -}}
+{{- partial "themes/engineer-terminal/head.html" . -}}
+<body class="engineer-terminal"{{ if .Site.Params.theme_preview }} data-pagefind-ignore{{ end }}>
+  {{ partial "themes/engineer-terminal/header.html" . }}
+  <main class="et-main et-article-main">
+    <div class="et-breadcrumb"><a href="{{ .Site.Home.RelPermalink }}">{{ if $zh }}首页{{ else }}Home{{ end }}</a><span>/</span><a href="{{ printf "%s/" .Section | relLangURL }}">{{ if eq .Section "projects" }}{{ if $zh }}项目{{ else }}Projects{{ end }}{{ else }}{{ if $zh }}技术文章{{ else }}Articles{{ end }}{{ end }}</a><span>/</span><span>{{ .Title }}</span></div>
+    <article class="et-article-layout">
+      <div class="et-article-content">
+        <header class="et-article-heading"><span>{{ upper .Section }} / {{ .Date.Format "2006-01-02" }}</span><h1>{{ .Title }}</h1>{{ with .Description }}<p>{{ . }}</p>{{ else }}{{ with .Summary }}<p>{{ . | plainify }}</p>{{ end }}{{ end }}
+          {{ with .Params.tags }}<div class="et-tags">{{ range . }}<i>{{ . }}</i>{{ end }}</div>{{ end }}
+        </header>
+        {{ with $cover }}<figure class="et-article-cover"><img src="{{ .RelPermalink }}" alt="{{ $.Title }}" fetchpriority="high"><figcaption>{{ if $zh }}文章封面 / {{ else }}ARTICLE COVER / {{ end }}{{ $.Date.Format "2006.01.02" }}</figcaption></figure>{{ end }}
+        {{ if $isProject }}
+          <section class="et-project-meta" aria-label="{{ if $zh }}项目元数据{{ else }}Project metadata{{ end }}">
+            <div><span>{{ if $zh }}状态{{ else }}STATUS{{ end }}</span><strong>{{ .Params.status | default (cond $zh "已发布" "PUBLISHED") }}</strong></div>
+            <div><span>{{ if $zh }}职责{{ else }}ROLE{{ end }}</span><strong>{{ .Params.role | default "—" }}</strong></div>
+            <div><span>{{ if $zh }}周期{{ else }}DURATION{{ end }}</span><strong>{{ .Params.duration | default "—" }}</strong></div>
+            <div><span>{{ if $zh }}团队{{ else }}TEAM{{ end }}</span><strong>{{ with .Params.team_size }}{{ . }}{{ else }}—{{ end }}</strong></div>
+            {{ with .Params.tech_stack }}<div class="et-project-meta-wide"><span>{{ if $zh }}技术栈{{ else }}STACK{{ end }}</span><p>{{ range . }}<i>{{ . }}</i>{{ end }}</p></div>{{ end }}
+            {{ with .Params.highlights }}<div class="et-project-meta-wide"><span>{{ if $zh }}交付亮点{{ else }}HIGHLIGHTS{{ end }}</span><ul>{{ range . }}<li>{{ . }}</li>{{ end }}</ul></div>{{ end }}
+            {{ with .Params.links }}<div class="et-project-meta-wide et-project-meta-links"><span>{{ if $zh }}项目链接{{ else }}LINKS{{ end }}</span><p>{{ range . }}<a href="{{ .url }}" target="_blank" rel="noopener noreferrer">{{ .label | default .type }} ↗</a>{{ end }}</p></div>{{ end }}
+          </section>
+        {{ end }}
+        <div class="et-prose">{{ .Content }}</div>
+        <nav class="et-article-nav" aria-label="{{ if $zh }}相邻文章{{ else }}Adjacent articles{{ end }}">
+          {{ with .PrevInSection }}<a href="{{ .RelPermalink }}"><span>{{ if $zh }}上一篇{{ else }}Previous{{ end }}</span><strong>{{ .Title }}</strong></a>{{ end }}
+          {{ with .NextInSection }}<a href="{{ .RelPermalink }}"><span>{{ if $zh }}下一篇{{ else }}Next{{ end }}</span><strong>{{ .Title }}</strong></a>{{ end }}
+        </nav>
+      </div>
+      {{ with .TableOfContents }}<aside class="et-article-aside"><span>{{ if $zh }}本页目录{{ else }}ON THIS PAGE{{ end }}</span>{{ . }}</aside>{{ end }}
+    </article>
+  </main>
+  {{ partial "themes/engineer-terminal/footer.html" . }}

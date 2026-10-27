@@ -11,7 +11,7 @@ import ApodWidget from "@/components/apod-widget"
 import AnimateOnScroll from "@/components/animate-on-scroll"
 import LabBench from "@/components/lab-bench"
 import UtilityDock from "@/components/utility-dock"
-import { localeCopy } from "@/content/locale"
+import { getTagLabel, localeCopy } from "@/content/locale"
 import { siteConfig } from "@/content/site"
 
 export const metadata: Metadata = {
@@ -47,7 +47,7 @@ export default async function Home() {
             {/* ── Top Bar ───────────────────────────────────────── */}
             <div className="flex flex-wrap items-center justify-between gap-3 border-b border-term-line px-4 py-3 text-xs uppercase tracking-[0.16em] text-term-gray">
               <div>
-                <span className="text-term-green">{siteConfig.handle}</span> on <LiveClock />
+                <span className="text-term-green">{siteConfig.handle}</span> · <LiveClock />
               </div>
               <div className="flex flex-wrap items-center gap-4">
                 {Object.values(siteConfig.socials).map((social) => (
@@ -56,7 +56,7 @@ export default async function Home() {
                   </a>
                 ))}
                 <Link href="/about" className="hover:text-term-cyan">
-                  How I work
+                  我的工作方式
                 </Link>
               </div>
             </div>
@@ -90,10 +90,10 @@ export default async function Home() {
                     </p>
                     <div className="mt-4 grid grid-cols-2 gap-2 text-xs">
                       {[
-                        ["focus", "RAG · agents"],
-                        ["mode", "evidence first"],
-                        ["base", siteConfig.location],
-                        ["archive", "notes + projects"],
+                        ["方向", "RAG · Agent"],
+                        ["方法", "证据优先"],
+                        ["位置", "南昌，中国"],
+                        ["档案", "文章 + 项目"],
                       ].map(([label, value]) => (
                         <div key={label} className="rounded-md border border-term-line bg-term-black px-3 py-2">
                           <div className="text-[10px] uppercase tracking-[0.14em] text-term-gray">{label}</div>
@@ -104,7 +104,7 @@ export default async function Home() {
                   </div>
 
                   <div className="border border-term-line bg-term-darker rounded-lg p-4">
-                    <div className="cli-topline">contact channel</div>
+                    <div className="cli-topline">联系渠道</div>
                     <a href={`mailto:${siteConfig.email}`} className="mt-3 block text-sm text-term-cyan hover:underline">
                       {siteConfig.email}
                     </a>
@@ -177,7 +177,7 @@ export default async function Home() {
                         <div className="flex flex-wrap gap-1.5">
                           {post.tags.slice(0, 2).map((tag: string) => (
                             <span key={tag} className="text-[10px] uppercase tracking-[0.1em] px-2 py-0.5 rounded-full bg-[var(--term-line)] text-[var(--term-cyan)]">
-                              {tag}
+                              {getTagLabel(tag, "en")}
                             </span>
                           ))}
                         </div>

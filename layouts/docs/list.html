@@ -1,5 +1,9 @@
 {{- $theme := lower (default "oil" (index .Site.Params "site_theme")) -}}
-{{- if eq $theme "bloggpt" -}}
+{{- if eq $theme "astro-tui-portfolio" -}}
+  {{ partial "themes/astro-tui-portfolio/list.html" . }}
+{{- else if eq $theme "ai-terminal" -}}
+  {{ partial "themes/engineer-terminal/list.html" . }}
+{{- else if eq $theme "bloggpt" -}}
   {{- if or (eq .Section "blog") (eq .Section "posts") (eq .Section "projects") (eq .Section "works") -}}
     {{ partial "themes/bloggpt/list.html" . }}
   {{- else if eq .Section "archives" -}}
@@ -37,6 +41,8 @@
   {{- else -}}
     {{ partial "themes/alxian/list.html" . }}
   {{- end -}}
+{{- else if eq $theme "minimal" -}}
+  {{ partial "themes/minimal/list.html" . }}
 {{- else -}}
   {{ partial "themes/oil/list.html" . }}
 {{- end -}}

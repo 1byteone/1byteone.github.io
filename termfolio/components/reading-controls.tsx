@@ -129,7 +129,7 @@ export default function ReadingControls({ headings, wordCount, locale = "en" }: 
 
       {/* Reading Time */}
       <div className="rounded-lg border border-[var(--term-line)] bg-[var(--term-darker)] p-3 text-center">
-        <div className="text-lg font-bold text-[var(--term-cyan)]">~{readingTime} min</div>
+        <div className="text-lg font-bold text-[var(--term-cyan)]">约 {readingTime} 分钟</div>
         <div className="text-[10px] uppercase tracking-widest text-[var(--term-gray)] mt-0.5">{copy.readingTime}</div>
       </div>
 

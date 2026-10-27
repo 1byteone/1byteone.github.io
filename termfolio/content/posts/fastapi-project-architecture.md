@@ -1,8 +1,8 @@
 ---
 status: published
-title: "FastAPI Project Architecture: Layering Routes and Domain Services"
+title: "FastAPI 项目架构：分层组织路由与领域服务"
 date: 2026-08-21
-excerpt: "Organize a FastAPI service with layers, dependency injection, and configuration so AI endpoints stay testable and deployable."
+excerpt: "通过分层、依赖注入与配置管理组织 FastAPI 服务，让 AI 接口保持可测试、可部署。"
 tags:
   - FastAPI
   - Python

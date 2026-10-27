@@ -1,8 +1,8 @@
 ---
 status: published
-title: "LangChain Memory: Designing Controlled Multi-Turn State"
+title: "LangChain Memory：设计可控的多轮对话状态"
 date: 2026-08-21
-excerpt: "Design conversation history, summary memory, and long-term memory with clear state, capacity, and privacy boundaries."
+excerpt: "围绕清晰的状态、容量和隐私边界，设计对话历史、摘要记忆与长期记忆。"
 tags:
   - AI
   - LangChain

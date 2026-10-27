@@ -7,10 +7,10 @@ const card = getCard()
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || siteConfig.siteUrl
 
 export const metadata: Metadata = {
-  title: `${card.name} — Digital Card`,
+  title: `${card.name} — 数字名片`,
   description: `${card.title} at ${card.company}. ${card.bio}`,
   openGraph: {
-    title: `${card.name} — Digital Card`,
+    title: `${card.name} — 数字名片`,
     description: `${card.title} at ${card.company}`,
     url: `${siteUrl}/card`,
     siteName: siteConfig.name,
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    title: `${card.name} — Digital Card`,
+    title: `${card.name} — 数字名片`,
     description: `${card.title} at ${card.company}`,
   },
 }

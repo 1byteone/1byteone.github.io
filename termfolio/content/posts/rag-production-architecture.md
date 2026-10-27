@@ -1,8 +1,8 @@
 ---
 status: published
-title: "Production RAG Architecture: Permissions, Versions, and Observability"
+title: "生产级 RAG 架构：权限、版本与可观测性"
 date: 2026-08-21
-excerpt: "Design deployable RAG systems with ingestion, permission filters, index versions, caching, evaluation, and graceful degradation."
+excerpt: "围绕数据导入、权限过滤、索引版本、缓存、评测与优雅降级，设计可部署的 RAG 系统。"
 tags:
   - AI
   - RAG

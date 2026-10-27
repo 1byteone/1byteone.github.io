@@ -1,8 +1,8 @@
 ---
 status: published
-title: "MySQL Index & B+Tree"
+title: "MySQL 索引与 B+Tree"
 date: 2026-08-21
-excerpt: "A scenario-driven guide to MySQL Index & B+Tree, including boundaries, failure paths, and production trade-offs."
+excerpt: "从实际场景出发，理解 MySQL 索引与 B+Tree 的边界条件、故障路径和生产环境取舍。"
 tags:
   - MySQL
   - Index

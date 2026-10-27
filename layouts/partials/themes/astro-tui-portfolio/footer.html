@@ -1,0 +1,3 @@
+{{- $site := .Site.Data.site.site -}}
+<footer class="at-footer"><span>ASTRO TUI / YOYO</span><span>{{ $site.identity.email }}</span><span>{{ if hasPrefix .Lang "zh" }}静态终端作品集{{ else }}static terminal portfolio{{ end }}</span></footer>
+<script defer src="{{ "js/astro-tui.js" | relURL }}"></script>

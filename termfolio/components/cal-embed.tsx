@@ -9,8 +9,8 @@ export default function CalEmbed() {
   if (!siteConfig.calEmbedUrl) {
     return (
       <div className="border border-term-line bg-term-darker p-5 text-sm text-term-gray">
-        <div className="cli-topline">calendar channel</div>
-        <p className="mt-3 leading-7">Scheduling is handled by email for now.</p>
+        <div className="cli-topline">日历通道</div>
+        <p className="mt-3 leading-7">目前通过邮件安排时间。</p>
         <a href={`mailto:${siteConfig.email}`} className="mt-2 inline-block text-term-cyan hover:underline">
           {siteConfig.email} -&gt;
         </a>
@@ -27,14 +27,14 @@ export default function CalEmbed() {
         <span>
           <span className="text-term-cyan">$</span> {calDisplay}
         </span>
-        <span>book a session</span>
+        <span>预约交流</span>
       </div>
       <div className="relative" style={{ minHeight: 500 }}>
         {!loaded && (
           <div className="absolute inset-0 flex items-center justify-center z-10">
             <div className="space-y-2 text-center">
               <div className="text-term-gray text-xs uppercase tracking-[0.14em] animate-pulse">
-                loading calendar...
+                正在加载日历...
               </div>
               <div className="flex gap-1 justify-center">
                 {[0, 1, 2].map((i) => (
@@ -50,7 +50,7 @@ export default function CalEmbed() {
         )}
         <iframe
           src={siteConfig.calEmbedUrl}
-          title={`Book a session with ${siteConfig.name}`}
+          title={`与 ${siteConfig.name} 预约交流`}
           className="w-full border-0"
           style={{ height: 700, minHeight: 500 }}
           onLoad={() => setLoaded(true)}
@@ -58,7 +58,7 @@ export default function CalEmbed() {
         />
       </div>
       <div className="px-4 py-2 border-t border-term-line text-[10px] text-term-gray">
-        prefer email?{" "}
+        更习惯邮件？{" "}
         <a href={`mailto:${siteConfig.email}`} className="text-term-cyan hover:underline">
           {siteConfig.email}
         </a>
