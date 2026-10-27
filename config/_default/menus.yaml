@@ -4,20 +4,20 @@
 
 main:
   - name: 首页
-    url: /#hero
+    url: /
     weight: 10
-  - name: 项目
-    url: /#projects
+  - name: 技术文章
+    url: /blog/
     weight: 20
-  - name: 技术栈
-    url: /#skills
+  - name: 项目
+    url: /projects/
     weight: 30
-  - name: 经历
-    url: /#experience
+  - name: 实验室
+    url: /ui-lab/
     weight: 40
-  - name: 博客
-    url: /#blog
+  - name: 主题中心
+    url: /theme-center/
     weight: 50
-  - name: 联系
-    url: /#contact
+  - name: 关于
+    url: /about/
     weight: 60

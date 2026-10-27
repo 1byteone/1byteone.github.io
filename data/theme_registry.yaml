@@ -1,115 +1,369 @@
 themes:
+  - id: ai-engineering
+    label: AI Engineering Core
+    label_zh: AI 工程师主题底座
+    description: Shared content model for six ways to present AI engineering work
+    description_zh: 为六种 AI 工程表达方式提供统一内容模型与工程能力证据链
+    short_label: AI ENG
+    version: 0.1.0
+    status: foundation
+    scope: family
+    family: ai-engineering
+    role: parent
+    available: false
+    default_selectable: false
+  - id: ai-minimal-tech
+    label: Minimal Tech Blog
+    label_zh: 极简技术博客
+    description: Explain technical depth and engineering decisions with clarity
+    description_zh: 清晰呈现技术深度、工程思维与个人成长
+    short_label: MIN TECH
+    version: 0.1.0
+    status: planned
+    scope: home-only
+    category: knowledge
+    preview_style: minimal
+    tags: [technical writing, reading, knowledge base]
+    family: ai-engineering
+    parent: ai-engineering
+    role: child
+    focus: Technical writing and project portfolio
+    focus_zh: 技术文章与项目作品集
+    available: false
+    default_selectable: false
+  - id: ai-terminal
+    label: Engineer Terminal
+    label_zh: 工程师终端
+    description: Show implementation, deployment, debugging, and incident response
+    description_zh: 展示实现、部署、调试、排障与故障复盘
+    short_label: TERMINAL
+    version: 0.1.0
+    status: preview
+    scope: site
+    category: engineering
+    preview_style: terminal
+    tags: [deployment, debugging, incident review]
+    family: ai-engineering
+    parent: ai-engineering
+    role: child
+    focus: Build and operate reliable systems
+    focus_zh: 构建并运维可靠系统
+    home_template: themes/engineer-terminal/home.html
+    stylesheet: css/engineer-terminal.css
+    script: js/engineer-terminal.js
+    base_path: /themes/engineer-terminal/
+    preview_path: /themes/engineer-terminal/
+    dev_preview_path: http://localhost:1314/
+    available: true
+    default_selectable: true
+    supports: [home, list, single, projects, logs]
+  - id: astro-tui-portfolio
+    label: Astro TUI Portfolio
+    label_zh: Astro TUI 终端作品集
+    description: A retro Astro terminal interface for presenting projects, writing, and developer identity
+    description_zh: 基于 Astro 的复古 TUI 终端界面，用命令行式导航呈现项目、文章与开发者身份
+    short_label: ASTRO TUI
+    version: 0.1.0
+    status: preview
+    scope: site
+    category: terminal
+    preview_style: terminal
+    tags: [terminal, tui, astro, portfolio]
+    family: ai-engineering
+    parent: ai-terminal
+    role: child
+    focus: Terminal-first portfolio navigation and project discovery
+    focus_zh: 终端优先的作品集导航与项目探索
+    available: true
+    default_selectable: true
+    base_path: /themes/engineer-terminal/astro-tui-portfolio/
+    preview_path: /themes/engineer-terminal/astro-tui-portfolio/
+    dev_preview_path: http://localhost:1316/
+    remote_demo: https://astro-tui-portfolio.netlify.app/
+    source_repository: https://github.com/nivinvysakh/astro-tui-portfolio
+    reference_url: https://portal.astro.build/themes/retro-tui-portfolio/
+    reference_note: Astro/Tailwind reference adapted into the Hugo terminal family; content remains shared with the core site
+    reference_note_zh: 已将 Astro/Tailwind 参考实现适配到 Hugo 终端家族，文章与项目继续复用主站内容
+    supports: [home, list, single, projects, logs]
+  - id: ai-lab
+    label: AI Engineering Lab
+    label_zh: AI 实验室
+    description: Make model, retrieval, prompt, and evaluation experiments inspectable
+    description_zh: 展示模型、检索、提示词与评测实验的过程和结果
+    short_label: LAB
+    version: 0.1.0
+    status: planned
+    scope: home-only
+    category: ai-data
+    preview_style: lab
+    tags: [experiments, evaluation, metrics]
+    family: ai-engineering
+    parent: ai-engineering
+    role: child
+    focus: Hypotheses, datasets, metrics, and limitations
+    focus_zh: 假设、数据集、指标与局限
+    available: false
+    default_selectable: false
+  - id: ai-editorial
+    label: Technical Editorial
+    label_zh: 技术杂志 / 编辑部
+    description: Publish independent technical judgment and ecosystem analysis
+    description_zh: 表达对技术趋势、开源生态与方案取舍的独立判断
+    short_label: EDITORIAL
+    version: 0.1.0
+    status: planned
+    scope: home-only
+    category: editorial
+    preview_style: editorial
+    tags: [reviews, comparisons, technical perspectives]
+    family: ai-engineering
+    parent: ai-engineering
+    role: child
+    focus: Deep reviews, comparisons, and technical perspectives
+    focus_zh: 深度评测、方案对比与技术洞察
+    available: false
+    default_selectable: false
+  - id: ai-product-studio
+    label: AI Product Studio
+    label_zh: AI 产品工作室
+    description: Demonstrate complete AI product workflows and delivered outcomes
+    description_zh: 展示 AI 产品流程、交互体验与实际交付结果
+    short_label: STUDIO
+    version: 0.1.0
+    status: planned
+    scope: home-only
+    category: portfolio
+    preview_style: studio
+    tags: [product demos, user journeys, delivery]
+    family: ai-engineering
+    parent: ai-engineering
+    role: child
+    focus: Product demos, user journeys, and delivery evidence
+    focus_zh: 产品演示、用户流程与交付证据
+    available: false
+    default_selectable: false
+  - id: ai-pixel-world
+    label: Pixel World
+    label_zh: 像素世界 / 游戏化
+    description: Turn learning, projects, and progress into an explorable world
+    description_zh: 将学习、项目与成长进度组织成可探索的世界
+    short_label: PIXEL
+    version: 0.1.0
+    status: planned
+    scope: home-only
+    category: creative
+    preview_style: pixel
+    tags: [interactive, learning paths, gamification]
+    family: ai-engineering
+    parent: ai-engineering
+    role: child
+    focus: Learning paths, project quests, and developer identity
+    focus_zh: 学习路径、项目任务与开发者个性
+    available: false
+    default_selectable: false
   - id: minimal
     label: Minimal
+    label_zh: Minimal
+    description: Existing Minimal theme and its established layout variants
+    description_zh: 既有 Minimal 主题及其现有布局变体
     short_label: MIN
     version: 1.0.0
     status: production
     scope: home-only
+    category: knowledge
+    preview_style: minimal
+    tags: [minimal, technical writing, reading]
     family: minimal
+    role: parent
     variant: minimal
     home_template: themes/minimal/variants/minimal.html
     stylesheet: css/minimal-theme.css
     script: js/minimal-theme.js
     base_path: /themes/minimal/
+    preview_path: /themes/minimal/
+    available: true
+    default_selectable: true
     supports: [home]
   - id: astro-blog
     label: Astro Blog
+    label_zh: Astro Blog
+    description: An open editorial grid for technical writing
+    description_zh: 开放式编辑网格，突出技术写作
     short_label: AST
     version: 1.0.0
     status: preview
     scope: home-only
+    category: knowledge
+    preview_style: editorial
+    tags: [open grid, technical writing, minimal]
     family: minimal
+    parent: minimal
+    role: child
     variant: astro-blog
     home_template: themes/minimal/variants/astro-blog.html
     stylesheet: css/minimal-theme.css
     script: js/minimal-theme.js
     base_path: /themes/minimal/astro-blog/
+    preview_path: /themes/minimal/astro-blog/
+    available: true
+    default_selectable: true
     supports: [home]
   - id: astropaper
     label: AstroPaper
+    label_zh: AstroPaper
+    description: A documentation-first engineering blog
+    description_zh: 以文章阅读和知识归档为核心
     short_label: PAPER
     version: 1.0.0
     status: preview
     scope: home-only
+    category: knowledge
+    preview_style: paper
+    tags: [documentation, articles, reading]
     family: minimal
+    parent: minimal
+    role: child
     variant: astropaper
     home_template: themes/minimal/variants/astropaper.html
     stylesheet: css/minimal-theme.css
     script: js/minimal-theme.js
     base_path: /themes/minimal/astropaper/
+    preview_path: /themes/minimal/astropaper/
+    available: true
+    default_selectable: true
     supports: [home]
   - id: astro-erudite
-    label: astro-erudite
+    label: Astro Erudite
+    label_zh: Astro Erudite
+    description: Research notes with a structured index
+    description_zh: 研究札记、目录索引与术语整理
     short_label: ERU
     version: 1.0.0
     status: preview
     scope: home-only
+    category: knowledge
+    preview_style: research
+    tags: [research, index, glossary]
     family: minimal
+    parent: minimal
+    role: child
     variant: erudite
     home_template: themes/minimal/variants/erudite.html
     stylesheet: css/minimal-theme.css
     script: js/minimal-theme.js
     base_path: /themes/minimal/astro-erudite/
+    preview_path: /themes/minimal/astro-erudite/
+    available: true
+    default_selectable: true
     supports: [home]
   - id: pudding
     label: Pudding
+    label_zh: Pudding
+    description: A knowledge garden connecting projects and notes
+    description_zh: 连接项目、笔记与学习路径的知识花园
     short_label: PUD
     version: 1.0.0
     status: preview
     scope: home-only
+    category: creative
+    preview_style: garden
+    tags: [knowledge garden, backlinks, learning]
     family: minimal
+    parent: minimal
+    role: child
     variant: pudding
     home_template: themes/minimal/variants/pudding.html
     stylesheet: css/minimal-theme.css
     script: js/minimal-theme.js
     base_path: /themes/minimal/pudding/
+    preview_path: /themes/minimal/pudding/
+    available: true
+    default_selectable: true
     supports: [home]
   - id: miniblog
     label: Miniblog
+    label_zh: Miniblog
+    description: A quiet, writing-first personal archive
+    description_zh: 以精选文章和时间归档为主的轻量博客
     short_label: MINI
     version: 1.0.0
     status: preview
     scope: home-only
+    category: knowledge
+    preview_style: minimal
+    tags: [archive, writing, personal]
     family: minimal
+    parent: minimal
+    role: child
     variant: miniblog
     home_template: themes/minimal/variants/miniblog.html
     stylesheet: css/minimal-theme.css
     script: js/minimal-theme.js
     base_path: /themes/minimal/miniblog/
+    preview_path: /themes/minimal/miniblog/
+    available: true
+    default_selectable: true
     supports: [home]
   - id: oil
     label: Oil
+    label_zh: Oil
+    description: An expressive personal portfolio
+    description_zh: 插画感较强的个人作品集
     short_label: OIL
     version: 1.0.0
     status: preview
     scope: site
+    category: portfolio
+    preview_style: studio
+    tags: [illustration, portfolio, personal]
+    role: standalone
     home_template: themes/oil/home.html
     stylesheet: css/oil-theme.css
     script: js/oil-theme.js
     base_path: /themes/oil/
     preview_path: /themes/oil/
+    available: true
+    default_selectable: true
     supports: [home, list, single, tech-stack]
   - id: alxian
     label: Alxian / Jinsong
+    label_zh: Alxian / 劲松
+    description: A playful, interactive personal archive
+    description_zh: 互动式个人主页与内容档案
     short_label: ALX
     version: 0.2.0
     status: production
     scope: site
+    category: creative
+    preview_style: pixel
+    tags: [interactive, archive, personal]
+    role: standalone
     home_template: themes/alxian/home.html
     stylesheet: css/alxian-theme.css
     script: js/alxian-theme.js
     base_path: /themes/alxian/
     preview_path: /themes/alxian/
+    available: true
+    default_selectable: true
     supports: [home, list, single, resource, chat, friends, tech-stack, works, 404]
   - id: bloggpt
     label: BlogGPT
+    label_zh: BlogGPT
+    description: A full-featured technical blog workspace
+    description_zh: 面向技术内容的完整博客布局
     short_label: GPT
     version: 0.1.0
     status: production
     scope: site
+    category: knowledge
+    preview_style: terminal
+    tags: [technical blog, workspace, articles]
+    role: standalone
     home_template: themes/bloggpt/home.html
     stylesheet: css/bloggpt-theme.css
     script: js/bloggpt-theme.js
     base_path: /
     preview_path: /themes/bloggpt/
+    available: true
+    default_selectable: true
     supports: [home, list, single, resource, chat, friends, tech-stack, categories, archives, about, search, status, 404]
