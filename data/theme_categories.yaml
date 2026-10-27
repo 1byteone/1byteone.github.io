@@ -1,0 +1,36 @@
+categories:
+  - id: knowledge
+    label: Knowledge
+    label_zh: 技术与知识
+    description: Reading, documentation, and technical writing
+    description_zh: 阅读、文档与技术写作
+  - id: engineering
+    label: Engineering
+    label_zh: 工程与开发
+    description: Implementation, operations, and debugging
+    description_zh: 实现、运维与故障排查
+  - id: terminal
+    label: Terminal Interfaces
+    label_zh: 终端界面
+    description: Command-line navigation, TUI portfolios, and interactive engineering archives
+    description_zh: 命令行导航、TUI 作品集与交互式工程档案
+  - id: ai-data
+    label: AI & Data
+    label_zh: AI 与数据
+    description: Experiments, evaluation, and research
+    description_zh: 实验、评测与研究
+  - id: editorial
+    label: Editorial
+    label_zh: 编辑与观点
+    description: Reviews, comparisons, and analysis
+    description_zh: 评测、对比与技术分析
+  - id: portfolio
+    label: Product & Portfolio
+    label_zh: 产品与作品集
+    description: Products, projects, and delivered outcomes
+    description_zh: 产品、项目与交付成果
+  - id: creative
+    label: Creative & Interactive
+    label_zh: 创意与互动
+    description: Exploratory and interactive presentation
+    description_zh: 探索式与交互式表达
