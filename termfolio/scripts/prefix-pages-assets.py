@@ -13,8 +13,10 @@ output_dir = Path("out")
 if not base_path or not output_dir.is_dir():
     raise SystemExit(0)
 
+# Only rewrite public asset strings. Rewriting every slash in a JavaScript
+# bundle corrupts regular-expression literals such as /https?:\\/\\//.
 pattern = re.compile(
-    r"(?P<lead>[\"'(])/(?P<path>(?!/)(?!themes/engineer-terminal/termfolio)(?!_next/)[^\"'()\s]+)"
+    r"(?P<lead>[\"'`])/(?P<path>(?:images/|noise\.png(?:[?#][^\"'`]*)?|engineer-terminal-avatar\.png(?:[?#][^\"'`]*)?|placeholder[^\"'`]*|cv\.pdf(?:[?#][^\"'`]*)?))"
 )
 
 for file_path in output_dir.rglob("*"):
