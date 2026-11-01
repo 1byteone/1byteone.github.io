@@ -1,14 +1,19 @@
 (() => {
-  const preferenceKey = "ai-engineering-theme-default-v1";
-  const favoritesKey = "ai-engineering-theme-favorites-v1";
-  const recentKey = "ai-engineering-theme-recent-v1";
+  // v2 invalidates the pre-preview preference that could redirect the root
+  // page to the incomplete Minimal shell from an earlier build.
+  const preferenceKey = "ai-engineering-theme-default-v2";
+  const favoritesKey = "ai-engineering-theme-favorites-v2";
+  const recentKey = "ai-engineering-theme-recent-v2";
   const script = document.currentScript;
 
   if (script?.src) {
     const stylesheet = document.createElement("link");
     stylesheet.rel = "stylesheet";
     stylesheet.href = new URL("../css/theme-manager.css", script.src).href;
-    document.head.append(stylesheet);
+    const hasStylesheet = Array.from(document.querySelectorAll('link[rel="stylesheet"]')).some((link) => {
+      try { return new URL(link.href, document.baseURI).href === stylesheet.href; } catch { return false; }
+    });
+    if (!hasStylesheet) document.head.append(stylesheet);
   }
 
   const managers = Array.from(document.querySelectorAll("[data-theme-manager]"));
@@ -191,6 +196,10 @@
     if (selected) {
       const target = selected.dataset.themePath;
       if (window.location.pathname.replace(/\/$/, "") !== target.replace(/\/$/, "")) {
+        // Theme previews are home pages. Clear the previous page's scroll
+        // position so a redirect cannot land in the empty middle of a hero.
+        try { window.history.scrollRestoration = "manual"; } catch {}
+        window.scrollTo(0, 0);
         window.location.replace(target);
         return;
       }
