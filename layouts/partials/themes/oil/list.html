@@ -28,8 +28,8 @@
       <div class="header-tools"><nav class="language-switch" aria-label="{{ if $zh }}语言{{ else }}Language{{ end }}">
         {{ if $zh }}<a class="is-current" href="{{ .RelPermalink }}" lang="zh-Hans">中</a><a href="{{ $translationURL }}" lang="en">EN</a>{{ else }}<a href="{{ $translationURL }}" lang="zh-Hans">中</a><a class="is-current" href="{{ .RelPermalink }}" lang="en">EN</a>{{ end }}
       </nav><a class="github-link" href="{{ $site.identity.github }}" target="_blank" rel="noopener noreferrer">{{ $site.identity.github_label }} <span aria-hidden="true">↗</span></a></div>
-    </header></div>
-    <main class="site-column docs-main">
+    </header>
+    <main class="docs-main">
       <header class="docs-heading"><span class="eyebrow">{{ if $isBlog }}{{ if $zh }}NOTES / AI / BACKEND{{ else }}NOTES / AI / BACKEND{{ end }}{{ else }}{{ if $zh }}SELECTED WORK{{ else }}SELECTED WORK{{ end }}{{ end }}</span><h1>{{ .Title }}</h1>{{ with .Description }}<p>{{ . }}</p>{{ else }}<p>{{ .Content | plainify | strings.TrimSpace }}</p>{{ end }}</header>
       {{ if $isTech }}
         <div class="docs-list tech-list">
@@ -62,7 +62,7 @@
           {{ end }}
         </div>
       {{ else }}<p class="docs-empty">{{ if $zh }}内容正在整理中。{{ else }}Content is being prepared.{{ end }}</p>{{ end }}
-    </main>
+    </main></div>
     <footer class="site-column site-footer"><a class="footer-mark" href="{{ $home }}">Y<i>J</i></a><span>© {{ now.Format "2006" }} {{ if $zh }}{{ $site.identity.name }}{{ else }}{{ $site.identity.name_en }}{{ end }}</span><span>{{ if $zh }}{{ $site.copy.zh.footer_note }}{{ else }}{{ $site.copy.en.footer_note }}{{ end }}</span><a href="#top" aria-label="{{ if $zh }}返回顶部{{ else }}Back to top{{ end }}">↑</a></footer>
     <div class="cursor-fx" aria-hidden="true"><svg class="cf-arrow" viewBox="0 0 24 24" width="22" height="22"><path d="M5.5 3.2 L18.8 11.4 L12.6 12.8 L9.9 19.6 Z"></path></svg><i></i></div>
   </body>

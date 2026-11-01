@@ -27,8 +27,8 @@
       <div class="header-tools"><nav class="language-switch" aria-label="{{ if $zh }}语言{{ else }}Language{{ end }}">
         {{ if $zh }}<a class="is-current" href="{{ .RelPermalink }}" lang="zh-Hans">中</a><a href="{{ $translationURL }}" lang="en">EN</a>{{ else }}<a href="{{ $translationURL }}" lang="zh-Hans">中</a><a class="is-current" href="{{ .RelPermalink }}" lang="en">EN</a>{{ end }}
       </nav><a class="github-link" href="{{ $site.identity.github }}" target="_blank" rel="noopener noreferrer">{{ $site.identity.github_label }} <span aria-hidden="true">↗</span></a></div>
-    </header></div>
-    <main class="site-column post-main">
+    </header>
+    <main class="post-main">
       <a class="post-back" href="{{ .CurrentSection.RelPermalink }}"><span aria-hidden="true">←</span>{{ if $isProject }}{{ if $zh }}全部项目{{ else }}All projects{{ end }}{{ else }}{{ if $zh }}全部文章{{ else }}All articles{{ end }}{{ end }}</a>
       <header class="post-head"><span class="eyebrow">{{ if $isProject }}{{ if $zh }}PROJECT / CASE STUDY{{ else }}PROJECT / CASE STUDY{{ end }}{{ else }}{{ if $zh }}ENGINEERING NOTES{{ else }}ENGINEERING NOTES{{ end }}{{ end }}</span><h1>{{ .Title }}</h1>
         <div class="post-meta"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time>{{ with .ReadingTime }}<span>{{ . }} {{ if $zh }}分钟阅读{{ else }}min read{{ end }}</span>{{ end }}{{ with .Params.role }}<span>{{ . }}</span>{{ end }}</div>
@@ -50,7 +50,7 @@
         {{ with .PrevInSection }}<a href="{{ .RelPermalink }}"><small>{{ if $zh }}上一篇{{ else }}PREVIOUS{{ end }}</small>{{ .Title }}</a>{{ else }}<span></span>{{ end }}
         {{ with .NextInSection }}<a href="{{ .RelPermalink }}"><small>{{ if $zh }}下一篇{{ else }}NEXT{{ end }}</small>{{ .Title }}</a>{{ end }}
       </nav>
-    </main>
+    </main></div>
     <footer class="site-column site-footer"><a class="footer-mark" href="{{ $home }}">Y<i>J</i></a><span>© {{ now.Format "2006" }} {{ if $zh }}{{ $site.identity.name }}{{ else }}{{ $site.identity.name_en }}{{ end }}</span><span>{{ if $zh }}{{ $site.copy.zh.footer_note }}{{ else }}{{ $site.copy.en.footer_note }}{{ end }}</span><a href="#top" aria-label="{{ if $zh }}返回顶部{{ else }}Back to top{{ end }}">↑</a></footer>
     <div class="cursor-fx" aria-hidden="true"><svg class="cf-arrow" viewBox="0 0 24 24" width="22" height="22"><path d="M5.5 3.2 L18.8 11.4 L12.6 12.8 L9.9 19.6 Z"></path></svg><i></i></div>
   </body>

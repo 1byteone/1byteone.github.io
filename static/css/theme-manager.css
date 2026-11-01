@@ -39,9 +39,10 @@
 .theme-manager[open] .theme-manager-trigger-chevron { transform: rotate(180deg); }
 
 .theme-manager-panel {
-  position: absolute;
-  top: calc(100% + 8px);
-  right: 0;
+  position: fixed;
+  top: var(--tm-panel-top, 58px);
+  left: var(--tm-panel-left, 12px);
+  right: auto;
   z-index: 80;
   width: min(360px, calc(100vw - 24px));
   min-width: 280px;
@@ -84,15 +85,10 @@
 .theme-manager-set-default:hover { border-color: var(--tm-accent); color: var(--tm-accent); }
 .theme-manager-set-default[aria-pressed="true"] { border-color: var(--tm-accent); background: var(--tm-accent); color: #fff; }
 .theme-manager-option-source { display: none !important; }
-.bloggpt-sidebar .theme-manager-panel { right: auto; left: 0; }
+.bloggpt-sidebar .theme-manager-panel { right: auto; left: var(--tm-panel-left, 12px); }
 
 @media (max-width: 640px) {
   .theme-manager-panel, .bloggpt-sidebar .theme-manager-panel {
-    position: fixed;
-    top: max(58px, env(safe-area-inset-top));
-    right: 12px;
-    left: 12px;
-    width: auto;
     min-width: 0;
     max-width: none;
     max-height: calc(100dvh - 72px);
@@ -101,3 +97,22 @@
 }
 
 @media (prefers-reduced-motion: reduce) { .theme-manager-trigger-chevron { transition: none; } }
+
+/* Shared sticky navigation contract for themes that use the theme manager. */
+:is(.astro-header, .paper-header, .erudite-header, .pudding-header, .mini-header, .minimal-header, .site-header, .alxian-topbar, .alxian-page-topbar) {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  backdrop-filter: blur(14px);
+}
+
+:is(.astro-header, .site-header, .minimal-header) { background: var(--astro-paper, var(--paper)); }
+.paper-header { background: var(--paper-bg, var(--paper)); }
+.erudite-header { background: var(--eru-paper, var(--paper)); }
+.pudding-header { background: var(--pud-bg, var(--paper)); }
+.mini-header { background: var(--mini-bg, var(--paper)); }
+:is(.alxian-topbar, .alxian-page-topbar) { background: var(--alx-bg, transparent); }
+
+@media (max-width: 760px) {
+  :is(.astro-header, .paper-header, .erudite-header, .pudding-header, .mini-header, .minimal-header) { top: 0; }
+}
