@@ -4,16 +4,16 @@ This report separates automatic discovery from reviewed component delivery. Disc
 
 ## Count before crop
 
-| Atlas | Candidate boxes | Overlap pairs | Spatial clusters | Reviewed crops |
-| --- | ---: | ---: | ---: | ---: |
-| `icons` | 61 | 10 | 51 | 57 |
-| `vertical` | 62 | 3 | 59 | 44 |
-| `wide` | 20 | 0 | 20 | 16 |
+| Atlas | Discovery candidates | Discovery bbox overlaps | Reviewed crops |
+| --- | ---: | ---: | ---: |
+| `icons` | 61 | 10 | 57 |
+| `vertical` | 62 | 3 | 44 |
+| `wide` | 20 | 0 | 16 |
 
 **Candidate boxes total:** 143 candidate regions.  
 **Reviewed delivery:** 117 named crops, of which 95 are reusable controls and 22 remain reference-only composite panels.
 
-Candidate boxes are retained as diagnostic evidence. Intersecting boxes are grouped into spatial clusters and are not counted as independent controls. The component slicer uses reviewed source boxes, transparent trimming, and separate reference-only labels for composite panels.
+Discovery overlaps are retained as a diagnostic signal; they are not copied into the runtime library. The component slicer uses reviewed source boxes, transparent trimming for the icon atlas, and separate reference-only labels for composite panels.
 
 ## Runtime proof
 

@@ -1,0 +1,600 @@
+/* ============================================
+   ABOUT 页面专属样式
+   一份人物志的视觉语言
+   ============================================ */
+
+/* ---------- 主体布局 ---------- */
+.dossier {
+    position: relative;
+    padding: clamp(2rem, 5vw, 4rem) var(--gutter) clamp(4rem, 7vw, 6rem);
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.dossier-grid {
+    position: relative;
+    z-index: 5;
+    max-width: var(--max-w);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: start;
+}
+
+@media (max-width: 900px) {
+    .dossier-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ---------- 侧栏：头像 + 信息 ---------- */
+.dossier-side {
+    position: sticky;
+    top: 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+@media (max-width: 900px) {
+    .dossier-side {
+        position: static;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: flex-start;
+    }
+}
+
+/* 头像 */
+.avatar {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.avatar-frame {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1;
+    border: 2px solid var(--ink);
+    background: var(--cream);
+    padding: 1rem;
+    box-shadow: 6px 6px 0 var(--orange);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.avatar-frame:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 10px 10px 0 var(--red);
+}
+
+.avatar-svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.avatar-stamp {
+    position: absolute;
+    bottom: -10px;
+    right: -10px;
+    background: var(--ink);
+    color: var(--paper);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    padding: 4px 8px;
+    transform: rotate(-4deg);
+    border: 2px solid var(--paper);
+}
+
+.avatar-caption {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--ink-soft);
+    font-style: italic;
+    text-align: center;
+    margin-top: 0.3rem;
+}
+
+/* 信息列表 */
+.info-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-top: 1px solid var(--ink-soft);
+}
+
+.info-row {
+    display: grid;
+    grid-template-columns: 70px 1fr;
+    gap: 0.8rem;
+    padding: 0.7rem 0;
+    border-bottom: 1px solid var(--ink-soft);
+    align-items: baseline;
+}
+
+.info-row dt {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    color: var(--orange);
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.info-row dd {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--ink);
+}
+
+/* 二维码 */
+.qr-card {
+    border: 1.5px solid var(--ink);
+    padding: 1rem;
+    text-align: center;
+    background: var(--cream);
+}
+
+.qr-fake {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3px;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 0.6rem;
+}
+
+.qr-pixel {
+    background: var(--ink);
+    aspect-ratio: 1;
+}
+
+.qr-pixel:nth-child(1) { background: var(--orange); }
+.qr-pixel:nth-child(5) { background: transparent; }
+.qr-pixel:nth-child(9) { background: var(--red); }
+
+.qr-label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--ink-soft);
+    letter-spacing: 0.1em;
+}
+
+/* ---------- 主体：人物志内容 ---------- */
+.dossier-main {
+    position: relative;
+}
+
+.dossier-header {
+    margin-bottom: 4rem;
+    padding-bottom: 2rem;
+    border-bottom: 2px solid var(--ink);
+    position: relative;
+}
+
+.dossier-header .file-code {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--orange);
+    letter-spacing: 0.2em;
+    margin-bottom: 1rem;
+    display: inline-block;
+    border-bottom: 1px dashed var(--orange-dim);
+    padding-bottom: 1px;
+}
+
+.dossier-title {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    font-weight: 900;
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+    position: relative;
+}
+
+.dossier-title::after {
+    content: '';
+    position: absolute;
+    top: 8%;
+    right: -2%;
+    width: 0.3em;
+    height: 0.3em;
+    background: var(--red);
+    border-radius: 50%;
+}
+
+.dossier-sub {
+    font-family: var(--font-mono);
+    font-size: 0.95rem;
+    font-style: italic;
+    color: var(--ink-soft);
+    letter-spacing: 0.05em;
+}
+
+/* ---------- 散文段落 ---------- */
+.prose {
+    margin-bottom: 4rem;
+    position: relative;
+}
+
+.prose-marker {
+    font-family: var(--font-display);
+    font-size: clamp(4rem, 8vw, 7rem);
+    font-weight: 900;
+    line-height: 0.8;
+    color: var(--orange);
+    opacity: 0.15;
+    position: absolute;
+    top: -1.5rem;
+    left: -0.3rem;
+    z-index: 0;
+    pointer-events: none;
+    user-select: none;
+}
+
+.prose-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    color: var(--ink);
+    position: relative;
+    z-index: 1;
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: 0.5rem;
+    display: inline-block;
+}
+
+.prose p {
+    font-size: 1.05rem;
+    line-height: 1.85;
+    color: var(--ink-soft);
+    margin-bottom: 1.2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.prose p strong { color: var(--ink); font-weight: 700; }
+.prose p em     { color: var(--red); font-style: italic; }
+.prose p mark {
+    background: linear-gradient(180deg, transparent 60%, var(--mustard) 60%);
+    color: var(--ink);
+    padding: 0 3px;
+    font-weight: 600;
+}
+
+.prose-intro {
+    font-style: italic;
+    color: var(--ink-soft) !important;
+    margin-bottom: 2rem !important;
+    font-size: 0.95rem !important;
+}
+
+/* ---------- 信念列表 ---------- */
+.beliefs {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    counter-reset: belief;
+}
+
+.beliefs li {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 1.5rem;
+    padding: 1.2rem 0;
+    border-bottom: 1px solid var(--ink-soft);
+    align-items: start;
+}
+
+.beliefs li:first-child { border-top: 1px solid var(--ink-soft); }
+
+.belief-num {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--orange);
+    line-height: 1;
+    font-feature-settings: 'tnum';
+}
+
+.belief-text {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--ink);
+}
+
+.belief-text strong { color: var(--ink); font-weight: 700; }
+
+/* ---------- 时间线 ---------- */
+.timeline {
+    list-style: none;
+    position: relative;
+    padding-left: 0;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 80px;
+    top: 8px;
+    bottom: 8px;
+    width: 1.5px;
+    background: var(--ink);
+    opacity: 0.3;
+}
+
+.timeline-item {
+    position: relative;
+    display: grid;
+    grid-template-columns: 80px 30px 1fr;
+    gap: 0;
+    align-items: start;
+    padding: 1.5rem 0;
+}
+
+.timeline-year {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--ink);
+    line-height: 1;
+    text-align: right;
+    padding-right: 1rem;
+    font-feature-settings: 'tnum';
+}
+
+.timeline-dot {
+    position: relative;
+    width: 14px;
+    height: 14px;
+    background: var(--orange);
+    border: 3px solid var(--paper);
+    border-radius: 50%;
+    margin: 0.5rem auto 0;
+    box-shadow: 0 0 0 2px var(--ink);
+    z-index: 1;
+    transition: transform 0.3s;
+}
+
+.timeline-item:hover .timeline-dot {
+    transform: scale(1.4);
+    background: var(--red);
+}
+
+.timeline-body {
+    padding-left: 1rem;
+    border-left: 1px dashed var(--ink-soft);
+    margin-left: -1px;
+    padding-bottom: 0.5rem;
+}
+
+.timeline-body h3 {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 0.4rem;
+}
+
+.timeline-body p {
+    font-size: 0.95rem !important;
+    line-height: 1.6 !important;
+    color: var(--ink-soft) !important;
+    margin: 0 !important;
+}
+
+@media (max-width: 600px) {
+    .timeline::before { left: 50px; }
+    .timeline-item { grid-template-columns: 50px 30px 1fr; }
+    .timeline-year { font-size: 1.3rem; }
+}
+
+/* ---------- 技能矩阵 ---------- */
+.skills {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.skill {
+    border-left: 3px solid var(--ink);
+    padding-left: 1.2rem;
+    transition: border-color 0.3s, transform 0.3s;
+}
+
+.skill:hover {
+    border-left-color: var(--orange);
+    transform: translateX(4px);
+}
+
+.skill-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.5rem;
+    gap: 1rem;
+}
+
+.skill-name {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--ink);
+}
+
+.skill-lv {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--orange);
+    letter-spacing: 0.1em;
+    border: 1px solid var(--orange);
+    padding: 2px 8px;
+    white-space: nowrap;
+}
+
+.skill-bar {
+    width: 100%;
+    height: 6px;
+    background: var(--paper-dark);
+    border: 1px solid var(--ink-soft);
+    position: relative;
+    margin-bottom: 0.4rem;
+    overflow: hidden;
+}
+
+.skill-bar span {
+    display: block;
+    height: 100%;
+    width: var(--w, 0%);
+    background: repeating-linear-gradient(
+        45deg,
+        var(--orange) 0,
+        var(--orange) 4px,
+        var(--orange-dim) 4px,
+        var(--orange-dim) 8px
+    );
+    animation: fillBar 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    transform-origin: left;
+}
+
+@keyframes fillBar {
+    from { transform: scaleX(0); }
+    to   { transform: scaleX(1); }
+}
+
+.skill-note {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+    font-style: italic;
+    margin: 0 !important;
+}
+
+/* ---------- 收尾 ---------- */
+.sign-off {
+    margin-top: 2rem;
+    padding: 1.5rem 0 0;
+    border-top: 1px solid var(--ink-soft);
+}
+
+.sign-line {
+    font-family: var(--font-display);
+    font-size: 1.3rem !important;
+    font-weight: 600;
+    color: var(--ink) !important;
+    font-style: italic;
+    margin-bottom: 0.3rem !important;
+}
+
+.sign-place {
+    font-family: var(--font-mono) !important;
+    font-size: 0.8rem !important;
+    color: var(--ink-soft) !important;
+    font-style: normal !important;
+}
+
+/* ---------- 响应式微调 ---------- */
+@media (max-width: 600px) {
+    .dossier-title::after { display: none; }
+    .prose-marker { font-size: 4rem; top: -0.5rem; }
+
+    .beliefs li {
+        grid-template-columns: 40px 1fr;
+        gap: 0.8rem;
+    }
+
+    .belief-num { font-size: 1.3rem; }
+
+    .info-row {
+        grid-template-columns: 60px 1fr;
+    }
+}
+
+/* ---------- 超小屏优化（480px 以下）---------- */
+@media (max-width: 480px) {
+    .dossier-side {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .avatar-frame {
+        max-width: 200px;
+        margin: 0 auto;
+    }
+
+    .info-list {
+        width: 100%;
+    }
+
+    .dossier-title {
+        font-size: 2.2rem;
+    }
+
+    .dossier-sub {
+        font-size: 0.85rem;
+    }
+
+    .prose {
+        padding: 1.2rem 0;
+    }
+
+    .prose-title {
+        font-size: 1.3rem;
+    }
+
+    .prose p {
+        font-size: 0.95rem;
+    }
+
+    .beliefs li {
+        grid-template-columns: 1fr;
+        gap: 0.4rem;
+    }
+
+    .belief-num {
+        font-size: 1.1rem;
+    }
+
+    .belief-text {
+        font-size: 0.9rem;
+    }
+
+    .skill {
+        padding-left: 0.8rem;
+    }
+
+    .skill-name {
+        font-size: 0.95rem;
+    }
+
+    .skill-lv {
+        font-size: 0.7rem;
+        padding: 1px 6px;
+    }
+
+    .skill-note {
+        font-size: 0.78rem;
+    }
+
+    .qr-fake {
+        max-width: 120px;
+    }
+}
+
+/* ---------- 横屏手机 ---------- */
+@media (max-height: 500px) and (orientation: landscape) {
+    .dossier {
+        padding-top: 4rem;
+    }
+}

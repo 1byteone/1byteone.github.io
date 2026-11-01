@@ -274,8 +274,8 @@ hugoblox:
     affiliate_code: ""
 
 # Select a presentation theme without changing content or data.
-# Available values are: minimal, oil, alxian, bloggpt.
+# Available values are: lzw-archive, cyberpunk2077, ai-terminal, minimal, oil, alxian, bloggpt.
 # Minimal child variants are selected with minimal_variant.
-site_theme: ai-terminal
+site_theme: lzw-archive
 theme_preview: false
 minimal_variant: astropaper

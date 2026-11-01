@@ -1,0 +1,80 @@
+# 内容来自 data/site.yaml、data/authors/me.yaml、content/zh/_index.md 与 projects。
+# 这里是 LZW Archive 主题的展示层数据；项目详情仍以 content/zh/projects 为准。
+identity:
+  name: 杨劲松
+  name_en: Jinsong Yang
+  role: Java 后端工程师 / AI 应用开发
+  location: 南昌 / 中国
+  email: yjs_0831@qq.com
+  github: https://github.com/1byteone
+  github_label: github.com/1byteone
+  hero_note: 把复杂系统做得清晰、可靠，并真正解决问题。
+  bio: Java 后端与 AI 应用融合开发，关注微服务、高并发、RAG 检索与 Agent 工具调用。
+typewriter:
+  - 构建 RAG 智能检索系统。
+  - 设计 AI 智能体应用。
+  - 把 Python AI 服务接入 Spring Cloud。
+  - 用压测、日志与链路追踪定位问题。
+projects:
+  - id: 001
+    status: LIVE
+    status_class: status-live
+    category: Java / 分布式
+    tags: [Spring Boot 3, Spring Cloud, Redis, RocketMQ]
+    title: 分布式微云商城
+    tagline: SpringCloud Alibaba 微服务电商平台
+    description: 从单体到微服务的完整实践，覆盖网关、注册配置、缓存、搜索、消息与分布式事务。
+    evidence: 11 个中间件实战集成 · 万级并发压测验证
+    scenario: 秒杀链路通过 Redis 预扣库存、Redisson 锁与 RocketMQ 异步落库控制超卖。
+    code_url: https://github.com/1byteone/mall-micro-cloud
+    code_label: 查看代码
+  - id: 002
+    status: BUILD
+    status_class: status-dev
+    category: AI / RAG
+    tags: [Python, FastAPI, LangGraph, ChromaDB]
+    title: 农业知识问答系统
+    tagline: 目标导向型 Agent + 领域 RAG
+    description: 从 PDF 文档预处理、向量检索到 FastAPI 接口的完整闭环，支持多轮记忆、SSE 流式输出与结构化结果。
+    evidence: 证据溯源与可信度评分 · MCP 服务器集成
+    scenario: 农业问题进入意图路由后，在私有知识库、通用知识和工具增强路径之间选择。
+    code_url: https://github.com/1byteone/agri-qa-assistant
+    code_label: 查看代码
+progress:
+  - id: P-01
+    date: 2026.09 — 至今
+    title: AI 驱动搜索与推荐系统
+    description: 在江西传习教育科技有限公司实习，构建 RAG 检索服务并接入 Spring Cloud 微服务。
+  - id: P-02
+    date: 持续沉淀
+    title: Java 微服务与高并发
+    description: 围绕 Redis、RocketMQ、Elasticsearch、Seata 与 Sentinel 完成项目化练习和压测。
+  - id: P-03
+    date: 持续沉淀
+    title: AI 应用工程化
+    description: 用 Python、LangChain、FastAPI 和 Agent 工具调用，把模型能力组织成可测试服务。
+achievements:
+  - icon: 🎓
+    title: 软件工程本科
+    meta: 2023 — 2027
+    description: 江西农业大学 · 全日制本科 · 2027 届
+  - icon: ↗
+    title: GPA 专业前 15%
+    meta: CET-4
+    description: 学业与英语能力的可验证记录
+  - icon: ◈
+    title: 11 个中间件实战
+    meta: 微服务商城
+    description: Nacos、Gateway、Redis、ES、RocketMQ、Seata 等
+  - icon: ◎
+    title: 万级并发压测
+    meta: 秒杀链路
+    description: Redis 预扣库存 + Redisson 锁 + RocketMQ 异步落库
+  - icon: ⌁
+    title: 7 类故障定位
+    meta: AI Agent
+    description: 覆盖向量召回超时、工具调用失效等问题
+  - icon: ⌘
+    title: Java / Python 跨语言联调
+    meta: 工程协作
+    description: 接口契约、CodeReview 与文档沉淀

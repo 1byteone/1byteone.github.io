@@ -1,6 +1,6 @@
 # Runtime UI asset audit
 
-This audit maps the cropped atlas components to the Cyberpunk 2077 theme surface. It is intentionally separate from the crop manifest so a reviewer can verify visual use in the rendered pages. The region-first pass is recorded in `../regions/REGION_ANALYSIS.md`: 61/62/20 candidate boxes grouped into 51/59/20 spatial clusters before semantic naming.
+This audit maps the cropped atlas components to the Cyberpunk 2077 theme surface. It is intentionally separate from the crop manifest so a reviewer can verify visual use in the rendered pages. The region-first pass is recorded in `../regions/REGION_ANALYSIS.md` and identifies 61 icon, 62 vertical, and 20 wide foreground regions before semantic naming.
 
 | Surface | Recommended cropped component | Selector or template | Status | Acceptance check |
 | --- | --- | --- | --- | --- |
@@ -41,6 +41,4 @@ This audit maps the cropped atlas components to the Cyberpunk 2077 theme surface
 - `../regions/region-crops-preview.png`: region-first crop output (143 numbered candidates).
 - `../regions/REGION_ANALYSIS.md`: source dimensions, independent-region counts, bboxes, and crop paths.
 - `COMPONENT_MANIFEST.json`: exact source coordinates and `runtime-used`, `candidate`, or `reference-only` state.
-
-The local runtime smoke test is available at `http://127.0.0.1:1314/`; the project detail route is `/projects/agricultural-qa-agent/`.
 

@@ -2,18 +2,15 @@
   "discovery": {
     "icons": {
       "candidate_boxes": 61,
-      "bbox_overlaps": 10,
-      "spatial_clusters": 51
+      "bbox_overlaps": 10
     },
     "vertical": {
       "candidate_boxes": 62,
-      "bbox_overlaps": 3,
-      "spatial_clusters": 59
+      "bbox_overlaps": 3
     },
     "wide": {
       "candidate_boxes": 20,
-      "bbox_overlaps": 0,
-      "spatial_clusters": 20
+      "bbox_overlaps": 0
     }
   },
   "candidate_box_total": 143,
