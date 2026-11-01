@@ -11,6 +11,7 @@ on:
       - dev_theme_minimal-tech
       - dev_theme_engineer-terminal
       - dev_termfolio
+      - dev_theme_lzw_archive
 
   workflow_dispatch:
 
@@ -189,7 +190,6 @@ jobs:
             --baseURL "${{ steps.pages.outputs.base_url }}/themes/engineer-terminal/astro-tui-portfolio/"
 
       - name: Build Termfolio static terminal preview
-        if: github.ref == 'refs/heads/dev_termfolio'
         working-directory: termfolio
         env:
           TERMFOLIO_BASE_PATH: /themes/engineer-terminal/termfolio
@@ -228,6 +228,8 @@ jobs:
           test -s "public/theme-center/index.html"
           test -s "public/en/theme-center/index.html"
           test -s "public/themes/minimal/css/minimal-theme.css"
+          test -s "public/themes/minimal/css/theme-manager.css"
+          test -s "public/css/theme-manager.css"
           for variant in astro-blog astropaper astro-erudite pudding miniblog; do
             test -s "public/themes/minimal/${variant}/index.html"
             test -s "public/themes/minimal/${variant}/en/index.html"
@@ -278,6 +280,7 @@ jobs:
           test -s public/themes/engineer-terminal/css/engineer-terminal.css
           test -s public/themes/engineer-terminal/js/engineer-terminal.js
           test -s public/themes/engineer-terminal/css/theme-center.css
+          test -s public/themes/engineer-terminal/termfolio/index.html
           test -s public/themes/engineer-terminal/astro-tui-portfolio/index.html
           test -s public/themes/engineer-terminal/astro-tui-portfolio/en/index.html
           test -s public/themes/engineer-terminal/astro-tui-portfolio/blog/index.html
