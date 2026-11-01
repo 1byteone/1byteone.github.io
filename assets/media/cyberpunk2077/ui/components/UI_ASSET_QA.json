@@ -1,0 +1,47 @@
+{
+  "discovery": {
+    "icons": {
+      "candidate_boxes": 61,
+      "bbox_overlaps": 10
+    },
+    "vertical": {
+      "candidate_boxes": 62,
+      "bbox_overlaps": 3
+    },
+    "wide": {
+      "candidate_boxes": 20,
+      "bbox_overlaps": 0
+    }
+  },
+  "candidate_box_total": 143,
+  "reviewed_total": 117,
+  "reusable_total": 95,
+  "status_counts": {
+    "candidate": 83,
+    "reference-only": 22,
+    "runtime-used": 12
+  },
+  "atlas_counts": {
+    "icons": 57,
+    "vertical": 44,
+    "wide": 16
+  },
+  "runtime_asset_count": 12,
+  "runtime_assets": [
+    "icons/crosshair.png",
+    "icons/arrow-yellow.png",
+    "icons/status-square.png",
+    "vertical/rail-01.png",
+    "vertical/rail-03.png",
+    "vertical/ring-03.png",
+    "vertical/arrow-grid-01.png",
+    "vertical/arrow-grid-05.png",
+    "vertical/arrow-grid-09.png",
+    "wide/large-data-frame-01.png",
+    "wide/small-card-frame-01.png",
+    "wide/loading-stripe.png"
+  ],
+  "missing_assets": [],
+  "empty_assets": [],
+  "quality_gate": "passed"
+}

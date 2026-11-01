@@ -1,4 +1,50 @@
 themes:
+  - id: lzw-archive
+    label: LZW Personal Archive
+    label_zh: 杨劲松个人档案
+    description: A faithful archive-style personal website template for a Java backend and AI application developer
+    description_zh: 复刻档案式个人站视觉，内容接入杨劲松的 Java 后端与 AI 应用工程资料
+    short_label: LZW ARCHIVE
+    version: 1.0.0
+    status: preview
+    scope: site
+    category: portfolio
+    preview_style: editorial
+    tags: [archive, portfolio, AI engineer, Chinese]
+    role: standalone
+    home_template: themes/lzw-archive/home.html
+    stylesheet: lzw-archive.css
+    script: lzw-archive.js
+    base_path: /themes/lzw-archive/
+    preview_path: /themes/lzw-archive/
+    source_repository: https://github.com/lzw-cjs/personal-website
+    reference_url: https://lzw-cjs.github.io/personal-website/
+    reference_note: Faithful Hugo adaptation of the public personal-website template with Jinsong Yang's shared project and writing data.
+    reference_note_zh: 基于公开 personal-website 源码的 Hugo 适配版，内容接入杨劲松的项目、文章与履历资料。
+    available: true
+    default_selectable: true
+    supports: [home, about, resume]
+  - id: cyberpunk2077
+    label: Night City Archive
+    label_zh: 夜之城工程档案
+    description: A Cyberpunk 2077-inspired engineering blog for systems, AI, and field notes
+    description_zh: 以《Cyberpunk 2077》夜之城视觉语言呈现 AI、后端与工程记录
+    short_label: NC-2077
+    version: 1.0.0
+    status: preview
+    scope: site
+    category: creative
+    preview_style: terminal
+    tags: [night city, cyberpunk, engineering blog]
+    role: standalone
+    home_template: themes/cyberpunk2077/home.html
+    stylesheet: css/cyberpunk2077.css
+    script: js/cyberpunk2077.js
+    base_path: /themes/cyberpunk2077/
+    preview_path: /themes/cyberpunk2077/
+    available: true
+    default_selectable: true
+    supports: [home, list, single, projects, blog]
   - id: ai-engineering
     label: AI Engineering Core
     label_zh: AI 工程师主题底座

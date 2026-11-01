@@ -1,5 +1,10 @@
-{{- if eq (lower (default "oil" (index .Site.Params "site_theme"))) "ai-terminal" -}}
+{{- $theme := lower (default "oil" (index .Site.Params "site_theme")) -}}
+{{- if eq $theme "lzw-archive" -}}
   {{ partial "themes/engineer-terminal/list.html" . }}
+{{- else if eq $theme "ai-terminal" -}}
+  {{ partial "themes/engineer-terminal/list.html" . }}
+{{- else if eq $theme "cyberpunk2077" -}}
+  {{ partial "themes/cyberpunk2077/list.html" . }}
 {{- else if eq (lower (default "oil" (index .Site.Params "site_theme"))) "astro-tui-portfolio" -}}
   {{ partial "themes/astro-tui-portfolio/list.html" . }}
 {{- else if eq (lower (default "oil" (index .Site.Params "site_theme"))) "bloggpt" -}}

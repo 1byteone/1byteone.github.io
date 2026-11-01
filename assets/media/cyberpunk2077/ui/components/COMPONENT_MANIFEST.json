@@ -1,0 +1,1580 @@
+[
+  {
+    "atlas": "icons",
+    "name": "arrow-down-right",
+    "box": [
+      78,
+      60,
+      230,
+      214
+    ],
+    "cleanup": null,
+    "usage": "navigation marker or back affordance",
+    "asset": "icons/arrow-down-right.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "icons",
+    "name": "arrow-down-left",
+    "box": [
+      240,
+      60,
+      388,
+      214
+    ],
+    "cleanup": null,
+    "usage": "navigation marker or back affordance",
+    "asset": "icons/arrow-down-left.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "icons",
+    "name": "bars-left",
+    "box": [
+      388,
+      60,
+      464,
+      185
+    ],
+    "cleanup": null,
+    "usage": "section ornament",
+    "asset": "icons/bars-left.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "icons",
+    "name": "code-block",
+    "box": [
+      458,
+      60,
+      868,
+      188
+    ],
+    "cleanup": null,
+    "usage": "technical section ornament",
+    "asset": "icons/code-block.png",
+    "status": "reference-only"
+  },
+  {
+    "atlas": "icons",
+    "name": "bars-right",
+    "box": [
+      868,
+      60,
+      940,
+      185
+    ],
+    "cleanup": null,
+    "usage": "section ornament",
+    "asset": "icons/bars-right.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "icons",
+    "name": "corner-frame-top",
+    "box": [
+      938,
+      58,
+      1102,
+      152
+    ],
+    "cleanup": null,
+    "usage": "focus frame ornament",
+    "asset": "icons/corner-frame-top.png",
+    "status": "reference-only"
+  },
+  {
+    "atlas": "icons",
+    "name": "crosshair",
+    "box": [
+      1110,
+      58,
+      1232,
+      152
+    ],
+    "cleanup": null,
+    "usage": "system focus marker",
+    "asset": "icons/crosshair.png",
+    "status": "runtime-used"
+  },
+  {
+    "atlas": "icons",
+    "name": "square-grid",
+    "box": [
+      1228,
+      58,
+      1350,
+      158
+    ],
+    "cleanup": null,
+    "usage": "system index marker",
+    "asset": "icons/square-grid.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "icons",
+    "name": "tall-bars",
+    "box": [
+      1360,
+      58,
+      1486,
+      340
+    ],
+    "cleanup": null,
+    "usage": "data density marker",
+    "asset": "icons/tall-bars.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "icons",
+    "name": "diamond-matrix",
+    "box": [
+      1475,
+      88,
+      1639,
+      338
+    ],
+    "cleanup": null,
+    "usage": "signal status marker",
+    "asset": "icons/diamond-matrix.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "icons",
+    "name": "chevron-top",
+    "box": [
+      1637,
+      48,
+      1787,
+      186
+    ],
+    "cleanup": null,
+    "usage": "direction marker",
+    "asset": "icons/chevron-top.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "icons",
+    "name": "chevron-bottom",
+    "box": [
+      1637,
+      188,
+      1787,
+      352
+    ],
+    "cleanup": null,
+    "usage": "direction marker",
+    "asset": "icons/chevron-bottom.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "icons",
+    "name": "corner-marker-left",
+    "box": [
+      1784,
+      56,
+      1856,
+      132
+    ],
+    "cleanup": null,
+    "usage": "compact command affordance",
+    "asset": "icons/corner-marker-left.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "icons",
+    "name": "corner-marker-right",
+    "box": [
+      1884,
+      56,
+      1960,
+      132
+    ],
+    "cleanup": null,
+    "usage": "compact command affordance",
+    "asset": "icons/corner-marker-right.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "icons",
+    "name": "asterisk",
+    "box": [
+      940,
+      144,
+      1088,
+      266
+    ],
+    "cleanup": null,
+    "usage": "status or warning marker",
+    "asset": "icons/asterisk.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "icons",
+    "name": "heart-frame",
+    "box": [
+      1108,
+      156,
+      1220,
+      300
+    ],
+    "cleanup": null,
+    "usage": "status marker",
+    "asset": "icons/heart-frame.png",
+    "status": "reference-only"
+  },
+  {
+    "atlas": "icons",
+    "name": "dot-frame",
+    "box": [
+      1250,
+      156,
+      1350,
+      300
+    ],
+    "cleanup": null,
+    "usage": "compact telemetry marker",
+    "asset": "icons/dot-frame.png",
+    "status": "reference-only"
+  },
+  {
+    "atlas": "icons",
+    "name": "slash-strip",
+    "box": [
+      1098,
+      296,
+      1358,
+      362
+    ],
+    "cleanup": null,
+    "usage": "section divider",
+    "asset": "icons/slash-strip.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "icons",
+    "name": "arrow-yellow",
+    "box": [
+      80,
+      220,
+      234,
+      384
+    ],
+    "cleanup": null,
+    "usage": "primary navigation marker",
+    "asset": "icons/arrow-yellow.png",
+    "status": "runtime-used"
+  },
+  {
+    "atlas": "icons",
+    "name": "arrow-black",
+    "box": [
+      244,
+      218,
+      394,
+      382
+    ],
+    "cleanup": null,
+    "usage": "secondary navigation marker",
+    "asset": "icons/arrow-black.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "icons",
+    "name": "warning-lightning",
+    "box": [
+      420,
+      228,
+      552,
+      360
+    ],
+    "cleanup": "nearest",
+    "usage": "warning state marker",
+    "asset": "icons/warning-lightning.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "icons",
+    "name": "warning-striped",
+    "box": [
+      548,
+      228,
+      664,
+      360
+    ],
+    "cleanup": "nearest",
+    "usage": "warning state marker",
+    "asset": "icons/warning-striped.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "icons",
+    "name": "warning-exclamation",
+    "box": [
+      660,
+      228,
+      790,
+      360
+    ],
+    "cleanup": "nearest",
+    "usage": "warning state marker",
+    "asset": "icons/warning-exclamation.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "icons",
+    "name": "status-square",
+    "box": [
+      790,
+      220,
+      922,
+      374
+    ],
+    "cleanup": null,
+    "usage": "system status marker",
+    "asset": "icons/status-square.png",
+    "status": "runtime-used"
+  },
+  {
+    "atlas": "icons",
+    "name": "lower-corner-markers",
+    "box": [
+      1784,
+      278,
+      1964,
+      360
+    ],
+    "cleanup": null,
+    "usage": "compact command affordance",
+    "asset": "icons/lower-corner-markers.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "icons",
+    "name": "crossed-signal",
+    "box": [
+      82,
+      418,
+      288,
+      626
+    ],
+    "cleanup": null,
+    "usage": "signal status marker",
+    "asset": "icons/crossed-signal.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "icons",
+    "name": "shield-frame",
+    "box": [
+      298,
+      430,
+      516,
+      620
+    ],
+    "cleanup": null,
+    "usage": "project dossier marker",
+    "asset": "icons/shield-frame.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "icons",
+    "name": "bolt-disc",
+    "box": [
+      518,
+      428,
+      692,
+      612
+    ],
+    "cleanup": null,
+    "usage": "system status marker",
+    "asset": "icons/bolt-disc.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "icons",
+    "name": "triad-frame",
+    "box": [
+      708,
+      426,
+      928,
+      618
+    ],
+    "cleanup": null,
+    "usage": "project dossier marker",
+    "asset": "icons/triad-frame.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "icons",
+    "name": "square-connectors",
+    "box": [
+      944,
+      426,
+      1146,
+      620
+    ],
+    "cleanup": null,
+    "usage": "system status marker",
+    "asset": "icons/square-connectors.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "icons",
+    "name": "four-chevron",
+    "box": [
+      1150,
+      426,
+      1338,
+      614
+    ],
+    "cleanup": null,
+    "usage": "direction marker",
+    "asset": "icons/four-chevron.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "icons",
+    "name": "globe-frame",
+    "box": [
+      1348,
+      426,
+      1540,
+      614
+    ],
+    "cleanup": null,
+    "usage": "system index marker",
+    "asset": "icons/globe-frame.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "icons",
+    "name": "radial-cross",
+    "box": [
+      1540,
+      418,
+      1772,
+      628
+    ],
+    "cleanup": null,
+    "usage": "telemetry marker",
+    "asset": "icons/radial-cross.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "icons",
+    "name": "spoke-wheel",
+    "box": [
+      1762,
+      416,
+      1968,
+      630
+    ],
+    "cleanup": null,
+    "usage": "telemetry marker",
+    "asset": "icons/spoke-wheel.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "icons",
+    "name": "chevron-strip",
+    "box": [
+      96,
+      676,
+      574,
+      826
+    ],
+    "cleanup": null,
+    "usage": "archive progress rail",
+    "asset": "icons/chevron-strip.png",
+    "status": "reference-only"
+  },
+  {
+    "atlas": "icons",
+    "name": "framed-slash-strip",
+    "box": [
+      610,
+      676,
+      1070,
+      826
+    ],
+    "cleanup": null,
+    "usage": "archive progress rail",
+    "asset": "icons/framed-slash-strip.png",
+    "status": "reference-only"
+  },
+  {
+    "atlas": "icons",
+    "name": "checker-strip",
+    "box": [
+      1060,
+      676,
+      1480,
+      826
+    ],
+    "cleanup": null,
+    "usage": "archive progress rail",
+    "asset": "icons/checker-strip.png",
+    "status": "reference-only"
+  },
+  {
+    "atlas": "icons",
+    "name": "multi-chevron",
+    "box": [
+      1480,
+      668,
+      1790,
+      832
+    ],
+    "cleanup": null,
+    "usage": "navigation divider",
+    "asset": "icons/multi-chevron.png",
+    "status": "reference-only"
+  },
+  {
+    "atlas": "icons",
+    "name": "arrow-tail",
+    "box": [
+      1784,
+      694,
+      1948,
+      806
+    ],
+    "cleanup": null,
+    "usage": "navigation marker",
+    "asset": "icons/arrow-tail.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "icons",
+    "name": "add-circle",
+    "box": [
+      68,
+      876,
+      272,
+      1018
+    ],
+    "cleanup": null,
+    "usage": "add or expand affordance",
+    "asset": "icons/add-circle.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "icons",
+    "name": "x-toggle",
+    "box": [
+      292,
+      876,
+      456,
+      1018
+    ],
+    "cleanup": null,
+    "usage": "toggle state marker",
+    "asset": "icons/x-toggle.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "icons",
+    "name": "linked-circles",
+    "box": [
+      516,
+      884,
+      706,
+      1010
+    ],
+    "cleanup": null,
+    "usage": "status grouping marker",
+    "asset": "icons/linked-circles.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "icons",
+    "name": "half-disc",
+    "box": [
+      760,
+      884,
+      860,
+      1010
+    ],
+    "cleanup": null,
+    "usage": "status grouping marker",
+    "asset": "icons/half-disc.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "icons",
+    "name": "double-chevron",
+    "box": [
+      960,
+      900,
+      1080,
+      996
+    ],
+    "cleanup": null,
+    "usage": "navigation marker",
+    "asset": "icons/double-chevron.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "icons",
+    "name": "corner-rail",
+    "box": [
+      1150,
+      878,
+      1370,
+      1008
+    ],
+    "cleanup": null,
+    "usage": "layout divider",
+    "asset": "icons/corner-rail.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "icons",
+    "name": "expand-frame",
+    "box": [
+      1380,
+      878,
+      1500,
+      1018
+    ],
+    "cleanup": null,
+    "usage": "expand control",
+    "asset": "icons/expand-frame.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "icons",
+    "name": "direction-cross",
+    "box": [
+      1500,
+      862,
+      1664,
+      1042
+    ],
+    "cleanup": null,
+    "usage": "direction control",
+    "asset": "icons/direction-cross.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "icons",
+    "name": "overlap-squares",
+    "box": [
+      1720,
+      876,
+      1800,
+      1016
+    ],
+    "cleanup": null,
+    "usage": "system status marker",
+    "asset": "icons/overlap-squares.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "icons",
+    "name": "linked-diamonds",
+    "box": [
+      1800,
+      876,
+      1994,
+      1016
+    ],
+    "cleanup": null,
+    "usage": "system status marker",
+    "asset": "icons/linked-diamonds.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "icons",
+    "name": "diamond-yellow",
+    "box": [
+      62,
+      1036,
+      330,
+      1314
+    ],
+    "cleanup": null,
+    "usage": "project status marker",
+    "asset": "icons/diamond-yellow.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "icons",
+    "name": "diamond-outline",
+    "box": [
+      350,
+      1036,
+      594,
+      1314
+    ],
+    "cleanup": null,
+    "usage": "project status marker",
+    "asset": "icons/diamond-outline.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "icons",
+    "name": "circuit-cross",
+    "box": [
+      602,
+      1048,
+      844,
+      1292
+    ],
+    "cleanup": null,
+    "usage": "system status marker",
+    "asset": "icons/circuit-cross.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "icons",
+    "name": "loading-ring",
+    "box": [
+      850,
+      1048,
+      1102,
+      1294
+    ],
+    "cleanup": null,
+    "usage": "loading state marker",
+    "asset": "icons/loading-ring.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "icons",
+    "name": "stylized-x",
+    "box": [
+      1090,
+      1048,
+      1326,
+      1292
+    ],
+    "cleanup": null,
+    "usage": "system status marker",
+    "asset": "icons/stylized-x.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "icons",
+    "name": "broken-ring",
+    "box": [
+      1340,
+      1038,
+      1570,
+      1304
+    ],
+    "cleanup": null,
+    "usage": "loading state marker",
+    "asset": "icons/broken-ring.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "icons",
+    "name": "hex-cluster",
+    "box": [
+      1552,
+      1050,
+      1784,
+      1294
+    ],
+    "cleanup": null,
+    "usage": "system status marker",
+    "asset": "icons/hex-cluster.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "icons",
+    "name": "bracket-mark",
+    "box": [
+      1780,
+      1050,
+      1998,
+      1294
+    ],
+    "cleanup": null,
+    "usage": "archive index marker",
+    "asset": "icons/bracket-mark.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "vertical",
+    "name": "rail-01",
+    "box": [
+      35,
+      642,
+      300,
+      682
+    ],
+    "usage": "section index rail or sidebar rule",
+    "asset": "vertical/rail-01.png",
+    "status": "runtime-used"
+  },
+  {
+    "atlas": "vertical",
+    "name": "rail-02",
+    "box": [
+      35,
+      700,
+      300,
+      740
+    ],
+    "usage": "record row progress rail",
+    "asset": "vertical/rail-02.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "vertical",
+    "name": "rail-03",
+    "box": [
+      35,
+      748,
+      300,
+      790
+    ],
+    "usage": "record row progress rail",
+    "asset": "vertical/rail-03.png",
+    "status": "runtime-used"
+  },
+  {
+    "atlas": "vertical",
+    "name": "rail-04",
+    "box": [
+      35,
+      800,
+      300,
+      844
+    ],
+    "usage": "project metadata signal strip",
+    "asset": "vertical/rail-04.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "vertical",
+    "name": "rail-05",
+    "box": [
+      35,
+      855,
+      300,
+      897
+    ],
+    "usage": "project metadata signal strip",
+    "asset": "vertical/rail-05.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "vertical",
+    "name": "rail-06",
+    "box": [
+      35,
+      908,
+      300,
+      952
+    ],
+    "usage": "journal row loading rule",
+    "asset": "vertical/rail-06.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "vertical",
+    "name": "rail-07",
+    "box": [
+      35,
+      960,
+      300,
+      1010
+    ],
+    "usage": "journal row loading rule",
+    "asset": "vertical/rail-07.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "vertical",
+    "name": "rail-gdrp",
+    "box": [
+      12,
+      1018,
+      312,
+      1098
+    ],
+    "usage": "project telemetry rail",
+    "asset": "vertical/rail-gdrp.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "vertical",
+    "name": "ring-01",
+    "box": [
+      300,
+      630,
+      430,
+      742
+    ],
+    "usage": "system status indicator",
+    "asset": "vertical/ring-01.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "vertical",
+    "name": "ring-02",
+    "box": [
+      435,
+      630,
+      565,
+      742
+    ],
+    "usage": "secondary status indicator",
+    "asset": "vertical/ring-02.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "vertical",
+    "name": "ring-03",
+    "box": [
+      300,
+      748,
+      430,
+      860
+    ],
+    "usage": "compact telemetry indicator",
+    "asset": "vertical/ring-03.png",
+    "status": "runtime-used"
+  },
+  {
+    "atlas": "vertical",
+    "name": "ring-04",
+    "box": [
+      435,
+      748,
+      545,
+      860
+    ],
+    "usage": "compact telemetry indicator",
+    "asset": "vertical/ring-04.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "vertical",
+    "name": "ring-05",
+    "box": [
+      300,
+      860,
+      430,
+      972
+    ],
+    "usage": "progress indicator",
+    "asset": "vertical/ring-05.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "vertical",
+    "name": "ring-06",
+    "box": [
+      435,
+      860,
+      545,
+      972
+    ],
+    "usage": "progress indicator",
+    "asset": "vertical/ring-06.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "vertical",
+    "name": "arrow-grid-01",
+    "box": [
+      550,
+      640,
+      615,
+      720
+    ],
+    "usage": "navigation arrow",
+    "asset": "vertical/arrow-grid-01.png",
+    "status": "runtime-used"
+  },
+  {
+    "atlas": "vertical",
+    "name": "arrow-grid-02",
+    "box": [
+      620,
+      640,
+      690,
+      720
+    ],
+    "usage": "navigation arrow",
+    "asset": "vertical/arrow-grid-02.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "vertical",
+    "name": "arrow-grid-03",
+    "box": [
+      700,
+      640,
+      770,
+      712
+    ],
+    "usage": "navigation arrow",
+    "asset": "vertical/arrow-grid-03.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "vertical",
+    "name": "arrow-grid-04",
+    "box": [
+      780,
+      640,
+      850,
+      712
+    ],
+    "usage": "navigation arrow",
+    "asset": "vertical/arrow-grid-04.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "vertical",
+    "name": "arrow-grid-05",
+    "box": [
+      550,
+      715,
+      615,
+      787
+    ],
+    "usage": "command result arrow",
+    "asset": "vertical/arrow-grid-05.png",
+    "status": "runtime-used"
+  },
+  {
+    "atlas": "vertical",
+    "name": "arrow-grid-06",
+    "box": [
+      625,
+      715,
+      690,
+      787
+    ],
+    "usage": "command result arrow",
+    "asset": "vertical/arrow-grid-06.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "vertical",
+    "name": "arrow-grid-07",
+    "box": [
+      700,
+      715,
+      770,
+      787
+    ],
+    "usage": "command result arrow",
+    "asset": "vertical/arrow-grid-07.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "vertical",
+    "name": "arrow-grid-08",
+    "box": [
+      780,
+      715,
+      852,
+      787
+    ],
+    "usage": "command result arrow",
+    "asset": "vertical/arrow-grid-08.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "vertical",
+    "name": "arrow-grid-09",
+    "box": [
+      550,
+      795,
+      615,
+      873
+    ],
+    "usage": "record row arrow",
+    "asset": "vertical/arrow-grid-09.png",
+    "status": "runtime-used"
+  },
+  {
+    "atlas": "vertical",
+    "name": "arrow-grid-10",
+    "box": [
+      625,
+      795,
+      690,
+      873
+    ],
+    "usage": "record row arrow",
+    "asset": "vertical/arrow-grid-10.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "vertical",
+    "name": "arrow-grid-11",
+    "box": [
+      700,
+      795,
+      770,
+      873
+    ],
+    "usage": "record row arrow",
+    "asset": "vertical/arrow-grid-11.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "vertical",
+    "name": "arrow-grid-12",
+    "box": [
+      780,
+      795,
+      852,
+      873
+    ],
+    "usage": "record row arrow",
+    "asset": "vertical/arrow-grid-12.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "vertical",
+    "name": "button-01-reference",
+    "box": [
+      864,
+      646,
+      1019,
+      718
+    ],
+    "usage": "reference only: source button frame with label placeholder",
+    "asset": "vertical/button-01-reference.png",
+    "status": "reference-only"
+  },
+  {
+    "atlas": "vertical",
+    "name": "button-02-reference",
+    "box": [
+      872,
+      726,
+      1015,
+      790
+    ],
+    "usage": "reference only: source button frame with label placeholder",
+    "asset": "vertical/button-02-reference.png",
+    "status": "reference-only"
+  },
+  {
+    "atlas": "vertical",
+    "name": "button-03-reference",
+    "box": [
+      872,
+      806,
+      1015,
+      866
+    ],
+    "usage": "reference only: source button frame with label placeholder",
+    "asset": "vertical/button-03-reference.png",
+    "status": "reference-only"
+  },
+  {
+    "atlas": "vertical",
+    "name": "button-04-reference",
+    "box": [
+      872,
+      884,
+      1015,
+      946
+    ],
+    "usage": "reference only: source button frame with label placeholder",
+    "asset": "vertical/button-04-reference.png",
+    "status": "reference-only"
+  },
+  {
+    "atlas": "vertical",
+    "name": "button-05-reference",
+    "box": [
+      880,
+      974,
+      1015,
+      1032
+    ],
+    "usage": "reference only: source button frame with label placeholder",
+    "asset": "vertical/button-05-reference.png",
+    "status": "reference-only"
+  },
+  {
+    "atlas": "vertical",
+    "name": "button-06-reference",
+    "box": [
+      880,
+      1058,
+      1015,
+      1112
+    ],
+    "usage": "reference only: source button frame with label placeholder",
+    "asset": "vertical/button-06-reference.png",
+    "status": "reference-only"
+  },
+  {
+    "atlas": "vertical",
+    "name": "button-07-reference",
+    "box": [
+      880,
+      1130,
+      1015,
+      1194
+    ],
+    "usage": "reference only: source button frame with label placeholder",
+    "asset": "vertical/button-07-reference.png",
+    "status": "reference-only"
+  },
+  {
+    "atlas": "vertical",
+    "name": "warning-strip-01",
+    "box": [
+      543,
+      1024,
+      848,
+      1072
+    ],
+    "usage": "warning or danger state",
+    "asset": "vertical/warning-strip-01.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "vertical",
+    "name": "warning-strip-02",
+    "box": [
+      545,
+      1072,
+      690,
+      1118
+    ],
+    "usage": "warning state",
+    "asset": "vertical/warning-strip-02.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "vertical",
+    "name": "warning-strip-03",
+    "box": [
+      700,
+      1072,
+      850,
+      1118
+    ],
+    "usage": "danger state",
+    "asset": "vertical/warning-strip-03.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "vertical",
+    "name": "warning-strip-04",
+    "box": [
+      545,
+      1118,
+      690,
+      1164
+    ],
+    "usage": "warning state",
+    "asset": "vertical/warning-strip-04.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "vertical",
+    "name": "warning-strip-05",
+    "box": [
+      700,
+      1118,
+      850,
+      1164
+    ],
+    "usage": "danger state",
+    "asset": "vertical/warning-strip-05.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "vertical",
+    "name": "loading-panel",
+    "box": [
+      198,
+      1180,
+      376,
+      1272
+    ],
+    "usage": "loading or async operation state",
+    "asset": "vertical/loading-panel.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "vertical",
+    "name": "label-rail-01",
+    "box": [
+      15,
+      1208,
+      205,
+      1242
+    ],
+    "usage": "metadata label and value",
+    "asset": "vertical/label-rail-01.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "vertical",
+    "name": "label-rail-02",
+    "box": [
+      15,
+      1242,
+      205,
+      1278
+    ],
+    "usage": "metadata label and value",
+    "asset": "vertical/label-rail-02.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "vertical",
+    "name": "label-rail-03",
+    "box": [
+      15,
+      1278,
+      205,
+      1320
+    ],
+    "usage": "metadata label and value",
+    "asset": "vertical/label-rail-03.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "vertical",
+    "name": "label-rail-04",
+    "box": [
+      15,
+      1320,
+      190,
+      1372
+    ],
+    "usage": "metadata label and value",
+    "asset": "vertical/label-rail-04.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "vertical",
+    "name": "label-rail-05",
+    "box": [
+      15,
+      1372,
+      205,
+      1430
+    ],
+    "usage": "metadata label and value",
+    "asset": "vertical/label-rail-05.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "wide",
+    "name": "top-scanline",
+    "box": [
+      10,
+      10,
+      2790,
+      52
+    ],
+    "usage": "global header scanline",
+    "asset": "wide/top-scanline.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "wide",
+    "name": "left-system-panel",
+    "box": [
+      30,
+      60,
+      620,
+      950
+    ],
+    "usage": "signal module background",
+    "asset": "wide/left-system-panel.png",
+    "status": "reference-only"
+  },
+  {
+    "atlas": "wide",
+    "name": "center-chart-panel",
+    "box": [
+      635,
+      235,
+      1365,
+      945
+    ],
+    "usage": "journal signal trace",
+    "asset": "wide/center-chart-panel.png",
+    "status": "reference-only"
+  },
+  {
+    "atlas": "wide",
+    "name": "large-data-frame-01",
+    "box": [
+      1380,
+      55,
+      1720,
+      245
+    ],
+    "usage": "article or project dossier frame",
+    "asset": "wide/large-data-frame-01.png",
+    "status": "runtime-used"
+  },
+  {
+    "atlas": "wide",
+    "name": "large-data-frame-02",
+    "box": [
+      1730,
+      55,
+      2070,
+      245
+    ],
+    "usage": "article or project dossier frame",
+    "asset": "wide/large-data-frame-02.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "wide",
+    "name": "small-card-frame-01",
+    "box": [
+      2092,
+      208,
+      2255,
+      270
+    ],
+    "usage": "metadata card frame; isolated top-right capsule",
+    "asset": "wide/small-card-frame-01.png",
+    "status": "runtime-used"
+  },
+  {
+    "atlas": "wide",
+    "name": "small-card-frame-02",
+    "box": [
+      1976,
+      280,
+      2144,
+      344
+    ],
+    "usage": "metadata card frame; isolated compact label",
+    "asset": "wide/small-card-frame-02.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "wide",
+    "name": "small-card-frame-03",
+    "box": [
+      1968,
+      372,
+      2162,
+      438
+    ],
+    "usage": "metadata card frame; isolated telemetry label",
+    "asset": "wide/small-card-frame-03.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "wide",
+    "name": "small-card-frame-04",
+    "box": [
+      1976,
+      458,
+      2174,
+      522
+    ],
+    "usage": "metadata card frame; isolated progress label",
+    "asset": "wide/small-card-frame-04.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "wide",
+    "name": "small-card-frame-05",
+    "box": [
+      1984,
+      548,
+      2184,
+      620
+    ],
+    "usage": "metadata card frame; isolated signal label",
+    "asset": "wide/small-card-frame-05.png",
+    "status": "candidate"
+  },
+  {
+    "atlas": "wide",
+    "name": "loading-stripe",
+    "box": [
+      1990,
+      670,
+      2300,
+      705
+    ],
+    "usage": "loading or progress primitive",
+    "asset": "wide/loading-stripe.png",
+    "status": "runtime-used"
+  },
+  {
+    "atlas": "wide",
+    "name": "warning-card",
+    "box": [
+      1430,
+      800,
+      1950,
+      980
+    ],
+    "usage": "error or warning callout",
+    "asset": "wide/warning-card.png",
+    "status": "reference-only"
+  },
+  {
+    "atlas": "wide",
+    "name": "chart-area",
+    "box": [
+      2230,
+      735,
+      2780,
+      1035
+    ],
+    "usage": "metric or signal chart",
+    "asset": "wide/chart-area.png",
+    "status": "reference-only"
+  },
+  {
+    "atlas": "wide",
+    "name": "radial-readout-01",
+    "box": [
+      2320,
+      1050,
+      2490,
+      1220
+    ],
+    "usage": "circular telemetry state",
+    "asset": "wide/radial-readout-01.png",
+    "status": "reference-only"
+  },
+  {
+    "atlas": "wide",
+    "name": "radial-readout-02",
+    "box": [
+      2500,
+      1050,
+      2670,
+      1220
+    ],
+    "usage": "circular telemetry state",
+    "asset": "wide/radial-readout-02.png",
+    "status": "reference-only"
+  },
+  {
+    "atlas": "wide",
+    "name": "radial-readout-03",
+    "box": [
+      2680,
+      1050,
+      2790,
+      1220
+    ],
+    "usage": "circular telemetry state",
+    "asset": "wide/radial-readout-03.png",
+    "status": "reference-only"
+  }
+]

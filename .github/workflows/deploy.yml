@@ -11,6 +11,8 @@ on:
       - dev_theme_minimal-tech
       - dev_theme_engineer-terminal
       - dev_termfolio
+      - dev_theme_cyberpunk2077
+      - dev_theme_lzw_archive
 
   workflow_dispatch:
 
@@ -172,6 +174,38 @@ jobs:
             --destination public/themes/engineer-terminal \
             --baseURL "${{ steps.pages.outputs.base_url }}/themes/engineer-terminal/"
 
+      - name: Build Cyberpunk 2077 theme preview
+        env:
+          HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache
+          HUGO_ENVIRONMENT: cyberpunk2077
+          TZ: America/New_York
+        run: |
+          rm -rf "public/themes/cyberpunk2077"
+          hugo \
+            --gc \
+            --minify \
+            --cleanDestinationDir \
+            --environment cyberpunk2077 \
+            --configDir config \
+            --destination public/themes/cyberpunk2077 \
+            --baseURL "${{ steps.pages.outputs.base_url }}/themes/cyberpunk2077/"
+
+      - name: Build LZW Archive theme preview
+        env:
+          HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache
+          HUGO_ENVIRONMENT: lzw-archive
+          TZ: America/New_York
+        run: |
+          rm -rf "public/themes/lzw-archive"
+          hugo \
+            --gc \
+            --minify \
+            --cleanDestinationDir \
+            --environment lzw-archive \
+            --configDir config \
+            --destination public/themes/lzw-archive \
+            --baseURL "${{ steps.pages.outputs.base_url }}/themes/lzw-archive/"
+
       - name: Build Astro TUI terminal preview
         env:
           HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache
@@ -277,6 +311,18 @@ jobs:
           test -s public/themes/engineer-terminal/en/decisions/index.html
           test -s public/themes/engineer-terminal/css/engineer-terminal.css
           test -s public/themes/engineer-terminal/js/engineer-terminal.js
+          test -s public/themes/cyberpunk2077/index.html
+          test -s public/themes/cyberpunk2077/en/index.html
+          test -s public/themes/cyberpunk2077/blog/index.html
+          test -s public/themes/cyberpunk2077/projects/index.html
+          test -s public/themes/cyberpunk2077/blog/rag-production-architecture/index.html
+          test -s public/themes/cyberpunk2077/css/cyberpunk2077.css
+          test -s public/themes/cyberpunk2077/js/cyberpunk2077.js
+          test -s public/themes/lzw-archive/index.html
+          test -s public/themes/lzw-archive/about.html
+          test -s public/themes/lzw-archive/resume.html
+          test -s public/themes/lzw-archive/lzw-archive.css
+          test -s public/themes/lzw-archive/lzw-archive.js
           test -s public/themes/engineer-terminal/css/theme-center.css
           test -s public/themes/engineer-terminal/astro-tui-portfolio/index.html
           test -s public/themes/engineer-terminal/astro-tui-portfolio/en/index.html
@@ -297,6 +343,11 @@ jobs:
           test -s public/themes/minimal/blog/rag-basic-pipeline/index.html
           test -s public/themes/minimal/en/blog/rag-basic-pipeline/index.html
           test -s public/themes/minimal/css/minimal-theme.css
+          test -s public/index.html
+          test -s public/about.html
+          test -s public/resume.html
+          test -s public/lzw-archive.css
+          test -s public/lzw-archive.js
 
       - name: Verify BlogGPT routes
         if: github.ref == 'refs/heads/dev_theme_GPT'
@@ -346,7 +397,9 @@ jobs:
       github.ref == 'refs/heads/dev_theme_min' ||
       github.ref == 'refs/heads/dev_theme_minimal-tech' ||
       github.ref == 'refs/heads/dev_theme_engineer-terminal' ||
-      github.ref == 'refs/heads/dev_termfolio'
+      github.ref == 'refs/heads/dev_termfolio' ||
+      github.ref == 'refs/heads/dev_theme_cyberpunk2077' ||
+      github.ref == 'refs/heads/dev_theme_lzw_archive'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

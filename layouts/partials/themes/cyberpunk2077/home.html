@@ -1,0 +1,46 @@
+{{- $zh := hasPrefix .Lang "zh" -}}
+{{- $site := .Site.Data.site.site -}}
+{{- $posts := where .Site.RegularPages "Section" "blog" -}}
+{{- $posts = $posts.ByDate.Reverse -}}
+{{- $projects := where .Site.RegularPages "Section" "projects" -}}
+{{- $projects = $projects.ByDate.Reverse -}}
+{{- $telemetry := resources.Get "media/cyberpunk2077/ui/derived/hud-telemetry-panel.png" -}}
+{{- $wave := resources.Get "media/cyberpunk2077/ui/derived/hud-wave-chart.png" -}}
+{{- $controls := resources.Get "media/cyberpunk2077/ui/derived/signal-controls.png" -}}
+{{- $metaSignal := resources.Get "media/cyberpunk2077/ui/derived/ui-meta-signal.png" -}}
+{{- $loading := resources.Get "media/cyberpunk2077/ui/derived/hud-loading-bar-clean.png" -}}
+{{- $scanline := resources.Get "media/cyberpunk2077/ui/derived/hud-scanline.png" -}}
+{{- partial "themes/cyberpunk2077/head.html" . -}}
+<body class="cp77 cp77-index"{{ if .Site.Params.theme_preview }} data-pagefind-ignore{{ end }}>
+  {{ partial "themes/cyberpunk2077/header.html" . }}
+  <main class="cp77-shell cp77-home">
+    <section class="cp77-index-hero" aria-labelledby="cp77-index-title">
+      <div class="cp77-index-copy">
+        <div class="cp77-status-line"><span class="cp77-pulse"></span><span>YOYO / NIGHT CITY ENGINEERING</span><span class="cp77-status-live">{{ if $zh }}档案在线{{ else }}ARCHIVE ONLINE{{ end }}</span></div>
+        <p class="cp77-kicker">{{ if $zh }}工程记录 / 001—005{{ else }}ARCHIVE INDEX / 001—005{{ end }}</p>
+        {{ with $scanline }}<img class="cp77-scanline-asset" src="{{ .RelPermalink }}" alt="" width="1400" height="39">{{ end }}
+        <h1 id="cp77-index-title">{{ if $zh }}现场<br><em>记录</em>{{ else }}FIELD<br><em>NOTES</em>{{ end }}</h1>
+        <p class="cp77-index-lead">{{ if $zh }}一个关于决策、证据，以及真正进入生产环境的系统的工程档案。{{ else }}An engineering archive for decisions, evidence, and systems that reached production.{{ end }}</p>
+        <div class="cp77-index-actions"><a class="cp77-button cp77-button-primary" href="{{ "blog/" | relLangURL }}"><span>{{ if $zh }}浏览文章{{ else }}BROWSE JOURNAL{{ end }}</span></a><a class="cp77-text-link" href="{{ "projects/" | relLangURL }}">{{ if $zh }}02 个项目档案{{ else }}02 PROJECT DOSSIERS{{ end }} <span aria-hidden="true">↗</span></a></div>
+        <div class="cp77-index-tags"><span>RAG</span><span>AGENTS</span><span>BACKEND</span><span>JAVA</span></div>
+      </div>
+      <div class="cp77-signal-module" aria-label="{{ if $zh }}档案系统状态{{ else }}Archive system status{{ end }}">
+        <div class="cp77-module-head"><span>01 / SYSTEM SIGNAL</span><span class="cp77-module-live">● LIVE</span></div>
+        <div class="cp77-module-screen">
+          {{ with $telemetry }}<img src="{{ .RelPermalink }}" alt="" width="1200" height="675" fetchpriority="high">{{ end }}
+          <div class="cp77-module-wash"></div><div class="cp77-module-copy"><span>{{ if $zh }}可追踪性状态{{ else }}TRACEABILITY STATE{{ end }}</span><strong>{{ if $zh }}可验证{{ else }}TRACEABLE{{ end }}</strong><small>{{ if $zh }}真实记录 / 无肖像{{ else }}REAL RECORDS / NO PORTRAIT{{ end }}</small></div><div class="cp77-module-corner">REC 00:01:02</div>
+        </div>
+        <div class="cp77-module-readout"><div><span>STATUS</span><strong>{{ if $zh }}已发布{{ else }}PUBLISHED{{ end }}</strong></div><div><span>SCOPE</span><strong>RAG + BACKEND</strong></div><div><span>LINK</span><strong>OPEN DOSSIER ↗</strong></div></div>
+        <div class="cp77-module-assets"><span>ASSET CROP / HUD-TELEMETRY</span><span class="cp77-module-assets-images">{{ with $metaSignal }}<img class="cp77-meta-asset" src="{{ .RelPermalink }}" alt="" width="170" height="48">{{ end }}{{ with $loading }}<img class="cp77-loading-asset" src="{{ .RelPermalink }}" alt="" width="310" height="35">{{ end }}</span></div>
+      </div>
+    </section>
+
+    <section class="cp77-signal-strip" aria-label="{{ if $zh }}档案概览{{ else }}Archive overview{{ end }}"><div><span>01 / PROJECTS</span><strong>{{ len $projects }}</strong><small>{{ if $zh }}项目档案{{ else }}DOSSIERS{{ end }}</small></div><div><span>02 / JOURNAL</span><strong>{{ len $posts }}</strong><small>{{ if $zh }}篇公开记录{{ else }}PUBLISHED NOTES{{ end }}</small></div><div><span>03 / FOCUS</span><strong>RAG</strong><small>AGENTS · BACKEND</small></div><div class="cp77-strip-note"><span>FIELD PRINCIPLE</span><p>{{ if $zh }}真实记录优先于漂亮的结论。{{ else }}Real records before polished conclusions.{{ end }}</p></div></section>
+
+    <section class="cp77-records" id="projects" aria-labelledby="cp77-projects-title"><div class="cp77-section-head"><div><span>02 / PROJECT DOSSIERS</span><h2 id="cp77-projects-title">{{ if $zh }}项目档案{{ else }}Project dossiers{{ end }}</h2></div><a href="{{ "projects/" | relLangURL }}">{{ if $zh }}查看全部{{ else }}VIEW ALL{{ end }} <b aria-hidden="true">↗</b></a></div><div class="cp77-record-list">{{ range $index, $project := first 2 $projects }}<a class="cp77-record-row" href="{{ $project.RelPermalink }}"><span class="cp77-record-number">{{ printf "%02d" (add $index 1) }}</span><span class="cp77-record-type">PROJECT / {{ upper ($project.Params.status | default "PUBLISHED") }}</span><div><h3>{{ $project.Title }}</h3><p>{{ $project.Summary | plainify | truncate 180 }}</p>{{ with $project.Params.tags }}<div class="cp77-tag-row">{{ range first 4 . }}<span>{{ . }}</span>{{ end }}</div>{{ end }}</div><span class="cp77-row-arrow" aria-hidden="true">↗</span></a>{{ end }}</div></section>
+
+    <section class="cp77-journal" id="journal" aria-labelledby="cp77-journal-title"><div class="cp77-section-head"><div><span>03 / FIELD JOURNAL</span><h2 id="cp77-journal-title">{{ if $zh }}最新记录{{ else }}Latest field notes{{ end }}</h2></div><a href="{{ "blog/" | relLangURL }}">{{ if $zh }}浏览文章{{ else }}BROWSE JOURNAL{{ end }} <b aria-hidden="true">↗</b></a></div><div class="cp77-journal-grid"><div class="cp77-journal-list">{{ range $post := first 4 $posts }}<a class="cp77-journal-row" href="{{ $post.RelPermalink }}"><time datetime="{{ $post.Date.Format "2006-01-02" }}">{{ $post.Date.Format "06.01.02" }}</time><span class="cp77-journal-dot"></span><div><h3>{{ $post.Title }}</h3><p>{{ $post.Summary | plainify | truncate 160 }}</p></div><span class="cp77-row-arrow" aria-hidden="true">↗</span></a>{{ end }}</div><aside class="cp77-wave-panel"><span>04 / SIGNAL TRACE</span>{{ with $wave }}<img src="{{ .RelPermalink }}" alt="" width="1340" height="850" loading="lazy">{{ end }}<strong>BUILD / SHIP / LEARN</strong>{{ with $controls }}<img class="cp77-wave-controls" src="{{ .RelPermalink }}" alt="" width="1024" height="358" loading="lazy">{{ end }}</aside></div></section>
+
+    <section class="cp77-method" aria-labelledby="cp77-method-title"><div><span>05 / OPERATING PRINCIPLE</span><h2 id="cp77-method-title">{{ if $zh }}让证据成为叙事。{{ else }}Let evidence become the story.{{ end }}</h2><p>{{ if $zh }}从上下文到验证，工程记录围绕可复现的过程组织，让每次判断都能回到现场。{{ else }}Every note follows a reproducible trail from context to verification.{{ end }}</p></div><ol><li>CONTEXT</li><li>SYMPTOM</li><li>EVIDENCE</li><li>FIX</li><li>VERIFY</li></ol></section>
+  </main>
+  {{ partial "themes/cyberpunk2077/footer.html" . }}

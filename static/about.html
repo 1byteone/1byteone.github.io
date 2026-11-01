@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>档案 // 关于此人 — 杨劲松</title>
+    <meta name="description" content="Java 后端工程师 / AI 应用开发 · RAG · Agent · 微服务">
+
+    <!-- 内联 SVG favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23ff6b1a'/%3E%3Crect x='6' y='8' width='8' height='8' fill='%230a0908' transform='rotate(-5 10 12)'/%3E%3Ccircle cx='22' cy='12' r='3.5' fill='%231a3a52'/%3E%3Cpolygon points='8,18 24,16 26,28 10,26' fill='%230a0908'/%3E%3C/svg%3E">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,800;0,9..144,900;1,9..144,400;1,9..144,900&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Special+Elite&family=Noto+Serif+SC:wght@400;600;800;900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="lzw-archive.css">
+    <link rel="stylesheet" href="about.css">
+</head>
+<body class="archive-mode">
+
+    <!-- 顶部状态条 -->
+    <header class="archive-tag">
+        <div class="tag-left">
+            <a href="index.html" class="back-link">←</a>
+            <span class="dot"></span>
+            <span class="archive-id">ARCHIVE / 2099</span>
+        </div>
+        <div class="tag-right">
+            <span class="stamp" id="liveClock">--:--:--</span>
+            <span class="divider">·</span>
+            <span class="stamp">CAT-002 / DOSSIER</span>
+        </div>
+    </header>
+
+    <!-- 个人简介主体 -->
+    <section class="dossier">
+        <div class="noise-layer" aria-hidden="true"></div>
+
+        <div class="dossier-grid">
+
+            <!-- 左侧：头像 + 基本信息 -->
+            <aside class="dossier-side">
+                <!-- 几何拼图头像 -->
+                <div class="avatar">
+                    <div class="avatar-frame">
+                        <svg viewBox="0 0 200 200" class="avatar-svg" aria-hidden="true">
+                            <!-- 抽象几何头像：4 个色块组成的"面孔" -->
+                            <rect x="20" y="20" width="80" height="80" fill="#c8412c" transform="rotate(-5 60 60)"/>
+                            <circle cx="140" cy="60" r="38" fill="#1a3a52"/>
+                            <polygon points="40,110 130,100 145,180 50,175" fill="#ff6b1a" opacity="0.85"/>
+                            <rect x="110" y="120" width="70" height="60" fill="#0a0908"/>
+                            <line x1="0" y1="0" x2="200" y2="200" stroke="#0a0908" stroke-width="0.5" opacity="0.3"/>
+                        </svg>
+                        <div class="avatar-stamp" aria-hidden="true">VERIFIED</div>
+                    </div>
+                    <p class="avatar-caption">↑ 抽象自画像</p>
+                </div>
+
+                <!-- 基本信息 -->
+                <dl class="info-list">
+                    <div class="info-row">
+                        <dt>NAME</dt>
+                        <dd>杨劲松</dd>
+                    </div>
+                    <div class="info-row">
+                        <dt>ROLE</dt>
+                        <dd>Java 后端工程师 / AI 应用开发</dd>
+                    </div>
+                    <div class="info-row">
+                        <dt>BASED</dt>
+                        <dd>南昌 / 中国</dd>
+                    </div>
+                    <div class="info-row">
+                        <dt>SCHOOL</dt>
+                        <dd>江西农业大学 · 软件工程 · 2027 届</dd>
+                    </div>
+                    <div class="info-row">
+                        <dt>GITHUB</dt>
+                        <dd><a href="https://github.com/1byteone" target="_blank" rel="noopener">@1byteone</a></dd>
+                    </div>
+                    <div class="info-row">
+                        <dt>DAILY</dt>
+                        <dd>Git / Docker / Conda / Jupyter</dd>
+                    </div>
+                </dl>
+
+                <!-- 二维码占位（创意设计） -->
+                <div class="qr-card">
+                    <div class="qr-fake" aria-hidden="true">
+                        <div class="qr-pixel"></div><div class="qr-pixel"></div><div class="qr-pixel"></div>
+                        <div class="qr-pixel"></div><div class="qr-pixel"></div><div class="qr-pixel"></div>
+                        <div class="qr-pixel"></div><div class="qr-pixel"></div><div class="qr-pixel"></div>
+                    </div>
+                    <p class="qr-label">扫码 / 假装扫码</p>
+                </div>
+            </aside>
+
+            <!-- 右侧：内容主体 -->
+            <article class="dossier-main">
+
+                <!-- 标题区 -->
+                <header class="dossier-header">
+                    <p class="file-code">DOSSIER // CAT-002</p>
+                    <h1 class="dossier-title">关于此人</h1>
+                    <p class="dossier-sub">A Field Note on a Human-Computer Symbiont</p>
+                </header>
+
+                <!-- 第一段：我是谁 -->
+                <section class="prose">
+                    <div class="prose-marker">§I</div>
+                    <h2 class="prose-title">我是谁</h2>
+                    <p>
+                        <mark>Java 后端与 AI 应用开发者</mark>，具备从微服务架构、缓存与消息队列到 RAG 检索、Agent 工具调用的完整项目实践。核心技术栈：Spring Boot、Spring Cloud Alibaba、Redis、RocketMQ、Python、LangChain 与 FastAPI。
+                    </p>
+                    <p>
+                        当前项目包括分布式微云商城与农业知识问答系统：前者完成 Spring Cloud Alibaba 微服务拆分、11 个中间件集成和万级并发压测；后者完成 PDF 预处理、向量检索、LangGraph 意图路由、SSE 流式输出与 MCP 工具集成。
+                    </p>
+                    <p>
+                        我在<strong>江西农业大学</strong>攻读软件工程，GPA 位于专业前 15%，已通过 CET-4。当前在江西传习教育科技有限公司实习，参与 AI 驱动的搜索与推荐系统、RAG 检索服务和 Python AI 服务与 Spring Cloud 微服务的联调。
+                    </p>
+                    <p>
+                        <strong>我相信代码是写给自己未来的笔记</strong>——接口契约、CodeReview、压测报告与文档，都是让系统可以被协作、被验证、被继续维护的路标。
+                    </p>
+                </section>
+
+                <!-- 第二段：相信什么 -->
+                <section class="prose">
+                    <div class="prose-marker">§II</div>
+                    <h2 class="prose-title">我相信什么</h2>
+                    <ol class="beliefs">
+                        <li>
+                            <span class="belief-num">01</span>
+                            <span class="belief-text"><strong>代码是写给人看的</strong>，顺便能被机器执行。优雅优先于聪明。</span>
+                        </li>
+                        <li>
+                            <span class="belief-num">02</span>
+                            <span class="belief-text"><strong>好工具应该消失</strong>。当用户感觉不到工具存在，它才真正工作。</span>
+                        </li>
+                        <li>
+                            <span class="belief-num">03</span>
+                            <span class="belief-text"><strong>AI 是新的协作者</strong>。架构决策由人做，代码实现可以与 AI 协作完成。</span>
+                        </li>
+                        <li>
+                            <span class="belief-num">04</span>
+                            <span class="belief-text"><strong>沉淀比聪明更重要</strong>。把每天学到的东西写成笔记，半年后你会感谢自己。</span>
+                        </li>
+                        <li>
+                            <span class="belief-num">05</span>
+                            <span class="belief-text"><strong>跨界是优势</strong>。从国土空间规划到 AI Agent，地理 × 技术的交叉给了我独特的视角。</span>
+                        </li>
+                    </ol>
+                </section>
+
+                <!-- 时间线 -->
+                <section class="prose">
+                    <div class="prose-marker">§III</div>
+                    <h2 class="prose-title">轨迹</h2>
+                    <ol class="timeline">
+                        <li class="timeline-item">
+                            <span class="timeline-year">2026</span>
+                            <span class="timeline-dot"></span>
+                            <div class="timeline-body">
+                                <h3>进入 AI 应用开发现场</h3>
+                                <p>加入江西传习教育科技有限公司实习，参与 AI 搜索与推荐、RAG 检索服务，以及 Python AI 服务和 Spring Cloud 微服务的联调。</p>
+                            </div>
+                        </li>
+                        <li class="timeline-item">
+                            <span class="timeline-year">2026</span>
+                            <span class="timeline-dot"></span>
+                            <div class="timeline-body">
+                                <h3>项目化训练</h3>
+                                <p>完成分布式微云商城和农业知识问答系统：覆盖微服务、中间件、高并发、RAG、Agent、SSE 和 MCP 集成。</p>
+                            </div>
+                        </li>
+                        <li class="timeline-item">
+                            <span class="timeline-year">2023</span>
+                            <span class="timeline-dot"></span>
+                            <div class="timeline-body">
+                                <h3>软件工程本科起点</h3>
+                                <p>进入江西农业大学软件工程专业，开始系统学习 Java、数据库、网络与工程协作方法。</p>
+                            </div>
+                        </li>
+                        <li class="timeline-item">
+                            <span class="timeline-year">2023</span>
+                            <span class="timeline-dot"></span>
+                            <div class="timeline-body">
+                                <h3>持续学习</h3>
+                                <p>围绕 Java 微服务、AI 应用开发、RAG 检索和分布式系统建立可复用的学习与项目记录。</p>
+                            </div>
+                        </li>
+                    </ol>
+                </section>
+
+                <!-- 技能矩阵 -->
+                <section class="prose">
+                    <div class="prose-marker">§IV</div>
+                    <h2 class="prose-title">能力矩阵</h2>
+                    <p class="prose-intro">像 RPG 一样看待自己 — 数值为相对熟练度 (1-5)，随时间动态调整。</p>
+
+                    <div class="skills">
+                        <div class="skill">
+                            <div class="skill-head">
+                                <span class="skill-name">AI Agent 工程</span>
+                                <span class="skill-lv">LV.5</span>
+                            </div>
+                            <div class="skill-bar"><span style="--w: 90%"></span></div>
+                            <p class="skill-note">LangChain · LangGraph · RAG · Agent</p>
+                        </div>
+
+                        <div class="skill">
+                            <div class="skill-head">
+                                <span class="skill-name">Python 工程化</span>
+                                <span class="skill-lv">LV.5</span>
+                            </div>
+                            <div class="skill-bar"><span style="--w: 88%"></span></div>
+                            <p class="skill-note">Python · FastAPI · SSE · Pydantic</p>
+                        </div>
+
+                        <div class="skill">
+                            <div class="skill-head">
+                                <span class="skill-name">后端 / API 设计</span>
+                                <span class="skill-lv">LV.4</span>
+                            </div>
+                            <div class="skill-bar"><span style="--w: 80%"></span></div>
+                            <p class="skill-note">FastAPI · Flask · SSE · asyncio</p>
+                        </div>
+
+                        <div class="skill">
+                            <div class="skill-head">
+                                <span class="skill-name">数据 / 地理信息</span>
+                                <span class="skill-lv">LV.3</span>
+                            </div>
+                            <div class="skill-bar"><span style="--w: 70%"></span></div>
+                            <p class="skill-note">ArcGIS Pro · pandas · 国土空间规划</p>
+                        </div>
+
+                        <div class="skill">
+                            <div class="skill-head">
+                                <span class="skill-name">前端 / 桌面</span>
+                                <span class="skill-lv">LV.3</span>
+                            </div>
+                            <div class="skill-bar"><span style="--w: 65%"></span></div>
+                            <p class="skill-note">Next.js · PySide6 · Electron · Vue</p>
+                        </div>
+
+                        <div class="skill">
+                            <div class="skill-head">
+                                <span class="skill-name">日常开发工具</span>
+                                <span class="skill-lv">LV.5</span>
+                            </div>
+                            <div class="skill-bar"><span style="--w: 85%"></span></div>
+                            <p class="skill-note">OpenClaw · Claude Code · Codex · Trae IDE · Trae Solo · WorkBuddy</p>
+                        </div>
+
+                        <div class="skill">
+                            <div class="skill-head">
+                                <span class="skill-name">知识库管理</span>
+                                <span class="skill-lv">LV.4</span>
+                            </div>
+                            <div class="skill-bar"><span style="--w: 80%"></span></div>
+                            <p class="skill-note">Spring Boot · Spring Cloud · Redis · RocketMQ</p>
+                        </div>
+
+                        <div class="skill">
+                            <div class="skill-head">
+                                <span class="skill-name">写作 / 表达</span>
+                                <span class="skill-lv">LV.3</span>
+                            </div>
+                            <div class="skill-bar"><span style="--w: 60%"></span></div>
+                            <p class="skill-note">技术博客 · 文档 · 沉淀笔记</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 收尾 -->
+                <section class="prose">
+                    <div class="prose-marker">§V</div>
+                    <h2 class="prose-title">如何联系我</h2>
+                    <p>
+                        我相信"工程是慢慢沉淀出来的"。如果你正在做 Java 后端、AI 应用、RAG 或分布式系统，欢迎邮件交流——我愿意分享项目中的取舍、压测和故障排查记录。
+                    </p>
+                    <p>
+                        <strong>求职意向</strong>：Java 后端工程师 / AI 应用开发工程师。
+                    </p>
+                    <p>
+                        也欢迎看看我的 <a href="https://github.com/1byteone" target="_blank" rel="noopener">GitHub</a> 和<a href="resume.html" target="_blank" rel="noopener">简历</a>。
+                    </p>
+
+                    <div class="sign-off">
+                        <p class="sign-line">— 杨劲松</p>
+                        <p class="sign-place">写于南昌（实习与积累路上）</p>
+                    </div>
+                </section>
+
+            </article>
+        </div>
+    </section>
+
+    <footer class="archive-footer">
+        <div class="footer-divider">
+            <span class="dash">— — —</span>
+            <span class="footer-stamp">END OF DOSSIER</span>
+            <span class="dash">— — —</span>
+        </div>
+
+        <div class="footer-bottom">
+            <a href="index.html" class="footer-link">← 返回档案</a>
+            <p class="footer-credits">
+                <span class="dim">CAT-002 / DOSSIER · 2026</span>
+            </p>
+        </div>
+    </footer>
+
+    <script src="lzw-archive.js"></script>
+</body>
+</html>
