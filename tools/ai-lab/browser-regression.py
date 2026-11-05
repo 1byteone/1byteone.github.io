@@ -127,6 +127,18 @@ def check_page(page, url: str, language: str, viewport_name: str, output_dir: Pa
 
     language_switch = page.locator("[data-lab-language-switch]").first
     checks["language_switch"] = language_switch.count() and bool(language_switch.get_attribute("href"))
+
+    manager = page.locator("[data-theme-manager]").first
+    if manager.count():
+        trigger = manager.locator("summary").first
+        trigger.click()
+        page.wait_for_timeout(60)
+        checks["theme_manager_popup"] = manager.get_attribute("open") is not None and manager.locator(".theme-manager-panel").is_visible()
+        checks["theme_manager_center_link"] = manager.locator(".theme-manager-center-link").count() > 0
+        page.keyboard.press("Escape")
+    else:
+        checks["theme_manager_popup"] = False
+        checks["theme_manager_center_link"] = False
     return {
         "url": url,
         "language": language,

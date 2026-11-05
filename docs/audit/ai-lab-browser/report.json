@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-05T14:06:34.755875+00:00",
+  "generated_at": "2026-11-05T15:37:11.153204+00:00",
   "base_url": "http://127.0.0.1:1322",
   "viewports": [
     "desktop",
@@ -73,7 +73,9 @@
         "learn_carousel_next": true,
         "learn_carousel_controls_named": true,
         "search_focus": true,
-        "language_switch": true
+        "language_switch": true,
+        "theme_manager_popup": true,
+        "theme_manager_center_link": true
       },
       "console_errors": [],
       "screenshot": "docs\\audit\\ai-lab-browser\\zh-desktop-1440x900.png"
@@ -143,7 +145,9 @@
         "learn_carousel_next": true,
         "learn_carousel_controls_named": true,
         "search_focus": true,
-        "language_switch": true
+        "language_switch": true,
+        "theme_manager_popup": true,
+        "theme_manager_center_link": true
       },
       "console_errors": [],
       "screenshot": "docs\\audit\\ai-lab-browser\\zh-tablet-768x1024.png"
@@ -161,35 +165,35 @@
           "x": 32,
           "y": 84,
           "width": 600,
-          "height": 243.75
+          "height": 225.38
         },
         "[data-home-sizzle]": {
           "x": 0,
-          "y": 327.75,
+          "y": 309.38,
           "width": 664,
           "height": 440
         },
         ".al-home-announcements": {
           "x": 32,
-          "y": 767.75,
+          "y": 749.38,
           "width": 600,
           "height": 1291
         },
         ".al-home-learn-more": {
           "x": 32,
-          "y": 2058.75,
+          "y": 2040.38,
           "width": 600,
           "height": 749.08
         },
         ".al-ref-footer": {
           "x": 0,
-          "y": 2965.83,
+          "y": 2947.45,
           "width": 664,
           "height": 776.97
         }
       },
       "metrics": {
-        "scrollHeight": 3743,
+        "scrollHeight": 3724,
         "scrollWidth": 664,
         "viewportWidth": 664,
         "viewportHeight": 524,
@@ -213,7 +217,9 @@
         "learn_carousel_next": true,
         "learn_carousel_controls_named": true,
         "search_focus": true,
-        "language_switch": true
+        "language_switch": true,
+        "theme_manager_popup": true,
+        "theme_manager_center_link": true
       },
       "console_errors": [],
       "screenshot": "docs\\audit\\ai-lab-browser\\zh-narrow-664x524.png"
@@ -231,35 +237,35 @@
           "x": 32,
           "y": 76,
           "width": 326,
-          "height": 277.36
+          "height": 249.47
         },
         "[data-home-sizzle]": {
           "x": 0,
-          "y": 353.36,
+          "y": 325.47,
           "width": 390,
           "height": 560
         },
         ".al-home-announcements": {
           "x": 32,
-          "y": 913.36,
+          "y": 885.47,
           "width": 326,
           "height": 1507
         },
         ".al-home-learn-more": {
           "x": 32,
-          "y": 2420.36,
+          "y": 2392.47,
           "width": 326,
           "height": 499.72
         },
         ".al-ref-footer": {
           "x": 0,
-          "y": 3043.08,
+          "y": 3015.19,
           "width": 390,
           "height": 934.14
         }
       },
       "metrics": {
-        "scrollHeight": 3977,
+        "scrollHeight": 3949,
         "scrollWidth": 390,
         "viewportWidth": 390,
         "viewportHeight": 844,
@@ -283,7 +289,9 @@
         "learn_carousel_next": true,
         "learn_carousel_controls_named": true,
         "search_focus": true,
-        "language_switch": true
+        "language_switch": true,
+        "theme_manager_popup": true,
+        "theme_manager_center_link": true
       },
       "console_errors": [],
       "screenshot": "docs\\audit\\ai-lab-browser\\zh-mobile-390x844.png"
@@ -353,7 +361,9 @@
         "learn_carousel_next": true,
         "learn_carousel_controls_named": true,
         "search_focus": true,
-        "language_switch": true
+        "language_switch": true,
+        "theme_manager_popup": true,
+        "theme_manager_center_link": true
       },
       "console_errors": [],
       "screenshot": "docs\\audit\\ai-lab-browser\\en-desktop-1440x900.png"
@@ -423,7 +433,9 @@
         "learn_carousel_next": true,
         "learn_carousel_controls_named": true,
         "search_focus": true,
-        "language_switch": true
+        "language_switch": true,
+        "theme_manager_popup": true,
+        "theme_manager_center_link": true
       },
       "console_errors": [],
       "screenshot": "docs\\audit\\ai-lab-browser\\en-tablet-768x1024.png"
@@ -441,35 +453,35 @@
           "x": 32,
           "y": 84,
           "width": 600,
-          "height": 281.44
+          "height": 258.78
         },
         "[data-home-sizzle]": {
           "x": 0,
-          "y": 365.44,
+          "y": 342.78,
           "width": 664,
           "height": 440
         },
         ".al-home-announcements": {
           "x": 32,
-          "y": 805.44,
+          "y": 782.78,
           "width": 600,
           "height": 1291
         },
         ".al-home-learn-more": {
           "x": 32,
-          "y": 2096.44,
+          "y": 2073.78,
           "width": 600,
           "height": 749.08
         },
         ".al-ref-footer": {
           "x": 0,
-          "y": 3003.52,
+          "y": 2980.86,
           "width": 664,
           "height": 791.36
         }
       },
       "metrics": {
-        "scrollHeight": 3795,
+        "scrollHeight": 3772,
         "scrollWidth": 664,
         "viewportWidth": 664,
         "viewportHeight": 524,
@@ -493,7 +505,9 @@
         "learn_carousel_next": true,
         "learn_carousel_controls_named": true,
         "search_focus": true,
-        "language_switch": true
+        "language_switch": true,
+        "theme_manager_popup": true,
+        "theme_manager_center_link": true
       },
       "console_errors": [],
       "screenshot": "docs\\audit\\ai-lab-browser\\en-narrow-664x524.png"
@@ -511,35 +525,35 @@
           "x": 32,
           "y": 76,
           "width": 326,
-          "height": 434.34
+          "height": 349.69
         },
         "[data-home-sizzle]": {
           "x": 0,
-          "y": 510.34,
+          "y": 425.69,
           "width": 390,
           "height": 560
         },
         ".al-home-announcements": {
           "x": 32,
-          "y": 1070.34,
+          "y": 985.69,
           "width": 326,
           "height": 1507
         },
         ".al-home-learn-more": {
           "x": 32,
-          "y": 2577.34,
+          "y": 2492.69,
           "width": 326,
           "height": 515.22
         },
         ".al-ref-footer": {
           "x": 0,
-          "y": 3215.56,
+          "y": 3130.91,
           "width": 390,
           "height": 988.62
         }
       },
       "metrics": {
-        "scrollHeight": 4204,
+        "scrollHeight": 4120,
         "scrollWidth": 390,
         "viewportWidth": 390,
         "viewportHeight": 844,
@@ -563,7 +577,9 @@
         "learn_carousel_next": true,
         "learn_carousel_controls_named": true,
         "search_focus": true,
-        "language_switch": true
+        "language_switch": true,
+        "theme_manager_popup": true,
+        "theme_manager_center_link": true
       },
       "console_errors": [],
       "screenshot": "docs\\audit\\ai-lab-browser\\en-mobile-390x844.png"
