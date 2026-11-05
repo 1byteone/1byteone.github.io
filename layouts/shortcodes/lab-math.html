@@ -1,0 +1,2 @@
+{{- $mode := .Get 0 | default "inline" -}}
+<span class="al-math-source" data-lab-math data-display="{{ eq $mode "display" }}">{{ .Inner }}</span>

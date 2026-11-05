@@ -5,8 +5,17 @@
   "packageManager": "pnpm@10.14.0",
   "description": "AI Application Developer Portfolio - 1byteone",
   "scripts": {
-    "dev": "hugo server --disableFastRender",
-    "build": "hugo --minify && pnpm run pagefind",
+    "check:hugo": "node scripts/check-hugo-version.cjs",
+    "dev": "node scripts/hugo-run.cjs server --disableFastRender",
+    "build": "node tools/ai-lab/build-playground-corpus.cjs && node scripts/hugo-run.cjs --minify && pnpm run pagefind",
+    "check:ai-lab": "node tools/ai-lab/ai-lab-smoke.cjs",
+    "check:ai-lab:structure": "node tools/ai-lab/visual-regression.cjs",
+    "benchmark:ai-lab": "node tools/ai-lab/evaluate-retrieval.cjs",
+    "audit:ai-lab:articles": "node tools/ai-lab/audit-shared-articles.cjs",
+    "audit:ai-lab:assets": "node tools/ai-lab/audit-assets.cjs",
+    "audit:ai-lab:browser": "python tools/ai-lab/browser-regression.py --base-url http://127.0.0.1:1322",
+    "benchmark:ai-lab:semantic": "python tools/ai-lab/evaluate-semantic-retrieval.py",
+    "build:ai-lab:corpus": "node tools/ai-lab/build-playground-corpus.cjs",
     "pagefind": "pagefind --site public"
   },
   "dependencies": {

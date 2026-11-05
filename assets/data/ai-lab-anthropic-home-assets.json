@@ -1,0 +1,60 @@
+{
+  "retrieved_on": "2026-11-04",
+  "source_page": "https://www.anthropic.com/",
+  "authorization_note": "The user authorized local reuse of downloaded reference images for this project. This does not establish asset-specific license or redistribution rights.",
+  "images": [
+    {
+      "file": "assets/media/ai-lab/anthropic-home/hero-sprite.webp",
+      "source_page": "https://www.anthropic.com/",
+      "source_asset": null,
+      "source_title": "Homepage carousel artwork sprite",
+      "sha256": "755C7F0A968B4E22FF1298DD92F2F7743CA8D7D6822857CAC7D8EEF35C86F1E1",
+      "note": "Local 4 by 3 carousel crop sheet. The direct CDN URL was not retained in the capture and is intentionally not inferred."
+    },
+    {
+      "file": "assets/media/ai-lab/anthropic-home/anthropic-institute.jpg",
+      "source_page": "https://www.anthropic.com/",
+      "source_asset": "https://www-cdn.anthropic.com/images/4zrzovbb/website/1a9fa9ce10043f39139b19fef810307d8fe53c99-1712x2139.jpg",
+      "source_title": "The Anthropic Institute",
+      "sha256": "E31BA2128D8E685EDFB2BD89D9A01497CE4FCD2F4BB0422781EDCB1388F08062"
+    },
+    {
+      "file": "assets/media/ai-lab/anthropic-home/claude-constitution.png",
+      "source_page": "https://www.anthropic.com/",
+      "source_asset": "https://www-cdn.anthropic.com/images/4zrzovbb/website/38139f03740c55031bb6a3cc17f3eed4436751a6-642x803.png",
+      "source_title": "Claude's Constitution",
+      "sha256": "189CF270F9F46269221FAC1BD39C1CB273C010886EBA8B287721D260590C6BEF"
+    },
+    {
+      "file": "assets/media/ai-lab/anthropic-home/responsible-scaling-policy.jpg",
+      "source_page": "https://www.anthropic.com/",
+      "source_asset": "https://www-cdn.anthropic.com/images/4zrzovbb/website/5796088217c9da0352eca894fbb8331f6f207bc6-1712x2139.jpg",
+      "source_title": "Responsible Scaling Policy",
+      "sha256": "CC25498066C8F466FA854085F5088F0D525AA317EE0CD19295FD63FF93461284"
+    },
+    {
+      "file": "assets/media/ai-lab/anthropic-home/core-views-ai-safety.jpg",
+      "source_page": "https://www.anthropic.com/",
+      "source_asset": "https://www-cdn.anthropic.com/images/4zrzovbb/website/63773c39b7f3875c5a497e9f3549bdb5dc7c58fa-1712x2139.jpg",
+      "source_title": "Core views on AI safety",
+      "sha256": "C047BE07BD9CEF5E668392D42AE1A0C1DBE3B235AF0F3703DC785388411C2BB8"
+    },
+    {
+      "file": "assets/media/ai-lab/anthropic-home/heroes.webp",
+      "source_page": "https://www.anthropic.com/",
+      "source_asset": null,
+      "source_title": "Homepage hero atlas duplicate capture",
+      "sha256": "755C7F0A968B4E22FF1298DD92F2F7743CA8D7D6822857CAC7D8EEF35C86F1E1",
+      "note": "Local capture retained for visual study; direct asset URL/license was not established."
+    },
+    {
+      "file": "assets/media/ai-lab/anthropic-home/tiles.webp",
+      "source_page": "https://www.anthropic.com/",
+      "source_asset": null,
+      "source_title": "Homepage card tile atlas",
+      "sha256": "C6B2CFCE92C76237228D14A89A66B7EC63F3BA615CB0371D108FB92C58747E43",
+      "note": "Local capture retained for visual study; direct asset URL/license was not established."
+    }
+  ]
+}
+

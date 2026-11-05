@@ -1,0 +1,9 @@
+{{- if eq .Page.Section "ai-lab" -}}
+  {{- $options := merge .Options (dict "linenos" "table") -}}
+  <div class="al-code-block" data-code-block data-language="{{ .Type | lower }}">
+    <div class="al-code-toolbar"><span>{{ .Type | default "TEXT" | upper }}</span><button type="button" data-copy-code>{{ if hasPrefix .Page.Lang "zh" }}复制{{ else }}Copy{{ end }}</button></div>
+    {{ highlight .Inner .Type $options }}
+  </div>
+{{- else -}}
+  {{- highlight .Inner .Type .Options -}}
+{{- end -}}

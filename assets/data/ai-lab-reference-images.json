@@ -1,0 +1,42 @@
+{
+  "retrieved_on": "2026-11-04",
+  "source_page": "https://www.anthropic.com/research",
+  "usage_note": "Local visual references for the AI Lab redesign. Source attribution is recorded; no asset-specific reuse license is implied.",
+  "images": [
+    {
+      "file": "assets/media/ai-lab/anthropic-reference/provable-inference.jpg",
+      "source_title": "Progress on provable inference for large language models",
+      "source_page": "https://www.anthropic.com/research/provable-inference",
+      "source_asset": "https://www-cdn.anthropic.com/images/4zrzovbb/website/2eba335a28661a8253187053fa36add230af728b-2000x1125.jpg",
+      "sha256": "07D240316E686146A5C7DA88DD3FDE6C8CBA9EEA27515BC6DF12C0053452E939"
+    },
+    {
+      "file": "assets/media/ai-lab/anthropic-reference/alignment-cyber-assessment.jpg",
+      "source_title": "An alignment assessment of recent cybersecurity incidents",
+      "source_page": "https://www.anthropic.com/research/alignment-assessment-cybersecurity-incidents",
+      "source_asset": "https://www-cdn.anthropic.com/images/4zrzovbb/website/5683350e8c3e43c24541b0da195bca9d0d03491e-2000x1125.jpg",
+      "sha256": "2C2DBAFB9A0F089D74A35839D2DF8587755D99F97578D7DDD0E850E1594921E2"
+    },
+    {
+      "file": "assets/media/ai-lab/anthropic-reference/automated-researchers.jpg",
+      "source_title": "Automated researchers can reliably mitigate alignment failures",
+      "source_page": "https://www.anthropic.com/research",
+      "source_asset": "https://www-cdn.anthropic.com/images/4zrzovbb/website/b60cdf4c2dad438f6e862c7f6bb6fdb802b9e4a0-1280x1280.jpg",
+      "sha256": "E10C5DDCF615E5C10FA0EFE5B51A786E3D26349ACA65508FADD09B2BD926A4D4"
+    },
+    {
+      "file": "assets/media/ai-lab/anthropic-reference/frontier-measurements.jpg",
+      "source_title": "Illuminating the frontier",
+      "source_page": "https://www.anthropic.com/research",
+      "source_asset": "https://www-cdn.anthropic.com/images/4zrzovbb/website/949253a4fe1d64bb09bac48fd94a5110c2132916-1280x1280.jpg",
+      "sha256": "4AF19BBE5B53F001782711313837B756D723A44192C4D5A48BBA29C87077B9C9"
+    },
+    {
+      "file": "assets/media/ai-lab/anthropic-reference/unintended-model-actions.jpg",
+      "source_title": "Investigating unintended model actions in our evaluations and internal use",
+      "source_page": "https://www.anthropic.com/research/investigating-unintended-model-actions",
+      "source_asset": "https://www-cdn.anthropic.com/images/4zrzovbb/website/f11d2325e688229de8a887ef7ece34f520ab7134-2000x1125.jpg",
+      "sha256": "CB3662D05FE90EAFD2F76E93EB1206ED1C3C5CC1560666F2729C3346A6CC1FB9"
+    }
+  ]
+}

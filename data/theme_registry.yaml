@@ -164,8 +164,8 @@ themes:
     description_zh: 展示模型、检索、提示词与评测实验的过程和结果
     short_label: LAB
     version: 0.1.0
-    status: planned
-    scope: home-only
+    status: preview
+    scope: section
     category: ai-data
     preview_style: lab
     tags: [experiments, evaluation, metrics]
@@ -174,8 +174,10 @@ themes:
     role: child
     focus: Hypotheses, datasets, metrics, and limitations
     focus_zh: 假设、数据集、指标与局限
-    available: false
+    preview_path: /ai-lab/
+    available: true
     default_selectable: false
+    supports: [overview, experiments, research, engineering, benchmarks, playground, field-notes]
   - id: ai-editorial
     label: Technical Editorial
     label_zh: 技术杂志 / 编辑部

@@ -1,0 +1,45 @@
+{
+  "dataset_id": "ai-lab-rag-baseline-v1",
+  "created_at": "2026-11-05",
+  "license": "Project-authored evaluation fixture",
+  "documents": [
+    {
+      "id": "doc-rag-ingestion",
+      "text": "RAG ingestion parses documents, normalizes text, chunks content, stores source metadata, and creates embeddings before indexing.",
+      "text_zh": "RAG 摄入阶段解析文档、规范化文本、切分片段、保存来源元数据，并在建立索引前生成嵌入向量。"
+    },
+    {
+      "id": "doc-rag-retrieval",
+      "text": "Hybrid retrieval combines BM25 lexical search with dense vector recall, deduplicates candidates, and applies a reranker under a latency budget.",
+      "text_zh": "混合检索组合 BM25 关键词搜索与稠密向量召回，去重候选项，并在延迟预算内使用重排器。"
+    },
+    {
+      "id": "doc-rag-citations",
+      "text": "A grounded answer must cite a stable document version and chunk identifier. If evidence is insufficient, the application should abstain.",
+      "text_zh": "有依据的回答必须引用稳定的文档版本和片段标识符。证据不足时，应用应该拒答。"
+    },
+    {
+      "id": "doc-agent-tools",
+      "text": "An agent tool boundary validates arguments, checks an allowlist, applies a timeout, and records the request trace before execution.",
+      "text_zh": "智能体工具边界在执行前验证参数、检查允许列表、设置超时，并记录请求追踪信息。"
+    },
+    {
+      "id": "doc-streaming",
+      "text": "An SSE streaming endpoint propagates client cancellation upstream and releases the model response, HTTP client, and semaphore in finally.",
+      "text_zh": "SSE 流式端点应将客户端取消向上游传播，并在 finally 中释放模型响应、HTTP 客户端和并发信号量。"
+    },
+    {
+      "id": "doc-structured-output",
+      "text": "Structured output validates the model response against a schema, then the application checks citation identifiers and authorization.",
+      "text_zh": "结构化输出先用 Schema 校验模型响应，随后应用检查引用标识符和授权权限。"
+    }
+  ],
+  "queries": [
+    { "id": "q-ingestion", "query": "How does RAG prepare documents before indexing?", "relevant": ["doc-rag-ingestion"] },
+    { "id": "q-hybrid", "query": "How do BM25 and vector retrieval work together?", "relevant": ["doc-rag-retrieval"] },
+    { "id": "q-citations", "query": "What should an answer cite when evidence is weak?", "relevant": ["doc-rag-citations", "doc-structured-output"] },
+    { "id": "q-tools", "query": "How should an agent protect tool execution?", "relevant": ["doc-agent-tools"] },
+    { "id": "q-sse", "query": "What must happen after an SSE client disconnects?", "relevant": ["doc-streaming"] },
+    { "id": "q-schema", "query": "How is a model response checked before it is used?", "relevant": ["doc-structured-output"] }
+  ]
+}

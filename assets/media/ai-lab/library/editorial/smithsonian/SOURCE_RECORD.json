@@ -1,0 +1,8 @@
+{
+  "source_page": "https://si.edu/openaccess",
+  "api_query": "https://api.si.edu/openaccess/api/v1.0/search?q=astronomy&api_key=DEMO_KEY",
+  "record_id": "siris_sil_13719",
+  "title": "Astronomy",
+  "rights": "CC0",
+  "status": "metadata verified; image endpoint rejected by upstream WAF, no image copied"
+}

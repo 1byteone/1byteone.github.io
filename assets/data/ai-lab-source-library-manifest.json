@@ -1,0 +1,2919 @@
+{
+  "collection": "AI Lab multi-source image library coverage",
+  "generated_on": "2026-11-05",
+  "policy": "Every source from the visual reference guide has an explicit status. Downloaded files are hashed and dimension-checked. Reference-only or not-downloaded sources are never presented as reusable licensed assets.",
+  "source_count": 27,
+  "downloaded_source_count": 6,
+  "downloaded_file_count": 258,
+  "sources": [
+    {
+      "source_id": "open-doodles",
+      "name": "Open Doodles",
+      "source_page": "https://www.opendoodles.com/",
+      "license": "CC0 1.0 / Public Domain",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "status": "downloaded",
+      "commercial_use": true,
+      "attribution_required": false,
+      "redistributable": true,
+      "file_count": 33,
+      "files": [
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-doodles-react/open-doodles-ballet.svg",
+          "filename": "open-doodles-ballet.svg",
+          "bytes": 27497,
+          "sha256": "70f1b8996997fe6469599dbaa946ebab9689720791bc2ca6deed01abe7dbb87f",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-doodles-react/open-doodles-bikini.svg",
+          "filename": "open-doodles-bikini.svg",
+          "bytes": 25612,
+          "sha256": "ce294834ca2d4b92cb04814c3a1d384afd9edc345942149bc21674775694233c",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-doodles-react/open-doodles-chilling.svg",
+          "filename": "open-doodles-chilling.svg",
+          "bytes": 21132,
+          "sha256": "d47865ec7d4eb0d993b24ed6dadb8a6ba5af397d89610745325258a4ab9332bb",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-doodles-react/open-doodles-clumsy.svg",
+          "filename": "open-doodles-clumsy.svg",
+          "bytes": 100779,
+          "sha256": "b1070f05f45fa806ee169bfd50f897a9bcc27c51d0971e9de383062997a7f3ca",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-doodles-react/open-doodles-coffee.svg",
+          "filename": "open-doodles-coffee.svg",
+          "bytes": 21800,
+          "sha256": "547c16d05c1608d674043a5a27b6990cf5e621c2001f24734258ae44f9864b6a",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-doodles-react/open-doodles-dancing.svg",
+          "filename": "open-doodles-dancing.svg",
+          "bytes": 52443,
+          "sha256": "48a9e7ea8d49795f479bb2c39817583722870105e739bdd5ae8023e7c3e7c632",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-doodles-react/open-doodles-dog-jump.svg",
+          "filename": "open-doodles-dog-jump.svg",
+          "bytes": 32003,
+          "sha256": "ca3430156f8919a56eecd58677a2abcb14a62c01afcf28058d36db8b5012c211",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-doodles-react/open-doodles-doggie.svg",
+          "filename": "open-doodles-doggie.svg",
+          "bytes": 35819,
+          "sha256": "9cd7febf6d1aad941905c76af8083282946fe151e312b16129199cf7e5c6fd1d",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-doodles-react/open-doodles-float.svg",
+          "filename": "open-doodles-float.svg",
+          "bytes": 51393,
+          "sha256": "e13944fdc961fa4d5906d383298ffb5fc91ec47e1e6d9c52d17195219aa39070",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-doodles-react/open-doodles-groovy.svg",
+          "filename": "open-doodles-groovy.svg",
+          "bytes": 25446,
+          "sha256": "d34ac18dfe9947e81725653c8019a714a9248673291117e5fd6f3d5e23ae2da1",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-doodles-react/open-doodles-ice-cream.svg",
+          "filename": "open-doodles-ice-cream.svg",
+          "bytes": 22657,
+          "sha256": "36001565289e4cefdacb4e05a80c3641dfd0bf2ceb3fbe948b7a5e75fe7c6b36",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-doodles-react/open-doodles-jumping.svg",
+          "filename": "open-doodles-jumping.svg",
+          "bytes": 23352,
+          "sha256": "82e4553980c048bcc2e1e2633e6d5f25c5184467d02a1bfeb4346902801f553f",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-doodles-react/open-doodles-laying.svg",
+          "filename": "open-doodles-laying.svg",
+          "bytes": 16593,
+          "sha256": "8672afc85c0a03d3791e86b8b21a1171bb620e4963864827a597ae1b4f65b7e6",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-doodles-react/open-doodles-levitate.svg",
+          "filename": "open-doodles-levitate.svg",
+          "bytes": 13163,
+          "sha256": "d9a320c80fbf091e77b6ee0bdfa7eebaf1a84eec125189bbc4ac8073a11418d1",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-doodles-react/open-doodles-loving.svg",
+          "filename": "open-doodles-loving.svg",
+          "bytes": 11541,
+          "sha256": "1fb275f20b5a8272be688b07286f38a573c3bdf96c73d16d40215e1c613b4762",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-doodles-react/open-doodles-meditating.svg",
+          "filename": "open-doodles-meditating.svg",
+          "bytes": 38972,
+          "sha256": "7dd6c800840aba3ef79db8aa19515618cb06adfeb46d31a7f67b5321ef36df1f",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-doodles-react/open-doodles-moshing.svg",
+          "filename": "open-doodles-moshing.svg",
+          "bytes": 28542,
+          "sha256": "e38b2e8d1fb96a26d31000ebea13ea6486a4cd0ae4dc4fc29dab3cf64a9fa765",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-doodles-react/open-doodles-petting.svg",
+          "filename": "open-doodles-petting.svg",
+          "bytes": 47983,
+          "sha256": "de73d163b8a6c08d8f887ebf4517a401e7ca65680bd4db86fd8b16690930aa5f",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-doodles-react/open-doodles-plant.svg",
+          "filename": "open-doodles-plant.svg",
+          "bytes": 103620,
+          "sha256": "3883dde6d58013fbc22579bc05ed10c30cb7dbc2cac8ff34d748c84e94653861",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-doodles-react/open-doodles-reading-side.svg",
+          "filename": "open-doodles-reading-side.svg",
+          "bytes": 28823,
+          "sha256": "7fd8b930878a9a2071c8d7f1aabc49e3060d3dd60e7d78efca3f6b1f9af2c87f",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-doodles-react/open-doodles-reading.svg",
+          "filename": "open-doodles-reading.svg",
+          "bytes": 44413,
+          "sha256": "355e528e7b67625ddca93b2d68791cefc9f7160c99cf11ca4f207779141ac31a",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-doodles-react/open-doodles-roller-skating.svg",
+          "filename": "open-doodles-roller-skating.svg",
+          "bytes": 28439,
+          "sha256": "1fbfa09d5761d15e6caf3ab6c9a0da6cc44d05b2bdcf56aafb26f0983f1cad5f",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-doodles-react/open-doodles-rolling.svg",
+          "filename": "open-doodles-rolling.svg",
+          "bytes": 22992,
+          "sha256": "f89b418ff02204bbf55a84c5a717d6d5ab7a0dbcc0522c7856369ac3f557c3f4",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-doodles-react/open-doodles-running.svg",
+          "filename": "open-doodles-running.svg",
+          "bytes": 22420,
+          "sha256": "0a6c27a09ebff9d46de25b5a187fdc056446bae9c38607e2a1a65460beec663c",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-doodles-react/open-doodles-selfie.svg",
+          "filename": "open-doodles-selfie.svg",
+          "bytes": 26159,
+          "sha256": "23e0799e4bdd4b696b88c2a0200ac0b9334768a1b22951d36f9028a8e6247bf7",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-doodles-react/open-doodles-sitting-reading.svg",
+          "filename": "open-doodles-sitting-reading.svg",
+          "bytes": 33240,
+          "sha256": "6c27de785dcc9c8c3b8dda1b7cc0c8f2dcf14ac1c2f8eb558c80d42388ea4a6d",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-doodles-react/open-doodles-sitting.svg",
+          "filename": "open-doodles-sitting.svg",
+          "bytes": 27648,
+          "sha256": "2006c878528f7358a25698874fbdd80f075617663f3d2849a976f4f1608e551c",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-doodles-react/open-doodles-sleek.svg",
+          "filename": "open-doodles-sleek.svg",
+          "bytes": 26609,
+          "sha256": "8abc5e0994c7456ac3ba04c3ff57b28cb3764025197661d5ae2969c71503489d",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-doodles-react/open-doodles-sprinting.svg",
+          "filename": "open-doodles-sprinting.svg",
+          "bytes": 22862,
+          "sha256": "8d55a327a4ed6428d79cf25826b9a9cefd832abee02ec7d0cd6cde137955f1e4",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-doodles-react/open-doodles-strolling.svg",
+          "filename": "open-doodles-strolling.svg",
+          "bytes": 25950,
+          "sha256": "ba090bf94ad8b2d610c04a513f718fd2d1259b8c2faf510fe9e6bec3fb229e4a",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-doodles-react/open-doodles-swinging.svg",
+          "filename": "open-doodles-swinging.svg",
+          "bytes": 84882,
+          "sha256": "0274b5bcd0c1bb79e640f4f51581fcbe3b7fdbdb31108c81beacc31176a739c3",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-doodles-react/open-doodles-unboxing.svg",
+          "filename": "open-doodles-unboxing.svg",
+          "bytes": 41792,
+          "sha256": "a714d368e9e64ba816ffdfced0efc0ab5f47fea354f0a45f79804a1462be9e09",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-doodles-react/open-doodles-zombieing.svg",
+          "filename": "open-doodles-zombieing.svg",
+          "bytes": 21894,
+          "sha256": "5c48afba3967399e66f1586c93e863ed6422325d9db450b1b4ed46591cd1534e",
+          "format": "svg",
+          "decoded": false
+        }
+      ],
+      "notes": "33 SVG + 20 PNG are already tracked by the dedicated manifest; this source catalog points to that verified batch."
+    },
+    {
+      "source_id": "open-peeps",
+      "name": "Open Peeps",
+      "source_page": "https://www.openpeeps.com/",
+      "license": "CC0 1.0 / Public Domain",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "status": "downloaded",
+      "commercial_use": true,
+      "attribution_required": false,
+      "redistributable": true,
+      "file_count": 219,
+      "files": [
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/02-5e535741f5fa1a13a1f8f233_peep-48.png",
+          "filename": "02-5e535741f5fa1a13a1f8f233_peep-48.png",
+          "bytes": 52091,
+          "sha256": "d2a2fab0a721caad3fc453b5b799c2944ce71bb0f38946cde93faea341636210",
+          "format": "png",
+          "dimensions": {
+            "width": 720,
+            "height": 972
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/03-5e51ce4e2c16e82ce80d8b42_icon.png",
+          "filename": "03-5e51ce4e2c16e82ce80d8b42_icon.png",
+          "bytes": 12291,
+          "sha256": "d99204284022fb4bea4a8c972647be05d1f39591369e89a85a01b555df1acd40",
+          "format": "png",
+          "dimensions": {
+            "width": 256,
+            "height": 256
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/03-5e535956e35d380d2b67a11f_peep-66.svg",
+          "filename": "03-5e535956e35d380d2b67a11f_peep-66.svg",
+          "bytes": 48801,
+          "sha256": "36db1f3cfe411bbcd429d87fd182623dd8ede51139dcaa01cb2387e1d1dafbda",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/04-5e5333c433d3681a7a3d6205_logo-sketch.svg",
+          "filename": "04-5e5333c433d3681a7a3d6205_logo-sketch.svg",
+          "bytes": 2632,
+          "sha256": "f821e29f4d3a118fbdd97ae06fa20d879cf8d966afe44d5a053c09380e9088a7",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/05-5e5333c416879cfa0fc96689_logo-figma.svg",
+          "filename": "05-5e5333c416879cfa0fc96689_logo-figma.svg",
+          "bytes": 2357,
+          "sha256": "ab64ed884b8192f32382a7109144cc70cfab3ce3ef4756be7aea41a7b3f546b4",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/06-5e535902c9925085c4c9b4f8_peep-63.png",
+          "filename": "06-5e535902c9925085c4c9b4f8_peep-63.png",
+          "bytes": 58464,
+          "sha256": "b596a1ac748d899afdb3ab68933569cc56847999b3eeea95e78b1c85b766209e",
+          "format": "png",
+          "dimensions": {
+            "width": 720,
+            "height": 972
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/07-5e53575a550b769098f5249d_peep-49.svg",
+          "filename": "07-5e53575a550b769098f5249d_peep-49.svg",
+          "bytes": 41398,
+          "sha256": "c8698bec327c31fe4bcdefa5012e4dfc551b6121c1053ad4cad9686183ae228b",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/08-5ee84ffb67164de36645a3bc_happy.svg",
+          "filename": "08-5ee84ffb67164de36645a3bc_happy.svg",
+          "bytes": 4155,
+          "sha256": "ef34cb155b3c3686efed39b03d1cb5ae658beda3afc54623167bde0234e4bbd1",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/09-5e5346352c16e8d69e1649f2_cover_hero-1.svg",
+          "filename": "09-5e5346352c16e8d69e1649f2_cover_hero-1.svg",
+          "bytes": 3646711,
+          "sha256": "4ce3fc588a1a6448969b7068828843f05efc9b2ed6da347f495f510c7eea6640",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/09-5e5355ed4600809f5a8dad51_peep-37.svg",
+          "filename": "09-5e5355ed4600809f5a8dad51_peep-37.svg",
+          "bytes": 32739,
+          "sha256": "b0043fdd7c6d83d0b01399b5557a16cf34efb6f9ebc85ddc2f153e6e28c6bee3",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/10-5e5355f3f5fa1a1fd7f79760_peep-37.png",
+          "filename": "10-5e5355f3f5fa1a1fd7f79760_peep-37.png",
+          "bytes": 56428,
+          "sha256": "7098e5b0970e16a87d6140b358abf6d4c8ef8353c593c85e253550f8cd924076",
+          "format": "png",
+          "dimensions": {
+            "width": 720,
+            "height": 972
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/10-5e535cc633d3686b733e5265_mix-7.svg",
+          "filename": "10-5e535cc633d3686b733e5265_mix-7.svg",
+          "bytes": 46555,
+          "sha256": "cb6a15acd4cfe18558c9b066869f7fe65ecfd1b533e6ee753fb2c329cbf34128",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/100-5e535a2b8e24938384074dac_peep-73.svg",
+          "filename": "100-5e535a2b8e24938384074dac_peep-73.svg",
+          "bytes": 32134,
+          "sha256": "9e43b37c06d5feb90a89f09738935e6a9df84294697331edc7dfa7de93a6fb64",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/101-5e535a30d871312cf4100aed_peep-73.png",
+          "filename": "101-5e535a30d871312cf4100aed_peep-73.png",
+          "bytes": 66967,
+          "sha256": "9d376d6bb4000f2237f27bf1c435910aed679d520583669a8545414b01b1d4a5",
+          "format": "png",
+          "dimensions": {
+            "width": 720,
+            "height": 972
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/102-5e5351f351970522b7a2499d_peep-15.svg",
+          "filename": "102-5e5351f351970522b7a2499d_peep-15.svg",
+          "bytes": 36514,
+          "sha256": "3c23f9a330824091b3f315ef770f2063d1e7d0976fa4ca09a0f92ac494d200fb",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/103-5e5351f551970508e6a249c4_peep-15.png",
+          "filename": "103-5e5351f551970508e6a249c4_peep-15.png",
+          "bytes": 62382,
+          "sha256": "e2301047cf3fcae7ed96c5a1c0930b6b9610280957fbcbeb14cfdf610893fd81",
+          "format": "png",
+          "dimensions": {
+            "width": 720,
+            "height": 972
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/104-5e535d68c6b2498a0c2cbf6a_peep-101.svg",
+          "filename": "104-5e535d68c6b2498a0c2cbf6a_peep-101.svg",
+          "bytes": 24175,
+          "sha256": "74834e65b7f19779bb13bd8de53c31e45d5548ecab47d1c7a9eff65b11a30fbd",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/105-5e535d6cf5fa1a7f84fd610f_peep-101.png",
+          "filename": "105-5e535d6cf5fa1a7f84fd610f_peep-101.png",
+          "bytes": 72284,
+          "sha256": "542ed1b299863e318039812b61d8f0692a4f1c4d16253e35d8ab1da174f06657",
+          "format": "png",
+          "dimensions": {
+            "width": 720,
+            "height": 972
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/106-5e53513d5197058658a1dc94_peep-9.svg",
+          "filename": "106-5e53513d5197058658a1dc94_peep-9.svg",
+          "bytes": 26784,
+          "sha256": "480ea502ee15b5520e039934a519a5b23fe4f791f7a9fe491265c1e9eed83b75",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/107-5e5351418e2493653d03a995_peep-9.png",
+          "filename": "107-5e5351418e2493653d03a995_peep-9.png",
+          "bytes": 60968,
+          "sha256": "99853b47f4487dd7474a91b2c175bef3f84c7a816e501db129e1466c6e746c90",
+          "format": "png",
+          "dimensions": {
+            "width": 720,
+            "height": 972
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/108-5e535720d39923630d5487d7_peep-47.svg",
+          "filename": "108-5e535720d39923630d5487d7_peep-47.svg",
+          "bytes": 29942,
+          "sha256": "53ecf33b3e91d99b11b75ce0d9aa0f39376e8760c03bdea0c5ce9bb75f6ad571",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/109-5e535727550b765a60f50817_peep-47.png",
+          "filename": "109-5e535727550b765a60f50817_peep-47.png",
+          "bytes": 53445,
+          "sha256": "fc6bdd4fdddd534768059ee3cd93cf0812021272e10e8ad8049e336257519780",
+          "format": "png",
+          "dimensions": {
+            "width": 720,
+            "height": 972
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/11-5e535421d399233b9b529696_peep-28.svg",
+          "filename": "11-5e535421d399233b9b529696_peep-28.svg",
+          "bytes": 40311,
+          "sha256": "8278a7e9a26424c68941db99971e4691277f4cf32338a3b4c1e6201b3516fba3",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/11-5e535cc533d36869f23e5264_mix-6.svg",
+          "filename": "11-5e535cc533d36869f23e5264_mix-6.svg",
+          "bytes": 38236,
+          "sha256": "376c09c62501e82ae250b72b635bd599ba0853c6cb309474aa64114ac4d086cb",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/110-5e535b7a8becbf1fc35460c4_peep-84.svg",
+          "filename": "110-5e535b7a8becbf1fc35460c4_peep-84.svg",
+          "bytes": 23444,
+          "sha256": "49a74c1057d57d8f136ea33a9facf63cf1e29bde15e682d939ea8aabf38733af",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/111-5e535b7d460080f0198eabb9_peep-84.png",
+          "filename": "111-5e535b7d460080f0198eabb9_peep-84.png",
+          "bytes": 45106,
+          "sha256": "bd5feeb3d142871f92ac66bb468b0d7d63eab84007a1024a911a2f1648223861",
+          "format": "png",
+          "dimensions": {
+            "width": 720,
+            "height": 972
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/112-5e535c03c6b24912b82c061d_peep-89.svg",
+          "filename": "112-5e535c03c6b24912b82c061d_peep-89.svg",
+          "bytes": 35784,
+          "sha256": "fb34679ccdced9f30dd58922ea262d47753737faa257820e3817e6cd462e2e40",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/113-5e53534d67293a6fe95a9616_peep-22.svg",
+          "filename": "113-5e53534d67293a6fe95a9616_peep-22.svg",
+          "bytes": 25162,
+          "sha256": "06088b7debd06d68237ac90888454c7aaa7a7786fefa2435f22862b33068eaa2",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/114-5e51c6d88c34f86ae14980f1_peep-4.png",
+          "filename": "114-5e51c6d88c34f86ae14980f1_peep-4.png",
+          "bytes": 45488,
+          "sha256": "87d9e143e77f28d4dcd6e8f6bf94c8e77517253e2a6dc1c9834ef011ce3dfa61",
+          "format": "png",
+          "dimensions": {
+            "width": 720,
+            "height": 972
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/115-5e53583de35d386180675b6e_peep-56.svg",
+          "filename": "115-5e53583de35d386180675b6e_peep-56.svg",
+          "bytes": 29008,
+          "sha256": "f605485ec7b6891492be15da33ceb7943ae5b47fdb154e2dd9b84b0e61eafe50",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/116-5e535840d39923925454c88d_peep-56.png",
+          "filename": "116-5e535840d39923925454c88d_peep-56.png",
+          "bytes": 47865,
+          "sha256": "88d8ee62b2d94f4726bc77813212bca2b0446f24908bac07eddf5ecf5c173aad",
+          "format": "png",
+          "dimensions": {
+            "width": 720,
+            "height": 972
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/117-5e535c42c67e79a7a6962d19_peep-91.svg",
+          "filename": "117-5e535c42c67e79a7a6962d19_peep-91.svg",
+          "bytes": 30416,
+          "sha256": "f5e6f7845897b42f021360edc84ad00cd18d647cbb9c3e3bf9542f5891e8ec1e",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/118-5e535c46519705265ba6fc80_peep-91.png",
+          "filename": "118-5e535c46519705265ba6fc80_peep-91.png",
+          "bytes": 52134,
+          "sha256": "52948c1e93b45489eef3b8ae95886f90793c4ddaa10fa5a2a50203d8af6119a6",
+          "format": "png",
+          "dimensions": {
+            "width": 720,
+            "height": 972
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/119-5e53612767293a6c4f619687_peep-standing-8.svg",
+          "filename": "119-5e53612767293a6c4f619687_peep-standing-8.svg",
+          "bytes": 45541,
+          "sha256": "5eec9e6928e6357e266439e081413e792a0458189364c0fba078067d98d3c049",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/12-5e5352682c16e8c454168a64_mix-1.svg",
+          "filename": "12-5e5352682c16e8c454168a64_mix-1.svg",
+          "bytes": 76093,
+          "sha256": "f2a87b67622cb605df9e25798d69a93275b2a172fe3ca8d1620b3a61f77029ea",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/12-5e535427f3aa4b96832be329_peep-28.png",
+          "filename": "12-5e535427f3aa4b96832be329_peep-28.png",
+          "bytes": 55337,
+          "sha256": "890a6fa424e4b718e61591041f3628dfdc9d04deb5040f36d5aed9eae18bb7e2",
+          "format": "png",
+          "dimensions": {
+            "width": 720,
+            "height": 972
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/120-5e53612a9b55b01ab457bb8f_peep-standing-8.png",
+          "filename": "120-5e53612a9b55b01ab457bb8f_peep-standing-8.png",
+          "bytes": 179658,
+          "sha256": "5a1f57523c54e06981064d2df3a6ea020754012924292423861f1fca9155806e",
+          "format": "png",
+          "dimensions": {
+            "width": 747,
+            "height": 2037
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/121-5e536601c67e7916da9d1aa5_peep-standing-27.svg",
+          "filename": "121-5e536601c67e7916da9d1aa5_peep-standing-27.svg",
+          "bytes": 42903,
+          "sha256": "d7ac4962484f1d73708e4f69260e8f60f97decf37e1513d17a534cf8faa45a6c",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/122-5e536605f3aa4bf789323f67_peep-standing-27.png",
+          "filename": "122-5e536605f3aa4bf789323f67_peep-standing-27.png",
+          "bytes": 135859,
+          "sha256": "631d2fec6ce9c48fcf7f091745af4480824cf775df8bbce88b89c7ee1325f6dd",
+          "format": "png",
+          "dimensions": {
+            "width": 738,
+            "height": 2139
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/123-5e536097c6b24990d02eef77_peep-standing-3.svg",
+          "filename": "123-5e536097c6b24990d02eef77_peep-standing-3.svg",
+          "bytes": 38146,
+          "sha256": "eeecd4f64dc85e88072f9533073da90df4b17683875e7a26a988fd23264d050f",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/124-5e53609b46008005d1915a35_peep-standing-3.png",
+          "filename": "124-5e53609b46008005d1915a35_peep-standing-3.png",
+          "bytes": 141467,
+          "sha256": "d34c3eb9cd61c3d61800a6a30de6ef39d87896284f3b6c964d478dc69664ef78",
+          "format": "png",
+          "dimensions": {
+            "width": 639,
+            "height": 2103
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/125-5e536210c67e798fb29b1e94_peep-standing-15.svg",
+          "filename": "125-5e536210c67e798fb29b1e94_peep-standing-15.svg",
+          "bytes": 54693,
+          "sha256": "887a47e61a3be67ad9fac118d8d78469300258bcc01003de378643318332c060",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/126-5e536212c992501801ce9608_peep-standing-15.png",
+          "filename": "126-5e536212c992501801ce9608_peep-standing-15.png",
+          "bytes": 162871,
+          "sha256": "6761ea90a7bd7d10dee36fddd3bb256d875cec1c6006f43eac6d6eb17caaa01b",
+          "format": "png",
+          "dimensions": {
+            "width": 768,
+            "height": 2046
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/127-5e5360ba550b761a0bfabd32_peep-standing-4.svg",
+          "filename": "127-5e5360ba550b761a0bfabd32_peep-standing-4.svg",
+          "bytes": 38893,
+          "sha256": "43be974ee3561925b6e7f669bc29fb2744edb605db797b476e6b3ff9173f730f",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/128-5e5360bcd8713117f1137e4c_peep-standing-4.png",
+          "filename": "128-5e5360bcd8713117f1137e4c_peep-standing-4.png",
+          "bytes": 138764,
+          "sha256": "95ff42ae62c3e7257e3600a595d713f6fedea2b652adacfd9358d96d0d083e5b",
+          "format": "png",
+          "dimensions": {
+            "width": 912,
+            "height": 2043
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/129-5e5362c164109d10570651c3_peep-standing-21.svg",
+          "filename": "129-5e5362c164109d10570651c3_peep-standing-21.svg",
+          "bytes": 38011,
+          "sha256": "5f3b379be2cf13fbcb7d0be93c86c7e6b69e7618c29dc5f4f2d3b4fe754e4b53",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/13-5e535268258ffe32dc8fff6e_mix-2.svg",
+          "filename": "13-5e535268258ffe32dc8fff6e_mix-2.svg",
+          "bytes": 34375,
+          "sha256": "fc7829ff5b10e73ce825b2f759b045b2c3c7168f36b5da5fb897f4593e9e819d",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/13-5e53543d8e2493ff6d04cae9_peep-29.svg",
+          "filename": "13-5e53543d8e2493ff6d04cae9_peep-29.svg",
+          "bytes": 24892,
+          "sha256": "441d6da7429b0f1176402cb69c197db589e3e14ee9f78b5086d1f5a55d8c1829",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/130-5e5362c77371bbd5aba489c6_peep-standing-21.png",
+          "filename": "130-5e5362c77371bbd5aba489c6_peep-standing-21.png",
+          "bytes": 145169,
+          "sha256": "4bac7a096cb7533188cbbebc51ecb130cf2a7ac7b294145ac0d76747341d79c4",
+          "format": "png",
+          "dimensions": {
+            "width": 594,
+            "height": 2007
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/131-5e5361e9f3aa4be48230418f_peep-standing-14.svg",
+          "filename": "131-5e5361e9f3aa4be48230418f_peep-standing-14.svg",
+          "bytes": 57232,
+          "sha256": "36f34dd417a5a839102e983396872459fc46abc77428f3470eac02c0048ec781",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/132-5e5361f39b55b056e4581ad5_peep-standing-14.png",
+          "filename": "132-5e5361f39b55b056e4581ad5_peep-standing-14.png",
+          "bytes": 179156,
+          "sha256": "e9f418b5f8488030c2d02a4f5e660e63a94d43465526e78b033abbfe7317aaf4",
+          "format": "png",
+          "dimensions": {
+            "width": 768,
+            "height": 2061
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/133-5e5361ccd3992383f7595afc_peep-standing-13.svg",
+          "filename": "133-5e5361ccd3992383f7595afc_peep-standing-13.svg",
+          "bytes": 46063,
+          "sha256": "a8a87c1247b6b54d7319cba4f95c83a46385d1b0f9250054960719941989146b",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/134-5e5361ced399237000595b44_peep-standing-13.png",
+          "filename": "134-5e5361ced399237000595b44_peep-standing-13.png",
+          "bytes": 157445,
+          "sha256": "85ef3c457f50519b6294439cf43c9d59d5533f159c749594b180b859482a359f",
+          "format": "png",
+          "dimensions": {
+            "width": 768,
+            "height": 2037
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/135-5e5361abc992503993ce737e_peep-standing-12.svg",
+          "filename": "135-5e5361abc992503993ce737e_peep-standing-12.svg",
+          "bytes": 74095,
+          "sha256": "8a9529aaf258ad2ace3adf3625b2a6b9ddf8bcdc6a8d8313aea0bcb90193fc21",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/136-5e5361ae67293a766f61c8b3_peep-standing-12.png",
+          "filename": "136-5e5361ae67293a766f61c8b3_peep-standing-12.png",
+          "bytes": 143967,
+          "sha256": "7bb954bc9be75b22fe3d47c3f3af64a38ab884cebc1380f34b19cc2a81d85541",
+          "format": "png",
+          "dimensions": {
+            "width": 765,
+            "height": 2130
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/137-5e536281c992503d98cecdc1_peep-standing-19.svg",
+          "filename": "137-5e536281c992503d98cecdc1_peep-standing-19.svg",
+          "bytes": 44505,
+          "sha256": "3757c5e903835bba718d27f4606ca186f33c5b1b0ed1c40c3d98bca6cf8e9cef",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/138-5e5362865197057c53a9ad2a_peep-standing-19.png",
+          "filename": "138-5e5362865197057c53a9ad2a_peep-standing-19.png",
+          "bytes": 152680,
+          "sha256": "8f1eef13cdb03afc46f0e2f946025a7b8c4657eee9870f4b4d60128288b545de",
+          "format": "png",
+          "dimensions": {
+            "width": 594,
+            "height": 2010
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/139-5e53622ec67e7957fc9b32e0_peep-standing-16.svg",
+          "filename": "139-5e53622ec67e7957fc9b32e0_peep-standing-16.svg",
+          "bytes": 51322,
+          "sha256": "4776a6f7d5eeda7bbe5282f87cd3f1a3eb0f3853755d3562ce871c9ff1e1d9cc",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/140-5e53623064109d70f206393f_peep-standing-16.png",
+          "filename": "140-5e53623064109d70f206393f_peep-standing-16.png",
+          "bytes": 141626,
+          "sha256": "279cc4dc77816a1336cff6b4cc10afd43efcdf5badc7b36868be126669f843f7",
+          "format": "png",
+          "dimensions": {
+            "width": 927,
+            "height": 1956
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/141-5e53613f9b55b0a5a457c452_peep-standing-10.svg",
+          "filename": "141-5e53613f9b55b0a5a457c452_peep-standing-10.svg",
+          "bytes": 47567,
+          "sha256": "dbb5094014315744cca7e73d3387722df73bdb1a5be8007a9c208b9710042b28",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/142-5e5361792b568ae85c1e10c3_peep-standing-10.png",
+          "filename": "142-5e5361792b568ae85c1e10c3_peep-standing-10.png",
+          "bytes": 147520,
+          "sha256": "b9871208ae90a29f0f0f48528bcb0f8cae389df3e8e5b0f36e7b222e734ef249",
+          "format": "png",
+          "dimensions": {
+            "width": 765,
+            "height": 2064
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/143-5e5362e2f5fa1aefa7ffe47c_peep-standing-22.svg",
+          "filename": "143-5e5362e2f5fa1aefa7ffe47c_peep-standing-22.svg",
+          "bytes": 49850,
+          "sha256": "f1a8454d3348651609893139485cddd3f9f7a784e9c144393e3079ca819a3664",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/144-5e5362e664109d606706574f_peep-standing-22.png",
+          "filename": "144-5e5362e664109d606706574f_peep-standing-22.png",
+          "bytes": 168351,
+          "sha256": "27499f0a488d2096f442a1fbfc594c96a121c5bedbb5fb116e9354281c923a99",
+          "format": "png",
+          "dimensions": {
+            "width": 963,
+            "height": 2073
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/145-5e5361568e2493c0fa0ae191_peep-standing-9.svg",
+          "filename": "145-5e5361568e2493c0fa0ae191_peep-standing-9.svg",
+          "bytes": 36626,
+          "sha256": "604e17c6380d4b2de328ff1d325ae9ae588f59ea8a62fcce567bc195e793a973",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/146-5e5361509588e07866833c9b_peep-standing-9.png",
+          "filename": "146-5e5361509588e07866833c9b_peep-standing-9.png",
+          "bytes": 164151,
+          "sha256": "3ded59f3005cec0ea4fb6ccdabcf0a04c2f93901fe5d6397ddda7cfa7d55d110",
+          "format": "png",
+          "dimensions": {
+            "width": 747,
+            "height": 2016
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/147-5e5362a27488c217864c784d_peep-standing-20.svg",
+          "filename": "147-5e5362a27488c217864c784d_peep-standing-20.svg",
+          "bytes": 33028,
+          "sha256": "ba347f6a55ae2a4bf3e9e0b61d6e1aadfa250037396d1b6f844dc0d92dc75c19",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/148-5e5362a57371bb2be5a47814_peep-standing-20.png",
+          "filename": "148-5e5362a57371bb2be5a47814_peep-standing-20.png",
+          "bytes": 125166,
+          "sha256": "19a668a160d1dd394b21537095604c9780df8ae6ac04945148b720f42698f062",
+          "format": "png",
+          "dimensions": {
+            "width": 639,
+            "height": 2118
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/149-5e536624f5fa1ac60201cc6b_peep-standing-28.svg",
+          "filename": "149-5e536624f5fa1ac60201cc6b_peep-standing-28.svg",
+          "bytes": 61171,
+          "sha256": "ee8c08ca99ecdea7775b9fb27e4ff87bf556088fd1ba3ad6c98311ff4afb576d",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/15-5e5359ee8becbf772f53c5d4_peep-71.svg",
+          "filename": "15-5e5359ee8becbf772f53c5d4_peep-71.svg",
+          "bytes": 51983,
+          "sha256": "d0c703cafd22f2ffb016e30153090743608bce81a3c790ea1ba813fc9ed42d42",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/150-5e536627c6b249918931859e_peep-standing-28.png",
+          "filename": "150-5e536627c6b249918931859e_peep-standing-28.png",
+          "bytes": 155193,
+          "sha256": "6934acde1319f26f61bc5aa9375f5758a44e93d67bce4eccbce1aba56b27a6f3",
+          "format": "png",
+          "dimensions": {
+            "width": 639,
+            "height": 2082
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/151-5e53624b9b55b0127f5851cf_peep-standing-17.svg",
+          "filename": "151-5e53624b9b55b0127f5851cf_peep-standing-17.svg",
+          "bytes": 50041,
+          "sha256": "7025ce2684ffcfff2f2017ffc332ae807e95d3b8befa266ebe66a186d3c03414",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/152-5e53624e9b55b0f1fb5853e5_peep-standing-17.png",
+          "filename": "152-5e53624e9b55b0f1fb5853e5_peep-standing-17.png",
+          "bytes": 138683,
+          "sha256": "3bea7684a0907b43f97498f84ab7e3ef6896dadca9fafb884922852998e339f4",
+          "format": "png",
+          "dimensions": {
+            "width": 927,
+            "height": 1851
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/153-5e53665cc67e79756a9d2d1a_peep-standing-30.svg",
+          "filename": "153-5e53665cc67e79756a9d2d1a_peep-standing-30.svg",
+          "bytes": 46912,
+          "sha256": "e0308b16a69b44afc97bb89cd8b24cdc6101e4e3bd3068d53aaf53d84000639d",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/154-5e536660f5fa1a469401f151_peep-standing-30.png",
+          "filename": "154-5e536660f5fa1a469401f151_peep-standing-30.png",
+          "bytes": 146884,
+          "sha256": "7122a4eca359bdf10c2ffb01a1667ef2ab012a1c69e8af301dff6cf41a52a0a6",
+          "format": "png",
+          "dimensions": {
+            "width": 639,
+            "height": 2103
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/155-5e5360d39b55b049be5795a1_peep-standing-5.svg",
+          "filename": "155-5e5360d39b55b049be5795a1_peep-standing-5.svg",
+          "bytes": 34651,
+          "sha256": "48ee978f47511ff66a373dd527072f02da57232edffceb37d0d108bbdc007c8a",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/156-5e5360d7e35d3804bf6ab0cc_peep-standing-5.png",
+          "filename": "156-5e5360d7e35d3804bf6ab0cc_peep-standing-5.png",
+          "bytes": 143526,
+          "sha256": "6313544eddcafb8f3809ed473773096f54f700acd395eeded39ef795526a7d5a",
+          "format": "png",
+          "dimensions": {
+            "width": 912,
+            "height": 2040
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/157-5e5365e367293a5eb7630824_peep-standing-26.svg",
+          "filename": "157-5e5365e367293a5eb7630824_peep-standing-26.svg",
+          "bytes": 31195,
+          "sha256": "b501d2c2552b3a7d461402788892318f55cedfce9881c6ce8cb1246acc17ca01",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/158-5e5365ebf3aa4bd4bd323473_peep-standing-26.png",
+          "filename": "158-5e5365ebf3aa4bd4bd323473_peep-standing-26.png",
+          "bytes": 119025,
+          "sha256": "050a737fb09cd5815689484dede116421ff682eb0b9a847d5d8c1cb61faf4fe0",
+          "format": "png",
+          "dimensions": {
+            "width": 738,
+            "height": 2031
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/159-5e5361909b55b0502657e357_peep-standing-11.svg",
+          "filename": "159-5e5361909b55b0502657e357_peep-standing-11.svg",
+          "bytes": 35861,
+          "sha256": "ae98aefaf10d95878bfeed159173064b276aa3746e40f3cae62125cd305ddfff",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/16-5e535268258ffebd1d8fff6f_mix-5.svg",
+          "filename": "16-5e535268258ffebd1d8fff6f_mix-5.svg",
+          "bytes": 39607,
+          "sha256": "dc7645a0ddfb58fb505e1e27c6a5b1da5eb3c0c83e4e4792851d5a371cf615ac",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/16-5e5359f2d39923046255369c_peep-71.png",
+          "filename": "16-5e5359f2d39923046255369c_peep-71.png",
+          "bytes": 62062,
+          "sha256": "19838d9eaa2484cfd6dc08fd482cce7f2dd5e1b694079ffafac44c9f1ad6d196",
+          "format": "png",
+          "dimensions": {
+            "width": 720,
+            "height": 972
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/160-5e5361939b55b0fd0757e47d_peep-standing-11.png",
+          "filename": "160-5e5361939b55b0fd0757e47d_peep-standing-11.png",
+          "bytes": 127958,
+          "sha256": "a31234cd4778001c0f7e6c23225edb0b66ffc4a5f07413ede7951769b412f9f8",
+          "format": "png",
+          "dimensions": {
+            "width": 780,
+            "height": 2022
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/161-5e5362fa8becbf1d50570b23_peep-standing-23.svg",
+          "filename": "161-5e5362fa8becbf1d50570b23_peep-standing-23.svg",
+          "bytes": 53996,
+          "sha256": "b25c09bd3f2c2f5538f490bffce60f22caa954acd0da4cd010b3872c83c719fe",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/162-5e5363005197050880a9d91d_peep-standing-23.png",
+          "filename": "162-5e5363005197050880a9d91d_peep-standing-23.png",
+          "bytes": 207088,
+          "sha256": "20c00e81dff1dea02de3ebb53688db21789845100e9653a86cb0d1283ebfe134",
+          "format": "png",
+          "dimensions": {
+            "width": 963,
+            "height": 2097
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/163-5e5363188becbffe8c57172c_peep-standing-24.svg",
+          "filename": "163-5e5363188becbffe8c57172c_peep-standing-24.svg",
+          "bytes": 46092,
+          "sha256": "bf37099a78c2831bea2b775d7f432ea97fb8504a9e56c6c4f18caccd9f0ff878",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/164-5e536320c67e79daeb9bedfe_peep-standing-24.png",
+          "filename": "164-5e536320c67e79daeb9bedfe_peep-standing-24.png",
+          "bytes": 179882,
+          "sha256": "210cff8c22f60ea4c3c4e405bd2597388f7b2f404e25ec03742a832db719823b",
+          "format": "png",
+          "dimensions": {
+            "width": 963,
+            "height": 2076
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/165-5e5360ee67293aa268617c67_peep-standing-6.svg",
+          "filename": "165-5e5360ee67293aa268617c67_peep-standing-6.svg",
+          "bytes": 43018,
+          "sha256": "8f779463fb2f05b1cc1f54859d53d3fe2d81c636f55092fc34d540e415124ad1",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/166-5e5360f1c67e798fef9a241c_peep-standing-6.png",
+          "filename": "166-5e5360f1c67e798fef9a241c_peep-standing-6.png",
+          "bytes": 140736,
+          "sha256": "5c55c9e8d9403573e6606ed76f9afa81d4b71a0fc5ad9f13202bb1ebcf0991da",
+          "format": "png",
+          "dimensions": {
+            "width": 912,
+            "height": 2031
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/167-5e53633a7371bbe22da4c986_peep-standing-25.svg",
+          "filename": "167-5e53633a7371bbe22da4c986_peep-standing-25.svg",
+          "bytes": 42154,
+          "sha256": "0c33051d7b39f72328403bd39159a82e44aaef45520f28178914caf0fd3d176d",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/168-5e53633f51970514f3a9eefc_peep-standing-25.png",
+          "filename": "168-5e53633f51970514f3a9eefc_peep-standing-25.png",
+          "bytes": 140201,
+          "sha256": "18bf8c222b36aa8621557245ba5cc466d0d372b42e11730dd5361e8ecfb6545e",
+          "format": "png",
+          "dimensions": {
+            "width": 738,
+            "height": 2139
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/169-5e53607bc67e7906ad99cf5a_peep-standing-2.svg",
+          "filename": "169-5e53607bc67e7906ad99cf5a_peep-standing-2.svg",
+          "bytes": 64570,
+          "sha256": "8829176407a2667abe2973fdd8cc12f1edb0b166d35642c1aaa84b5fbca5a276",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/17-5e51c36e16879c45e6c0fb6f_sit-stand-walk.svg",
+          "filename": "17-5e51c36e16879c45e6c0fb6f_sit-stand-walk.svg",
+          "bytes": 140215,
+          "sha256": "00a83689c0382d4cb99719389f9f7e8f8d493145011c3f5ec0f322c4643f6a8d",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/17-5e535d314600800f758ffa34_peep-99.svg",
+          "filename": "17-5e535d314600800f758ffa34_peep-99.svg",
+          "bytes": 35406,
+          "sha256": "57861083037183f819e28739836545e55c56934bb60bf13c6205ccab6b84f9f5",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/170-5e5360809b55b09529577245_peep-standing-2.png",
+          "filename": "170-5e5360809b55b09529577245_peep-standing-2.png",
+          "bytes": 137564,
+          "sha256": "0a72e7c097ceffd264d0da30497ac3fcfa9570add3cbd9851d02e991eb8adf30",
+          "format": "png",
+          "dimensions": {
+            "width": 639,
+            "height": 2199
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/171-5e53610ed3992333c259150c_peep-standing-7.svg",
+          "filename": "171-5e53610ed3992333c259150c_peep-standing-7.svg",
+          "bytes": 66003,
+          "sha256": "5c2bca5a4b7f0a196fc5bc22d9fd4a60f113d35489a6b22246c4ad62ec022b30",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/172-5e536112d39923bcea591585_peep-standing-7.png",
+          "filename": "172-5e536112d39923bcea591585_peep-standing-7.png",
+          "bytes": 175563,
+          "sha256": "9557f1419a629d39199c574d451d2ca191b7dde8cf2cc88bec617dd98c7d14e5",
+          "format": "png",
+          "dimensions": {
+            "width": 747,
+            "height": 2058
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/173-5e536266c99250fe47cebfc0_peep-standing-18.svg",
+          "filename": "173-5e536266c99250fe47cebfc0_peep-standing-18.svg",
+          "bytes": 46669,
+          "sha256": "319de94001c0d9293e1697428a35baad5f8c2f8189ebbb21e6de3777eccb24a6",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/174-5e5362699b55b0dd645865f7_peep-standing-18.png",
+          "filename": "174-5e5362699b55b0dd645865f7_peep-standing-18.png",
+          "bytes": 160890,
+          "sha256": "da7ba25725eeacac089ffb3fc573c28e38fbbebb4fbe25bbbefdb20010f9a5c9",
+          "format": "png",
+          "dimensions": {
+            "width": 747,
+            "height": 2040
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/175-5e536061519705b96fa8d804_peep-standing-1.svg",
+          "filename": "175-5e536061519705b96fa8d804_peep-standing-1.svg",
+          "bytes": 67527,
+          "sha256": "e1407cb746080b97d0e8b73bd2919979148ac13e5312b446b22d669b8013e449",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/176-5e5360659b55b08bef5766f6_peep-standing-1.png",
+          "filename": "176-5e5360659b55b08bef5766f6_peep-standing-1.png",
+          "bytes": 163581,
+          "sha256": "f454a5ea41852d7065634974a20c7a1803b35ee3fc4177b7772d3d6e1493f4b7",
+          "format": "png",
+          "dimensions": {
+            "width": 639,
+            "height": 2145
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/177-5e53663e7488c27c5e4d068c_peep-standing-29.svg",
+          "filename": "177-5e53663e7488c27c5e4d068c_peep-standing-29.svg",
+          "bytes": 53100,
+          "sha256": "4d5802ad15444ee86652be7cefa08a917932019a0e0a6c512682d14bf153bada",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/178-5e536645c6b249acd6319ea6_peep-standing-29.png",
+          "filename": "178-5e536645c6b249acd6319ea6_peep-standing-29.png",
+          "bytes": 134019,
+          "sha256": "5625271c8ecb4eaeaf3db5fdd145175958f68bbb0f53cb2c5a8687f9d1982f3d",
+          "format": "png",
+          "dimensions": {
+            "width": 639,
+            "height": 2067
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/179-5e535e9fc992502f35cd7902_peep-sitting-6.svg",
+          "filename": "179-5e535e9fc992502f35cd7902_peep-sitting-6.svg",
+          "bytes": 42072,
+          "sha256": "a0e20fa8e8c6afac16466a432315a46f14816e7db9d886cfc340157f621f8e65",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/18-5e535d35550b761a3af880d9_peep-99.png",
+          "filename": "18-5e535d35550b761a3af880d9_peep-99.png",
+          "bytes": 58596,
+          "sha256": "dde7206d92ff62f209b499c71891434877fbd388c3d29e62b29eb9d90d5b76a0",
+          "format": "png",
+          "dimensions": {
+            "width": 720,
+            "height": 972
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/180-5e535ea2c6b2492ca92dbc09_peep-sitting-6.png",
+          "filename": "180-5e535ea2c6b2492ca92dbc09_peep-sitting-6.png",
+          "bytes": 149588,
+          "sha256": "21429429b8541517f8576e975d21d6fa6a27e62e065bd539d9683cb256d1ee4c",
+          "format": "png",
+          "dimensions": {
+            "width": 1095,
+            "height": 1731
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/181-5e535f2ad39923f7d558435b_peep-sitting-11.svg",
+          "filename": "181-5e535f2ad39923f7d558435b_peep-sitting-11.svg",
+          "bytes": 37756,
+          "sha256": "08417fc682525035adc2c3a06929aa297149a446d779e88e2d3c46fc192e6ccf",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/182-5e535f2fc6b24934b22e1027_peep-sitting-11.png",
+          "filename": "182-5e535f2fc6b24934b22e1027_peep-sitting-11.png",
+          "bytes": 139481,
+          "sha256": "bff9cfb8db476a0f9f384a00b353ed981be78ee90aa79f236cf5e19de0b83850",
+          "format": "png",
+          "dimensions": {
+            "width": 1005,
+            "height": 1485
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/183-5e532c65d871315ee7fcae9e_peep-sitting-1.svg",
+          "filename": "183-5e532c65d871315ee7fcae9e_peep-sitting-1.svg",
+          "bytes": 38279,
+          "sha256": "50dee3a8f1a82d2b7d4fc0fc8a6325b5432e08f9256cdd3eb5921390eaa41fac",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/184-5e532c6f5197056d1590b8d3_peep-sitting-1.png",
+          "filename": "184-5e532c6f5197056d1590b8d3_peep-sitting-1.png",
+          "bytes": 142033,
+          "sha256": "3569606024a40ca6553fb5a312aae948d9c25cf4fd9f971cb8a4eb0698262582",
+          "format": "png",
+          "dimensions": {
+            "width": 1038,
+            "height": 1530
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/185-5e536006c67e7976719986dc_peep-sitting-18.svg",
+          "filename": "185-5e536006c67e7976719986dc_peep-sitting-18.svg",
+          "bytes": 35923,
+          "sha256": "fdd2238d466b12e13c391eff502f6131a08e45a428a8e9864a0c3239b8cd79b3",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/186-5e53600bc992508927ce016f_peep-sitting-18.png",
+          "filename": "186-5e53600bc992508927ce016f_peep-sitting-18.png",
+          "bytes": 141471,
+          "sha256": "e01e0f9b5c07bf75061356b90695b49430e37b7159a7870bf6e3d521b6c02182",
+          "format": "png",
+          "dimensions": {
+            "width": 1038,
+            "height": 1503
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/187-5e535e2ce35d38156a694f11_peep-sitting-2.svg",
+          "filename": "187-5e535e2ce35d38156a694f11_peep-sitting-2.svg",
+          "bytes": 45338,
+          "sha256": "c247b61de194ffad2b14cd7256c724480995a16b95c2a31540d1958e49bea8b8",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/188-5e535e32d87131d51b12ee66_peep-sitting-2.png",
+          "filename": "188-5e535e32d87131d51b12ee66_peep-sitting-2.png",
+          "bytes": 145955,
+          "sha256": "a7a15ab0845061236931e6077bc0e3d609ff8c73883210c8c77b2bf81f9fad22",
+          "format": "png",
+          "dimensions": {
+            "width": 1038,
+            "height": 1563
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/189-5e535fd95197054606a88bd2_peep-sitting-17.svg",
+          "filename": "189-5e535fd95197054606a88bd2_peep-sitting-17.svg",
+          "bytes": 33443,
+          "sha256": "2070e61ed1381d132709429127a866d8bff509c4a480d8f0770c2b1e936815f3",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/19-5e535d4c5197057a87a74020_peep-100.svg",
+          "filename": "19-5e535d4c5197057a87a74020_peep-100.svg",
+          "bytes": 39250,
+          "sha256": "4150e0848d754a87d58f3c5dc9bff778d9297de982407972d6f1784ec9a7ee3b",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/19-5e53696e33d36873203e829f_slider-3.svg",
+          "filename": "19-5e53696e33d36873203e829f_slider-3.svg",
+          "bytes": 200427,
+          "sha256": "73d670937ec6fc4eba82d14f8368bb8e588fa2fb17088d64841f0aca5b1900b1",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/190-5e535fdc550b76e8aefa4aa9_peep-sitting-17.png",
+          "filename": "190-5e535fdc550b76e8aefa4aa9_peep-sitting-17.png",
+          "bytes": 145112,
+          "sha256": "80cb79ea59f341e15b5d3fb8b1f9d8397fc84c8d68268b463b51b368caf0d1bb",
+          "format": "png",
+          "dimensions": {
+            "width": 1095,
+            "height": 1728
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/191-5e535e658e24935b1b096148_peep-sitting-4.svg",
+          "filename": "191-5e535e658e24935b1b096148_peep-sitting-4.svg",
+          "bytes": 40062,
+          "sha256": "923eec36d10fc37583a8e6c934eb43b7b31368552668bf9c87ad3f2cbabcabc2",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/192-5e535e699588e076f681a6ce_peep-sitting-4.png",
+          "filename": "192-5e535e699588e076f681a6ce_peep-sitting-4.png",
+          "bytes": 158565,
+          "sha256": "bc682160859953e3609eb42b1d1c4a348aa39e8ea0efc51fdae32948ec783d5d",
+          "format": "png",
+          "dimensions": {
+            "width": 1020,
+            "height": 1395
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/193-5e535ef19b55b0b01256c383_peep-sitting-9.svg",
+          "filename": "193-5e535ef19b55b0b01256c383_peep-sitting-9.svg",
+          "bytes": 38536,
+          "sha256": "3f9c4836141437ba9dcceb8e90b09a9bf7cc9e36900170af27c457a52768457f",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/194-5e535ef6c67e79bf6998c86e_peep-sitting-9.png",
+          "filename": "194-5e535ef6c67e79bf6998c86e_peep-sitting-9.png",
+          "bytes": 105494,
+          "sha256": "3481c074b74c5a4e0d59360ac43cc5214be0b0604ce0e484399b670b3c6951b7",
+          "format": "png",
+          "dimensions": {
+            "width": 972,
+            "height": 1401
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/195-5e535f438becbf2fab5619bb_peep-sitting-12.svg",
+          "filename": "195-5e535f438becbf2fab5619bb_peep-sitting-12.svg",
+          "bytes": 39008,
+          "sha256": "1ec3e10269037194259dc76a43aca43e5f41129702b7ad0a1e2cabe6a0c36b5f",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/196-5e535f48eb1e465746e7e69e_peep-sitting-12.png",
+          "filename": "196-5e535f48eb1e465746e7e69e_peep-sitting-12.png",
+          "bytes": 141511,
+          "sha256": "ed59907261ff96a4b702234bd81d9755c54ef64b0775bb4b910ac035b98d7845",
+          "format": "png",
+          "dimensions": {
+            "width": 1008,
+            "height": 1512
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/197-5e535f96c67e7961f5994532_peep-sitting-15.svg",
+          "filename": "197-5e535f96c67e7961f5994532_peep-sitting-15.svg",
+          "bytes": 78845,
+          "sha256": "a63c4b9b071ad62a75cf841224c3ea38617bb4eabbfbcdaaed4988237b466964",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/198-5e535f9a550b76b419fa30ea_peep-sitting-15.png",
+          "filename": "198-5e535f9a550b76b419fa30ea_peep-sitting-15.png",
+          "bytes": 284826,
+          "sha256": "df85b08dc4d190bdd602aac5c3ac8e691c089fd096f92872f3331de0520e0c56",
+          "format": "png",
+          "dimensions": {
+            "width": 1386,
+            "height": 1875
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/199-5e535f7d9b55b097be57089f_peep-sitting-14.svg",
+          "filename": "199-5e535f7d9b55b097be57089f_peep-sitting-14.svg",
+          "bytes": 79121,
+          "sha256": "32d3b9a600c33f1666541dcd96ce90563d1188b6e8c82638655b3f6a071a761b",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/20-5e53699f33d3683a073e83a2_slider-2.svg",
+          "filename": "20-5e53699f33d3683a073e83a2_slider-2.svg",
+          "bytes": 194790,
+          "sha256": "666e4c350dad84c2f5f02c254a2235b7aa8eca5418f9a31c9d68cdae5bc4483f",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/200-5e535f819b55b0089c5708fa_peep-sitting-14.png",
+          "filename": "200-5e535f819b55b0089c5708fa_peep-sitting-14.png",
+          "bytes": 289615,
+          "sha256": "0ffeeab09f164ce56e28d93f2ab31d0a4252e792f757f04b5c809a4c047f1fc6",
+          "format": "png",
+          "dimensions": {
+            "width": 1386,
+            "height": 1809
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/201-5e535e838e249316920983c3_peep-sitting-5.svg",
+          "filename": "201-5e535e838e249316920983c3_peep-sitting-5.svg",
+          "bytes": 44296,
+          "sha256": "9eed8e2fbe71e1351bd203e4b3fe292df1e4d4efa551b973128ec37ef99c1a5f",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/202-5e535e872b568af61d1d1e65_peep-sitting-5.png",
+          "filename": "202-5e535e872b568af61d1d1e65_peep-sitting-5.png",
+          "bytes": 164905,
+          "sha256": "8af4a4bcb340947e56eb569c1a75686d6d3cac813b7965c3899480f8eae8f1c1",
+          "format": "png",
+          "dimensions": {
+            "width": 1020,
+            "height": 1407
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/203-5e535f0d9b55b01d2056cf00_peep-sitting-10.svg",
+          "filename": "203-5e535f0d9b55b01d2056cf00_peep-sitting-10.svg",
+          "bytes": 55765,
+          "sha256": "af8d7e0044c1fe1608bfa2754d0aaedbe812b5b9fe2ac74655242bf1b9d6f871",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/204-5e535f132b568aaac01d6f98_peep-sitting-10.png",
+          "filename": "204-5e535f132b568aaac01d6f98_peep-sitting-10.png",
+          "bytes": 122413,
+          "sha256": "2fd1015f531427ff6f4884904fd2fb2f9e5d525516202a40c87491dfdf03a04f",
+          "format": "png",
+          "dimensions": {
+            "width": 972,
+            "height": 1452
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/205-5e535eb7550b76782df9e820_peep-sitting-7.svg",
+          "filename": "205-5e535eb7550b76782df9e820_peep-sitting-7.svg",
+          "bytes": 42150,
+          "sha256": "ab23b97b0ec13ea7a1bca9f04492b862fd1676eb3562818b65fa69628a88a116",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/206-5e535ebb2b568a19401d41f5_peep-sitting-7.png",
+          "filename": "206-5e535ebb2b568a19401d41f5_peep-sitting-7.png",
+          "bytes": 145935,
+          "sha256": "54b823ad67ad7629663157dde86677d125e281ee5301edff39a3abd2360ec862",
+          "format": "png",
+          "dimensions": {
+            "width": 1101,
+            "height": 1860
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/207-5e51cc5933d368febc351897_footer-img.svg",
+          "filename": "207-5e51cc5933d368febc351897_footer-img.svg",
+          "bytes": 709345,
+          "sha256": "d52949bdc89fbf7347abfc6297321c24c6685194fd05c1f4ee12b4dc2c99cb6f",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/21-5e532a4c258ffe237b8ef2c1_peep-2.svg",
+          "filename": "21-5e532a4c258ffe237b8ef2c1_peep-2.svg",
+          "bytes": 40682,
+          "sha256": "6dcdec15ec142e1bbb7c22b4eb3c78fa4da8922d7b65e9315da42b9d856e6b34",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/21-5e536c6633d36859653e8ba1_slider-5.svg",
+          "filename": "21-5e536c6633d36859653e8ba1_slider-5.svg",
+          "bytes": 642211,
+          "sha256": "a3c791d41a6716476778481ad6851a34f1988cab7ddfa996815ed31c5e69fd0c",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/22-5e532a5133d3686ff53d2a74_peep-2.png",
+          "filename": "22-5e532a5133d3686ff53d2a74_peep-2.png",
+          "bytes": 62219,
+          "sha256": "1fe003b99c7310b4598a45f41aa57d828a6780237a61b38565f8d7a16e384eb1",
+          "format": "png",
+          "dimensions": {
+            "width": 720,
+            "height": 972
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/22-5e53682233d368dfa63e7deb_slider-1.svg",
+          "filename": "22-5e53682233d368dfa63e7deb_slider-1.svg",
+          "bytes": 191488,
+          "sha256": "b4af4eacf5a0c364abb681cf00ac79850da1cdc2e1c9bad2b31eb2f02ad0a246",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/23-5e53573df5fa1a2163f8ed70_peep-48.svg",
+          "filename": "23-5e53573df5fa1a2163f8ed70_peep-48.svg",
+          "bytes": 36886,
+          "sha256": "6eb91e428d2064d811083d03c7b9adb293214c1e59268523fd49e5a041923202",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/23-5e535997e35d380ada67ad80_peep-68.svg",
+          "filename": "23-5e535997e35d380ada67ad80_peep-68.svg",
+          "bytes": 34372,
+          "sha256": "9e02010a5eb09f22a12a34e048f912d7f03247d46f5a59c21d0e2f9f9a1b0ba7",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/24-5e535741f5fa1a13a1f8f233_peep-48.png",
+          "filename": "24-5e535741f5fa1a13a1f8f233_peep-48.png",
+          "bytes": 52091,
+          "sha256": "d2a2fab0a721caad3fc453b5b799c2944ce71bb0f38946cde93faea341636210",
+          "format": "png",
+          "dimensions": {
+            "width": 720,
+            "height": 972
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/24-5e53599be35d38774267afad_peep-68.png",
+          "filename": "24-5e53599be35d38774267afad_peep-68.png",
+          "bytes": 55338,
+          "sha256": "22f044a41ab740c995f4ea035b5096cc4a1caa39c104202540be483cbb3594cd",
+          "format": "png",
+          "dimensions": {
+            "width": 720,
+            "height": 972
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/25-5e535956e35d380d2b67a11f_peep-66.svg",
+          "filename": "25-5e535956e35d380d2b67a11f_peep-66.svg",
+          "bytes": 48801,
+          "sha256": "36db1f3cfe411bbcd429d87fd182623dd8ede51139dcaa01cb2387e1d1dafbda",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/26-5e53595a7371bb55159fd9a2_peep-66.png",
+          "filename": "26-5e53595a7371bb55159fd9a2_peep-66.png",
+          "bytes": 54686,
+          "sha256": "87bc26b5eef31211b4709f62d4167c2d735957beabee22e48c7f0a6161d3ac7b",
+          "format": "png",
+          "dimensions": {
+            "width": 720,
+            "height": 972
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/27-5e5358fb9b55b0b0f453f5f5_peep-63.svg",
+          "filename": "27-5e5358fb9b55b0b0f453f5f5_peep-63.svg",
+          "bytes": 25184,
+          "sha256": "fd24acbb3b165d54a6a5c1dacd2e75ebfbff832d134c6f6d0f437c83fd1bb2f2",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/28-5e535902c9925085c4c9b4f8_peep-63.png",
+          "filename": "28-5e535902c9925085c4c9b4f8_peep-63.png",
+          "bytes": 58464,
+          "sha256": "b596a1ac748d899afdb3ab68933569cc56847999b3eeea95e78b1c85b766209e",
+          "format": "png",
+          "dimensions": {
+            "width": 720,
+            "height": 972
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/29-5e53575a550b769098f5249d_peep-49.svg",
+          "filename": "29-5e53575a550b769098f5249d_peep-49.svg",
+          "bytes": 41398,
+          "sha256": "c8698bec327c31fe4bcdefa5012e4dfc551b6121c1053ad4cad9686183ae228b",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/30-5e53575e7371bb2d639e9757_peep-49.png",
+          "filename": "30-5e53575e7371bb2d639e9757_peep-49.png",
+          "bytes": 73212,
+          "sha256": "281013d7d75b373c2461870829e234afd612475a4bb01c5d128f102d1ec11a1b",
+          "format": "png",
+          "dimensions": {
+            "width": 720,
+            "height": 972
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/31-5e5355ed4600809f5a8dad51_peep-37.svg",
+          "filename": "31-5e5355ed4600809f5a8dad51_peep-37.svg",
+          "bytes": 32739,
+          "sha256": "b0043fdd7c6d83d0b01399b5557a16cf34efb6f9ebc85ddc2f153e6e28c6bee3",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/32-5e5355f3f5fa1a1fd7f79760_peep-37.png",
+          "filename": "32-5e5355f3f5fa1a1fd7f79760_peep-37.png",
+          "bytes": 56428,
+          "sha256": "7098e5b0970e16a87d6140b358abf6d4c8ef8353c593c85e253550f8cd924076",
+          "format": "png",
+          "dimensions": {
+            "width": 720,
+            "height": 972
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/33-5e535421d399233b9b529696_peep-28.svg",
+          "filename": "33-5e535421d399233b9b529696_peep-28.svg",
+          "bytes": 40311,
+          "sha256": "8278a7e9a26424c68941db99971e4691277f4cf32338a3b4c1e6201b3516fba3",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/34-5e535427f3aa4b96832be329_peep-28.png",
+          "filename": "34-5e535427f3aa4b96832be329_peep-28.png",
+          "bytes": 55337,
+          "sha256": "890a6fa424e4b718e61591041f3628dfdc9d04deb5040f36d5aed9eae18bb7e2",
+          "format": "png",
+          "dimensions": {
+            "width": 720,
+            "height": 972
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/35-5e53543d8e2493ff6d04cae9_peep-29.svg",
+          "filename": "35-5e53543d8e2493ff6d04cae9_peep-29.svg",
+          "bytes": 24892,
+          "sha256": "441d6da7429b0f1176402cb69c197db589e3e14ee9f78b5086d1f5a55d8c1829",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/36-5e51c6f28c34f85f3c498170_peep-5.png",
+          "filename": "36-5e51c6f28c34f85f3c498170_peep-5.png",
+          "bytes": 47530,
+          "sha256": "f8113ff3d44485222938bfab02d84bf86a5250fd0e3d63868296257700c78ac3",
+          "format": "png",
+          "dimensions": {
+            "width": 720,
+            "height": 972
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/37-5e5359ee8becbf772f53c5d4_peep-71.svg",
+          "filename": "37-5e5359ee8becbf772f53c5d4_peep-71.svg",
+          "bytes": 51983,
+          "sha256": "d0c703cafd22f2ffb016e30153090743608bce81a3c790ea1ba813fc9ed42d42",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/38-5e5359f2d39923046255369c_peep-71.png",
+          "filename": "38-5e5359f2d39923046255369c_peep-71.png",
+          "bytes": 62062,
+          "sha256": "19838d9eaa2484cfd6dc08fd482cce7f2dd5e1b694079ffafac44c9f1ad6d196",
+          "format": "png",
+          "dimensions": {
+            "width": 720,
+            "height": 972
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/39-5e535d314600800f758ffa34_peep-99.svg",
+          "filename": "39-5e535d314600800f758ffa34_peep-99.svg",
+          "bytes": 35406,
+          "sha256": "57861083037183f819e28739836545e55c56934bb60bf13c6205ccab6b84f9f5",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/40-5e535d35550b761a3af880d9_peep-99.png",
+          "filename": "40-5e535d35550b761a3af880d9_peep-99.png",
+          "bytes": 58596,
+          "sha256": "dde7206d92ff62f209b499c71891434877fbd388c3d29e62b29eb9d90d5b76a0",
+          "format": "png",
+          "dimensions": {
+            "width": 720,
+            "height": 972
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/41-5e535d4c5197057a87a74020_peep-100.svg",
+          "filename": "41-5e535d4c5197057a87a74020_peep-100.svg",
+          "bytes": 39250,
+          "sha256": "4150e0848d754a87d58f3c5dc9bff778d9297de982407972d6f1784ec9a7ee3b",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/42-5e535d507371bb20aea29659_peep-100.png",
+          "filename": "42-5e535d507371bb20aea29659_peep-100.png",
+          "bytes": 65627,
+          "sha256": "8f5800f8c22b7ec61ab9a25ff9d24f987f2df33c8ada3365272422583ce96021",
+          "format": "png",
+          "dimensions": {
+            "width": 720,
+            "height": 972
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/43-5e532a4c258ffe237b8ef2c1_peep-2.svg",
+          "filename": "43-5e532a4c258ffe237b8ef2c1_peep-2.svg",
+          "bytes": 40682,
+          "sha256": "6dcdec15ec142e1bbb7c22b4eb3c78fa4da8922d7b65e9315da42b9d856e6b34",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/44-5e532a5133d3686ff53d2a74_peep-2.png",
+          "filename": "44-5e532a5133d3686ff53d2a74_peep-2.png",
+          "bytes": 62219,
+          "sha256": "1fe003b99c7310b4598a45f41aa57d828a6780237a61b38565f8d7a16e384eb1",
+          "format": "png",
+          "dimensions": {
+            "width": 720,
+            "height": 972
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/45-5e535997e35d380ada67ad80_peep-68.svg",
+          "filename": "45-5e535997e35d380ada67ad80_peep-68.svg",
+          "bytes": 34372,
+          "sha256": "9e02010a5eb09f22a12a34e048f912d7f03247d46f5a59c21d0e2f9f9a1b0ba7",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/46-5e53599be35d38774267afad_peep-68.png",
+          "filename": "46-5e53599be35d38774267afad_peep-68.png",
+          "bytes": 55338,
+          "sha256": "22f044a41ab740c995f4ea035b5096cc4a1caa39c104202540be483cbb3594cd",
+          "format": "png",
+          "dimensions": {
+            "width": 720,
+            "height": 972
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/47-5e535935f5fa1a5daffaf786_peep-65.svg",
+          "filename": "47-5e535935f5fa1a5daffaf786_peep-65.svg",
+          "bytes": 29372,
+          "sha256": "68cf4547944fa767cfc05f963c5634c2e5df7b7dacffc191063b8f63f8a7c5da",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/48-5e53566fc992503ea6c77af5_peep-41.png",
+          "filename": "48-5e53566fc992503ea6c77af5_peep-41.png",
+          "bytes": 59224,
+          "sha256": "910b9a650052a9a1611f01efa566345d8752159164a65a003e648411bd7595cd",
+          "format": "png",
+          "dimensions": {
+            "width": 720,
+            "height": 972
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/49-5e535216550b76cb4af21e3d_peep-16.svg",
+          "filename": "49-5e535216550b76cb4af21e3d_peep-16.svg",
+          "bytes": 35780,
+          "sha256": "113957380b624e1fef9006247bea7afdfaa57753b4c8f5a10b231533ded58953",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/50-5e53521c4600805ff88b3bb5_peep-16.png",
+          "filename": "50-5e53521c4600805ff88b3bb5_peep-16.png",
+          "bytes": 53419,
+          "sha256": "277afc2075051c01c0638b2645b9010ffc7d9723766c636cb57141f80dbd73dd",
+          "format": "png",
+          "dimensions": {
+            "width": 720,
+            "height": 972
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/51-5e535398d87131adfd0c974a_peep-25.svg",
+          "filename": "51-5e535398d87131adfd0c974a_peep-25.svg",
+          "bytes": 56341,
+          "sha256": "076176d83b23a9004f8727f7b0d491a66c504c6038c2af514c98fd0ff188f42e",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/52-5e53539b550b7634d6f2aade_peep-25.png",
+          "filename": "52-5e53539b550b7634d6f2aade_peep-25.png",
+          "bytes": 74791,
+          "sha256": "be247b96844903aeb8513ef5486276b7f8a01a966fbbc75ab68a2a1fcbbe8924",
+          "format": "png",
+          "dimensions": {
+            "width": 720,
+            "height": 972
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/53-5e53591a7371bbb43a9f9d5d_peep-64.svg",
+          "filename": "53-5e53591a7371bbb43a9f9d5d_peep-64.svg",
+          "bytes": 54313,
+          "sha256": "b376bd0e736fa11f0eb9d4f661e5a084d88f63238d63e28a9e6812db27d6ac99",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/54-5e53591ef5fa1a553dfae2de_peep-64.png",
+          "filename": "54-5e53591ef5fa1a553dfae2de_peep-64.png",
+          "bytes": 68221,
+          "sha256": "a29c3836c5fcc1b1c08151c6d62d53be19c3a70856d35a00a32f9fc4392d8f93",
+          "format": "png",
+          "dimensions": {
+            "width": 720,
+            "height": 972
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/55-5e535822c99250c79ec8c2e3_peep-55.svg",
+          "filename": "55-5e535822c99250c79ec8c2e3_peep-55.svg",
+          "bytes": 29541,
+          "sha256": "ffc2582700f5eff3be855a41dfbb04be22d2a51b8fd09cb33e7c112f49a3d4a2",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/56-5e5358267371bb2ada9f01ec_peep-55.png",
+          "filename": "56-5e5358267371bb2ada9f01ec_peep-55.png",
+          "bytes": 54548,
+          "sha256": "70fc3e81c4661bff682080bb03dc63f9568fe43e21d0480c8b6c2ab5fd3c3758",
+          "format": "png",
+          "dimensions": {
+            "width": 720,
+            "height": 972
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/57-5e5354037488c27f4c47477f_peep-27.svg",
+          "filename": "57-5e5354037488c27f4c47477f_peep-27.svg",
+          "bytes": 30978,
+          "sha256": "e3fa24cfda8c95fac37702cd0154bdd92128129dc057d417f284111c23333754",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/58-5e53540664109d6cbf005ad4_peep-27.png",
+          "filename": "58-5e53540664109d6cbf005ad4_peep-27.png",
+          "bytes": 57002,
+          "sha256": "adb108dd0851a63a3bda6123cf7e8fde4089af1626673e60cd9acbe12bf1f082",
+          "format": "png",
+          "dimensions": {
+            "width": 720,
+            "height": 972
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/59-5e5351b17371bb6c489ad0cc_peep-13.svg",
+          "filename": "59-5e5351b17371bb6c489ad0cc_peep-13.svg",
+          "bytes": 32739,
+          "sha256": "829e09851dee7485d0e77dea6c3f2487ecf87b64dd76ff2609d2f7738e805d8c",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/60-5e5351b47488c29f3e4669a0_peep-13.png",
+          "filename": "60-5e5351b47488c29f3e4669a0_peep-13.png",
+          "bytes": 58733,
+          "sha256": "344aae0202b26b9368a45105987416190783e5e5ab1d976f6741d0195a5fb647",
+          "format": "png",
+          "dimensions": {
+            "width": 720,
+            "height": 972
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/61-5e5358707371bb635d9f3338_peep-58.svg",
+          "filename": "61-5e5358707371bb635d9f3338_peep-58.svg",
+          "bytes": 29372,
+          "sha256": "2d70c105a846c5bd54f835e1baec976f464331ce017059589826bd2965c6d6b4",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/62-5e53552ff5fa1a9d22f727e2_peep-35.svg",
+          "filename": "62-5e53552ff5fa1a9d22f727e2_peep-35.svg",
+          "bytes": 56521,
+          "sha256": "29cb60cb74484833d78767c58372ee07a86980b968ee7d0134f90f0927eb915e",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/63-5e5355338becbf1a2b523de5_peep-35.png",
+          "filename": "63-5e5355338becbf1a2b523de5_peep-35.png",
+          "bytes": 56153,
+          "sha256": "33c84a944eecc6973d46f953a7ec0066d23a60ea069fa968efd8ba0aba131577",
+          "format": "png",
+          "dimensions": {
+            "width": 720,
+            "height": 972
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/64-5e5354c88e249320e005285e_peep-32.svg",
+          "filename": "64-5e5354c88e249320e005285e_peep-32.svg",
+          "bytes": 57998,
+          "sha256": "6e2564d398f3639d429df04eb210576e7e53e38b8060e9abd7b3505845d33e7d",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/65-5e5354cd550b76669af352ba_peep-32.png",
+          "filename": "65-5e5354cd550b76669af352ba_peep-32.png",
+          "bytes": 62973,
+          "sha256": "d8713a74883e52be1cdaf181d9f6039e04a05ad06a828c594f8eb64370083be8",
+          "format": "png",
+          "dimensions": {
+            "width": 720,
+            "height": 972
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/66-5e5357a8c992500f5fc84f40_peep-52.svg",
+          "filename": "66-5e5357a8c992500f5fc84f40_peep-52.svg",
+          "bytes": 61830,
+          "sha256": "fc9e20365c5c0536e0527f94f1ede60b2977e827c36655c8eabc358017a21a73",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/67-5e5357ae7371bb53cf9ec160_peep-52.png",
+          "filename": "67-5e5357ae7371bb53cf9ec160_peep-52.png",
+          "bytes": 81466,
+          "sha256": "68a45fa0460d8aca47effcaeda29746d0068b4067910d4bc63b4225daaf40708",
+          "format": "png",
+          "dimensions": {
+            "width": 720,
+            "height": 972
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/68-5e5358a764109d50aa01705d_peep-60.svg",
+          "filename": "68-5e5358a764109d50aa01705d_peep-60.svg",
+          "bytes": 54194,
+          "sha256": "fbd20a46bf879a58328e9879cb24fecfbb94da196426e09e854b2850773c6c97",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/69-5e5358af8e24939dc40660de_peep-60.png",
+          "filename": "69-5e5358af8e24939dc40660de_peep-60.png",
+          "bytes": 69724,
+          "sha256": "d5cf34c81bcc98e7f70c135567c68bfa77f0507c8feb85a58805d927e318c982",
+          "format": "png",
+          "dimensions": {
+            "width": 720,
+            "height": 972
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/70-5e535b00550b76252bf719e6_peep-80.svg",
+          "filename": "70-5e535b00550b76252bf719e6_peep-80.svg",
+          "bytes": 32961,
+          "sha256": "b69c383e1e104ea8a8606d49d19b0a8d86452c00682693c287e3c192db716ff3",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/71-5e535b08f5fa1a4620fbf083_peep-80.png",
+          "filename": "71-5e535b08f5fa1a4620fbf083_peep-80.png",
+          "bytes": 55732,
+          "sha256": "b0625e2383ed0902a05c364a4c08aa8f96ae55c635cb83f5600469adb1eea83d",
+          "format": "png",
+          "dimensions": {
+            "width": 720,
+            "height": 972
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/72-5e535a0dd3992316ad553c2e_peep-72.svg",
+          "filename": "72-5e535a0dd3992316ad553c2e_peep-72.svg",
+          "bytes": 26387,
+          "sha256": "bc8e60b3677a9d53701415c08ca6d55e4186be56f58c36ee2ed10597f6862a62",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/73-5e535a157371bb4d9aa05b93_peep-72.png",
+          "filename": "73-5e535a157371bb4d9aa05b93_peep-72.png",
+          "bytes": 48033,
+          "sha256": "5cb9d1b2234adef8e127a402f5dc568b10da5fa8d4e5c318334b97ca8a9821a7",
+          "format": "png",
+          "dimensions": {
+            "width": 720,
+            "height": 972
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/74-5e535b3ad399233aa855d221_peep-82.svg",
+          "filename": "74-5e535b3ad399233aa855d221_peep-82.svg",
+          "bytes": 25542,
+          "sha256": "0a9f2278f00b08b2477303689ce24916d8cfada7e7ae4f16edec9b4f66a1bb06",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/75-5e535b408becbf85d3544d99_peep-82.png",
+          "filename": "75-5e535b408becbf85d3544d99_peep-82.png",
+          "bytes": 53030,
+          "sha256": "af551f0562fb6c40ae7d3f2aa0eef14c661cd1d8f32384103948ebb85955da49",
+          "format": "png",
+          "dimensions": {
+            "width": 720,
+            "height": 972
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/76-5e5354762b568a35a017730e_peep-30.svg",
+          "filename": "76-5e5354762b568a35a017730e_peep-30.svg",
+          "bytes": 21331,
+          "sha256": "dbe5e25a75f66eae85e7b3315c65fc24519c3b028cb3411cef370c546afcd2dc",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/77-5e5350e2d87131d9ff0acac5_peep-6.png",
+          "filename": "77-5e5350e2d87131d9ff0acac5_peep-6.png",
+          "bytes": 50543,
+          "sha256": "cef86eb0488e8f2d600187620543273012c0d00c77c82f7ece93ec4fd252bc8d",
+          "format": "png",
+          "dimensions": {
+            "width": 720,
+            "height": 972
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/78-5e53554e46008016518d52e4_peep-36.svg",
+          "filename": "78-5e53554e46008016518d52e4_peep-36.svg",
+          "bytes": 34732,
+          "sha256": "c25021e8df1dd54d385964a7a5bf10df25ff1a4bc6174bd5e204499dd58bc66d",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/79-5e51c7148c34f800d3498229_peep-6.png",
+          "filename": "79-5e51c7148c34f800d3498229_peep-6.png",
+          "bytes": 67672,
+          "sha256": "3ec43e6e716f6fc3f2366d0e8d11d5f372451cb1605b6f761ceffab087db205f",
+          "format": "png",
+          "dimensions": {
+            "width": 720,
+            "height": 972
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/80-5e535652f5fa1ac5ecf7d744_peep-40.svg",
+          "filename": "80-5e535652f5fa1ac5ecf7d744_peep-40.svg",
+          "bytes": 40842,
+          "sha256": "6977d8dd023d5a2b6dffc6f6fce8a428d38b7419914f6bc36a037d0cd70dc3eb",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/81-5e5356549588e0521b7e534c_peep-40.png",
+          "filename": "81-5e5356549588e0521b7e534c_peep-40.png",
+          "bytes": 66745,
+          "sha256": "5ccc0ea76d502d99cb465eb7f47f63d29b8e13cd3a4ca05fcd776698f19b00bb",
+          "format": "png",
+          "dimensions": {
+            "width": 720,
+            "height": 972
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/82-5e535a83d3992372c25556b9_peep-76.svg",
+          "filename": "82-5e535a83d3992372c25556b9_peep-76.svg",
+          "bytes": 48567,
+          "sha256": "e7271636a5b07e15b9b4e12aaf8d43e5cc45a2aecbf8381314cad65bf704810e",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/83-5e535a877371bbe27fa0b695_peep-76.png",
+          "filename": "83-5e535a877371bbe27fa0b695_peep-76.png",
+          "bytes": 69422,
+          "sha256": "44f544563c7fed16d5478f25de5a4d3d0b0e06b6b5a87fa86163f1c07c00a582",
+          "format": "png",
+          "dimensions": {
+            "width": 720,
+            "height": 972
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/84-5e5354e49588e03c817d03a4_peep-33.svg",
+          "filename": "84-5e5354e49588e03c817d03a4_peep-33.svg",
+          "bytes": 32913,
+          "sha256": "a6ec88a762fa7a0331ac178503d9eb88518820726babda074cc06fcc8db5071c",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/85-5e5354eec99250f2f5c64d48_peep-33.png",
+          "filename": "85-5e5354eec99250f2f5c64d48_peep-33.png",
+          "bytes": 49793,
+          "sha256": "461b03da6bcc1bde4b900869003263adf4a4a6df2dd2fdaf829dc4d68aa4a822",
+          "format": "png",
+          "dimensions": {
+            "width": 720,
+            "height": 972
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/86-5e53508c8becbf15dd4f829c_peep-5.svg",
+          "filename": "86-5e53508c8becbf15dd4f829c_peep-5.svg",
+          "bytes": 37202,
+          "sha256": "faefcf18701164e09c98a4c69e39a890c61bb72050c79e5a6d6173384f31612e",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/87-5e5350c79b55b043e751037a_peep-5.png",
+          "filename": "87-5e5350c79b55b043e751037a_peep-5.png",
+          "bytes": 58654,
+          "sha256": "efcc0b37ad78a79f3edeb5ceb9aee2b04410c1e96e9034d8fb8a9ee31f03dba9",
+          "format": "png",
+          "dimensions": {
+            "width": 720,
+            "height": 972
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/88-5e53578d550b76b873f53c46_peep-51.svg",
+          "filename": "88-5e53578d550b76b873f53c46_peep-51.svg",
+          "bytes": 28834,
+          "sha256": "63dc0870b362b0f66616f5f667d8faf3818007cc87f257e76c7de099a2e92088",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/89-5e535793d399238d5e54a0b5_peep-51.png",
+          "filename": "89-5e535793d399238d5e54a0b5_peep-51.png",
+          "bytes": 60485,
+          "sha256": "ba185b89839d3e45b98304587edd25d344671fb62a425de3c089ed2f632c16a7",
+          "format": "png",
+          "dimensions": {
+            "width": 720,
+            "height": 972
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/90-5e535dd92b568a729c1c42f5_peep-105.svg",
+          "filename": "90-5e535dd92b568a729c1c42f5_peep-105.svg",
+          "bytes": 24606,
+          "sha256": "c590bb4b6893779edc11dfebdc0d398788bffec885540c75020e9f751515c5b7",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/91-5e535ddcd3992344b6572d31_peep-105.png",
+          "filename": "91-5e535ddcd3992344b6572d31_peep-105.png",
+          "bytes": 70117,
+          "sha256": "8039ba55412279925e2d5c622fe2c3acc15be58d187cb014c96c21bf1c553a11",
+          "format": "png",
+          "dimensions": {
+            "width": 720,
+            "height": 972
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/92-5e53533367293a3e5c5a8b35_peep-21.svg",
+          "filename": "92-5e53533367293a3e5c5a8b35_peep-21.svg",
+          "bytes": 37283,
+          "sha256": "602faa9d3d23de106b4d9b2a2042a2eeb480372d072be92a26cbcce0353af574",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/93-5e5353362b568a99fd167467_peep-21.png",
+          "filename": "93-5e5353362b568a99fd167467_peep-21.png",
+          "bytes": 57378,
+          "sha256": "f1bf4469303d0531960224fbe041dad5238a0a5af6b2ce1f0325e24625688c7b",
+          "format": "png",
+          "dimensions": {
+            "width": 720,
+            "height": 972
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/94-5e535cd6c67e798b229699d1_peep-96.svg",
+          "filename": "94-5e535cd6c67e798b229699d1_peep-96.svg",
+          "bytes": 47403,
+          "sha256": "ddf366f94a172a7bafc08eea0ff5e318e71dfb8d5b513e589859caf1fae4d5a5",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/95-5e535cdd460080b7cf8fb54f_peep-96.png",
+          "filename": "95-5e535cdd460080b7cf8fb54f_peep-96.png",
+          "bytes": 70573,
+          "sha256": "1374f6fc6f56330691763fcbd4a1daa93a5cf5d7bd9cfbde7afcda995da469db",
+          "format": "png",
+          "dimensions": {
+            "width": 720,
+            "height": 972
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/96-5e5352709588e06bd47b75e0_peep-19.svg",
+          "filename": "96-5e5352709588e06bd47b75e0_peep-19.svg",
+          "bytes": 32942,
+          "sha256": "263a36dd017aa7fa602bf8404d067bb9e71882cbc68526c5c597050f95baebcc",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/97-5e535273f5fa1a8f72f4e08c_peep-19.png",
+          "filename": "97-5e535273f5fa1a8f72f4e08c_peep-19.png",
+          "bytes": 47437,
+          "sha256": "45e51b30ed351a6529d047f2f5a03b7c4a9641817a05571ed1df2015f4b0494a",
+          "format": "png",
+          "dimensions": {
+            "width": 720,
+            "height": 972
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/98-5e535be8d871310468110f17_peep-88.svg",
+          "filename": "98-5e535be8d871310468110f17_peep-88.svg",
+          "bytes": 35403,
+          "sha256": "4ab087fbace645a9b0227d60c3e9e5190cd211bd4884280daaf61b334bd3ba9e",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/99-5e535bec8e2493189608113e_peep-88.png",
+          "filename": "99-5e535bec8e2493189608113e_peep-88.png",
+          "bytes": 59109,
+          "sha256": "b7815b27d1d50f8a52ae29c500439eccdf1df51a6f92e0920d9f8c0b99072b94",
+          "format": "png",
+          "dimensions": {
+            "width": 720,
+            "height": 972
+          },
+          "decoded": true
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/open-peeps/peep-48.svg",
+          "filename": "peep-48.svg",
+          "bytes": 36886,
+          "sha256": "6eb91e428d2064d811083d03c7b9adb293214c1e59268523fd49e5a041923202",
+          "format": "svg",
+          "decoded": false
+        }
+      ],
+      "notes": "Local CDN files downloaded from the official Webflow page; 219 image/SVG files retained for learning and reusable compositions."
+    },
+    {
+      "source_id": "undraw",
+      "name": "unDraw",
+      "source_page": "https://undraw.co/",
+      "license": "unDraw free license; MIT transport package",
+      "license_url": "https://undraw.co/license",
+      "status": "downloaded",
+      "commercial_use": true,
+      "attribution_required": false,
+      "redistributable": true,
+      "file_count": 3,
+      "files": [
+        {
+          "path": "assets/media/ai-lab/library/editorial/undraw/undraw-3d-modeling.svg",
+          "filename": "undraw-3d-modeling.svg",
+          "bytes": 16975,
+          "sha256": "8901294d6c9b766a9073c2bc008e52a043aee45bc0378d9ae0f133498b790763",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/undraw/undraw-a-better-world.svg",
+          "filename": "undraw-a-better-world.svg",
+          "bytes": 7062,
+          "sha256": "924689753ad2981f9629a2217ca44239f385dd0ec405cad2915d8dfa5c1470a1",
+          "format": "svg",
+          "decoded": false
+        },
+        {
+          "path": "assets/media/ai-lab/library/editorial/undraw/undraw-a-day-at-the-park.svg",
+          "filename": "undraw-a-day-at-the-park.svg",
+          "bytes": 15180,
+          "sha256": "dc165afc2c3dbe2bfe771ddaa5962474e42b7051c2cbd083189259f70b74297d",
+          "format": "svg",
+          "decoded": false
+        }
+      ],
+      "notes": "Three SVG files extracted from undraw-svg@2.0.0; the package and source terms are retained in the manifest."
+    },
+    {
+      "source_id": "manypixels",
+      "name": "ManyPixels Gallery",
+      "source_page": "https://www.manypixels.co/gallery",
+      "license": "ManyPixels Illustrations Gallery license",
+      "license_url": "https://www.manypixels.co/gallery",
+      "status": "reference-only",
+      "commercial_use": true,
+      "attribution_required": false,
+      "redistributable": false,
+      "file_count": 1,
+      "files": [
+        {
+          "path": "assets/media/ai-lab/library/editorial/official-reference-pages/manypixels-hero.jpg",
+          "filename": "manypixels-hero.jpg",
+          "bytes": 1148616,
+          "sha256": "e1f6bdd48a1bc2b3ed9caf1dffdf6652304060689e2bf6d9b13cf3ea615e1abe",
+          "format": "jpg",
+          "dimensions": {
+            "width": 2400,
+            "height": 1260
+          },
+          "decoded": true
+        }
+      ],
+      "notes": "Official gallery hero image is local for visual reference; the page image is not treated as a redistributable illustration asset. Local official preview retained for style study; it is not a redistributable license claim."
+    },
+    {
+      "source_id": "humaaans",
+      "name": "Humaaans",
+      "source_page": "https://humaaans.com/",
+      "license": "Project-specific license; review required",
+      "license_url": "https://humaaans.com/",
+      "status": "reference-only",
+      "commercial_use": null,
+      "attribution_required": null,
+      "redistributable": false,
+      "file_count": 1,
+      "files": [
+        {
+          "path": "assets/media/ai-lab/library/editorial/official-reference-pages/humaaans-hero.svg",
+          "filename": "humaaans-hero.svg",
+          "bytes": 10827,
+          "sha256": "7368cc58a3af7e6f18fde640acfc97bd79f39c4e97debb2e28479d87e4aaa57f",
+          "format": "svg",
+          "decoded": false
+        }
+      ],
+      "notes": "Official hero SVG is local for style study. Reuse terms require checking the project license before publishing the file. Local official preview retained for style study; it is not a redistributable license claim."
+    },
+    {
+      "source_id": "blush",
+      "name": "Blush",
+      "source_page": "https://blush.design/",
+      "license": "Per-collection / per-author license; review required",
+      "license_url": "https://blush.design/license",
+      "status": "reference-only",
+      "commercial_use": null,
+      "attribution_required": null,
+      "redistributable": false,
+      "file_count": 1,
+      "files": [
+        {
+          "path": "assets/media/ai-lab/library/editorial/official-reference-pages/blush-home.png",
+          "filename": "blush-home.png",
+          "bytes": 409581,
+          "sha256": "cc358a4520a361edc476d7f24a724ea3b4805ff48dc123e62ea7daee79c45fa1",
+          "format": "png",
+          "dimensions": {
+            "width": 2704,
+            "height": 1460
+          },
+          "decoded": true
+        }
+      ],
+      "notes": "Official OG image is local for style reference only; no redistribution claim. Local official preview retained for style study; it is not a redistributable license claim."
+    },
+    {
+      "source_id": "kitbitz",
+      "name": "Kitbitz",
+      "source_page": "https://kitbitz.art/",
+      "license": "CC0 1.0 / Public Domain (site claim)",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "status": "reference-only",
+      "commercial_use": true,
+      "attribution_required": false,
+      "redistributable": false,
+      "file_count": 1,
+      "files": [
+        {
+          "path": "assets/media/ai-lab/library/editorial/official-reference-pages/kitbitz-home.webp",
+          "filename": "kitbitz-home.webp",
+          "bytes": 43330,
+          "sha256": "84d6516759d65f3bd4ab1c0231d33019ad37bcca96279e33e8e9654bf5974436",
+          "format": "webp",
+          "dimensions": {
+            "width": 1200,
+            "height": 630
+          },
+          "decoded": true
+        }
+      ],
+      "notes": "Official OG preview is local. Downloadable catalog assets require preserving the source license notice; preview remains reference-only. Local official preview retained for style study; it is not a redistributable license claim."
+    },
+    {
+      "source_id": "poly-haven",
+      "name": "Poly Haven",
+      "source_page": "https://polyhaven.com/",
+      "license": "CC0 asset license; API terms reviewed separately",
+      "license_url": "https://polyhaven.com/license",
+      "status": "downloaded",
+      "commercial_use": true,
+      "attribution_required": false,
+      "redistributable": true,
+      "file_count": 1,
+      "files": [
+        {
+          "path": "assets/media/ai-lab/library/editorial/poly-haven/camera-01.png",
+          "filename": "camera-01.png",
+          "bytes": 32768,
+          "sha256": "eafcd5baaf85ff4f340c0619569a96b53adf0656857dcbbca0bc425d5fdd0c7c",
+          "format": "png",
+          "dimensions": {
+            "width": 1024,
+            "height": 840
+          },
+          "decoded": true
+        }
+      ],
+      "notes": "One 1024px thumbnail downloaded from the public asset CDN. API integration has separate usage terms; no bulk API mirror was created."
+    },
+    {
+      "source_id": "ambientcg",
+      "name": "ambientCG",
+      "source_page": "https://ambientcg.com/",
+      "license": "CC0 1.0",
+      "license_url": "https://ambientcg.com/license",
+      "status": "downloaded",
+      "commercial_use": true,
+      "attribution_required": false,
+      "redistributable": true,
+      "file_count": 1,
+      "files": [
+        {
+          "path": "assets/media/ai-lab/library/editorial/ambientcg/ambientcg-2.png",
+          "filename": "ambientcg-2.png",
+          "bytes": 1955724,
+          "sha256": "b55c7ae2ef896b20fd75b6352b3370ed8da5fd840c05c5900a7a27218b3b1fd4",
+          "format": "png",
+          "dimensions": {
+            "width": 1024,
+            "height": 1024
+          },
+          "decoded": true
+        }
+      ],
+      "notes": "One 1024px material preview downloaded via the public v2 API metadata."
+    },
+    {
+      "source_id": "wikimedia",
+      "name": "Wikimedia Commons",
+      "source_page": "https://commons.wikimedia.org/",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "status": "downloaded",
+      "commercial_use": true,
+      "attribution_required": true,
+      "redistributable": true,
+      "file_count": 1,
+      "files": [
+        {
+          "path": "assets/media/ai-lab/library/editorial/wikimedia/angela-conner-renaissance.jpg",
+          "filename": "angela-conner-renaissance.jpg",
+          "bytes": 18555010,
+          "sha256": "495145a9939aee6cee9687fb4a9ec24aac7e850b7d8b342e2406de19dc95e37b",
+          "format": "jpg",
+          "dimensions": {
+            "width": 5472,
+            "height": 3648
+          },
+          "decoded": true
+        }
+      ],
+      "notes": "One abstract sculpture photograph downloaded from a Commons API result. Attribution and ShareAlike notice are required."
+    },
+    {
+      "source_id": "smithsonian",
+      "name": "Smithsonian Open Access",
+      "source_page": "https://www.si.edu/openaccess",
+      "license": "CC0 for marked records",
+      "license_url": "https://www.si.edu/openaccess",
+      "status": "metadata-only",
+      "commercial_use": true,
+      "attribution_required": false,
+      "redistributable": false,
+      "file_count": 0,
+      "files": [],
+      "notes": "API metadata for record siris_sil_13719 was verified as CC0, but the image delivery endpoint rejected the request; no image is claimed as downloaded."
+    },
+    {
+      "source_id": "3dicons",
+      "name": "3Dicons",
+      "source_page": "https://3dicons.co/",
+      "license": "CC0 claimed by the source; file-level check pending",
+      "license_url": "https://3dicons.co/",
+      "status": "not-downloaded",
+      "commercial_use": null,
+      "attribution_required": null,
+      "redistributable": false,
+      "file_count": 0,
+      "files": [],
+      "notes": "Site timed out in this environment; no file copied."
+    },
+    {
+      "source_id": "khagwal",
+      "name": "Khagwal 3D",
+      "source_page": "https://3d.khagwal.co/",
+      "license": "Review required",
+      "license_url": "https://3d.khagwal.co/",
+      "status": "not-downloaded",
+      "commercial_use": null,
+      "attribution_required": null,
+      "redistributable": false,
+      "file_count": 0,
+      "files": [],
+      "notes": "No stable downloadable endpoint was verified."
+    },
+    {
+      "source_id": "storyset",
+      "name": "Storyset",
+      "source_page": "https://storyset.com/",
+      "license": "Free tier requires attribution",
+      "license_url": "https://storyset.com/faqs",
+      "status": "not-downloaded",
+      "commercial_use": null,
+      "attribution_required": null,
+      "redistributable": false,
+      "file_count": 0,
+      "files": [],
+      "notes": "Bot-protected page; no file copied without a stable asset URL."
+    },
+    {
+      "source_id": "texturelabs",
+      "name": "Texturelabs",
+      "source_page": "https://texturelabs.org/",
+      "license": "Review required",
+      "license_url": "https://texturelabs.org/",
+      "status": "not-downloaded",
+      "commercial_use": null,
+      "attribution_required": null,
+      "redistributable": false,
+      "file_count": 0,
+      "files": [],
+      "notes": "Site timed out; no file copied."
+    },
+    {
+      "source_id": "unsplash",
+      "name": "Unsplash",
+      "source_page": "https://unsplash.com/",
+      "license": "Unsplash License; per-file terms",
+      "license_url": "https://unsplash.com/license",
+      "status": "not-downloaded",
+      "commercial_use": null,
+      "attribution_required": null,
+      "redistributable": false,
+      "file_count": 0,
+      "files": [],
+      "notes": "No file copied; source remains a discovery reference."
+    },
+    {
+      "source_id": "pexels",
+      "name": "Pexels",
+      "source_page": "https://www.pexels.com/",
+      "license": "Pexels License; per-file terms",
+      "license_url": "https://www.pexels.com/license/",
+      "status": "not-downloaded",
+      "commercial_use": null,
+      "attribution_required": null,
+      "redistributable": false,
+      "file_count": 0,
+      "files": [],
+      "notes": "No file copied; source remains a discovery reference."
+    },
+    {
+      "source_id": "textures-for-free",
+      "name": "Textures for Free",
+      "source_page": "https://www.texturesforfree.com/",
+      "license": "Review required",
+      "license_url": "https://www.texturesforfree.com/",
+      "status": "not-downloaded",
+      "commercial_use": null,
+      "attribution_required": null,
+      "redistributable": false,
+      "file_count": 0,
+      "files": [],
+      "notes": "No stable endpoint verified."
+    },
+    {
+      "source_id": "museu-moon",
+      "name": "MuseuMoon",
+      "source_page": "https://www.museu.ms/",
+      "license": "Review required",
+      "license_url": "https://www.museu.ms/",
+      "status": "not-downloaded",
+      "commercial_use": null,
+      "attribution_required": null,
+      "redistributable": false,
+      "file_count": 0,
+      "files": [],
+      "notes": "TLS/revocation failure in this environment."
+    },
+    {
+      "source_id": "nga",
+      "name": "National Gallery of Art",
+      "source_page": "https://www.nga.gov/open-access-images.html",
+      "license": "Open Access per artwork",
+      "license_url": "https://www.nga.gov/open-access-images.html",
+      "status": "not-downloaded",
+      "commercial_use": null,
+      "attribution_required": null,
+      "redistributable": false,
+      "file_count": 0,
+      "files": [],
+      "notes": "No image copied; file-level rights must be checked per artwork."
+    },
+    {
+      "source_id": "blenderkit",
+      "name": "BlenderKit",
+      "source_page": "https://www.blenderkit.com/",
+      "license": "Per-asset license",
+      "license_url": "https://www.blenderkit.com/docs/asset-subscription/",
+      "status": "not-downloaded",
+      "commercial_use": null,
+      "attribution_required": null,
+      "redistributable": false,
+      "file_count": 0,
+      "files": [],
+      "notes": "No file copied; per-asset licensing required."
+    },
+    {
+      "source_id": "sketchfab",
+      "name": "Sketchfab",
+      "source_page": "https://sketchfab.com/",
+      "license": "Per-model Creative Commons terms",
+      "license_url": "https://sketchfab.com/licenses",
+      "status": "not-downloaded",
+      "commercial_use": null,
+      "attribution_required": null,
+      "redistributable": false,
+      "file_count": 0,
+      "files": [],
+      "notes": "No file copied; per-model license required."
+    },
+    {
+      "source_id": "cgaxis",
+      "name": "CGAxis",
+      "source_page": "https://cgaxis.com/",
+      "license": "Per-asset license",
+      "license_url": "https://cgaxis.com/",
+      "status": "not-downloaded",
+      "commercial_use": null,
+      "attribution_required": null,
+      "redistributable": false,
+      "file_count": 0,
+      "files": [],
+      "notes": "No file copied; per-asset license required."
+    },
+    {
+      "source_id": "svg-nexus",
+      "name": "SVG Nexus",
+      "source_page": "https://svgnexus.com/",
+      "license": "Index only; verify original source",
+      "license_url": "https://svgnexus.com/",
+      "status": "not-downloaded",
+      "commercial_use": null,
+      "attribution_required": null,
+      "redistributable": false,
+      "file_count": 0,
+      "files": [],
+      "notes": "No file copied; links must resolve to the original creator."
+    },
+    {
+      "source_id": "pinterest",
+      "name": "Pinterest",
+      "source_page": "https://www.pinterest.com/",
+      "license": "Reference-only",
+      "license_url": "https://policy.pinterest.com/en/terms-of-service",
+      "status": "not-downloaded",
+      "commercial_use": null,
+      "attribution_required": null,
+      "redistributable": false,
+      "file_count": 0,
+      "files": [],
+      "notes": "Never treated as a download source."
+    },
+    {
+      "source_id": "behance",
+      "name": "Behance",
+      "source_page": "https://www.behance.net/",
+      "license": "Reference-only",
+      "license_url": "https://www.adobe.com/legal/terms.html",
+      "status": "not-downloaded",
+      "commercial_use": null,
+      "attribution_required": null,
+      "redistributable": false,
+      "file_count": 0,
+      "files": [],
+      "notes": "Never treated as a download source."
+    },
+    {
+      "source_id": "dribbble",
+      "name": "Dribbble",
+      "source_page": "https://dribbble.com/",
+      "license": "Reference-only",
+      "license_url": "https://dribbble.com/terms",
+      "status": "not-downloaded",
+      "commercial_use": null,
+      "attribution_required": null,
+      "redistributable": false,
+      "file_count": 0,
+      "files": [],
+      "notes": "Never treated as a download source."
+    }
+  ],
+  "local_file_count": 262
+}

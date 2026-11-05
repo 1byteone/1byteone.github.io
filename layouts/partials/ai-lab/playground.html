@@ -1,0 +1,41 @@
+{{- $zh := .zh -}}
+<section class="al-playground" data-lab-playground data-corpus-url="{{ "data/ai-lab/playground-corpus.json" | relURL }}" aria-labelledby="al-playground-title">
+  <div class="al-playground-heading">
+    <div>
+      <p class="al-eyebrow">LOCAL / NO API REQUEST</p>
+      <h2 id="al-playground-title">{{ if $zh }}文本与 JSON 检查台{{ else }}Text & JSON workbench{{ end }}</h2>
+    </div>
+    <p>{{ if $zh }}输入仅用于当前浏览器中的本地检查；检索语料来自本站中英文文章，不会发送给模型或外部服务。{{ else }}Input is inspected locally in this browser. Retrieval uses the site's bilingual articles and makes no model or third-party request.{{ end }}</p>
+  </div>
+  <div class="al-playground-grid">
+    <div class="al-playground-editor">
+      <label for="al-playground-input">{{ if $zh }}输入内容{{ else }}INPUT{{ end }}</label>
+      <textarea id="al-playground-input" data-playground-input spellcheck="false" aria-label="{{ if $zh }}本地检查输入{{ else }}Local inspection input{{ end }}"></textarea>
+      <div class="al-playground-stats">
+        <span>{{ if $zh }}字符{{ else }}CHARACTERS{{ end }} <b data-text-count>0</b></span>
+        <span>{{ if $zh }}行数{{ else }}LINES{{ end }} <b data-line-count>0</b></span>
+      </div>
+    </div>
+    <div class="al-playground-result">
+      <div class="al-playground-result-head"><span>{{ if $zh }}JSON 解析{{ else }}JSON PARSER{{ end }}</span><span data-json-status data-state="idle">{{ if $zh }}等待检查{{ else }}READY{{ end }}</span></div>
+      <pre data-json-output>{{ if $zh }}点击检查解析输入。{{ else }}Run the parser to inspect the input.{{ end }}</pre>
+      <div class="al-playground-actions">
+        <button type="button" data-json-check>{{ if $zh }}检查 JSON{{ else }}Validate JSON{{ end }}</button>
+        <button type="button" data-json-format>{{ if $zh }}格式化 JSON{{ else }}Format JSON{{ end }}</button>
+      </div>
+    </div>
+  </div>
+  <div class="al-playground-rag" data-rag-workbench>
+    <div>
+      <p class="al-eyebrow">LOCAL / ARTICLE RETRIEVAL</p>
+      <h3>{{ if $zh }}本站文章检索演练{{ else }}Local article retrieval drill{{ end }}</h3>
+      <p>{{ if $zh }}从本地生成的 40 篇双语 AI Lab 文章中执行 BM25 + 字符 n-gram 词法检索，展示命中片段和站内来源。没有向量 Embedding、模型生成或外网请求；这是可操作的检索演练，不是完整 RAG 或生产质量评测。{{ else }}Run BM25 plus character n-gram lexical retrieval across 40 locally indexed bilingual AI Lab articles, with excerpts and internal sources. No embedding, generation, or external request is used; this is a retrieval drill, not full RAG or a production evaluation.{{ end }}</p>
+    </div>
+    <label for="al-rag-query">{{ if $zh }}输入检索问题{{ else }}QUERY{{ end }}</label>
+    <div class="al-rag-input-row">
+      <input id="al-rag-query" data-rag-query value="{{ if $zh }}SSE 客户端断开后如何清理资源？{{ else }}How should an SSE server clean up after a client disconnects?{{ end }}">
+      <button type="button" data-rag-run>{{ if $zh }}检索本站文章{{ else }}Search local articles{{ end }}</button>
+    </div>
+    <div class="al-rag-result" data-rag-result aria-live="polite" aria-busy="true">{{ if $zh }}正在载入本地语料…{{ else }}Loading the local corpus…{{ end }}</div>
+  </div>
+</section>

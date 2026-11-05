@@ -1,0 +1,117 @@
+{{- $zh := hasPrefix .Lang "zh" -}}
+{{- $labPages := where (where site.RegularPages "Section" "ai-lab") "Lang" .Lang -}}
+{{- $categories := hugo.Data.ai_lab.categories -}}
+{{- $categoryIDs := slice -}}
+{{- range $categories -}}{{- $categoryIDs = $categoryIDs | append .id -}}{{- end -}}
+{{- $labPages = where $labPages "Params.lab_category" "in" $categoryIDs -}}
+{{- $latest := first 3 (sort $labPages "Date" "desc") -}}
+{{- $allRecords := sort $labPages "Date" "desc" -}}
+{{- $featured := sort (where $labPages "Params.featured" true) "Params.featured_order" "asc" -}}
+{{- $featured = first 5 $featured -}}
+{{- $homeCards := hugo.Data.ai_lab.home_cards -}}
+{{- $heroSprite := resources.Get "media/ai-lab/anthropic-home/hero-sprite.webp" -}}
+{{- $tileAtlas := resources.Get "media/ai-lab/anthropic-home/tiles.webp" -}}
+
+<main id="main-content" class="al-home-main">
+  <section class="al-home-intro al-home-shell" aria-labelledby="al-home-title">
+    <h1 id="al-home-title"><strong>{{ if $zh }}让 AI 工程的每个判断，都回到证据。{{ else }}Build AI systems with evidence at every step.{{ end }}</strong> <em>{{ if $zh }}这里记录模型、数据与 Agent 系统在真实工作流中的实验、边界与复盘，让方法可追踪、结果可复现、结论可复核。{{ else }}This lab records experiments, boundaries, and lessons from models, data, and agent systems in real workflows, so methods are traceable, results repeatable, and conclusions verifiable.{{ end }}</em></h1>
+  </section>
+
+  {{ if and $heroSprite $tileAtlas $featured }}
+  {{- $heroCells := slice 4 7 2 8 3 -}}
+  <section class="al-home-sizzle-track" data-home-sizzle-track aria-label="{{ if $zh }}精选研究主视觉{{ else }}Featured research visual{{ end }}">
+    <div class="al-home-stage" data-home-sizzle data-art-src="{{ $heroSprite.RelPermalink }}" data-tiles-src="{{ $tileAtlas.RelPermalink }}" data-art-cells="{{ delimit $heroCells "," }}" aria-label="{{ if $zh }}滚动展开的精选研究图块{{ else }}Scroll to reveal a mosaic of featured research{{ end }}">
+      <div class="al-home-featured-card">
+        <canvas class="al-home-art-canvas" data-home-art aria-hidden="true"></canvas>
+        <div class="al-home-art-fallback" data-home-art-fallback aria-hidden="true">
+          <span>AI LAB</span><strong>{{ if $zh }}精选研究{{ else }}FEATURED RESEARCH{{ end }}</strong>
+        </div>
+        <div class="al-home-stage-stories" data-home-story-layer>
+          {{- range $index, $record := $featured -}}
+          {{- $categoryMeta := index (where $categories "id" $record.Params.lab_category) 0 -}}
+          <article class="al-home-story{{ if eq $index 0 }} is-active{{ end }}" data-home-story data-story-index="{{ $index }}" data-active="{{ if eq $index 0 }}true{{ else }}false{{ end }}" aria-hidden="{{ if ne $index 0 }}true{{ else }}false{{ end }}">
+            <p class="al-home-kicker">{{ if $zh }}{{ $categoryMeta.label_zh }}{{ else }}{{ $categoryMeta.label }}{{ end }} · {{ if $zh }}精选研究{{ else }}FEATURED RESEARCH{{ end }}</p>
+            <h2><a href="{{ $record.RelPermalink }}">{{ $record.Title }}</a></h2>
+            <p class="al-home-story-summary">{{ $record.Params.summary | default $record.Description | plainify }}</p>
+            <a class="al-home-story-cta" href="{{ $record.RelPermalink }}">{{ if $zh }}阅读研究记录{{ else }}Read the research{{ end }} <span aria-hidden="true">→</span></a>
+          </article>
+          {{- end -}}
+        </div>
+      </div>
+      <div class="al-home-stage-footer" role="group" aria-label="{{ if $zh }}动画控制{{ else }}Animation controls{{ end }}">
+        <button type="button" data-home-animation-toggle data-state="playing" data-pause-label="{{ if $zh }}暂停动画{{ else }}Pause animation{{ end }}" data-resume-label="{{ if $zh }}继续动画{{ else }}Resume animation{{ end }}" aria-pressed="false" aria-label="{{ if $zh }}暂停动画{{ else }}Pause animation{{ end }}" title="{{ if $zh }}暂停动画{{ else }}Pause animation{{ end }}">
+          <span class="al-home-control-window" aria-hidden="true"><span class="al-home-control-strip">
+            <svg viewBox="0 0 24 24"><path d="M7 3.75v16.5M17 3.75v16.5"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M3 4.33c0-1.73 1.86-2.81 3.36-1.95l13.47 7.67a2.25 2.25 0 0 1 0 3.91L6.36 21.63A2.25 2.25 0 0 1 3 19.67V4.33Z"/></svg>
+          </span></span>
+        </button>
+      </div>
+    </div>
+  </section>
+  {{ end }}
+
+  <section class="al-home-shell al-home-announcements" id="announcements" aria-labelledby="al-announcements-title">
+    <h2 id="al-announcements-title" class="al-sr-only">{{ if $zh }}近期研究记录{{ else }}Announcements{{ end }}</h2>
+    <div class="al-home-announcement-grid">
+      {{ range $latest }}
+        {{- $currentRecord := . -}}
+        {{- $relatedRecords := slice -}}
+        {{- range $allRecords -}}
+          {{- if and (ne .RelPermalink $currentRecord.RelPermalink) (eq .Params.lab_category $currentRecord.Params.lab_category) (lt (len $relatedRecords) 3) -}}
+            {{- $relatedRecords = $relatedRecords | append . -}}
+          {{- end -}}
+        {{- end -}}
+        {{- if not $relatedRecords -}}
+          {{- range $allRecords -}}
+            {{- if and (ne .RelPermalink $currentRecord.RelPermalink) (lt (len $relatedRecords) 3) -}}
+              {{- $relatedRecords = $relatedRecords | append . -}}
+            {{- end -}}
+          {{- end -}}
+        {{- end -}}
+        {{- $categoryMeta := index (where $categories "id" .Params.lab_category) 0 -}}
+        <article class="al-home-announcement">
+          <header><details class="al-home-related" data-home-related><summary class="al-home-tag" aria-expanded="false" aria-label="{{ if $zh }}与{{ .Title }}相关的记录{{ else }}Related to {{ .Title }}{{ end }}" title="{{ if $zh }}查看相关记录{{ else }}Related records{{ end }}"><span aria-hidden="true">···</span></summary><div class="al-home-related-panel" role="group" aria-label="{{ if $zh }}相关研究记录{{ else }}Related research records{{ end }}"><div class="al-home-related-heading"><strong>{{ if $zh }}相关研究{{ else }}Related articles{{ end }}</strong><button type="button" data-close-home-related aria-label="{{ if $zh }}关闭{{ else }}Close{{ end }}">×</button></div><ul>{{ range $relatedRecords }}<li><a href="{{ .RelPermalink }}"><span>{{ .Title }}</span><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time></a></li>{{ end }}</ul><a class="al-home-related-more" href="{{ "ai-lab/" | relLangURL }}#archive">{{ if $zh }}查看完整档案{{ else }}View more{{ end }} <span aria-hidden="true">→</span></a></div></details><span>{{ if $zh }}研究动态{{ else }}Announcements{{ end }}</span><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time></header>
+          <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+          <p class="al-home-announcement-summary">{{ .Params.summary | default .Description | plainify }}</p>
+          <div class="al-home-announcement-links"><a href="{{ printf "ai-lab/%s/" .Params.lab_category | relLangURL }}"><span>{{ if $zh }}研究方向{{ else }}Research area{{ end }}</span><strong>{{ if $zh }}{{ $categoryMeta.label_zh }}{{ else }}{{ $categoryMeta.label }}{{ end }} <i aria-hidden="true">→</i></strong></a><a href="{{ .RelPermalink }}"><span>{{ if $zh }}阅读时间{{ else }}Reading time{{ end }}</span><strong>{{ .ReadingTime }} {{ if $zh }}分钟{{ else }}min{{ end }} <i aria-hidden="true">↓</i></strong></a></div>
+          <a class="al-home-announcement-cta" href="{{ .RelPermalink }}">{{ if $zh }}阅读完整记录{{ else }}Read the full record{{ end }} <span aria-hidden="true">→</span></a>
+        </article>
+      {{ end }}
+    </div>
+  </section>
+
+  <section class="al-home-shell al-home-learn-more" aria-labelledby="al-home-learn-title">
+    <div class="al-home-section-heading">
+      <h2 id="al-home-learn-title">{{ if $zh }}继续了解{{ else }}Learn more{{ end }}</h2>
+      <div class="al-home-learn-controls" data-learn-controls role="group" aria-label="{{ if $zh }}继续了解导航{{ else }}Learn more navigation{{ end }}">
+        <span data-learn-count aria-live="polite">01 / {{ printf "%02d" (len $homeCards) }}</span>
+        <button type="button" data-learn-prev aria-label="{{ if $zh }}上一张{{ else }}Previous slide{{ end }}" disabled>←</button>
+        <button type="button" data-learn-next aria-label="{{ if $zh }}下一张{{ else }}Next slide{{ end }}">→</button>
+      </div>
+    </div>
+    <div class="al-home-learn-grid" data-learn-carousel tabindex="0" aria-label="{{ if $zh }}AI Lab 栏目{{ else }}AI Lab topics{{ end }}">
+      {{ range $card := $homeCards }}
+        {{- $categoryMeta := index (where $categories "id" $card.id) 0 -}}
+        <a class="al-home-learn-card" data-learn-slide href="{{ printf "ai-lab/%s/" $card.id | relLangURL }}">
+          <div class="al-home-learn-meta"><span>{{ if $zh }}{{ $card.label_zh }}{{ else }}{{ $card.label_en }}{{ end }}</span></div>
+          <div class="al-home-learn-image">
+            {{ with resources.Get $card.image }}{{- $image := .Fill "800x1000 webp q84" -}}<img src="{{ $image.RelPermalink }}" width="{{ $image.Width }}" height="{{ $image.Height }}" alt="{{ if $zh }}{{ $card.alt_zh }}{{ else }}{{ $card.alt_en }}{{ end }}" loading="lazy" decoding="async">{{ end }}
+          </div>
+          <h3>{{ if $zh }}{{ $card.title_zh }}{{ else }}{{ $card.title_en }}{{ end }}</h3>
+          <p>{{ if $zh }}{{ $categoryMeta.description_zh }}{{ else }}{{ $categoryMeta.description }}{{ end }}</p>
+        </a>
+      {{ end }}
+    </div>
+  </section>
+
+  <section class="al-home-shell al-home-archive" id="archive" aria-label="{{ if $zh }}完整研究档案{{ else }}Full research archive{{ end }}">
+    <details class="al-home-archive-details" data-lab-archive-disclosure>
+      <summary><span>{{ if $zh }}浏览完整研究档案{{ else }}Browse the complete research archive{{ end }}</span><small>{{ printf "%02d" (len $allRecords) }} {{ if $zh }}条记录{{ else }}RECORDS{{ end }}</small><i aria-hidden="true">+</i></summary>
+      <div class="al-home-archive-body">
+        {{ partial "ai-lab/record-controls.html" (dict "page" . "zh" $zh "categories" $categories) }}
+        {{ partial "ai-lab/record-grid.html" (dict "page" . "records" $allRecords "zh" $zh) }}
+        <div class="al-empty-state" data-lab-empty hidden><p>{{ if $zh }}没有符合条件的记录。{{ else }}No records match those filters.{{ end }}</p><button type="button" data-clear-filters>{{ if $zh }}清除筛选{{ else }}Clear filters{{ end }}</button></div>
+      </div>
+    </details>
+  </section>
+</main>

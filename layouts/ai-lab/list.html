@@ -1,0 +1,10 @@
+{{- $zh := hasPrefix .Lang "zh" -}}
+<!doctype html>
+<html lang="{{ .Lang }}" data-theme="light">
+{{ partial "ai-lab/head.html" . }}
+<body class="ai-lab-page ai-lab-home-page">
+  {{ partial "ai-lab/header.html" . }}
+  {{ partial "ai-lab/dashboard.html" . }}
+  {{ partial "ai-lab/footer.html" . }}
+</body>
+</html>

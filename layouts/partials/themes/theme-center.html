@@ -21,6 +21,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f4f6f5">
   <meta name="description" content="{{ .Description | plainify }}">
+  <link rel="icon" type="image/svg+xml" href="{{ "images/ai-lab-mark.svg" | relURL }}">
   {{ if .Site.Params.theme_preview }}<meta name="robots" content="noindex,follow">{{ end }}
   <link rel="canonical" href="{{ .Permalink }}">
   <link rel="stylesheet" href="{{ "css/theme-center.css" | relURL }}">
@@ -33,7 +34,7 @@
       <a href="{{ .Site.Home.RelPermalink }}">{{ if $zh }}首页{{ else }}Home{{ end }}</a>
       <a href="{{ "blog/" | relLangURL }}">{{ if $zh }}技术文章{{ else }}Articles{{ end }}</a>
       <a href="{{ "projects/" | relLangURL }}">{{ if $zh }}项目{{ else }}Projects{{ end }}</a>
-      <a href="{{ "ui-lab/" | relLangURL }}">{{ if $zh }}实验室{{ else }}Lab{{ end }}</a>
+      <a href="{{ "ai-lab/" | relLangURL }}">{{ if $zh }}AI 实验室{{ else }}AI Lab{{ end }}</a>
       <a href="{{ "theme-center/" | relLangURL }}" aria-current="page">{{ if $zh }}主题中心{{ else }}Themes{{ end }}</a>
       <a href="{{ "about/" | relLangURL }}">{{ if $zh }}关于{{ else }}About{{ end }}</a>
     </nav>
@@ -99,6 +100,7 @@
           {{- $path := default "/" $theme.preview_path -}}
           {{- if and hugo.IsServer $theme.dev_preview_path -}}{{- $path = $theme.dev_preview_path -}}{{- end -}}
           {{- $href := printf "%s%s" $path $languageSuffix -}}
+          {{- if eq $theme.scope "section" -}}{{- $href = "ai-lab/" | relLangURL -}}{{- end -}}
           {{- $isAvailable := $theme.available -}}
           {{- $tags := delimit $theme.tags " " -}}
           {{- $focus := default "" $theme.focus -}}
@@ -120,13 +122,13 @@
             </div>
             <div class="tc-card-content">
               <div class="tc-card-meta"><span>{{ printf "%02d" (add $index 1) }} / {{ upper $theme.category }}</span><span class="tc-card-status {{ if not $isAvailable }}is-planned{{ else if eq $theme.status "production" }}is-stable{{ end }}">{{ if not $isAvailable }}{{ if $zh }}规划中{{ else }}Planned{{ end }}{{ else if eq $theme.status "production" }}{{ if $zh }}稳定{{ else }}Stable{{ end }}{{ else }}{{ if $zh }}预览{{ else }}Preview{{ end }}{{ end }}</span></div>
-              <div class="tc-card-title-row"><h3>{{ $label }}</h3><button type="button" class="tc-favorite" data-theme-favorite data-theme-id="{{ $selectionID }}" data-theme-label="{{ $label }}" title="{{ if $zh }}收藏主题{{ else }}Favorite theme{{ end }}" aria-label="{{ if $zh }}收藏{{ $label }}{{ else }}Favorite {{ $label }}{{ end }}" aria-pressed="false">☆</button></div>
+              <div class="tc-card-title-row"><h3>{{ $label }}</h3>{{ if ne $theme.scope "section" }}<button type="button" class="tc-favorite" data-theme-favorite data-theme-id="{{ $selectionID }}" data-theme-label="{{ $label }}" title="{{ if $zh }}收藏主题{{ else }}Favorite theme{{ end }}" aria-label="{{ if $zh }}收藏{{ $label }}{{ else }}Favorite {{ $label }}{{ end }}" aria-pressed="false">☆</button>{{ end }}</div>
               <p class="tc-card-description">{{ $description }}</p>
               {{ with $theme.tags }}<div class="tc-tags">{{ range first 3 . }}<span>{{ . }}</span>{{ end }}</div>{{ end }}
               <div class="tc-card-actions">
                 {{- if $isAvailable -}}
-                  <a class="tc-preview-link" href="{{ $href }}" data-theme-visit data-theme-id="{{ $selectionID }}">{{ if $zh }}预览主题{{ else }}Preview theme{{ end }} <span aria-hidden="true">↗</span></a>
-                  <button class="tc-default-button" type="button" data-theme-set-default data-theme-id="{{ $selectionID }}" data-theme-label="{{ $label }}" data-theme-path="{{ $href }}" data-label-default="{{ if $zh }}默认{{ else }}Default{{ end }}" data-label-set="{{ if $zh }}设为默认{{ else }}Set default{{ end }}" aria-pressed="{{ if $isCurrent }}true{{ else }}false{{ end }}">{{ if $isCurrent }}{{ if $zh }}默认{{ else }}Default{{ end }}{{ else }}{{ if $zh }}设为默认{{ else }}Set default{{ end }}{{ end }}</button>
+                  <a class="tc-preview-link" href="{{ $href }}"{{ if ne $theme.scope "section" }} data-theme-visit data-theme-id="{{ $selectionID }}"{{ end }}>{{ if eq $theme.scope "section" }}{{ if $zh }}打开栏目{{ else }}Open section{{ end }}{{ else }}{{ if $zh }}预览主题{{ else }}Preview theme{{ end }}{{ end }} <span aria-hidden="true">↗</span></a>
+                  {{- if ne $theme.default_selectable false -}}<button class="tc-default-button" type="button" data-theme-set-default data-theme-id="{{ $selectionID }}" data-theme-label="{{ $label }}" data-theme-path="{{ $href }}" data-label-default="{{ if $zh }}默认{{ else }}Default{{ end }}" data-label-set="{{ if $zh }}设为默认{{ else }}Set default{{ end }}" aria-pressed="{{ if $isCurrent }}true{{ else }}false{{ end }}">{{ if $isCurrent }}{{ if $zh }}默认{{ else }}Default{{ end }}{{ else }}{{ if $zh }}设为默认{{ else }}Set default{{ end }}{{ end }}</button>{{- end -}}
                 {{- else -}}
                   <span class="tc-planned-note">{{ if $zh }}尚未开放预览{{ else }}Preview not available yet{{ end }}</span>
                   {{ if or $theme.remote_demo $theme.reference_url $theme.source_repository }}<span class="tc-reference-links">{{ with $theme.remote_demo }}<a class="tc-preview-link" href="{{ . }}" target="_blank" rel="noopener noreferrer">{{ if $zh }}在线演示{{ else }}Live demo{{ end }} <span aria-hidden="true">↗</span></a>{{ end }}{{ with $theme.reference_url }}<a class="tc-preview-link" href="{{ . }}" target="_blank" rel="noopener noreferrer">{{ if $zh }}参考项目{{ else }}Reference{{ end }} <span aria-hidden="true">↗</span></a>{{ end }}{{ with $theme.source_repository }}<a class="tc-preview-link" href="{{ . }}" target="_blank" rel="noopener noreferrer">{{ if $zh }}源码仓库{{ else }}Source{{ end }} <span aria-hidden="true">↗</span></a>{{ end }}</span>{{ end }}

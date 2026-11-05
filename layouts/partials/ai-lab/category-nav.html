@@ -1,0 +1,2 @@
+{{- $zh := .zh -}}
+<nav class="al-category-nav" aria-label="{{ if $zh }}研究栏目{{ else }}Research tracks{{ end }}"><a href="{{ "ai-lab/" | relLangURL }}"{{ if not .active }} aria-current="page"{{ end }}>{{ if $zh }}全部{{ else }}All{{ end }}</a>{{ range .categories }}<a href="{{ printf "ai-lab/%s/" .id | relLangURL }}"{{ if eq .id $.active }} aria-current="page"{{ end }}>{{ if $zh }}{{ .label_zh }}{{ else }}{{ .label }}{{ end }}</a>{{ end }}</nav>

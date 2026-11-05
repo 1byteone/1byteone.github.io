@@ -1,0 +1,70 @@
+categories:
+  - id: experiments
+    number: "01"
+    label: Experiments
+    label_zh: 实验记录
+    description: Reproducible model, prompt, and retrieval experiments.
+    description_zh: 可复现的模型、提示词与检索实验记录。
+  - id: research
+    number: "02"
+    label: Research
+    label_zh: 研究与原理
+    description: Technical reading notes, source analysis, and system models.
+    description_zh: 技术原理、源码分析与系统模型。
+  - id: engineering
+    number: "03"
+    label: Engineering
+    label_zh: 工程实践
+    description: Systems built with explicit boundaries and operational paths.
+    description_zh: 具有清晰边界、失败路径与运行机制的工程实践。
+  - id: benchmarks
+    number: "04"
+    label: Benchmarks
+    label_zh: 性能评测
+    description: Measurement protocols and verified comparisons.
+    description_zh: 可复核的评测方法与性能对比。
+  - id: playground
+    number: "05"
+    label: Playground
+    label_zh: 交互实验台
+    description: Small browser tools with clear demo and measurement limits.
+    description_zh: 明确标注能力边界的轻量浏览器工具。
+  - id: field-notes
+    number: "06"
+    label: Field Notes
+    label_zh: 工程手记
+    description: Failure analysis, debugging records, and implementation lessons.
+    description_zh: 故障分析、调试记录与实现复盘。
+home_cards:
+  - id: research
+    image: media/ai-lab/anthropic-home/anthropic-institute.jpg
+    label_en: Research / Principles
+    label_zh: 研究与原理
+    title_en: Models and foundations
+    title_zh: 模型与原理
+    alt_en: Archival architectural drawing and geometric study on aged paper.
+    alt_zh: 旧纸上的建筑档案图与几何研究手稿。
+  - id: experiments
+    image: media/ai-lab/anthropic-home/claude-constitution.png
+    label_en: Experiments / Reproduction
+    label_zh: 实验与复现
+    title_en: Experiments in practice
+    title_zh: 实验与复现
+    alt_en: A layered, hand-drawn circular diagram on pale yellow paper.
+    alt_zh: 浅黄色纸张上的分层手绘圆形图表。
+  - id: engineering
+    image: media/ai-lab/anthropic-home/responsible-scaling-policy.jpg
+    label_en: Engineering / Systems
+    label_zh: 工程与系统
+    title_en: Systems from design to delivery
+    title_zh: 架构与落地
+    alt_en: A luminous spiral shell study against dark archival material.
+    alt_zh: 深色档案材质上的螺旋贝壳研究图。
+  - id: benchmarks
+    image: media/ai-lab/anthropic-home/core-views-ai-safety.jpg
+    label_en: Evaluation / Evidence
+    label_zh: 评估与证据
+    title_en: Evaluation with evidence
+    title_zh: 评估与证据
+    alt_en: A modular collage of muted blue, green, and archival textures.
+    alt_zh: 由低饱和蓝绿块面与档案肌理组成的拼贴。

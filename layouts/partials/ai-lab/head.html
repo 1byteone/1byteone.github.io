@@ -1,0 +1,37 @@
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{{ .Description | default .Site.Params.description | plainify | htmlEscape }}">
+  <meta name="color-scheme" content="light dark">
+  <script>(function(){var t="light";try{var s=localStorage.getItem("ai-lab-color-mode");if(s==="dark"||s==="light")t=s;else if(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches)t="dark"}catch(e){}document.documentElement.dataset.theme=t}());</script>
+  <link rel="icon" type="image/svg+xml" href="{{ "images/ai-lab-mark.svg" | relURL }}">
+  <link rel="canonical" href="{{ .Permalink }}">
+  <meta property="og:type" content="{{ if eq .Kind "page" }}article{{ else }}website{{ end }}">
+  <meta property="og:title" content="{{ .Title | htmlEscape }} · AI LAB / 01">
+  <meta property="og:description" content="{{ .Description | default .Site.Params.description | plainify | htmlEscape }}">
+  <meta property="og:url" content="{{ .Permalink }}">
+  <title>{{ .Title }} · AI LAB / 01</title>
+  <link rel="stylesheet" href="{{ "css/ai-lab.css?v=20261105-toc-28" | relURL }}">
+  {{ if eq .Kind "page" }}
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.min.js" crossorigin="anonymous"></script>
+  {{ end }}
+  <link rel="alternate" hreflang="{{ if hasPrefix .Lang "zh" }}en{{ else }}zh-Hans{{ end }}" href="{{ with .Translations }}{{ (index . 0).RelPermalink }}{{ else }}{{ .RelPermalink }}{{ end }}">
+  <script defer src="{{ "js/ai-lab.js?v=20261105-toc-27" | relURL }}"></script>
+  {{- $allowedStatuses := slice "planned" "running" "completed" "failed" "archived" "published" -}}
+  {{- range site.RegularPages -}}
+    {{- if and (eq .Section "ai-lab") (not .Params.lab_page) -}}
+      {{- $record := . -}}
+      {{- $categoryFound := false -}}
+      {{- range hugo.Data.ai_lab.categories -}}{{- if eq .id $record.Params.lab_category -}}{{- $categoryFound = true -}}{{- end -}}{{- end -}}
+      {{- if not $categoryFound -}}{{- errorf "AI Lab record %q has an unknown lab_category: %q" $record.File.Path $record.Params.lab_category -}}{{- end -}}
+      {{- with $record.Params.status -}}{{- if not (in $allowedStatuses .) -}}{{- errorf "AI Lab record %q has an invalid status: %q" $record.File.Path . -}}{{- end -}}{{- end -}}
+      {{- with $record.Params.experiment_id -}}
+        {{- $id := . -}}
+        {{- $sameID := where (where site.RegularPages "Lang" $record.Lang) "Params.experiment_id" $id -}}
+        {{- if gt (len $sameID) 1 -}}{{- errorf "AI Lab experiment ID %q is duplicated in language %q" $id $record.Lang -}}{{- end -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+</head>

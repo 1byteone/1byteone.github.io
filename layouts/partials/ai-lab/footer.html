@@ -1,0 +1,31 @@
+{{- $zh := hasPrefix .Lang "zh" -}}
+<footer class="al-ref-footer" id="principles">
+  <div class="al-ref-footer-inner">
+    <div class="al-ref-footer-brand">
+      <a class="al-ref-footer-logo" href="{{ "ai-lab/" | relLangURL }}" aria-label="{{ if $zh }}YOYO · 1BYTEONE 人工智能工程实验室首页{{ else }}YOYO · 1BYTEONE AI Lab home{{ end }}"><span class="al-ref-footer-yoyo">YOYO</span><i aria-hidden="true"></i><span class="al-ref-footer-byline"><strong>1BYTEONE</strong><small>AI ENGINEERING</small></span></a>
+      <p>{{ if $zh }}把假设、方法和失败写清楚，让每个结论都能回到证据。{{ else }}Make assumptions, methods, and failures visible. Keep every conclusion close to its evidence.{{ end }}</p>
+      <div class="al-ref-footer-social"><a href="https://github.com/1byteone" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="{{ "ai-lab/" | relLangURL }}#archive">{{ if $zh }}技术文章 ↗{{ else }}Journal ↗{{ end }}</a></div>
+      <small>© {{ now.Format "2006" }} 1byteone</small>
+    </div>
+
+    <nav class="al-ref-footer-index" aria-label="{{ if $zh }}站点索引{{ else }}Site index{{ end }}">
+      <details><summary>{{ if $zh }}研究{{ else }}Research{{ end }}</summary><div><a href="{{ "ai-lab/" | relLangURL }}">{{ if $zh }}研究总览{{ else }}Overview{{ end }}</a><a href="{{ "ai-lab/research/" | relLangURL }}">{{ if $zh }}研究与原理{{ else }}Research notes{{ end }}</a><a href="{{ "ai-lab/experiments/" | relLangURL }}">{{ if $zh }}实验记录{{ else }}Experiments{{ end }}</a></div></details>
+      <details><summary>{{ if $zh }}策略{{ else }}Policy{{ end }}</summary><div><a href="{{ "ai-lab/benchmarks/" | relLangURL }}">{{ if $zh }}评测与证据{{ else }}Evaluation and evidence{{ end }}</a><a href="{{ "ai-lab/privacy/" | relLangURL }}">{{ if $zh }}隐私说明{{ else }}Privacy{{ end }}</a></div></details>
+      <details><summary>{{ if $zh }}承诺{{ else }}Commitments{{ end }}</summary><div><a href="{{ "ai-lab/research/" | relLangURL }}">{{ if $zh }}先说明方法{{ else }}Methods before metrics{{ end }}</a><a href="{{ "ai-lab/" | relLangURL }}#principles">{{ if $zh }}素材与学习使用说明{{ else }}Source and learning-use note{{ end }}</a></div></details>
+      <details><summary>{{ if $zh }}关于{{ else }}Company{{ end }}</summary><div><a href="{{ "ai-lab/profile/" | relLangURL }}">{{ if $zh }}个人资料{{ else }}Profile{{ end }}</a><a href="{{ "ai-lab/contact/" | relLangURL }}">{{ if $zh }}联系与协作{{ else }}Contact and collaboration{{ end }}</a></div></details>
+      <details><summary>{{ if $zh }}产品{{ else }}Products{{ end }}</summary><div><a href="{{ "ai-lab/" | relLangURL }}">AI Lab</a><a href="{{ "ai-lab/playground/" | relLangURL }}">{{ if $zh }}本地实验台{{ else }}Local playground{{ end }}</a></div></details>
+      <details><summary>{{ if $zh }}模型{{ else }}Models{{ end }}</summary><div><a href="{{ "ai-lab/research/" | relLangURL }}">{{ if $zh }}模型与方法{{ else }}Models and methods{{ end }}</a><a href="{{ "ai-lab/benchmarks/" | relLangURL }}">{{ if $zh }}评测方法{{ else }}Benchmarks{{ end }}</a></div></details>
+      <details><summary>{{ if $zh }}解决方案{{ else }}Solutions{{ end }}</summary><div><a href="{{ "ai-lab/engineering/" | relLangURL }}">{{ if $zh }}工程实践{{ else }}Engineering{{ end }}</a><a href="{{ "ai-lab/projects/" | relLangURL }}">{{ if $zh }}项目案例{{ else }}Project case studies{{ end }}</a></div></details>
+      <details><summary>{{ if $zh }}帮助与安全{{ else }}Help and security{{ end }}</summary><div><a href="{{ "ai-lab/contact/" | relLangURL }}">{{ if $zh }}联系支持{{ else }}Contact support{{ end }}</a><a href="{{ "ai-lab/playground/" | relLangURL }}">{{ if $zh }}安全本地实验台{{ else }}Local playground{{ end }}</a></div></details>
+      <details><summary>{{ if $zh }}条款与政策{{ else }}Terms and policies{{ end }}</summary><div><a href="{{ "ai-lab/privacy/" | relLangURL }}">{{ if $zh }}隐私说明{{ else }}Privacy{{ end }}</a><a href="{{ "ai-lab/impressum/" | relLangURL }}">{{ if $zh }}网站声明{{ else }}Impressum{{ end }}</a></div></details>
+    </nav>
+
+    <aside class="al-ref-footer-mission">
+      <small>{{ if $zh }}研究原则{{ else }}Our practice{{ end }}</small>
+      <h2>{{ if $zh }}先说明方法，再讨论结果。{{ else }}Methods before metrics.{{ end }}</h2>
+      <p>{{ if $zh }}当前没有可复核的模型性能对比，因此不展示演示分数。{{ else }}No model scores are shown without a reproducible dataset, method, and run log.{{ end }}</p>
+      <a href="{{ "ai-lab/playground/" | relLangURL }}">{{ if $zh }}打开本地实验台{{ else }}Open the local playground{{ end }} <span aria-hidden="true">↗</span></a>
+      <small class="al-ref-footer-note">{{ if $zh }}参考图片仅用于本地学习与页面复刻；具体素材授权未独立核实。{{ else }}Reference images are used for local study and page recreation; asset-specific reuse terms have not been independently verified.{{ end }}</small>
+    </aside>
+  </div>
+</footer>

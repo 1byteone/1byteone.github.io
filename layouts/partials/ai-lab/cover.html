@@ -1,0 +1,12 @@
+{{- $page := .page -}}
+{{- $class := .class | default "al-cover-image" -}}
+{{- $loading := .loading | default "lazy" -}}
+{{- $priority := .priority | default "auto" -}}
+{{- $cover := false -}}
+{{- with $page.Params.cover -}}{{- $cover = resources.Get . -}}{{- end -}}
+{{- if $cover -}}
+  {{- $image := $cover.Fill "1200x675 webp q84" -}}
+  <img class="{{ $class }}" src="{{ $image.RelPermalink }}" width="{{ $image.Width }}" height="{{ $image.Height }}" alt="{{ $page.Params.cover_alt | default $page.Title | htmlEscape }}" loading="{{ $loading }}" decoding="async" fetchpriority="{{ $priority }}">
+{{- else -}}
+  <span class="al-cover-fallback" aria-hidden="true"><span>{{ upper ($page.Params.lab_category | default "research") }}</span><i>01</i></span>
+{{- end -}}

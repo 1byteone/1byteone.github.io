@@ -12,8 +12,8 @@ main:
   - name: 项目
     url: /projects/
     weight: 30
-  - name: 实验室
-    url: /ui-lab/
+  - name: AI 实验室
+    url: /ai-lab/
     weight: 40
   - name: 主题中心
     url: /theme-center/

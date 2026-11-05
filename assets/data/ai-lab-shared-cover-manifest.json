@@ -1,0 +1,609 @@
+{
+  "collection": "AI Lab shared article covers",
+  "generated_at": "2026-11-05T13:33:56.296Z",
+  "scope": "The 20 bilingual shared engineering articles imported into AI Lab. Hashes are of the local PNG files.",
+  "license_policy": "Repository provenance is recorded separately from permission to redistribute. review-required means no external license claim is made.",
+  "count": 20,
+  "assets": [
+    {
+      "asset_id": "shared-cover-building-ai-agents",
+      "filename": "assets/media/ai-lab/shared/building-ai-agents.png",
+      "article_slug": "building-ai-agents",
+      "ai_lab_routes": [
+        "/ai-lab/engineering/building-ai-agents/",
+        "/en/ai-lab/engineering/building-ai-agents/"
+      ],
+      "source_blog_featured": [
+        {
+          "path": "content/zh/blog/building-ai-agents/featured.png",
+          "exists": true
+        },
+        {
+          "path": "content/en/blog/building-ai-agents/featured.png",
+          "exists": true
+        }
+      ],
+      "format": "PNG",
+      "resolution": {
+        "width": 2400,
+        "height": 1260
+      },
+      "bytes": 186810,
+      "sha256": "fd9cda2c2c8be98fbf3e0ab60638dd36ad9be2ceeef7b1fbd92143c2f37c5f12",
+      "provenance": "Existing repository cover carried into the AI Lab shared-article import; this record does not relicense the original artwork.",
+      "license_status": "review-required",
+      "redistributable": null,
+      "attribution": "See the original article/source manifest before external redistribution."
+    },
+    {
+      "asset_id": "shared-cover-building-rag-pipeline",
+      "filename": "assets/media/ai-lab/shared/building-rag-pipeline.png",
+      "article_slug": "building-rag-pipeline",
+      "ai_lab_routes": [
+        "/ai-lab/experiments/building-rag-pipeline/",
+        "/en/ai-lab/experiments/building-rag-pipeline/"
+      ],
+      "source_blog_featured": [
+        {
+          "path": "content/zh/blog/building-rag-pipeline/featured.png",
+          "exists": true
+        },
+        {
+          "path": "content/en/blog/building-rag-pipeline/featured.png",
+          "exists": true
+        }
+      ],
+      "format": "PNG",
+      "resolution": {
+        "width": 2400,
+        "height": 1260
+      },
+      "bytes": 177319,
+      "sha256": "82aec1e71ba538ff833983ee640cc95ba722098f12e508f0dac7c49601d93b63",
+      "provenance": "Existing repository cover carried into the AI Lab shared-article import; this record does not relicense the original artwork.",
+      "license_status": "review-required",
+      "redistributable": null,
+      "attribution": "See the original article/source manifest before external redistribution."
+    },
+    {
+      "asset_id": "shared-cover-fastapi-ai-streaming-api",
+      "filename": "assets/media/ai-lab/shared/fastapi-ai-streaming-api.png",
+      "article_slug": "fastapi-ai-streaming-api",
+      "ai_lab_routes": [
+        "/ai-lab/engineering/fastapi-ai-streaming-api/",
+        "/en/ai-lab/engineering/fastapi-ai-streaming-api/"
+      ],
+      "source_blog_featured": [
+        {
+          "path": "content/zh/blog/fastapi-ai-streaming-api/featured.png",
+          "exists": true
+        },
+        {
+          "path": "content/en/blog/fastapi-ai-streaming-api/featured.png",
+          "exists": true
+        }
+      ],
+      "format": "PNG",
+      "resolution": {
+        "width": 1200,
+        "height": 630
+      },
+      "bytes": 81572,
+      "sha256": "4579e2c16cc3ba3a10663dfa1be9dc473ffb4c72cda23c3b99b8b5f12ef54468",
+      "provenance": "Existing repository cover carried into the AI Lab shared-article import; this record does not relicense the original artwork.",
+      "license_status": "review-required",
+      "redistributable": null,
+      "attribution": "See the original article/source manifest before external redistribution."
+    },
+    {
+      "asset_id": "shared-cover-fastapi-async-dependency-injection",
+      "filename": "assets/media/ai-lab/shared/fastapi-async-dependency-injection.png",
+      "article_slug": "fastapi-async-dependency-injection",
+      "ai_lab_routes": [
+        "/ai-lab/engineering/fastapi-async-dependency-injection/",
+        "/en/ai-lab/engineering/fastapi-async-dependency-injection/"
+      ],
+      "source_blog_featured": [
+        {
+          "path": "content/zh/blog/fastapi-async-dependency-injection/featured.png",
+          "exists": true
+        },
+        {
+          "path": "content/en/blog/fastapi-async-dependency-injection/featured.png",
+          "exists": true
+        }
+      ],
+      "format": "PNG",
+      "resolution": {
+        "width": 1200,
+        "height": 630
+      },
+      "bytes": 83289,
+      "sha256": "9375f65d1dbf10ea1637eceda50a73bcefcb66e804481664ae484956919a270f",
+      "provenance": "Existing repository cover carried into the AI Lab shared-article import; this record does not relicense the original artwork.",
+      "license_status": "review-required",
+      "redistributable": null,
+      "attribution": "See the original article/source manifest before external redistribution."
+    },
+    {
+      "asset_id": "shared-cover-fastapi-project-architecture",
+      "filename": "assets/media/ai-lab/shared/fastapi-project-architecture.png",
+      "article_slug": "fastapi-project-architecture",
+      "ai_lab_routes": [
+        "/ai-lab/engineering/fastapi-project-architecture/",
+        "/en/ai-lab/engineering/fastapi-project-architecture/"
+      ],
+      "source_blog_featured": [
+        {
+          "path": "content/zh/blog/fastapi-project-architecture/featured.png",
+          "exists": true
+        },
+        {
+          "path": "content/en/blog/fastapi-project-architecture/featured.png",
+          "exists": true
+        }
+      ],
+      "format": "PNG",
+      "resolution": {
+        "width": 1200,
+        "height": 630
+      },
+      "bytes": 83250,
+      "sha256": "d9134a4a30ced830fdbbb0dbefd75046af3af1a23f9f0b2be3b0239ed272b904",
+      "provenance": "Existing repository cover carried into the AI Lab shared-article import; this record does not relicense the original artwork.",
+      "license_status": "review-required",
+      "redistributable": null,
+      "attribution": "See the original article/source manifest before external redistribution."
+    },
+    {
+      "asset_id": "shared-cover-fastapi-request-response-pydantic",
+      "filename": "assets/media/ai-lab/shared/fastapi-request-response-pydantic.png",
+      "article_slug": "fastapi-request-response-pydantic",
+      "ai_lab_routes": [
+        "/ai-lab/engineering/fastapi-request-response-pydantic/",
+        "/en/ai-lab/engineering/fastapi-request-response-pydantic/"
+      ],
+      "source_blog_featured": [
+        {
+          "path": "content/zh/blog/fastapi-request-response-pydantic/featured.png",
+          "exists": true
+        },
+        {
+          "path": "content/en/blog/fastapi-request-response-pydantic/featured.png",
+          "exists": true
+        }
+      ],
+      "format": "PNG",
+      "resolution": {
+        "width": 1200,
+        "height": 630
+      },
+      "bytes": 86345,
+      "sha256": "67d0de33f2ff3c50dabb37803e1c590da96aba90947ce1620c77d84f4619d49b",
+      "provenance": "Existing repository cover carried into the AI Lab shared-article import; this record does not relicense the original artwork.",
+      "license_status": "review-required",
+      "redistributable": null,
+      "attribution": "See the original article/source manifest before external redistribution."
+    },
+    {
+      "asset_id": "shared-cover-hallucination-prevention",
+      "filename": "assets/media/ai-lab/shared/hallucination-prevention.png",
+      "article_slug": "hallucination-prevention",
+      "ai_lab_routes": [
+        "/ai-lab/research/hallucination-prevention/",
+        "/en/ai-lab/research/hallucination-prevention/"
+      ],
+      "source_blog_featured": [
+        {
+          "path": "content/zh/blog/hallucination-prevention/featured.png",
+          "exists": true
+        },
+        {
+          "path": "content/en/blog/hallucination-prevention/featured.png",
+          "exists": true
+        }
+      ],
+      "format": "PNG",
+      "resolution": {
+        "width": 2400,
+        "height": 1260
+      },
+      "bytes": 160137,
+      "sha256": "6636deede8a2304f2998cad55af6d20ef60a12191db96046fa26c3832ecf1e3c",
+      "provenance": "Existing repository cover carried into the AI Lab shared-article import; this record does not relicense the original artwork.",
+      "license_status": "review-required",
+      "redistributable": null,
+      "attribution": "See the original article/source manifest before external redistribution."
+    },
+    {
+      "asset_id": "shared-cover-langchain-core-architecture",
+      "filename": "assets/media/ai-lab/shared/langchain-core-architecture.png",
+      "article_slug": "langchain-core-architecture",
+      "ai_lab_routes": [
+        "/ai-lab/engineering/langchain-core-architecture/",
+        "/en/ai-lab/engineering/langchain-core-architecture/"
+      ],
+      "source_blog_featured": [
+        {
+          "path": "content/zh/blog/langchain-core-architecture/featured.png",
+          "exists": true
+        },
+        {
+          "path": "content/en/blog/langchain-core-architecture/featured.png",
+          "exists": true
+        }
+      ],
+      "format": "PNG",
+      "resolution": {
+        "width": 1200,
+        "height": 630
+      },
+      "bytes": 78226,
+      "sha256": "8f6ca9a1ec0a93536062a71ae3ff0d2870fade8d972dc8baf59507ae258806f0",
+      "provenance": "Existing repository cover carried into the AI Lab shared-article import; this record does not relicense the original artwork.",
+      "license_status": "review-required",
+      "redistributable": null,
+      "attribution": "See the original article/source manifest before external redistribution."
+    },
+    {
+      "asset_id": "shared-cover-langchain-memory-multiturn",
+      "filename": "assets/media/ai-lab/shared/langchain-memory-multiturn.png",
+      "article_slug": "langchain-memory-multiturn",
+      "ai_lab_routes": [
+        "/ai-lab/engineering/langchain-memory-multiturn/",
+        "/en/ai-lab/engineering/langchain-memory-multiturn/"
+      ],
+      "source_blog_featured": [
+        {
+          "path": "content/zh/blog/langchain-memory-multiturn/featured.png",
+          "exists": true
+        },
+        {
+          "path": "content/en/blog/langchain-memory-multiturn/featured.png",
+          "exists": true
+        }
+      ],
+      "format": "PNG",
+      "resolution": {
+        "width": 1200,
+        "height": 630
+      },
+      "bytes": 82955,
+      "sha256": "46008065aa0d0eb989d97c3bc80b4a972cf9998253d881d2455bd8dc9713c16e",
+      "provenance": "Existing repository cover carried into the AI Lab shared-article import; this record does not relicense the original artwork.",
+      "license_status": "review-required",
+      "redistributable": null,
+      "attribution": "See the original article/source manifest before external redistribution."
+    },
+    {
+      "asset_id": "shared-cover-langchain-prompt-chain",
+      "filename": "assets/media/ai-lab/shared/langchain-prompt-chain.png",
+      "article_slug": "langchain-prompt-chain",
+      "ai_lab_routes": [
+        "/ai-lab/engineering/langchain-prompt-chain/",
+        "/en/ai-lab/engineering/langchain-prompt-chain/"
+      ],
+      "source_blog_featured": [
+        {
+          "path": "content/zh/blog/langchain-prompt-chain/featured.png",
+          "exists": true
+        },
+        {
+          "path": "content/en/blog/langchain-prompt-chain/featured.png",
+          "exists": true
+        }
+      ],
+      "format": "PNG",
+      "resolution": {
+        "width": 1200,
+        "height": 630
+      },
+      "bytes": 77506,
+      "sha256": "b2f160ad0a56eff5a32755a6fa1dff3bf764a825638aa06cdfc16cdf55685efe",
+      "provenance": "Existing repository cover carried into the AI Lab shared-article import; this record does not relicense the original artwork.",
+      "license_status": "review-required",
+      "redistributable": null,
+      "attribution": "See the original article/source manifest before external redistribution."
+    },
+    {
+      "asset_id": "shared-cover-langchain-tool-calling-agent",
+      "filename": "assets/media/ai-lab/shared/langchain-tool-calling-agent.png",
+      "article_slug": "langchain-tool-calling-agent",
+      "ai_lab_routes": [
+        "/ai-lab/engineering/langchain-tool-calling-agent/",
+        "/en/ai-lab/engineering/langchain-tool-calling-agent/"
+      ],
+      "source_blog_featured": [
+        {
+          "path": "content/zh/blog/langchain-tool-calling-agent/featured.png",
+          "exists": true
+        },
+        {
+          "path": "content/en/blog/langchain-tool-calling-agent/featured.png",
+          "exists": true
+        }
+      ],
+      "format": "PNG",
+      "resolution": {
+        "width": 1200,
+        "height": 630
+      },
+      "bytes": 84607,
+      "sha256": "be17d8530aa3fdc0d765191c02a9b51a427fd401379d3050808999f04e4d8f23",
+      "provenance": "Existing repository cover carried into the AI Lab shared-article import; this record does not relicense the original artwork.",
+      "license_status": "review-required",
+      "redistributable": null,
+      "attribution": "See the original article/source manifest before external redistribution."
+    },
+    {
+      "asset_id": "shared-cover-openai-api-fundamentals",
+      "filename": "assets/media/ai-lab/shared/openai-api-fundamentals.png",
+      "article_slug": "openai-api-fundamentals",
+      "ai_lab_routes": [
+        "/ai-lab/engineering/openai-api-fundamentals/",
+        "/en/ai-lab/engineering/openai-api-fundamentals/"
+      ],
+      "source_blog_featured": [
+        {
+          "path": "content/zh/blog/openai-api-fundamentals/featured.png",
+          "exists": true
+        },
+        {
+          "path": "content/en/blog/openai-api-fundamentals/featured.png",
+          "exists": true
+        }
+      ],
+      "format": "PNG",
+      "resolution": {
+        "width": 1200,
+        "height": 630
+      },
+      "bytes": 80944,
+      "sha256": "caea491877a40d71059634b3aaf8560ef5d4b3a59fbf971c0a2d34b04683d231",
+      "provenance": "Existing repository cover carried into the AI Lab shared-article import; this record does not relicense the original artwork.",
+      "license_status": "review-required",
+      "redistributable": null,
+      "attribution": "See the original article/source manifest before external redistribution."
+    },
+    {
+      "asset_id": "shared-cover-openai-multimodal-ai",
+      "filename": "assets/media/ai-lab/shared/openai-multimodal-ai.png",
+      "article_slug": "openai-multimodal-ai",
+      "ai_lab_routes": [
+        "/ai-lab/engineering/openai-multimodal-ai/",
+        "/en/ai-lab/engineering/openai-multimodal-ai/"
+      ],
+      "source_blog_featured": [
+        {
+          "path": "content/zh/blog/openai-multimodal-ai/featured.png",
+          "exists": true
+        },
+        {
+          "path": "content/en/blog/openai-multimodal-ai/featured.png",
+          "exists": true
+        }
+      ],
+      "format": "PNG",
+      "resolution": {
+        "width": 1200,
+        "height": 630
+      },
+      "bytes": 78126,
+      "sha256": "3f63dc7a77a8e0727715d44c286a8d1e88e7febad61ddc73f548277c0629e45e",
+      "provenance": "Existing repository cover carried into the AI Lab shared-article import; this record does not relicense the original artwork.",
+      "license_status": "review-required",
+      "redistributable": null,
+      "attribution": "See the original article/source manifest before external redistribution."
+    },
+    {
+      "asset_id": "shared-cover-openai-structured-output",
+      "filename": "assets/media/ai-lab/shared/openai-structured-output.png",
+      "article_slug": "openai-structured-output",
+      "ai_lab_routes": [
+        "/ai-lab/engineering/openai-structured-output/",
+        "/en/ai-lab/engineering/openai-structured-output/"
+      ],
+      "source_blog_featured": [
+        {
+          "path": "content/zh/blog/openai-structured-output/featured.png",
+          "exists": true
+        },
+        {
+          "path": "content/en/blog/openai-structured-output/featured.png",
+          "exists": true
+        }
+      ],
+      "format": "PNG",
+      "resolution": {
+        "width": 1200,
+        "height": 630
+      },
+      "bytes": 79858,
+      "sha256": "dfcb97a69e485b5c005496147787326f8c905d573d4c24296a2327cb7169e992",
+      "provenance": "Existing repository cover carried into the AI Lab shared-article import; this record does not relicense the original artwork.",
+      "license_status": "review-required",
+      "redistributable": null,
+      "attribution": "See the original article/source manifest before external redistribution."
+    },
+    {
+      "asset_id": "shared-cover-openai-tool-calling",
+      "filename": "assets/media/ai-lab/shared/openai-tool-calling.png",
+      "article_slug": "openai-tool-calling",
+      "ai_lab_routes": [
+        "/ai-lab/engineering/openai-tool-calling/",
+        "/en/ai-lab/engineering/openai-tool-calling/"
+      ],
+      "source_blog_featured": [
+        {
+          "path": "content/zh/blog/openai-tool-calling/featured.png",
+          "exists": true
+        },
+        {
+          "path": "content/en/blog/openai-tool-calling/featured.png",
+          "exists": true
+        }
+      ],
+      "format": "PNG",
+      "resolution": {
+        "width": 1200,
+        "height": 630
+      },
+      "bytes": 81076,
+      "sha256": "474060b04f673b7051aa8d9500b4c8d0d2ee9ba310f1d7b9c46aff981d747920",
+      "provenance": "Existing repository cover carried into the AI Lab shared-article import; this record does not relicense the original artwork.",
+      "license_status": "review-required",
+      "redistributable": null,
+      "attribution": "See the original article/source manifest before external redistribution."
+    },
+    {
+      "asset_id": "shared-cover-python-ai-engineering",
+      "filename": "assets/media/ai-lab/shared/python-ai-engineering.png",
+      "article_slug": "python-ai-engineering",
+      "ai_lab_routes": [
+        "/ai-lab/engineering/python-ai-engineering/",
+        "/en/ai-lab/engineering/python-ai-engineering/"
+      ],
+      "source_blog_featured": [
+        {
+          "path": "content/zh/blog/python-ai-engineering/featured.png",
+          "exists": true
+        },
+        {
+          "path": "content/en/blog/python-ai-engineering/featured.png",
+          "exists": true
+        }
+      ],
+      "format": "PNG",
+      "resolution": {
+        "width": 1200,
+        "height": 630
+      },
+      "bytes": 75760,
+      "sha256": "066935ed674bae97fe4d16e7c975983c867a1ac91c03c33dd85583369ec57006",
+      "provenance": "Existing repository cover carried into the AI Lab shared-article import; this record does not relicense the original artwork.",
+      "license_status": "review-required",
+      "redistributable": null,
+      "attribution": "See the original article/source manifest before external redistribution."
+    },
+    {
+      "asset_id": "shared-cover-rag-basic-pipeline",
+      "filename": "assets/media/ai-lab/shared/rag-basic-pipeline.png",
+      "article_slug": "rag-basic-pipeline",
+      "ai_lab_routes": [
+        "/ai-lab/experiments/rag-basic-pipeline/",
+        "/en/ai-lab/experiments/rag-basic-pipeline/"
+      ],
+      "source_blog_featured": [
+        {
+          "path": "content/zh/blog/rag-basic-pipeline/featured.png",
+          "exists": true
+        },
+        {
+          "path": "content/en/blog/rag-basic-pipeline/featured.png",
+          "exists": true
+        }
+      ],
+      "format": "PNG",
+      "resolution": {
+        "width": 1200,
+        "height": 630
+      },
+      "bytes": 81009,
+      "sha256": "2f18851e489333dd33f4c9cee0ff34213cb0f1844a301f5ec1bc4e5b113158c9",
+      "provenance": "Existing repository cover carried into the AI Lab shared-article import; this record does not relicense the original artwork.",
+      "license_status": "review-required",
+      "redistributable": null,
+      "attribution": "See the original article/source manifest before external redistribution."
+    },
+    {
+      "asset_id": "shared-cover-rag-embedding-vector-database",
+      "filename": "assets/media/ai-lab/shared/rag-embedding-vector-database.png",
+      "article_slug": "rag-embedding-vector-database",
+      "ai_lab_routes": [
+        "/ai-lab/experiments/rag-embedding-vector-database/",
+        "/en/ai-lab/experiments/rag-embedding-vector-database/"
+      ],
+      "source_blog_featured": [
+        {
+          "path": "content/zh/blog/rag-embedding-vector-database/featured.png",
+          "exists": true
+        },
+        {
+          "path": "content/en/blog/rag-embedding-vector-database/featured.png",
+          "exists": true
+        }
+      ],
+      "format": "PNG",
+      "resolution": {
+        "width": 1200,
+        "height": 630
+      },
+      "bytes": 83312,
+      "sha256": "685104a64bd4550794df1a654c963a3c41c6a0608ef090973d64a1877656a3cd",
+      "provenance": "Existing repository cover carried into the AI Lab shared-article import; this record does not relicense the original artwork.",
+      "license_status": "review-required",
+      "redistributable": null,
+      "attribution": "See the original article/source manifest before external redistribution."
+    },
+    {
+      "asset_id": "shared-cover-rag-production-architecture",
+      "filename": "assets/media/ai-lab/shared/rag-production-architecture.png",
+      "article_slug": "rag-production-architecture",
+      "ai_lab_routes": [
+        "/ai-lab/experiments/rag-production-architecture/",
+        "/en/ai-lab/experiments/rag-production-architecture/"
+      ],
+      "source_blog_featured": [
+        {
+          "path": "content/zh/blog/rag-production-architecture/featured.png",
+          "exists": true
+        },
+        {
+          "path": "content/en/blog/rag-production-architecture/featured.png",
+          "exists": true
+        }
+      ],
+      "format": "PNG",
+      "resolution": {
+        "width": 1200,
+        "height": 630
+      },
+      "bytes": 79555,
+      "sha256": "aa5baa64c58ea20669be5c09810c415aed49bacc5cefb0cb88ba84480e1e8d2d",
+      "provenance": "Existing repository cover carried into the AI Lab shared-article import; this record does not relicense the original artwork.",
+      "license_status": "review-required",
+      "redistributable": null,
+      "attribution": "See the original article/source manifest before external redistribution."
+    },
+    {
+      "asset_id": "shared-cover-rag-retriever-optimization",
+      "filename": "assets/media/ai-lab/shared/rag-retriever-optimization.png",
+      "article_slug": "rag-retriever-optimization",
+      "ai_lab_routes": [
+        "/ai-lab/experiments/rag-retriever-optimization/",
+        "/en/ai-lab/experiments/rag-retriever-optimization/"
+      ],
+      "source_blog_featured": [
+        {
+          "path": "content/zh/blog/rag-retriever-optimization/featured.png",
+          "exists": true
+        },
+        {
+          "path": "content/en/blog/rag-retriever-optimization/featured.png",
+          "exists": true
+        }
+      ],
+      "format": "PNG",
+      "resolution": {
+        "width": 1200,
+        "height": 630
+      },
+      "bytes": 81731,
+      "sha256": "52cf87f332016f3d6dc9a98b58e24d995a6446c34fc065f79a1b6b23e89a25d5",
+      "provenance": "Existing repository cover carried into the AI Lab shared-article import; this record does not relicense the original artwork.",
+      "license_status": "review-required",
+      "redistributable": null,
+      "attribution": "See the original article/source manifest before external redistribution."
+    }
+  ]
+}

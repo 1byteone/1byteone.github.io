@@ -1,0 +1,30 @@
+{{- $zh := hasPrefix .Lang "zh" -}}
+{{- $kind := .Params.lab_page -}}
+{{- $identity := site.Data.site.identity -}}
+{{- $projects := where (where site.RegularPages "Section" "projects") "Lang" .Lang -}}
+<!doctype html><html lang="{{ .Lang }}" data-theme="light">{{ partial "ai-lab/head.html" . }}<body class="ai-lab-page ai-lab-info-page">
+{{ partial "ai-lab/header.html" . }}
+<main id="main-content" class="al-shell al-info-shell">
+  <nav class="al-breadcrumb" aria-label="{{ if $zh }}面包屑{{ else }}Breadcrumb{{ end }}"><a href="{{ "ai-lab/" | relLangURL }}">AI LAB</a><span aria-hidden="true">/</span><span>{{ .Title }}</span></nav>
+  <header class="al-info-heading"><p class="al-eyebrow">{{ if eq $kind "projects" }}PROJECT ARCHIVE / 01{{ else if eq $kind "contact" }}CONTACT / 01{{ else if eq $kind "privacy" }}PRIVACY / 01{{ else if eq $kind "impressum" }}SITE INFORMATION / 01{{ else }}PROFILE / 01{{ end }}</p><h1>{{ .Title }}</h1>{{ with .Description }}<p>{{ . }}</p>{{ end }}</header>
+  {{ if eq $kind "projects" }}
+    <section class="al-project-list" aria-label="{{ if $zh }}项目档案{{ else }}Project archive{{ end }}">
+      {{ range $projects }}
+        <article class="al-project-record">
+          {{- with .Resources.GetMatch "featured.png" -}}{{- $image := .Resize "1000x webp q84" -}}<img class="al-project-cover" src="{{ $image.RelPermalink }}" width="{{ $image.Width }}" height="{{ $image.Height }}" alt="{{ $.Title }}" loading="lazy" decoding="async">{{- end -}}
+          <div class="al-project-body"><p class="al-eyebrow">{{ with .Params.role }}{{ . }} / {{ end }}{{ with .Params.duration }}{{ . }}{{ end }}</p><h2>{{ .Title }}</h2><p class="al-project-summary">{{ .Summary | plainify }}</p>
+            {{ with .Params.tech_stack }}<ul class="al-project-stack" aria-label="{{ if $zh }}技术栈{{ else }}Technology stack{{ end }}">{{ range . }}<li>{{ . }}</li>{{ end }}</ul>{{ end }}
+            {{ with .Params.highlights }}<ul class="al-project-highlights">{{ range . }}<li>{{ . }}</li>{{ end }}</ul>{{ end }}
+            {{ range .Params.links }}<a class="al-info-action" href="{{ .url }}" target="_blank" rel="noopener noreferrer">{{ .label }} <span aria-hidden="true">↗</span></a>{{ end }}
+          </div>
+        </article>
+      {{ end }}
+    </section>
+  {{ else if eq $kind "contact" }}
+    <section class="al-contact-panel"><div><p class="al-eyebrow">{{ if $zh }}邮件{{ else }}EMAIL{{ end }}</p><a class="al-contact-email" href="mailto:{{ $identity.email }}">{{ $identity.email }}</a><p>{{ if $zh }}关于 AI 应用、RAG、Agent、后端工程或项目协作，欢迎邮件联系。{{ else }}For conversations about AI applications, RAG, agents, backend engineering, or project collaboration, send me an email.{{ end }}</p></div><a class="al-info-action" href="https://github.com/1byteone" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a></section>
+  {{ else }}
+    <article class="al-prose al-info-prose">{{ .Content }}</article>
+  {{ end }}
+</main>
+{{ partial "ai-lab/footer.html" . }}
+</body></html>

@@ -1,0 +1,78 @@
+{{- $zh := hasPrefix .Lang "zh" -}}
+{{- $categories := hugo.Data.ai_lab.categories -}}
+<a class="al-skip-link" href="#main-content">{{ if $zh }}跳到主要内容{{ else }}Skip to main content{{ end }}</a>
+<header class="al-header al-ref-header">
+  <div class="al-ref-header-inner">
+    <nav class="al-ref-nav" id="al-main-nav" aria-label="{{ if $zh }}AI Lab 导航{{ else }}AI Lab navigation{{ end }}">
+      <a class="al-ref-pill" href="{{ "ai-lab/" | relLangURL }}#announcements">{{ if $zh }}动态{{ else }}News{{ end }}</a>
+      <details class="al-ref-dropdown">
+        <summary class="al-ref-pill" aria-expanded="false">{{ if $zh }}研究方向{{ else }}Research{{ end }}<span aria-hidden="true">⌄</span></summary>
+        <div class="al-ref-dropdown-panel">
+          {{ range $categories }}<a href="{{ printf "ai-lab/%s/" .id | relLangURL }}"><span>{{ if $zh }}{{ .label_zh }}{{ else }}{{ .label }}{{ end }}</span><small>{{ .number }}</small></a>{{ end }}
+        </div>
+      </details>
+      <details class="al-ref-dropdown">
+        <summary class="al-ref-pill" aria-expanded="false">{{ if $zh }}策略{{ else }}Policy{{ end }}<span aria-hidden="true">⌄</span></summary>
+        <div class="al-ref-dropdown-panel"><a href="{{ "ai-lab/benchmarks/" | relLangURL }}"><span>{{ if $zh }}评测方法{{ else }}Methods{{ end }}</span><small>04</small></a><a href="{{ "ai-lab/research/" | relLangURL }}"><span>{{ if $zh }}安全与治理{{ else }}Safety &amp; governance{{ end }}</span><small>02</small></a></div>
+      </details>
+      <a class="al-ref-pill" href="{{ "ai-lab/engineering/" | relLangURL }}">{{ if $zh }}承诺{{ else }}Commitments{{ end }}</a>
+      <button class="al-ref-nav-theme" type="button" data-lab-theme-toggle aria-label="{{ if $zh }}切换明暗主题{{ else }}Toggle color theme{{ end }}">
+        <span aria-hidden="true">◐</span><span>{{ if $zh }}切换明暗主题{{ else }}Color mode{{ end }}</span>
+      </button>
+    </nav>
+
+    <a class="al-ref-brand" href="{{ "ai-lab/" | relLangURL }}" aria-label="{{ if $zh }}YOYO · 1BYTEONE 人工智能工程实验室首页{{ else }}YOYO · 1BYTEONE AI Lab home{{ end }}">
+      <span class="al-ref-brand-lockup" aria-hidden="true"><span class="al-ref-brand-yoyo"><span>Y</span><span>O</span><span>Y</span><span>O</span></span><span class="al-ref-brand-divider"></span><span class="al-ref-brand-byline"><strong>1BYTEONE</strong><small>AI ENGINEERING</small></span></span>
+      <span class="al-ref-brand-compact" aria-hidden="true"><span>YOYO</span><i></i><strong>1BYTEONE</strong></span>
+    </a>
+
+    <div class="al-ref-tools">
+      <details class="al-ref-dropdown al-ref-company">
+        <summary class="al-ref-pill" aria-expanded="false">{{ if $zh }}关于{{ else }}About{{ end }} <span aria-hidden="true">⌄</span></summary>
+        <div class="al-ref-dropdown-panel">
+          <a href="{{ "ai-lab/profile/" | relLangURL }}"><span>{{ if $zh }}个人资料{{ else }}Profile{{ end }}</span><span aria-hidden="true">↗</span></a>
+          <a href="{{ "ai-lab/projects/" | relLangURL }}"><span>{{ if $zh }}项目档案{{ else }}Projects{{ end }}</span><span aria-hidden="true">↗</span></a>
+          <a href="{{ "ai-lab/contact/" | relLangURL }}"><span>{{ if $zh }}联系与协作{{ else }}Contact{{ end }}</span><span aria-hidden="true">↗</span></a>
+        </div>
+      </details>
+      <a class="al-ref-try" href="{{ "ai-lab/playground/" | relLangURL }}">{{ if $zh }}打开实验台{{ else }}Open Lab{{ end }}<span aria-hidden="true">↗</span></a>
+      <button class="al-ref-icon" type="button" data-lab-search-open aria-label="{{ if $zh }}搜索研究档案{{ else }}Search the archive{{ end }}" title="{{ if $zh }}搜索{{ else }}Search{{ end }}">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.4"></circle><path d="m15.2 15.2 4.3 4.3"></path></svg>
+      </button>
+      {{- $translationURL := "/en/ai-lab/" -}}{{- if not $zh -}}{{- $translationURL = "/ai-lab/" -}}{{- end -}}{{- with .Translations -}}{{- $translationURL = (index . 0).RelPermalink -}}{{- end -}}
+      <a class="al-ref-language" data-lab-language-switch href="{{ $translationURL }}" lang="{{ if $zh }}en{{ else }}zh-Hans{{ end }}">{{ if $zh }}EN{{ else }}中{{ end }}</a>
+      <details class="al-ref-site-menu">
+        <summary class="al-ref-icon" aria-label="{{ if $zh }}打开站点索引{{ else }}Open site index{{ end }}" title="{{ if $zh }}站点索引{{ else }}Site index{{ end }}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg></summary>
+        <div class="al-ref-site-menu-panel" aria-label="{{ if $zh }}站点快捷导航{{ else }}Site shortcuts{{ end }}">
+          <a href="{{ "ai-lab/" | relLangURL }}">{{ if $zh }}AI Lab 概览{{ else }}AI Lab overview{{ end }}</a>
+          <a href="{{ "ai-lab/experiments/" | relLangURL }}">{{ if $zh }}实验记录{{ else }}Experiments{{ end }}</a>
+          <a href="{{ "ai-lab/research/" | relLangURL }}">{{ if $zh }}研究与原理{{ else }}Research{{ end }}</a>
+          <a href="{{ "ai-lab/engineering/" | relLangURL }}">{{ if $zh }}工程实践{{ else }}Engineering{{ end }}</a>
+          <a href="{{ "ai-lab/" | relLangURL }}#archive">{{ if $zh }}技术文章{{ else }}Journal{{ end }}</a>
+          <a href="{{ "ai-lab/projects/" | relLangURL }}">{{ if $zh }}项目{{ else }}Projects{{ end }}</a>
+          <a href="{{ "ai-lab/profile/" | relLangURL }}">{{ if $zh }}关于{{ else }}About{{ end }}</a>
+          <button class="al-ref-menu-theme" type="button" data-lab-theme-toggle aria-label="{{ if $zh }}切换明暗主题{{ else }}Toggle color theme{{ end }}"><span aria-hidden="true">◐</span>{{ if $zh }}切换明暗主题{{ else }}Color mode{{ end }}</button>
+        </div>
+      </details>
+      <button class="al-ref-menu-toggle" type="button" data-lab-menu-toggle aria-expanded="false" aria-controls="al-main-nav" aria-label="{{ if $zh }}打开导航菜单{{ else }}Open navigation menu{{ end }}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg></button>
+    </div>
+  </div>
+</header>
+<dialog class="al-ref-search-dialog" data-lab-search-dialog aria-labelledby="al-global-search-title">
+  <form method="dialog" class="al-ref-search-form">
+    <label id="al-global-search-title" for="al-global-search">{{ if $zh }}搜索研究与工程记录{{ else }}Search research and engineering notes{{ end }}</label>
+    <input id="al-global-search" type="search" data-lab-global-search autocomplete="off" placeholder="{{ if $zh }}输入关键词…{{ else }}Type to search…{{ end }}">
+    <button type="submit" aria-label="{{ if $zh }}关闭搜索{{ else }}Close search{{ end }}">×</button>
+  </form>
+  <div class="al-ref-search-results" data-lab-search-results aria-live="polite"></div>
+</dialog>
+{{- $searchItems := slice -}}
+{{- range sort (where (where site.RegularPages "Section" "ai-lab") "Lang" .Lang) "Date" "desc" -}}
+  {{- if and (not .Params.lab_page) .Params.lab_category -}}
+    {{- $category := index (where $categories "id" .Params.lab_category) 0 -}}
+    {{- $label := $category.label -}}{{- if $zh -}}{{- $label = $category.label_zh -}}{{- end -}}
+    {{- $summary := .Params.summary | default .Description | plainify -}}
+    {{- $searchItems = $searchItems | append (dict "title" .Title "summary" $summary "category" $label "date" (.Date.Format "2006.01.02") "url" .RelPermalink) -}}
+  {{- end -}}
+{{- end -}}
+<script type="application/json" data-lab-search-index>{{ $searchItems | jsonify }}</script>
