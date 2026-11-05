@@ -13,6 +13,7 @@ on:
       - dev_termfolio
       - dev_theme_cyberpunk2077
       - dev_theme_lzw_archive
+      - dev_theme_ai_lab
 
   workflow_dispatch:
 
@@ -46,13 +47,20 @@ jobs:
 
           sudo dpkg -i ${{ runner.temp }}/hugo.deb
 
-
       # 拉取源码
       - name: Checkout
         uses: actions/checkout@v4
         with:
           submodules: recursive
           fetch-depth: 0
+
+      - name: Verify pinned Hugo Extended version
+        if: github.ref == 'refs/heads/dev_theme_ai_lab'
+        env:
+          HUGO_BIN: hugo
+        run: |
+          test "$(cat .hugo-version)" = "$HUGO_VERSION"
+          node scripts/check-hugo-version.cjs
 
 
       # 安装 Go 环境
@@ -78,6 +86,11 @@ jobs:
         id: pages
         uses: actions/configure-pages@v5
 
+      - name: Prepare AI Lab static corpus and audit shared imports
+        if: github.ref == 'refs/heads/dev_theme_ai_lab'
+        run: |
+          node tools/ai-lab/build-playground-corpus.cjs
+          node tools/ai-lab/audit-shared-articles.cjs
 
       # Hugo 构建
       - name: Build with Hugo
@@ -234,6 +247,30 @@ jobs:
           rm -rf ../public/themes/engineer-terminal/termfolio
           mkdir -p ../public/themes/engineer-terminal/termfolio
           cp -R out/. ../public/themes/engineer-terminal/termfolio/
+
+      - name: Verify AI Lab module
+        if: github.ref == 'refs/heads/dev_theme_ai_lab'
+        run: |
+          set -euo pipefail
+          test -s public/ai-lab/index.html
+          test -s public/en/ai-lab/index.html
+          test -s public/ai-lab/experiments/index.html
+          test -s public/en/ai-lab/experiments/index.html
+          test -s public/ai-lab/research/index.html
+          test -s public/ai-lab/engineering/index.html
+          test -s public/ai-lab/benchmarks/index.html
+          test -s public/ai-lab/playground/index.html
+          test -s public/ai-lab/field-notes/index.html
+          test -s public/en/ai-lab/field-notes/index.html
+          test -s public/images/ai-lab/open-doodles/reading.svg
+          test -s public/media/ai-lab/open-doodles-covers/rag-grounded-knowledge.png
+          test -s public/data/ai-lab/playground-corpus.json
+          node --check static/js/ai-lab.js
+          node tools/ai-lab/evaluate-retrieval.cjs
+          node tools/ai-lab/audit-assets.cjs
+          node tools/ai-lab/audit-shared-articles.cjs
+          node tools/ai-lab/ai-lab-smoke.cjs --public public
+          node tools/ai-lab/structural-regression.cjs --public public
 
       - name: Build Minimal family previews
         env:
@@ -399,7 +436,8 @@ jobs:
       github.ref == 'refs/heads/dev_theme_engineer-terminal' ||
       github.ref == 'refs/heads/dev_termfolio' ||
       github.ref == 'refs/heads/dev_theme_cyberpunk2077' ||
-      github.ref == 'refs/heads/dev_theme_lzw_archive'
+      github.ref == 'refs/heads/dev_theme_lzw_archive' ||
+      github.ref == 'refs/heads/dev_theme_ai_lab'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

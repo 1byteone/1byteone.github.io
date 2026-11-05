@@ -1,0 +1,40 @@
+{
+  "generated_at": "2026-11-05T13:25:56.389150+00:00",
+  "status": "blocked",
+  "evaluation_scope": [
+    "dense_embedding",
+    "reranker",
+    "llm_answer",
+    "citation_support",
+    "unsupported_claims",
+    "abstention",
+    "latency"
+  ],
+  "fixture": "data/ai_lab/retrieval_fixture.json",
+  "fixture_documents": 6,
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "runtime": {
+    "python": "3.12.4",
+    "platform": "Windows-11-10.0.22631-SP0",
+    "packages": {
+      "sentence_transformers": false,
+      "transformers": false,
+      "torch": false,
+      "openai": true
+    },
+    "api_key_configured": true
+  },
+  "blocked_reasons": [
+    "sentence_transformers",
+    "transformers",
+    "torch"
+  ],
+  "metrics": {
+    "dense": null,
+    "reranker": null,
+    "answer": null
+  },
+  "reproduction_command": "python tools/ai-lab/evaluate-semantic-retrieval.py --run",
+  "lexical_baseline_report": "docs/audit/ai-lab-retrieval-baseline.json",
+  "integrity_rule": "null metrics mean no model-backed evaluation was executed; lexical baseline must not be reported as dense or reranked."
+}

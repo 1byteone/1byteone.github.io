@@ -1,0 +1,220 @@
+{
+  "run_id": "baseline-ai-lab-rag-baseline-v1",
+  "generated_at": "2026-11-05T13:33:57.302Z",
+  "dataset_id": "ai-lab-rag-baseline-v1",
+  "dataset_sha256": "3e453a2141ac3d22225c1b69c1fcff4bd38911d0a59341b459ed9f22c08a4964",
+  "corpus_document_count": 6,
+  "query_count": 6,
+  "relevance_labels": 7,
+  "implementation": "Deterministic local Node.js BM25 and character-trigram hybrid ranking baseline. No embedding model, LLM, API key, or network request is used.",
+  "environment": {
+    "node": "v22.19.0",
+    "platform": "win32",
+    "architecture": "x64"
+  },
+  "latency_method": "Warm local process; 10 timing samples per query; each sample averages 100 consecutive rankings. These are CPU-only ranking timings, not request, network, or end-to-end RAG latency.",
+  "limitations": [
+    "Only six project-authored English queries over six short synthetic engineering snippets; relevance labels are authored with the fixture.",
+    "The hybrid method combines lexical BM25 with character trigrams; it is not dense-vector or embedding retrieval.",
+    "Retrieval metrics are diagnostic on this fixture and must not be generalized to production or model quality.",
+    "Answer faithfulness, citation support, abstention, token cost, model behavior, and API latency are not measured."
+  ],
+  "runs": [
+    {
+      "method": "bm25",
+      "query_count": 6,
+      "recall_at_3": 0.9166666666666666,
+      "mrr": 0.9166666666666666,
+      "ndcg_at_3": 0.874012824389486,
+      "latency_measurement": "10 samples/query; each sample times 100 local rankings and divides by 100",
+      "latency_sample_count": 60,
+      "p50_ms_per_query_ranking": 0.0094,
+      "p95_ms_per_query_ranking": 0.0183,
+      "per_query": [
+        {
+          "id": "q-ingestion",
+          "retrieved_at_3": [
+            "doc-rag-ingestion",
+            "doc-agent-tools",
+            "doc-rag-citations"
+          ],
+          "relevant": [
+            "doc-rag-ingestion"
+          ],
+          "recall_at_3": 1,
+          "reciprocal_rank": 1,
+          "ndcg_at_3": 1
+        },
+        {
+          "id": "q-hybrid",
+          "retrieved_at_3": [
+            "doc-rag-retrieval",
+            "doc-streaming",
+            "doc-rag-ingestion"
+          ],
+          "relevant": [
+            "doc-rag-retrieval"
+          ],
+          "recall_at_3": 1,
+          "reciprocal_rank": 1,
+          "ndcg_at_3": 1
+        },
+        {
+          "id": "q-citations",
+          "retrieved_at_3": [
+            "doc-rag-citations",
+            "doc-agent-tools",
+            "doc-streaming"
+          ],
+          "relevant": [
+            "doc-rag-citations",
+            "doc-structured-output"
+          ],
+          "recall_at_3": 0.5,
+          "reciprocal_rank": 1,
+          "ndcg_at_3": 0.6131471927654584
+        },
+        {
+          "id": "q-tools",
+          "retrieved_at_3": [
+            "doc-agent-tools",
+            "doc-rag-citations",
+            "doc-streaming"
+          ],
+          "relevant": [
+            "doc-agent-tools"
+          ],
+          "recall_at_3": 1,
+          "reciprocal_rank": 1,
+          "ndcg_at_3": 1
+        },
+        {
+          "id": "q-sse",
+          "retrieved_at_3": [
+            "doc-streaming",
+            "doc-rag-citations",
+            "doc-agent-tools"
+          ],
+          "relevant": [
+            "doc-streaming"
+          ],
+          "recall_at_3": 1,
+          "reciprocal_rank": 1,
+          "ndcg_at_3": 1
+        },
+        {
+          "id": "q-schema",
+          "retrieved_at_3": [
+            "doc-rag-citations",
+            "doc-structured-output",
+            "doc-streaming"
+          ],
+          "relevant": [
+            "doc-structured-output"
+          ],
+          "recall_at_3": 1,
+          "reciprocal_rank": 0.5,
+          "ndcg_at_3": 0.6309297535714575
+        }
+      ]
+    },
+    {
+      "method": "hybrid-lexical-baseline",
+      "query_count": 6,
+      "recall_at_3": 0.9166666666666666,
+      "mrr": 0.9166666666666666,
+      "ndcg_at_3": 0.874012824389486,
+      "latency_measurement": "10 samples/query; each sample times 100 local rankings and divides by 100",
+      "latency_sample_count": 60,
+      "p50_ms_per_query_ranking": 0.176,
+      "p95_ms_per_query_ranking": 0.2073,
+      "per_query": [
+        {
+          "id": "q-ingestion",
+          "retrieved_at_3": [
+            "doc-rag-ingestion",
+            "doc-agent-tools",
+            "doc-rag-citations"
+          ],
+          "relevant": [
+            "doc-rag-ingestion"
+          ],
+          "recall_at_3": 1,
+          "reciprocal_rank": 1,
+          "ndcg_at_3": 1
+        },
+        {
+          "id": "q-hybrid",
+          "retrieved_at_3": [
+            "doc-rag-retrieval",
+            "doc-structured-output",
+            "doc-agent-tools"
+          ],
+          "relevant": [
+            "doc-rag-retrieval"
+          ],
+          "recall_at_3": 1,
+          "reciprocal_rank": 1,
+          "ndcg_at_3": 1
+        },
+        {
+          "id": "q-citations",
+          "retrieved_at_3": [
+            "doc-rag-citations",
+            "doc-agent-tools",
+            "doc-streaming"
+          ],
+          "relevant": [
+            "doc-rag-citations",
+            "doc-structured-output"
+          ],
+          "recall_at_3": 0.5,
+          "reciprocal_rank": 1,
+          "ndcg_at_3": 0.6131471927654584
+        },
+        {
+          "id": "q-tools",
+          "retrieved_at_3": [
+            "doc-agent-tools",
+            "doc-rag-citations",
+            "doc-streaming"
+          ],
+          "relevant": [
+            "doc-agent-tools"
+          ],
+          "recall_at_3": 1,
+          "reciprocal_rank": 1,
+          "ndcg_at_3": 1
+        },
+        {
+          "id": "q-sse",
+          "retrieved_at_3": [
+            "doc-streaming",
+            "doc-rag-citations",
+            "doc-agent-tools"
+          ],
+          "relevant": [
+            "doc-streaming"
+          ],
+          "recall_at_3": 1,
+          "reciprocal_rank": 1,
+          "ndcg_at_3": 1
+        },
+        {
+          "id": "q-schema",
+          "retrieved_at_3": [
+            "doc-rag-citations",
+            "doc-structured-output",
+            "doc-streaming"
+          ],
+          "relevant": [
+            "doc-structured-output"
+          ],
+          "recall_at_3": 1,
+          "reciprocal_rank": 0.5,
+          "ndcg_at_3": 0.6309297535714575
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,681 @@
+{
+  "generated_at": "2026-11-05T13:26:02.184Z",
+  "scope": "Only shared posts actually imported into content/{zh,en}/ai-lab/{engineering,experiments,research}; source files are matched by stable post slug.",
+  "shared_articles": 20,
+  "localized_ai_lab_pages": 40,
+  "paired_bilingual_records": 20,
+  "missing_source_or_locale": [],
+  "current_dependency_reproduction_complete": false,
+  "rule": "Static source review is not runtime reproduction. Each translation is linked to its shared blog source, code-block digest, and detected compatibility risks; no row is marked reproduced.",
+  "dependency_baseline": {
+    "hugo": "0.162.0 Extended",
+    "review_date": "2026-11-05",
+    "langchain": "not installed/pinned for article reproduction",
+    "openai_sdk": "not installed/pinned for article reproduction",
+    "fastapi": "not installed/pinned for article reproduction"
+  },
+  "articles": [
+    {
+      "id": "building-ai-agents",
+      "slug": "building-ai-agents",
+      "languages": {
+        "zh": {
+          "ai_lab_page": "content/zh/ai-lab/engineering/building-ai-agents/index.md",
+          "source_blog_page": "content/zh/blog/building-ai-agents/index.md",
+          "title": "使用LangChain构建AI智能体：工具集成与多轮对话",
+          "source_date": "2026-07-10",
+          "code_sha256": "5d0ac82ba75b1190c123e646ca5f1ceafc45dd8aed5a5c13cc4f658ebd1b99b6",
+          "python_code_blocks": 8,
+          "python_syntax_check": "pass",
+          "python_syntax_error": null,
+          "static_findings": [
+            "legacy_agent_factory",
+            "legacy_conversation_memory",
+            "legacy_langchain_module",
+            "legacy_openai_wrapper"
+          ],
+          "reproduction_status": "not-run",
+          "reproduced_with_current_dependencies": false
+        },
+        "en": {
+          "ai_lab_page": "content/en/ai-lab/engineering/building-ai-agents/index.md",
+          "source_blog_page": "content/en/blog/building-ai-agents/index.md",
+          "title": "Building AI Agents with LangChain: Tool Integration and Multi-Turn Conversations",
+          "source_date": "2026-07-10",
+          "code_sha256": "019a64c4827357cb91e7dcf0e74602124325983ef0df37936af3309ea2af8e1f",
+          "python_code_blocks": 8,
+          "python_syntax_check": "pass",
+          "python_syntax_error": null,
+          "static_findings": [
+            "legacy_agent_factory",
+            "legacy_conversation_memory",
+            "legacy_langchain_module",
+            "legacy_openai_wrapper"
+          ],
+          "reproduction_status": "not-run",
+          "reproduced_with_current_dependencies": false
+        }
+      }
+    },
+    {
+      "id": "building-rag-pipeline",
+      "slug": "building-rag-pipeline",
+      "languages": {
+        "zh": {
+          "ai_lab_page": "content/zh/ai-lab/experiments/building-rag-pipeline/index.md",
+          "source_blog_page": "content/zh/blog/building-rag-pipeline/index.md",
+          "title": "使用LangChain构建RAG管道：从文档处理到向量搜索",
+          "source_date": "2026-06-15",
+          "code_sha256": "0425c8fe5bfbdc9237b3ba03d24d9df62fa0ece3fe50334af9c9b71c0b0d8562",
+          "python_code_blocks": 7,
+          "python_syntax_check": "pass",
+          "python_syntax_error": null,
+          "static_findings": [
+            "legacy_openai_wrapper"
+          ],
+          "reproduction_status": "not-run",
+          "reproduced_with_current_dependencies": false
+        },
+        "en": {
+          "ai_lab_page": "content/en/ai-lab/experiments/building-rag-pipeline/index.md",
+          "source_blog_page": "content/en/blog/building-rag-pipeline/index.md",
+          "title": "Building a RAG Pipeline with LangChain: From Document Processing to Vector Search",
+          "source_date": "2026-06-15",
+          "code_sha256": "a47f07a6230aa39677b87629e55f112105139ac36302f8725f46fb0f0d444a12",
+          "python_code_blocks": 7,
+          "python_syntax_check": "pass",
+          "python_syntax_error": null,
+          "static_findings": [
+            "legacy_openai_wrapper"
+          ],
+          "reproduction_status": "not-run",
+          "reproduced_with_current_dependencies": false
+        }
+      }
+    },
+    {
+      "id": "fastapi-ai-streaming-api",
+      "slug": "fastapi-ai-streaming-api",
+      "languages": {
+        "zh": {
+          "ai_lab_page": "content/zh/ai-lab/engineering/fastapi-ai-streaming-api/index.md",
+          "source_blog_page": "content/zh/blog/fastapi-ai-streaming-api/index.md",
+          "title": "FastAPI AI Streaming API：用 SSE 交付增量结果",
+          "source_date": "2026-08-21",
+          "code_sha256": "2afa716aaaa29be0620d68551f649d27ebbb4fc631a6fe10f003917650839211",
+          "python_code_blocks": 1,
+          "python_syntax_check": "pass",
+          "python_syntax_error": null,
+          "static_findings": [],
+          "reproduction_status": "not-run",
+          "reproduced_with_current_dependencies": false
+        },
+        "en": {
+          "ai_lab_page": "content/en/ai-lab/engineering/fastapi-ai-streaming-api/index.md",
+          "source_blog_page": "content/en/blog/fastapi-ai-streaming-api/index.md",
+          "title": "FastAPI AI Streaming APIs with Server-Sent Events",
+          "source_date": "2026-08-21",
+          "code_sha256": "2afa716aaaa29be0620d68551f649d27ebbb4fc631a6fe10f003917650839211",
+          "python_code_blocks": 1,
+          "python_syntax_check": "pass",
+          "python_syntax_error": null,
+          "static_findings": [],
+          "reproduction_status": "not-run",
+          "reproduced_with_current_dependencies": false
+        }
+      }
+    },
+    {
+      "id": "fastapi-async-dependency-injection",
+      "slug": "fastapi-async-dependency-injection",
+      "languages": {
+        "zh": {
+          "ai_lab_page": "content/zh/ai-lab/engineering/fastapi-async-dependency-injection/index.md",
+          "source_blog_page": "content/zh/blog/fastapi-async-dependency-injection/index.md",
+          "title": "FastAPI Async 与依赖注入：避免阻塞事件循环",
+          "source_date": "2026-08-21",
+          "code_sha256": "870609e68df625a44ea8f0c79d1121665eb21dc4b570a8455e144596cc960239",
+          "python_code_blocks": 1,
+          "python_syntax_check": "pass",
+          "python_syntax_error": null,
+          "static_findings": [],
+          "reproduction_status": "not-run",
+          "reproduced_with_current_dependencies": false
+        },
+        "en": {
+          "ai_lab_page": "content/en/ai-lab/engineering/fastapi-async-dependency-injection/index.md",
+          "source_blog_page": "content/en/blog/fastapi-async-dependency-injection/index.md",
+          "title": "FastAPI Async and Dependency Injection: Keep the Event Loop Healthy",
+          "source_date": "2026-08-21",
+          "code_sha256": "870609e68df625a44ea8f0c79d1121665eb21dc4b570a8455e144596cc960239",
+          "python_code_blocks": 1,
+          "python_syntax_check": "pass",
+          "python_syntax_error": null,
+          "static_findings": [],
+          "reproduction_status": "not-run",
+          "reproduced_with_current_dependencies": false
+        }
+      }
+    },
+    {
+      "id": "fastapi-project-architecture",
+      "slug": "fastapi-project-architecture",
+      "languages": {
+        "zh": {
+          "ai_lab_page": "content/zh/ai-lab/engineering/fastapi-project-architecture/index.md",
+          "source_blog_page": "content/zh/blog/fastapi-project-architecture/index.md",
+          "title": "FastAPI 项目架构：从路由到领域服务的分层设计",
+          "source_date": "2026-08-21",
+          "code_sha256": "9d28bb85c6924bb5b5110db87dd6d8d975e992f4291a122ae143d765245c28b6",
+          "python_code_blocks": 1,
+          "python_syntax_check": "pass",
+          "python_syntax_error": null,
+          "static_findings": [],
+          "reproduction_status": "not-run",
+          "reproduced_with_current_dependencies": false
+        },
+        "en": {
+          "ai_lab_page": "content/en/ai-lab/engineering/fastapi-project-architecture/index.md",
+          "source_blog_page": "content/en/blog/fastapi-project-architecture/index.md",
+          "title": "FastAPI Project Architecture: Layering Routes and Domain Services",
+          "source_date": "2026-08-21",
+          "code_sha256": "9d28bb85c6924bb5b5110db87dd6d8d975e992f4291a122ae143d765245c28b6",
+          "python_code_blocks": 1,
+          "python_syntax_check": "pass",
+          "python_syntax_error": null,
+          "static_findings": [],
+          "reproduction_status": "not-run",
+          "reproduced_with_current_dependencies": false
+        }
+      }
+    },
+    {
+      "id": "fastapi-request-response-pydantic",
+      "slug": "fastapi-request-response-pydantic",
+      "languages": {
+        "zh": {
+          "ai_lab_page": "content/zh/ai-lab/engineering/fastapi-request-response-pydantic/index.md",
+          "source_blog_page": "content/zh/blog/fastapi-request-response-pydantic/index.md",
+          "title": "FastAPI 请求与响应：用 Pydantic 建立可靠契约",
+          "source_date": "2026-08-21",
+          "code_sha256": "86033fcddcac51e47265ea7a93929c4c0c5ff3b069d0041cecad42ed7e032f75",
+          "python_code_blocks": 1,
+          "python_syntax_check": "pass",
+          "python_syntax_error": null,
+          "static_findings": [],
+          "reproduction_status": "not-run",
+          "reproduced_with_current_dependencies": false
+        },
+        "en": {
+          "ai_lab_page": "content/en/ai-lab/engineering/fastapi-request-response-pydantic/index.md",
+          "source_blog_page": "content/en/blog/fastapi-request-response-pydantic/index.md",
+          "title": "FastAPI Request and Response Contracts with Pydantic",
+          "source_date": "2026-08-21",
+          "code_sha256": "86033fcddcac51e47265ea7a93929c4c0c5ff3b069d0041cecad42ed7e032f75",
+          "python_code_blocks": 1,
+          "python_syntax_check": "pass",
+          "python_syntax_error": null,
+          "static_findings": [],
+          "reproduction_status": "not-run",
+          "reproduced_with_current_dependencies": false
+        }
+      }
+    },
+    {
+      "id": "hallucination-prevention",
+      "slug": "hallucination-prevention",
+      "languages": {
+        "zh": {
+          "ai_lab_page": "content/zh/ai-lab/research/hallucination-prevention/index.md",
+          "source_blog_page": "content/zh/blog/hallucination-prevention/index.md",
+          "title": "RAG系统中的三层幻觉预防：实践指南",
+          "source_date": "2026-08-05",
+          "code_sha256": "5dd6def0213840a0da5d760cc0e4bab61ba7657dc75c1190a7792dd68dd238ec",
+          "python_code_blocks": 7,
+          "python_syntax_check": "pass",
+          "python_syntax_error": null,
+          "static_findings": [
+            "legacy_langchain_module"
+          ],
+          "reproduction_status": "not-run",
+          "reproduced_with_current_dependencies": false
+        },
+        "en": {
+          "ai_lab_page": "content/en/ai-lab/research/hallucination-prevention/index.md",
+          "source_blog_page": "content/en/blog/hallucination-prevention/index.md",
+          "title": "Three-Layer Hallucination Prevention in RAG Systems: A Practical Guide",
+          "source_date": "2026-08-05",
+          "code_sha256": "5dec76d49e14c7074db22c2885b9c897715dc1df537a50f4fe4890320c358829",
+          "python_code_blocks": 7,
+          "python_syntax_check": "pass",
+          "python_syntax_error": null,
+          "static_findings": [
+            "legacy_langchain_module"
+          ],
+          "reproduction_status": "not-run",
+          "reproduced_with_current_dependencies": false
+        }
+      }
+    },
+    {
+      "id": "langchain-core-architecture",
+      "slug": "langchain-core-architecture",
+      "languages": {
+        "zh": {
+          "ai_lab_page": "content/zh/ai-lab/engineering/langchain-core-architecture/index.md",
+          "source_blog_page": "content/zh/blog/langchain-core-architecture/index.md",
+          "title": "LangChain 核心架构：Runnable、模型与可组合链",
+          "source_date": "2026-08-21",
+          "code_sha256": "e7d1d9244c48755bd85e72d803f41819b5d7af2e2ad1c765efb6ac3dce3b356b",
+          "python_code_blocks": 1,
+          "python_syntax_check": "pass",
+          "python_syntax_error": null,
+          "static_findings": [
+            "legacy_openai_wrapper"
+          ],
+          "reproduction_status": "not-run",
+          "reproduced_with_current_dependencies": false
+        },
+        "en": {
+          "ai_lab_page": "content/en/ai-lab/engineering/langchain-core-architecture/index.md",
+          "source_blog_page": "content/en/blog/langchain-core-architecture/index.md",
+          "title": "LangChain Core Architecture: Runnables, Models, and Composable Chains",
+          "source_date": "2026-08-21",
+          "code_sha256": "d6071898d22acce067f8ffcee33e6f557eb5e217ba0b259be7b11502c8907be0",
+          "python_code_blocks": 1,
+          "python_syntax_check": "pass",
+          "python_syntax_error": null,
+          "static_findings": [
+            "legacy_openai_wrapper"
+          ],
+          "reproduction_status": "not-run",
+          "reproduced_with_current_dependencies": false
+        }
+      }
+    },
+    {
+      "id": "langchain-memory-multiturn",
+      "slug": "langchain-memory-multiturn",
+      "languages": {
+        "zh": {
+          "ai_lab_page": "content/zh/ai-lab/engineering/langchain-memory-multiturn/index.md",
+          "source_blog_page": "content/zh/blog/langchain-memory-multiturn/index.md",
+          "title": "LangChain Memory：设计可控的多轮对话状态",
+          "source_date": "2026-08-21",
+          "code_sha256": "24fce08839594236aa46128bdb2d0c9f2314b1b7e54a49f46cf08ea1c7cb9031",
+          "python_code_blocks": 1,
+          "python_syntax_check": "pass",
+          "python_syntax_error": null,
+          "static_findings": [],
+          "reproduction_status": "not-run",
+          "reproduced_with_current_dependencies": false
+        },
+        "en": {
+          "ai_lab_page": "content/en/ai-lab/engineering/langchain-memory-multiturn/index.md",
+          "source_blog_page": "content/en/blog/langchain-memory-multiturn/index.md",
+          "title": "LangChain Memory: Designing Controlled Multi-Turn State",
+          "source_date": "2026-08-21",
+          "code_sha256": "24fce08839594236aa46128bdb2d0c9f2314b1b7e54a49f46cf08ea1c7cb9031",
+          "python_code_blocks": 1,
+          "python_syntax_check": "pass",
+          "python_syntax_error": null,
+          "static_findings": [],
+          "reproduction_status": "not-run",
+          "reproduced_with_current_dependencies": false
+        }
+      }
+    },
+    {
+      "id": "langchain-prompt-chain",
+      "slug": "langchain-prompt-chain",
+      "languages": {
+        "zh": {
+          "ai_lab_page": "content/zh/ai-lab/engineering/langchain-prompt-chain/index.md",
+          "source_blog_page": "content/zh/blog/langchain-prompt-chain/index.md",
+          "title": "LangChain Prompt Chain：让提示词成为可维护的程序",
+          "source_date": "2026-08-21",
+          "code_sha256": "48ffc9bef5469285b8234d7c3333b144d1299cba4dc71b23e5e344b77f984add",
+          "python_code_blocks": 1,
+          "python_syntax_check": "pass",
+          "python_syntax_error": null,
+          "static_findings": [],
+          "reproduction_status": "not-run",
+          "reproduced_with_current_dependencies": false
+        },
+        "en": {
+          "ai_lab_page": "content/en/ai-lab/engineering/langchain-prompt-chain/index.md",
+          "source_blog_page": "content/en/blog/langchain-prompt-chain/index.md",
+          "title": "LangChain Prompt Chains: Treat Prompts as Maintainable Programs",
+          "source_date": "2026-08-21",
+          "code_sha256": "289a1979f2153168fbf5c8de5452e64b4d2dd71d6fffb98fb7914f682f611c5b",
+          "python_code_blocks": 1,
+          "python_syntax_check": "pass",
+          "python_syntax_error": null,
+          "static_findings": [],
+          "reproduction_status": "not-run",
+          "reproduced_with_current_dependencies": false
+        }
+      }
+    },
+    {
+      "id": "langchain-tool-calling-agent",
+      "slug": "langchain-tool-calling-agent",
+      "languages": {
+        "zh": {
+          "ai_lab_page": "content/zh/ai-lab/engineering/langchain-tool-calling-agent/index.md",
+          "source_blog_page": "content/zh/blog/langchain-tool-calling-agent/index.md",
+          "title": "LangChain Tool Calling Agent：把决策与执行分开",
+          "source_date": "2026-08-21",
+          "code_sha256": "6eb0f7fa70b3cc0cd86538f391c8c33f26fbf5568d12bd482f00c5efaa2213f6",
+          "python_code_blocks": 1,
+          "python_syntax_check": "pass",
+          "python_syntax_error": null,
+          "static_findings": [],
+          "reproduction_status": "not-run",
+          "reproduced_with_current_dependencies": false
+        },
+        "en": {
+          "ai_lab_page": "content/en/ai-lab/engineering/langchain-tool-calling-agent/index.md",
+          "source_blog_page": "content/en/blog/langchain-tool-calling-agent/index.md",
+          "title": "LangChain Tool-Calling Agents: Separate Decisions from Execution",
+          "source_date": "2026-08-21",
+          "code_sha256": "6b3605cc128a0a773f3001bcb504660d9a71449323c66b2fe77c75d51e9f8e4e",
+          "python_code_blocks": 1,
+          "python_syntax_check": "pass",
+          "python_syntax_error": null,
+          "static_findings": [],
+          "reproduction_status": "not-run",
+          "reproduced_with_current_dependencies": false
+        }
+      }
+    },
+    {
+      "id": "openai-api-fundamentals",
+      "slug": "openai-api-fundamentals",
+      "languages": {
+        "zh": {
+          "ai_lab_page": "content/zh/ai-lab/engineering/openai-api-fundamentals/index.md",
+          "source_blog_page": "content/zh/blog/openai-api-fundamentals/index.md",
+          "title": "OpenAI API 基础：请求、消息、参数与可靠性",
+          "source_date": "2026-08-21",
+          "code_sha256": "b2ae14622257c4589071fb03f0059ae8cb3db3980ab67e14e5f84716301b9e84",
+          "python_code_blocks": 1,
+          "python_syntax_check": "pass",
+          "python_syntax_error": null,
+          "static_findings": [],
+          "reproduction_status": "not-run",
+          "reproduced_with_current_dependencies": false
+        },
+        "en": {
+          "ai_lab_page": "content/en/ai-lab/engineering/openai-api-fundamentals/index.md",
+          "source_blog_page": "content/en/blog/openai-api-fundamentals/index.md",
+          "title": "OpenAI API Fundamentals: Requests, Messages, Parameters, and Reliability",
+          "source_date": "2026-08-21",
+          "code_sha256": "b2ae14622257c4589071fb03f0059ae8cb3db3980ab67e14e5f84716301b9e84",
+          "python_code_blocks": 1,
+          "python_syntax_check": "pass",
+          "python_syntax_error": null,
+          "static_findings": [],
+          "reproduction_status": "not-run",
+          "reproduced_with_current_dependencies": false
+        }
+      }
+    },
+    {
+      "id": "openai-multimodal-ai",
+      "slug": "openai-multimodal-ai",
+      "languages": {
+        "zh": {
+          "ai_lab_page": "content/zh/ai-lab/engineering/openai-multimodal-ai/index.md",
+          "source_blog_page": "content/zh/blog/openai-multimodal-ai/index.md",
+          "title": "OpenAI Multimodal AI：统一处理文本、图片与文档",
+          "source_date": "2026-08-21",
+          "code_sha256": "4ad96ad0611171d692b3dbdc2ffaefb6aade43ef4f2b9f17e4a4343ff9e8af94",
+          "python_code_blocks": 1,
+          "python_syntax_check": "pass",
+          "python_syntax_error": null,
+          "static_findings": [],
+          "reproduction_status": "not-run",
+          "reproduced_with_current_dependencies": false
+        },
+        "en": {
+          "ai_lab_page": "content/en/ai-lab/engineering/openai-multimodal-ai/index.md",
+          "source_blog_page": "content/en/blog/openai-multimodal-ai/index.md",
+          "title": "OpenAI Multimodal AI: Working with Text, Images, and Documents",
+          "source_date": "2026-08-21",
+          "code_sha256": "4ad96ad0611171d692b3dbdc2ffaefb6aade43ef4f2b9f17e4a4343ff9e8af94",
+          "python_code_blocks": 1,
+          "python_syntax_check": "pass",
+          "python_syntax_error": null,
+          "static_findings": [],
+          "reproduction_status": "not-run",
+          "reproduced_with_current_dependencies": false
+        }
+      }
+    },
+    {
+      "id": "openai-structured-output",
+      "slug": "openai-structured-output",
+      "languages": {
+        "zh": {
+          "ai_lab_page": "content/zh/ai-lab/engineering/openai-structured-output/index.md",
+          "source_blog_page": "content/zh/blog/openai-structured-output/index.md",
+          "title": "OpenAI Structured Output：让模型输出可验证的数据",
+          "source_date": "2026-08-21",
+          "code_sha256": "bfbcdfc9f3d11a39e8822d50eb94bddf9ceda493e3b8732d27514cbd9c675448",
+          "python_code_blocks": 1,
+          "python_syntax_check": "pass",
+          "python_syntax_error": null,
+          "static_findings": [],
+          "reproduction_status": "not-run",
+          "reproduced_with_current_dependencies": false
+        },
+        "en": {
+          "ai_lab_page": "content/en/ai-lab/engineering/openai-structured-output/index.md",
+          "source_blog_page": "content/en/blog/openai-structured-output/index.md",
+          "title": "OpenAI Structured Outputs: Make Model Results Verifiable",
+          "source_date": "2026-08-21",
+          "code_sha256": "05936c7cdb91f17a8e63444fc8d3763f20b36738c500595fce65c8992dc37b79",
+          "python_code_blocks": 1,
+          "python_syntax_check": "pass",
+          "python_syntax_error": null,
+          "static_findings": [],
+          "reproduction_status": "not-run",
+          "reproduced_with_current_dependencies": false
+        }
+      }
+    },
+    {
+      "id": "openai-tool-calling",
+      "slug": "openai-tool-calling",
+      "languages": {
+        "zh": {
+          "ai_lab_page": "content/zh/ai-lab/engineering/openai-tool-calling/index.md",
+          "source_blog_page": "content/zh/blog/openai-tool-calling/index.md",
+          "title": "OpenAI Tool Calling：函数声明、执行循环与安全边界",
+          "source_date": "2026-08-21",
+          "code_sha256": "f7c7dc33c4192898213c1041cec1c68b43ab1f0bb57e50892b7c0104b7752874",
+          "python_code_blocks": 1,
+          "python_syntax_check": "pass",
+          "python_syntax_error": null,
+          "static_findings": [],
+          "reproduction_status": "not-run",
+          "reproduced_with_current_dependencies": false
+        },
+        "en": {
+          "ai_lab_page": "content/en/ai-lab/engineering/openai-tool-calling/index.md",
+          "source_blog_page": "content/en/blog/openai-tool-calling/index.md",
+          "title": "OpenAI Tool Calling: Schemas, Execution Loops, and Safety Boundaries",
+          "source_date": "2026-08-21",
+          "code_sha256": "f7c7dc33c4192898213c1041cec1c68b43ab1f0bb57e50892b7c0104b7752874",
+          "python_code_blocks": 1,
+          "python_syntax_check": "pass",
+          "python_syntax_error": null,
+          "static_findings": [],
+          "reproduction_status": "not-run",
+          "reproduced_with_current_dependencies": false
+        }
+      }
+    },
+    {
+      "id": "python-ai-engineering",
+      "slug": "python-ai-engineering",
+      "languages": {
+        "zh": {
+          "ai_lab_page": "content/zh/ai-lab/engineering/python-ai-engineering/index.md",
+          "source_blog_page": "content/zh/blog/python-ai-engineering/index.md",
+          "title": "Python AI 工程：把模型调用接入可靠应用",
+          "source_date": "2026-08-21",
+          "code_sha256": "4dcc0987b9c6a9aa58c2c4e2f79be0a056fe11d26f38ad36a7131e7bae5af955",
+          "python_code_blocks": 1,
+          "python_syntax_check": "pass",
+          "python_syntax_error": null,
+          "static_findings": [],
+          "reproduction_status": "not-run",
+          "reproduced_with_current_dependencies": false
+        },
+        "en": {
+          "ai_lab_page": "content/en/ai-lab/engineering/python-ai-engineering/index.md",
+          "source_blog_page": "content/en/blog/python-ai-engineering/index.md",
+          "title": "AI Engineering with Python",
+          "source_date": "2026-08-21",
+          "code_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "python_code_blocks": 0,
+          "python_syntax_check": "pass",
+          "python_syntax_error": null,
+          "static_findings": [],
+          "reproduction_status": "not-run",
+          "reproduced_with_current_dependencies": false
+        }
+      }
+    },
+    {
+      "id": "rag-basic-pipeline",
+      "slug": "rag-basic-pipeline",
+      "languages": {
+        "zh": {
+          "ai_lab_page": "content/zh/ai-lab/experiments/rag-basic-pipeline/index.md",
+          "source_blog_page": "content/zh/blog/rag-basic-pipeline/index.md",
+          "title": "RAG 基础管道：从文档到可引用答案",
+          "source_date": "2026-08-21",
+          "code_sha256": "d2cbcf11d175cf70a621799a39d84361b51e91391a877d1b1031c67b65c1709b",
+          "python_code_blocks": 1,
+          "python_syntax_check": "pass",
+          "python_syntax_error": null,
+          "static_findings": [],
+          "reproduction_status": "not-run",
+          "reproduced_with_current_dependencies": false
+        },
+        "en": {
+          "ai_lab_page": "content/en/ai-lab/experiments/rag-basic-pipeline/index.md",
+          "source_blog_page": "content/en/blog/rag-basic-pipeline/index.md",
+          "title": "The RAG Basics: From Documents to Cited Answers",
+          "source_date": "2026-08-21",
+          "code_sha256": "d2cbcf11d175cf70a621799a39d84361b51e91391a877d1b1031c67b65c1709b",
+          "python_code_blocks": 1,
+          "python_syntax_check": "pass",
+          "python_syntax_error": null,
+          "static_findings": [],
+          "reproduction_status": "not-run",
+          "reproduced_with_current_dependencies": false
+        }
+      }
+    },
+    {
+      "id": "rag-embedding-vector-database",
+      "slug": "rag-embedding-vector-database",
+      "languages": {
+        "zh": {
+          "ai_lab_page": "content/zh/ai-lab/experiments/rag-embedding-vector-database/index.md",
+          "source_blog_page": "content/zh/blog/rag-embedding-vector-database/index.md",
+          "title": "RAG Embedding 与向量数据库：相似度背后的工程细节",
+          "source_date": "2026-08-21",
+          "code_sha256": "1b9924aec2f798b58600f84ed435dfa40202afba8a798b6af4beca627fb67c02",
+          "python_code_blocks": 1,
+          "python_syntax_check": "pass",
+          "python_syntax_error": null,
+          "static_findings": [],
+          "reproduction_status": "not-run",
+          "reproduced_with_current_dependencies": false
+        },
+        "en": {
+          "ai_lab_page": "content/en/ai-lab/experiments/rag-embedding-vector-database/index.md",
+          "source_blog_page": "content/en/blog/rag-embedding-vector-database/index.md",
+          "title": "RAG Embeddings and Vector Databases: The Engineering Behind Similarity",
+          "source_date": "2026-08-21",
+          "code_sha256": "f83812cd8626f048160f893c8b9550acca8e87a9905922df389555365a574b00",
+          "python_code_blocks": 1,
+          "python_syntax_check": "pass",
+          "python_syntax_error": null,
+          "static_findings": [],
+          "reproduction_status": "not-run",
+          "reproduced_with_current_dependencies": false
+        }
+      }
+    },
+    {
+      "id": "rag-production-architecture",
+      "slug": "rag-production-architecture",
+      "languages": {
+        "zh": {
+          "ai_lab_page": "content/zh/ai-lab/experiments/rag-production-architecture/index.md",
+          "source_blog_page": "content/zh/blog/rag-production-architecture/index.md",
+          "title": "生产级 RAG 架构：权限、版本与可观测性",
+          "source_date": "2026-08-21",
+          "code_sha256": "6ad2eb6a809f2cf4f4480e38cb16f079989337560b310226f7f539d80e605b57",
+          "python_code_blocks": 1,
+          "python_syntax_check": "pass",
+          "python_syntax_error": null,
+          "static_findings": [],
+          "reproduction_status": "not-run",
+          "reproduced_with_current_dependencies": false
+        },
+        "en": {
+          "ai_lab_page": "content/en/ai-lab/experiments/rag-production-architecture/index.md",
+          "source_blog_page": "content/en/blog/rag-production-architecture/index.md",
+          "title": "Production RAG Architecture: Permissions, Versions, and Observability",
+          "source_date": "2026-08-21",
+          "code_sha256": "6ad2eb6a809f2cf4f4480e38cb16f079989337560b310226f7f539d80e605b57",
+          "python_code_blocks": 1,
+          "python_syntax_check": "pass",
+          "python_syntax_error": null,
+          "static_findings": [],
+          "reproduction_status": "not-run",
+          "reproduced_with_current_dependencies": false
+        }
+      }
+    },
+    {
+      "id": "rag-retriever-optimization",
+      "slug": "rag-retriever-optimization",
+      "languages": {
+        "zh": {
+          "ai_lab_page": "content/zh/ai-lab/experiments/rag-retriever-optimization/index.md",
+          "source_blog_page": "content/zh/blog/rag-retriever-optimization/index.md",
+          "title": "RAG Retriever 优化：从 Top-K 到混合检索与重排",
+          "source_date": "2026-08-21",
+          "code_sha256": "9be70d423dd1a810a5f37a0a5b47fd78d4e2a284bdf92cd4cbbf3e82d9843174",
+          "python_code_blocks": 1,
+          "python_syntax_check": "pass",
+          "python_syntax_error": null,
+          "static_findings": [],
+          "reproduction_status": "not-run",
+          "reproduced_with_current_dependencies": false
+        },
+        "en": {
+          "ai_lab_page": "content/en/ai-lab/experiments/rag-retriever-optimization/index.md",
+          "source_blog_page": "content/en/blog/rag-retriever-optimization/index.md",
+          "title": "Optimizing RAG Retrievers: Top-K, Hybrid Search, and Reranking",
+          "source_date": "2026-08-21",
+          "code_sha256": "9be70d423dd1a810a5f37a0a5b47fd78d4e2a284bdf92cd4cbbf3e82d9843174",
+          "python_code_blocks": 1,
+          "python_syntax_check": "pass",
+          "python_syntax_error": null,
+          "static_findings": [],
+          "reproduction_status": "not-run",
+          "reproduced_with_current_dependencies": false
+        }
+      }
+    }
+  ]
+}
