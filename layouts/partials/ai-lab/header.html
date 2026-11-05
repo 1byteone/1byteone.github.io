@@ -16,6 +16,7 @@
         <div class="al-ref-dropdown-panel"><a href="{{ "ai-lab/benchmarks/" | relLangURL }}"><span>{{ if $zh }}评测方法{{ else }}Methods{{ end }}</span><small>04</small></a><a href="{{ "ai-lab/research/" | relLangURL }}"><span>{{ if $zh }}安全与治理{{ else }}Safety &amp; governance{{ end }}</span><small>02</small></a></div>
       </details>
       <a class="al-ref-pill" href="{{ "ai-lab/engineering/" | relLangURL }}">{{ if $zh }}承诺{{ else }}Commitments{{ end }}</a>
+      <a class="al-ref-theme-center" href="{{ "theme-center/" | relLangURL }}"{{ if eq .Section "theme-center" }} aria-current="page"{{ end }}><span aria-hidden="true">✦</span>{{ if $zh }}主题中心{{ else }}Theme center{{ end }}<span aria-hidden="true">↗</span></a>
       <button class="al-ref-nav-theme" type="button" data-lab-theme-toggle aria-label="{{ if $zh }}切换明暗主题{{ else }}Toggle color theme{{ end }}">
         <span aria-hidden="true">◐</span><span>{{ if $zh }}切换明暗主题{{ else }}Color mode{{ end }}</span>
       </button>
