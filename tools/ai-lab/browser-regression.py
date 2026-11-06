@@ -65,6 +65,8 @@ def check_page(page, url: str, language: str, viewport_name: str, output_dir: Pa
           imagesWithoutAlt: [...document.images].filter((image) => !image.hasAttribute('alt')).length,
           learnImagesLoaded: [...document.querySelectorAll('[data-image-frame] img')].every((image) => image.complete && image.naturalWidth > 0),
           learnImagesVisible: [...document.querySelectorAll('[data-image-frame] img')].every((image) => Number.parseFloat(getComputedStyle(image).opacity) > 0),
+          canvasImageCount: document.querySelectorAll('[data-canvas-image]').length,
+          canvasReadyCount: document.querySelectorAll('[data-canvas-image][data-canvas-ready="true"]').length,
           brandToolsSeparated: (() => {
             const brand = document.querySelector('.al-ref-brand-lockup')?.getBoundingClientRect();
             const tools = document.querySelector('.al-ref-tools')?.getBoundingClientRect();
@@ -94,6 +96,28 @@ def check_page(page, url: str, language: str, viewport_name: str, output_dir: Pa
     checks["images_have_alt"] = metrics["imagesWithoutAlt"] == 0
     checks["learn_images_loaded"] = metrics["learnImagesLoaded"]
     checks["learn_images_visible"] = metrics["learnImagesVisible"]
+    canvas_image = page.locator("[data-canvas-image]").first
+    if canvas_image.count() and canvas_image.is_visible():
+        canvas_image.hover(position={"x": 12, "y": 12})
+        page.wait_for_timeout(180)
+        checks["canvas_image_reveal"] = page.evaluate(
+            "element => element.dataset.canvasReady === 'true' && Boolean(element.querySelector('canvas')?.width)",
+            canvas_image.element_handle(),
+        )
+        checks["canvas_image_hover_layer_visible"] = page.evaluate(
+            "element => Number.parseFloat(getComputedStyle(element.querySelector('canvas')).opacity) > 0",
+            canvas_image.element_handle(),
+        )
+        page.mouse.move(page.viewport_size["width"] - 2, page.viewport_size["height"] - 2)
+        page.wait_for_timeout(360)
+        checks["canvas_image_leave_clears"] = page.evaluate(
+            "element => !element.matches(':hover') && Number.parseFloat(getComputedStyle(element.querySelector('canvas')).opacity) === 0",
+            canvas_image.element_handle(),
+        )
+    else:
+        checks["canvas_image_reveal"] = False
+        checks["canvas_image_hover_layer_visible"] = False
+        checks["canvas_image_leave_clears"] = False
     checks["brand_and_tools_do_not_overlap"] = metrics["brandToolsSeparated"]
     checks["controls_have_names"] = metrics["namelessControls"] == 0
 
@@ -217,9 +241,12 @@ def main():
             page.wait_for_timeout(200)
             canvas_visible = page.locator("[data-home-art]").is_visible() if page.locator("[data-home-art]").count() else False
             fallback_visible = page.locator("[data-home-art-fallback]").is_visible() if page.locator("[data-home-art-fallback]").count() else False
-            rows.append({"language": "zh", "viewport": {"name": "mobile-reduced-motion", "width": 390, "height": 844}, "checks": {"reduced_motion_visual": canvas_visible or fallback_visible}, "metrics": {}, "measurements": {}, "console_errors": []})
+            canvas_layers_hidden = page.locator("[data-canvas-image-layer]").count() == 0 or page.locator("[data-canvas-image-layer]").first.evaluate("element => getComputedStyle(element).display === 'none'")
+            rows.append({"language": "zh", "viewport": {"name": "mobile-reduced-motion", "width": 390, "height": 844}, "checks": {"reduced_motion_visual": canvas_visible or fallback_visible, "reduced_motion_canvas_layer_hidden": canvas_layers_hidden}, "metrics": {}, "measurements": {}, "console_errors": []})
             if not canvas_visible and not fallback_visible:
                 failures.append("zh/mobile-reduced-motion: reduced_motion_visual")
+            if not canvas_layers_hidden:
+                failures.append("zh/mobile-reduced-motion: reduced_motion_canvas_layer_hidden")
         finally:
             reduced.close()
         browser.close()
