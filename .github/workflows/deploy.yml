@@ -413,6 +413,12 @@ jobs:
       - name: Build search index
         run: npm run pagefind
 
+      # Every Hugo preview otherwise contains a full copy of the shared media
+      # tree. The root build already publishes that tree at /media/; rewrite
+      # preview references and remove duplicates before artifact upload.
+      - name: Deduplicate preview media
+        run: python scripts/dedupe-preview-media.py public
+
 
       # 上传构建产物
       - name: Upload artifact
