@@ -232,6 +232,16 @@
     const issueCards = Array.from(surface.querySelectorAll('[data-aps-issue-state]'));
     const surfaceContext = surface.querySelector('[data-aps-surface-context]');
     const surfaceAnnouncer = surface.parentElement?.querySelector('[data-aps-surface-announcer]');
+    const issueInspector = surface.querySelector('[data-aps-issue-inspector]');
+    const issueInspectorId = issueInspector?.querySelector('[data-aps-issue-inspector-id]');
+    const issueInspectorTitle = issueInspector?.querySelector('[data-aps-issue-inspector-title]');
+    const issueInspectorSummary = issueInspector?.querySelector('[data-aps-issue-inspector-summary]');
+    const issueInspectorState = issueInspector?.querySelector('[data-aps-issue-inspector-state]');
+    const issueInspectorClose = issueInspector?.querySelector('[data-aps-issue-close]');
+    let inspectedCard = null;
+    issueCards.forEach((card) => {
+      if (issueInspector?.id) card.setAttribute('aria-controls', issueInspector.id);
+    });
     const contextLabels = isChinese ? { inbox: '收件箱', work: '我的工作', reviews: '评审' } : { inbox: 'Inbox', work: 'My work', reviews: 'Reviews' };
     const setSurfaceView = (view, focus = false) => {
       const active = surfaceViews.find((item) => item.dataset.apsSurfaceView === view) || surfaceViews[0];
@@ -251,6 +261,43 @@
         setSurfaceView(surfaceViews[next].dataset.apsSurfaceView, true);
       });
     });
+    const closeIssueInspector = (restoreFocus = false) => {
+      if (!issueInspector) return;
+      issueInspector.classList.remove('is-open');
+      issueInspector.hidden = true;
+      if (inspectedCard) {
+        inspectedCard.classList.remove('is-inspected');
+        inspectedCard.setAttribute('aria-expanded', 'false');
+        const previous = inspectedCard;
+        inspectedCard = null;
+        if (restoreFocus && previous.isConnected && !previous.hidden) previous.focus();
+      }
+    };
+    const openIssueInspector = (card, restoreFocus = false) => {
+      if (!issueInspector || !card) return;
+      if (inspectedCard && inspectedCard !== card) {
+        inspectedCard.classList.remove('is-inspected');
+        inspectedCard.setAttribute('aria-expanded', 'false');
+      }
+      inspectedCard = card;
+      const issueId = card.dataset.apsIssueId || '';
+      const title = card.querySelector('h3')?.textContent.trim() || issueId;
+      const summary = card.querySelector('p')?.textContent.trim() || (isChinese ? '该工作项暂无补充说明。' : 'No additional context has been recorded yet.');
+      const state = card.dataset.apsIssueState || 'queued';
+      const stateLabels = isChinese
+        ? { queued: '待处理 · 可检查', active: '进行中 · 正在跟进', done: '已完成 · 已归档' }
+        : { queued: 'QUEUED · INSPECTABLE', active: 'ACTIVE · IN FLIGHT', done: 'DONE · ARCHIVED' };
+      if (issueInspectorId) issueInspectorId.textContent = issueId;
+      if (issueInspectorTitle) issueInspectorTitle.textContent = title;
+      if (issueInspectorSummary) issueInspectorSummary.textContent = summary;
+      if (issueInspectorState) issueInspectorState.textContent = stateLabels[state] || stateLabels.queued;
+      issueInspector.hidden = false;
+      requestAnimationFrame(() => issueInspector.classList.add('is-open'));
+      card.classList.add('is-inspected');
+      card.setAttribute('aria-expanded', 'true');
+      if (surfaceAnnouncer) surfaceAnnouncer.textContent = isChinese ? `已打开问题 ${issueId} 的详情` : `Opened details for ${issueId}`;
+      if (restoreFocus) issueInspectorClose?.focus();
+    };
     surfaceFilters.forEach((button) => button.addEventListener('click', () => {
       const filter = button.dataset.apsSurfaceFilter || 'all';
       surfaceFilters.forEach((item) => item.setAttribute('aria-pressed', String(item === button)));
@@ -258,29 +305,32 @@
         const visible = filter === 'all' || card.dataset.apsIssueState === filter;
         card.hidden = !visible;
       });
+      if (inspectedCard?.hidden) closeIssueInspector(false);
       if (surfaceAnnouncer) surfaceAnnouncer.textContent = filter === 'active'
         ? (isChinese ? '已筛选进行中的问题' : 'Showing active issues')
         : (isChinese ? '已显示全部问题' : 'Showing all issues');
     }));
-    const setIssueExpanded = (card, expanded) => {
-      card.setAttribute('aria-expanded', String(expanded));
-      card.classList.toggle('is-inspected', expanded);
-      if (expanded && surfaceAnnouncer) {
-        const issueId = card.dataset.apsIssueId || '';
-        surfaceAnnouncer.textContent = isChinese ? `已检查问题 ${issueId}` : `Inspecting issue ${issueId}`;
-      }
-    };
     issueCards.forEach((card) => {
-      const toggle = () => setIssueExpanded(card, card.getAttribute('aria-expanded') !== 'true');
+      const toggle = (moveFocus = false) => {
+        if (inspectedCard === card) closeIssueInspector(moveFocus);
+        else openIssueInspector(card, moveFocus);
+      };
       card.addEventListener('click', (event) => {
         if (event.target.closest('a, button')) return;
-        toggle();
+        toggle(false);
       });
       card.addEventListener('keydown', (event) => {
         if (!['Enter', ' '].includes(event.key)) return;
         event.preventDefault();
-        toggle();
+        toggle(true);
       });
+    });
+    issueInspectorClose?.addEventListener('click', () => closeIssueInspector(true));
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && inspectedCard) {
+        event.preventDefault();
+        closeIssueInspector(true);
+      }
     });
   }
 
