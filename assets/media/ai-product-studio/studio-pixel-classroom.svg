@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 620" role="img" aria-labelledby="title desc" shape-rendering="crispEdges">
+  <title id="title">YOYO AI Product Studio pixel workspace</title>
+  <desc id="desc">An original pixel-art computer club at sunset, with a research dashboard on the monitor.</desc>
+  <rect width="960" height="620" fill="#18213b"/>
+  <rect y="0" width="960" height="284" fill="#26385f"/>
+  <rect x="0" y="30" width="176" height="12" fill="#344a73"/><rect x="784" y="60" width="176" height="12" fill="#344a73"/>
+  <rect x="80" y="82" width="800" height="244" fill="#11182b"/>
+  <rect x="96" y="98" width="768" height="212" fill="#f1a16b"/>
+  <rect x="96" y="98" width="768" height="36" fill="#f8c18d"/>
+  <rect x="120" y="158" width="720" height="152" fill="#d97768"/>
+  <rect x="144" y="182" width="128" height="128" fill="#f4c879"/><rect x="288" y="206" width="104" height="104" fill="#f4c879"/>
+  <rect x="408" y="230" width="88" height="80" fill="#c96e69"/><rect x="512" y="214" width="128" height="96" fill="#aa5c68"/><rect x="656" y="190" width="160" height="120" fill="#794b67"/>
+  <rect x="120" y="326" width="720" height="16" fill="#5d5272"/>
+  <rect x="48" y="40" width="16" height="286" fill="#11182b"/><rect x="896" y="40" width="16" height="286" fill="#11182b"/>
+  <rect x="24" y="318" width="912" height="24" fill="#11182b"/>
+  <rect x="0" y="342" width="960" height="278" fill="#e9e4d5"/>
+  <rect x="0" y="342" width="960" height="20" fill="#c8c1af"/>
+  <rect x="68" y="378" width="112" height="18" fill="#d3cbb8"/><rect x="68" y="408" width="112" height="18" fill="#d3cbb8"/><rect x="68" y="438" width="112" height="18" fill="#d3cbb8"/>
+  <rect x="78" y="386" width="28" height="6" fill="#264ccf"/><rect x="118" y="416" width="44" height="6" fill="#d97757"/><rect x="98" y="446" width="55" height="6" fill="#405d7b"/>
+  <rect x="222" y="394" width="504" height="16" fill="#6b4739"/><rect x="246" y="410" width="456" height="24" fill="#9b6547"/>
+  <rect x="276" y="244" width="408" height="146" fill="#11182b"/><rect x="294" y="262" width="372" height="110" fill="#1d2d49"/>
+  <rect x="312" y="280" width="152" height="14" fill="#f4c879"/><rect x="312" y="304" width="104" height="8" fill="#79bdb0"/>
+  <rect x="312" y="328" width="64" height="28" fill="#244ccf"/><rect x="384" y="328" width="64" height="28" fill="#d97757"/><rect x="456" y="328" width="64" height="28" fill="#79bdb0"/>
+  <path d="M528 342h24v-22h26v22h26v-36h30" fill="none" stroke="#f4c879" stroke-width="8"/>
+  <rect x="456" y="434" width="48" height="44" fill="#6b4739"/><rect x="442" y="474" width="76" height="12" fill="#6b4739"/>
+  <rect x="786" y="366" width="92" height="120" fill="#d4c8ae"/><rect x="798" y="382" width="68" height="8" fill="#244ccf"/><rect x="798" y="402" width="52" height="8" fill="#d97757"/><rect x="798" y="422" width="62" height="8" fill="#79bdb0"/>
+  <rect x="756" y="488" width="152" height="12" fill="#6b4739"/><rect x="772" y="500" width="20" height="74" fill="#6b4739"/><rect x="872" y="500" width="20" height="74" fill="#6b4739"/>
+  <rect x="74" y="500" width="16" height="74" fill="#557263"/><rect x="48" y="470" width="68" height="38" fill="#567e67"/><rect x="58" y="448" width="48" height="30" fill="#6a9876"/><rect x="42" y="566" width="82" height="16" fill="#6b4739"/>
+  <rect x="138" y="504" width="24" height="70" fill="#485d77"/><rect x="120" y="488" width="62" height="30" fill="#667d96"/>
+  <rect x="228" y="544" width="160" height="8" fill="#b9b19e"/><rect x="586" y="544" width="120" height="8" fill="#b9b19e"/>
+  <rect x="842" y="120" width="10" height="10" fill="#fff0c4"/><rect x="126" y="138" width="8" height="8" fill="#fff0c4"/><rect x="748" y="122" width="8" height="8" fill="#fff0c4"/>
+</svg>

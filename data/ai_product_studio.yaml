@@ -1,0 +1,65 @@
+navigation:
+  - id: studio
+    label: STUDIO
+    label_zh: 工作室
+    path: /
+  - id: products
+    label: PRODUCTS
+    label_zh: 产品
+    path: projects/
+  - id: experiments
+    label: EXPERIMENTS
+    label_zh: 实验记录
+    path: experiments/
+  - id: journal
+    label: JOURNAL
+    label_zh: 技术日志
+    path: blog/
+  - id: engineering
+    label: ENGINEERING
+    label_zh: 工程实践
+    path: tech-stack/
+  - id: archive
+    label: ARCHIVE
+    label_zh: 资料档案
+    path: resource/
+experiments:
+  - source: rag-basic-pipeline
+    category: RAG SYSTEMS
+    category_zh: RAG 系统
+    discipline: Retrieval pipeline
+    discipline_zh: 检索流程
+  - source: rag-retriever-optimization
+    category: RETRIEVAL
+    category_zh: 检索优化
+    discipline: Retrieval quality
+    discipline_zh: 检索质量
+  - source: building-ai-agents
+    category: AGENT SYSTEMS
+    category_zh: Agent 系统
+    discipline: Agent orchestration
+    discipline_zh: Agent 编排
+  - source: openai-tool-calling
+    category: TOOL USE
+    category_zh: 工具调用
+    discipline: Structured interaction
+    discipline_zh: 结构化交互
+product_workflow:
+  - id: problem
+    label: Problem
+    label_zh: 问题定义
+  - id: design
+    label: Product design
+    label_zh: 产品设计
+  - id: architecture
+    label: Architecture
+    label_zh: 系统架构
+  - id: implementation
+    label: Implementation
+    label_zh: 核心实现
+  - id: evaluation
+    label: Evaluation
+    label_zh: 效果评估
+  - id: delivery
+    label: Delivery
+    label_zh: 交付记录

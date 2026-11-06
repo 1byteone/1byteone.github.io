@@ -13,6 +13,7 @@ on:
       - dev_termfolio
       - dev_theme_cyberpunk2077
       - dev_theme_lzw_archive
+      - dev_theme_ai-product-studio
 
   workflow_dispatch:
 
@@ -206,6 +207,22 @@ jobs:
             --destination public/themes/lzw-archive \
             --baseURL "${{ steps.pages.outputs.base_url }}/themes/lzw-archive/"
 
+      - name: Build AI Product Studio theme preview
+        env:
+          HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache
+          HUGO_ENVIRONMENT: ai-product-studio
+          TZ: America/New_York
+        run: |
+          rm -rf "public/themes/ai-product-studio"
+          hugo \
+            --gc \
+            --minify \
+            --cleanDestinationDir \
+            --environment ai-product-studio \
+            --configDir config \
+            --destination public/themes/ai-product-studio \
+            --baseURL "${{ steps.pages.outputs.base_url }}/themes/ai-product-studio/"
+
       - name: Build Astro TUI terminal preview
         env:
           HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache
@@ -323,6 +340,23 @@ jobs:
           test -s public/themes/lzw-archive/resume.html
           test -s public/themes/lzw-archive/lzw-archive.css
           test -s public/themes/lzw-archive/lzw-archive.js
+          test -s public/themes/ai-product-studio/index.html
+          test -s public/themes/ai-product-studio/en/index.html
+          test -s public/themes/ai-product-studio/projects/index.html
+          test -s public/themes/ai-product-studio/en/projects/index.html
+          test -s public/themes/ai-product-studio/experiments/index.html
+          test -s public/themes/ai-product-studio/en/experiments/index.html
+          test -s public/themes/ai-product-studio/blog/index.html
+          test -s public/themes/ai-product-studio/en/blog/index.html
+          test -s public/themes/ai-product-studio/blog/rag-basic-pipeline/index.html
+          test -s public/themes/ai-product-studio/en/blog/rag-basic-pipeline/index.html
+          test -s public/themes/ai-product-studio/tech-stack/index.html
+          test -s public/themes/ai-product-studio/en/tech-stack/index.html
+          test -s public/themes/ai-product-studio/resource/index.html
+          test -s public/themes/ai-product-studio/en/resource/index.html
+          test -s public/themes/ai-product-studio/css/ai-product-studio.css
+          test -s public/themes/ai-product-studio/js/ai-product-studio.js
+          test -s public/themes/ai-product-studio/media/ai-product-studio/studio-favicon.svg
           test -s public/themes/engineer-terminal/css/theme-center.css
           test -s public/themes/engineer-terminal/astro-tui-portfolio/index.html
           test -s public/themes/engineer-terminal/astro-tui-portfolio/en/index.html
@@ -399,7 +433,8 @@ jobs:
       github.ref == 'refs/heads/dev_theme_engineer-terminal' ||
       github.ref == 'refs/heads/dev_termfolio' ||
       github.ref == 'refs/heads/dev_theme_cyberpunk2077' ||
-      github.ref == 'refs/heads/dev_theme_lzw_archive'
+      github.ref == 'refs/heads/dev_theme_lzw_archive' ||
+      github.ref == 'refs/heads/dev_theme_ai-product-studio'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

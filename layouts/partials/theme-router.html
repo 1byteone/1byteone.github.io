@@ -11,6 +11,8 @@
   {{- partial "themes/engineer-terminal/home.html" . -}}
 {{- else if eq $theme "astro-tui-portfolio" -}}
   {{- partial "themes/astro-tui-portfolio/home.html" . -}}
+{{- else if eq $theme "ai-product-studio" -}}
+  {{- partial "themes/ai-product-studio/home.html" . -}}
 {{- else -}}
 {{- partial (printf "themes/%s/home.html" $theme) . -}}
 {{- end -}}

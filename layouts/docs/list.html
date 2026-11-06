@@ -7,6 +7,8 @@
   {{ partial "themes/astro-tui-portfolio/list.html" . }}
 {{- else if eq $theme "ai-terminal" -}}
   {{ partial "themes/engineer-terminal/list.html" . }}
+{{- else if eq $theme "ai-product-studio" -}}
+  {{ partial "themes/ai-product-studio/list.html" . }}
 {{- else if eq $theme "bloggpt" -}}
   {{- if or (eq .Section "blog") (eq .Section "posts") (eq .Section "projects") (eq .Section "works") -}}
     {{ partial "themes/bloggpt/list.html" . }}

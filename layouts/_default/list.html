@@ -5,6 +5,8 @@
   {{ partial "themes/cyberpunk2077/list.html" . }}
 {{- else if eq $theme "ai-terminal" -}}
   {{ partial "themes/engineer-terminal/list.html" . }}
+{{- else if eq $theme "ai-product-studio" -}}
+  {{ partial "themes/ai-product-studio/list.html" . }}
 {{- else -}}
   {{ partial "themes/engineer-terminal/list.html" . }}
 {{- end -}}

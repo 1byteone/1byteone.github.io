@@ -202,8 +202,8 @@ themes:
     description_zh: 展示 AI 产品流程、交互体验与实际交付结果
     short_label: STUDIO
     version: 0.1.0
-    status: planned
-    scope: home-only
+    status: preview
+    scope: site
     category: portfolio
     preview_style: studio
     tags: [product demos, user journeys, delivery]
@@ -212,8 +212,14 @@ themes:
     role: child
     focus: Product demos, user journeys, and delivery evidence
     focus_zh: 产品演示、用户流程与交付证据
-    available: false
-    default_selectable: false
+    home_template: themes/ai-product-studio/home.html
+    stylesheet: css/ai-product-studio.css
+    script: js/ai-product-studio.js
+    base_path: /themes/ai-product-studio/
+    preview_path: /themes/ai-product-studio/
+    available: true
+    default_selectable: true
+    supports: [home, products, experiments, journal, engineering, archive, single]
   - id: ai-pixel-world
     label: Pixel World
     label_zh: 像素世界 / 游戏化

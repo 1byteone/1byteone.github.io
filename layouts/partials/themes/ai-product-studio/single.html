@@ -1,0 +1,40 @@
+{{- $page := . -}}
+{{- $zh := hasPrefix .Lang "zh" -}}
+{{- $project := eq .Section "projects" -}}
+{{- $cover := .Resources.GetMatch "featured.*" -}}
+{{- partial "themes/ai-product-studio/head.html" . -}}
+<body class="ai-product-studio aps-article-page" data-aps-page="{{ .Section }}"{{ if .Site.Params.theme_preview }} data-pagefind-ignore{{ end }}>
+  <div class="aps-reading-progress" data-aps-reading-progress aria-hidden="true"></div>
+  {{ partial "themes/ai-product-studio/header.html" . }}
+  <main id="aps-main" class="aps-main aps-shell aps-article-main">
+    <nav class="aps-breadcrumb" aria-label="{{ if $zh }}面包屑{{ else }}Breadcrumb{{ end }}"><a href="{{ .Site.Home.RelPermalink }}">YOYO / STUDIO</a><span aria-hidden="true">/</span><a href="{{ printf "%s/" .Section | relLangURL }}">{{ if $project }}{{ if $zh }}产品{{ else }}Products{{ end }}{{ else }}{{ if $zh }}{{ .Section }}{{ else }}{{ title .Section }}{{ end }}{{ end }}</a><span aria-hidden="true">/</span><span>{{ .Title }}</span></nav>
+    <article class="aps-article-layout" data-aps-article>
+      <div class="aps-article-body">
+        <header class="aps-article-heading">
+          <div class="aps-article-meta"><span>{{ if $project }}PRODUCT CASE / {{ else }}JOURNAL / {{ end }}{{ .Date.Format "2006.01.02" }}</span><span>{{ .ReadingTime }} {{ if $zh }}分钟阅读{{ else }}MIN READ{{ end }}</span></div>
+          <h1>{{ .Title }}</h1>
+          {{ with .Description }}<p class="aps-article-deck">{{ . }}</p>{{ else }}{{ with .Summary }}<p class="aps-article-deck">{{ . | plainify }}</p>{{ end }}{{ end }}
+          {{ with .Params.tags }}<div class="aps-tag-list">{{ range . }}<span>{{ . }}</span>{{ end }}</div>{{ end }}
+        </header>
+        {{ with $cover }}<figure class="aps-article-cover"><img src="{{ .RelPermalink }}" width="{{ .Width }}" height="{{ .Height }}" alt="{{ $.Title }}" fetchpriority="high" decoding="async"></figure>{{ end }}
+        {{ if $project }}
+          <section class="aps-case-record" aria-label="{{ if $zh }}项目档案信息{{ else }}Project record{{ end }}">
+            <div><span>{{ if $zh }}状态{{ else }}STATUS{{ end }}</span><strong>{{ with .Params.status }}{{ . }}{{ else }}{{ if $zh }}以正文记录为准{{ else }}See source record{{ end }}{{ end }}</strong></div>
+            {{ with .Params.role }}<div><span>{{ if $zh }}职责{{ else }}ROLE{{ end }}</span><strong>{{ . }}</strong></div>{{ end }}
+            {{ with .Params.duration }}<div><span>{{ if $zh }}周期{{ else }}DURATION{{ end }}</span><strong>{{ . }}</strong></div>{{ end }}
+            {{ with .Params.team_size }}<div><span>{{ if $zh }}团队{{ else }}TEAM{{ end }}</span><strong>{{ . }}</strong></div>{{ end }}
+            {{ with .Params.tech_stack }}<div class="aps-case-wide"><span>{{ if $zh }}技术栈{{ else }}STACK{{ end }}</span><div class="aps-tag-list">{{ range . }}<span>{{ . }}</span>{{ end }}</div></div>{{ end }}
+            {{ with .Params.links }}<div class="aps-case-wide"><span>{{ if $zh }}公开交付链接{{ else }}PUBLIC DELIVERY LINKS{{ end }}</span><div class="aps-case-links">{{ range . }}<a href="{{ .url }}" target="_blank" rel="noopener noreferrer">{{ .label | default .type }} <span aria-hidden="true">↗</span></a>{{ end }}</div></div>{{ end }}
+          </section>
+          <p class="aps-proof-note">{{ if $zh }}本案例只复述来源档案中已有的信息。未记录的评测数据、用户规模和线上状态保持未声明。{{ else }}This case study uses information present in its source record. Unreported evaluation data, user counts, and deployment status remain unstated.{{ end }}</p>
+        {{ end }}
+        <div class="aps-prose">{{ .Content }}</div>
+        <nav class="aps-article-pagination" aria-label="{{ if $zh }}相邻记录{{ else }}Adjacent records{{ end }}">
+          {{ with .PrevInSection }}<a href="{{ .RelPermalink }}"><span>{{ if $zh }}上一篇{{ else }}PREVIOUS{{ end }}</span><strong>{{ .Title }}</strong></a>{{ end }}
+          {{ with .NextInSection }}<a href="{{ .RelPermalink }}"><span>{{ if $zh }}下一篇{{ else }}NEXT{{ end }}</span><strong>{{ .Title }}</strong></a>{{ end }}
+        </nav>
+      </div>
+      {{ with .TableOfContents }}<aside class="aps-article-aside"><span>{{ if $zh }}本页目录{{ else }}ON THIS PAGE{{ end }}</span>{{ . }}</aside>{{ end }}
+    </article>
+  </main>
+  {{ partial "themes/ai-product-studio/footer.html" . }}

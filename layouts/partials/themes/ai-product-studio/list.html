@@ -1,0 +1,65 @@
+{{- $page := . -}}
+{{- $zh := hasPrefix .Lang "zh" -}}
+{{- $section := .Section -}}
+{{- $pages := .RegularPages.ByDate.Reverse -}}
+{{- if not $pages -}}{{- $pages = .Pages.ByDate.Reverse -}}{{- end -}}
+{{- partial "themes/ai-product-studio/head.html" . -}}
+<body class="ai-product-studio aps-archive-page" data-aps-page="{{ $section }}"{{ if .Site.Params.theme_preview }} data-pagefind-ignore{{ end }}>
+  {{ partial "themes/ai-product-studio/header.html" . }}
+  <main id="aps-main" class="aps-main aps-shell aps-list-main">
+    <nav class="aps-breadcrumb" aria-label="{{ if $zh }}面包屑{{ else }}Breadcrumb{{ end }}"><a href="{{ .Site.Home.RelPermalink }}">YOYO / STUDIO</a><span aria-hidden="true">/</span><span>{{ .Title }}</span></nav>
+    <header class="aps-page-heading"><span>{{ printf "ARCHIVE / %s" (upper $section) }}</span><h1>{{ .Title }}</h1>{{ with .Description }}<p>{{ . }}</p>{{ end }}</header>
+    {{ with .Content }}<div class="aps-page-intro">{{ . }}</div>{{ end }}
+
+    {{- if eq $section "experiments" -}}
+      <div class="aps-evidence-banner"><span>METHOD NOTE</span><p>{{ if $zh }}这里优先展示能回溯到公开技术文章的研究线索。只有来源明确记录了模型、数据集、配置和运行结果时，才将条目标记为已评测。{{ else }}This index links to published technical notes. A record is labeled evaluated only when its source documents the model, dataset, configuration, and result.{{ end }}</p></div>
+      <div class="aps-filter-row" role="group" aria-label="{{ if $zh }}按研究方向筛选{{ else }}Filter research notes{{ end }}">
+        <button type="button" data-aps-experiment-filter="all" aria-pressed="true">{{ if $zh }}全部{{ else }}All notes{{ end }}</button>
+        <button type="button" data-aps-experiment-filter="rag" aria-pressed="false">RAG</button>
+        <button type="button" data-aps-experiment-filter="agent" aria-pressed="false">Agent</button>
+        <button type="button" data-aps-experiment-filter="tool" aria-pressed="false">Tool use</button>
+      </div>
+      <div class="aps-experiment-grid" data-aps-experiment-grid>
+        {{- range $index, $record := hugo.Data.ai_product_studio.experiments -}}
+          {{- $source := $.Site.GetPage (printf "/blog/%s" $record.source) -}}
+          {{- with $source -}}
+          <article class="aps-experiment-card" data-aps-experiment-card data-topic="{{ lower $record.category }}">
+            <div class="aps-experiment-top"><span>NOTE / {{ printf "%03d" (add $index 1) }}</span><span>{{ if $zh }}文章记录{{ else }}ARTICLE NOTE{{ end }}</span></div>
+            <p class="aps-experiment-category">{{ if $zh }}{{ $record.category_zh }}{{ else }}{{ $record.category }}{{ end }}</p>
+            <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+            <p class="aps-experiment-summary">{{ .Summary | plainify | truncate 180 }}</p>
+            <dl class="aps-experiment-facts"><div><dt>{{ if $zh }}来源{{ else }}SOURCE{{ end }}</dt><dd>{{ if $zh }}共享技术文章{{ else }}Shared technical article{{ end }}</dd></div><div><dt>{{ if $zh }}基准数据{{ else }}BENCHMARK{{ end }}</dt><dd>{{ if $zh }}未公开{{ else }}Not published{{ end }}</dd></div></dl>
+            <a class="aps-text-link" href="{{ .RelPermalink }}">{{ if $zh }}阅读来源记录{{ else }}Read source note{{ end }} <span aria-hidden="true">↗</span></a>
+          </article>
+          {{- end -}}
+        {{- end -}}
+      </div>
+      <p class="aps-empty-note" data-aps-experiment-empty hidden>{{ if $zh }}当前筛选没有记录。{{ else }}No records match this filter.{{ end }}</p>
+    {{- else if eq $section "projects" -}}
+      <div class="aps-product-grid aps-product-list">
+        {{- range $index, $project := $pages -}}
+          {{- $cover := $project.Resources.GetMatch "featured.*" -}}
+          <article class="aps-product-card" data-aps-reveal>
+            <a class="aps-product-visual" href="{{ $project.RelPermalink }}" aria-label="{{ if $zh }}打开项目{{ else }}Open project{{ end }}: {{ $project.Title }}">
+              {{ with $cover }}<img src="{{ .RelPermalink }}" alt="{{ $project.Title }}" width="{{ .Width }}" height="{{ .Height }}" loading="lazy" decoding="async">{{ else }}<div class="aps-project-abstract aps-project-abstract-{{ mod (len $project.Title) 3 }}" aria-hidden="true"><span>PRODUCT / {{ printf "%03d" (add $index 1) }}</span><i></i><b></b></div>{{ end }}<span class="aps-product-open" aria-hidden="true">↗</span>
+            </a>
+            <div class="aps-product-meta"><span>{{ with $project.Params.status }}{{ . }}{{ else }}{{ if $zh }}项目档案{{ else }}PROJECT RECORD{{ end }}{{ end }}</span><span>{{ $project.Date.Format "2006.01" }}</span></div>
+            <h2><a href="{{ $project.RelPermalink }}">{{ $project.Title }}</a></h2><p>{{ $project.Summary | plainify | truncate 180 }}</p>
+            {{ with $project.Params.tech_stack }}<div class="aps-tag-list">{{ range first 5 . }}<span>{{ . }}</span>{{ end }}</div>{{ end }}
+          </article>
+        {{- else -}}<p class="aps-empty-note">{{ if $zh }}目前还没有公开项目档案。{{ else }}No public project records yet.{{ end }}</p>{{- end -}}
+      </div>
+    {{- else if eq $section "resource" -}}
+      <div class="aps-resource-grid">
+        <a href="{{ "blog/" | relLangURL }}"><span>01 / READING</span><h2>{{ if $zh }}技术文章与学习笔记{{ else }}Articles &amp; learning notes{{ end }}</h2><p>{{ if $zh }}在同一内容库中查找 AI、后端和软件工程文章。{{ else }}Browse AI, backend, and software engineering notes in the shared archive.{{ end }}</p><b aria-hidden="true">↗</b></a>
+        <a href="{{ "tech-stack/" | relLangURL }}"><span>02 / ENGINEERING</span><h2>{{ if $zh }}技术栈与学习路径{{ else }}Stacks &amp; learning paths{{ end }}</h2><p>{{ if $zh }}查看技术选择、工程实践与学习路线。{{ else }}Explore technology choices, engineering practices, and study paths.{{ end }}</p><b aria-hidden="true">↗</b></a>
+        <a href="{{ "projects/" | relLangURL }}"><span>03 / OPEN WORK</span><h2>{{ if $zh }}产品与开源项目{{ else }}Products &amp; open work{{ end }}</h2><p>{{ if $zh }}项目状态、实现说明和公开的交付链接以项目原始档案为准。{{ else }}Project status, implementation notes, and delivery links come from their source records.{{ end }}</p><b aria-hidden="true">↗</b></a>
+      </div>
+      {{ if $pages }}<div class="aps-journal-list aps-resource-list">{{ range $pages }}<a class="aps-journal-row" href="{{ .RelPermalink }}"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time><span class="aps-journal-index">↗</span><span class="aps-journal-copy"><strong>{{ .Title }}</strong><small>{{ .Summary | plainify | truncate 150 }}</small></span></a>{{ end }}</div>{{ end }}
+    {{- else if eq $section "blog" -}}
+      <div class="aps-journal-list aps-journal-archive">{{ range $pages }}<a class="aps-journal-row" href="{{ .RelPermalink }}"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time><span class="aps-journal-index">{{ with .Params.category }}{{ . }}{{ else }}NOTE{{ end }}</span><span class="aps-journal-copy"><strong>{{ .Title }}</strong><small>{{ .Summary | plainify | truncate 170 }}</small></span><span class="aps-journal-arrow" aria-hidden="true">↗</span></a>{{ else }}<p class="aps-empty-note">{{ if $zh }}目前还没有文章。{{ else }}No journal entries yet.{{ end }}</p>{{ end }}</div>
+    {{- else -}}
+      <div class="aps-journal-list">{{ range $pages }}<a class="aps-journal-row" href="{{ .RelPermalink }}"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time><span class="aps-journal-index">{{ upper $section }}</span><span class="aps-journal-copy"><strong>{{ .Title }}</strong><small>{{ .Summary | plainify | truncate 160 }}</small></span><span class="aps-journal-arrow" aria-hidden="true">↗</span></a>{{ else }}<p class="aps-empty-note">{{ if $zh }}这个目录还没有公开条目。{{ else }}There are no published entries in this directory yet.{{ end }}</p>{{ end }}</div>
+    {{- end -}}
+  </main>
+  {{ partial "themes/ai-product-studio/footer.html" . }}

@@ -1,0 +1,43 @@
+{{- $page := . -}}
+{{- $zh := hasPrefix .Lang "zh" -}}
+{{- $studio := hugo.Data.ai_product_studio -}}
+{{- $current := cond .IsHome "studio" .Section -}}
+<a class="aps-skip-link" href="#aps-main">{{ if $zh }}跳到主要内容{{ else }}Skip to main content{{ end }}</a>
+<header class="aps-header" data-aps-header>
+  <div class="aps-header-inner">
+    <a class="aps-brand" href="{{ .Site.Home.RelPermalink }}" aria-label="YOYO AI Product Studio">
+      <span class="aps-brand-mark" aria-hidden="true">Y.</span>
+      <span class="aps-brand-copy"><strong>YOYO</strong><small>AI PRODUCT STUDIO</small></span>
+    </a>
+    <button class="aps-menu-toggle" type="button" data-aps-menu-toggle aria-expanded="false" aria-controls="aps-primary-nav" aria-label="{{ if $zh }}打开导航菜单{{ else }}Open navigation menu{{ end }}"><span></span><span></span></button>
+    <nav class="aps-nav" id="aps-primary-nav" data-aps-nav aria-label="{{ if $zh }}工作室导航{{ else }}Studio navigation{{ end }}">
+      {{- range $index, $item := $studio.navigation -}}
+        {{- $label := $item.label -}}{{- if $zh -}}{{- $label = $item.label_zh -}}{{- end -}}
+        {{- $href := $item.path | relLangURL -}}
+        {{- if eq $item.id "studio" -}}{{- $href = .Site.Home.RelPermalink -}}{{- end -}}
+        <a href="{{ $href }}"{{ if eq $current $item.id }} aria-current="page"{{ end }}><span>{{ printf "%02d" (add $index 1) }}</span>{{ $label }}</a>
+      {{- end -}}
+    </nav>
+    <div class="aps-tools">
+      {{ partial "theme-switcher.html" $page }}
+      <button class="aps-mode-toggle" type="button" data-aps-mode-toggle aria-pressed="false" aria-label="{{ if $zh }}切换深色模式{{ else }}Toggle dark mode{{ end }}" title="{{ if $zh }}切换深色模式{{ else }}Toggle dark mode{{ end }}"><span aria-hidden="true">◐</span></button>
+      <button class="aps-search-trigger" type="button" data-aps-search-open aria-label="{{ if $zh }}搜索工作室档案{{ else }}Search studio archive{{ end }}"><span aria-hidden="true">⌕</span><kbd data-aps-shortcut>⌘K</kbd></button>
+      {{- $translationURL := cond $zh ("en/" | relLangURL) ("/" | relLangURL) -}}
+      {{- with .Translations -}}{{- $translationURL = (index . 0).RelPermalink -}}{{- end -}}
+      <a class="aps-language" href="{{ $translationURL }}" lang="{{ if $zh }}en{{ else }}zh-Hans{{ end }}">{{ if $zh }}EN{{ else }}中{{ end }}</a>
+    </div>
+  </div>
+</header>
+<dialog class="aps-search-dialog" data-aps-search-dialog aria-labelledby="aps-search-title">
+  <form method="dialog" class="aps-search-form">
+    <div class="aps-search-head"><div><span>YOYO / SEARCH INDEX</span><h2 id="aps-search-title">{{ if $zh }}查找工作室档案{{ else }}Search the studio archive{{ end }}</h2></div><button type="submit" aria-label="{{ if $zh }}关闭搜索{{ else }}Close search{{ end }}">ESC</button></div>
+    <label class="aps-search-input"><span aria-hidden="true">⌕</span><input type="search" data-aps-search-input autocomplete="off" placeholder="{{ if $zh }}搜索产品、实验、文章与工程记录…{{ else }}Search products, experiments, and engineering notes…{{ end }}" aria-label="{{ if $zh }}搜索档案{{ else }}Search archive{{ end }}"></label>
+  </form>
+  <div class="aps-search-results" data-aps-search-results aria-live="polite"></div>
+  <p class="aps-search-help">{{ if $zh }}↑↓ 选择 · Enter 打开 · Esc 关闭{{ else }}↑↓ select · Enter open · Esc close{{ end }}</p>
+</dialog>
+<div class="aps-search-source" data-aps-search-source hidden>
+  {{- range first 150 .Site.RegularPages -}}
+    {{- if not .Params.theme_preview_only -}}<a href="{{ .RelPermalink }}" data-title="{{ .Title | htmlEscape }}" data-section="{{ .Section | htmlEscape }}" data-summary="{{ .Summary | plainify | htmlEscape }}">{{ .Title }}</a>{{- end -}}
+  {{- end -}}
+</div>

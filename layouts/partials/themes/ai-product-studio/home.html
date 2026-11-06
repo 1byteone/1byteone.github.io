@@ -1,0 +1,101 @@
+{{- $page := . -}}
+{{- $zh := hasPrefix .Lang "zh" -}}
+{{- $site := hugo.Data.site.site -}}
+{{- $studio := hugo.Data.ai_product_studio -}}
+{{- $projects := sort (where .Site.RegularPages "Section" "projects") "Date" "desc" -}}
+{{- $posts := sort (where .Site.RegularPages "Section" "blog") "Date" "desc" -}}
+{{- $stacks := where .Site.RegularPages "Section" "tech-stack" -}}
+{{- $pixelScene := resources.Get "media/ai-product-studio/studio-pixel-classroom.svg" -}}
+{{ partial "themes/ai-product-studio/head.html" . }}
+<body class="ai-product-studio aps-home" data-aps-page="studio"{{ if .Site.Params.theme_preview }} data-pagefind-ignore{{ end }}>
+  {{ partial "themes/ai-product-studio/header.html" . }}
+  <main id="aps-main" class="aps-main aps-shell">
+    <section class="aps-hero" aria-labelledby="aps-hero-title">
+      <div class="aps-hero-copy">
+        <p class="aps-eyebrow"><span class="aps-index-dot" aria-hidden="true"></span> INDEPENDENT AI MAKER <i>·</i> ENGINEERING <i>·</i> EXPERIMENTS</p>
+        <h1 id="aps-hero-title">Building useful<br>things <em>with AI.</em></h1>
+        <p class="aps-hero-lede">{{ if $zh }}一个持续构建、实验、记录和交付 AI 产品的个人工作室。{{ else }}An independent workspace for AI engineering, product experiments, and creative software.{{ end }}</p>
+        <p class="aps-hero-note">{{ if $zh }}我是{{ $site.identity.name }}，一名 AI 应用开发工程师。我关注的不只是模型能做什么，也关注系统如何被设计、验证和持续维护。{{ else }}I’m {{ $site.identity.name_en }}, an AI application engineer interested in how useful systems are designed, evaluated, and maintained.{{ end }}</p>
+        <div class="aps-hero-actions"><a class="aps-button aps-button-primary" href="{{ "projects/" | relLangURL }}">{{ if $zh }}浏览产品档案{{ else }}Explore products{{ end }} <span aria-hidden="true">↗</span></a><a class="aps-button aps-button-quiet" href="{{ "experiments/" | relLangURL }}">{{ if $zh }}查看研究线索{{ else }}Research notes{{ end }} <span aria-hidden="true">↓</span></a></div>
+        <div class="aps-hero-tags"><span>RAG</span><span>AGENT SYSTEMS</span><span>TEXT2SQL</span><span>BACKEND</span></div>
+      </div>
+      <figure class="aps-scene-card" data-aps-reveal>
+        <div class="aps-scene-frame">
+          <div class="aps-scene-caption"><span>COMPUTER CLUB / 01</span><span>BUILD SESSION · 2026</span></div>
+          {{ with $pixelScene }}<img src="{{ .RelPermalink }}" width="960" height="620" alt="{{ if $zh }}日落时分的像素风计算机社团工作室，桌面显示着 AI 系统研究面板{{ else }}Pixel-art computer club at sunset with an AI systems research dashboard on screen{{ end }}" fetchpriority="high">{{ end }}
+          <div class="aps-scene-overlay" aria-hidden="true"><span>THINK</span><i></i><span>BUILD</span></div>
+        </div>
+        <figcaption><span>{{ if $zh }}工作室现场{{ else }}Studio field note{{ end }}</span><span>01 / 06</span></figcaption>
+      </figure>
+      <div class="aps-hero-foot"><span>YOYO / AI PRODUCT STUDIO</span><span>{{ if $zh }}把想法变成可靠的软件{{ else }}FROM IDEAS TO RELIABLE SOFTWARE{{ end }}</span><a href="#aps-work">SCROLL TO EXPLORE <b aria-hidden="true">↓</b></a></div>
+    </section>
+
+    <section class="aps-signal-strip" aria-label="{{ if $zh }}工作室方向{{ else }}Studio focus{{ end }}">
+      <div><span>01 / PRODUCT</span><strong>{{ if $zh }}从真实问题出发{{ else }}Start with real problems{{ end }}</strong></div>
+      <div><span>02 / ENGINEERING</span><strong>{{ if $zh }}让系统可理解、可维护{{ else }}Build for clarity and care{{ end }}</strong></div>
+      <div><span>03 / EVIDENCE</span><strong>{{ if $zh }}结论附带验证依据{{ else }}Keep decisions evidence-led{{ end }}</strong></div>
+      <p>{{ if $zh }}项目与指标以已发布档案为准{{ else }}Projects and metrics follow published records{{ end }}</p>
+    </section>
+
+    <section class="aps-section aps-products-section" id="aps-work" aria-labelledby="aps-products-title">
+      <div class="aps-section-heading"><div><span>01 / SELECTED WORK</span><h2 id="aps-products-title">{{ if $zh }}产品与项目{{ else }}Products &amp; projects{{ end }}</h2></div><p>{{ if $zh }}从问题定义到可运行交付，查看真实项目记录。{{ else }}From problem framing to working delivery, explore the project records.{{ end }}</p><a class="aps-text-link" href="{{ "projects/" | relLangURL }}">{{ if $zh }}全部项目{{ else }}All projects{{ end }} <span aria-hidden="true">↗</span></a></div>
+      <div class="aps-product-grid">
+        {{- range $index, $project := first 3 $projects -}}
+          {{- $cover := $project.Resources.GetMatch "featured.*" -}}
+          <article class="aps-product-card" data-aps-reveal>
+            <a class="aps-product-visual" href="{{ $project.RelPermalink }}" aria-label="{{ if $zh }}打开项目{{ else }}Open project{{ end }}: {{ $project.Title }}">
+              {{- with $cover -}}<img src="{{ .RelPermalink }}" alt="{{ $project.Title }}" width="{{ .Width }}" height="{{ .Height }}" loading="lazy" decoding="async">{{- else -}}<div class="aps-project-abstract aps-project-abstract-{{ mod (len $project.Title) 3 }}" aria-hidden="true"><span>{{ printf "PRODUCT / %03d" (add $index 1) }}</span><i></i><b></b></div>{{- end -}}
+              <span class="aps-product-open" aria-hidden="true">↗</span>
+            </a>
+            <div class="aps-product-meta"><span>{{ with $project.Params.status }}{{ . }}{{ else }}{{ if $zh }}项目档案{{ else }}PROJECT RECORD{{ end }}{{ end }}</span><span>{{ with $project.Params.role }}{{ . }}{{ else }}{{ upper $project.Section }}{{ end }}</span></div>
+            <h3><a href="{{ $project.RelPermalink }}">{{ $project.Title }}</a></h3>
+            <p>{{ $project.Summary | plainify | truncate 160 }}</p>
+            {{ with $project.Params.tech_stack }}<div class="aps-tag-list">{{ range first 4 . }}<span>{{ . }}</span>{{ end }}</div>{{ end }}
+          </article>
+        {{- else -}}
+          <p class="aps-empty-note">{{ if $zh }}项目档案正在整理。{{ else }}Project records are being prepared.{{ end }}</p>
+        {{- end -}}
+      </div>
+    </section>
+
+    <section class="aps-section aps-research-section" aria-labelledby="aps-research-title">
+      <div class="aps-section-heading"><div><span>02 / RESEARCH THREADS</span><h2 id="aps-research-title">{{ if $zh }}实验线索{{ else }}Research threads{{ end }}</h2></div><p>{{ if $zh }}从现有技术文章进入 RAG、Agent 与工具调用主题；未公开的数据集和 benchmark 不以分数代替。{{ else }}Explore RAG, agents, and tool use through published engineering notes. Unpublished datasets and benchmarks stay unscored.{{ end }}</p><a class="aps-text-link" href="{{ "experiments/" | relLangURL }}">{{ if $zh }}研究档案{{ else }}Research archive{{ end }} <span aria-hidden="true">↗</span></a></div>
+      <div class="aps-research-grid">
+        {{- range $index, $record := first 3 $studio.experiments -}}
+          {{- $source := $.Site.GetPage (printf "/blog/%s" $record.source) -}}
+          {{- with $source -}}
+          <a class="aps-research-card" href="{{ .RelPermalink }}" data-aps-reveal><span class="aps-research-id">NOTE / {{ printf "%02d" (add $index 1) }}</span><span class="aps-research-category">{{ if $zh }}{{ $record.category_zh }}{{ else }}{{ $record.category }}{{ end }}</span><h3>{{ .Title }}</h3><p>{{ .Summary | plainify | truncate 125 }}</p><span class="aps-research-link">{{ if $zh }}打开技术记录{{ else }}Open engineering note{{ end }} <b aria-hidden="true">↗</b></span></a>
+          {{- end -}}
+        {{- end -}}
+      </div>
+      <p class="aps-evidence-note"><span aria-hidden="true">i</span>{{ if $zh }}实验条件、模型版本、数据集和指标仅在来源文章明确记录时展示。{{ else }}Methods, model versions, datasets, and metrics appear only when documented by the source record.{{ end }}</p>
+    </section>
+
+    <section class="aps-section aps-journal-section" aria-labelledby="aps-journal-title">
+      <div class="aps-section-heading"><div><span>03 / JOURNAL</span><h2 id="aps-journal-title">{{ if $zh }}开发日志与技术文章{{ else }}Journal &amp; engineering notes{{ end }}</h2></div><p>{{ if $zh }}记录决策、实现、碰壁与验证过程。{{ else }}Decisions, implementation details, failures, and verification.{{ end }}</p><a class="aps-text-link" href="{{ "blog/" | relLangURL }}">{{ if $zh }}全部文章{{ else }}All notes{{ end }} <span aria-hidden="true">↗</span></a></div>
+      <div class="aps-journal-list">
+        {{- range $index, $post := first 4 $posts -}}
+          <a class="aps-journal-row" href="{{ $post.RelPermalink }}"><time datetime="{{ $post.Date.Format "2006-01-02" }}">{{ $post.Date.Format "2006.01.02" }}</time><span class="aps-journal-index">{{ printf "%02d" (add $index 1) }}</span><span class="aps-journal-copy"><strong>{{ $post.Title }}</strong><small>{{ $post.Summary | plainify | truncate 145 }}</small></span><span class="aps-journal-arrow" aria-hidden="true">↗</span></a>
+        {{- end -}}
+      </div>
+    </section>
+
+    <section class="aps-section aps-system-section" aria-labelledby="aps-system-title">
+      <div class="aps-section-heading"><div><span>04 / ENGINEERING PRACTICE</span><h2 id="aps-system-title">{{ if $zh }}工程系统{{ else }}Engineering practice{{ end }}</h2></div><p>{{ if $zh }}技术栈不是徽章墙，而是有上下文的架构、工具与学习路径。{{ else }}A technology stack is more than badges: it needs architecture, context, and a learning path.{{ end }}</p><a class="aps-text-link" href="{{ "tech-stack/" | relLangURL }}">{{ if $zh }}浏览工程档案{{ else }}Explore engineering{{ end }} <span aria-hidden="true">↗</span></a></div>
+      <div class="aps-engineering-grid">
+        <div class="aps-engineering-copy"><span class="aps-mono-label">THINK → EXPERIMENT → BUILD → SHIP</span><h3>{{ if $zh }}把复杂系统拆成可以推理、实现与验证的模块。{{ else }}Make complex systems understandable, buildable, and verifiable.{{ end }}</h3><p>{{ if $zh }}从 AI 应用架构、RAG 流程、Agent 编排到 API 集成与部署，围绕真实工程约束形成可复用的方法。{{ else }}From AI application architecture and RAG pipelines to agent orchestration, APIs, and deployment, work from real engineering constraints.{{ end }}</p><a href="{{ "tech-stack/" | relLangURL }}">{{ if $zh }}查看技术路径{{ else }}View technology paths{{ end }} <span aria-hidden="true">↗</span></a></div>
+        <div class="aps-stack-board" aria-label="{{ if $zh }}技术方向{{ else }}Engineering focus areas{{ end }}">
+          <span>01 / AI SYSTEMS</span><strong>RAG <i>·</i> Agents <i>·</i> Evaluation</strong>
+          <span>02 / APPLICATION</span><strong>FastAPI <i>·</i> Spring Boot <i>·</i> APIs</strong>
+          <span>03 / DELIVERY</span><strong>Testing <i>·</i> Docker <i>·</i> Observability</strong>
+          <small>{{ len $stacks }} {{ if $zh }}条技术学习路径{{ else }}published learning paths{{ end }}</small>
+        </div>
+      </div>
+    </section>
+
+    <section class="aps-archive-band" aria-labelledby="aps-archive-title">
+      <div><span>05 / ARCHIVE</span><h2 id="aps-archive-title">{{ if $zh }}收藏能持续复用的知识。{{ else }}Keep useful knowledge close.{{ end }}</h2><p>{{ if $zh }}工具、开源项目、设计资源与学习路线按来源和用途整理。{{ else }}Tools, open source, design references, and learning resources organized by source and use.{{ end }}</p></div>
+      <a class="aps-button aps-button-dark" href="{{ "resource/" | relLangURL }}">{{ if $zh }}打开资料档案{{ else }}Open the archive{{ end }} <span aria-hidden="true">↗</span></a>
+    </section>
+  </main>
+  {{ partial "themes/ai-product-studio/footer.html" . }}

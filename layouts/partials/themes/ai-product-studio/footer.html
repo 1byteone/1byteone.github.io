@@ -1,0 +1,13 @@
+{{- $zh := hasPrefix .Lang "zh" -}}
+{{- $site := hugo.Data.site.site -}}
+<footer class="aps-footer">
+  <div class="aps-footer-main">
+    <a class="aps-footer-brand" href="{{ .Site.Home.RelPermalink }}"><span>YOYO</span><i>/</i><strong>AI PRODUCT STUDIO</strong></a>
+    <p>{{ if $zh }}持续构建、实验、记录与交付。让每个结论都能回到证据。{{ else }}Think, experiment, build, and ship. Keep every conclusion connected to evidence.{{ end }}</p>
+    <a class="aps-footer-github" href="{{ $site.identity.github }}" target="_blank" rel="noopener noreferrer">{{ $site.identity.github_label }} <span aria-hidden="true">↗</span></a>
+  </div>
+  <div class="aps-footer-meta"><span>DESIGNED &amp; BUILT BY YOYO</span><span>EST. 2026</span><span>© {{ now.Format "2006" }} {{ $site.identity.name_en }}</span></div>
+</footer>
+<script defer src="{{ "js/ai-product-studio.js" | relURL }}"></script>
+</body>
+</html>

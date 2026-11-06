@@ -7,6 +7,8 @@
   {{ partial "themes/astro-tui-portfolio/single.html" . }}
 {{- else if eq $theme "ai-terminal" -}}
   {{ partial "themes/engineer-terminal/single.html" . }}
+{{- else if eq $theme "ai-product-studio" -}}
+  {{ partial "themes/ai-product-studio/single.html" . }}
 {{- else if eq $theme "bloggpt" -}}
   {{ partial "themes/bloggpt/tech-stack-single.html" . }}
 {{- else if eq $theme "alxian" -}}
