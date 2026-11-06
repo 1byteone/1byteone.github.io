@@ -1,0 +1,39 @@
+{{- $page := . -}}
+{{- $zh := hasPrefix .Lang "zh" -}}
+<header class="et-header">
+  <div class="et-header-inner">
+    <a class="et-brand" href="{{ .Site.Home.RelPermalink }}" aria-label="YOYO Engineering Lab"><span>yoyo</span><i>@</i>engineering-lab</a>
+    <nav class="et-nav" aria-label="{{ if $zh }}主要导航{{ else }}Primary navigation{{ end }}">
+      <a href="{{ .Site.Home.RelPermalink }}"{{ if .IsHome }} aria-current="page"{{ end }}>{{ if $zh }}首页{{ else }}Home{{ end }}</a>
+      <a href="{{ "blog/" | relLangURL }}"{{ if eq .Section "blog" }} aria-current="page"{{ end }}>{{ if $zh }}技术文章{{ else }}Articles{{ end }}</a>
+      <a href="{{ "projects/" | relLangURL }}"{{ if eq .Section "projects" }} aria-current="page"{{ end }}>{{ if $zh }}项目{{ else }}Projects{{ end }}</a>
+      <a href="{{ "ui-lab/" | relLangURL }}"{{ if eq .Section "ui-lab" }} aria-current="page"{{ end }}>{{ if $zh }}实验室{{ else }}Lab{{ end }}</a>
+      <a href="{{ "theme-center/" | relLangURL }}"{{ if eq .Section "theme-center" }} aria-current="page"{{ end }}>{{ if $zh }}主题中心{{ else }}Themes{{ end }}</a>
+      <a href="{{ "about/" | relLangURL }}"{{ if eq .Section "about" }} aria-current="page"{{ end }}>{{ if $zh }}关于{{ else }}About{{ end }}</a>
+    </nav>
+    <div class="et-header-tools">
+      {{ partial "theme-switcher.html" $page }}
+      <button class="et-palette-open-button" type="button" data-palette-open aria-label="{{ if $zh }}打开命令面板{{ else }}Open command palette{{ end }}"><span aria-hidden="true">⌘K</span></button>
+      <button class="et-cyber-toggle" type="button" data-cyber-toggle aria-pressed="false" aria-label="{{ if $zh }}切换赛博特效{{ else }}Toggle cyber effects{{ end }}"><span aria-hidden="true">◈</span><span>CYBER</span></button>
+      {{- $translationURL := "/en/" -}}
+      {{- if not $zh -}}{{- $translationURL = "/" -}}{{- end -}}
+      {{- with .Translations -}}{{- $translationURL = (index . 0).RelPermalink -}}{{- end -}}
+      <a class="et-language" href="{{ $translationURL }}" lang="{{ if $zh }}en{{ else }}zh-Hans{{ end }}">{{ if $zh }}EN{{ else }}中{{ end }}</a>
+    </div>
+  </div>
+</header>
+<div class="et-command-palette" data-command-palette hidden>
+  <div class="et-command-palette-backdrop" data-palette-close></div>
+  <section class="et-command-palette-dialog" role="dialog" aria-modal="true" aria-labelledby="et-command-palette-title">
+    <div class="et-command-palette-head">
+      <div><span>COMMAND CENTER</span><h2 id="et-command-palette-title">{{ if $zh }}跳转到工程记录{{ else }}Jump to an engineering record{{ end }}</h2></div>
+      <button type="button" class="et-command-palette-close" data-palette-close aria-label="{{ if $zh }}关闭命令面板{{ else }}Close command palette{{ end }}">Esc</button>
+    </div>
+    <label class="et-command-palette-input"><span aria-hidden="true">⌘K</span><input type="search" data-palette-input placeholder="{{ if $zh }}搜索文章、项目、实验和档案…{{ else }}Search articles, projects, labs, and archives…{{ end }}" aria-label="{{ if $zh }}搜索站点内容{{ else }}Search site content{{ end }}"></label>
+    <div class="et-command-palette-results" data-palette-results role="listbox" aria-label="{{ if $zh }}搜索结果{{ else }}Search results{{ end }}"></div>
+    <p class="et-command-palette-hint">{{ if $zh }}↑↓ 选择 · Enter 打开 · Esc 关闭{{ else }}↑↓ select · Enter open · Esc close{{ end }}</p>
+  </section>
+  <div class="et-command-palette-source" hidden>
+    {{ range first 100 .Site.RegularPages }}<a data-palette-entry href="{{ .RelPermalink }}" data-palette-title="{{ .Title | htmlEscape }}" data-palette-section="{{ .Section | htmlEscape }}" data-palette-summary="{{ .Summary | plainify | htmlEscape }}">{{ .Title }}</a>{{ end }}
+  </div>
+</div>

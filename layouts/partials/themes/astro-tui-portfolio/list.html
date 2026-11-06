@@ -1,0 +1,18 @@
+{{- $zh := hasPrefix .Lang "zh" -}}
+{{- $pages := .RegularPages.ByDate.Reverse -}}
+{{- if not $pages -}}{{- $pages = .Pages.ByDate.Reverse -}}{{- end -}}
+{{- if and (eq .Section "logs") (not $pages) -}}{{- $pages = where .Site.RegularPages "Section" "blog" -}}{{- $pages = $pages.ByDate.Reverse -}}{{- end -}}
+{{- partial "themes/astro-tui-portfolio/head.html" . -}}
+<body class="astro-tui"{{ if .Site.Params.theme_preview }} data-pagefind-ignore{{ end }}>
+  {{ partial "themes/astro-tui-portfolio/header.html" . }}
+  <main class="at-main at-page-main">
+    <div class="at-breadcrumb"><a href="{{ .Site.Home.RelPermalink }}">~/</a><span>/</span><span>{{ .Title }}</span></div>
+    <header class="at-page-heading"><span>ARCHIVE / {{ upper .Section }}</span><h1>{{ .Title }}</h1>{{ with .Description }}<p>{{ . }}</p>{{ end }}</header>
+    {{ with .Content }}<div class="at-prose at-intro">{{ . }}</div>{{ end }}
+    <div class="at-archive-list">
+      {{ range $pages }}{{ $post := . }}<a class="at-note-row" href="{{ .RelPermalink }}"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time>{{ with .Resources.GetMatch "featured.*" }}<img src="{{ .RelPermalink }}" alt="{{ $post.Title }}" loading="lazy">{{ end }}<span><strong>{{ .Title }}</strong><small>{{ .Summary | plainify | truncate 190 }}</small>{{ with .Params.tags }}<em>{{ range first 4 . }}{{ . }} · {{ end }}</em>{{ end }}</span><b>↗</b></a>{{ else }}<p class="at-empty">{{ if $zh }}这个目录目前还没有公开条目。{{ else }}There are no published entries here yet.{{ end }}</p>{{ end }}
+    </div>
+  </main>
+  {{ partial "themes/astro-tui-portfolio/footer.html" . }}
+</body>
+</html>

@@ -102,7 +102,8 @@
           {{- $isAvailable := $theme.available -}}
           {{- $tags := delimit $theme.tags " " -}}
           {{- $focus := default "" $theme.focus -}}
-          {{- $searchText := lower (printf "%s %s %s %s %s %s %s %s" $theme.id $theme.label $label $theme.description $description $tags $focus $theme.focus_zh) -}}
+          {{- $focusZh := default "" $theme.focus_zh -}}
+          {{- $searchText := lower (printf "%s %s %s %s %s %s %s %s" $theme.id $theme.label $label $theme.description $description $tags $focus $focusZh) -}}
           {{- $selectionID := $theme.id -}}
           {{- if and (eq $theme.family "minimal") (ne $theme.id "minimal") -}}{{- $selectionID = printf "minimal-%s" $theme.variant -}}{{- end -}}
           {{- $isCurrent := eq $selectionID $activeID -}}

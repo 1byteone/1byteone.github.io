@@ -61,6 +61,12 @@ button, input { outline-offset: 3px; }
 .bloggpt-nav-icon { display: inline-grid; width: 18px; place-items: center; color: var(--bloggpt-faint); font-size: 17px; }
 .bloggpt-nav-item kbd { margin-left: auto; color: var(--bloggpt-faint); font-family: inherit; font-size: 10px; }
 .bloggpt-nav { display: grid; gap: 1px; margin-top: 6px; }
+.bloggpt-nav-more > summary { list-style: none; cursor: pointer; }
+.bloggpt-nav-more > summary::-webkit-details-marker { display: none; }
+.bloggpt-nav-chevron { margin-left: auto; color: var(--bloggpt-faint); font-size: 12px; transition: transform .16s ease; }
+.bloggpt-nav-more[open] .bloggpt-nav-chevron { transform: rotate(180deg); }
+.bloggpt-nav-subnav { display: grid; gap: 1px; padding-left: 14px; }
+.bloggpt-nav-subnav .bloggpt-nav-item { min-height: 32px; font-size: 11px; }
 .bloggpt-sidebar-section { min-height: 0; margin-top: 26px; overflow: hidden; }
 .bloggpt-sidebar-label { padding: 0 9px 8px; color: var(--bloggpt-faint); font-size: 11px; font-weight: 500; letter-spacing: .04em; }
 .bloggpt-recent-list { display: grid; gap: 1px; overflow: auto; max-height: calc(100vh - 300px); }

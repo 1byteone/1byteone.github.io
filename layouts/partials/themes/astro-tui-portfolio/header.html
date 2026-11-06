@@ -1,0 +1,20 @@
+{{- $zh := hasPrefix .Lang "zh" -}}
+{{- $page := . -}}
+<header class="at-header">
+  <div class="at-header-inner">
+    <a class="at-brand" href="{{ .Site.Home.RelPermalink }}"><span>astro</span><i>://</i>yoyo</a>
+    <nav class="at-nav" aria-label="{{ if $zh }}主要导航{{ else }}Primary navigation{{ end }}">
+      <a href="{{ .Site.Home.RelPermalink }}">{{ if $zh }}首页{{ else }}home{{ end }}</a>
+      <a href="{{ "blog/" | relLangURL }}">{{ if $zh }}文章{{ else }}notes{{ end }}</a>
+      <a href="{{ "projects/" | relLangURL }}">{{ if $zh }}项目{{ else }}projects{{ end }}</a>
+      <a href="{{ "about/" | relLangURL }}">{{ if $zh }}关于{{ else }}about{{ end }}</a>
+    </nav>
+    <div class="at-tools">
+      {{ partial "theme-switcher.html" $page }}
+      {{- $translationURL := "/en/" -}}
+      {{- if not $zh -}}{{- $translationURL = "/" -}}{{- end -}}
+      {{- with .Translations -}}{{- $translationURL = (index . 0).RelPermalink -}}{{- end -}}
+      <a class="at-language" href="{{ $translationURL }}" lang="{{ if $zh }}en{{ else }}zh-Hans{{ end }}">{{ if $zh }}EN{{ else }}中{{ end }}</a>
+    </div>
+  </div>
+</header>

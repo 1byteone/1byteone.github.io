@@ -1,0 +1,6 @@
+{{- $zh := hasPrefix .Lang "zh" -}}
+{{- $site := .Site.Data.site.site -}}
+<footer class="et-footer"><span>© {{ now.Format "2006" }} {{ $site.identity.name_en }}</span><span>{{ if $zh }}工程记录 · 技术文章 · 项目实践{{ else }}Engineering notes · technical writing · projects{{ end }}</span><a href="{{ $site.identity.github }}" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a></footer>
+<script defer src="{{ "js/engineer-terminal.js" | relURL }}"></script>
+</body>
+</html>

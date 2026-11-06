@@ -1,0 +1,91 @@
+# Sync blog posts from an Obsidian vault repo to this site.
+#
+# Setup:
+#   1. In your Obsidian vault repo, go to Settings → Secrets → Actions
+#      and add a PAT (Personal Access Token) with `repo` scope as SITE_REPO_PAT.
+#   2. In this repo, go to Settings → Secrets → Actions and add:
+#        - VAULT_REPO: owner/vault-repo-name
+#        - VAULT_PAT:  the same PAT (needs read access to the vault repo)
+#        - VAULT_PATH: path inside vault repo to published posts (e.g. "published")
+#   3. Enable this workflow.
+#
+# How it works:
+#   - Triggered manually, on a schedule (daily at 6 AM UTC), or via
+#     repository_dispatch from the vault repo.
+#   - Checks out the vault repo, copies .md files to content/posts/,
+#     and commits + pushes if anything changed.
+#
+# To trigger from your vault repo on push, add this workflow there:
+#
+#   name: Trigger site sync
+#   on:
+#     push:
+#       paths: ['published/**']
+#   jobs:
+#     sync:
+#       runs-on: ubuntu-latest
+#       steps:
+#         - run: |
+#             curl -X POST \
+#               -H "Accept: application/vnd.github.v3+json" \
+#               -H "Authorization: token ${{ secrets.SITE_REPO_PAT }}" \
+#               https://api.github.com/repos/YOUR_USERNAME/termfolio/dispatches \
+#               -d '{"event_type":"sync-obsidian"}'
+
+name: Sync Obsidian Posts
+
+on:
+  repository_dispatch:
+    types: [sync-obsidian]
+  workflow_dispatch:
+  schedule:
+    - cron: "0 6 * * *" # Daily at 6 AM UTC
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout site repo
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.VAULT_PAT }}
+
+      - name: Checkout vault repo
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ secrets.VAULT_REPO }}
+          token: ${{ secrets.VAULT_PAT }}
+          path: _vault
+
+      - name: Sync posts
+        run: |
+          VAULT_PATH="${{ secrets.VAULT_PATH }}"
+          VAULT_PATH="${VAULT_PATH:-published}"
+          SOURCE="_vault/${VAULT_PATH}"
+
+          if [ ! -d "$SOURCE" ]; then
+            echo "Source directory '$SOURCE' not found. Skipping."
+            exit 0
+          fi
+
+          # Copy all .md files from vault to content/posts/
+          cp -v "$SOURCE"/*.md content/posts/ 2>/dev/null || true
+
+          # Check if anything changed
+          if git diff --quiet && [ -z "$(git ls-files --others --exclude-standard content/posts/)" ]; then
+            echo "No changes to sync."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add content/posts/
+          git commit -m "sync: update blog posts from Obsidian vault"
+          git push
+
+      - name: Cleanup
+        if: always()
+        run: rm -rf _vault
