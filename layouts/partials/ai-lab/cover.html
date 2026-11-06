@@ -6,7 +6,10 @@
 {{- with $page.Params.cover -}}{{- $cover = resources.Get . -}}{{- end -}}
 {{- if $cover -}}
   {{- $image := $cover.Fill "1200x675 webp q84" -}}
-  <img class="{{ $class }}" src="{{ $image.RelPermalink }}" width="{{ $image.Width }}" height="{{ $image.Height }}" alt="{{ $page.Params.cover_alt | default $page.Title | htmlEscape }}" loading="{{ $loading }}" decoding="async" fetchpriority="{{ $priority }}">
+  <span class="al-canvas-image" data-canvas-image data-canvas-effect="particle-reveal">
+    <img class="{{ $class }}" src="{{ $image.RelPermalink }}" width="{{ $image.Width }}" height="{{ $image.Height }}" alt="{{ $page.Params.cover_alt | default $page.Title | htmlEscape }}" loading="{{ $loading }}" decoding="async" fetchpriority="{{ $priority }}">
+    <canvas class="al-canvas-image-layer" data-canvas-image-layer aria-hidden="true"></canvas>
+  </span>
 {{- else -}}
   <span class="al-cover-fallback" aria-hidden="true"><span>{{ upper ($page.Params.lab_category | default "research") }}</span><i>01</i></span>
 {{- end -}}

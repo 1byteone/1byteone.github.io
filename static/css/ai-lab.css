@@ -577,26 +577,6 @@ body.ai-lab-home-page .al-ref-header {
   box-shadow: 0 0 0 1px var(--al-home-control-hover-border);
   color: var(--al-ink) !important;
 }
-.al-ref-theme-center {
-  min-height: 28px;
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  padding: 0 12px;
-  border: 1px solid var(--al-line);
-  border-radius: 999px;
-  background: var(--al-home-pill);
-  color: var(--al-ink) !important;
-  font-size: 11px;
-  line-height: 1;
-  white-space: nowrap;
-  transition: background 170ms ease, border-color 170ms ease, color 170ms ease, transform 170ms ease;
-}
-.al-ref-theme-center span:first-child { color: var(--al-accent); font-size: 13px; }
-.al-ref-theme-center span:last-child { color: var(--al-muted); transition: transform 170ms ease; }
-.al-ref-theme-center:hover, .al-ref-theme-center:focus-visible, .al-ref-theme-center[aria-current="page"] { border-color: var(--al-line-strong); background: var(--al-home-control-hover); box-shadow: 0 0 0 1px var(--al-line-strong); }
-.al-ref-theme-center:hover span:last-child { transform: translate(2px, -2px); }
-.al-ref-theme-center:active { transform: scale(.96); }
 .al-ref-pill:active, .al-ref-about:active, .al-ref-language:active, .al-ref-try:active, .al-ref-icon:active, .al-ref-menu-toggle:active { transform: scale(.96); }
 .al-ref-dropdown[open] > .al-ref-pill,
 .al-ref-dropdown > .al-ref-pill[aria-expanded="true"] {
@@ -852,6 +832,21 @@ body.ai-lab-home-page .al-ref-header[data-scrolled="true"] .al-ref-brand-compact
 .al-home-learn-image.is-error::after { position: absolute; inset: 0; display: grid; place-items: center; color: var(--al-muted); content: "IMAGE / FALLBACK"; font: 9px var(--al-mono); letter-spacing: .08em; }
 .al-home-learn-card:hover .al-home-learn-image img, .al-home-learn-card:focus-visible .al-home-learn-image img { transform: scale(1.035); }
 .al-image-fallback { position: relative; z-index: 1; display: grid; min-height: 220px; place-items: center; color: var(--al-muted); font: 10px var(--al-mono); }
+.al-canvas-image { position: relative; display: block; width: 100%; height: 100%; overflow: hidden; isolation: isolate; background: var(--al-surface-alt); }
+.al-canvas-image > img { position: relative; z-index: 1; }
+.al-canvas-image-layer { position: absolute; z-index: 2; inset: 0; display: block; width: 100%; height: 100%; pointer-events: none; opacity: 0; mix-blend-mode: screen; transition: opacity 280ms ease; }
+.al-home-learn-image:hover .al-canvas-image-layer, .al-home-learn-image:focus-within .al-canvas-image-layer, .al-home-learn-image.is-active .al-canvas-image-layer, .al-canvas-image:hover .al-canvas-image-layer, .al-canvas-image:focus-within .al-canvas-image-layer, .al-canvas-image.is-active .al-canvas-image-layer { opacity: 1; }
+.al-home-learn-image > .al-canvas-image-layer { z-index: 3; }
+.al-home-learn-image[data-canvas-ready="true"]::after, .al-canvas-image[data-canvas-ready="true"]::after { position: absolute; z-index: 4; right: 9px; bottom: 8px; padding: 3px 5px; border: 1px solid color-mix(in srgb, var(--al-paper) 62%, transparent); background: color-mix(in srgb, var(--al-ink) 62%, transparent); color: var(--al-paper); content: "CANVAS / LIVE"; font: 7px/1 var(--al-mono); letter-spacing: .08em; opacity: 0; pointer-events: none; transition: opacity 220ms ease; }
+.al-home-learn-image:hover::after, .al-home-learn-image:focus-within::after, .al-canvas-image:hover::after, .al-canvas-image:focus-within::after { opacity: .82; }
+.al-record-media > .al-canvas-image { aspect-ratio: 16 / 9; }
+.al-record-media > .al-canvas-image .al-cover-image { position: absolute; inset: 0; }
+.al-record-media > .al-canvas-image .al-canvas-image-layer { position: absolute; }
+.al-record-media:hover > .al-canvas-image .al-cover-image, .al-record-media:focus-visible > .al-canvas-image .al-cover-image { transform: scale(1.035); }
+@media (prefers-reduced-motion: reduce) {
+  .al-canvas-image-layer { display: none; }
+  .al-home-learn-image[data-canvas-ready="true"]::after, .al-canvas-image[data-canvas-ready="true"]::after { display: none; }
+}
 @keyframes al-image-shimmer { to { transform: translateX(120%); } }
 @keyframes al-image-reveal { from { opacity: 0; } to { opacity: 1; } }
 
@@ -980,7 +975,7 @@ body.ai-lab-home-page .al-ref-header[data-scrolled="true"] .al-ref-brand-compact
   .al-ref-header-inner, .al-home-shell, .al-ref-footer-inner { width: min(100% - 96px, 1760px); }
   .al-ref-header-inner { gap: 12px; }
   .al-ref-nav, .al-ref-tools { gap: 5px; }
-  .al-ref-pill, .al-ref-about, .al-ref-try, .al-ref-theme-center { padding-inline: 10px; font-size: 10px; }
+  .al-ref-pill, .al-ref-about, .al-ref-try { padding-inline: 10px; font-size: 10px; }
   .al-ref-brand-yoyo { font-size: 18px; }
   .al-home-intro h1 { font-size: 40px; }
   .al-home-announcement { padding-inline: 21px; }
@@ -1045,8 +1040,6 @@ body.ai-lab-home-page .al-ref-header[data-scrolled="true"] .al-ref-brand-compact
   .ai-lab-page .theme-manager-trigger { width: 31px; min-height: 31px; justify-content: center; padding: 0; border-radius: 9px; }
   .ai-lab-page .theme-manager-trigger-copy { display: none; }
   .ai-lab-page .theme-manager-trigger-icon { font-size: 14px; }
-  .al-ref-theme-center { width: 31px; min-height: 31px; justify-content: center; padding: 0; border-radius: 9px; }
-  .al-ref-theme-center span:nth-child(2) { display: none; }
   .al-ref-icon, .al-ref-menu-toggle { width: 31px; height: 31px; border-radius: 9px; }
   .al-ref-language { width: 31px; min-height: 31px; }
   .al-home-shell, .al-ref-footer-inner { width: calc(100% - 64px); }
@@ -1123,8 +1116,6 @@ body.ai-lab-home-page .al-ref-header[data-scrolled="true"] .al-ref-brand-compact
   .al-ref-try { display: none; }
   .ai-lab-page .theme-manager-trigger { width: 31px; min-height: 31px; justify-content: center; padding: 0; border-radius: 9px; }
   .ai-lab-page .theme-manager-trigger-copy { display: none; }
-  .al-ref-theme-center { width: 31px; min-height: 31px; justify-content: center; padding: 0; border-radius: 9px; }
-  .al-ref-theme-center span:nth-child(2) { display: none; }
   .al-home-shell, .al-ref-footer-inner { width: calc(100% - 64px); }
   .al-home-intro { padding-top: 24px; padding-bottom: 24px; }
   .al-home-intro h1 { font-size: 29px; line-height: 1.2; }

@@ -105,8 +105,8 @@
         {{- $categoryMeta := index (where $categories "id" $card.id) 0 -}}
         <a class="al-home-learn-card" data-learn-slide href="{{ printf "ai-lab/%s/" $card.id | relLangURL }}">
           <div class="al-home-learn-meta"><span>{{ if $zh }}{{ $card.label_zh }}{{ else }}{{ $card.label_en }}{{ end }}</span></div>
-          <div class="al-home-learn-image" data-image-frame>
-            {{ with resources.Get $card.image }}{{- $image := .Fill "800x1000 webp q84" -}}<img src="{{ $image.RelPermalink }}" width="{{ $image.Width }}" height="{{ $image.Height }}" alt="{{ if $zh }}{{ $card.alt_zh }}{{ else }}{{ $card.alt_en }}{{ end }}" loading="eager" decoding="async">{{ else }}<span class="al-image-fallback" role="img" aria-label="{{ if $zh }}{{ $card.title_zh }}{{ else }}{{ $card.title_en }}{{ end }}">{{ if $zh }}图像准备中{{ else }}Image preparing{{ end }}</span>{{ end }}
+          <div class="al-home-learn-image" data-image-frame data-canvas-image data-canvas-effect="particle-reveal">
+            {{ with resources.Get $card.image }}{{- $image := .Fill "800x1000 webp q84" -}}<img src="{{ $image.RelPermalink }}" width="{{ $image.Width }}" height="{{ $image.Height }}" alt="{{ if $zh }}{{ $card.alt_zh }}{{ else }}{{ $card.alt_en }}{{ end }}" loading="eager" decoding="async"><canvas class="al-canvas-image-layer" data-canvas-image-layer aria-hidden="true"></canvas>{{ else }}<span class="al-image-fallback" role="img" aria-label="{{ if $zh }}{{ $card.title_zh }}{{ else }}{{ $card.title_en }}{{ end }}">{{ if $zh }}图像准备中{{ else }}Image preparing{{ end }}</span>{{ end }}
           </div>
           <h3>{{ if $zh }}{{ $card.title_zh }}{{ else }}{{ $card.title_en }}{{ end }}</h3>
           <p>{{ if $zh }}{{ $categoryMeta.description_zh }}{{ else }}{{ $categoryMeta.description }}{{ end }}</p>

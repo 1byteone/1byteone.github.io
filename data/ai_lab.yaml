@@ -37,34 +37,46 @@ categories:
     description_zh: 故障分析、调试记录与实现复盘。
 home_cards:
   - id: research
-    image: media/ai-lab/anthropic-home/anthropic-institute.jpg
+    image: media/ai-lab/parallel-archives/patent-document-1f7e2ec567d9-ink-480.webp
     label_en: Research / Principles
     label_zh: 研究与原理
     title_en: Models and foundations
     title_zh: 模型与原理
-    alt_en: Archival architectural drawing and geometric study on aged paper.
-    alt_zh: 旧纸上的建筑档案图与几何研究手稿。
+    alt_en: A patent document study rendered as a layered archival image.
+    alt_zh: 以档案层次呈现的专利文档研究图。
+    source_en: Parallel Archives reference · local learning asset
+    source_zh: Parallel Archives 参考 · 本地学习素材
+    source_url: https://archives.parallel.ai/
   - id: experiments
-    image: media/ai-lab/anthropic-home/claude-constitution.png
+    image: media/ai-lab/parallel-archives/route-plan-1974-45d148f0f5c2-ink-480.webp
     label_en: Experiments / Reproduction
     label_zh: 实验与复现
     title_en: Experiments in practice
     title_zh: 实验与复现
-    alt_en: A layered, hand-drawn circular diagram on pale yellow paper.
-    alt_zh: 浅黄色纸张上的分层手绘圆形图表。
+    alt_en: A route plan and field map arranged like a printed archive plate.
+    alt_zh: 如印刷档案图版般编排的路线规划与现场地图。
+    source_en: Parallel Archives reference · local learning asset
+    source_zh: Parallel Archives 参考 · 本地学习素材
+    source_url: https://archives.parallel.ai/
   - id: engineering
-    image: media/ai-lab/anthropic-home/responsible-scaling-policy.jpg
+    image: media/ai-lab/parallel-archives/traffic-network-f0ca625fb325-ink-480.webp
     label_en: Engineering / Systems
     label_zh: 工程与系统
     title_en: Systems from design to delivery
     title_zh: 架构与落地
-    alt_en: A luminous spiral shell study against dark archival material.
-    alt_zh: 深色档案材质上的螺旋贝壳研究图。
+    alt_en: A transit network study with layered routes and technical markings.
+    alt_zh: 带有分层路线与技术标记的交通网络研究图。
+    source_en: Parallel Archives reference · local learning asset
+    source_zh: Parallel Archives 参考 · 本地学习素材
+    source_url: https://archives.parallel.ai/
   - id: benchmarks
-    image: media/ai-lab/anthropic-home/core-views-ai-safety.jpg
+    image: media/ai-lab/parallel-archives/terrain-radar-5a2ba1cbe1cc-ink-480.webp
     label_en: Evaluation / Evidence
     label_zh: 评估与证据
     title_en: Evaluation with evidence
     title_zh: 评估与证据
-    alt_en: A modular collage of muted blue, green, and archival textures.
-    alt_zh: 由低饱和蓝绿块面与档案肌理组成的拼贴。
+    alt_en: A terrain radar study combining contour lines and field measurements.
+    alt_zh: 结合等高线与现场测量信息的地形雷达研究图。
+    source_en: Parallel Archives reference · local learning asset
+    source_zh: Parallel Archives 参考 · 本地学习素材
+    source_url: https://archives.parallel.ai/

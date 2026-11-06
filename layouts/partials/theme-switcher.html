@@ -1,4 +1,5 @@
 {{- $zh := hasPrefix .Lang "zh" -}}
+{{- $isAiLab := eq .Section "ai-lab" -}}
 {{- $themes := .Site.Data.theme_registry.themes -}}
 {{- $catalog := where $themes "id" "ne" "ai-engineering" -}}
 {{- $activeTheme := lower (default "minimal" (index .Site.Params "site_theme")) -}}
@@ -22,9 +23,9 @@
 {{- $activePath = printf "%s%s" $activePath $languageSuffix -}}
 <link rel="stylesheet" href="{{ "css/theme-manager.css" | relURL }}">
 <details class="theme-manager" data-theme-manager data-theme-current="{{ $activeID }}" data-theme-fallback="{{ $activeID }}" data-theme-ui-lang="{{ if $zh }}zh{{ else }}en{{ end }}"{{ if and .IsHome (not .Site.Params.theme_preview) (not hugo.IsServer) }} data-theme-root-home data-theme-lang="{{ if $zh }}zh{{ else }}en{{ end }}"{{ end }}>
-  <summary class="theme-manager-trigger" title="{{ if $zh }}切换主题{{ else }}Switch theme{{ end }}" aria-label="{{ if $zh }}主题切换，当前为{{ $activeLabel }}{{ else }}Theme switcher, current theme: {{ $activeLabel }}{{ end }}">
+  <summary class="theme-manager-trigger" title="{{ if $zh }}主题中心与快捷切换{{ else }}Theme center and quick switch{{ end }}" aria-label="{{ if $zh }}主题中心与快捷切换，当前为{{ $activeLabel }}{{ else }}Theme center and quick switch, current theme: {{ $activeLabel }}{{ end }}">
     <span class="theme-manager-trigger-icon" aria-hidden="true">◈</span>
-    <span class="theme-manager-trigger-copy"><span>{{ if $zh }}主题{{ else }}Theme{{ end }}</span><strong data-theme-current-label>{{ $activeLabel }}</strong></span>
+    <span class="theme-manager-trigger-copy"><span>{{ if $isAiLab }}{{ if $zh }}主题中心{{ else }}Theme center{{ end }}{{ else }}{{ if $zh }}主题{{ else }}Theme{{ end }}{{ end }}</span><strong data-theme-current-label>{{ $activeLabel }}</strong></span>
     <span class="theme-manager-trigger-chevron" aria-hidden="true">⌄</span>
   </summary>
   <div class="theme-manager-panel">

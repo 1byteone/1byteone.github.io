@@ -1,0 +1,17 @@
+{
+  "source": "https://archives.parallel.ai/",
+  "authors": ["yang you (yangyou)", "christopher (reathchris)"],
+  "downloaded": "2026-11-06",
+  "purpose": "AI Lab local learning and visual reference only",
+  "commercial_use": false,
+  "files": [
+    "parallel-archives-og.png",
+    "patent-document-1f7e2ec567d9-ink-480.webp",
+    "route-plan-1974-45d148f0f5c2-ink-480.webp",
+    "traffic-network-f0ca625fb325-ink-480.webp",
+    "terrain-radar-5a2ba1cbe1cc-ink-480.webp",
+    "leaf-venation-e5be6b6ae3ae-ink-480.webp",
+    "departure-chart-24fee034e8b9-ink-480.webp"
+  ],
+  "processing": "Downloaded as served WebP; no source artwork was edited. The site uses the first four files for AI Lab topic cards; the remaining two are retained for future local editorial compositions."
+}

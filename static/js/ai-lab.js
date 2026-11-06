@@ -707,6 +707,194 @@
     image.addEventListener('error', () => frame?.classList.add('is-error'), { once: true });
   });
 
+  // A lightweight, local Canvas UI-inspired particle reveal for editorial imagery.
+  // The semantic <img> remains visible and readable at all times; canvas is an
+  // optional, aria-hidden interaction layer and is only rasterized on intent.
+  document.querySelectorAll('[data-canvas-image]').forEach((host) => {
+    const image = host.querySelector('img');
+    const canvas = host.querySelector('[data-canvas-image-layer]');
+    const context = canvas?.getContext?.('2d', { alpha: true });
+    if (!image || !canvas || !context) return;
+
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const scratch = document.createElement('canvas');
+    const scratchContext = scratch.getContext('2d', { willReadFrequently: true });
+    let pixels = null;
+    let pixelWidth = 0;
+    let pixelHeight = 0;
+    let width = 0;
+    let height = 0;
+    let ratio = 1;
+    let pointer = { x: 0, y: 0 };
+    let active = false;
+    let visible = true;
+    let frame = 0;
+    let motionStartedAt = 0;
+
+    const stop = () => {
+      if (frame) window.cancelAnimationFrame(frame);
+      frame = 0;
+    };
+    const clear = () => {
+      if (!width || !height) return;
+      context.setTransform(ratio, 0, 0, ratio, 0, 0);
+      context.clearRect(0, 0, width, height);
+    };
+    const preparePixels = () => {
+      if (!image.complete || !image.naturalWidth || !scratchContext) return false;
+      const bounds = host.getBoundingClientRect();
+      if (!bounds.width || !bounds.height) return false;
+      width = bounds.width;
+      height = bounds.height;
+      ratio = Math.min(window.devicePixelRatio || 1, 1.5);
+      canvas.width = Math.max(1, Math.round(width * ratio));
+      canvas.height = Math.max(1, Math.round(height * ratio));
+      scratch.width = Math.max(1, Math.round(Math.min(width, 640)));
+      scratch.height = Math.max(1, Math.round(scratch.width * height / width));
+      const sourceAspect = image.naturalWidth / image.naturalHeight;
+      const targetAspect = scratch.width / scratch.height;
+      let sx = 0;
+      let sy = 0;
+      let sw = image.naturalWidth;
+      let sh = image.naturalHeight;
+      if (sourceAspect > targetAspect) {
+        sw = image.naturalHeight * targetAspect;
+        sx = (image.naturalWidth - sw) / 2;
+      } else {
+        sh = image.naturalWidth / targetAspect;
+        sy = (image.naturalHeight - sh) / 2;
+      }
+      scratchContext.clearRect(0, 0, scratch.width, scratch.height);
+      scratchContext.drawImage(image, sx, sy, sw, sh, 0, 0, scratch.width, scratch.height);
+      try {
+        pixels = scratchContext.getImageData(0, 0, scratch.width, scratch.height).data;
+        pixelWidth = scratch.width;
+        pixelHeight = scratch.height;
+        host.dataset.canvasReady = 'true';
+        return true;
+      } catch {
+        pixels = null;
+        delete host.dataset.canvasReady;
+        return false;
+      }
+    };
+    const sampleColor = (x, y) => {
+      const px = Math.max(0, Math.min(pixelWidth - 1, Math.floor(x / Math.max(1, width) * pixelWidth)));
+      const py = Math.max(0, Math.min(pixelHeight - 1, Math.floor(y / Math.max(1, height) * pixelHeight)));
+      const offset = (py * pixelWidth + px) * 4;
+      return [pixels[offset], pixels[offset + 1], pixels[offset + 2], pixels[offset + 3]];
+    };
+    const render = (timestamp = performance.now()) => {
+      frame = 0;
+      if (!active || !visible || document.hidden || !pixels || !width || !height) return;
+      context.setTransform(ratio, 0, 0, ratio, 0, 0);
+      context.clearRect(0, 0, width, height);
+      context.globalCompositeOperation = 'screen';
+      const radius = Math.min(122, Math.max(48, Math.min(width, height) * 0.31));
+      const elapsed = reducedMotion.matches ? 1 : Math.max(0, Math.min(1, (timestamp - motionStartedAt) / 440));
+      const settle = 1 - (1 - elapsed) ** 3;
+      const halo = context.createRadialGradient(pointer.x, pointer.y, radius * 0.08, pointer.x, pointer.y, radius);
+      halo.addColorStop(0, 'rgba(255,255,255,0.18)');
+      halo.addColorStop(0.72, 'rgba(255,255,255,0.075)');
+      halo.addColorStop(1, 'rgba(255,255,255,0)');
+      context.fillStyle = halo;
+      context.beginPath();
+      context.arc(pointer.x, pointer.y, radius, 0, Math.PI * 2);
+      context.fill();
+
+      const step = width < 420 ? 8 : 9;
+      const startX = Math.floor((pointer.x - radius) / step) * step;
+      const startY = Math.floor((pointer.y - radius) / step) * step;
+      for (let y = startY; y <= pointer.y + radius; y += step) {
+        for (let x = startX; x <= pointer.x + radius; x += step) {
+          const dx = x + step / 2 - pointer.x;
+          const dy = y + step / 2 - pointer.y;
+          const distance = Math.hypot(dx, dy);
+          if (distance > radius || x < 0 || y < 0 || x >= width || y >= height) continue;
+          const [red, green, blue, alpha] = sampleColor(x, y);
+          if (alpha < 24) continue;
+          const seed = Math.sin((Math.round(x / step) + 1) * 127.1 + (Math.round(y / step) + 1) * 311.7) * 43758.5453;
+          const random = seed - Math.floor(seed);
+          const drift = (1 - settle) * step * 1.35;
+          const offsetX = Math.cos(random * Math.PI * 2) * drift;
+          const offsetY = Math.sin(random * Math.PI * 2) * drift;
+          const edge = Math.max(0, 1 - distance / radius);
+          const opacity = (0.12 + edge * 0.5) * (alpha / 255);
+          const size = 1.25 + edge * 2.15;
+          context.fillStyle = `rgba(${red},${green},${blue},${opacity.toFixed(3)})`;
+          context.fillRect(x + offsetX, y + offsetY, size, size);
+        }
+      }
+
+      const pulse = reducedMotion.matches ? 0 : (1 - settle) * 3;
+      context.globalCompositeOperation = 'source-over';
+      context.lineWidth = 0.8;
+      context.strokeStyle = 'rgba(255,255,255,0.58)';
+      context.beginPath();
+      context.arc(pointer.x, pointer.y, radius * (0.88 + pulse * 0.045), 0, Math.PI * 2);
+      context.stroke();
+      context.strokeStyle = 'rgba(255,255,255,0.28)';
+      context.beginPath();
+      context.arc(pointer.x, pointer.y, radius * 0.72, 0, Math.PI * 2);
+      context.stroke();
+      context.globalCompositeOperation = 'source-over';
+      if (!reducedMotion.matches && elapsed < 1) frame = window.requestAnimationFrame(render);
+    };
+    const queueRender = (animate = true) => {
+      if (!active || !visible || document.hidden || !preparePixels()) return;
+      if (animate && !reducedMotion.matches) motionStartedAt = performance.now();
+      stop();
+      if (reducedMotion.matches) render(performance.now());
+      else frame = window.requestAnimationFrame(render);
+    };
+    const updatePointer = (event) => {
+      const bounds = host.getBoundingClientRect();
+      pointer = { x: event.clientX - bounds.left, y: event.clientY - bounds.top };
+      if (!active) active = true;
+      host.classList.add('is-active');
+      queueRender(true);
+    };
+    const leave = () => {
+      active = false;
+      host.classList.remove('is-active');
+      stop();
+      clear();
+    };
+    const enter = (event) => updatePointer(event);
+    host.addEventListener('pointerenter', enter, { passive: true });
+    host.addEventListener('pointermove', updatePointer, { passive: true });
+    host.addEventListener('pointerleave', leave, { passive: true });
+    const focusTarget = host.closest('a, button') || host;
+    focusTarget.addEventListener('focusin', () => {
+      const bounds = host.getBoundingClientRect();
+      pointer = { x: bounds.width / 2, y: bounds.height / 2 };
+      active = true;
+      host.classList.add('is-active');
+      queueRender(true);
+    });
+    focusTarget.addEventListener('focusout', (event) => {
+      if (event.relatedTarget && focusTarget.contains(event.relatedTarget)) return;
+      leave();
+    });
+    image.addEventListener('load', () => { pixels = null; if (active) queueRender(false); }, { passive: true });
+    image.addEventListener('error', leave, { once: true });
+    const resize = () => { pixels = null; if (active) queueRender(false); };
+    if ('ResizeObserver' in window) new ResizeObserver(resize).observe(host);
+    else window.addEventListener('resize', resize, { passive: true });
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver((entries) => {
+        visible = entries[0]?.isIntersecting ?? true;
+        if (visible && active) queueRender(false);
+        else if (!visible) { stop(); clear(); }
+      }, { rootMargin: '120px' }).observe(host);
+    }
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) { stop(); clear(); }
+      else if (active) queueRender(false);
+    });
+    reducedMotion.addEventListener?.('change', () => { if (active) queueRender(false); });
+  });
+
   document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') {
       closeMenu();
