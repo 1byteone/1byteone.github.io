@@ -149,8 +149,10 @@
   managers.forEach((manager) => {
     manager.querySelector("[data-theme-quick-search]")?.addEventListener("input", renderManagers);
     const summary = manager.querySelector(":scope > summary");
+    const panel = manager.querySelector(":scope > .theme-manager-panel");
     let closeTimer = 0;
     const hasKeyboardFocus = () => Boolean(manager.querySelector(":focus-visible"));
+    const isPointerInside = () => manager.matches(":hover") || Boolean(panel?.matches(":hover"));
     const cancelHoverClose = () => {
       window.clearTimeout(closeTimer);
       manager.removeAttribute("data-hover-closing");
@@ -160,9 +162,9 @@
       if (!manager.open || hasKeyboardFocus()) return;
       manager.dataset.hoverClosing = "true";
       closeTimer = window.setTimeout(() => {
-        if (hoverDevices.matches && !manager.matches(":hover") && !hasKeyboardFocus()) manager.open = false;
+        if (hoverDevices.matches && !isPointerInside() && !hasKeyboardFocus()) manager.open = false;
         manager.removeAttribute("data-hover-closing");
-      }, 210);
+      }, 520);
     };
 
     manager.addEventListener("pointerenter", (event) => {
@@ -171,6 +173,12 @@
       manager.open = true;
     });
     manager.addEventListener("pointerleave", (event) => {
+      if (event.pointerType === "mouse" && hoverDevices.matches) closeAfterPointerLeaves();
+    });
+    panel?.addEventListener("pointerenter", (event) => {
+      if (event.pointerType === "mouse" && hoverDevices.matches) cancelHoverClose();
+    });
+    panel?.addEventListener("pointerleave", (event) => {
       if (event.pointerType === "mouse" && hoverDevices.matches) closeAfterPointerLeaves();
     });
     manager.addEventListener("focusin", () => {

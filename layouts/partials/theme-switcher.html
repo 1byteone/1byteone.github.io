@@ -21,7 +21,7 @@
 {{- $languageSuffix := "" -}}
 {{- if not $zh -}}{{- $languageSuffix = "en/" -}}{{- end -}}
 {{- $activePath = printf "%s%s" $activePath $languageSuffix -}}
-<link rel="stylesheet" href="{{ "css/theme-manager.css" | relURL }}">
+<link rel="stylesheet" href="{{ "css/theme-manager.css?v=20261106-hover-2" | relURL }}">
 <details class="theme-manager" data-theme-manager data-theme-current="{{ $activeID }}" data-theme-fallback="{{ $activeID }}" data-theme-ui-lang="{{ if $zh }}zh{{ else }}en{{ end }}"{{ if and .IsHome (not .Site.Params.theme_preview) (not hugo.IsServer) }} data-theme-root-home data-theme-lang="{{ if $zh }}zh{{ else }}en{{ end }}"{{ end }}>
   <summary class="theme-manager-trigger" title="{{ if $zh }}主题中心与快捷切换{{ else }}Theme center and quick switch{{ end }}" aria-label="{{ if $zh }}主题中心与快捷切换，当前为{{ $activeLabel }}{{ else }}Theme center and quick switch, current theme: {{ $activeLabel }}{{ end }}">
     <span class="theme-manager-trigger-icon" aria-hidden="true">◈</span>
@@ -63,4 +63,4 @@
     </div>
   </div>
 </details>
-<script defer src="{{ "js/theme-manager.js" | relURL }}"></script>
+<script defer src="{{ "js/theme-manager.js?v=20261106-hover-2" | relURL }}"></script>

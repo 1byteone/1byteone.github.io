@@ -21,7 +21,7 @@
   {{ if and $heroSprite $tileAtlas $featured }}
   {{- $heroCells := slice 4 7 2 8 3 -}}
   <section class="al-home-sizzle-track" data-home-sizzle-track aria-label="{{ if $zh }}精选研究主视觉{{ else }}Featured research visual{{ end }}">
-    <div class="al-home-stage" data-home-sizzle data-art-src="{{ $heroSprite.RelPermalink }}" data-tiles-src="{{ $tileAtlas.RelPermalink }}" data-art-cells="{{ delimit $heroCells "," }}" data-art-loading="true" tabindex="0" role="group" aria-label="{{ if $zh }}可交互的精选研究主视觉。使用方向键切换记录，使用 Home 和 End 调整图谱。{{ else }}Interactive featured research visual. Use arrow keys to change records and Home or End to move through the mosaic.{{ end }}">
+    <div class="al-home-stage" data-home-sizzle data-art-src="{{ $heroSprite.RelPermalink }}" data-tiles-src="{{ $tileAtlas.RelPermalink }}" data-art-cells="{{ delimit $heroCells "," }}" data-art-loading="true" tabindex="0" role="group" aria-label="{{ if $zh }}可滚动的精选研究主视觉。向下滚动聚合图谱并展开研究记录，向上滚动反向播放。{{ else }}Scroll-driven featured research visual. Scroll down to assemble the atlas and reveal research records; scroll up to reverse it.{{ end }}">
       <div class="al-home-featured-card">
         {{ with resources.Get "media/ai-lab/anthropic-home/anthropic-institute.jpg" }}<img class="al-home-art-poster" data-home-art-poster src="{{ .RelPermalink }}" width="1712" height="2139" alt="" fetchpriority="high" decoding="async">{{ end }}
         <canvas class="al-home-art-canvas" data-home-art aria-hidden="true"></canvas>
@@ -42,20 +42,6 @@
           </article>
           {{- end -}}
         </div>
-      </div>
-      <div class="al-home-stage-footer" role="group" aria-label="{{ if $zh }}主视觉交互控制{{ else }}Featured visual controls{{ end }}">
-        <div class="al-home-story-controls" role="group" aria-label="{{ if $zh }}精选研究记录{{ else }}Featured research records{{ end }}">
-          <button type="button" data-home-animation-toggle data-pause-label="{{ if $zh }}暂停主视觉动画{{ else }}Pause visual animation{{ end }}" data-resume-label="{{ if $zh }}恢复主视觉动画{{ else }}Resume visual animation{{ end }}" aria-label="{{ if $zh }}暂停主视觉动画{{ else }}Pause visual animation{{ end }}" aria-pressed="false"><span class="al-home-pause-icon" aria-hidden="true">Ⅱ</span></button>
-          <button type="button" data-home-story-prev aria-label="{{ if $zh }}上一条研究记录{{ else }}Previous research record{{ end }}" title="{{ if $zh }}上一条{{ else }}Previous record{{ end }}">←</button>
-          <output data-home-story-count aria-live="polite">01 / {{ printf "%02d" (len $featured) }}</output>
-          <button type="button" data-home-story-next aria-label="{{ if $zh }}下一条研究记录{{ else }}Next research record{{ end }}" title="{{ if $zh }}下一条{{ else }}Next record{{ end }}">→</button>
-        </div>
-        <label class="al-home-progress-control">
-          <span class="al-sr-only">{{ if $zh }}拖动以展开或收拢研究图谱{{ else }}Drag to assemble or scatter the research mosaic{{ end }}</span>
-          <input type="range" min="0" max="1000" value="520" data-home-progress aria-label="{{ if $zh }}调整研究图谱聚合程度{{ else }}Adjust research atlas assembly{{ end }}" aria-valuetext="{{ if $zh }}完整拼贴{{ else }}Assembled mosaic{{ end }}">
-          <span data-home-progress-label>{{ if $zh }}拼贴图谱{{ else }}Research atlas{{ end }}</span>
-        </label>
-        <span class="al-home-interaction-hint">{{ if $zh }}拖动 · 方向键 · 滑杆{{ else }}DRAG · ARROWS · SLIDER{{ end }}</span>
       </div>
     </div>
   </section>
