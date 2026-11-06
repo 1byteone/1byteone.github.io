@@ -222,6 +222,40 @@
     if (emptyExperiments) emptyExperiments.hidden = visible !== 0;
   }));
 
+  // The product surface keeps a small amount of state visible like a real
+  // product workspace: view tabs change the active context, while the board
+  // filter narrows cards without changing their layout.
+  const surface = document.querySelector('[data-aps-surface]');
+  if (surface) {
+    const surfaceViews = Array.from(surface.querySelectorAll('[data-aps-surface-view]'));
+    const surfaceFilters = Array.from(surface.querySelectorAll('[data-aps-surface-filter]'));
+    const issueCards = Array.from(surface.querySelectorAll('[data-aps-issue-state]'));
+    const setSurfaceView = (view, focus = false) => {
+      const active = surfaceViews.find((item) => item.dataset.apsSurfaceView === view) || surfaceViews[0];
+      if (!active) return;
+      surfaceViews.forEach((item) => item.setAttribute('aria-selected', String(item === active)));
+      surface.dataset.apsSurfaceCurrent = active.dataset.apsSurfaceView;
+      if (focus) active.focus();
+    };
+    surfaceViews.forEach((button, index) => {
+      button.addEventListener('click', () => setSurfaceView(button.dataset.apsSurfaceView));
+      button.addEventListener('keydown', (event) => {
+        if (!['ArrowDown', 'ArrowUp', 'Home', 'End'].includes(event.key)) return;
+        event.preventDefault();
+        const next = event.key === 'Home' ? 0 : event.key === 'End' ? surfaceViews.length - 1 : (index + (event.key === 'ArrowDown' ? 1 : -1) + surfaceViews.length) % surfaceViews.length;
+        setSurfaceView(surfaceViews[next].dataset.apsSurfaceView, true);
+      });
+    });
+    surfaceFilters.forEach((button) => button.addEventListener('click', () => {
+      const filter = button.dataset.apsSurfaceFilter || 'all';
+      surfaceFilters.forEach((item) => item.setAttribute('aria-pressed', String(item === button)));
+      issueCards.forEach((card) => {
+        const visible = filter === 'all' || card.dataset.apsIssueState === filter;
+        card.hidden = !visible;
+      });
+    }));
+  }
+
   // The studio method is a real tabbed workbench: every stage owns a panel,
   // keyboard arrows move through the workflow, and the URL can address a stage.
   const workflowTabs = Array.from(document.querySelectorAll('[data-aps-workflow-tab]'));

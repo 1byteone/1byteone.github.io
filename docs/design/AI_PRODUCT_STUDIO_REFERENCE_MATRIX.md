@@ -5,7 +5,7 @@
 | 参考方向 | 提取的亮点 | 当前主题落点 | 验收证据 |
 | --- | --- | --- | --- |
 | Anthropic / Warm Editorial | 暖纸张、衬线主标题、研究与产品并行 | `--aps-paper` 令牌、编辑式 Hero、Journal 区 | 桌面 Hero 双栏，中文标题单独断行 |
-| Linear / Precision Product | 细线网格、状态、精确间距 | 产品卡、状态元数据、Workbench 阶段导航 | 卡片 hover/focus 不改变布局 |
+| Linear / Precision Product | 细线网格、状态、精确间距、工作区侧栏、问题流、活动时间线 | `PRODUCT SURFACE` 工作面、Inbox/My work/Reviews 视图、Backlog/In progress/Done 状态列、活动流、工作台阶段导航 | 1280px 截图核对；筛选与标签切换可复现，卡片 hover/focus 不改变布局 |
 | Vercel / Monochrome Engineering | 工程边界、黑白几何、架构表达 | 工程系统区、命令式方法追踪 | 代码追踪面板显示约束→假设→证据 |
 | Raycast / Command UX | 快捷入口、键盘优先弹层 | `⌘/Ctrl+K` 搜索、方向键选择、Escape 还焦 | 搜索打开、选中、关闭路径可复现 |
 | Cursor / Replicate / Warp | 真实代码、模型流程、终端状态 | Workbench 六阶段与 trace 输出 | 每个 tab 有独立 panel、输出和状态 |
@@ -19,6 +19,13 @@
 - Hero scene：桌面 pointer parallax，触摸和 `prefers-reduced-motion` 自动降级到静态图。
 - 方法追踪：输出内容来自 `data/ai_product_studio.yaml`，不虚构模型调用、benchmark 或部署状态。
 - 资源路径：CSS/JS 使用 `workbench-1` 版本标记，便于 Pages 缓存回归。
+
+## Linear 对齐边界
+
+- `PRODUCT SURFACE` 是基于公开页面可观察关系重构的原创产品工作面，不复制 Linear 的源码、品牌、商标、字体、专属图片或文案。
+- 侧栏只表达工作区上下文；状态列表达产品生命周期；右侧活动流表达最近动作。三者各自承担不同的信息职责，避免把所有信息堆在同一张卡片里。
+- `All / Active` 筛选只改变问题卡片的可见状态；`Inbox / My work / Reviews` 只改变当前工作区语义并保持键盘可达，保证视觉状态与交互状态一致。
+- 移动端将状态列保留为内部横向滚动容器，页面本身保持无横向溢出；`prefers-reduced-motion` 下仍保留完整内容与状态。
 
 ## 后续可扩展边界
 
