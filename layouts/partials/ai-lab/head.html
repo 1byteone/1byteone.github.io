@@ -11,7 +11,7 @@
   <meta property="og:description" content="{{ .Description | default .Site.Params.description | plainify | htmlEscape }}">
   <meta property="og:url" content="{{ .Permalink }}">
   <title>{{ .Title }} · AI LAB / 01</title>
-  <link rel="stylesheet" href="{{ "css/ai-lab.css?v=20261106-canvas-image-1" | relURL }}">
+  <link rel="stylesheet" href="{{ "css/ai-lab.css?v=20261106-vertical-reveal-2" | relURL }}">
   {{- if hasSuffix .RelPermalink "/ai-lab/" -}}
     {{- with resources.Get "media/ai-lab/anthropic-home/hero-sprite.webp" }}<link rel="preload" as="image" href="{{ .RelPermalink }}" fetchpriority="high">{{ end -}}
     {{- with resources.Get "media/ai-lab/anthropic-home/tiles.webp" }}<link rel="preload" as="image" href="{{ .RelPermalink }}" fetchpriority="high">{{ end -}}
@@ -23,7 +23,7 @@
   <script defer src="https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.min.js" crossorigin="anonymous"></script>
   {{ end }}
   <link rel="alternate" hreflang="{{ if hasPrefix .Lang "zh" }}en{{ else }}zh-Hans{{ end }}" href="{{ with .Translations }}{{ (index . 0).RelPermalink }}{{ else }}{{ .RelPermalink }}{{ end }}">
-  <script defer src="{{ "js/ai-lab.js?v=20261106-canvas-image-1" | relURL }}"></script>
+  <script defer src="{{ "js/ai-lab.js?v=20261106-vertical-reveal-2" | relURL }}"></script>
   {{- $allowedStatuses := slice "planned" "running" "completed" "failed" "archived" "published" -}}
   {{- range site.RegularPages -}}
     {{- if and (eq .Section "ai-lab") (not .Params.lab_page) -}}

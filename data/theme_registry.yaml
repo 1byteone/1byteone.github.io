@@ -190,8 +190,11 @@ themes:
     focus: Hypotheses, datasets, metrics, and limitations
     focus_zh: 假设、数据集、指标与局限
     preview_path: /ai-lab/
+    showcase_image: /images/theme-center/ai-lab.jpg
+    showcase_alt_zh: AI 实验室主题真实首页截图
+    showcase_alt_en: Real AI Engineering Lab homepage screenshot
     available: true
-    default_selectable: false
+    default_selectable: true
     supports: [overview, experiments, research, engineering, benchmarks, playground, field-notes]
   - id: ai-editorial
     label: Technical Editorial

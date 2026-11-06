@@ -18,6 +18,7 @@
 
   const managers = Array.from(document.querySelectorAll("[data-theme-manager]"));
   if (!managers.length) return;
+  const hoverDevices = window.matchMedia("(hover: hover) and (pointer: fine)");
 
   const readPreference = () => {
     try { return window.localStorage.getItem(preferenceKey) || ""; } catch { return ""; }
@@ -147,6 +148,43 @@
 
   managers.forEach((manager) => {
     manager.querySelector("[data-theme-quick-search]")?.addEventListener("input", renderManagers);
+    const summary = manager.querySelector(":scope > summary");
+    let closeTimer = 0;
+    const hasKeyboardFocus = () => Boolean(manager.querySelector(":focus-visible"));
+    const cancelHoverClose = () => {
+      window.clearTimeout(closeTimer);
+      manager.removeAttribute("data-hover-closing");
+    };
+    const closeAfterPointerLeaves = () => {
+      window.clearTimeout(closeTimer);
+      if (!manager.open || hasKeyboardFocus()) return;
+      manager.dataset.hoverClosing = "true";
+      closeTimer = window.setTimeout(() => {
+        if (hoverDevices.matches && !manager.matches(":hover") && !hasKeyboardFocus()) manager.open = false;
+        manager.removeAttribute("data-hover-closing");
+      }, 210);
+    };
+
+    manager.addEventListener("pointerenter", (event) => {
+      if (event.pointerType !== "mouse" || !hoverDevices.matches) return;
+      cancelHoverClose();
+      manager.open = true;
+    });
+    manager.addEventListener("pointerleave", (event) => {
+      if (event.pointerType === "mouse" && hoverDevices.matches) closeAfterPointerLeaves();
+    });
+    manager.addEventListener("focusin", () => {
+      if (manager.hasAttribute("data-suppress-focus-open")) return;
+      cancelHoverClose();
+      manager.open = true;
+    });
+    manager.addEventListener("focusout", (event) => {
+      if (!manager.contains(event.relatedTarget) && !(hoverDevices.matches && manager.matches(":hover"))) closeAfterPointerLeaves();
+    });
+    manager.addEventListener("toggle", () => summary?.setAttribute("aria-expanded", String(manager.open)));
+    summary?.addEventListener("click", (event) => {
+      if (event.detail > 0 && hoverDevices.matches && manager.matches(":hover") && manager.open) event.preventDefault();
+    });
   });
 
   document.addEventListener("click", (event) => {
@@ -175,7 +213,14 @@
   });
 
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") managers.forEach((manager) => { manager.open = false; });
+    if (event.key === "Escape") managers.forEach((manager) => {
+      if (!manager.open) return;
+      manager.open = false;
+      const summary = manager.querySelector(":scope > summary");
+      manager.setAttribute("data-suppress-focus-open", "true");
+      summary?.focus();
+      manager.removeAttribute("data-suppress-focus-open");
+    });
   });
 
   document.addEventListener("click", (event) => {
