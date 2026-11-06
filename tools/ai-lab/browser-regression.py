@@ -41,6 +41,11 @@ def check_page(page, url: str, language: str, viewport_name: str, output_dir: Pa
     page.on("console", lambda message: console_errors.append(message.text) if message.type == "error" else None)
     page.goto(url, wait_until="networkidle", timeout=30_000)
     page.wait_for_timeout(250)
+    page.wait_for_function(
+        """() => [...document.querySelectorAll('[data-image-frame] img')]
+          .every(image => image.complete || image.closest('[data-image-frame]')?.classList.contains('is-error'))""",
+        timeout=5_000,
+    )
     width = page.viewport_size["width"]
     height = page.viewport_size["height"]
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -58,6 +63,13 @@ def check_page(page, url: str, language: str, viewport_name: str, output_dir: Pa
           navCount: document.querySelectorAll('nav').length,
           dialogCount: document.querySelectorAll('dialog').length,
           imagesWithoutAlt: [...document.images].filter((image) => !image.hasAttribute('alt')).length,
+          learnImagesLoaded: [...document.querySelectorAll('[data-image-frame] img')].every((image) => image.complete && image.naturalWidth > 0),
+          learnImagesVisible: [...document.querySelectorAll('[data-image-frame] img')].every((image) => Number.parseFloat(getComputedStyle(image).opacity) > 0),
+          brandToolsSeparated: (() => {
+            const brand = document.querySelector('.al-ref-brand-lockup')?.getBoundingClientRect();
+            const tools = document.querySelector('.al-ref-tools')?.getBoundingClientRect();
+            return Boolean(brand && tools && brand.right <= tools.left + 4);
+          })(),
           namelessControls: [...document.querySelectorAll('button, a, input, select, textarea')]
             .filter((element) => !element.getAttribute('aria-label') && !element.textContent.trim() && !element.getAttribute('title') && !element.getAttribute('placeholder')).length,
           focused: document.activeElement?.tagName || null,
@@ -80,6 +92,9 @@ def check_page(page, url: str, language: str, viewport_name: str, output_dir: Pa
     checks["main_landmark"] = metrics["mainCount"] >= 1
     checks["navigation_landmark"] = metrics["navCount"] >= 1
     checks["images_have_alt"] = metrics["imagesWithoutAlt"] == 0
+    checks["learn_images_loaded"] = metrics["learnImagesLoaded"]
+    checks["learn_images_visible"] = metrics["learnImagesVisible"]
+    checks["brand_and_tools_do_not_overlap"] = metrics["brandToolsSeparated"]
     checks["controls_have_names"] = metrics["namelessControls"] == 0
 
     animation = page.locator("[data-home-animation-toggle]").first
@@ -97,6 +112,15 @@ def check_page(page, url: str, language: str, viewport_name: str, output_dir: Pa
     else:
         checks["animation_pause_resume"] = False
         checks["animation_pause_has_label"] = False
+
+    story_next = page.locator("[data-home-story-next]").first
+    story_count = page.locator("[data-home-story-count]").first
+    if story_next.count() and story_count.count():
+        story_next.click()
+        page.wait_for_timeout(120)
+        checks["featured_story_next"] = story_count.inner_text().strip().startswith("02")
+    else:
+        checks["featured_story_next"] = False
 
     carousel = page.locator("[data-learn-carousel]").first
     previous = page.locator("[data-learn-prev]").first
@@ -135,6 +159,7 @@ def check_page(page, url: str, language: str, viewport_name: str, output_dir: Pa
         page.wait_for_timeout(60)
         checks["theme_manager_popup"] = manager.get_attribute("open") is not None and manager.locator(".theme-manager-panel").is_visible()
         checks["theme_manager_center_link"] = manager.locator(".theme-manager-center-link").count() > 0
+        checks["theme_manager_center_destination"] = manager.locator(".theme-manager-center-link").get_attribute("href", timeout=1_000).endswith("/theme-center/")
         page.keyboard.press("Escape")
     else:
         checks["theme_manager_popup"] = False
