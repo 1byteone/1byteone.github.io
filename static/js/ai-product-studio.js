@@ -230,11 +230,16 @@
     const surfaceViews = Array.from(surface.querySelectorAll('[data-aps-surface-view]'));
     const surfaceFilters = Array.from(surface.querySelectorAll('[data-aps-surface-filter]'));
     const issueCards = Array.from(surface.querySelectorAll('[data-aps-issue-state]'));
+    const surfaceContext = surface.querySelector('[data-aps-surface-context]');
+    const surfaceAnnouncer = surface.parentElement?.querySelector('[data-aps-surface-announcer]');
+    const contextLabels = isChinese ? { inbox: '收件箱', work: '我的工作', reviews: '评审' } : { inbox: 'Inbox', work: 'My work', reviews: 'Reviews' };
     const setSurfaceView = (view, focus = false) => {
       const active = surfaceViews.find((item) => item.dataset.apsSurfaceView === view) || surfaceViews[0];
       if (!active) return;
       surfaceViews.forEach((item) => item.setAttribute('aria-selected', String(item === active)));
       surface.dataset.apsSurfaceCurrent = active.dataset.apsSurfaceView;
+      if (surfaceContext) surfaceContext.textContent = contextLabels[active.dataset.apsSurfaceView] || active.textContent.trim();
+      if (surfaceAnnouncer) surfaceAnnouncer.textContent = isChinese ? `已切换到${contextLabels[active.dataset.apsSurfaceView] || '工作区'}视图` : `Switched to ${contextLabels[active.dataset.apsSurfaceView] || 'workspace'} view`;
       if (focus) active.focus();
     };
     surfaceViews.forEach((button, index) => {
@@ -253,7 +258,30 @@
         const visible = filter === 'all' || card.dataset.apsIssueState === filter;
         card.hidden = !visible;
       });
+      if (surfaceAnnouncer) surfaceAnnouncer.textContent = filter === 'active'
+        ? (isChinese ? '已筛选进行中的问题' : 'Showing active issues')
+        : (isChinese ? '已显示全部问题' : 'Showing all issues');
     }));
+    const setIssueExpanded = (card, expanded) => {
+      card.setAttribute('aria-expanded', String(expanded));
+      card.classList.toggle('is-inspected', expanded);
+      if (expanded && surfaceAnnouncer) {
+        const issueId = card.dataset.apsIssueId || '';
+        surfaceAnnouncer.textContent = isChinese ? `已检查问题 ${issueId}` : `Inspecting issue ${issueId}`;
+      }
+    };
+    issueCards.forEach((card) => {
+      const toggle = () => setIssueExpanded(card, card.getAttribute('aria-expanded') !== 'true');
+      card.addEventListener('click', (event) => {
+        if (event.target.closest('a, button')) return;
+        toggle();
+      });
+      card.addEventListener('keydown', (event) => {
+        if (!['Enter', ' '].includes(event.key)) return;
+        event.preventDefault();
+        toggle();
+      });
+    });
   }
 
   // The studio method is a real tabbed workbench: every stage owns a panel,
