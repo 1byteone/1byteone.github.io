@@ -37,6 +37,27 @@
       <p>{{ if $zh }}项目与指标以已发布档案为准{{ else }}Projects and metrics follow published records{{ end }}</p>
     </section>
 
+    <section class="aps-section aps-workbench-section" id="aps-workbench" aria-labelledby="aps-workbench-title">
+      <div class="aps-section-heading"><div><span>00 / STUDIO METHOD</span><h2 id="aps-workbench-title">{{ if $zh }}从问题到交付{{ else }}From problem to delivery{{ end }}</h2></div><p>{{ if $zh }}把产品决策、系统边界和验证证据放进一条可检查的工作流。{{ else }}A traceable workflow for product decisions, system boundaries, and evidence.{{ end }}</p><span class="aps-workbench-status"><i aria-hidden="true"></i>{{ if $zh }}方法追踪在线{{ else }}METHOD TRACE ONLINE{{ end }}</span></div>
+      <div class="aps-workbench" data-aps-workbench>
+        <div class="aps-workflow-tabs" role="tablist" aria-label="{{ if $zh }}产品工作流阶段{{ else }}Product workflow stages{{ end }}">
+          {{- range $index, $step := $studio.product_workflow -}}
+            <button type="button" role="tab" id="aps-workflow-tab-{{ $step.id }}" aria-controls="aps-workflow-panel-{{ $step.id }}" aria-selected="{{ if eq $index 0 }}true{{ else }}false{{ end }}" tabindex="{{ if eq $index 0 }}0{{ else }}-1{{ end }}" data-aps-workflow-tab="{{ $step.id }}"><span>{{ printf "%02d" (add $index 1) }}</span><strong>{{ if $zh }}{{ $step.label_zh }}{{ else }}{{ $step.label }}{{ end }}</strong><i aria-hidden="true">↗</i></button>
+          {{- end -}}
+        </div>
+        <div class="aps-workbench-panel" data-aps-workbench-panels>
+          {{- range $index, $step := $studio.product_workflow -}}
+            <article id="aps-workflow-panel-{{ $step.id }}" role="tabpanel" aria-labelledby="aps-workflow-tab-{{ $step.id }}" data-aps-workflow-panel="{{ $step.id }}"{{ if ne $index 0 }} hidden{{ end }}>
+              <div class="aps-workbench-panel-head"><span class="aps-mono-label">{{ if $zh }}{{ $step.signal_zh }}{{ else }}{{ $step.signal }}{{ end }}</span><span>TRACE / {{ printf "%02d" (add $index 1) }} / 06</span></div>
+              <h3>{{ if $zh }}{{ $step.summary_zh }}{{ else }}{{ $step.summary }}{{ end }}</h3>
+              <div class="aps-workbench-output"><span>{{ if $zh }}可交付输出{{ else }}EXPECTED OUTPUT{{ end }}</span><strong>{{ if $zh }}{{ $step.output_zh }}{{ else }}{{ $step.output }}{{ end }}</strong></div>
+              <div class="aps-workbench-trace" aria-label="{{ if $zh }}方法追踪{{ else }}Method trace{{ end }}"><code>yoyo@studio:~$ trace --stage={{ $step.id }}</code><code class="is-muted">{{ if $zh }}记录约束 → 建立假设 → 保留证据{{ else }}capture constraints → form hypothesis → keep evidence{{ end }}</code><code class="is-accent">status: {{ if eq $step.id "delivery" }}ready-to-document{{ else }}inspectable{{ end }}</code></div>
+            </article>
+          {{- end -}}
+        </div>
+      </div>
+    </section>
+
     <section class="aps-section aps-products-section" id="aps-work" aria-labelledby="aps-products-title">
       <div class="aps-section-heading"><div><span>01 / SELECTED WORK</span><h2 id="aps-products-title">{{ if $zh }}产品与项目{{ else }}Products &amp; projects{{ end }}</h2></div><p>{{ if $zh }}从问题定义到可运行交付，查看真实项目记录。{{ else }}From problem framing to working delivery, explore the project records.{{ end }}</p><a class="aps-text-link" href="{{ "projects/" | relLangURL }}">{{ if $zh }}全部项目{{ else }}All projects{{ end }} <span aria-hidden="true">↗</span></a></div>
       <div class="aps-product-grid">

@@ -222,6 +222,57 @@
     if (emptyExperiments) emptyExperiments.hidden = visible !== 0;
   }));
 
+  // The studio method is a real tabbed workbench: every stage owns a panel,
+  // keyboard arrows move through the workflow, and the URL can address a stage.
+  const workflowTabs = Array.from(document.querySelectorAll('[data-aps-workflow-tab]'));
+  const workflowPanels = Array.from(document.querySelectorAll('[data-aps-workflow-panel]'));
+  const setWorkflowStage = (id, moveFocus = false) => {
+    const tab = workflowTabs.find((item) => item.dataset.apsWorkflowTab === id) || workflowTabs[0];
+    if (!tab) return;
+    const activeId = tab.dataset.apsWorkflowTab;
+    workflowTabs.forEach((item) => {
+      const active = item === tab;
+      item.setAttribute('aria-selected', String(active));
+      item.tabIndex = active ? 0 : -1;
+    });
+    workflowPanels.forEach((panel) => {
+      panel.hidden = panel.dataset.apsWorkflowPanel !== activeId;
+    });
+    if (moveFocus) tab.focus();
+  };
+  if (workflowTabs.length) {
+    workflowTabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => setWorkflowStage(tab.dataset.apsWorkflowTab));
+      tab.addEventListener('keydown', (event) => {
+        if (!['ArrowDown', 'ArrowRight', 'ArrowUp', 'ArrowLeft', 'Home', 'End'].includes(event.key)) return;
+        event.preventDefault();
+        const next = event.key === 'Home' ? 0 : event.key === 'End' ? workflowTabs.length - 1 : (index + (event.key === 'ArrowDown' || event.key === 'ArrowRight' ? 1 : -1) + workflowTabs.length) % workflowTabs.length;
+        setWorkflowStage(workflowTabs[next].dataset.apsWorkflowTab, true);
+      });
+    });
+    const hashStage = window.location.hash.replace(/^#/, '').replace(/^stage-/, '');
+    setWorkflowStage(workflowTabs.some((tab) => tab.dataset.apsWorkflowTab === hashStage) ? hashStage : workflowTabs[0].dataset.apsWorkflowTab);
+  }
+
+  // The hero scene borrows the restrained pointer parallax used by product
+  // studios: it stays within a few pixels and is disabled on touch/reduced motion.
+  const sceneFrame = document.querySelector('.aps-scene-frame');
+  if (sceneFrame && !reducedMotion.matches && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    const resetScene = () => {
+      sceneFrame.style.setProperty('--aps-scene-x', '0px');
+      sceneFrame.style.setProperty('--aps-scene-y', '0px');
+    };
+    sceneFrame.addEventListener('pointermove', (event) => {
+      const bounds = sceneFrame.getBoundingClientRect();
+      const x = ((event.clientX - bounds.left) / bounds.width - .5) * 8;
+      const y = ((event.clientY - bounds.top) / bounds.height - .5) * 8;
+      sceneFrame.style.setProperty('--aps-scene-x', `${x.toFixed(2)}px`);
+      sceneFrame.style.setProperty('--aps-scene-y', `${y.toFixed(2)}px`);
+    });
+    sceneFrame.addEventListener('pointerleave', resetScene);
+    resetScene();
+  }
+
   // Code controls work on secure contexts and fall back to a temporary selection
   // for local previews opened over plain HTTP.
   const copyCode = async (text) => {

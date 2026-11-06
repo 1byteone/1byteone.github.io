@@ -48,18 +48,54 @@ product_workflow:
   - id: problem
     label: Problem
     label_zh: 问题定义
+    signal: INPUT / USER NEED
+    signal_zh: 输入 / 用户问题
+    summary: Start from a user decision that deserves a better system.
+    summary_zh: 从一个值得被系统性改善的用户决策开始。
+    output: Problem brief + success criteria
+    output_zh: 问题简报 + 成功标准
   - id: design
     label: Product design
     label_zh: 产品设计
+    signal: MODEL / EXPERIENCE
+    signal_zh: 模型 / 体验
+    summary: Shape the interaction around constraints, not model novelty.
+    summary_zh: 围绕约束设计交互，而不是围绕模型新奇感堆功能。
+    output: Flow map + interaction contract
+    output_zh: 流程图 + 交互契约
   - id: architecture
     label: Architecture
     label_zh: 系统架构
+    signal: DATA / ORCHESTRATION
+    signal_zh: 数据 / 编排
+    summary: Make retrieval, tools, state, and failure paths explicit.
+    summary_zh: 把检索、工具、状态和失败路径明确写出来。
+    output: System boundary + data path
+    output_zh: 系统边界 + 数据路径
   - id: implementation
     label: Implementation
     label_zh: 核心实现
+    signal: CODE / RUNTIME
+    signal_zh: 代码 / 运行时
+    summary: Build the smallest vertical slice that can be inspected.
+    summary_zh: 先做一条可以被检查的最小端到端切片。
+    output: Working slice + observable events
+    output_zh: 可运行切片 + 可观测事件
   - id: evaluation
     label: Evaluation
     label_zh: 效果评估
+    signal: TEST / EVIDENCE
+    signal_zh: 测试 / 证据
+    summary: Compare behavior against a fixed task set and known limits.
+    summary_zh: 用固定任务集和明确限制比较系统行为。
+    output: Eval table + failure notes
+    output_zh: 评测表 + 失败记录
   - id: delivery
     label: Delivery
     label_zh: 交付记录
+    signal: SHIP / MAINTAIN
+    signal_zh: 发布 / 维护
+    summary: Document what shipped, what remains, and how to operate it.
+    summary_zh: 写清已交付、未完成和后续运维方式。
+    output: Release note + runbook
+    output_zh: 发布记录 + 运维手册
