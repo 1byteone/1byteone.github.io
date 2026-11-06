@@ -12,6 +12,21 @@
   let category = "all";
   let status = "all";
 
+  // Keep real screenshot cards honest: loaded images fade in, while broken
+  // local assets expose an explicit error state instead of showing a blank tile.
+  catalog.querySelectorAll(".tc-preview-real").forEach((preview) => {
+    const image = preview.querySelector(".tc-preview-image");
+    if (!image) return;
+    const markLoaded = () => preview.dataset.previewLoaded = "true";
+    const markError = () => {
+      preview.dataset.previewError = "true";
+      const loading = preview.querySelector(".tc-preview-loading");
+      if (loading) loading.textContent = isChinese ? "真实预览暂时不可用" : "Real preview unavailable";
+    };
+    image.complete ? (image.naturalWidth ? markLoaded() : markError()) : image.addEventListener("load", markLoaded, { once: true });
+    image.addEventListener("error", markError, { once: true });
+  });
+
   const update = () => {
     const query = (search?.value || "").trim().toLocaleLowerCase();
     let count = 0;

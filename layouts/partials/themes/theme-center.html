@@ -107,17 +107,17 @@
           {{- $selectionID := $theme.id -}}
           {{- if and (eq $theme.family "minimal") (ne $theme.id "minimal") -}}{{- $selectionID = printf "minimal-%s" $theme.variant -}}{{- end -}}
           {{- $isCurrent := eq $selectionID $activeID -}}
-          <article class="tc-card{{ if $isCurrent }} is-current{{ end }}" data-theme-card data-theme-category="{{ $theme.category }}" data-theme-available="{{ $isAvailable }}" data-theme-search-text="{{ $searchText | htmlEscape }}">
-            <div class="tc-preview tc-preview--{{ $theme.preview_style }}" aria-hidden="true">
-              <div class="tc-preview-window">
-                <div class="tc-preview-bar"><span class="tc-preview-mark">{{ printf "%02d" (add $index 1) }}</span><span>{{ $theme.short_label }}</span><i></i></div>
-                <div class="tc-preview-body">
-                  <div class="tc-preview-title">{{ if eq $theme.preview_style "terminal" }}<b>yoyo@engineering-lab</b><span>$ build reliable systems</span>{{ else if eq $theme.preview_style "lab" }}<b>Evaluation</b><span>retrieval experiments</span>{{ else if eq $theme.preview_style "editorial" }}<b>Notes on systems</b><span>Review / technical perspective</span>{{ else if eq $theme.preview_style "studio" }}<b>Selected work</b><span>Product / engineering</span>{{ else if eq $theme.preview_style "pixel" }}<b>Field archive</b><span>Projects / paths / quests</span>{{ else if eq $theme.preview_style "garden" }}<b>Knowledge garden</b><span>Linked notes / learning</span>{{ else if eq $theme.preview_style "research" }}<b>Research index</b><span>Concepts / references</span>{{ else if eq $theme.preview_style "paper" }}<b>Technical notes</b><span>Archive / articles</span>{{ else }}<b>Engineering notes</b><span>Projects / writing / about</span>{{ end }}</div>
-                  <div class="tc-preview-lines"><i></i><i></i><i></i><i></i></div>
-                  <div class="tc-preview-blocks"><i></i><i></i><i></i></div>
-                </div>
-              </div>
-            </div>
+          <article class="tc-card{{ if $isCurrent }} is-current{{ end }}{{ if not $isAvailable }} is-planned{{ end }}" data-theme-card data-theme-category="{{ $theme.category }}" data-theme-available="{{ $isAvailable }}" data-theme-search-text="{{ $searchText | htmlEscape }}">
+            {{- if $isAvailable -}}
+              {{- $showcase := $theme.showcase_image -}}
+              {{- if not $showcase }}{{- $showcase = printf "/images/theme-center/%s.webp" $theme.id -}}{{- end -}}
+              <a class="tc-preview tc-preview-real" href="{{ $href }}" data-theme-visit data-theme-id="{{ $selectionID }}" aria-label="{{ if $zh }}预览 {{ $label }} 主题{{ else }}Preview {{ $label }} theme{{ end }}">
+                <img class="tc-preview-image" src="{{ $showcase | relURL }}" alt="{{ if $zh }}{{ default (printf "%s 主题真实首页截图" $label) $theme.showcase_alt_zh }}{{ else }}{{ default (printf "Real %s theme homepage screenshot" $label) $theme.showcase_alt_en }}{{ end }}" width="1199" height="633" loading="lazy" decoding="async">
+                <span class="tc-preview-loading" aria-hidden="true">{{ if $zh }}加载真实预览…{{ else }}Loading live preview…{{ end }}</span>
+              </a>
+            {{- else -}}
+              <div class="tc-preview tc-preview-unavailable" role="img" aria-label="{{ if $zh }}{{ $label }} 尚未提供真实预览{{ else }}{{ $label }} has no real preview yet{{ end }}"><span class="tc-preview-unavailable-index">{{ printf "%02d" (add $index 1) }}</span><strong>{{ if $zh }}真实预览准备中{{ else }}Real preview in progress{{ end }}</strong><small>{{ if $zh }}主题页面完成后将在此展示实际首屏截图{{ else }}A screenshot will appear when the theme page is ready{{ end }}</small></div>
+            {{- end -}}
             <div class="tc-card-content">
               <div class="tc-card-meta"><span>{{ printf "%02d" (add $index 1) }} / {{ upper $theme.category }}</span><span class="tc-card-status {{ if not $isAvailable }}is-planned{{ else if eq $theme.status "production" }}is-stable{{ end }}">{{ if not $isAvailable }}{{ if $zh }}规划中{{ else }}Planned{{ end }}{{ else if eq $theme.status "production" }}{{ if $zh }}稳定{{ else }}Stable{{ end }}{{ else }}{{ if $zh }}预览{{ else }}Preview{{ end }}{{ end }}</span></div>
               <div class="tc-card-title-row"><h3>{{ $label }}</h3><button type="button" class="tc-favorite" data-theme-favorite data-theme-id="{{ $selectionID }}" data-theme-label="{{ $label }}" title="{{ if $zh }}收藏主题{{ else }}Favorite theme{{ end }}" aria-label="{{ if $zh }}收藏{{ $label }}{{ else }}Favorite {{ $label }}{{ end }}" aria-pressed="false">☆</button></div>

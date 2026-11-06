@@ -17,6 +17,9 @@ themes:
     script: lzw-archive.js
     base_path: /themes/lzw-archive/
     preview_path: /themes/lzw-archive/
+    showcase_image: /images/theme-center/lzw-archive.webp
+    showcase_alt_zh: 杨劲松个人档案主题真实首页截图
+    showcase_alt_en: Real LZW personal archive theme homepage screenshot
     source_repository: https://github.com/lzw-cjs/personal-website
     reference_url: https://lzw-cjs.github.io/personal-website/
     reference_note: Faithful Hugo adaptation of the public personal-website template with Jinsong Yang's shared project and writing data.
@@ -42,6 +45,9 @@ themes:
     script: js/cyberpunk2077.js
     base_path: /themes/cyberpunk2077/
     preview_path: /themes/cyberpunk2077/
+    showcase_image: /images/theme-center/cyberpunk2077.webp
+    showcase_alt_zh: 夜之城工程档案主题真实首页截图
+    showcase_alt_en: Real Night City Archive theme homepage screenshot
     available: true
     default_selectable: true
     supports: [home, list, single, projects, blog]
@@ -99,6 +105,9 @@ themes:
     script: js/engineer-terminal.js
     base_path: /themes/engineer-terminal/
     preview_path: /themes/engineer-terminal/
+    showcase_image: /images/theme-center/ai-terminal.webp
+    showcase_alt_zh: 工程师终端主题真实首页截图
+    showcase_alt_en: Real Engineer Terminal theme homepage screenshot
     dev_preview_path: http://localhost:1314/
     available: true
     default_selectable: true
@@ -124,6 +133,9 @@ themes:
     default_selectable: true
     base_path: /themes/engineer-terminal/astro-tui-portfolio/
     preview_path: /themes/engineer-terminal/astro-tui-portfolio/
+    showcase_image: /images/theme-center/astro-tui-portfolio.webp
+    showcase_alt_zh: Astro TUI 终端作品集真实首页截图
+    showcase_alt_en: Real Astro TUI portfolio homepage screenshot
     dev_preview_path: http://localhost:1316/
     remote_demo: https://astro-tui-portfolio.netlify.app/
     source_repository: https://github.com/nivinvysakh/astro-tui-portfolio
@@ -150,6 +162,9 @@ themes:
     focus_zh: 终端工程档案、本地图片素材与可交互工具
     base_path: /themes/engineer-terminal/termfolio/
     preview_path: /themes/engineer-terminal/termfolio/
+    showcase_image: /images/theme-center/termfolio.webp
+    showcase_alt_zh: Termfolio 终端作品集真实首页截图
+    showcase_alt_en: Real Termfolio portfolio homepage screenshot
     dev_preview_path: http://localhost:1315/
     source_repository: https://github.com/wa1939/termfolio
     reference_note: Termfolio source adapted for Jinsong Yang with local Bitmap covers and Chinese-first content
@@ -253,6 +268,9 @@ themes:
     script: js/minimal-theme.js
     base_path: /themes/minimal/
     preview_path: /themes/minimal/
+    showcase_image: /images/theme-center/minimal.webp
+    showcase_alt_zh: Minimal 主题真实首页截图
+    showcase_alt_en: Real Minimal theme homepage screenshot
     available: true
     default_selectable: true
     supports: [home]
@@ -277,6 +295,9 @@ themes:
     script: js/minimal-theme.js
     base_path: /themes/minimal/astro-blog/
     preview_path: /themes/minimal/astro-blog/
+    showcase_image: /images/theme-center/astro-blog.webp
+    showcase_alt_zh: Astro Blog 主题真实首页截图
+    showcase_alt_en: Real Astro Blog theme homepage screenshot
     available: true
     default_selectable: true
     supports: [home]
@@ -301,6 +322,9 @@ themes:
     script: js/minimal-theme.js
     base_path: /themes/minimal/astropaper/
     preview_path: /themes/minimal/astropaper/
+    showcase_image: /images/theme-center/astropaper.webp
+    showcase_alt_zh: AstroPaper 主题真实首页截图
+    showcase_alt_en: Real AstroPaper theme homepage screenshot
     available: true
     default_selectable: true
     supports: [home]
@@ -325,6 +349,9 @@ themes:
     script: js/minimal-theme.js
     base_path: /themes/minimal/astro-erudite/
     preview_path: /themes/minimal/astro-erudite/
+    showcase_image: /images/theme-center/astro-erudite.webp
+    showcase_alt_zh: Astro Erudite 主题真实首页截图
+    showcase_alt_en: Real Astro Erudite theme homepage screenshot
     available: true
     default_selectable: true
     supports: [home]
@@ -349,6 +376,9 @@ themes:
     script: js/minimal-theme.js
     base_path: /themes/minimal/pudding/
     preview_path: /themes/minimal/pudding/
+    showcase_image: /images/theme-center/pudding.webp
+    showcase_alt_zh: Pudding 主题真实首页截图
+    showcase_alt_en: Real Pudding theme homepage screenshot
     available: true
     default_selectable: true
     supports: [home]
@@ -373,6 +403,9 @@ themes:
     script: js/minimal-theme.js
     base_path: /themes/minimal/miniblog/
     preview_path: /themes/minimal/miniblog/
+    showcase_image: /images/theme-center/miniblog.webp
+    showcase_alt_zh: Miniblog 主题真实首页截图
+    showcase_alt_en: Real Miniblog theme homepage screenshot
     available: true
     default_selectable: true
     supports: [home]
@@ -394,6 +427,9 @@ themes:
     script: js/oil-theme.js
     base_path: /themes/oil/
     preview_path: /themes/oil/
+    showcase_image: /images/theme-center/oil.webp
+    showcase_alt_zh: Oil 主题真实首页截图
+    showcase_alt_en: Real Oil theme homepage screenshot
     available: true
     default_selectable: true
     supports: [home, list, single, tech-stack]
@@ -415,6 +451,9 @@ themes:
     script: js/alxian-theme.js
     base_path: /themes/alxian/
     preview_path: /themes/alxian/
+    showcase_image: /images/theme-center/alxian.webp
+    showcase_alt_zh: Alxian 主题真实首页截图
+    showcase_alt_en: Real Alxian theme homepage screenshot
     available: true
     default_selectable: true
     supports: [home, list, single, resource, chat, friends, tech-stack, works, 404]
@@ -436,6 +475,9 @@ themes:
     script: js/bloggpt-theme.js
     base_path: /
     preview_path: /themes/bloggpt/
+    showcase_image: /images/theme-center/bloggpt.webp
+    showcase_alt_zh: BlogGPT 主题真实首页截图
+    showcase_alt_en: Real BlogGPT theme homepage screenshot
     available: true
     default_selectable: true
     supports: [home, list, single, resource, chat, friends, tech-stack, categories, archives, about, search, status, 404]
