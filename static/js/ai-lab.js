@@ -306,6 +306,11 @@
   document.querySelectorAll('[data-home-sizzle]').forEach((stage) => {
     const canvas = stage.querySelector('[data-home-art]');
     const button = stage.querySelector('[data-home-animation-toggle]');
+    const progressControl = stage.querySelector('[data-home-progress]');
+    const progressLabel = stage.querySelector('[data-home-progress-label]');
+    const storyPrevious = stage.querySelector('[data-home-story-prev]');
+    const storyNext = stage.querySelector('[data-home-story-next]');
+    const storyCount = stage.querySelector('[data-home-story-count]');
     const fallback = stage.querySelector('[data-home-art-fallback]');
     const track = stage.closest('[data-home-sizzle-track]');
     const stories = [...stage.querySelectorAll('[data-home-story]')];
@@ -345,11 +350,12 @@
       return 1 - ((1 - t) ** 3);
     };
     const ready = () => heroesReady;
-    const readProgress = () => {
-      if (!track) return 0;
-      const stageTop = Number.parseFloat(window.getComputedStyle(stage).top) || 0;
-      const travel = Math.max(1, track.offsetHeight - stage.getBoundingClientRect().height);
-      return clamp01((stageTop - track.getBoundingClientRect().top) / travel);
+    const syncProgressControl = (value) => {
+      if (progressControl) progressControl.value = String(Math.round(clamp01(value) * 1000));
+      if (progressLabel) progressLabel.textContent = value < .46 ? (document.documentElement.lang.startsWith('zh') ? '拼贴聚合' : 'Assembling') : value > .58 ? (document.documentElement.lang.startsWith('zh') ? '图块散开' : 'Scattering') : (document.documentElement.lang.startsWith('zh') ? '完整拼贴' : 'Atlas assembled');
+    };
+    const syncStoryCount = (index) => {
+      if (storyCount) storyCount.textContent = `${String(Math.max(0, index) + 1).padStart(2, '0')} / ${String(stories.length).padStart(2, '0')}`;
     };
     const setStory = (index) => {
       if (index === activeStory) return;
@@ -372,7 +378,24 @@
       if (!storyLayer || storyLayer.dataset.visible !== 'true') return;
       const activeIndex = stories.findIndex((story) => story.dataset.active === 'true');
       const zone = storyClearZones[activeIndex];
-      if (zone) context.clearRect(zone.x, zone.y, zone.width, zone.height);
+      if (!zone) return;
+      const centerX = zone.x + zone.width / 2;
+      const centerY = zone.y + zone.height / 2;
+      const radiusX = Math.max(1, zone.width * 0.62);
+      const radiusY = Math.max(1, zone.height * 0.78);
+      context.save();
+      context.globalCompositeOperation = 'destination-out';
+      context.translate(centerX, centerY);
+      context.scale(radiusX, radiusY);
+      const aperture = context.createRadialGradient(0, 0, 0.44, 0, 0, 1);
+      aperture.addColorStop(0, 'rgba(0, 0, 0, 1)');
+      aperture.addColorStop(0.72, 'rgba(0, 0, 0, .98)');
+      aperture.addColorStop(1, 'rgba(0, 0, 0, 0)');
+      context.fillStyle = aperture;
+      context.beginPath();
+      context.arc(0, 0, 1, 0, Math.PI * 2);
+      context.fill();
+      context.restore();
     };
     const resize = () => {
       const bounds = canvas?.getBoundingClientRect();
@@ -434,7 +457,7 @@
         };
       });
       tileLayout.sort((a, b) => a.delay - b.delay || a.index - b.index);
-      if (ready()) drawFrame(reducedMotion.matches ? 0.56 : userPaused ? frozenProgress : progress);
+      if (ready()) drawFrame(reducedMotion.matches ? 0.56 : progress);
     };
     const drawHero = (alpha, zoom) => {
       if (alpha <= 0.001 || !heroesReady || !artCells.length) return;
@@ -506,24 +529,35 @@
         if (tilesReady) tileLayout.forEach((tile) => drawTile(tile, tile.x, tile.y, tile.size, 1));
         else drawHero(1, 1);
         setStory(0);
+        syncStoryCount(0);
+        syncProgressControl(.56);
         setPhase('mosaic', true);
         clearStoryZone();
         return;
       }
 
       const p = clamp01(value);
-      if (p < 0.1) setPhase('seed');
+      if (p < 0.1) setPhase('seed', true);
       else if (p < 0.46) setPhase('assemble');
-      else if (p < 0.58) setPhase('mosaic');
+      else if (p < 0.58) setPhase('mosaic', true);
       else if (p < 0.84) setPhase('scatter');
       else setPhase('stories');
 
       const heroFade = smooth((p - 0.06) / 0.1);
       drawAmbientTiles(p);
-      drawHero(1 - heroFade, 1 + Math.min(p, 0.085) * 0.12);
+      drawHero(tilesReady ? 1 - heroFade : 1, 1 + Math.min(p, 0.085) * 0.12);
       if (tilesReady && p >= 0.08 && p < 0.46) drawAssemblingTiles(clamp01((p - 0.08) / 0.38));
       else if (tilesReady && p >= 0.46 && p < 0.58) drawAssemblingTiles(1);
       else if (tilesReady && p >= 0.58) drawScatteringTiles(clamp01((p - 0.58) / 0.22));
+      if (p >= .84 && stories.length) {
+        const storyIndex = Math.min(stories.length - 1, Math.floor(((p - .84) / .16) * stories.length));
+        setStory(storyIndex);
+        syncStoryCount(storyIndex);
+      } else if (p >= .46 && stories.length && targetProgress < .84) {
+        setStory(0);
+        syncStoryCount(0);
+      }
+      syncProgressControl(p);
       clearStoryZone();
     };
     const syncButton = () => {
@@ -541,60 +575,74 @@
       frame = 0;
     };
     let lastDrawAt = 0;
-    let cycleStartedAt = 0;
-    let cycleNumber = 0;
+    let pointerStart = null;
     const draw = (timestamp) => {
       frame = 0;
       if (!context || !ready() || !width || !height || !visible || document.hidden) return;
-      if (userPaused) {
-        drawFrame(frozenProgress);
-        return;
-      }
       if (reducedMotion.matches) {
         progress = 0.56;
         targetProgress = 0.56;
         drawFrame(0.56);
         return;
       }
-      if (timestamp - lastDrawAt < 1000 / 30) {
+      if (timestamp - lastDrawAt < 1000 / 30 && Math.abs(targetProgress - progress) > .002) {
         frame = window.requestAnimationFrame(draw);
         return;
       }
       lastDrawAt = timestamp;
-      if (cycleStartedAt && progress > 0 && timestamp < cycleStartedAt) cycleStartedAt = timestamp - progress * 14000;
-      if (!cycleStartedAt) cycleStartedAt = timestamp;
-      progress = clamp01((timestamp - cycleStartedAt) / 14000);
-      targetProgress = progress;
+      progress += (targetProgress - progress) * .16;
+      if (Math.abs(targetProgress - progress) < .001) progress = targetProgress;
       drawFrame(progress);
-      if (progress >= 1) {
-        cycleStartedAt = timestamp;
-        cycleNumber += 1;
-        if (stories.length) setStory(cycleNumber % stories.length);
-        progress = 0;
-      }
-      frame = window.requestAnimationFrame(draw);
+      if (Math.abs(targetProgress - progress) > .001) frame = window.requestAnimationFrame(draw);
     };
     const start = () => {
       stop();
-      if (!visible || document.hidden || !ready()) return;
-      if (!userPaused && !reducedMotion.matches) {
-        lastDrawAt = 0;
-        if (!cycleStartedAt) cycleStartedAt = performance.now() - progress * 14000;
-      }
-      frame = window.requestAnimationFrame(draw);
+      if (!visible || document.hidden || !ready() || userPaused) return;
+      lastDrawAt = 0;
+      if (!reducedMotion.matches) frame = window.requestAnimationFrame(draw);
     };
-
-    button?.addEventListener('click', () => {
-      if (userPaused) {
-        userPaused = false;
-        cycleStartedAt = performance.now() - frozenProgress * 14000;
-      } else {
-        frozenProgress = progress;
-        if (cycleStartedAt) frozenProgress = clamp01((performance.now() - cycleStartedAt) / 14000);
-        userPaused = true;
-      }
-      syncButton();
-      start();
+    const setTarget = (value) => { targetProgress = clamp01(value); start(); };
+    const setStoryIndex = (index) => {
+      if (!stories.length) return;
+      const next = (index + stories.length) % stories.length;
+      setStory(next);
+      syncStoryCount(next);
+      setTarget(.84 + ((next + .5) / stories.length) * .16);
+    };
+    storyPrevious?.addEventListener('click', () => setStoryIndex(activeStory - 1));
+    storyNext?.addEventListener('click', () => setStoryIndex(activeStory + 1));
+    progressControl?.addEventListener('input', (event) => setTarget(Number(event.target.value) / 1000));
+    stage.addEventListener('pointerdown', (event) => {
+      if (event.target.closest('a,button,input')) return;
+      pointerStart = { x: event.clientX, id: event.pointerId };
+      stage.setPointerCapture?.(event.pointerId);
+    });
+    stage.addEventListener('pointermove', (event) => {
+      if (!pointerStart || event.pointerId !== pointerStart.id) return;
+      const delta = (event.clientX - pointerStart.x) / Math.max(1, stage.clientWidth);
+      if (Math.abs(delta) > .01) setTarget(targetProgress + delta * .9);
+      pointerStart.x = event.clientX;
+    });
+    const endPointer = () => { pointerStart = null; };
+    stage.addEventListener('pointerup', endPointer);
+    stage.addEventListener('pointercancel', endPointer);
+    stage.addEventListener('pointermove', (event) => {
+      if (pointerStart || !width || !height) return;
+      const bounds = stage.getBoundingClientRect();
+      const x = clamp01((event.clientX - bounds.left) / Math.max(1, bounds.width));
+      const y = clamp01((event.clientY - bounds.top) / Math.max(1, bounds.height));
+      stage.style.setProperty('--al-pointer-x', `${((x - .5) * 2).toFixed(3)}`);
+      stage.style.setProperty('--al-pointer-y', `${((y - .5) * 2).toFixed(3)}`);
+    });
+    stage.addEventListener('pointerleave', () => {
+      stage.style.setProperty('--al-pointer-x', '0');
+      stage.style.setProperty('--al-pointer-y', '0');
+    });
+    stage.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowLeft') { event.preventDefault(); setStoryIndex(activeStory - 1); }
+      if (event.key === 'ArrowRight') { event.preventDefault(); setStoryIndex(activeStory + 1); }
+      if (event.key === 'Home') { event.preventDefault(); setTarget(0); }
+      if (event.key === 'End') { event.preventDefault(); setTarget(.99); }
     });
     document.addEventListener('visibilitychange', start);
     reducedMotion.addEventListener?.('change', start);
@@ -610,10 +658,12 @@
     const onImageReady = () => {
       if (!ready()) return;
       stage.removeAttribute('data-art-error');
+      stage.dataset.artReady = 'true';
       resize();
-      progress = reducedMotion.matches ? 0.56 : 0;
+      progress = 0.56;
       targetProgress = progress;
       frozenProgress = progress;
+      syncProgressControl(progress);
       start();
     };
     heroes.addEventListener('load', () => { heroesReady = true; onImageReady(); }, { once: true });
@@ -629,6 +679,32 @@
     if (heroes.complete && heroes.naturalWidth) heroesReady = true;
     if (tiles.complete && tiles.naturalWidth) tilesReady = true;
     if (ready()) onImageReady();
+    button?.addEventListener('click', () => {
+      userPaused = !userPaused;
+      frozenProgress = progress;
+      syncButton();
+      if (userPaused) {
+        stop();
+        drawFrame(frozenProgress);
+      } else {
+        start();
+      }
+    });
+  });
+
+  document.querySelectorAll('[data-image-frame] img').forEach((image) => {
+    const frame = image.closest('[data-image-frame]');
+    const reveal = () => frame?.classList.add('is-loaded');
+    const decode = () => {
+      if (typeof image.decode !== 'function') { reveal(); return; }
+      image.decode().then(reveal).catch(() => {
+        if (image.naturalWidth) reveal();
+        else frame?.classList.add('is-error');
+      });
+    };
+    if (image.complete && image.naturalWidth) decode();
+    else image.addEventListener('load', decode, { once: true });
+    image.addEventListener('error', () => frame?.classList.add('is-error'), { once: true });
   });
 
   document.addEventListener('keydown', (event) => {

@@ -36,6 +36,7 @@
         </div>
       </details>
       {{ partial "theme-switcher.html" . }}
+      <a class="al-ref-theme-center" href="{{ "theme-center/" | relLangURL }}" aria-label="{{ if $zh }}打开主题中心{{ else }}Open theme center{{ end }}" title="{{ if $zh }}主题中心{{ else }}Theme center{{ end }}"><span aria-hidden="true">▦</span><span>{{ if $zh }}主题中心{{ else }}Themes{{ end }}</span><span aria-hidden="true">↗</span></a>
       <a class="al-ref-try" href="{{ "ai-lab/playground/" | relLangURL }}">{{ if $zh }}打开实验台{{ else }}Open Lab{{ end }}<span aria-hidden="true">↗</span></a>
       <button class="al-ref-icon" type="button" data-lab-search-open aria-label="{{ if $zh }}搜索研究档案{{ else }}Search the archive{{ end }}" title="{{ if $zh }}搜索{{ else }}Search{{ end }}">
         <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.4"></circle><path d="m15.2 15.2 4.3 4.3"></path></svg>
