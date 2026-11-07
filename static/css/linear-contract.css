@@ -82,7 +82,7 @@ body.ai-product-studio.aps-home .theme-manager[open] > .theme-manager-trigger { 
 .linear-product-frame { position: relative; z-index: 2; display: grid; grid-template-columns: 232px minmax(0, 1fr); height: 100%; overflow: hidden; border: 1px solid #2b2f35; border-radius: 9px; background: #151719; box-shadow: inset 0 1px 0 rgb(255 255 255 / 5%); }
 .linear-frame-sidebar { position: relative; display: flex; flex-direction: column; min-width: 0; padding: 11px 9px; border-right: 1px solid #292d32; background: linear-gradient(180deg, #17191b, #111315); color: #9a9ea4; }
 .linear-frame-workspace { display: grid; grid-template-columns: 19px minmax(0, 1fr) 18px; align-items: center; gap: 8px; min-height: 34px; padding: 0 7px; color: #f1f2f3; }
-.linear-frame-logo { width: 16px; height: 16px; display: grid; place-items: center; color: #0b0c0d; border-radius: 50%; background: #e8e9ea; font-size: 10px; }
+.linear-frame-logo { width: 16px; height: 16px; display: grid; place-items: center; color: #0b0c0d; border-radius: 50%; background: #e8e9ea; font: 650 8px/1 var(--aps-mono); letter-spacing: -.05em; }
 .linear-frame-workspace strong { overflow: hidden; font: 11px var(--aps-sans); text-overflow: ellipsis; white-space: nowrap; }
 .linear-frame-workspace button, .linear-frame-tools button { border: 0; background: transparent; color: #82868d; cursor: pointer; }
 .linear-frame-tools { display: flex; justify-content: flex-end; gap: 5px; margin: 3px 2px 13px; }
@@ -286,3 +286,52 @@ body.ai-product-studio.aps-home .legacy-aps-hero { display: none !important; }
   .linear-more-menu { top: 145px; left: 105px; }
   .linear-dialog-form { padding: 16px; }
 }
+
+/* Stable local icon contract: CSS geometry keeps the controls independent from system glyphs. */
+.linear-icon { position: relative; display: inline-block; flex: 0 0 16px; width: 16px; height: 16px; color: currentColor; vertical-align: middle; }
+.linear-icon-search { width: 13px; height: 13px; margin: 1px; border: 1.5px solid currentColor; border-radius: 50%; }
+.linear-icon-search::after { position: absolute; right: -4px; bottom: -3px; width: 6px; height: 1.5px; border-radius: 2px; background: currentColor; content: ""; transform: rotate(45deg); transform-origin: left center; }
+.linear-icon-plus::before, .linear-icon-plus::after { position: absolute; top: 7px; left: 2px; width: 12px; height: 1.5px; border-radius: 2px; background: currentColor; content: ""; }
+.linear-icon-plus::after { transform: rotate(90deg); }
+.linear-icon-chevron { width: 8px; height: 8px; margin: -3px 3px 0 0; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(45deg); transition: transform 160ms ease; }
+.linear-frame-workspace button[aria-expanded="true"] .linear-icon-chevron { transform: rotate(225deg); }
+.linear-icon-pulse { background: linear-gradient(90deg, currentColor 0 2px, transparent 2px 4px, currentColor 4px 6px, transparent 6px 8px, currentColor 8px 10px, transparent 10px 12px, currentColor 12px 14px); clip-path: polygon(0 62%, 20% 62%, 31% 25%, 46% 80%, 61% 47%, 74% 62%, 100% 62%, 100% 75%, 78% 75%, 63% 60%, 47% 96%, 31% 47%, 24% 75%, 0 75%); }
+.linear-icon-inbox { border: 1.5px solid currentColor; border-radius: 3px; }
+.linear-icon-inbox::after { position: absolute; right: 2px; bottom: 2px; left: 2px; height: 4px; border-top: 1.5px solid currentColor; border-radius: 50%; content: ""; }
+.linear-icon-issues { border: 1.5px solid currentColor; border-radius: 50%; }
+.linear-icon-issues::after { position: absolute; top: 5px; left: 5px; width: 4px; height: 4px; border-radius: 50%; background: currentColor; content: ""; }
+.linear-icon-reviews { border: 1.5px solid currentColor; border-radius: 3px; transform: rotate(45deg) scale(.72); }
+.linear-icon-orbit { border: 1.5px solid currentColor; border-radius: 50%; }
+.linear-icon-orbit::after { position: absolute; top: 2px; right: -2px; width: 4px; height: 4px; border-radius: 50%; background: currentColor; content: ""; }
+.linear-icon-project { border: 1.5px solid currentColor; border-radius: 3px; transform: rotate(45deg) scale(.72); }
+.linear-icon-more { background: radial-gradient(circle, currentColor 0 1.4px, transparent 1.6px) 0 7px / 5px 5px repeat-x; }
+.linear-icon-star { width: 12px; height: 12px; margin-inline: 1px; background: currentColor; clip-path: polygon(50% 0, 61% 36%, 100% 38%, 69% 60%, 80% 100%, 50% 75%, 20% 100%, 31% 60%, 0 38%, 39% 36%); }
+.linear-icon-arrow-up, .linear-icon-arrow-down { width: 7px; height: 7px; border-left: 1.5px solid currentColor; border-top: 1.5px solid currentColor; transform: rotate(45deg); }
+.linear-icon-arrow-down { transform: rotate(225deg); }
+.linear-icon-arrow-up-right { width: 9px; height: 9px; border-top: 1.5px solid currentColor; border-right: 1.5px solid currentColor; transform: rotate(0deg); }
+.linear-icon-arrow-up-right::after { position: absolute; top: 3px; left: -1px; width: 10px; height: 1.5px; border-radius: 2px; background: currentColor; content: ""; transform: rotate(-45deg); transform-origin: right center; }
+.linear-icon-arrow-right { width: 9px; height: 9px; border-top: 1.5px solid currentColor; border-right: 1.5px solid currentColor; transform: rotate(45deg); }
+.linear-icon-link::before, .linear-icon-link::after { position: absolute; width: 8px; height: 5px; border: 1.5px solid currentColor; border-radius: 5px; content: ""; transform: rotate(-38deg); }
+.linear-icon-link::before { top: 3px; left: 0; }
+.linear-icon-link::after { right: 0; bottom: 3px; }
+.linear-icon-context { border: 1.5px solid currentColor; border-radius: 2px; box-shadow: inset 0 0 0 2px #151719; }
+.linear-icon-context::after { position: absolute; right: 2px; bottom: 2px; width: 4px; height: 4px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; content: ""; }
+.linear-icon-delegate { border-bottom: 1.5px solid currentColor; }
+.linear-icon-delegate::before { position: absolute; top: 3px; left: 1px; width: 9px; height: 1.5px; border-radius: 2px; background: currentColor; content: ""; }
+.linear-icon-delegate::after { position: absolute; top: 0; right: 1px; width: 6px; height: 6px; border-top: 1.5px solid currentColor; border-right: 1.5px solid currentColor; content: ""; transform: rotate(45deg); }
+.linear-icon-activity-return { width: 13px; height: 13px; border-bottom: 1.5px solid currentColor; border-left: 1.5px solid currentColor; border-radius: 0 0 0 6px; transform: rotate(45deg); }
+.linear-icon-activity-tool { width: 12px; height: 12px; border: 1.5px solid currentColor; border-radius: 50%; }
+.linear-icon-activity-tool::after { position: absolute; top: 5px; left: 2px; width: 6px; height: 1.5px; border-radius: 2px; background: currentColor; content: ""; transform: rotate(-45deg); }
+.linear-icon-priority { width: 12px; height: 12px; border: 1.5px solid currentColor; border-radius: 50%; }
+.linear-icon-priority::after { position: absolute; top: 2px; left: 5px; width: 1.5px; height: 6px; border-radius: 2px; background: currentColor; content: ""; }
+.linear-icon-cycle { width: 12px; height: 12px; border: 1.5px solid currentColor; border-radius: 50%; }
+.linear-icon-cycle::after { position: absolute; top: -3px; right: -2px; width: 4px; height: 4px; border-top: 1.5px solid currentColor; border-right: 1.5px solid currentColor; content: ""; transform: rotate(45deg); }
+.linear-frame-nav button .linear-icon { color: #7d828a; }
+.linear-frame-nav button:hover .linear-icon, .linear-frame-nav button[aria-selected="true"] .linear-icon, .linear-frame-favorite:hover .linear-icon { color: currentColor; }
+.linear-frame-tools button .linear-icon, .linear-frame-topbar button .linear-icon, .linear-frame-viewbar button .linear-icon { pointer-events: none; }
+.linear-frame-topbar button .linear-icon-more { transform: translateY(-1px); }
+.linear-frame-topbar button .linear-icon-arrow-up, .linear-frame-topbar button .linear-icon-arrow-down { margin: 0 auto; }
+.linear-hero-actions .linear-icon, .linear-popover .linear-icon, .linear-pulse-timeline .linear-icon { flex-basis: 12px; width: 12px; height: 12px; }
+.linear-inbox-list button > .linear-icon { grid-column: 3; grid-row: 1 / span 2; width: 9px; height: 9px; flex-basis: 9px; color: #7587a4; }
+.linear-comment-box button .linear-icon { width: 11px; height: 11px; flex-basis: 11px; }
+.linear-issue-properties dd > .linear-icon { flex-basis: 12px; width: 12px; height: 12px; color: #d7b63c; }
