@@ -171,17 +171,23 @@
     revealObserver?.disconnect();
     revealObserver = null;
     body.classList.remove('aps-reveal-enabled');
+    revealItems.forEach((item) => item.classList.remove('is-reveal-pending'));
     revealItems.forEach((item) => item.classList.add('is-visible'));
   };
   const enableReveals = () => {
     if (reducedMotion.matches || !('IntersectionObserver' in window)) { revealImmediately(); return; }
     revealItems.forEach((item, index) => {
       item.style.setProperty('--aps-reveal-delay', Math.min(index % 5, 4) * 45 + 'ms');
+      // Keep below-the-fold content readable for full-page capture and slow
+      // first paints. Only items close to the viewport opt into the reveal.
+      const rect = item.getBoundingClientRect();
+      item.classList.toggle('is-reveal-pending', rect.top < window.innerHeight * 1.25);
     });
     body.classList.add('aps-reveal-enabled');
     revealObserver = new IntersectionObserver((entries, observer) => {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
+        entry.target.classList.remove('is-reveal-pending');
         entry.target.classList.add('is-visible');
         observer.unobserve(entry.target);
       });
@@ -195,6 +201,19 @@
       revealItems.forEach((item) => item.classList.remove('is-visible'));
       enableReveals();
     }
+  });
+
+  // Project covers expose a deterministic loading/error state so a slow or
+  // unavailable asset never leaves a silent blank tile.
+  document.querySelectorAll('[data-aps-media]').forEach((media) => {
+    const frame = media.closest('.aps-product-visual');
+    const setState = (state) => {
+      media.dataset.apsMediaState = state;
+      frame?.classList.toggle('is-media-error', state === 'error');
+    };
+    setState(media.complete && media.naturalWidth > 0 ? 'loaded' : 'loading');
+    media.addEventListener('load', () => setState('loaded'), { once: true });
+    media.addEventListener('error', () => setState('error'), { once: true });
   });
 
   // Evidence cards are article records, not fabricated benchmark entries.

@@ -129,7 +129,7 @@
           {{- $cover := $project.Resources.GetMatch "featured.*" -}}
           <article class="aps-product-card" data-aps-reveal>
             <a class="aps-product-visual" href="{{ $project.RelPermalink }}" aria-label="{{ if $zh }}打开项目{{ else }}Open project{{ end }}: {{ $project.Title }}">
-              {{- with $cover -}}<img src="{{ .RelPermalink }}" alt="{{ $project.Title }}" width="{{ .Width }}" height="{{ .Height }}" loading="lazy" decoding="async">{{- else -}}<div class="aps-project-abstract aps-project-abstract-{{ mod (len $project.Title) 3 }}" aria-hidden="true"><span>{{ printf "PRODUCT / %03d" (add $index 1) }}</span><i></i><b></b></div>{{- end -}}
+              {{- with $cover -}}<img class="aps-product-media" src="{{ .RelPermalink }}" alt="{{ $project.Title }}" width="{{ .Width }}" height="{{ .Height }}" loading="lazy" decoding="async" data-aps-media="project"><span class="aps-product-media-fallback" aria-hidden="true">{{ printf "PROJECT / %03d" (add $index 1) }}<small>{{ if $zh }}本地资产加载失败{{ else }}LOCAL ASSET UNAVAILABLE{{ end }}</small></span>{{- else -}}<div class="aps-project-abstract aps-project-abstract-{{ mod (len $project.Title) 3 }}" aria-hidden="true"><span>{{ printf "PRODUCT / %03d" (add $index 1) }}</span><i></i><b></b></div>{{- end -}}
               <span class="aps-product-open" aria-hidden="true">↗</span>
             </a>
             <div class="aps-product-meta"><span>{{ with $project.Params.status }}{{ . }}{{ else }}{{ if $zh }}项目档案{{ else }}PROJECT RECORD{{ end }}{{ end }}</span><span>{{ with $project.Params.role }}{{ . }}{{ else }}{{ upper $project.Section }}{{ end }}</span></div>
