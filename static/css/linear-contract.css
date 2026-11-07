@@ -326,6 +326,10 @@ body.ai-product-studio.aps-home .legacy-aps-hero { display: none !important; }
 .linear-icon-priority::after { position: absolute; top: 2px; left: 5px; width: 1.5px; height: 6px; border-radius: 2px; background: currentColor; content: ""; }
 .linear-icon-cycle { width: 12px; height: 12px; border: 1.5px solid currentColor; border-radius: 50%; }
 .linear-icon-cycle::after { position: absolute; top: -3px; right: -2px; width: 4px; height: 4px; border-top: 1.5px solid currentColor; border-right: 1.5px solid currentColor; content: ""; transform: rotate(45deg); }
+.linear-icon-mode { width: 14px; height: 14px; border: 1.5px solid currentColor; border-radius: 50%; background: linear-gradient(90deg, currentColor 0 48%, transparent 48% 100%); }
+.linear-icon-filter { width: 14px; height: 14px; border: 1.5px solid currentColor; border-radius: 2px; clip-path: polygon(0 0, 100% 0, 62% 46%, 62% 100%, 38% 100%, 38% 46%); }
+.linear-icon-inline-arrow { display: inline-block; width: 9px; height: 9px; border-top: 1.5px solid currentColor; border-right: 1.5px solid currentColor; transform: translateY(1px); }
+.linear-icon-inline-arrow::after { position: absolute; top: 3px; left: -1px; width: 10px; height: 1.5px; border-radius: 2px; background: currentColor; content: ""; transform: rotate(-45deg); transform-origin: right center; }
 .linear-frame-nav button .linear-icon { color: #7d828a; }
 .linear-frame-nav button:hover .linear-icon, .linear-frame-nav button[aria-selected="true"] .linear-icon, .linear-frame-favorite:hover .linear-icon { color: currentColor; }
 .linear-frame-tools button .linear-icon, .linear-frame-topbar button .linear-icon, .linear-frame-viewbar button .linear-icon { pointer-events: none; }

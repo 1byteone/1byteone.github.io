@@ -12,7 +12,7 @@
     <button class="aps-menu-toggle" type="button" data-aps-menu-toggle aria-expanded="false" aria-controls="aps-primary-nav" aria-label="{{ if $zh }}打开导航菜单{{ else }}Open navigation menu{{ end }}"><span></span><span></span></button>
     <nav class="aps-nav linear-nav" id="aps-primary-nav" data-aps-nav aria-label="{{ if $zh }}工作室导航{{ else }}Studio navigation{{ end }}">
       <div class="linear-nav-menu" data-linear-menu-root>
-        <button type="button" data-linear-menu-trigger="product" aria-haspopup="true" aria-expanded="false">{{ if $zh }}产品{{ else }}Product{{ end }}<span aria-hidden="true">⌄</span></button>
+        <button type="button" data-linear-menu-trigger="product" aria-haspopup="true" aria-expanded="false">{{ if $zh }}产品{{ else }}Product{{ end }}<span class="linear-icon linear-icon-chevron" aria-hidden="true"></span></button>
         <div class="linear-mega-menu" data-linear-menu-panel="product" hidden>
           <div><span class="linear-menu-kicker">{{ if $zh }}产品工作面{{ else }}PRODUCT SURFACE{{ end }}</span><strong>{{ if $zh }}从问题到交付{{ else }}From problem to delivery{{ end }}</strong><p>{{ if $zh }}在一个可检查的工作面里组织任务、状态和证据。{{ else }}Organize issues, state, and evidence in one inspectable surface.{{ end }}</p></div>
           <a href="{{ "projects/" | relLangURL }}"><span>01</span><strong>{{ if $zh }}项目档案{{ else }}Project records{{ end }}</strong><small>{{ if $zh }}真实交付与架构取舍{{ else }}Working builds and trade-offs{{ end }}</small></a>
@@ -20,7 +20,7 @@
         </div>
       </div>
       <div class="linear-nav-menu" data-linear-menu-root>
-        <button type="button" data-linear-menu-trigger="resources" aria-haspopup="true" aria-expanded="false">{{ if $zh }}资源{{ else }}Resources{{ end }}<span aria-hidden="true">⌄</span></button>
+        <button type="button" data-linear-menu-trigger="resources" aria-haspopup="true" aria-expanded="false">{{ if $zh }}资源{{ else }}Resources{{ end }}<span class="linear-icon linear-icon-chevron" aria-hidden="true"></span></button>
         <div class="linear-mega-menu" data-linear-menu-panel="resources" hidden>
           <div><span class="linear-menu-kicker">{{ if $zh }}工作室索引{{ else }}STUDIO INDEX{{ end }}</span><strong>{{ if $zh }}把知识留在现场{{ else }}Keep the useful context close{{ end }}</strong><p>{{ if $zh }}文章、技术栈和资料按用途组织，支持继续学习。{{ else }}Notes, stack, and resources organized for continued learning.{{ end }}</p></div>
           <a href="{{ "blog/" | relLangURL }}"><span>01</span><strong>{{ if $zh }}技术文章{{ else }}Journal{{ end }}</strong><small>{{ if $zh }}开发记录与碰壁复盘{{ else }}Engineering notes and failure reports{{ end }}</small></a>
@@ -36,8 +36,8 @@
       <a class="linear-header-link linear-login" href="{{ "about/" | relLangURL }}">{{ if $zh }}关于{{ else }}About{{ end }}</a>
       <a class="linear-signup" href="{{ "projects/" | relLangURL }}">{{ if $zh }}开始构建{{ else }}Get started{{ end }}</a>
       {{ partial "theme-switcher.html" $page }}
-      <button class="aps-mode-toggle" type="button" data-aps-mode-toggle aria-pressed="false" aria-label="{{ if $zh }}切换深色模式{{ else }}Toggle dark mode{{ end }}" title="{{ if $zh }}切换深色模式{{ else }}Toggle dark mode{{ end }}"><span aria-hidden="true">◐</span></button>
-      <button class="aps-search-trigger" type="button" data-aps-search-open aria-label="{{ if $zh }}搜索工作室档案{{ else }}Search studio archive{{ end }}"><span aria-hidden="true">⌕</span><kbd data-aps-shortcut>⌘K</kbd></button>
+      <button class="aps-mode-toggle" type="button" data-aps-mode-toggle aria-pressed="false" aria-label="{{ if $zh }}切换深色模式{{ else }}Toggle dark mode{{ end }}" title="{{ if $zh }}切换深色模式{{ else }}Toggle dark mode{{ end }}"><span class="linear-icon linear-icon-mode" aria-hidden="true"></span></button>
+      <button class="aps-search-trigger" type="button" data-aps-search-open aria-label="{{ if $zh }}搜索工作室档案{{ else }}Search studio archive{{ end }}"><span class="linear-icon linear-icon-search" aria-hidden="true"></span><kbd data-aps-shortcut>⌘K</kbd></button>
       {{- $translationURL := cond $zh ("en/" | relLangURL) ("/" | relLangURL) -}}
       {{- with .Translations -}}{{- $translationURL = (index . 0).RelPermalink -}}{{- end -}}
       <a class="aps-language" href="{{ $translationURL }}" lang="{{ if $zh }}en{{ else }}zh-Hans{{ end }}">{{ if $zh }}EN{{ else }}中{{ end }}</a>
@@ -47,7 +47,7 @@
 <dialog class="aps-search-dialog" data-aps-search-dialog aria-labelledby="aps-search-title">
   <form method="dialog" class="aps-search-form">
     <div class="aps-search-head"><div><span>YOYO / SEARCH INDEX</span><h2 id="aps-search-title">{{ if $zh }}查找工作室档案{{ else }}Search the studio archive{{ end }}</h2></div><button type="submit" aria-label="{{ if $zh }}关闭搜索{{ else }}Close search{{ end }}">ESC</button></div>
-    <label class="aps-search-input"><span aria-hidden="true">⌕</span><input type="search" data-aps-search-input autocomplete="off" placeholder="{{ if $zh }}搜索产品、实验、文章与工程记录…{{ else }}Search products, experiments, and engineering notes…{{ end }}" aria-label="{{ if $zh }}搜索档案{{ else }}Search archive{{ end }}"></label>
+    <label class="aps-search-input"><span class="linear-icon linear-icon-search" aria-hidden="true"></span><input type="search" data-aps-search-input autocomplete="off" placeholder="{{ if $zh }}搜索产品、实验、文章与工程记录…{{ else }}Search products, experiments, and engineering notes…{{ end }}" aria-label="{{ if $zh }}搜索档案{{ else }}Search archive{{ end }}"></label>
   </form>
   <div class="aps-search-results" data-aps-search-results aria-live="polite"></div>
   <p class="aps-search-help">{{ if $zh }}↑↓ 选择 · Enter 打开 · Esc 关闭{{ else }}↑↓ select · Enter open · Esc close{{ end }}</p>

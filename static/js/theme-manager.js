@@ -51,7 +51,7 @@
     document.querySelectorAll("[data-theme-favorite]").forEach((button) => {
       const saved = favorites.has(button.dataset.themeId);
       button.setAttribute("aria-pressed", String(saved));
-      button.textContent = saved ? "★" : "☆";
+      if (!button.classList.contains("tc-favorite")) button.textContent = "";
       const label = button.dataset.themeLabel || button.getAttribute("aria-label") || "theme";
       button.setAttribute("aria-label", isChinese ? (saved ? `取消收藏${label}` : `收藏${label}`) : (saved ? `Remove ${label} from favorites` : `Add ${label} to favorites`));
     });
@@ -128,7 +128,7 @@
       star.dataset.themeLabel = option.dataset.themeLabel;
       star.setAttribute("aria-label", manager.dataset.themeUiLang === "zh" ? `收藏${option.dataset.themeLabel}` : `Favorite ${option.dataset.themeLabel}`);
       star.setAttribute("aria-pressed", String(readList(favoritesKey).includes(option.dataset.themeId)));
-      star.textContent = star.getAttribute("aria-pressed") === "true" ? "★" : "☆";
+      star.textContent = "";
       item.append(link, star);
       target.append(item);
     });

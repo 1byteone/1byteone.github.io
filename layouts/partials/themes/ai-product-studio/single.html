@@ -24,7 +24,7 @@
             {{ with .Params.duration }}<div><span>{{ if $zh }}周期{{ else }}DURATION{{ end }}</span><strong>{{ . }}</strong></div>{{ end }}
             {{ with .Params.team_size }}<div><span>{{ if $zh }}团队{{ else }}TEAM{{ end }}</span><strong>{{ . }}</strong></div>{{ end }}
             {{ with .Params.tech_stack }}<div class="aps-case-wide"><span>{{ if $zh }}技术栈{{ else }}STACK{{ end }}</span><div class="aps-tag-list">{{ range . }}<span>{{ . }}</span>{{ end }}</div></div>{{ end }}
-            {{ with .Params.links }}<div class="aps-case-wide"><span>{{ if $zh }}公开交付链接{{ else }}PUBLIC DELIVERY LINKS{{ end }}</span><div class="aps-case-links">{{ range . }}<a href="{{ .url }}" target="_blank" rel="noopener noreferrer">{{ .label | default .type }} <span aria-hidden="true">↗</span></a>{{ end }}</div></div>{{ end }}
+            {{ with .Params.links }}<div class="aps-case-wide"><span>{{ if $zh }}公开交付链接{{ else }}PUBLIC DELIVERY LINKS{{ end }}</span><div class="aps-case-links">{{ range . }}<a href="{{ .url }}" target="_blank" rel="noopener noreferrer">{{ .label | default .type }} <span class="linear-icon linear-icon-arrow-up-right" aria-hidden="true"></span></a>{{ end }}</div></div>{{ end }}
           </section>
           <p class="aps-proof-note">{{ if $zh }}本案例只复述来源档案中已有的信息。未记录的评测数据、用户规模和线上状态保持未声明。{{ else }}This case study uses information present in its source record. Unreported evaluation data, user counts, and deployment status remain unstated.{{ end }}</p>
         {{ end }}

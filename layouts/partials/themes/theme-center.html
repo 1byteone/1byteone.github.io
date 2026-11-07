@@ -68,7 +68,7 @@
 
     <section class="tc-controls" aria-label="{{ if $zh }}主题筛选{{ else }}Theme filters{{ end }}">
       <label class="tc-search">
-        <span aria-hidden="true">⌕</span>
+        <span class="tc-icon tc-icon-search" aria-hidden="true"></span>
         <input type="search" data-theme-search placeholder="{{ if $zh }}搜索名称、场景或标签{{ else }}Search name, use case, or tag{{ end }}" aria-label="{{ if $zh }}搜索主题{{ else }}Search themes{{ end }}">
         <kbd>Ctrl K</kbd>
       </label>
@@ -120,16 +120,16 @@
             </div>
             <div class="tc-card-content">
               <div class="tc-card-meta"><span>{{ printf "%02d" (add $index 1) }} / {{ upper $theme.category }}</span><span class="tc-card-status {{ if not $isAvailable }}is-planned{{ else if eq $theme.status "production" }}is-stable{{ end }}">{{ if not $isAvailable }}{{ if $zh }}规划中{{ else }}Planned{{ end }}{{ else if eq $theme.status "production" }}{{ if $zh }}稳定{{ else }}Stable{{ end }}{{ else }}{{ if $zh }}预览{{ else }}Preview{{ end }}{{ end }}</span></div>
-              <div class="tc-card-title-row"><h3>{{ $label }}</h3><button type="button" class="tc-favorite" data-theme-favorite data-theme-id="{{ $selectionID }}" data-theme-label="{{ $label }}" title="{{ if $zh }}收藏主题{{ else }}Favorite theme{{ end }}" aria-label="{{ if $zh }}收藏{{ $label }}{{ else }}Favorite {{ $label }}{{ end }}" aria-pressed="false">☆</button></div>
+              <div class="tc-card-title-row"><h3>{{ $label }}</h3><button type="button" class="tc-favorite" data-theme-favorite data-theme-id="{{ $selectionID }}" data-theme-label="{{ $label }}" title="{{ if $zh }}收藏主题{{ else }}Favorite theme{{ end }}" aria-label="{{ if $zh }}收藏{{ $label }}{{ else }}Favorite {{ $label }}{{ end }}" aria-pressed="false"><span class="tc-icon tc-icon-star" aria-hidden="true"></span></button></div>
               <p class="tc-card-description">{{ $description }}</p>
               {{ with $theme.tags }}<div class="tc-tags">{{ range first 3 . }}<span>{{ . }}</span>{{ end }}</div>{{ end }}
               <div class="tc-card-actions">
                 {{- if $isAvailable -}}
-                  <a class="tc-preview-link" href="{{ $href }}" data-theme-visit data-theme-id="{{ $selectionID }}">{{ if $zh }}预览主题{{ else }}Preview theme{{ end }} <span aria-hidden="true">↗</span></a>
+                  <a class="tc-preview-link" href="{{ $href }}" data-theme-visit data-theme-id="{{ $selectionID }}">{{ if $zh }}预览主题{{ else }}Preview theme{{ end }} <span class="tc-icon tc-icon-arrow" aria-hidden="true"></span></a>
                   <button class="tc-default-button" type="button" data-theme-set-default data-theme-id="{{ $selectionID }}" data-theme-label="{{ $label }}" data-theme-path="{{ $href }}" data-label-default="{{ if $zh }}默认{{ else }}Default{{ end }}" data-label-set="{{ if $zh }}设为默认{{ else }}Set default{{ end }}" aria-pressed="{{ if $isCurrent }}true{{ else }}false{{ end }}">{{ if $isCurrent }}{{ if $zh }}默认{{ else }}Default{{ end }}{{ else }}{{ if $zh }}设为默认{{ else }}Set default{{ end }}{{ end }}</button>
                 {{- else -}}
                   <span class="tc-planned-note">{{ if $zh }}尚未开放预览{{ else }}Preview not available yet{{ end }}</span>
-                  {{ if or $theme.remote_demo $theme.reference_url $theme.source_repository }}<span class="tc-reference-links">{{ with $theme.remote_demo }}<a class="tc-preview-link" href="{{ . }}" target="_blank" rel="noopener noreferrer">{{ if $zh }}在线演示{{ else }}Live demo{{ end }} <span aria-hidden="true">↗</span></a>{{ end }}{{ with $theme.reference_url }}<a class="tc-preview-link" href="{{ . }}" target="_blank" rel="noopener noreferrer">{{ if $zh }}参考项目{{ else }}Reference{{ end }} <span aria-hidden="true">↗</span></a>{{ end }}{{ with $theme.source_repository }}<a class="tc-preview-link" href="{{ . }}" target="_blank" rel="noopener noreferrer">{{ if $zh }}源码仓库{{ else }}Source{{ end }} <span aria-hidden="true">↗</span></a>{{ end }}</span>{{ end }}
+                  {{ if or $theme.remote_demo $theme.reference_url $theme.source_repository }}<span class="tc-reference-links">{{ with $theme.remote_demo }}<a class="tc-preview-link" href="{{ . }}" target="_blank" rel="noopener noreferrer">{{ if $zh }}在线演示{{ else }}Live demo{{ end }} <span class="tc-icon tc-icon-arrow" aria-hidden="true"></span></a>{{ end }}{{ with $theme.reference_url }}<a class="tc-preview-link" href="{{ . }}" target="_blank" rel="noopener noreferrer">{{ if $zh }}参考项目{{ else }}Reference{{ end }} <span class="tc-icon tc-icon-arrow" aria-hidden="true"></span></a>{{ end }}{{ with $theme.source_repository }}<a class="tc-preview-link" href="{{ . }}" target="_blank" rel="noopener noreferrer">{{ if $zh }}源码仓库{{ else }}Source{{ end }} <span class="tc-icon tc-icon-arrow" aria-hidden="true"></span></a>{{ end }}</span>{{ end }}
                 {{- end -}}
               </div>
             </div>

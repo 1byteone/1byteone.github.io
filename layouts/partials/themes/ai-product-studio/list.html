@@ -29,7 +29,7 @@
             <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
             <p class="aps-experiment-summary">{{ .Summary | plainify | truncate 180 }}</p>
             <dl class="aps-experiment-facts"><div><dt>{{ if $zh }}来源{{ else }}SOURCE{{ end }}</dt><dd>{{ if $zh }}共享技术文章{{ else }}Shared technical article{{ end }}</dd></div><div><dt>{{ if $zh }}基准数据{{ else }}BENCHMARK{{ end }}</dt><dd>{{ if $zh }}未公开{{ else }}Not published{{ end }}</dd></div></dl>
-            <a class="aps-text-link" href="{{ .RelPermalink }}">{{ if $zh }}阅读来源记录{{ else }}Read source note{{ end }} <span aria-hidden="true">↗</span></a>
+            <a class="aps-text-link" href="{{ .RelPermalink }}">{{ if $zh }}阅读来源记录{{ else }}Read source note{{ end }} <span class="linear-icon linear-icon-arrow-up-right" aria-hidden="true"></span></a>
           </article>
           {{- end -}}
         {{- end -}}
@@ -41,7 +41,7 @@
           {{- $cover := $project.Resources.GetMatch "featured.*" -}}
           <article class="aps-product-card" data-aps-reveal>
             <a class="aps-product-visual" href="{{ $project.RelPermalink }}" aria-label="{{ if $zh }}打开项目{{ else }}Open project{{ end }}: {{ $project.Title }}">
-              {{ with $cover }}<img src="{{ .RelPermalink }}" alt="{{ $project.Title }}" width="{{ .Width }}" height="{{ .Height }}" loading="lazy" decoding="async">{{ else }}<div class="aps-project-abstract aps-project-abstract-{{ mod (len $project.Title) 3 }}" aria-hidden="true"><span>PRODUCT / {{ printf "%03d" (add $index 1) }}</span><i></i><b></b></div>{{ end }}<span class="aps-product-open" aria-hidden="true">↗</span>
+              {{ with $cover }}<img src="{{ .RelPermalink }}" alt="{{ $project.Title }}" width="{{ .Width }}" height="{{ .Height }}" loading="lazy" decoding="async">{{ else }}<div class="aps-project-abstract aps-project-abstract-{{ mod (len $project.Title) 3 }}" aria-hidden="true"><span>PRODUCT / {{ printf "%03d" (add $index 1) }}</span><i></i><b></b></div>{{ end }}<span class="aps-product-open linear-icon linear-icon-arrow-up-right" aria-hidden="true"></span>
             </a>
             <div class="aps-product-meta"><span>{{ with $project.Params.status }}{{ . }}{{ else }}{{ if $zh }}项目档案{{ else }}PROJECT RECORD{{ end }}{{ end }}</span><span>{{ $project.Date.Format "2006.01" }}</span></div>
             <h2><a href="{{ $project.RelPermalink }}">{{ $project.Title }}</a></h2><p>{{ $project.Summary | plainify | truncate 180 }}</p>
@@ -51,19 +51,19 @@
       </div>
     {{- else if eq $section "resource" -}}
       <div class="aps-resource-grid">
-        <a href="{{ "blog/" | relLangURL }}"><span>01 / READING</span><h2>{{ if $zh }}技术文章与学习笔记{{ else }}Articles &amp; learning notes{{ end }}</h2><p>{{ if $zh }}在同一内容库中查找 AI、后端和软件工程文章。{{ else }}Browse AI, backend, and software engineering notes in the shared archive.{{ end }}</p><b aria-hidden="true">↗</b></a>
-        <a href="{{ "tech-stack/" | relLangURL }}"><span>02 / ENGINEERING</span><h2>{{ if $zh }}技术栈与学习路径{{ else }}Stacks &amp; learning paths{{ end }}</h2><p>{{ if $zh }}查看技术选择、工程实践与学习路线。{{ else }}Explore technology choices, engineering practices, and study paths.{{ end }}</p><b aria-hidden="true">↗</b></a>
-        <a href="{{ "projects/" | relLangURL }}"><span>03 / OPEN WORK</span><h2>{{ if $zh }}产品与开源项目{{ else }}Products &amp; open work{{ end }}</h2><p>{{ if $zh }}项目状态、实现说明和公开的交付链接以项目原始档案为准。{{ else }}Project status, implementation notes, and delivery links come from their source records.{{ end }}</p><b aria-hidden="true">↗</b></a>
+        <a href="{{ "blog/" | relLangURL }}"><span>01 / READING</span><h2>{{ if $zh }}技术文章与学习笔记{{ else }}Articles &amp; learning notes{{ end }}</h2><p>{{ if $zh }}在同一内容库中查找 AI、后端和软件工程文章。{{ else }}Browse AI, backend, and software engineering notes in the shared archive.{{ end }}</p><b class="linear-icon linear-icon-arrow-up-right" aria-hidden="true"></b></a>
+        <a href="{{ "tech-stack/" | relLangURL }}"><span>02 / ENGINEERING</span><h2>{{ if $zh }}技术栈与学习路径{{ else }}Stacks &amp; learning paths{{ end }}</h2><p>{{ if $zh }}查看技术选择、工程实践与学习路线。{{ else }}Explore technology choices, engineering practices, and study paths.{{ end }}</p><b class="linear-icon linear-icon-arrow-up-right" aria-hidden="true"></b></a>
+        <a href="{{ "projects/" | relLangURL }}"><span>03 / OPEN WORK</span><h2>{{ if $zh }}产品与开源项目{{ else }}Products &amp; open work{{ end }}</h2><p>{{ if $zh }}项目状态、实现说明和公开的交付链接以项目原始档案为准。{{ else }}Project status, implementation notes, and delivery links come from their source records.{{ end }}</p><b class="linear-icon linear-icon-arrow-up-right" aria-hidden="true"></b></a>
       </div>
-      {{ if $pages }}<div class="aps-journal-list aps-resource-list">{{ range $pages }}<a class="aps-journal-row" href="{{ .RelPermalink }}"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time><span class="aps-journal-index">↗</span><span class="aps-journal-copy"><strong>{{ .Title }}</strong><small>{{ .Summary | plainify | truncate 150 }}</small></span></a>{{ end }}</div>{{ end }}
+      {{ if $pages }}<div class="aps-journal-list aps-resource-list">{{ range $pages }}<a class="aps-journal-row" href="{{ .RelPermalink }}"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time><span class="aps-journal-index linear-icon linear-icon-arrow-up-right" aria-hidden="true"></span><span class="aps-journal-copy"><strong>{{ .Title }}</strong><small>{{ .Summary | plainify | truncate 150 }}</small></span></a>{{ end }}</div>{{ end }}
     {{- else if eq $section "blog" -}}
-      <div class="aps-journal-list aps-journal-archive">{{ range $pages }}<a class="aps-journal-row" href="{{ .RelPermalink }}"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time><span class="aps-journal-index">{{ with .Params.category }}{{ . }}{{ else }}NOTE{{ end }}</span><span class="aps-journal-copy"><strong>{{ .Title }}</strong><small>{{ .Summary | plainify | truncate 170 }}</small></span><span class="aps-journal-arrow" aria-hidden="true">↗</span></a>{{ else }}<p class="aps-empty-note">{{ if $zh }}目前还没有文章。{{ else }}No journal entries yet.{{ end }}</p>{{ end }}</div>
+      <div class="aps-journal-list aps-journal-archive">{{ range $pages }}<a class="aps-journal-row" href="{{ .RelPermalink }}"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time><span class="aps-journal-index">{{ with .Params.category }}{{ . }}{{ else }}NOTE{{ end }}</span><span class="aps-journal-copy"><strong>{{ .Title }}</strong><small>{{ .Summary | plainify | truncate 170 }}</small></span><span class="aps-journal-arrow linear-icon linear-icon-arrow-up-right" aria-hidden="true"></span></a>{{ else }}<p class="aps-empty-note">{{ if $zh }}目前还没有文章。{{ else }}No journal entries yet.{{ end }}</p>{{ end }}</div>
     {{- else if eq $section "about" -}}
       {{ partial "themes/ai-product-studio/about.html" . }}
     {{- else if eq $section "tech-stack" -}}
       {{ partial "themes/ai-product-studio/tech-stack.html" . }}
     {{- else -}}
-      <div class="aps-journal-list">{{ range $pages }}<a class="aps-journal-row" href="{{ .RelPermalink }}"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time><span class="aps-journal-index">{{ upper $section }}</span><span class="aps-journal-copy"><strong>{{ .Title }}</strong><small>{{ .Summary | plainify | truncate 160 }}</small></span><span class="aps-journal-arrow" aria-hidden="true">↗</span></a>{{ else }}<p class="aps-empty-note">{{ if $zh }}这个目录还没有公开条目。{{ else }}There are no published entries in this directory yet.{{ end }}</p>{{ end }}</div>
+      <div class="aps-journal-list">{{ range $pages }}<a class="aps-journal-row" href="{{ .RelPermalink }}"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time><span class="aps-journal-index">{{ upper $section }}</span><span class="aps-journal-copy"><strong>{{ .Title }}</strong><small>{{ .Summary | plainify | truncate 160 }}</small></span><span class="aps-journal-arrow linear-icon linear-icon-arrow-up-right" aria-hidden="true"></span></a>{{ else }}<p class="aps-empty-note">{{ if $zh }}这个目录还没有公开条目。{{ else }}There are no published entries in this directory yet.{{ end }}</p>{{ end }}</div>
     {{- end -}}
   </main>
   {{ partial "themes/ai-product-studio/footer.html" . }}

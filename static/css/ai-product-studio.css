@@ -1,3 +1,32 @@
+@font-face {
+  font-family: "APS Inter";
+  src: url("../fonts/ai-product-studio/Inter-Variable.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+@font-face {
+  font-family: "APS Plex Mono";
+  src: url("../fonts/ai-product-studio/IBMPlexMono-Regular.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "APS Plex Mono";
+  src: url("../fonts/ai-product-studio/IBMPlexMono-Medium.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: "APS Plex Mono";
+  src: url("../fonts/ai-product-studio/IBMPlexMono-SemiBold.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 600 800;
+  font-display: swap;
+}
+
 @layer reset, base, layout, components, utilities;
 
 @layer reset {
@@ -22,8 +51,8 @@
     --aps-blue: #3657d6;
     --aps-terra: #a66b4d;
     --aps-green: #477866;
-    --aps-mono: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
-    --aps-sans: Inter, "Noto Sans SC", "Microsoft YaHei", system-ui, sans-serif;
+    --aps-mono: "APS Plex Mono", "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+    --aps-sans: "APS Inter", Inter, "Noto Sans SC", "Microsoft YaHei", system-ui, sans-serif;
     --aps-serif: "Instrument Serif", "Noto Serif SC", Georgia, serif;
     --aps-content: min(100% - 80px, 1360px);
     --aps-shadow: 0 20px 70px rgb(23 23 23 / 9%);
@@ -58,7 +87,7 @@
   .aps-skip-link { position: fixed; top: 8px; left: 8px; z-index: 200; padding: 10px 14px; transform: translateY(-160%); background: var(--aps-ink); color: var(--aps-paper); }
   .aps-skip-link:focus { transform: translateY(0); }
   .aps-mono-label, .aps-eyebrow, .aps-page-heading > span, .aps-breadcrumb, .aps-article-meta, .aps-product-meta, .aps-journal-row time, .aps-footer-meta, .aps-signal-strip > div > span { font-family: var(--aps-mono); }
-  html[lang^="zh"] body.ai-product-studio { font-family: "Noto Sans SC", "Microsoft YaHei", "PingFang SC", system-ui, sans-serif; line-height: 1.72; }
+  html[lang^="zh"] body.ai-product-studio { font-family: "APS Inter", "Noto Sans SC", "Microsoft YaHei", "PingFang SC", system-ui, sans-serif; line-height: 1.72; }
   html[lang^="zh"] body.ai-product-studio .aps-mono-label,
   html[lang^="zh"] body.ai-product-studio .aps-eyebrow,
   html[lang^="zh"] body.ai-product-studio .aps-page-heading > span,
@@ -540,6 +569,93 @@ body.ai-product-studio .theme-manager-set-default { border-radius: 2px; }
   body.ai-product-studio .theme-manager-trigger-copy,
   body.ai-product-studio .theme-manager-trigger-chevron { display: none; }
   body.ai-product-studio .theme-manager-panel { position: fixed; top: max(72px, env(safe-area-inset-top)); right: 12px; left: 12px; width: auto; min-width: 0; max-height: calc(100dvh - 84px); }
+}
+
+/* Legacy template fallbacks: keep any older content glyphs on the same local icon geometry. */
+body.ai-product-studio .aps-issue-card > div > b:not(.linear-icon),
+body.ai-product-studio .aps-linear-issue-id > i:not(.linear-icon),
+body.ai-product-studio .aps-linear-connected > i:not(.linear-icon),
+body.ai-product-studio .aps-activity-link > span:not(.linear-icon),
+body.ai-product-studio .aps-product-open:not(.linear-icon),
+body.ai-product-studio .aps-research-link > b:not(.linear-icon),
+body.ai-product-studio .aps-journal-arrow:not(.linear-icon),
+body.ai-product-studio .aps-text-link > span:not(.linear-icon),
+body.ai-product-studio .aps-engineering-copy > a > span:not(.linear-icon),
+body.ai-product-studio .aps-archive-band .aps-button > span:not(.linear-icon),
+body.ai-product-studio .aps-workflow-tabs button > i:not(.linear-icon) {
+  position: relative;
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-inline: 3px;
+  color: currentColor;
+  font-size: 0;
+  font-style: normal;
+}
+body.ai-product-studio .aps-issue-card > div > b:not(.linear-icon)::before,
+body.ai-product-studio .aps-linear-issue-id > i:not(.linear-icon)::before,
+body.ai-product-studio .aps-linear-connected > i:not(.linear-icon)::before,
+body.ai-product-studio .aps-activity-link > span:not(.linear-icon)::before,
+body.ai-product-studio .aps-product-open:not(.linear-icon)::before,
+body.ai-product-studio .aps-research-link > b:not(.linear-icon)::before,
+body.ai-product-studio .aps-journal-arrow:not(.linear-icon)::before,
+body.ai-product-studio .aps-text-link > span:not(.linear-icon)::before,
+body.ai-product-studio .aps-engineering-copy > a > span:not(.linear-icon)::before,
+body.ai-product-studio .aps-archive-band .aps-button > span:not(.linear-icon)::before,
+body.ai-product-studio .aps-workflow-tabs button > i:not(.linear-icon)::before {
+  position: absolute;
+  top: 1px;
+  right: 0;
+  width: 8px;
+  height: 8px;
+  border-top: 1.5px solid currentColor;
+  border-right: 1.5px solid currentColor;
+  content: "";
+}
+body.ai-product-studio .aps-issue-card > div > b:not(.linear-icon)::after,
+body.ai-product-studio .aps-linear-issue-id > i:not(.linear-icon)::after,
+body.ai-product-studio .aps-linear-connected > i:not(.linear-icon)::after,
+body.ai-product-studio .aps-activity-link > span:not(.linear-icon)::after,
+body.ai-product-studio .aps-product-open:not(.linear-icon)::after,
+body.ai-product-studio .aps-research-link > b:not(.linear-icon)::after,
+body.ai-product-studio .aps-journal-arrow:not(.linear-icon)::after,
+body.ai-product-studio .aps-text-link > span:not(.linear-icon)::after,
+body.ai-product-studio .aps-engineering-copy > a > span:not(.linear-icon)::after,
+body.ai-product-studio .aps-archive-band .aps-button > span:not(.linear-icon)::after,
+body.ai-product-studio .aps-workflow-tabs button > i:not(.linear-icon)::after {
+  position: absolute;
+  top: 4px;
+  left: 0;
+  width: 10px;
+  height: 1.5px;
+  border-radius: 2px;
+  background: currentColor;
+  content: "";
+  transform: rotate(-45deg);
+  transform-origin: right center;
+}
+body.ai-product-studio .aps-hero-foot > a > b:not(.linear-icon) {
+  position: relative;
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-left: 4px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  font-size: 0;
+  transform: rotate(45deg);
+}
+body.ai-product-studio .aps-surface-activity-head > button:not(:has(.linear-icon)) {
+  position: relative;
+  font-size: 0;
+}
+body.ai-product-studio .aps-surface-activity-head > button:not(:has(.linear-icon))::before {
+  position: absolute;
+  inset: 6px;
+  border: 1.5px solid currentColor;
+  border-radius: 2px;
+  clip-path: polygon(0 0, 100% 0, 62% 46%, 62% 100%, 38% 100%, 38% 46%);
+  content: "";
 }
 
 /* Linear-inspired product surface: dense state, thin rules, and explicit focus. */
