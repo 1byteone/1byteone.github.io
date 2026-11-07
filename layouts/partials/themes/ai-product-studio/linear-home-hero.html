@@ -1,0 +1,51 @@
+{{- $zh := hasPrefix .Lang "zh" -}}
+<section class="linear-contract-hero" data-linear-hero aria-labelledby="linear-hero-title">
+  <div class="linear-hero-copy">
+    <h1 id="linear-hero-title" data-linear-reveal>
+      <span>{{ if $zh }}面向 AI 应用的{{ else }}The product development{{ end }}</span>
+      <span>{{ if $zh }}产品工程系统{{ else }}system for teams and agents{{ end }}</span>
+    </h1>
+    <p data-linear-reveal>{{ if $zh }}把问题、实验、协作和交付放进同一个可验证的工作面。{{ else }}A product engineering system for turning ideas, experiments, and evidence into reliable software.{{ end }}</p>
+    <div class="linear-hero-actions" data-linear-reveal>
+      <a class="linear-hero-primary" href="{{ "projects/" | relLangURL }}">{{ if $zh }}开始构建{{ else }}Get started{{ end }} <span aria-hidden="true">↗</span></a>
+      <a class="linear-hero-secondary" href="#linear-demo">{{ if $zh }}查看工作面{{ else }}Explore the system{{ end }} <span aria-hidden="true">↓</span></a>
+    </div>
+  </div>
+  <div class="linear-loop-switcher" data-linear-loop-switcher aria-label="{{ if $zh }}主视觉切换{{ else }}Hero mode{{ end }}">
+    <strong data-linear-loop-label>{{ if $zh }}新建工作面{{ else }}New workspace{{ end }}</strong>
+    <button type="button" data-linear-loop-next aria-label="{{ if $zh }}切换主视觉工作面{{ else }}Switch hero workspace{{ end }}">{{ if $zh }}下一项{{ else }}Next{{ end }} <span aria-hidden="true">→</span></button>
+  </div>
+  <div class="linear-stage-wrap" id="linear-demo" data-linear-stage-wrap>
+    <div class="linear-stage-glow" aria-hidden="true"></div>
+    <div class="linear-stage-grain" aria-hidden="true"></div>
+    <div class="linear-product-frame" data-linear-frame>
+      <aside class="linear-frame-sidebar" aria-label="{{ if $zh }}工作面导航{{ else }}Workspace navigation{{ end }}">
+        <div class="linear-frame-workspace"><span class="linear-frame-logo" aria-hidden="true">◒</span><strong>YOYO / STUDIO</strong><button type="button" data-linear-workspace-trigger aria-expanded="false" aria-label="{{ if $zh }}打开工作区菜单{{ else }}Open workspace menu{{ end }}">⌄</button></div>
+        <div class="linear-frame-tools"><button type="button" data-linear-frame-search aria-label="{{ if $zh }}搜索工作面{{ else }}Search workspace{{ end }}">⌕</button><button type="button" data-linear-frame-new aria-label="{{ if $zh }}新建问题{{ else }}Create issue{{ end }}">＋</button></div>
+        <nav class="linear-frame-nav" role="tablist" aria-label="{{ if $zh }}工作面视图{{ else }}Workspace views{{ end }}">
+          <button type="button" role="tab" aria-selected="true" data-linear-frame-tab="pulse"><span>✦</span>{{ if $zh }}脉冲{{ else }}Pulse{{ end }}</button>
+          <button type="button" role="tab" aria-selected="false" data-linear-frame-tab="inbox"><span>▱</span>{{ if $zh }}收件箱{{ else }}Inbox{{ end }}</button>
+          <button type="button" role="tab" aria-selected="false" data-linear-frame-tab="issues"><span>◌</span>{{ if $zh }}我的问题{{ else }}My issues{{ end }}</button>
+          <button type="button" role="tab" aria-selected="false" data-linear-frame-tab="reviews"><span>⌁</span>{{ if $zh }}评审{{ else }}Reviews{{ end }}</button>
+        </nav>
+        <span class="linear-frame-label">{{ if $zh }}工作区{{ else }}Workspace{{ end }}</span>
+        <nav class="linear-frame-nav linear-frame-nav-secondary" aria-label="{{ if $zh }}项目导航{{ else }}Project navigation{{ end }}">
+          <button type="button" data-linear-frame-tab="initiatives"><span>◉</span>{{ if $zh }}倡议{{ else }}Initiatives{{ end }}</button>
+          <button type="button" data-linear-frame-tab="projects"><span>◇</span>{{ if $zh }}项目{{ else }}Projects{{ end }}</button>
+          <button type="button" data-linear-frame-tab="more"><span>•••</span>{{ if $zh }}更多{{ else }}More{{ end }}</button>
+        </nav>
+        <span class="linear-frame-label">{{ if $zh }}收藏{{ else }}Favorites{{ end }}</span>
+        <button class="linear-frame-favorite" type="button" data-linear-frame-tab="favorite"><i aria-hidden="true"></i>{{ if $zh }}RAG 评测集{{ else }}Retrieval eval set{{ end }}</button>
+      </aside>
+      <div class="linear-frame-main" data-linear-frame-main>
+        <div class="linear-frame-topbar"><div><span class="linear-status-dot" aria-hidden="true"></span><strong data-linear-issue-id>APS-211</strong><span data-linear-issue-label>{{ if $zh }}让 Agent 失败时仍可解释{{ else }}Make agent failures explainable{{ end }}</span><b aria-hidden="true">★</b><button type="button" aria-label="{{ if $zh }}问题选项{{ else }}Issue options{{ end }}">•••</button></div><div><span data-linear-issue-count>1 / 06</span><button type="button" data-linear-issue-prev aria-label="{{ if $zh }}上一个问题{{ else }}Previous issue{{ end }}">↑</button><button type="button" data-linear-issue-next aria-label="{{ if $zh }}下一个问题{{ else }}Next issue{{ end }}">↓</button></div></div>
+        <div class="linear-frame-viewbar"><span>{{ if $zh }}AI 工程工作面{{ else }}AI engineering workspace{{ end }}</span><div><button type="button" data-linear-view-action="link" aria-label="{{ if $zh }}复制链接{{ else }}Copy link{{ end }}">↗</button><button type="button" data-linear-view-action="context" aria-label="{{ if $zh }}查看上下文{{ else }}View context{{ end }}">▣</button><button type="button" data-linear-view-action="delegate" aria-label="{{ if $zh }}委派任务{{ else }}Delegate task{{ end }}">⌁</button></div></div>
+        <div class="linear-frame-body">
+          <article class="linear-issue-detail"><span class="linear-issue-kicker">{{ if $zh }}进行中 · 可解释性{{ else }}IN PROGRESS · EXPLAINABILITY{{ end }}</span><h2 data-linear-detail-title>{{ if $zh }}让 Agent 失败时仍可解释{{ else }}Make agent failures explainable{{ end }}</h2><p data-linear-detail-copy>{{ if $zh }}记录状态、工具调用和恢复动作，让每次失败都能回到具体证据。{{ else }}Expose state, tools, and recovery actions so every failure can return to evidence.{{ end }}</p><h3>{{ if $zh }}活动{{ else }}Activity{{ end }}</h3><ol class="linear-activity-list"><li><span class="linear-activity-avatar">Y</span><p><strong>YOYO</strong> {{ if $zh }}更新了恢复路径{{ else }}updated the recovery path{{ end }}<small>2 min ago</small></p></li><li><span class="linear-activity-icon">↳</span><p>{{ if $zh }}评测记录已绑定到问题{{ else }}Evaluation record attached to issue{{ end }}<small>8 min ago</small></p></li><li><span class="linear-activity-icon">⌁</span><p>{{ if $zh }}工具错误已分类{{ else }}Tool failure classified{{ end }}<small>21 min ago</small></p></li></ol><div class="linear-comment-box"><span>{{ if $zh }}留下工程备注…{{ else }}Leave an engineering note…{{ end }}</span><button type="button" data-linear-comment-submit aria-label="{{ if $zh }}提交备注{{ else }}Submit note{{ end }}">↗</button></div></article>
+          <aside class="linear-issue-properties"><span>{{ if $zh }}属性{{ else }}Properties{{ end }}</span><dl><div><dt>STATUS</dt><dd><i class="is-active"></i>{{ if $zh }}进行中{{ else }}In Progress{{ end }}</dd></div><div><dt>PRIORITY</dt><dd>◒ {{ if $zh }}高{{ else }}High{{ end }}</dd></div><div><dt>OWNER</dt><dd><b>YO</b> YOYO</dd></div><div><dt>CYCLE</dt><dd>◷ 06</dd></div></dl></aside>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="linear-stage-announcer" data-linear-announcer aria-live="polite"></p>
+</section>

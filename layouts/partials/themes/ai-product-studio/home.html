@@ -5,12 +5,12 @@
 {{- $projects := sort (where .Site.RegularPages "Section" "projects") "Date" "desc" -}}
 {{- $posts := sort (where .Site.RegularPages "Section" "blog") "Date" "desc" -}}
 {{- $stacks := where .Site.RegularPages "Section" "tech-stack" -}}
-{{- $pixelScene := resources.Get "media/ai-product-studio/studio-pixel-classroom.svg" -}}
 {{ partial "themes/ai-product-studio/head.html" . }}
 <body class="ai-product-studio aps-home" data-aps-page="studio"{{ if .Site.Params.theme_preview }} data-pagefind-ignore{{ end }}>
   {{ partial "themes/ai-product-studio/header.html" . }}
   <main id="aps-main" class="aps-main aps-shell">
-    <section class="aps-hero" aria-labelledby="aps-hero-title">
+    {{ partial "themes/ai-product-studio/linear-home-hero.html" . }}
+    <section class="aps-hero legacy-aps-hero" aria-labelledby="aps-hero-title">
       <div class="aps-hero-copy">
         <p class="aps-eyebrow"><span class="aps-index-dot" aria-hidden="true"></span>{{ if $zh }}独立 AI 开发者 <i>·</i> 工程实践 <i>·</i> 技术实验{{ else }}INDEPENDENT AI MAKER <i>·</i> ENGINEERING <i>·</i> EXPERIMENTS{{ end }}</p>
         <h1 id="aps-hero-title">{{ if $zh }}把 AI 做成<br>真正有用的<em>软件。</em>{{ else }}Building useful<br>things <em>with AI.</em>{{ end }}</h1>
@@ -19,14 +19,42 @@
         <div class="aps-hero-actions"><a class="aps-button aps-button-primary" href="{{ "projects/" | relLangURL }}">{{ if $zh }}浏览产品档案{{ else }}Explore products{{ end }} <span aria-hidden="true">↗</span></a><a class="aps-button aps-button-quiet" href="{{ "experiments/" | relLangURL }}">{{ if $zh }}查看研究线索{{ else }}Research notes{{ end }} <span aria-hidden="true">↓</span></a></div>
         <div class="aps-hero-tags"><span>RAG</span><span>AGENT SYSTEMS</span><span>TEXT2SQL</span><span>BACKEND</span></div>
       </div>
-      <figure class="aps-scene-card" data-aps-reveal>
-        <div class="aps-scene-frame">
-          <div class="aps-scene-caption"><span>COMPUTER CLUB / 01</span><span>BUILD SESSION · 2026</span></div>
-          {{ with $pixelScene }}<img src="{{ .RelPermalink }}" width="960" height="620" alt="{{ if $zh }}日落时分的像素风计算机社团工作室，桌面显示着 AI 系统研究面板{{ else }}Pixel-art computer club at sunset with an AI systems research dashboard on screen{{ end }}" fetchpriority="high">{{ end }}
-          <div class="aps-scene-overlay" aria-hidden="true"><span>THINK</span><i></i><span>BUILD</span></div>
-        </div>
-        <figcaption><span>{{ if $zh }}工作室现场{{ else }}Studio field note{{ end }}</span><span>01 / 06</span></figcaption>
-      </figure>
+      <div class="aps-linear-stage-wrap" data-aps-linear-stage-wrap>
+        <section class="aps-linear-stage" data-aps-linear-stage aria-label="{{ if $zh }}AI 产品工作台演示{{ else }}AI product workspace demo{{ end }}">
+          <div class="aps-linear-stage-frame">
+            <div class="aps-linear-frame-background" aria-hidden="true"></div>
+            <div class="aps-linear-location-bar"><span class="aps-linear-window-dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="aps-linear-location-path">yoyo.studio / product / inbox</span><span class="aps-linear-location-status">{{ if $zh }}已同步{{ else }}SYNCED{{ end }} <b aria-hidden="true">⌁</b></span></div>
+            <div class="aps-linear-product" data-aps-linear-product>
+              <aside class="aps-linear-sidebar" aria-label="{{ if $zh }}工作区导航{{ else }}Workspace navigation{{ end }}">
+                <div class="aps-linear-sidebar-brand"><span class="aps-linear-sidebar-mark" aria-hidden="true">Y</span><strong>YOYO / STUDIO</strong><button type="button" aria-label="{{ if $zh }}切换工作区{{ else }}Switch workspace{{ end }}">⌄</button></div>
+                <div class="aps-linear-sidebar-group" role="tablist" aria-label="{{ if $zh }}工作区视图{{ else }}Workspace views{{ end }}">
+                  <button type="button" role="tab" aria-selected="true" data-aps-linear-view="inbox"><span>◈</span>{{ if $zh }}收件箱{{ else }}Inbox{{ end }}<b>3</b></button>
+                  <button type="button" role="tab" aria-selected="false" data-aps-linear-view="mine"><span>□</span>{{ if $zh }}我的问题{{ else }}My issues{{ end }}<b>6</b></button>
+                  <button type="button" role="tab" aria-selected="false" data-aps-linear-view="review"><span>◇</span>{{ if $zh }}待评审{{ else }}Reviews{{ end }}<b>2</b></button>
+                </div>
+                <span class="aps-linear-sidebar-label">{{ if $zh }}工作区{{ else }}Workspace{{ end }}</span>
+                <a href="{{ "projects/" | relLangURL }}"><span>⊞</span>{{ if $zh }}产品项目{{ else }}Projects{{ end }}<b aria-hidden="true">↗</b></a>
+                <a href="{{ "experiments/" | relLangURL }}"><span>⌁</span>{{ if $zh }}实验线索{{ else }}Experiments{{ end }}<b aria-hidden="true">↗</b></a>
+                <span class="aps-linear-sidebar-label">{{ if $zh }}收藏{{ else }}Favorites{{ end }}</span>
+                <a href="{{ "blog/" | relLangURL }}"><span>☆</span>{{ if $zh }}工程复盘{{ else }}Engineering notes{{ end }}<b aria-hidden="true">↗</b></a>
+                <div class="aps-linear-sidebar-bottom"><span class="aps-linear-key">⌘ K</span>{{ if $zh }}快速查找{{ else }}Find anything{{ end }}</div>
+              </aside>
+              <div class="aps-linear-view">
+                <div class="aps-linear-view-bar"><div><span class="aps-linear-kicker">{{ if $zh }}产品 / AI 平台{{ else }}PRODUCT / AI PLATFORM{{ end }}</span><strong data-aps-linear-view-title>{{ if $zh }}收件箱{{ else }}Inbox{{ end }}</strong></div><div class="aps-linear-view-tools"><button type="button" data-aps-linear-filter="all" aria-pressed="true">{{ if $zh }}全部{{ else }}All{{ end }}</button><button type="button" data-aps-linear-filter="active" aria-pressed="false">{{ if $zh }}进行中{{ else }}Active{{ end }}</button><button type="button" aria-label="{{ if $zh }}更多操作{{ else }}More actions{{ end }}">•••</button></div></div>
+                <div class="aps-linear-content">
+                  <div class="aps-linear-content-head"><div><span class="aps-linear-kicker">{{ if $zh }}我的问题{{ else }}MY ISSUES{{ end }}</span><h2 data-aps-linear-heading>{{ if $zh }}让 Agent 失败时仍可解释{{ else }}Make agent failures explainable{{ end }}</h2><p data-aps-linear-summary>{{ if $zh }}记录状态、工具和恢复动作，保持每一次模型决策可检查。{{ else }}Expose state, tools, and recovery actions so every model decision stays inspectable.{{ end }}</p></div><span class="aps-linear-issue-id">APS-211 <i aria-hidden="true">↗</i></span></div>
+                  <div class="aps-linear-activity-line"><span class="aps-linear-avatar">YO</span><p><strong>YOYO</strong> {{ if $zh }}更新了恢复路径{{ else }}updated the recovery path{{ end }}<small>8 min ago</small></p></div>
+                  <div class="aps-linear-comment"><span class="aps-linear-avatar aps-linear-avatar-muted">AI</span><div><strong>{{ if $zh }}可观测性检查{{ else }}Observability check{{ end }}</strong><p>{{ if $zh }}失败状态、工具调用和用户可见提示已经连成一条证据链。{{ else }}Failure state, tool calls, and user-facing feedback now share one evidence trail.{{ end }}</p><span class="aps-linear-comment-meta">{{ if $zh }}已验证 · 评测集 #07{{ else }}Verified · eval set #07{{ end }}</span></div></div>
+                  <div class="aps-linear-connected"><span class="aps-linear-connected-icon">⌁</span><div><span class="aps-linear-kicker">{{ if $zh }}关联项目{{ else }}CONNECTED PROJECT{{ end }}</span><strong>{{ if $zh }}AI 应用可靠性基线{{ else }}AI application reliability baseline{{ end }}</strong><small>{{ if $zh }}RAG · Agent · 可观测性{{ else }}RAG · agents · observability{{ end }}</small></div><i aria-hidden="true">↗</i></div>
+                </div>
+              </div>
+              <aside class="aps-linear-properties" aria-label="{{ if $zh }}问题属性{{ else }}Issue properties{{ end }}"><span class="aps-linear-kicker">{{ if $zh }}属性{{ else }}PROPERTIES{{ end }}</span><div><span>{{ if $zh }}状态{{ else }}Status{{ end }}</span><strong class="aps-linear-status"><i></i>{{ if $zh }}进行中{{ else }}In progress{{ end }}</strong></div><div><span>{{ if $zh }}负责人{{ else }}Assignee{{ end }}</span><strong><b class="aps-linear-mini-avatar">YO</b> YOYO</strong></div><div><span>{{ if $zh }}优先级{{ else }}Priority{{ end }}</span><strong>↟ {{ if $zh }}高{{ else }}High{{ end }}</strong></div><div><span>{{ if $zh }}标签{{ else }}Labels{{ end }}</span><strong class="aps-linear-label">AGENTS</strong></div><div><span>{{ if $zh }}周期{{ else }}Cycle{{ end }}</span><strong>2026 / 04</strong></div></aside>
+            </div>
+            <div class="aps-linear-grain" aria-hidden="true"></div><div class="aps-linear-shine" aria-hidden="true"></div><div class="aps-linear-glow" aria-hidden="true"></div>
+          </div>
+          <p class="aps-linear-caption"><span>{{ if $zh }}公开可观察产品演示 · 滚动查看状态变化{{ else }}Publicly observable product demo · scroll to inspect state changes{{ end }}</span><span>01 / 04</span></p>
+        </section>
+      </div>
       <div class="aps-hero-foot"><span>YOYO / AI PRODUCT STUDIO</span><span>{{ if $zh }}把想法变成可靠的软件{{ else }}FROM IDEAS TO RELIABLE SOFTWARE{{ end }}</span><a href="#aps-work">SCROLL TO EXPLORE <b aria-hidden="true">↓</b></a></div>
     </section>
 

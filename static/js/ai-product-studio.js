@@ -366,24 +366,102 @@
     setWorkflowStage(workflowTabs.some((tab) => tab.dataset.apsWorkflowTab === hashStage) ? hashStage : workflowTabs[0].dataset.apsWorkflowTab);
   }
 
-  // The hero scene borrows the restrained pointer parallax used by product
-  // studios: it stays within a few pixels and is disabled on touch/reduced motion.
-  const sceneFrame = document.querySelector('.aps-scene-frame');
-  if (sceneFrame && !reducedMotion.matches && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-    const resetScene = () => {
-      sceneFrame.style.setProperty('--aps-scene-x', '0px');
-      sceneFrame.style.setProperty('--aps-scene-y', '0px');
-    };
-    sceneFrame.addEventListener('pointermove', (event) => {
-      const bounds = sceneFrame.getBoundingClientRect();
-      const x = ((event.clientX - bounds.left) / bounds.width - .5) * 8;
-      const y = ((event.clientY - bounds.top) / bounds.height - .5) * 8;
-      sceneFrame.style.setProperty('--aps-scene-x', `${x.toFixed(2)}px`);
-      sceneFrame.style.setProperty('--aps-scene-y', `${y.toFixed(2)}px`);
-    });
-    sceneFrame.addEventListener('pointerleave', resetScene);
-    resetScene();
+  // The hero is a DOM/CSS product surface rather than a static poster. Its
+  // frame follows scroll progress while the visible controls remain usable.
+  const linearStage = document.querySelector('[data-aps-linear-stage]');
+  const linearWrap = document.querySelector('[data-aps-linear-stage-wrap]');
+  const linearFrame = linearStage?.querySelector('.aps-linear-stage-frame');
+  let linearFrameRequest = 0;
+  let linearVisible = true;
+  const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+  const updateLinearProgress = () => {
+    linearFrameRequest = 0;
+    if (!linearStage || !linearWrap || !linearVisible) return;
+    if (reducedMotion.matches) {
+      linearStage.style.setProperty('--aps-linear-progress', '1');
+      linearStage.dataset.apsLinearState = 'static';
+      return;
+    }
+    const travel = Math.max(1, linearWrap.offsetHeight - linearStage.offsetHeight);
+    const progress = clamp(-linearWrap.getBoundingClientRect().top / travel, 0, 1);
+    linearStage.style.setProperty('--aps-linear-progress', progress.toFixed(4));
+    linearStage.dataset.apsLinearState = progress < .2 ? 'entering' : progress > .82 ? 'complete' : 'inspecting';
+  };
+  const scheduleLinearProgress = () => {
+    if (!linearStage || linearFrameRequest) return;
+    linearFrameRequest = window.requestAnimationFrame(updateLinearProgress);
+  };
+  if (linearStage && linearWrap) {
+    linearStage.style.setProperty('--aps-linear-progress', reducedMotion.matches ? '1' : '0');
+    window.addEventListener('scroll', scheduleLinearProgress, { passive: true });
+    window.addEventListener('resize', scheduleLinearProgress, { passive: true });
+    if ('IntersectionObserver' in window) {
+      const linearObserver = new IntersectionObserver(([entry]) => {
+        linearVisible = entry.isIntersecting || entry.boundingClientRect.top < window.innerHeight;
+        if (linearVisible) scheduleLinearProgress();
+      }, { rootMargin: '180px 0px 180px' });
+      linearObserver.observe(linearWrap);
+    }
+    reducedMotion.addEventListener?.('change', scheduleLinearProgress);
+    updateLinearProgress();
   }
+
+  if (linearFrame && !reducedMotion.matches && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    const resetLinearPointer = () => {
+      linearFrame.style.setProperty('--aps-linear-pointer-x', '50%');
+      linearFrame.style.setProperty('--aps-linear-pointer-y', '50%');
+    };
+    linearFrame.addEventListener('pointermove', (event) => {
+      const bounds = linearFrame.getBoundingClientRect();
+      const x = clamp((event.clientX - bounds.left) / bounds.width, 0, 1) * 100;
+      const y = clamp((event.clientY - bounds.top) / bounds.height, 0, 1) * 100;
+      linearFrame.style.setProperty('--aps-linear-pointer-x', `${x.toFixed(1)}%`);
+      linearFrame.style.setProperty('--aps-linear-pointer-y', `${y.toFixed(1)}%`);
+    });
+    linearFrame.addEventListener('pointerleave', resetLinearPointer);
+    resetLinearPointer();
+  }
+
+  const linearViews = Array.from(document.querySelectorAll('[data-aps-linear-view]'));
+  const linearTitle = document.querySelector('[data-aps-linear-view-title]');
+  const linearHeading = document.querySelector('[data-aps-linear-heading]');
+  const linearSummary = document.querySelector('[data-aps-linear-summary]');
+  const linearCopy = {
+    inbox: isChinese ? ['收件箱', '让 Agent 失败时仍可解释', '记录状态、工具和恢复动作，保持每一次模型决策可检查。'] : ['Inbox', 'Make agent failures explainable', 'Expose state, tools, and recovery actions so every model decision stays inspectable.'],
+    mine: isChinese ? ['我的问题', '压缩首屏模型等待时间', '把首个可用响应的延迟拆成可度量、可回归的工程指标。'] : ['My issues', 'Reduce first-response latency', 'Turn first useful response latency into measurable, repeatable engineering evidence.'],
+    review: isChinese ? ['待评审', '建立可追踪的检索评测集', '固定任务、失败标签和证据边界，让 RAG 结果可以复核。'] : ['Reviews', 'Define a traceable retrieval eval set', 'Fix tasks, failure labels, and evidence boundaries so RAG results can be reviewed.']
+  };
+  const setLinearView = (view, moveFocus = false) => {
+    const tab = linearViews.find((item) => item.dataset.apsLinearView === view) || linearViews[0];
+    if (!tab) return;
+    linearViews.forEach((item) => {
+      const active = item === tab;
+      item.setAttribute('aria-selected', String(active));
+      item.tabIndex = active ? 0 : -1;
+    });
+    const copy = linearCopy[tab.dataset.apsLinearView] || linearCopy.inbox;
+    if (linearTitle) linearTitle.textContent = copy[0];
+    if (linearHeading) linearHeading.textContent = copy[1];
+    if (linearSummary) linearSummary.textContent = copy[2];
+    if (moveFocus) tab.focus();
+  };
+  linearViews.forEach((tab, index) => {
+    tab.addEventListener('click', () => setLinearView(tab.dataset.apsLinearView));
+    tab.addEventListener('keydown', (event) => {
+      if (!['ArrowDown', 'ArrowRight', 'ArrowUp', 'ArrowLeft', 'Home', 'End'].includes(event.key)) return;
+      event.preventDefault();
+      const next = event.key === 'Home' ? 0 : event.key === 'End' ? linearViews.length - 1 : (index + (event.key === 'ArrowDown' || event.key === 'ArrowRight' ? 1 : -1) + linearViews.length) % linearViews.length;
+      setLinearView(linearViews[next].dataset.apsLinearView, true);
+    });
+  });
+
+  const linearFilters = Array.from(document.querySelectorAll('[data-aps-linear-filter]'));
+  linearFilters.forEach((filter) => {
+    filter.addEventListener('click', () => {
+      linearFilters.forEach((item) => item.setAttribute('aria-pressed', String(item === filter)));
+      linearStage?.setAttribute('data-aps-linear-filter', filter.dataset.apsLinearFilter || 'all');
+    });
+  });
 
   // Code controls work on secure contexts and fall back to a temporary selection
   // for local previews opened over plain HTTP.

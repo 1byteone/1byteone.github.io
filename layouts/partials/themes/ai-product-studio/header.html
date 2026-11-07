@@ -10,15 +10,31 @@
       <span class="aps-brand-copy"><strong>YOYO</strong><small>AI PRODUCT STUDIO</small></span>
     </a>
     <button class="aps-menu-toggle" type="button" data-aps-menu-toggle aria-expanded="false" aria-controls="aps-primary-nav" aria-label="{{ if $zh }}打开导航菜单{{ else }}Open navigation menu{{ end }}"><span></span><span></span></button>
-    <nav class="aps-nav" id="aps-primary-nav" data-aps-nav aria-label="{{ if $zh }}工作室导航{{ else }}Studio navigation{{ end }}">
-      {{- range $index, $item := $studio.navigation -}}
-        {{- $label := $item.label -}}{{- if $zh -}}{{- $label = $item.label_zh -}}{{- end -}}
-        {{- $href := $item.path | relLangURL -}}
-        {{- if eq $item.id "studio" -}}{{- $href = .Site.Home.RelPermalink -}}{{- end -}}
-        <a href="{{ $href }}"{{ if eq $current $item.id }} aria-current="page"{{ end }}><span>{{ printf "%02d" (add $index 1) }}</span>{{ $label }}</a>
-      {{- end -}}
+    <nav class="aps-nav linear-nav" id="aps-primary-nav" data-aps-nav aria-label="{{ if $zh }}工作室导航{{ else }}Studio navigation{{ end }}">
+      <div class="linear-nav-menu" data-linear-menu-root>
+        <button type="button" data-linear-menu-trigger="product" aria-haspopup="true" aria-expanded="false">{{ if $zh }}产品{{ else }}Product{{ end }}<span aria-hidden="true">⌄</span></button>
+        <div class="linear-mega-menu" data-linear-menu-panel="product" hidden>
+          <div><span class="linear-menu-kicker">{{ if $zh }}产品工作面{{ else }}PRODUCT SURFACE{{ end }}</span><strong>{{ if $zh }}从问题到交付{{ else }}From problem to delivery{{ end }}</strong><p>{{ if $zh }}在一个可检查的工作面里组织任务、状态和证据。{{ else }}Organize issues, state, and evidence in one inspectable surface.{{ end }}</p></div>
+          <a href="{{ "projects/" | relLangURL }}"><span>01</span><strong>{{ if $zh }}项目档案{{ else }}Project records{{ end }}</strong><small>{{ if $zh }}真实交付与架构取舍{{ else }}Working builds and trade-offs{{ end }}</small></a>
+          <a href="{{ "experiments/" | relLangURL }}"><span>02</span><strong>{{ if $zh }}实验线索{{ else }}Research threads{{ end }}</strong><small>{{ if $zh }}RAG、Agent 与评测记录{{ else }}RAG, agents, and evaluation{{ end }}</small></a>
+        </div>
+      </div>
+      <div class="linear-nav-menu" data-linear-menu-root>
+        <button type="button" data-linear-menu-trigger="resources" aria-haspopup="true" aria-expanded="false">{{ if $zh }}资源{{ else }}Resources{{ end }}<span aria-hidden="true">⌄</span></button>
+        <div class="linear-mega-menu" data-linear-menu-panel="resources" hidden>
+          <div><span class="linear-menu-kicker">{{ if $zh }}工作室索引{{ else }}STUDIO INDEX{{ end }}</span><strong>{{ if $zh }}把知识留在现场{{ else }}Keep the useful context close{{ end }}</strong><p>{{ if $zh }}文章、技术栈和资料按用途组织，支持继续学习。{{ else }}Notes, stack, and resources organized for continued learning.{{ end }}</p></div>
+          <a href="{{ "blog/" | relLangURL }}"><span>01</span><strong>{{ if $zh }}技术文章{{ else }}Journal{{ end }}</strong><small>{{ if $zh }}开发记录与碰壁复盘{{ else }}Engineering notes and failure reports{{ end }}</small></a>
+          <a href="{{ "resource/" | relLangURL }}"><span>02</span><strong>{{ if $zh }}资料档案{{ else }}Archive{{ end }}</strong><small>{{ if $zh }}工具、开源项目与学习路径{{ else }}Tools, open source, and learning paths{{ end }}</small></a>
+        </div>
+      </div>
+      <a href="{{ "projects/" | relLangURL }}">{{ if $zh }}项目{{ else }}Projects{{ end }}</a>
+      <a href="{{ "experiments/" | relLangURL }}">{{ if $zh }}实验室{{ else }}Lab{{ end }}</a>
+      <a href="{{ "blog/" | relLangURL }}">{{ if $zh }}文章{{ else }}Journal{{ end }}</a>
     </nav>
-    <div class="aps-tools">
+    <div class="aps-tools linear-header-actions">
+      <a class="linear-header-link" href="{{ "tech-stack/" | relLangURL }}">{{ if $zh }}文档{{ else }}Docs{{ end }}</a>
+      <a class="linear-header-link linear-login" href="{{ "about/" | relLangURL }}">{{ if $zh }}关于{{ else }}About{{ end }}</a>
+      <a class="linear-signup" href="{{ "projects/" | relLangURL }}">{{ if $zh }}开始构建{{ else }}Get started{{ end }}</a>
       {{ partial "theme-switcher.html" $page }}
       <button class="aps-mode-toggle" type="button" data-aps-mode-toggle aria-pressed="false" aria-label="{{ if $zh }}切换深色模式{{ else }}Toggle dark mode{{ end }}" title="{{ if $zh }}切换深色模式{{ else }}Toggle dark mode{{ end }}"><span aria-hidden="true">◐</span></button>
       <button class="aps-search-trigger" type="button" data-aps-search-open aria-label="{{ if $zh }}搜索工作室档案{{ else }}Search studio archive{{ end }}"><span aria-hidden="true">⌕</span><kbd data-aps-shortcut>⌘K</kbd></button>

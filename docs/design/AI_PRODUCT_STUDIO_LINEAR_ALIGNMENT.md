@@ -1,54 +1,83 @@
-# AI Product Studio / Linear 对齐验收记录
+# AI Product Studio / Linear 公开契约对齐记录
 
-本记录使用公开页面可观察的结构与交互作为参考，不复制 Linear 私有源码、商标、字体、专属图片或文案。验收对象是原创实现的 render contract：布局关系、状态机、动效触发和响应式约束。
+本记录描述 1BYTEONE AI Product Studio 对 `https://linear.app/homepage` 的公开可观察契约复刻。实现目标是对齐 DOM 关系、布局几何、字体层级、交互状态、动效时序和响应式约束，再注入 YOYO / 1BYTEONE 的中文 AI 工程内容。
 
-## 参考提取
+实现遵循三个边界：
 
-公开首页可观察到的产品表达包括：轻量粘性导航、产品状态工作面、问题列表、活动流、分段产品能力展示、紧凑型 CTA 和高密度页脚。当前主题将这些关系映射为 `PRODUCT SURFACE`、工作台、研究档案和工程实践模块。
+1. **Reference layer**：研究公开 HTML/CSS、浏览器渲染结果和可操作状态；实现本地原创的产品工作面 DOM/CSS。
+2. **Interaction layer**：把菜单、滚动进度、问题切换、键盘、焦点、reduced-motion 和离屏降频抽成可复用状态契约。
+3. **Personalization layer**：保留 YOYO / 1BYTEONE 品牌、中文内容、AI 应用工程文章、项目和实验路由。
 
-本轮参考页在浏览器会话中出现 `ERR_TIMED_OUT`，因此没有把未实测的参考几何值伪装成精确数据。参考站几何测量待网络可用后补录；本地测量和交互证据已记录如下。
+没有复制 Linear 私有 Next.js bundle、私有源码、专属字体、商标 SVG、专属图片或原站文案。
 
-## 本地几何测量
+## 参考层：公开测量
 
-测量页面：`http://127.0.0.1:1328/`，Hugo environment：`ai-product-studio`，Hugo Extended `0.161.1`。
+参考页在 Chromium 中以相同视口测量。公开首页首屏没有 `video` 或 `canvas`，主视觉是 DOM/CSS 产品工作面；页面使用深色主题，Header 约 73px。H1 使用逐行 `opacity + blur(10px) + translateY(20%)` 入场；产品 frame 通过滚动进度渐入并上移，包含 sidebar、workspace、Search/New issue、状态视图、问题 topbar、Activity 和 Properties。
 
-| 视口 | Header | Hero | H1 | Product surface | Footer | 页面高度 | 横向溢出 |
-| --- | ---: | ---: | ---: | ---: | ---: | ---: | --- |
-| 1440 × 900 | 82.7px | y=82.7 / h=736px | 103.68px / line-height 94.35px | y=1165.6 / h=432px | y=5295.2 | 5487px | 无 |
-| 768 × 1024 | 72.7px | y=72.7 / h=586.1px | 56.83px / line-height 51.72px | y=1019.4 / h=532.4px | y=5174.3 | 5366px | 无 |
-| 664 × 524 | 66.7px | y=66.7 / h=886.4px | 70px / line-height 63.7px | y=1343.7 / h=812.9px | y=6530.9 | 6770px | 无 |
-| 390 × 844 | 66.7px | y=66.7 / h=718.2px | 50.7px / line-height 46.14px | y=1192.5 / h=812.9px | y=6166.6 | 6405px | 无 |
+已记录的参考基线：
 
-窄屏 CSS 约束：
+| 视口 | H1 参考几何 | 主视觉参考几何 | 页面高度 | 关键行为 |
+| --- | --- | --- | ---: | --- |
+| 1440 × 900 | x≈78, y≈272, w≈1282, h≈128 | x≈60, y≈527, w≈1320, h≈720 | ≈9960px | header sticky；主视觉滚动渐入 |
+| 768 × 1024 | 移动/平板导航收敛 | frame 保持可读的工作面比例 | 以内容为准 | 菜单折叠，无横向溢出 |
+| 664 × 524 | 标题约 28.9px / 37.6px | Canvas 起点约 y=328，高约 440px | ≈4006px | 公告卡首张约 y=800，单列 |
+| 390 × 844 | 标题约 38px | frame 在首屏内可见 | 以内容为准 | 导航折叠，触摸可操作 |
 
-- `680px` 以下，页面容器收敛到 `calc(100% - 40px)`。
-- 产品工作面的状态列只在内部横向滚动，页面本身保持 `overflow-x: clip`。
-- `390px` 下产品卡片改为单列，按钮和关键内容保持可见。
-- `prefers-reduced-motion: reduce` 下 reveal、parallax、hover transition 均降级为静态内容。
+## 本地实现层：四视口实测
 
-## 状态矩阵
+测量页面：`http://127.0.0.1:1328/zh/`，Hugo Extended `0.161.1`，资源版本 `linear-contract-1`。
 
-| 组件 | 默认 | Hover | Focus | Pressed / Selected | Reduced motion |
-| --- | --- | --- | --- | --- | --- |
-| Header nav | muted | ink + underline | visible outline | `aria-current=page` | 无动画 |
-| Workspace view | Inbox selected | raised surface | keyboard outline | `aria-selected=true` + context label | 无动画 |
-| Issue card | collapsed | lift + border | outline | `aria-expanded=true` + inspected state | 静态展开 |
-| Board filter | All selected | ink surface | visible outline | `aria-pressed=true` + hidden cards | 静态筛选 |
-| Workbench tab | first selected | raised surface | roving tabindex | panel visibility sync | 静态切换 |
-| Search dialog | closed | trigger feedback | focus restore | modal + result selection | 无过渡 |
+| 视口 | Header | 首屏 Hero | H1 | Product frame | 页面高度 | 横向溢出 |
+| --- | ---: | ---: | --- | --- | ---: | --- |
+| 1440 × 900 | 74px | y=74 / h=1650px | 约 76px，双行 | x=109 / y≈604 / 1222×702px | 6425px | 无 |
+| 768 × 1024 | 74px | y=74 / h=1650px | 响应式缩放 | x=61 / y≈494 / 646×702px | 6471px | 无 |
+| 664 × 524 | 66px | y=66 / h=1300px | 38px，双行 | x=46 / y≈345 / 572×608px | 7831px | 无 |
+| 390 × 844 | 66px | y=66 / h=1300px | 38px，双行 | x=46 / y≈338 / 298×608px | 7622px | 无 |
+
+页面高度仍受 AI Product Studio 的工作台、工作流、项目、研究、日志、工程系统和资料档案内容影响，不能与参考站的内容数量直接等比；首屏关键几何已按参考基线校准。
+
+## 交互契约
+
+| 组件 | 默认状态 | Hover / Focus | Pressed / Selected | 动效与降级 |
+| --- | --- | --- | --- | --- |
+| Product / Resources mega menu | 关闭，`aria-expanded=false` | 90ms hover intent，面板渐入 | 点击只保留一个面板 | Escape 关闭并恢复触发器焦点；快速重开不会被旧 timer 隐藏 |
+| Hero H1 | 隐藏、blur、下移 | IntersectionObserver 进入视口 | `is-visible` | reduced-motion 直接静态显示 |
+| Product frame | 低透明度、下移 | 边缘高光与 grain 保持 | 滚动驱动 `--linear-stage-progress` | 离屏停止 RAF；恢复可见时更新；reduced-motion 固定 opacity=1 |
+| Issue previous / next | 1 / 06 | 键盘 focus ring | 更新 issue id、标题、描述和 live region | ArrowLeft / ArrowRight 与按钮共用状态机 |
+| Workspace tabs | Pulse selected | raised surface | `aria-selected=true` | 内容不离开页面，不创建假链接 |
+| Engineering note | 可提交按钮 | hover / focus 明确反馈 | 提交后显示 ✓ 并更新 `aria-live` | 无模型依赖，失败路径可扩展 |
+| Site controls | Theme manager、中文/英文入口可见 | dark header hover | 主题中心保留全局入口 | 主题管理面板沿用站内一致逻辑 |
 
 ## 已执行验证
 
 - `node --check static/js/ai-product-studio.js`：通过。
-- `git diff --check`：通过。
-- Hugo production preview（中英文 508 页）构建：通过。
-- Inbox / My work / Reviews：点击切换并更新上下文标题。
-- Issue card：Enter 与 Space 可展开 inspected 状态并更新 live region。
-- All / Active：筛选按钮更新 `aria-pressed`，队列和完成卡片正确隐藏。
-- `body.scrollWidth === viewport`：1280px 本地浏览器验证通过。
-- 浏览器控制台错误：0。
+- `node --check static/js/linear-contract.js`：通过。
+- `git diff --check`：通过（仅有 Git 的 LF/CRLF 提示）。
+- Hugo Extended 0.161.1 production preview：通过，ZH 255 页 / EN 253 页。
+- 四视口 HTTP 200、`lang=zh-Hans`、无横向溢出、控制台错误 0。
+- Product / Resources：点击、90ms hover intent、Escape、焦点恢复通过。
+- Issue：按钮和 ArrowLeft / ArrowRight 更新 APS-211 / APS-207 等状态通过。
+- Mobile nav：390px 下菜单按钮打开，`aria-expanded` 和 `.is-open` 同步。
+- Reduced motion：H1 直接显示，主视觉 opacity=1，transition/transform 关闭。
+- Scroll contract：664px 从初始 progress≈0.033 / opacity≈0.207，滚动到 650px 后 progress≈0.745 / opacity≈0.791。
 
-## 未完成项
+## 当前状态
 
-- 参考页因当前网络超时，1440×900、768×1024、664×524、390×844 的双页截图叠加和像素差异热力图尚未生成。
-- 线上页面需在 Pages 发布后重新抓取 `linear-surface-3` 资源版本，确认 CDN 缓存已刷新。
+### 已对齐
+
+- 深色 sticky header、双层导航和 Product / Resources mega menu 结构。
+- 逐行标题 reveal、主视觉 frame、sidebar、issue detail、Activity、Properties、grain、glow、shine。
+- 滚动驱动主视觉时序、issue 切换、工作区 tab、键盘与焦点反馈。
+- 中文字体优先级、中文文案、中文 ARIA 标签和中英文深链接。
+- 主题中心与语言入口未被 Linear 合约样式移除。
+
+### 部分对齐
+
+- 参考页的全部后续营销模块、私有图标细节和服务端数据无法合法复制；本地以 AI 工程项目、实验、日志和资料档案替换。
+- 页面总高度因本地内容数量显著不同；首屏几何已对齐，长页内容密度保留个性化信息架构。
+- 产品 frame 是原创 DOM/CSS 实现，不是 Linear 私有源码或 bundle 的字节复制。
+
+### 未完成
+
+- 尚未把远端 CI run 和 GitHub Pages 发布证据写入本记录；提交推送后补充 commit、workflow run 和线上资源探针。
+- 尚未生成自动像素差异热力图；当前验收使用同视口浏览器几何、状态和截图证据。
