@@ -371,6 +371,44 @@
     });
   }
 
+  // Product-system story mirrors the reference page's four feature surfaces.
+  // It is a real state machine, so the panels are inspectable with keyboard,
+  // screen readers, and touch instead of being a decorative carousel.
+  const story = document.querySelector('[data-aps-system-story]');
+  if (story) {
+    const storyTabs = Array.from(story.querySelectorAll('[data-aps-story-tab]'));
+    const storyPanels = Array.from(story.querySelectorAll('[data-aps-story-panel]'));
+    const storyAnnouncer = story.parentElement?.querySelector('[data-aps-system-story-announcer]');
+    const storyLabels = isChinese
+      ? { intake: '接入与整合', planning: '计划与监控', automation: 'AI 与自动化', ship: '构建、评审与交付' }
+      : { intake: 'Intake and integrations', planning: 'Planning and monitoring', automation: 'AI and automations', ship: 'Build, review and ship' };
+    const setStoryStage = (id, moveFocus = false) => {
+      const tab = storyTabs.find((item) => item.dataset.apsStoryTab === id) || storyTabs[0];
+      if (!tab) return;
+      const activeId = tab.dataset.apsStoryTab;
+      storyTabs.forEach((item) => {
+        const active = item === tab;
+        item.setAttribute('aria-selected', String(active));
+        item.tabIndex = active ? 0 : -1;
+      });
+      storyPanels.forEach((panel) => {
+        panel.hidden = panel.dataset.apsStoryPanel !== activeId;
+      });
+      if (storyAnnouncer) storyAnnouncer.textContent = isChinese ? `已切换到${storyLabels[activeId] || '产品系统'}面板` : `Showing ${storyLabels[activeId] || 'product system'} panel`;
+      if (moveFocus) tab.focus();
+    };
+    storyTabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => setStoryStage(tab.dataset.apsStoryTab));
+      tab.addEventListener('keydown', (event) => {
+        if (!['ArrowDown', 'ArrowRight', 'ArrowUp', 'ArrowLeft', 'Home', 'End'].includes(event.key)) return;
+        event.preventDefault();
+        const next = event.key === 'Home' ? 0 : event.key === 'End' ? storyTabs.length - 1 : (index + (event.key === 'ArrowDown' || event.key === 'ArrowRight' ? 1 : -1) + storyTabs.length) % storyTabs.length;
+        setStoryStage(storyTabs[next].dataset.apsStoryTab, true);
+      });
+    });
+    setStoryStage(storyTabs[0].dataset.apsStoryTab);
+  }
+
   // The studio method is a real tabbed workbench: every stage owns a panel,
   // keyboard arrows move through the workflow, and the URL can address a stage.
   const workflowTabs = Array.from(document.querySelectorAll('[data-aps-workflow-tab]'));
