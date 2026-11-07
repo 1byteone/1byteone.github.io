@@ -104,7 +104,7 @@
 
 ### 未完成
 
-- 尚未把远端 CI run 和 GitHub Pages 发布证据写入本记录；提交推送后补充 commit、workflow run 和线上资源探针。
+- GitHub Pages 发布证据：提交 `9624aac` 触发 workflow run `42340279662`，build、主题路由矩阵、artifact 和 deploy 均成功；线上 `/themes/ai-product-studio/`、`about/`、`tech-stack/` 返回 HTTP 200，首页包含 4 个 `data-linear-panel` 标记并加载 `linear-contract-2`。
 - 尚未生成自动像素差异热力图；当前验收使用同视口浏览器几何、状态和截图证据。
 - Frame tabs 已从“更新 issue 文案”改为四个独立 panel state：`pulse`、`inbox`、`issues`、`reviews`。
 - Inbox 和 Review 操作具备明确的 pressed/disabled/live 状态，移动端与 reduced-motion 样式已补齐。
