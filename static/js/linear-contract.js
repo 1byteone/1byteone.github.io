@@ -196,12 +196,14 @@
   // Workspace tabs either change the current issue or navigate to the real archive.
   const frameTabs = Array.from(document.querySelectorAll('[data-linear-frame-tab]'));
   const tabIssue = { pulse: 0, inbox: 0, issues: 1, reviews: 2 };
+  const moreMenu = document.querySelector('[data-linear-more-menu]');
+  const closeMoreMenu = () => { if (moreMenu) moreMenu.hidden = true; };
   const setFrameTab = (tab) => {
     frameTabs.forEach((item) => item.setAttribute('aria-selected', String(item === tab)));
     const value = tab.dataset.linearFrameTab;
     if (value === 'projects') { window.location.href = tab.dataset.linearHref || 'projects/'; return; }
     if (value === 'initiatives') { window.location.href = tab.dataset.linearHref || 'experiments/'; return; }
-    if (value === 'more') { announce(zh ? '更多工作区入口：文章、资料与技术栈' : 'More workspace routes: journal, archive, and stack'); return; }
+    if (value === 'more') { if (moreMenu) moreMenu.hidden = !moreMenu.hidden; announce(zh ? '已打开文章、资料与技术栈入口' : 'Journal, archive, and stack routes opened'); return; }
     if (value === 'favorite') {
       const saved = !readStorage('yoyo-linear-favorite', false); writeStorage('yoyo-linear-favorite', saved); tab.setAttribute('aria-pressed', String(saved)); announce(saved ? labels.favorite : labels.unfavorite); return;
     }
@@ -240,9 +242,10 @@
     if (!event.target.closest('[data-linear-menu-root]')) closeMenus();
     if (!event.target.closest('[data-linear-workspace-menu]') && !event.target.closest('[data-linear-workspace-trigger]')) closeWorkspace();
     if (!event.target.closest('[data-linear-issue-menu]') && !event.target.closest('[data-linear-issue-menu-trigger]')) closeIssueMenu();
+    if (!event.target.closest('[data-linear-more-menu]') && !event.target.closest('[data-linear-frame-tab="more"]')) closeMoreMenu();
   });
   document.addEventListener('keydown', (event) => {
     if (event.key !== 'Escape') return;
-    closeMenus(true); closeWorkspace(true); closeIssueMenu(true); if (newDialog?.open) closeNewDialog();
+    closeMenus(true); closeWorkspace(true); closeIssueMenu(true); closeMoreMenu(); if (newDialog?.open) closeNewDialog();
   });
 })();

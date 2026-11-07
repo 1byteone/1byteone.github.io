@@ -182,6 +182,7 @@ body.ai-product-studio.aps-home .legacy-aps-hero { display: none !important; }
 .linear-popover > button span, .linear-popover > a span { color: #707680; font: 9px var(--aps-mono); }
 .linear-workspace-menu { top: 31px; left: 0; }
 .linear-issue-menu { top: 28px; left: 115px; }
+.linear-more-menu { top: 168px; left: 115px; }
 .linear-frame-main { position: relative; }
 .linear-frame-main[data-linear-delegated="true"] .linear-status-dot { border-color: #8ad7b1; background: #8ad7b1; }
 .linear-frame-main[data-linear-delegated="true"] .linear-issue-kicker { color: #8ad7b1; }
@@ -210,5 +211,6 @@ body.ai-product-studio.aps-home .legacy-aps-hero { display: none !important; }
 @media (max-width: 680px) {
   .linear-issue-menu { left: auto; right: 0; }
   .linear-workspace-menu { left: -4px; }
+  .linear-more-menu { top: 145px; left: 105px; }
   .linear-dialog-form { padding: 16px; }
 }

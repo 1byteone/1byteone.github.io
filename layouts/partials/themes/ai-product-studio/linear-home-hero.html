@@ -34,6 +34,7 @@
           <button type="button" data-linear-frame-tab="projects"><span>◇</span>{{ if $zh }}项目{{ else }}Projects{{ end }}</button>
           <button type="button" data-linear-frame-tab="more"><span>•••</span>{{ if $zh }}更多{{ else }}More{{ end }}</button>
         </nav>
+        <div class="linear-popover linear-more-menu" data-linear-more-menu hidden role="menu"><strong>{{ if $zh }}工作室索引{{ else }}Studio index{{ end }}</strong><a role="menuitem" href="{{ "blog/" | relLangURL }}">{{ if $zh }}文章与复盘{{ else }}Journal &amp; notes{{ end }} <span>↗</span></a><a role="menuitem" href="{{ "resource/" | relLangURL }}">{{ if $zh }}资料档案{{ else }}Resource archive{{ end }} <span>↗</span></a><a role="menuitem" href="{{ "tech-stack/" | relLangURL }}">{{ if $zh }}技术栈{{ else }}Engineering stack{{ end }} <span>↗</span></a></div>
         <span class="linear-frame-label">{{ if $zh }}收藏{{ else }}Favorites{{ end }}</span>
         <button class="linear-frame-favorite" type="button" data-linear-frame-tab="favorite"><i aria-hidden="true"></i>{{ if $zh }}RAG 评测集{{ else }}Retrieval eval set{{ end }}</button>
       </aside>
