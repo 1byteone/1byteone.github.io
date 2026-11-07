@@ -25,7 +25,7 @@
 
 ## 本地实现层：四视口实测
 
-测量页面：`http://127.0.0.1:1328/zh/`，Hugo Extended `0.161.1`，资源版本 `linear-contract-1`。
+测量页面：`http://127.0.0.1:1328/zh/`，Hugo Extended `0.161.1`，资源版本 `linear-contract-2`。
 
 | 视口 | Header | 首屏 Hero | H1 | Product frame | 页面高度 | 横向溢出 |
 | --- | ---: | ---: | --- | --- | ---: | --- |
@@ -46,6 +46,11 @@
 | Issue previous / next | 1 / 06 | 键盘 focus ring | 更新 issue id、标题、描述和 live region | ArrowLeft / ArrowRight 与按钮共用状态机 |
 | Workspace tabs | Pulse selected | raised surface | `aria-selected=true` | 内容不离开页面，不创建假链接 |
 | Engineering note | 可提交按钮 | hover / focus 明确反馈 | 提交后显示 ✓ 并更新 `aria-live` | 无模型依赖，失败路径可扩展 |
+| New issue dialog | 关闭 | 点击 `+` 打开并自动聚焦标题 | 提交后生成 APS 编号、更新当前问题并写入 localStorage | Escape / 取消关闭；刷新后保留自建问题 |
+| Issue actions | 菜单关闭 | 点击 `•••` 打开 | 复制链接、完成、恢复均更新状态和反馈 | 点击外部或 Escape 关闭 |
+| Frame actions | 静态工具按钮 | hover / focus | Search 打开站内搜索；Context 展开上下文；Delegate 更新委派状态 | Clipboard 不可用时降级到 selection copy |
+| Workspace menu | YOYO / STUDIO | 点击工作区按钮 | 选择当前工作区或跳转 RAG / DELIVERY | outside click / Escape 关闭 |
+| Frame tabs | Pulse selected | hover / keyboard | Inbox / Issues / Reviews 更新 issue；Projects / Initiatives 跳转真实页面；Favorite 持久化 | Arrow/Home/End 可操作 |
 | Site controls | Theme manager、中文/英文入口可见 | dark header hover | 主题中心保留全局入口 | 主题管理面板沿用站内一致逻辑 |
 
 ## 已执行验证
@@ -57,6 +62,9 @@
 - 四视口 HTTP 200、`lang=zh-Hans`、无横向溢出、控制台错误 0。
 - Product / Resources：点击、90ms hover intent、Escape、焦点恢复通过。
 - Issue：按钮和 ArrowLeft / ArrowRight 更新 APS-211 / APS-207 等状态通过。
+- New issue：填写标题与摘要后生成 APS 编号，Activity / live region 更新，刷新后从 localStorage 恢复。
+- Frame action：站内搜索、复制链接、上下文、委派和问题菜单均通过真实点击路径验收。
+- Frame tabs：Pulse / Inbox / Issues / Reviews 更新内容；Projects / Initiatives 跳转 `/zh/projects/`、`/zh/experiments/`。
 - Mobile nav：390px 下菜单按钮打开，`aria-expanded` 和 `.is-open` 同步。
 - Reduced motion：H1 直接显示，主视觉 opacity=1，transition/transform 关闭。
 - Scroll contract：664px 从初始 progress≈0.033 / opacity≈0.207，滚动到 650px 后 progress≈0.745 / opacity≈0.791。

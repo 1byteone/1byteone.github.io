@@ -172,3 +172,43 @@ body.ai-product-studio.aps-home .legacy-aps-hero { display: none !important; }
   [data-linear-reveal], [data-linear-reveal].is-visible, .linear-stage-wrap { transition: none !important; transform: none !important; filter: none !important; }
   .linear-stage-wrap { opacity: 1; }
 }
+
+.linear-frame-workspace { position: relative; }
+.linear-popover { position: absolute; z-index: 20; min-width: 190px; padding: 7px; border: 1px solid #343941; border-radius: 8px; background: #191c20; box-shadow: 0 18px 48px rgb(0 0 0 / 42%); color: #aeb3bb; }
+.linear-popover[hidden] { display: none; }
+.linear-popover > strong { display: block; padding: 6px 8px 7px; color: #777d86; font: 9px var(--aps-mono); letter-spacing: .06em; text-transform: uppercase; }
+.linear-popover > button, .linear-popover > a { display: flex; width: 100%; align-items: center; justify-content: space-between; gap: 14px; min-height: 30px; padding: 0 8px; border: 0; border-radius: 5px; background: transparent; color: #b9bec6; cursor: pointer; font: 11px var(--aps-sans); text-align: left; text-decoration: none; }
+.linear-popover > button:hover, .linear-popover > button:focus-visible, .linear-popover > a:hover, .linear-popover > a:focus-visible { background: #24282e; color: #fff; }
+.linear-popover > button span, .linear-popover > a span { color: #707680; font: 9px var(--aps-mono); }
+.linear-workspace-menu { top: 31px; left: 0; }
+.linear-issue-menu { top: 28px; left: 115px; }
+.linear-frame-main { position: relative; }
+.linear-frame-main[data-linear-delegated="true"] .linear-status-dot { border-color: #8ad7b1; background: #8ad7b1; }
+.linear-frame-main[data-linear-delegated="true"] .linear-issue-kicker { color: #8ad7b1; }
+.linear-issue-detail.is-context-open { background: linear-gradient(180deg, rgb(142 183 255 / 5%), transparent 48%); }
+.linear-comment-box { gap: 8px; }
+.linear-comment-input { display: flex; min-width: 0; flex: 1; }
+.linear-comment-input input { width: 100%; min-width: 0; border: 0; outline: 0; background: transparent; color: #cfd3d8; font: 11px var(--aps-sans); }
+.linear-comment-input input::placeholder { color: #666b73; }
+.linear-action-status { min-height: 16px; margin: 8px 0 0; color: #8eb7ff; font: 10px var(--aps-mono); }
+.linear-dialog { width: min(520px, calc(100vw - 32px)); padding: 0; border: 1px solid #343941; border-radius: 10px; background: #151719; color: #e9ebed; box-shadow: 0 28px 100px rgb(0 0 0 / 55%); }
+.linear-dialog::backdrop { background: rgb(3 4 5 / 72%); backdrop-filter: blur(5px); }
+.linear-dialog-form { display: grid; gap: 16px; padding: 20px; }
+.linear-dialog-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 15px; padding-bottom: 13px; border-bottom: 1px solid #2b2f35; }
+.linear-dialog-head > div > span { color: #747a83; font: 9px var(--aps-mono); letter-spacing: .08em; }
+.linear-dialog-head h2 { margin: 6px 0 0; font-size: 20px; font-weight: 560; letter-spacing: -.03em; }
+.linear-dialog-head button { border: 1px solid #343941; border-radius: 5px; background: transparent; color: #9298a1; cursor: pointer; font: 10px var(--aps-mono); }
+.linear-dialog-form label { display: grid; gap: 7px; color: #979da5; font-size: 11px; }
+.linear-dialog-form input, .linear-dialog-form textarea { width: 100%; border: 1px solid #30353c; border-radius: 6px; outline: 0; background: #0f1113; color: #edf0f2; font: 13px/1.5 var(--aps-sans); }
+.linear-dialog-form input { min-height: 38px; padding: 0 10px; }
+.linear-dialog-form textarea { resize: vertical; padding: 8px 10px; }
+.linear-dialog-form input:focus, .linear-dialog-form textarea:focus { border-color: #7da8f5; box-shadow: 0 0 0 2px rgb(125 168 245 / 15%); }
+.linear-dialog-actions { display: flex; justify-content: flex-end; gap: 8px; padding-top: 4px; }
+.linear-dialog-actions button { min-height: 34px; padding: 0 12px; border: 1px solid #343941; border-radius: 6px; background: transparent; color: #aeb3bb; cursor: pointer; font-size: 11px; }
+.linear-dialog-actions .linear-dialog-submit { border-color: #e9eaeb; background: #e9eaeb; color: #0b0c0d; font-weight: 650; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
+@media (max-width: 680px) {
+  .linear-issue-menu { left: auto; right: 0; }
+  .linear-workspace-menu { left: -4px; }
+  .linear-dialog-form { padding: 16px; }
+}
