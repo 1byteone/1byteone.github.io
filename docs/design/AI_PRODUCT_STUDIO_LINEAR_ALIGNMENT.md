@@ -25,14 +25,14 @@
 
 ## 本地实现层：四视口实测
 
-测量页面：`http://127.0.0.1:1328/zh/`，Hugo Extended `0.161.1`，资源版本 `linear-contract-2`。
+测量页面：`http://127.0.0.1:1331/`（`--environment ai-product-studio`），Hugo Extended `0.161.1`，资源版本 `linear-contract-3`。
 
 | 视口 | Header | 首屏 Hero | H1 | Product frame | 页面高度 | 横向溢出 |
 | --- | ---: | ---: | --- | --- | ---: | --- |
-| 1440 × 900 | 74px | y=74 / h=1650px | 约 76px，双行 | x=109 / y≈604 / 1222×702px | 6425px | 无 |
-| 768 × 1024 | 74px | y=74 / h=1650px | 响应式缩放 | x=61 / y≈494 / 646×702px | 6471px | 无 |
-| 664 × 524 | 66px | y=66 / h=1300px | 38px，双行 | x=46 / y≈345 / 572×608px | 7831px | 无 |
-| 390 × 844 | 66px | y=66 / h=1300px | 38px，双行 | x=46 / y≈338 / 298×608px | 7622px | 无 |
+| 1440 × 900 | 74px | y=74 / h=1650px | 64px / 64px，双行 | frame x=61 / y=526 / 1303×719px；外框 x=60 / 1320×720px | 6419px | 无 |
+| 768 × 1024 | 74px | y=74 / h=1650px | 58.4px / 58.4px，双行 | frame x=45 / y=389 / 679×719px；外框 x=44 / 680×720px | 6468px | 无 |
+| 664 × 524 | 66px | y=66 / h=1300px | 30px / 32px，双行 | frame x=33 / y=328 / 599×619px；外框 x=32 / 600×620px | 7830px | 无 |
+| 390 × 844 | 66px | y=66 / h=1300px | 30px / 32px，双行 | frame x=33 / y=328 / 325×619px；外框 x=32 / 326×620px | 7636px | 无 |
 
 页面高度仍受 AI Product Studio 的工作台、工作流、项目、研究、日志、工程系统和资料档案内容影响，不能与参考站的内容数量直接等比；首屏关键几何已按参考基线校准。
 
@@ -42,13 +42,14 @@
 | --- | --- | --- | --- | --- |
 | Product / Resources mega menu | 关闭，`aria-expanded=false` | 90ms hover intent，面板渐入 | 点击只保留一个面板 | Escape 关闭并恢复触发器焦点；快速重开不会被旧 timer 隐藏 |
 | Hero H1 | 隐藏、blur、下移 | IntersectionObserver 进入视口 | `is-visible` | reduced-motion 直接静态显示 |
-| Product frame | 低透明度、下移 | 边缘高光与 grain 保持 | 滚动驱动 `--linear-stage-progress` | 离屏停止 RAF；恢复可见时更新；reduced-motion 固定 opacity=1 |
+| Product frame | 近全不透明、无额外位移 | 边缘高光与低强度 grain 保持 | 滚动驱动 `--linear-stage-progress` 调节透明度 | 离屏停止 RAF；恢复可见时更新；reduced-motion 固定 opacity=1 |
 | Issue previous / next | 1 / 06 | 键盘 focus ring | 更新 issue id、标题、描述和 live region | ArrowLeft / ArrowRight 与按钮共用状态机 |
 | Workspace tabs | Pulse selected | raised surface | `aria-selected=true` | 内容不离开页面，不创建假链接 |
 | Engineering note | 可提交按钮 | hover / focus 明确反馈 | 提交后显示 ✓ 并更新 `aria-live` | 无模型依赖，失败路径可扩展 |
 | New issue dialog | 关闭 | 点击 `+` 打开并自动聚焦标题 | 提交后生成 APS 编号、更新当前问题并写入 localStorage | Escape / 取消关闭；刷新后保留自建问题 |
 | Issue actions | 菜单关闭 | 点击 `•••` 打开 | 复制链接、完成、恢复均更新状态和反馈 | 点击外部或 Escape 关闭 |
 | Frame actions | 静态工具按钮 | hover / focus | Search 打开站内搜索；Context 展开上下文；Delegate 更新委派状态 | Clipboard 不可用时降级到 selection copy |
+| Agent context panel | 默认显示在 frame 右侧 | 关闭、最小化、预览均有焦点反馈 | Context 按钮、关闭、最小化和 Preview 更新面板状态 | 窄屏隐藏浮层以保持工作区可读；reduced-motion 移除过渡 |
 | Workspace menu | YOYO / STUDIO | 点击工作区按钮 | 选择当前工作区或跳转 RAG / DELIVERY | outside click / Escape 关闭 |
 | Frame tabs | Pulse selected | hover / keyboard | Pulse / Inbox / Issues / Reviews 切换真实 DOM panel；Projects / Initiatives 跳转真实页面；Favorite 持久化 | Arrow/Home/End 可操作，panel 变化写入 `aria-hidden` 与 live region |
 | Inbox items | Inbox panel | 卡片上移、边框高亮 | 点击任务进入 Issues panel 并定位对应 APS issue | 保留当前工作区上下文，不生成重复页面 |
@@ -69,7 +70,7 @@
 - Frame tabs：Pulse / Inbox / Issues / Reviews 更新不同 DOM panel；Inbox 任务进入对应 issue；Review 操作更新卡片状态；Projects / Initiatives 跳转 `/zh/projects/`、`/zh/experiments/`。
 - Mobile nav：390px 下菜单按钮打开，`aria-expanded` 和 `.is-open` 同步。
 - Reduced motion：H1 直接显示，主视觉 opacity=1，transition/transform 关闭。
-- Scroll contract：664px 从初始 progress≈0.033 / opacity≈0.207，滚动到 650px 后 progress≈0.745 / opacity≈0.791。
+- Scroll contract：主视觉保留 `--linear-stage-progress` 供离屏降频和状态追踪，首帧透明度约 0.92–0.95 且无位移；reduced-motion 固定 opacity=1。
 - Browser route audit：`/about/` 使用 `aps-about-shell`，`/tech-stack/` 使用 `aps-stack-archive`，`/projects/`、`/experiments/`、`/blog/` 分别使用 product、experiment、journal 结构；五条路由均无控制台错误。
 
 ## 差距统计（本轮复核）
@@ -80,7 +81,7 @@
 | Hero | 大标题 blur/reveal、首屏留白和滚动进入 | 已实现逐行 reveal、滚动 progress、响应式字号 | 文案与内容长度不同，保留 YOYO / 1BYTEONE 个性化信息 |
 | Product surface | sidebar、工作区、tab、topbar、属性栏与 stacked shadow | 已实现 DOM/CSS 工作面，四 tab 对应四个不同 panel | 原站私有数据和 bundle 不可取得；本地使用原创 AI 工程数据 |
 | Tab interaction | 视图切换、键盘操作、面板状态 | Pulse / Inbox / Issues / Reviews 真实切换；Inbox 可进入 issue；Review 可通过/请求补证 | 已从“只改标题”修正为状态机；仍不复制 Linear 私有源码 |
-| Hover / depth | 多层阴影、raised surface、按钮反馈 | frame、菜单、Inbox、Review 均有 hover/focus、阴影和入场动画 | 视觉层级已补齐；像素级差异受字体/内容限制 |
+| Hover / depth | 多层阴影、raised surface、按钮反馈、右侧 Agent context | frame、菜单、Inbox、Review、Agent context 均有 hover/focus、阴影和入场动画 | 本轮补齐右侧 context 浮层、最小化和关闭状态；像素级差异受字体/内容限制 |
 | Long page | 参考站内容密度与公告卡节奏 | AI 工程文章、项目、实验、资源档案按站内路由承载 | 页面总高度不能等比，已记录首屏几何和内容差异 |
 | Route differentiation | 公开站后续模块具有各自结构 | projects/experiments/blog/resource/about/tech-stack 分支独立；about 与 tech-stack 使用独立模板 | 不是所有页面共用 journal list；内容资产仍持续补齐 |
 
@@ -106,5 +107,5 @@
 
 - GitHub Pages 发布证据：提交 `9624aac` 触发 workflow run `42340279662`，build、主题路由矩阵、artifact 和 deploy 均成功；线上 `/themes/ai-product-studio/`、`about/`、`tech-stack/` 返回 HTTP 200，首页包含 4 个 `data-linear-panel` 标记并加载 `linear-contract-2`。
 - 尚未生成自动像素差异热力图；当前验收使用同视口浏览器几何、状态和截图证据。
-- Frame tabs 已从“更新 issue 文案”改为四个独立 panel state：`pulse`、`inbox`、`issues`、`reviews`。
+- Frame tabs 已从“更新 issue 文案”改为四个独立 panel state：`pulse`、`inbox`、`issues`、`reviews`；主视觉 frame 已按参考的 1320×720 外框、240px sidebar、右侧 Agent context 位置校准。
 - Inbox 和 Review 操作具备明确的 pressed/disabled/live 状态，移动端与 reduced-motion 样式已补齐。

@@ -256,9 +256,38 @@
   document.querySelectorAll('[data-linear-view-action]').forEach((button) => button.addEventListener('click', async () => {
     const action = button.dataset.linearViewAction;
     if (action === 'link') { await copyText(`${window.location.href}#${issues[issueIndex].id}`); announce(labels.copied); }
-    if (action === 'context') { document.querySelector('.linear-issue-detail')?.classList.toggle('is-context-open'); announce(labels.context); }
+    if (action === 'context') {
+      const panel = document.querySelector('[data-linear-agent-panel]');
+      const open = panel?.getAttribute('aria-hidden') !== 'true';
+      if (panel) {
+        panel.setAttribute('aria-hidden', String(open));
+        if (!open) panel.classList.remove('is-minimized');
+      }
+      document.querySelector('.linear-issue-detail')?.classList.toggle('is-context-open', open);
+      announce(open ? (zh ? '已隐藏 AI 工程上下文' : 'AI engineering context hidden') : labels.context);
+    }
     if (action === 'delegate') { document.querySelector('[data-linear-frame-main]')?.setAttribute('data-linear-delegated', 'true'); announce(labels.delegated); }
   }));
+
+  const agentPanel = document.querySelector('[data-linear-agent-panel]');
+  const setAgentPanel = (open) => {
+    if (!agentPanel) return;
+    agentPanel.setAttribute('aria-hidden', String(!open));
+    agentPanel.dataset.minimized = 'false';
+    agentPanel.classList.remove('is-minimized');
+  };
+  document.querySelector('[data-linear-agent-close]')?.addEventListener('click', () => { setAgentPanel(false); announce(zh ? 'AI 工程助手已关闭' : 'AI engineering assistant closed'); });
+  document.querySelector('[data-linear-agent-minimize]')?.addEventListener('click', () => {
+    if (!agentPanel) return;
+    const minimized = agentPanel.dataset.minimized === 'true';
+    agentPanel.dataset.minimized = String(!minimized);
+    agentPanel.classList.toggle('is-minimized', !minimized);
+    announce(!minimized ? (zh ? 'AI 工程助手已最小化' : 'AI engineering assistant minimized') : (zh ? 'AI 工程助手已展开' : 'AI engineering assistant expanded'));
+  });
+  document.querySelector('[data-linear-agent-preview]')?.addEventListener('click', () => {
+    document.querySelector('[data-linear-frame-main]')?.setAttribute('data-linear-delegated', 'true');
+    announce(zh ? '已打开修复建议预览' : 'Fix proposal preview opened');
+  });
 
   document.querySelector('[data-linear-comment-form]')?.addEventListener('submit', (event) => {
     event.preventDefault();
