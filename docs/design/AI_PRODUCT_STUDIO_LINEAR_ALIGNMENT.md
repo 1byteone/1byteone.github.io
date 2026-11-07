@@ -50,7 +50,9 @@
 | Issue actions | 菜单关闭 | 点击 `•••` 打开 | 复制链接、完成、恢复均更新状态和反馈 | 点击外部或 Escape 关闭 |
 | Frame actions | 静态工具按钮 | hover / focus | Search 打开站内搜索；Context 展开上下文；Delegate 更新委派状态 | Clipboard 不可用时降级到 selection copy |
 | Workspace menu | YOYO / STUDIO | 点击工作区按钮 | 选择当前工作区或跳转 RAG / DELIVERY | outside click / Escape 关闭 |
-| Frame tabs | Pulse selected | hover / keyboard | Inbox / Issues / Reviews 更新 issue；Projects / Initiatives 跳转真实页面；Favorite 持久化 | Arrow/Home/End 可操作 |
+| Frame tabs | Pulse selected | hover / keyboard | Pulse / Inbox / Issues / Reviews 切换真实 DOM panel；Projects / Initiatives 跳转真实页面；Favorite 持久化 | Arrow/Home/End 可操作，panel 变化写入 `aria-hidden` 与 live region |
+| Inbox items | Inbox panel | 卡片上移、边框高亮 | 点击任务进入 Issues panel 并定位对应 APS issue | 保留当前工作区上下文，不生成重复页面 |
+| Review actions | Review queue | 通过/补证按钮高亮 | 更新卡片 `data-review-state`、禁用已处理按钮并播报结果 | 适配 reduced-motion |
 | Site controls | Theme manager、中文/英文入口可见 | dark header hover | 主题中心保留全局入口 | 主题管理面板沿用站内一致逻辑 |
 
 ## 已执行验证
@@ -64,10 +66,25 @@
 - Issue：按钮和 ArrowLeft / ArrowRight 更新 APS-211 / APS-207 等状态通过。
 - New issue：填写标题与摘要后生成 APS 编号，Activity / live region 更新，刷新后从 localStorage 恢复。
 - Frame action：站内搜索、复制链接、上下文、委派和问题菜单均通过真实点击路径验收。
-- Frame tabs：Pulse / Inbox / Issues / Reviews 更新内容；Projects / Initiatives 跳转 `/zh/projects/`、`/zh/experiments/`。
+- Frame tabs：Pulse / Inbox / Issues / Reviews 更新不同 DOM panel；Inbox 任务进入对应 issue；Review 操作更新卡片状态；Projects / Initiatives 跳转 `/zh/projects/`、`/zh/experiments/`。
 - Mobile nav：390px 下菜单按钮打开，`aria-expanded` 和 `.is-open` 同步。
 - Reduced motion：H1 直接显示，主视觉 opacity=1，transition/transform 关闭。
 - Scroll contract：664px 从初始 progress≈0.033 / opacity≈0.207，滚动到 650px 后 progress≈0.745 / opacity≈0.791。
+- Browser route audit：`/about/` 使用 `aps-about-shell`，`/tech-stack/` 使用 `aps-stack-archive`，`/projects/`、`/experiments/`、`/blog/` 分别使用 product、experiment、journal 结构；五条路由均无控制台错误。
+
+## 差距统计（本轮复核）
+
+| 区域 | 参考站公开契约 | 本地当前实现 | 差距与处理结论 |
+| --- | --- | --- | --- |
+| Header | sticky header、Products/Resources 菜单、CTA、焦点与 hover | 已实现深色 sticky header、mega menu、中文 ARIA、Escape 恢复焦点 | 几何与状态已对齐；私有图标与品牌资产不复制 |
+| Hero | 大标题 blur/reveal、首屏留白和滚动进入 | 已实现逐行 reveal、滚动 progress、响应式字号 | 文案与内容长度不同，保留 YOYO / 1BYTEONE 个性化信息 |
+| Product surface | sidebar、工作区、tab、topbar、属性栏与 stacked shadow | 已实现 DOM/CSS 工作面，四 tab 对应四个不同 panel | 原站私有数据和 bundle 不可取得；本地使用原创 AI 工程数据 |
+| Tab interaction | 视图切换、键盘操作、面板状态 | Pulse / Inbox / Issues / Reviews 真实切换；Inbox 可进入 issue；Review 可通过/请求补证 | 已从“只改标题”修正为状态机；仍不复制 Linear 私有源码 |
+| Hover / depth | 多层阴影、raised surface、按钮反馈 | frame、菜单、Inbox、Review 均有 hover/focus、阴影和入场动画 | 视觉层级已补齐；像素级差异受字体/内容限制 |
+| Long page | 参考站内容密度与公告卡节奏 | AI 工程文章、项目、实验、资源档案按站内路由承载 | 页面总高度不能等比，已记录首屏几何和内容差异 |
+| Route differentiation | 公开站后续模块具有各自结构 | projects/experiments/blog/resource/about/tech-stack 分支独立；about 与 tech-stack 使用独立模板 | 不是所有页面共用 journal list；内容资产仍持续补齐 |
+
+按可观察交互统计，本轮覆盖 **7 类差距项**：其中 6 类已完成本地实现并验证，1 类（私有品牌资产、私有源码和精确像素差异）受公开边界限制，使用原创等价实现并保留差距说明。
 
 ## 当前状态
 
@@ -89,3 +106,5 @@
 
 - 尚未把远端 CI run 和 GitHub Pages 发布证据写入本记录；提交推送后补充 commit、workflow run 和线上资源探针。
 - 尚未生成自动像素差异热力图；当前验收使用同视口浏览器几何、状态和截图证据。
+- Frame tabs 已从“更新 issue 文案”改为四个独立 panel state：`pulse`、`inbox`、`issues`、`reviews`。
+- Inbox 和 Review 操作具备明确的 pressed/disabled/live 状态，移动端与 reduced-motion 样式已补齐。

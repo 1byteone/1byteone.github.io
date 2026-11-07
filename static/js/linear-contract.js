@@ -195,6 +195,17 @@
 
   // Workspace tabs either change the current issue or navigate to the real archive.
   const frameTabs = Array.from(document.querySelectorAll('[data-linear-frame-tab]'));
+  const panels = Array.from(document.querySelectorAll('[data-linear-panel]'));
+  const setPanel = (name) => {
+    panels.forEach((panel) => {
+      const active = panel.dataset.linearPanel === name;
+      panel.hidden = !active;
+      panel.setAttribute('aria-hidden', String(!active));
+      panel.classList.toggle('is-active', active);
+    });
+    const frame = document.querySelector('[data-linear-frame-main]');
+    if (frame) frame.dataset.linearPanel = name;
+  };
   const tabIssue = { pulse: 0, inbox: 0, issues: 1, reviews: 2 };
   const moreMenu = document.querySelector('[data-linear-more-menu]');
   const closeMoreMenu = () => { if (moreMenu) moreMenu.hidden = true; };
@@ -207,7 +218,10 @@
     if (value === 'favorite') {
       const saved = !readStorage('yoyo-linear-favorite', false); writeStorage('yoyo-linear-favorite', saved); tab.setAttribute('aria-pressed', String(saved)); announce(saved ? labels.favorite : labels.unfavorite); return;
     }
-    if (Object.prototype.hasOwnProperty.call(tabIssue, value)) setIssue(tabIssue[value]);
+    if (Object.prototype.hasOwnProperty.call(tabIssue, value)) {
+      setPanel(value === 'pulse' ? 'pulse' : value === 'inbox' ? 'inbox' : value === 'reviews' ? 'reviews' : 'issues');
+      if (value === 'issues') setIssue(tabIssue[value]);
+    }
     announce(zh ? `已切换到${tab.textContent.trim()}视图` : `Switched to ${tab.textContent.trim()} view`);
   };
   frameTabs.forEach((tab, index) => {
@@ -218,6 +232,26 @@
   });
   const favorite = document.querySelector('[data-linear-frame-tab="favorite"]');
   if (favorite) favorite.setAttribute('aria-pressed', String(readStorage('yoyo-linear-favorite', false)));
+
+  document.querySelectorAll('[data-linear-inbox-issue]').forEach((button) => button.addEventListener('click', () => {
+    const index = Number(button.dataset.linearInboxIssue);
+    setPanel('issues');
+    frameTabs.forEach((item) => item.setAttribute('aria-selected', String(item.dataset.linearFrameTab === 'issues')));
+    setIssue(Number.isFinite(index) ? index : 0);
+    announce(zh ? '已打开收件箱问题上下文' : 'Issue context opened from inbox');
+  }));
+
+  document.querySelectorAll('[data-linear-review-action]').forEach((button) => button.addEventListener('click', () => {
+    const card = button.closest('article');
+    if (!card) return;
+    const action = button.dataset.linearReviewAction;
+    card.dataset.reviewState = action === 'approve' ? 'approved' : 'evidence-requested';
+    button.disabled = true;
+    button.textContent = action === 'approve' ? (zh ? '已通过' : 'Approved') : (zh ? '已请求补证' : 'Evidence requested');
+    announce(action === 'approve' ? (zh ? '评审已通过' : 'Review approved') : (zh ? '已请求补充证据' : 'Evidence requested'));
+  }));
+
+  setPanel('pulse');
 
   document.querySelectorAll('[data-linear-view-action]').forEach((button) => button.addEventListener('click', async () => {
     const action = button.dataset.linearViewAction;

@@ -222,6 +222,24 @@
     if (emptyExperiments) emptyExperiments.hidden = visible !== 0;
   }));
 
+  // Tech-stack archive uses the same accessible filter contract as experiments,
+  // but filters roadmap cards by delivery priority without changing the URL.
+  const stackFilters = Array.from(document.querySelectorAll('[data-aps-stack-filter]'));
+  const stackCards = Array.from(document.querySelectorAll('[data-aps-stack-card]'));
+  const stackEmpty = document.querySelector('[data-aps-stack-empty]');
+  stackFilters.forEach((button) => button.addEventListener('click', () => {
+    const priority = button.dataset.apsStackFilter || 'all';
+    stackFilters.forEach((filter) => filter.setAttribute('aria-pressed', String(filter === button)));
+    let visible = 0;
+    stackCards.forEach((card) => {
+      const show = priority === 'all' || card.dataset.priority === priority;
+      card.hidden = !show;
+      card.classList.toggle('is-hidden', !show);
+      if (show) visible += 1;
+    });
+    if (stackEmpty) stackEmpty.hidden = visible !== 0;
+  }));
+
   // The product surface keeps a small amount of state visible like a real
   // product workspace: view tabs change the active context, while the board
   // filter narrows cards without changing their layout.

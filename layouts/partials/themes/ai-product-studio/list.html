@@ -58,6 +58,10 @@
       {{ if $pages }}<div class="aps-journal-list aps-resource-list">{{ range $pages }}<a class="aps-journal-row" href="{{ .RelPermalink }}"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time><span class="aps-journal-index">↗</span><span class="aps-journal-copy"><strong>{{ .Title }}</strong><small>{{ .Summary | plainify | truncate 150 }}</small></span></a>{{ end }}</div>{{ end }}
     {{- else if eq $section "blog" -}}
       <div class="aps-journal-list aps-journal-archive">{{ range $pages }}<a class="aps-journal-row" href="{{ .RelPermalink }}"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time><span class="aps-journal-index">{{ with .Params.category }}{{ . }}{{ else }}NOTE{{ end }}</span><span class="aps-journal-copy"><strong>{{ .Title }}</strong><small>{{ .Summary | plainify | truncate 170 }}</small></span><span class="aps-journal-arrow" aria-hidden="true">↗</span></a>{{ else }}<p class="aps-empty-note">{{ if $zh }}目前还没有文章。{{ else }}No journal entries yet.{{ end }}</p>{{ end }}</div>
+    {{- else if eq $section "about" -}}
+      {{ partial "themes/ai-product-studio/about.html" . }}
+    {{- else if eq $section "tech-stack" -}}
+      {{ partial "themes/ai-product-studio/tech-stack.html" . }}
     {{- else -}}
       <div class="aps-journal-list">{{ range $pages }}<a class="aps-journal-row" href="{{ .RelPermalink }}"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time><span class="aps-journal-index">{{ upper $section }}</span><span class="aps-journal-copy"><strong>{{ .Title }}</strong><small>{{ .Summary | plainify | truncate 160 }}</small></span><span class="aps-journal-arrow" aria-hidden="true">↗</span></a>{{ else }}<p class="aps-empty-note">{{ if $zh }}这个目录还没有公开条目。{{ else }}There are no published entries in this directory yet.{{ end }}</p>{{ end }}</div>
     {{- end -}}

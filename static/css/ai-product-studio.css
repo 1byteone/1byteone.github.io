@@ -771,3 +771,72 @@ body.ai-product-studio .aps-linear-caption span:last-child { color: var(--aps-bl
   body.ai-product-studio .aps-linear-product, body.ai-product-studio .aps-linear-shine, body.ai-product-studio .aps-linear-frame-background { opacity: 1; transform: none; transition: none; }
   body.ai-product-studio .aps-linear-grain { opacity: .16; }
 }
+
+/* Dedicated archive surfaces keep About and Tech Stack from collapsing into a generic list. */
+body.ai-product-studio .aps-about-shell, body.ai-product-studio .aps-stack-archive { display: grid; gap: 52px; }
+body.ai-product-studio .aps-about-profile { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(230px, .6fr); gap: 28px; padding: 30px; border: 1px solid var(--aps-line); background: var(--aps-surface); }
+body.ai-product-studio .aps-about-profile h2 { max-width: 700px; margin: 13px 0 14px; font-size: clamp(34px, 6vw, 68px); font-weight: 570; letter-spacing: -.065em; line-height: .98; }
+body.ai-product-studio .aps-about-lede { max-width: 650px; margin: 0; color: var(--aps-muted); font-size: 14px; line-height: 1.75; }
+body.ai-product-studio .aps-about-actions { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 26px; }
+body.ai-product-studio .aps-about-signal { align-self: end; display: grid; gap: 13px; padding: 18px; border-left: 2px solid var(--aps-blue); background: var(--aps-paper-raised); }
+body.ai-product-studio .aps-about-signal span, body.ai-product-studio .aps-about-signal small { color: var(--aps-muted); font: 8px var(--aps-mono); letter-spacing: .06em; }
+body.ai-product-studio .aps-about-signal strong { font-size: 17px; font-weight: 560; line-height: 1.35; }
+body.ai-product-studio .aps-about-metrics { margin: 0; }
+body.ai-product-studio .aps-about-grid { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(260px, .65fr); gap: 1px; background: var(--aps-line); border: 1px solid var(--aps-line); }
+body.ai-product-studio .aps-about-block { padding: 25px; background: var(--aps-paper); }
+body.ai-product-studio .aps-about-block h3 { max-width: 500px; margin: 15px 0 24px; font: 400 clamp(25px, 3vw, 40px)/1.08 var(--aps-serif); letter-spacing: -.03em; }
+body.ai-product-studio .aps-about-capabilities { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+body.ai-product-studio .aps-about-capabilities > div { display: grid; align-content: start; gap: 8px; padding-top: 13px; border-top: 1px solid var(--aps-line); }
+body.ai-product-studio .aps-about-capabilities b { color: var(--aps-blue); font: 8px var(--aps-mono); }
+body.ai-product-studio .aps-about-capabilities strong { font-size: 12px; line-height: 1.3; }
+body.ai-product-studio .aps-about-capabilities p { margin: 0; color: var(--aps-muted); font-size: 10px; line-height: 1.6; }
+body.ai-product-studio .aps-about-principles { background: var(--aps-surface); }
+body.ai-product-studio .aps-about-principles ol { display: grid; gap: 19px; margin: 25px 0 0; padding: 0; list-style: none; }
+body.ai-product-studio .aps-about-principles li { display: grid; grid-template-columns: 28px 1fr; gap: 10px; align-items: start; padding-bottom: 17px; border-bottom: 1px solid var(--aps-line); }
+body.ai-product-studio .aps-about-principles li > span { color: var(--aps-terra); font: 8px var(--aps-mono); }
+body.ai-product-studio .aps-about-principles p { margin: 0; font-size: 12px; line-height: 1.55; }
+body.ai-product-studio .aps-about-timeline { display: grid; gap: 28px; }
+body.ai-product-studio .aps-about-milestones { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--aps-line); border-left: 1px solid var(--aps-line); }
+body.ai-product-studio .aps-about-milestones article { min-height: 170px; display: grid; align-content: start; gap: 10px; padding: 19px; border-right: 1px solid var(--aps-line); border-bottom: 1px solid var(--aps-line); }
+body.ai-product-studio .aps-about-milestones article > span { color: var(--aps-blue); font: 8px var(--aps-mono); }
+body.ai-product-studio .aps-about-milestones h3 { margin: 19px 0 0; font-size: 20px; font-weight: 560; }
+body.ai-product-studio .aps-about-milestones p { margin: 0; color: var(--aps-muted); font-size: 10px; line-height: 1.65; }
+body.ai-product-studio .aps-about-cta { margin-top: 0; }
+body.ai-product-studio .aps-stack-intro { display: grid; grid-template-columns: minmax(0, 1fr) 190px; gap: 30px; align-items: end; padding-bottom: 29px; border-bottom: 1px solid var(--aps-line); }
+body.ai-product-studio .aps-stack-intro h2 { max-width: 760px; margin: 13px 0 10px; font: 400 clamp(30px, 5vw, 57px)/1.02 var(--aps-serif); letter-spacing: -.045em; }
+body.ai-product-studio .aps-stack-intro p { max-width: 560px; margin: 0; color: var(--aps-muted); font-size: 12px; line-height: 1.7; }
+body.ai-product-studio .aps-stack-score { display: grid; gap: 5px; justify-items: end; padding: 17px; border: 1px solid var(--aps-line); background: var(--aps-surface); }
+body.ai-product-studio .aps-stack-score strong { font-size: 42px; font-weight: 570; letter-spacing: -.06em; }
+body.ai-product-studio .aps-stack-score span, body.ai-product-studio .aps-stack-score small { color: var(--aps-muted); font: 8px var(--aps-mono); }
+body.ai-product-studio .aps-stack-filters { margin: 0; }
+body.ai-product-studio .aps-stack-board-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid var(--aps-line); border-left: 1px solid var(--aps-line); }
+body.ai-product-studio .aps-stack-roadmap { min-height: 220px; display: flex; flex-direction: column; padding: 16px; border-right: 1px solid var(--aps-line); border-bottom: 1px solid var(--aps-line); color: var(--aps-ink); text-decoration: none; transition: background 180ms ease, transform 180ms ease, box-shadow 180ms ease; }
+body.ai-product-studio .aps-stack-roadmap:hover, body.ai-product-studio .aps-stack-roadmap:focus-visible { z-index: 1; background: var(--aps-paper-raised); color: var(--aps-ink); transform: translateY(-3px); box-shadow: 0 10px 24px rgb(20 22 24 / 10%); }
+body.ai-product-studio .aps-stack-roadmap-top, body.ai-product-studio .aps-stack-roadmap footer { display: flex; justify-content: space-between; gap: 10px; color: var(--aps-muted); font: 8px var(--aps-mono); }
+body.ai-product-studio .aps-stack-roadmap-top > span { color: var(--aps-blue); }
+body.ai-product-studio .aps-stack-roadmap-top b { color: var(--aps-terra); font-weight: 500; }
+body.ai-product-studio .aps-priority-p0 { color: var(--aps-green) !important; }
+body.ai-product-studio .aps-priority-p2 { color: var(--aps-muted) !important; }
+body.ai-product-studio .aps-stack-roadmap-body { display: grid; gap: 8px; margin-top: 34px; }
+body.ai-product-studio .aps-stack-roadmap-body > span { color: var(--aps-muted); font: 7px var(--aps-mono); letter-spacing: .04em; }
+body.ai-product-studio .aps-stack-roadmap h3 { margin: 0; font-size: 18px; font-weight: 570; letter-spacing: -.035em; }
+body.ai-product-studio .aps-stack-roadmap p { min-height: 48px; margin: 0; color: var(--aps-muted); font-size: 9px; line-height: 1.6; }
+body.ai-product-studio .aps-stack-roadmap footer { margin-top: auto; padding-top: 14px; border-top: 1px solid var(--aps-line); }
+body.ai-product-studio .aps-stack-roadmap footer span { color: var(--aps-ink); }
+body.ai-product-studio .aps-stack-roadmap footer b { color: var(--aps-blue); font-size: 12px; }
+body.ai-product-studio .aps-stack-method { display: grid; grid-template-columns: 160px minmax(0, 1fr) auto; gap: 20px; align-items: center; padding: 20px; border: 1px solid var(--aps-line); background: var(--aps-surface); }
+body.ai-product-studio .aps-stack-method p { margin: 0; color: var(--aps-muted); font-size: 11px; line-height: 1.6; }
+body.ai-product-studio .aps-stack-method .aps-text-link { justify-self: end; }
+@media (max-width: 980px) {
+  body.ai-product-studio .aps-stack-board-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  body.ai-product-studio .aps-about-grid, body.ai-product-studio .aps-about-profile { grid-template-columns: 1fr; }
+  body.ai-product-studio .aps-about-signal { align-self: stretch; }
+}
+@media (max-width: 680px) {
+  body.ai-product-studio .aps-about-profile, body.ai-product-studio .aps-about-block { padding: 18px; }
+  body.ai-product-studio .aps-about-capabilities, body.ai-product-studio .aps-about-milestones { grid-template-columns: 1fr; }
+  body.ai-product-studio .aps-stack-intro, body.ai-product-studio .aps-stack-method { grid-template-columns: 1fr; }
+  body.ai-product-studio .aps-stack-score { justify-items: start; }
+  body.ai-product-studio .aps-stack-board-grid { grid-template-columns: 1fr; }
+  body.ai-product-studio .aps-stack-method .aps-text-link { justify-self: start; }
+}
