@@ -62,6 +62,12 @@ jobs:
         with:
           go-version: "stable"
 
+      # 安装 Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
 
       # 安装 Node 依赖
       - name: Setup Node.js

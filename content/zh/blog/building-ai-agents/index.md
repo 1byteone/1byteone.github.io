@@ -11,6 +11,7 @@ tags:
 authors:
   - me
 featured: true
+picked: true
 ---
 
 AI智能体正在改变我们构建智能应用的方式。与简单聊天机器人不同，智能体可以使用工具、保持上下文并做出决策。本指南介绍如何使用LangChain构建生产级智能体。

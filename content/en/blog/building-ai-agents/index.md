@@ -11,6 +11,7 @@ tags:
 authors:
   - me
 featured: true
+picked: true
 ---
 
 AI agents are revolutionizing how we build intelligent applications. Unlike simple chatbots, agents can use tools, maintain context, and make decisions. This guide covers building production-ready agents with LangChain.

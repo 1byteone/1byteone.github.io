@@ -1,6 +1,7 @@
 ---
 title: "Technical Blog"
 date: 2026-01-05
+layout: blog
 type: docs
 ---
 

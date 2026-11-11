@@ -58,10 +58,10 @@ sections:
           tag: '*'
         - name: AI
           tag: AI
-        - name: RAG
-          tag: RAG
         - name: Backend
           tag: Backend
+        - name: IoT
+          tag: IoT
       default_button_index: 0
     design:
       columns: 3
@@ -152,30 +152,47 @@ sections:
       title: "Experience"
       date_format: Jan 2006
       items:
-        - title: AI Application Developer Intern
+        - title: AI Engineering Intern
           company: Jiangxi Chuanxi Education Technology Co., Ltd.
           company_url: ''
           company_logo: ''
           location: Nanchang, China
-          date_start: '2026-09-01'
-          date_end: ''
+          date_start: '2026-05-01'
+          date_end: '2026-08-31'
           description: |2-
-            * Developing AI-powered search and recommendation systems
-            * Building RAG-based intelligent retrieval services
-            * Integrating Python AI services with Spring Cloud microservices
-            * Implementing vector search and hallucination control mechanisms
-        - title: AI Application Developer (Personal Projects)
-          company: Independent Developer
+            **Backend Development Support**
+            * Participated in AI product search and knowledge base R&D, responsible for query, filter, service invocation, and parameter validation interfaces
+            * Completed idempotent validation, async processing, failure retry, and exception compensation using Redis, Redisson, and RocketMQ
+            * Completed multi-condition filtering and result ranking based on Elasticsearch, IK tokenizer, and DSL, integrating semantic recall with ~35% improvement
+            **AI Application Support**
+            * Participated in enterprise RAG knowledge base Q&A scenario, responsible for PDF/Markdown preprocessing, text chunking, vectorization, and sample curation
+            * Verified invocation paths based on LangChain and LCEL, supplementing source constraints, structured output, and fallback strategies
+            * Coordinated FastAPI async interfaces, SSE streaming output, and session context management, supporting token-by-token display and multi-session access
+            * Completed 20+ groups of concurrent testing, located and fixed 7 types of issues via log analysis, supplemented exception handling and degradation strategies
+        - title: Backend Developer (Team Project)
+          company: ZhiYi Elderly Care Nursing System
           company_url: 'https://github.com/1byteone'
           company_logo: ''
           location: Remote
-          date_start: '2026-03-01'
-          date_end: '2026-09-01'
+          date_start: '2025-09-01'
+          date_end: '2026-01-31'
           description: |2-
-            * Built agricultural knowledge base Q&A agent with LangChain
-            * Developed e-commerce natural language AI search system
-            * Implemented RAG pipelines with vector storage and multi-turn conversation
-            * Created FastAPI streaming interfaces with SSE support
+            Comprehensive management platform for medium-sized nursing homes (B-end ops dashboard + C-end family mini-program), team of 6, responsible for health assessment engine, IoT sync service, and unified auth modules.
+            * Integrated Baidu Qianfan AI model for semantic analysis, designed Redis multi-level caching, reduced single analysis response from 8s to under 1s, improving nurse efficiency by ~30%
+            * Developed Huawei Cloud IoT platform integration service, achieving incremental sync via async thread pool, sync time from 3min to 10s
+            * Implemented WeChat mini-program seamless login and context propagation based on interceptors and ThreadLocal, supporting 2000+ daily active visits
+        - title: Backend Developer (Personal Project)
+          company: LingXi AI Writing Platform
+          company_url: 'https://github.com/1byteone'
+          company_logo: ''
+          location: Remote
+          date_start: '2025-02-01'
+          date_end: '2026-05-31'
+          description: |2-
+            AI-powered intelligent article creation platform built on Spring Boot 3 + Spring AI Alibaba, independently designed and developed full-stack.
+            * Designed StateGraph-based workflow engine for flexible serial/parallel orchestration of multi-agent tasks (title, outline, body generation)
+            * Integrated SSE technology with frontend, built async task system with ThreadPoolTaskExecutor, achieving millisecond first-token display and 50% throughput improvement
+            * Wrapped Prompt template engine and StructuredOutputConverter, designed strategy pattern for dynamic multi-source image services, maintaining 99%+ generation success rate
     design:
       columns: '1'
       background:

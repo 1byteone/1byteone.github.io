@@ -1,6 +1,7 @@
 ---
 title: "技术博客"
 date: 2026-01-05
+layout: blog
 type: docs
 ---
 
