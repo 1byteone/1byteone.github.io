@@ -1,0 +1,1 @@
+var t="data-starting-style",a="data-ending-style",n={[t]:""},s={[a]:""},i={transitionStatus:t=>"starting"===t?n:"ending"===t?s:null};export{a as n,t as r,i as t};

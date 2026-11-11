@@ -1,0 +1,17 @@
+{{- $zh := hasPrefix .Lang "zh" -}}
+{{- $cover := .Resources.GetMatch "featured.*" -}}
+{{- $fallbackCover := "" -}}
+{{- if eq .Section "projects" -}}
+  {{- if strings.Contains .File.ContentBaseName "ecommerce" -}}{{- $fallbackCover = "images/emil-pixel-terminal/covers/project-cloud.jpg" -}}{{- else -}}{{- $fallbackCover = "images/emil-pixel-terminal/covers/project-agri.jpg" -}}{{- end -}}
+{{- else if eq .Section "blog" -}}
+  {{- $slug := lower .File.ContentBaseName -}}
+  {{- if strings.Contains $slug "agent" -}}{{- $fallbackCover = "images/emil-pixel-terminal/covers/blog-agent.jpg" -}}
+  {{- else if strings.Contains $slug "hallucination" -}}{{- $fallbackCover = "images/emil-pixel-terminal/covers/blog-hallucination.jpg" -}}
+  {{- else -}}{{- $fallbackCover = "images/emil-pixel-terminal/covers/blog-rag.jpg" -}}{{- end -}}
+{{- end -}}
+{{- partial "themes/emil-pixel-terminal/head.html" . -}}
+<body class="emil-pixel-terminal" data-ep-fx-mode="calm"{{ if .Site.Params.theme_preview }} data-pagefind-ignore{{ end }}>
+  <canvas class="ep-canvas" data-ep-canvas aria-hidden="true"></canvas><div class="ep-scanlines" aria-hidden="true"></div>
+  {{ partial "themes/emil-pixel-terminal/header.html" . }}
+  <main class="ep-main ep-article-main"><div class="ep-breadcrumb"><a href="{{ .Site.Home.RelPermalink }}">YOYO.PIXEL</a><span>/</span><a href="{{ printf "%s/" .Section | relLangURL }}">{{ .Section }}</a><span>/</span><span>{{ .Title }}</span></div><article class="ep-article"><header class="ep-page-heading"><span>{{ upper .Section }} / {{ .Date.Format "2006-01-02" }}</span><h1>{{ .Title }}</h1>{{ with .Description }}<p>{{ . }}</p>{{ else }}{{ with .Summary }}<p>{{ . | plainify }}</p>{{ end }}{{ end }}{{ with .Params.tags }}<div class="ep-tags">{{ range . }}<i>{{ . }}</i>{{ end }}</div>{{ end }}</header>{{ if $cover }}{{ with $cover }}<figure class="ep-article-cover"><img src="{{ .RelPermalink }}" alt="{{ $.Title }}" fetchpriority="high"><figcaption>{{ if $zh }}本地封面 / {{ else }}LOCAL COVER / {{ end }}{{ $.Date.Format "2006.01.02" }}</figcaption></figure>{{ end }}{{ else if $fallbackCover }}<figure class="ep-article-cover"><img src="{{ $fallbackCover | relURL }}" alt="{{ $.Title }}" fetchpriority="high"><figcaption>{{ if $zh }}本地共享封面 / {{ else }}LOCAL SHARED COVER / {{ end }}{{ $.Date.Format "2006.01.02" }}</figcaption></figure>{{ end }}<div class="ep-prose">{{ .Content }}</div><nav class="ep-article-nav" aria-label="{{ if $zh }}相邻文章{{ else }}Adjacent articles{{ end }}">{{ with .PrevInSection }}<a href="{{ .RelPermalink }}"><span>{{ if $zh }}上一篇{{ else }}PREVIOUS{{ end }}</span><strong>{{ .Title }}</strong></a>{{ end }}{{ with .NextInSection }}<a href="{{ .RelPermalink }}"><span>{{ if $zh }}下一篇{{ else }}NEXT{{ end }}</span><strong>{{ .Title }}</strong></a>{{ end }}</nav></article></main>
+  {{ partial "themes/emil-pixel-terminal/footer.html" . }}

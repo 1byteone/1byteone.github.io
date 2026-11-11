@@ -1,0 +1,29 @@
+{
+  "source": "https://linear.app/homepage",
+  "capturedAt": "2026-11-10T08:09:58.992380+00:00",
+  "downloaded": 796,
+  "errors": [
+    {
+      "url": "https://static.linear.app/",
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/css/%23a",
+      "error": "HTTP Error 404: Not Found"
+    }
+  ],
+  "routes": [
+    "https://linear.app/",
+    "https://linear.app/homepage"
+  ],
+  "hosts": [
+    "linear.app",
+    "static.linear.app",
+    "webassets.linear.app"
+  ],
+  "offlineLimitations": [
+    "Authenticated/API/server actions are not included.",
+    "Cloudflare /cdn-cgi/ media is excluded when robots or access controls reject it.",
+    "The snapshot contains delivered public assets, not Linear's private source repository."
+  ]
+}

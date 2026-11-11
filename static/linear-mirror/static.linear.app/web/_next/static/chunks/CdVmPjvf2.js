@@ -1,0 +1,1 @@
+import{t}from"./C91hS4zJ.js";function a(a){return t(a.defaultTagName??"div",a,a)}export{a as t};

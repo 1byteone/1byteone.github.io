@@ -1,0 +1,52 @@
+{{- $zh := hasPrefix .Lang "zh" -}}
+{{- $channels := slice
+  (dict "id" "characters" "index" "01" "name" (cond $zh "人物档案" "CHARACTERS") "kind" (cond $zh "PERSONNEL FILES" "PERSONNEL FILES") "image" "card-johnny.webp" "summary" (cond $zh "记录夜之城人物、身份、经历与彼此交织的关系。内容以原创梳理和来源索引为主。" "Profiles, identities, histories, and relationships across Night City, assembled as original notes with source references.") "source" "Cyberpunk universe" "url" "https://www.cyberpunk.net/us/en/")
+  (dict "id" "locations" "index" "02" "name" (cond $zh "城市地点" "LOCATIONS") "kind" (cond $zh "CITY ATLAS" "CITY ATLAS") "image" "card-night-city.webp" "summary" (cond $zh "从街区、地标到夜之城边缘地带，按地点整理城市空间与相关故事。" "A place-led atlas of districts, landmarks, and the edges of Night City, connected to the stories set there.") "source" "Night City 2045 / R. Talsorian Games" "url" "https://rtalsoriangames.com/")
+  (dict "id" "factions" "index" "03" "name" (cond $zh "阵营势力" "FACTIONS") "kind" (cond $zh "POWER STRUCTURES" "POWER STRUCTURES") "image" "card-japantown.webp" "summary" (cond $zh "梳理企业、帮派与组织之间的立场、势力范围和冲突脉络。" "Notes on corporations, gangs, and organizations: their interests, territories, and points of conflict.") "source" "Cyberpunk Wiki / research index" "url" "https://cyberpunk.fandom.com/wiki/Cyberpunk_Wiki")
+  (dict "id" "stories" "index" "04" "name" (cond $zh "剧情故事" "STORIES") "kind" (cond $zh "NARRATIVE RECORDS" "NARRATIVE RECORDS") "image" "card-black-sapphire.webp" "summary" (cond $zh "以无剧透梗概、任务线索和时间线整理叙事；涉及结局的内容会单独标注剧透。" "Spoiler-aware notes on quests, narrative threads, and timelines, with ending details clearly marked.") "source" "Immersion Wiki / shard index" "url" "https://immersion.wiki/")
+  (dict "id" "music" "index" "05" "name" (cond $zh "音乐与电台" "MUSIC & RADIO") "kind" (cond $zh "NIGHT CITY FREQUENCIES" "NIGHT CITY FREQUENCIES") "image" "card-street-view.webp" "summary" (cond $zh "整理游戏原声、电台、艺人与曲目风格，并链接到官方聆听平台；页面不会自动播放或托管游戏音频。" "An index of score, radio stations, artists, and track styles, linking to official listening platforms without autoplay or rehosting game audio.") "source" "Cyberpunk 2077 official channel" "url" "https://www.youtube.com/@CyberpunkGame")
+-}}
+<main class="cp77-hobby-main">
+  <section class="cp77-hobby-hero">
+    <div class="cp77-hobby-hero-copy">
+      <div class="cp77-hobby-kicker"><span>YOYO / PERSONAL INTERESTS</span><span>ARCHIVE 2077</span></div>
+      <h1>{{ if $zh }}夜之城<br><em>兴趣档案</em>{{ else }}NIGHT CITY<br><em>INTERESTS</em>{{ end }}</h1>
+      <p>{{ if $zh }}人物、地点、势力、故事与声音。一个持续整理的《Cyberpunk 2077》兴趣索引。{{ else }}People, places, factions, stories, and sound. A growing index of Cyberpunk 2077 interests.{{ end }}</p>
+      <a class="cp77-hobby-jump" href="#hobby-channels">{{ if $zh }}进入资料频道{{ else }}EXPLORE THE ARCHIVE{{ end }} <span aria-hidden="true">↓</span></a>
+    </div>
+    <div class="cp77-hobby-stamp" aria-hidden="true"><span>NIGHT CITY</span><strong>77</strong><i>PERSONAL ARCHIVE</i></div>
+  </section>
+  <section id="hobby-channels" class="cp77-hobby-channels" aria-label="{{ if $zh }}兴趣资料频道{{ else }}Interest archive channels{{ end }}">
+    {{ range $channels }}
+    {{- $image := resources.Get (printf "media/cyberpunk2077/ui/%s" .image) -}}
+    <article class="cp77-hobby-channel" id="{{ .id }}">
+      <div class="cp77-hobby-image">{{ with $image }}<img src="{{ .RelPermalink }}" alt="" loading="eager" decoding="sync">{{ end }}<span>{{ .index }} / {{ .kind }}</span></div>
+      <div class="cp77-hobby-copy"><span class="cp77-hobby-index">{{ .index }} / ARCHIVE CHANNEL</span><h2>{{ .name }}</h2><p>{{ .summary }}</p><div class="cp77-hobby-source"><span>{{ if $zh }}资料入口{{ else }}RESEARCH ENTRY{{ end }}</span><a href="{{ .url }}" target="_blank" rel="noopener noreferrer">{{ .source }} <b aria-hidden="true">↗</b></a></div></div>
+    </article>
+    {{ end }}
+  </section>
+  {{- $gallery := slice
+    (dict "path" "media/cyberpunk2077/ui/hero-desktop.webp" "name" "Ultimate Edition / Hero" "role" "HOME KEY VISUAL")
+    (dict "path" "media/cyberpunk2077/ui/card-hero-vertical.webp" "name" "Ultimate Edition / Vertical" "role" "MOBILE KEY VISUAL")
+    (dict "path" "media/cyberpunk2077/ui/card-johnny.webp" "name" "Johnny Silverhand" "role" "CHARACTER REFERENCE")
+    (dict "path" "media/cyberpunk2077/ui/card-night-city.webp" "name" "Night City Vista" "role" "LOCATION REFERENCE")
+    (dict "path" "media/cyberpunk2077/ui/card-night-city-day.webp" "name" "Night City / Day" "role" "CITY ATLAS")
+    (dict "path" "media/cyberpunk2077/ui/card-japantown.webp" "name" "Japantown Parade" "role" "LOCATION REFERENCE")
+    (dict "path" "media/cyberpunk2077/ui/card-black-sapphire.webp" "name" "Black Sapphire" "role" "FACTION / VENUE")
+    (dict "path" "media/cyberpunk2077/ui/card-street-view.webp" "name" "Street View" "role" "CITY REFERENCE")
+  -}}
+  <section class="cp77-hobby-library" aria-labelledby="cp77-hobby-library-title">
+    <div class="cp77-hobby-library-head"><div><span>06 / LOCAL ASSET LIBRARY</span><h2 id="cp77-hobby-library-title">{{ if $zh }}本地图集{{ else }}Local asset library{{ end }}</h2></div><p>{{ if $zh }}已下载到项目内的本地图像，点击即可查看或下载。{{ else }}Local images already stored in this project. Open or download each reference directly.{{ end }}</p></div>
+    <div class="cp77-hobby-gallery">
+      {{ range $gallery }}{{- $entry := . -}}{{- $asset := resources.Get $entry.path -}}{{ with $asset }}<figure class="cp77-hobby-asset"><a href="{{ .RelPermalink }}" target="_blank" rel="noopener"><img src="{{ .RelPermalink }}" alt="{{ $entry.name }}" loading="eager" decoding="sync"></a><figcaption><strong>{{ $entry.name }}</strong><span>{{ $entry.role }}</span><a href="{{ .RelPermalink }}" download>DOWNLOAD ↗</a></figcaption></figure>{{ end }}{{ end }}
+    </div>
+  </section>
+  <section class="cp77-hobby-database" aria-labelledby="cp77-hobby-database-title">
+    <div class="cp77-hobby-library-head"><div><span>07 / LORE + FREQUENCY INDEX</span><h2 id="cp77-hobby-database-title">{{ if $zh }}故事与音乐索引{{ else }}Story and music index{{ end }}</h2></div><p>{{ if $zh }}本地保存原创摘要与元数据，原始文本和游戏音频仍通过权利方或研究站点访问。{{ else }}Original summaries and metadata are stored locally; source text and game audio remain on rights-holder or research sites.{{ end }}</p></div>
+    <div class="cp77-hobby-database-grid">
+      <div><span class="cp77-hobby-database-label">{{ if $zh }}故事档案{{ else }}STORY FILES{{ end }}</span>{{ range .Site.Data.hobby.story_records }}<article class="cp77-hobby-record"><span>{{ if $zh }}{{ .type }}{{ else }}{{ .type_en }}{{ end }}</span><h3>{{ if $zh }}{{ .title }}{{ else }}{{ .title_en }}{{ end }}</h3><p>{{ if $zh }}{{ .summary }}{{ else }}{{ .summary_en }}{{ end }}</p><a href="{{ .url }}" target="_blank" rel="noopener noreferrer">{{ .source }} ↗</a></article>{{ end }}</div>
+      <div><span class="cp77-hobby-database-label">{{ if $zh }}音乐与电台{{ else }}MUSIC + RADIO{{ end }}</span>{{ range .Site.Data.hobby.music_records }}<article class="cp77-hobby-record"><span>{{ .style }}</span><h3>{{ .title }}</h3><p>{{ if $zh }}{{ .note }}{{ else }}{{ .note_en }}{{ end }}</p><a href="{{ .url }}" target="_blank" rel="noopener noreferrer">OFFICIAL ENTRY ↗</a></article>{{ end }}</div>
+    </div>
+  </section>
+  <section class="cp77-hobby-note"><span>ARCHIVE POLICY / 01</span><p>{{ if $zh }}这里是个人兴趣整理，不是官方资料站。游戏文本与音乐保留在权利方平台；本站提供原创梳理、出处和聆听入口。{{ else }}This is a personal research archive, not an official source. Game text and music stay with their rights holders; this site provides original notes, citations, and listening links.{{ end }}</p></section>
+</main>

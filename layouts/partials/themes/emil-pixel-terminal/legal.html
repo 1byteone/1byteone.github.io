@@ -1,0 +1,7 @@
+{{- $zh := hasPrefix .Lang "zh" -}}
+{{- partial "themes/emil-pixel-terminal/head.html" . -}}
+<body class="emil-pixel-terminal ep-legal-page" data-ep-fx-mode="calm"{{ if .Site.Params.theme_preview }} data-pagefind-ignore{{ end }}>
+  <canvas class="ep-canvas" data-ep-canvas aria-hidden="true"></canvas><div class="ep-scanlines" aria-hidden="true"></div>
+  {{ partial "themes/emil-pixel-terminal/header.html" . }}
+  <main class="ep-main ep-page-main ep-legal-main"><div class="ep-breadcrumb"><a href="{{ .Site.Home.RelPermalink }}">YOYO.PIXEL</a><span>/</span><span>{{ .Title }}</span></div><header class="ep-page-heading"><span>DOCUMENT / {{ upper .Section }}</span><h1>{{ .Title }}</h1><p>{{ .Description }}</p></header><article class="ep-prose ep-legal-prose">{{ .Content }}</article><div class="ep-legal-source"><span>{{ if $zh }}素材与隐私说明{{ else }}SOURCE + PRIVACY NOTE{{ end }}</span><p>{{ if $zh }}本站为个人学习与非商业展示项目，参考素材保留出处；如需商业使用请先取得权利人授权。{{ else }}This is a personal learning and non-commercial presentation project. References stay attributed; obtain rights-holder permission before commercial use.{{ end }}</p></div></main>
+  {{ partial "themes/emil-pixel-terminal/footer.html" . }}

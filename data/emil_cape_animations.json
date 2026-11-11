@@ -1,0 +1,352 @@
+{
+  "images/emil-pixel-terminal/portfolio/reference/full/capes/8bit/1.png": {
+    "frametime": 2,
+    "width": 44,
+    "height": 34
+  },
+  "images/emil-pixel-terminal/portfolio/reference/full/capes/8bit/3.png": {
+    "frametime": 2,
+    "width": 44,
+    "height": 34
+  },
+  "images/emil-pixel-terminal/portfolio/reference/full/capes/anime/1.png": {
+    "frametime": 3,
+    "width": 176,
+    "height": 136
+  },
+  "images/emil-pixel-terminal/portfolio/reference/full/capes/anime/2.png": {
+    "frametime": 2,
+    "width": 176,
+    "height": 136
+  },
+  "images/emil-pixel-terminal/portfolio/reference/full/capes/anime/3.png": {
+    "frametime": 2,
+    "width": 176,
+    "height": 136
+  },
+  "images/emil-pixel-terminal/portfolio/reference/full/capes/anime/4.png": {
+    "frametime": 2,
+    "width": 176,
+    "height": 136
+  },
+  "images/emil-pixel-terminal/portfolio/reference/full/capes/autumn/5.png": {
+    "frametime": 3,
+    "width": 176,
+    "height": 136
+  },
+  "images/emil-pixel-terminal/portfolio/reference/full/capes/autumn/6.png": {
+    "frametime": 2,
+    "width": 176,
+    "height": 136
+  },
+  "images/emil-pixel-terminal/portfolio/reference/full/capes/cyberpunk/1.png": {
+    "frametime": 6,
+    "width": 176,
+    "height": 136
+  },
+  "images/emil-pixel-terminal/portfolio/reference/full/capes/cyberpunk/3.png": {
+    "frametime": 2,
+    "width": 176,
+    "height": 136
+  },
+  "images/emil-pixel-terminal/portfolio/reference/full/capes/cyberpunk/8.png": {
+    "frametime": 6,
+    "width": 176,
+    "height": 136
+  },
+  "images/emil-pixel-terminal/portfolio/reference/full/capes/easter/1.png": {
+    "frametime": 2,
+    "width": 176,
+    "height": 136
+  },
+  "images/emil-pixel-terminal/portfolio/reference/full/capes/easter/2.png": {
+    "frametime": 2,
+    "width": 176,
+    "height": 136
+  },
+  "images/emil-pixel-terminal/portfolio/reference/full/capes/halloween/3.png": {
+    "frametime": 3,
+    "width": 176,
+    "height": 136
+  },
+  "images/emil-pixel-terminal/portfolio/reference/full/capes/halloween/6.png": {
+    "frametime": 2,
+    "width": 176,
+    "height": 136
+  },
+  "images/emil-pixel-terminal/portfolio/reference/full/capes/halloween/8.png": {
+    "frametime": 2,
+    "width": 176,
+    "height": 136
+  },
+  "images/emil-pixel-terminal/portfolio/reference/full/capes/japanese/1.png": {
+    "frametime": 3,
+    "width": 176,
+    "height": 136
+  },
+  "images/emil-pixel-terminal/portfolio/reference/full/capes/japanese/2.png": {
+    "frametime": 3,
+    "width": 176,
+    "height": 136
+  },
+  "images/emil-pixel-terminal/portfolio/reference/full/capes/japanese/3.png": {
+    "frametime": 3,
+    "width": 176,
+    "height": 136
+  },
+  "images/emil-pixel-terminal/portfolio/reference/full/capes/japanese/24/1.png": {
+    "frametime": 2,
+    "width": 176,
+    "height": 136
+  },
+  "images/emil-pixel-terminal/portfolio/reference/full/capes/japanese/24/2.png": {
+    "frametime": 4,
+    "width": 176,
+    "height": 136
+  },
+  "images/emil-pixel-terminal/portfolio/reference/full/capes/japanese/24/3.png": {
+    "frametime": 2,
+    "width": 176,
+    "height": 136
+  },
+  "images/emil-pixel-terminal/portfolio/reference/full/capes/jungle/4.png": {
+    "frametime": 3,
+    "width": 176,
+    "height": 136
+  },
+  "images/emil-pixel-terminal/portfolio/reference/full/capes/jungle/6.png": {
+    "frametime": 4,
+    "width": 176,
+    "height": 136
+  },
+  "images/emil-pixel-terminal/portfolio/reference/full/capes/multiverse/1.png": {
+    "frametime": 3,
+    "width": 176,
+    "height": 136
+  },
+  "images/emil-pixel-terminal/portfolio/reference/full/capes/multiverse/2.png": {
+    "frametime": 3,
+    "width": 176,
+    "height": 136
+  },
+  "images/emil-pixel-terminal/portfolio/reference/full/capes/multiverse/3.png": {
+    "frametime": 3,
+    "width": 176,
+    "height": 136
+  },
+  "images/emil-pixel-terminal/portfolio/reference/full/capes/multiverse/4.png": {
+    "frametime": 3,
+    "width": 176,
+    "height": 136
+  },
+  "images/emil-pixel-terminal/portfolio/reference/full/capes/multiverse/5.png": {
+    "frametime": 3,
+    "width": 176,
+    "height": 136
+  },
+  "images/emil-pixel-terminal/portfolio/reference/full/capes/multiverse/6.png": {
+    "frametime": 3,
+    "width": 176,
+    "height": 136
+  },
+  "images/emil-pixel-terminal/portfolio/reference/full/capes/multiverse/7.png": {
+    "frametime": 3,
+    "width": 176,
+    "height": 136
+  },
+  "images/emil-pixel-terminal/portfolio/reference/full/capes/multiverse/8.png": {
+    "frametime": 2,
+    "width": 176,
+    "height": 136
+  },
+  "images/emil-pixel-terminal/portfolio/reference/full/capes/neon/1.png": {
+    "frametime": 2,
+    "width": 176,
+    "height": 136
+  },
+  "images/emil-pixel-terminal/portfolio/reference/full/capes/neon/2.png": {
+    "frametime": 2,
+    "width": 176,
+    "height": 136
+  },
+  "images/emil-pixel-terminal/portfolio/reference/full/capes/neon/3.png": {
+    "frametime": 2,
+    "width": 176,
+    "height": 136
+  },
+  "images/emil-pixel-terminal/portfolio/reference/full/capes/neon/4.png": {
+    "frametime": 2,
+    "width": 176,
+    "height": 136
+  },
+  "images/emil-pixel-terminal/portfolio/reference/full/capes/new-year/1.png": {
+    "frametime": 2,
+    "width": 176,
+    "height": 136
+  },
+  "images/emil-pixel-terminal/portfolio/reference/full/capes/new-year/2.png": {
+    "frametime": 2,
+    "width": 176,
+    "height": 136
+  },
+  "images/emil-pixel-terminal/portfolio/reference/full/capes/new-year/3.png": {
+    "frametime": 2,
+    "width": 176,
+    "height": 136
+  },
+  "images/emil-pixel-terminal/portfolio/reference/full/capes/new-year/4.png": {
+    "frametime": 2,
+    "width": 176,
+    "height": 136
+  },
+  "images/emil-pixel-terminal/portfolio/reference/full/capes/new-year/5.png": {
+    "frametime": 2,
+    "width": 176,
+    "height": 136
+  },
+  "images/emil-pixel-terminal/portfolio/reference/full/capes/new-year/6.png": {
+    "frametime": 2,
+    "width": 176,
+    "height": 136
+  },
+  "images/emil-pixel-terminal/portfolio/reference/full/capes/new-year/25/1.png": {
+    "frametime": 4,
+    "width": 176,
+    "height": 136
+  },
+  "images/emil-pixel-terminal/portfolio/reference/full/capes/new-year/25/2.png": {
+    "frametime": 3,
+    "width": 176,
+    "height": 136
+  },
+  "images/emil-pixel-terminal/portfolio/reference/full/capes/new-year/25/4.png": {
+    "frametime": 3,
+    "width": 176,
+    "height": 136
+  },
+  "images/emil-pixel-terminal/portfolio/reference/full/capes/new-year/25/5.png": {
+    "frametime": 4,
+    "width": 176,
+    "height": 136
+  },
+  "images/emil-pixel-terminal/portfolio/reference/full/capes/new-year/25/7.png": {
+    "frametime": 2,
+    "width": 176,
+    "height": 136
+  },
+  "images/emil-pixel-terminal/portfolio/reference/full/capes/new-year/25/8new.png": {
+    "frametime": 4,
+    "width": 176,
+    "height": 136
+  },
+  "images/emil-pixel-terminal/portfolio/reference/full/capes/prehistoric/1.png": {
+    "frametime": 3,
+    "width": 176,
+    "height": 136
+  },
+  "images/emil-pixel-terminal/portfolio/reference/full/capes/prehistoric/2.png": {
+    "frametime": 2,
+    "width": 176,
+    "height": 136
+  },
+  "images/emil-pixel-terminal/portfolio/reference/full/capes/prehistoric/3.png": {
+    "frametime": 3,
+    "width": 176,
+    "height": 136
+  },
+  "images/emil-pixel-terminal/portfolio/reference/full/capes/prehistoric/4.png": {
+    "frametime": 3,
+    "width": 176,
+    "height": 136
+  },
+  "images/emil-pixel-terminal/portfolio/reference/full/capes/prehistoric/5.png": {
+    "frametime": 3,
+    "width": 176,
+    "height": 136
+  },
+  "images/emil-pixel-terminal/portfolio/reference/full/capes/prehistoric/7.png": {
+    "frametime": 5,
+    "width": 176,
+    "height": 136
+  },
+  "images/emil-pixel-terminal/portfolio/reference/full/capes/prehistoric/8.png": {
+    "frametime": 2,
+    "width": 176,
+    "height": 136
+  },
+  "images/emil-pixel-terminal/portfolio/reference/full/capes/space/1.png": {
+    "frametime": 2,
+    "width": 176,
+    "height": 136
+  },
+  "images/emil-pixel-terminal/portfolio/reference/full/capes/space/10.png": {
+    "frametime": 2,
+    "width": 176,
+    "height": 136
+  },
+  "images/emil-pixel-terminal/portfolio/reference/full/capes/space/2.png": {
+    "frametime": 3,
+    "width": 176,
+    "height": 136
+  },
+  "images/emil-pixel-terminal/portfolio/reference/full/capes/space/3.png": {
+    "frametime": 3,
+    "width": 176,
+    "height": 136
+  },
+  "images/emil-pixel-terminal/portfolio/reference/full/capes/space/4.png": {
+    "frametime": 3,
+    "width": 176,
+    "height": 136
+  },
+  "images/emil-pixel-terminal/portfolio/reference/full/capes/space/5.png": {
+    "frametime": 3,
+    "width": 176,
+    "height": 136
+  },
+  "images/emil-pixel-terminal/portfolio/reference/full/capes/space/6.png": {
+    "frametime": 3,
+    "width": 176,
+    "height": 136
+  },
+  "images/emil-pixel-terminal/portfolio/reference/full/capes/space/7.png": {
+    "frametime": 3,
+    "width": 176,
+    "height": 136
+  },
+  "images/emil-pixel-terminal/portfolio/reference/full/capes/space/8.png": {
+    "frametime": 4,
+    "width": 176,
+    "height": 136
+  },
+  "images/emil-pixel-terminal/portfolio/reference/full/capes/space/9.png": {
+    "frametime": 2,
+    "width": 176,
+    "height": 136
+  },
+  "images/emil-pixel-terminal/portfolio/reference/full/capes/summer/24/2.png": {
+    "frametime": 5,
+    "width": 176,
+    "height": 136
+  },
+  "images/emil-pixel-terminal/portfolio/reference/full/capes/summer/24/3.png": {
+    "frametime": 4,
+    "width": 176,
+    "height": 136
+  },
+  "images/emil-pixel-terminal/portfolio/reference/full/capes/valentines/1.png": {
+    "frametime": 3,
+    "width": 176,
+    "height": 136
+  },
+  "images/emil-pixel-terminal/portfolio/reference/full/capes/valentines/2.png": {
+    "frametime": 6,
+    "width": 176,
+    "height": 136
+  },
+  "images/emil-pixel-terminal/portfolio/reference/full/capes/valentines/3.png": {
+    "frametime": 2,
+    "width": 176,
+    "height": 136
+  }
+}

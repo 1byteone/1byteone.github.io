@@ -98,5 +98,9 @@ Desktop.ini
 # Logs & Temporary Files
 # ============================================================================
 
+# Web audit scratch captures (the sanitized mirror lives under clones/).
+.firecrawl/
+clones/matthewtrent.me/**/*.source.html
+
 *.log
 npm-debug.log*

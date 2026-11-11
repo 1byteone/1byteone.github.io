@@ -1,0 +1,13 @@
+{{- $zh := hasPrefix .Lang "zh" -}}
+{{- partial "themes/engineer-terminal/head.html" . -}}
+<body class="engineer-terminal">
+  {{ partial "themes/engineer-terminal/header.html" . }}
+  <main class="et-main et-not-found" id="main">
+    <section class="et-section et-not-found-panel" aria-labelledby="et-not-found-title">
+      <span class="et-eyebrow"><span class="et-led" aria-hidden="true"></span> 404 / ARCHIVE MISS</span>
+      <h1 id="et-not-found-title">{{ if $zh }}没有找到这条工程记录。{{ else }}This engineering record was not found.{{ end }}</h1>
+      <p>{{ if $zh }}返回工程档案首页，继续浏览文章、项目和实验记录。{{ else }}Return to the engineering archive to browse articles, projects, and lab notes.{{ end }}</p>
+      <a class="et-primary-link" href="{{ .Site.Home.RelPermalink }}">{{ if $zh }}返回首页{{ else }}Back to home{{ end }} <span aria-hidden="true">↗</span></a>
+    </section>
+  </main>
+  {{ partial "themes/engineer-terminal/footer.html" . }}

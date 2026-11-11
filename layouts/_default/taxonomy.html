@@ -1,17 +1,19 @@
-{{- $theme := lower (default "oil" (index .Site.Params "site_theme")) -}}
+{{- $theme := lower (default "ai-terminal" (index .Site.Params "site_theme")) -}}
 {{- if eq $theme "lzw-archive" -}}
   {{ partial "themes/engineer-terminal/list.html" . }}
 {{- else if eq $theme "ai-terminal" -}}
   {{ partial "themes/engineer-terminal/list.html" . }}
+{{- else if eq $theme "emil-pixel-terminal" -}}
+  {{ partial "themes/emil-pixel-terminal/list.html" . }}
 {{- else if eq $theme "cyberpunk2077" -}}
   {{ partial "themes/cyberpunk2077/list.html" . }}
-{{- else if eq (lower (default "oil" (index .Site.Params "site_theme"))) "astro-tui-portfolio" -}}
+{{- else if eq $theme "astro-tui-portfolio" -}}
   {{ partial "themes/astro-tui-portfolio/list.html" . }}
-{{- else if eq (lower (default "oil" (index .Site.Params "site_theme"))) "bloggpt" -}}
+{{- else if eq $theme "bloggpt" -}}
   {{ partial "themes/bloggpt/taxonomy.html" . }}
-{{- else if eq (lower (default "oil" (index .Site.Params "site_theme"))) "alxian" -}}
+{{- else if eq $theme "alxian" -}}
   {{ partial "themes/alxian/list.html" . }}
-{{- else if eq (lower (default "oil" (index .Site.Params "site_theme"))) "minimal" -}}
+{{- else if eq $theme "minimal" -}}
   {{ partial "themes/minimal/list.html" . }}
 {{- else -}}
   {{ partial "themes/oil/list.html" . }}

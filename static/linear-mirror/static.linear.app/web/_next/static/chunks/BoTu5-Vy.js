@@ -1,0 +1,1 @@
+var t,s;import{Ur as i}from"./DipWGRuU.js";import{t as m}from"./PPnH9BIT.js";import{t as r}from"./WnOndYt32.js";t=i(),s=s=>{const{inline:i,height:e,width:o,...a}=s;return(0,t.jsx)("div",{...a,className:m(s.className,"_5mGmSq_root",i&&"_5mGmSq_inline"),style:{...s.style,"--height":r(e),"--width":r(o)}})};export{s as t};

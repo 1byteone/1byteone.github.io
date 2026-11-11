@@ -1,5 +1,5 @@
-{{- $requested := lower (default "minimal" (index .Site.Params "site_theme")) -}}
-{{- $theme := "minimal" -}}
+{{- $requested := lower (default "ai-terminal" (index .Site.Params "site_theme")) -}}
+{{- $theme := "ai-terminal" -}}
 {{- range .Site.Data.theme_registry.themes -}}
   {{- if eq .id $requested }}{{- $theme = .id -}}{{- end -}}
 {{- end -}}
@@ -11,6 +11,8 @@
   {{- partial "themes/engineer-terminal/home.html" . -}}
 {{- else if eq $theme "astro-tui-portfolio" -}}
   {{- partial "themes/astro-tui-portfolio/home.html" . -}}
+{{- else if eq $theme "emil-pixel-terminal" -}}
+  {{- partial "themes/emil-pixel-terminal/home.html" . -}}
 {{- else -}}
 {{- partial (printf "themes/%s/home.html" $theme) . -}}
 {{- end -}}

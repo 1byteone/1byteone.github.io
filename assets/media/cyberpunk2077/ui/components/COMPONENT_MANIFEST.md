@@ -2,6 +2,8 @@
 
 Generated from the three user-supplied UI atlases. Every entry is a standalone PNG with its source atlas, exact crop box, and intended UI usage.
 
+See [使用规范.md](使用规范.md) for the component terminology, CSS skin API, responsive usage rules, and the distinction between standalone crops and nine-slice assets.
+
 | Asset | Atlas | Source box | Status | Intended use |
 | --- | --- | --- | --- | --- |
 | `icons/arrow-down-right.png` | `icons` | `x=78, y=60, w=152, h=154` | **candidate** | navigation marker or back affordance |
@@ -109,7 +111,7 @@ Generated from the three user-supplied UI atlases. Every entry is a standalone P
 | `wide/left-system-panel.png` | `wide` | `x=30, y=60, w=590, h=890` | **reference-only** | signal module background |
 | `wide/center-chart-panel.png` | `wide` | `x=635, y=235, w=730, h=710` | **reference-only** | journal signal trace |
 | `wide/large-data-frame-01.png` | `wide` | `x=1380, y=55, w=340, h=190` | **runtime-used** | article or project dossier frame |
-| `wide/large-data-frame-02.png` | `wide` | `x=1730, y=55, w=340, h=190` | **candidate** | article or project dossier frame |
+| `wide/large-data-frame-02.png` | `wide` | `x=1730, y=55, w=255, h=190` | **candidate** | article or project dossier frame; isolated frame only |
 | `wide/small-card-frame-01.png` | `wide` | `x=2092, y=208, w=163, h=62` | **runtime-used** | metadata card frame; isolated top-right capsule |
 | `wide/small-card-frame-02.png` | `wide` | `x=1976, y=280, w=168, h=64` | **candidate** | metadata card frame; isolated compact label |
 | `wide/small-card-frame-03.png` | `wide` | `x=1968, y=372, w=194, h=66` | **candidate** | metadata card frame; isolated telemetry label |
@@ -117,10 +119,10 @@ Generated from the three user-supplied UI atlases. Every entry is a standalone P
 | `wide/small-card-frame-05.png` | `wide` | `x=1984, y=548, w=200, h=72` | **candidate** | metadata card frame; isolated signal label |
 | `wide/loading-stripe.png` | `wide` | `x=1990, y=670, w=310, h=35` | **runtime-used** | loading or progress primitive |
 | `wide/warning-card.png` | `wide` | `x=1430, y=800, w=520, h=180` | **reference-only** | error or warning callout |
-| `wide/chart-area.png` | `wide` | `x=2230, y=735, w=550, h=300` | **reference-only** | metric or signal chart |
-| `wide/radial-readout-01.png` | `wide` | `x=2320, y=1050, w=170, h=170` | **reference-only** | circular telemetry state |
-| `wide/radial-readout-02.png` | `wide` | `x=2500, y=1050, w=170, h=170` | **reference-only** | circular telemetry state |
-| `wide/radial-readout-03.png` | `wide` | `x=2680, y=1050, w=110, h=170` | **reference-only** | circular telemetry state |
+| `wide/chart-area.png` | `wide` | `x=2300, y=760, w=500, h=190` | **reference-only** | metric or signal chart; isolated chart only |
+| `wide/radial-readout-01.png` | `wide` | `x=2345, y=1075, w=125, h=125` | **reference-only** | circular telemetry state; isolated upper ring |
+| `wide/radial-readout-02.png` | `wide` | `x=2495, y=1075, w=125, h=125` | **reference-only** | circular telemetry state; isolated upper ring |
+| `wide/radial-readout-03.png` | `wide` | `x=2645, y=1075, w=150, h=125` | **reference-only** | circular telemetry state; isolated upper ring |
 
 ## Review workflow
 

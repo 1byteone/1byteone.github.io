@@ -1,0 +1,1 @@
+function r(r,t,e){if(null==r)return[];if(r instanceof EventTarget)return[r];if("string"==typeof r){let n=document;t&&(n=t.current);const u=e?.[r]??n.querySelectorAll(r);return u?Array.from(u):[]}return Array.from(r).filter(r=>null!=r)}export{r as t};

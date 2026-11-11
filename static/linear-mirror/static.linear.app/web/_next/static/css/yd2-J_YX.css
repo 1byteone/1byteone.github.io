@@ -1,0 +1,3 @@
+@charset "UTF-8";
+@layer reset, base, app.base;
+.PPSGPG_root{--blink-duration:1.2s;--blink-timing:step-end;display:inline-block}@media (prefers-reduced-motion:no-preference){.PPSGPG_root{animation:PPSGPG_blink var(--blink-duration) var(--blink-timing) infinite}}@keyframes PPSGPG_blink{50%{visibility:hidden}}

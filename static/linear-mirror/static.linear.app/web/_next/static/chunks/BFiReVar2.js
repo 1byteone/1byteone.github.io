@@ -1,0 +1,1 @@
+var e,o,s;import{o as r}from"./C_JJxWoe.js";import{Ur as a,ai as t}from"./DipWGRuU.js";import{a as i,s as l}from"./qV4N7wRW.js";e=r(t(),1),o=a(),s=function(s){const{delay:r,closeDelay:a,timeout:t=400}=s,m=e.useMemo(()=>({open:r,close:a}),[r,a]);return(0,o.jsx)(i.Provider,{value:r,children:(0,o.jsx)(l,{delay:m,timeoutMs:t,children:s.children})})};export{s as t};

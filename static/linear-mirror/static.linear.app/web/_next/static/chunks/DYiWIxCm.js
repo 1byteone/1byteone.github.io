@@ -1,0 +1,1 @@
+var t=t=>{const a=`https://linear.app/cdn-cgi/imagedelivery/fO02fVwohEs9s9UHFwon6A/${t.id}`,i=[];return i.push("f=auto"),i.push("fit=scale-down"),i.push("metadata=none"),t.width&&i.push(`width=${t.width}`),`${a}/${i.join(",")}`};export{t};

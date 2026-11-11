@@ -1,0 +1,1 @@
+import{o as r}from"./C_JJxWoe.js";import{ai as t}from"./DipWGRuU.js";import{a,i as s,r as o}from"./xsznEox6.js";var e=r(t(),1);function i(){!s.current&&o();const[r]=(0,e.useState)(a.current);return r}export{i as t};

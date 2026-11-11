@@ -1,0 +1,7 @@
+Hugo Extended 0.162.0
+Command: hugo --configDir config --environment cyberpunk2077 --destination .tmp-acceptance-build6 --baseURL http://127.0.0.1:1317/ --minify
+Result: exit 0
+Pages: ZH 262; EN 253
+Non-page files: 37 per locale
+Static files: 739 per locale
+Warnings: deprecated languageCode and .Site.Data only

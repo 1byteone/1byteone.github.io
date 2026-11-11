@@ -1,0 +1,12 @@
+{{- $shell := .Get "shell" | default "shell" -}}
+{{- $status := .Get "status" | default "0" -}}
+{{- $title := .Get "title" | default "terminal transcript" -}}
+{{- $content := .Inner | chomp -}}
+{{ partial "rich-content/assets.html" .Page }}
+<figure class="rich-terminal" data-rich-terminal>
+  <figcaption class="rich-terminal-toolbar">
+    <span class="rich-terminal-title">{{ $title }}</span>
+    <span class="rich-terminal-meta"><span>{{ $shell }}</span><span>exit {{ $status }}</span></span>
+  </figcaption>
+  <pre class="rich-terminal-output"><code>{{ $content | htmlEscape }}</code></pre>
+</figure>

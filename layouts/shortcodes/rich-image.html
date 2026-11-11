@@ -1,0 +1,20 @@
+{{- $src := .Get "src" -}}
+{{- $alt := .Get "alt" | default "Article image" -}}
+{{- $caption := .Get "caption" | default $alt -}}
+{{- $image := .Page.Resources.GetMatch (printf "%s*" $src) -}}
+{{- if and (not $image) $src -}}{{- $image = resources.GetMatch (printf "%s*" $src) -}}{{- end -}}
+{{- $resolved := $src -}}
+{{- $width := "" -}}
+{{- $height := "" -}}
+{{- if $image -}}
+  {{- $resolved = $image.RelPermalink -}}
+  {{- $width = $image.Width -}}
+  {{- $height = $image.Height -}}
+{{- end -}}
+{{ partial "rich-content/assets.html" .Page }}
+<figure class="rich-image-figure" data-rich-image-figure>
+  <a class="rich-image-link" href="{{ $resolved }}" data-rich-image-link data-rich-gallery="{{ .Page.RelPermalink }}" data-rich-caption="{{ $caption }}">
+    <img src="{{ $resolved }}" alt="{{ $alt }}" loading="lazy"{{ with $width }} width="{{ . }}"{{ end }}{{ with $height }} height="{{ . }}"{{ end }}>
+  </a>
+  <figcaption class="rich-media-caption">{{ $caption }}</figcaption>
+</figure>

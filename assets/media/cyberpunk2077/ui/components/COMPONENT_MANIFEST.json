@@ -1427,10 +1427,10 @@
     "box": [
       1730,
       55,
-      2070,
+      1985,
       245
     ],
-    "usage": "article or project dossier frame",
+    "usage": "article or project dossier frame; isolated frame only",
     "asset": "wide/large-data-frame-02.png",
     "status": "candidate"
   },
@@ -1529,12 +1529,12 @@
     "atlas": "wide",
     "name": "chart-area",
     "box": [
-      2230,
-      735,
-      2780,
-      1035
+      2300,
+      760,
+      2800,
+      950
     ],
-    "usage": "metric or signal chart",
+    "usage": "metric or signal chart; isolated chart only",
     "asset": "wide/chart-area.png",
     "status": "reference-only"
   },
@@ -1542,12 +1542,12 @@
     "atlas": "wide",
     "name": "radial-readout-01",
     "box": [
-      2320,
-      1050,
-      2490,
-      1220
+      2345,
+      1075,
+      2470,
+      1200
     ],
-    "usage": "circular telemetry state",
+    "usage": "circular telemetry state; isolated upper ring",
     "asset": "wide/radial-readout-01.png",
     "status": "reference-only"
   },
@@ -1555,12 +1555,12 @@
     "atlas": "wide",
     "name": "radial-readout-02",
     "box": [
-      2500,
-      1050,
-      2670,
-      1220
+      2495,
+      1075,
+      2620,
+      1200
     ],
-    "usage": "circular telemetry state",
+    "usage": "circular telemetry state; isolated upper ring",
     "asset": "wide/radial-readout-02.png",
     "status": "reference-only"
   },
@@ -1568,12 +1568,12 @@
     "atlas": "wide",
     "name": "radial-readout-03",
     "box": [
-      2680,
-      1050,
-      2790,
-      1220
+      2645,
+      1075,
+      2795,
+      1200
     ],
-    "usage": "circular telemetry state",
+    "usage": "circular telemetry state; isolated upper ring",
     "asset": "wide/radial-readout-03.png",
     "status": "reference-only"
   }

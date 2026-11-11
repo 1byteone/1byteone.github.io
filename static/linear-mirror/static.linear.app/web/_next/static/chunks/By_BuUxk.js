@@ -1,0 +1,1 @@
+var t,e,o;import{o as r}from"./C_JJxWoe.js";import{ai as s}from"./DipWGRuU.js";function a(){return t.useContext(e)??o}t=r(s(),1),e=t.createContext(void 0),o={disableStyleElements:!1};export{a as t};

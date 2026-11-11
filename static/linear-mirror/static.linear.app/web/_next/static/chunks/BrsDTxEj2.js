@@ -1,0 +1,1 @@
+import{o as r}from"./C_JJxWoe.js";import{t}from"./D3h6ES7Z.js";var e=r(t(),1);function o(){const r=new Set,t=(t,o)=>{const s=(0,e.default)(t,o);if(!s)return"";let a=s,n=1;for(;r.has(a);)n++,a=`${s}-${n}`;return r.add(a),a};return t.reset=()=>{r.clear()},t}export{o as t};

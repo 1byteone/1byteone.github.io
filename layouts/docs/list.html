@@ -1,4 +1,4 @@
-{{- $theme := lower (default "oil" (index .Site.Params "site_theme")) -}}
+{{- $theme := lower (default "ai-terminal" (index .Site.Params "site_theme")) -}}
 {{- if eq $theme "lzw-archive" -}}
   {{ partial "themes/engineer-terminal/list.html" . }}
 {{- else if eq $theme "cyberpunk2077" -}}
@@ -7,6 +7,18 @@
   {{ partial "themes/astro-tui-portfolio/list.html" . }}
 {{- else if eq $theme "ai-terminal" -}}
   {{ partial "themes/engineer-terminal/list.html" . }}
+{{- else if eq $theme "emil-pixel-terminal" -}}
+  {{- if eq .Section "about" -}}
+    {{ partial "themes/emil-pixel-terminal/about.html" . }}
+  {{- else if eq .Section "hobby" -}}
+    {{ partial "themes/emil-pixel-terminal/hobby.html" . }}
+  {{- else if eq .Section "contact" -}}
+    {{ partial "themes/emil-pixel-terminal/contact.html" . }}
+  {{- else if or (eq .Section "impressum") (eq .Section "datenschutz") -}}
+    {{ partial "themes/emil-pixel-terminal/legal.html" . }}
+  {{- else -}}
+    {{ partial "themes/emil-pixel-terminal/list.html" . }}
+  {{- end -}}
 {{- else if eq $theme "bloggpt" -}}
   {{- if or (eq .Section "blog") (eq .Section "posts") (eq .Section "projects") (eq .Section "works") -}}
     {{ partial "themes/bloggpt/list.html" . }}

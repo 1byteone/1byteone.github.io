@@ -1,0 +1,23 @@
+/* Oil: warm editorial archive with mono metadata and restrained panels. */
+body.oil-theme .rich-code-frame,
+body.oil-theme .rich-terminal { border-color: var(--line, #dedbd1); border-radius: 0; background: #20211f; box-shadow: none; }
+body.oil-theme .rich-code-toolbar,
+body.oil-theme .rich-terminal-toolbar { min-height: 38px; border-bottom-color: #45463f; background: #292a27; font: 10px "DM Mono", ui-monospace, monospace; }
+body.oil-theme .rich-code-language,
+body.oil-theme .rich-terminal-meta { color: #d3b56e; }
+body.oil-theme .rich-code-copy { border-color: #6b6c62; border-radius: 0; color: #f3f1e9; font: inherit; }
+body.oil-theme .rich-code-copy:hover,
+body.oil-theme .rich-code-copy:focus-visible { border-color: #d3b56e; color: #d3b56e; }
+body.oil-theme .rich-code-body pre code,
+body.oil-theme .rich-terminal-output { font-size: 12px !important; line-height: 1.75 !important; }
+body.oil-theme .rich-code-highlight pre code > .line > .ln { color: #8d8e84; }
+body.oil-theme .rich-terminal { background: #191a18; }
+body.oil-theme .rich-diagram { padding: 0 0 12px; border: 0; border-bottom: 1px solid var(--line, #dedbd1); border-radius: 0; background: transparent; }
+body.oil-theme .rich-diagram-source { border-top: 0; border-bottom: 1px solid var(--line, #dedbd1); padding: 12px 0; }
+body.oil-theme .rich-diagram-source summary { color: #ad6b3c; font: 10px "DM Mono", ui-monospace, monospace; }
+body.oil-theme .rich-media-caption { color: #888980; font: 9px "DM Mono", ui-monospace, monospace; }
+body.oil-theme .rich-table-wrapper { border-block: 1px solid var(--line, #dedbd1); }
+body.oil-theme .rich-table-wrapper th { background: #f0eee5; font: 10px "DM Mono", ui-monospace, monospace; }
+body.oil-theme .rich-table-wrapper th,
+body.oil-theme .rich-table-wrapper td { border-color: var(--line, #dedbd1); }
+body.oil-theme .rich-image-link img { border-radius: 0; }

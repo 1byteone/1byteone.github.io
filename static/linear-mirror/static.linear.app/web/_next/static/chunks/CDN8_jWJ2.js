@@ -1,0 +1,1 @@
+import{f as t,t as o}from"./C2IMloCD.js";import{S as s}from"./EBbJ4m3b.js";function e(e){const i=o(e);let r=parseFloat(i.width)||0,a=parseFloat(i.height)||0;const f=t(e),h=f?e.offsetWidth:r,n=f?e.offsetHeight:a;return s(r)===h&&s(a)===n||(r=h,a=n),{width:r,height:a}}export{e as t};

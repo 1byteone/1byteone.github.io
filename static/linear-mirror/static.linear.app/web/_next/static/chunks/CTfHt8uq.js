@@ -1,0 +1,1 @@
+function t(t){let e=5381,r=t.length;for(;r;)e=33*e^t.charCodeAt(--r);return e>>>0}export{t};

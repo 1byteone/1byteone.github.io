@@ -1,0 +1,25 @@
+{{- $zh := hasPrefix .Lang "zh" -}}
+{{- $page := . -}}
+<header class="ep-topbar">
+  <div class="ep-topbar-inner">
+    <a class="ep-logo" href="{{ .Site.Home.RelPermalink }}" aria-label="YOYO Pixel Terminal"><span>YOYO</span><i>.PIXEL</i></a>
+    <nav class="ep-nav" aria-label="{{ if $zh }}主要导航{{ else }}Primary navigation{{ end }}">
+      <a href="{{ .Site.Home.RelPermalink }}">{{ if $zh }}首页{{ else }}HOME{{ end }}</a>
+      <a href="{{ "blog/" | relLangURL }}"{{ if eq .Section "blog" }} aria-current="page"{{ end }}>{{ if $zh }}文章{{ else }}NOTES{{ end }}</a>
+      <a href="{{ "projects/" | relLangURL }}"{{ if eq .Section "projects" }} aria-current="page"{{ end }}>{{ if $zh }}项目{{ else }}WORK{{ end }}</a>
+      <a href="{{ "hobby/" | relLangURL }}"{{ if eq .Section "hobby" }} aria-current="page"{{ end }}>{{ if $zh }}爱好{{ else }}HOBBY{{ end }}</a>
+      <a href="{{ "about/" | relLangURL }}"{{ if eq .Section "about" }} aria-current="page"{{ end }}>{{ if $zh }}关于{{ else }}ABOUT{{ end }}</a>
+      <a href="{{ "contact/" | relLangURL }}"{{ if eq .Section "contact" }} aria-current="page"{{ end }}>{{ if $zh }}联系{{ else }}CONTACT{{ end }}</a>
+      <a href="{{ "theme-center/" | relLangURL }}#terminal-family">{{ if $zh }}终端家族{{ else }}TERMINAL FAMILY{{ end }}</a>
+    </nav>
+    <div class="ep-tools">
+      <span class="ep-online"><i></i> {{ if $zh }}在线{{ else }}ONLINE{{ end }}</span>
+      {{ partial "theme-switcher.html" $page }}
+      <button type="button" class="ep-fx-button" data-ep-fx aria-pressed="true" aria-label="{{ if $zh }}切换像素特效{{ else }}Toggle pixel effects{{ end }}">FX</button>
+      {{- $translationURL := .Site.Home.RelPermalink -}}
+      {{- with .Site.Home.Translations -}}{{- $translationURL = (index . 0).RelPermalink -}}{{- end -}}
+      {{- with .Translations -}}{{- $translationURL = (index . 0).RelPermalink -}}{{- end -}}
+      <a class="ep-language" data-theme-language-switch data-theme-id="emil-pixel-terminal" href="{{ $translationURL }}" lang="{{ if $zh }}en{{ else }}zh-Hans{{ end }}">{{ if $zh }}EN{{ else }}中{{ end }}</a>
+    </div>
+  </div>
+</header>

@@ -68,12 +68,13 @@ hugo --gc --minify
 
 `dev_theme_minimal-tech` 将 `minimal_variant` 设为 `astropaper`，根路径提供 YOYO Engineering Notes 首页、`/blog` 文章搜索与分页、`/projects` 项目案例、`/about` 关于页面，以及带目录、阅读进度和代码复制的文章详情页。
 
-`ai-engineering` 是六种 AI 工程视觉方向共用的父级底座，统一内容模型与能力证据链，不依赖 Minimal 主题。当前分支以 Engineer Terminal 作为根路径主题，并提供文章、项目、工程日志、故障复盘与架构决策页面。主题中心 `/theme-center/` 汇总 16 个注册主题（11 个可预览、5 个规划中），支持按场景和状态筛选、双语名称搜索、收藏、预览及设置浏览器默认主题；主题默认值保存在当前浏览器中。`Astro TUI 终端作品集` 已作为终端家族的可预览子主题接入 `/themes/engineer-terminal/astro-tui-portfolio/`，复用同一套文章、项目和双语内容源。
+`ai-engineering` 是六种 AI 工程视觉方向共用的父级底座，统一内容模型与能力证据链，不依赖 Minimal 主题。当前分支以 Engineer Terminal 作为根路径主题，并提供文章、项目、工程日志、故障复盘与架构决策页面。主题中心 `/theme-center/` 汇总注册主题，支持按场景和状态筛选、双语名称搜索、收藏、预览及设置浏览器默认主题；主题默认值保存在当前浏览器中。`Astro TUI 终端作品集`、`Termfolio` 与 `Emil 像素终端` 已作为终端家族的可预览子主题集中接入 `/themes/engineer-terminal/` 下，复用同一套文章、项目和双语内容源。
 
 ## 内容维护
 
 - `data/site.yaml`：姓名、联系方式、导航和共享文案
 - `data/authors/`：作者资料
+- `data/feature_registry.yaml`：富媒体文章能力、主题支持级别与静态降级契约
 - `content/zh/`、`content/en/`：中英文页面、文章和项目
 - `config/<theme-id>/`：主题预览构建覆盖
 - `layouts/partials/themes/<theme-id>/`：主题模板
@@ -83,7 +84,7 @@ hugo --gc --minify
 
 ## 部署
 
-`.github/workflows/deploy.yml` 会在 `main`、`dev_theme_oil`、`dev_theme_AIxian`、`dev_theme_GPT`、`dev_theme_min`、`dev_theme_minimal-tech`、`dev_theme_engineer-terminal`、`dev_theme_ai-lab`、`dev_theme_ai-product-studio`、`dev_theme_pixel-world`、`dev_theme_tech-editorial` 和 `dev_termfolio` 上执行 GitHub Pages 发布。各主题分支共享同一个 Pages 站点，最近一次成功发布的分支内容会显示在根路径；主题中心位于 `/theme-center/`，Minimal 家族预览位于 `/themes/minimal/<variant>/`，Engineer Terminal 预览位于 `/themes/engineer-terminal/`，Astro TUI 预览位于 `/themes/engineer-terminal/astro-tui-portfolio/`。`dev_termfolio` 还会发布独立的 Termfolio 静态预览到 `/themes/engineer-terminal/termfolio/`，包含本地 Bitmap 文章封面和图片资源；Agnes 等服务端 API 仍需使用 Next.js 服务部署。`dev_termfolio` 已完成线上构建与部署，其他主题分支已同步主题中心共享层。
+`.github/workflows/deploy.yml` 会在现有主题开发分支上执行 GitHub Pages 发布。各主题分支共享同一个 Pages 站点，最近一次成功发布的分支内容会显示在根路径；主题中心位于 `/theme-center/`，Minimal 家族预览位于 `/themes/minimal/<variant>/`，Engineer Terminal 预览位于 `/themes/engineer-terminal/`，Astro TUI、Termfolio 与 Emil Pixel 终端预览都位于 `/themes/engineer-terminal/<theme-id>/`。Agnes 等服务端 API 仍需使用 Next.js 服务部署。
 
 Minimal 五个子主题的实现方案与验收矩阵见 [`docs/design/MINIMAL_FAMILY_PLAN.md`](docs/design/MINIMAL_FAMILY_PLAN.md)。
 

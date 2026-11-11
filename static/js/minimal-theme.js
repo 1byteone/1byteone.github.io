@@ -3,6 +3,7 @@
 
   function copyCodeBlocks() {
     document.querySelectorAll('.paper-article-body pre').forEach(function (pre) {
+      if (pre.closest('[data-rich-code]')) return;
       if (pre.parentElement.classList.contains('paper-code-wrap')) return;
       var wrapper = document.createElement('div');
       wrapper.className = 'paper-code-wrap';

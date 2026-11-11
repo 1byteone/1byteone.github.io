@@ -1,0 +1,95 @@
+{{- $zh := hasPrefix .Lang "zh" -}}
+{{- $catalog := .Site.Data.emil_work_catalog.categories -}}
+{{- $capeAnimations := .Site.Data.emil_cape_animations -}}
+{{- $routeMap := dict "minecraft" "minecraft-ui" "capes" "capes" "art" "art" "other" "other" -}}
+{{- $categoryID := default "minecraft-ui" .Params.hobby_category -}}
+{{- $sourceID := $categoryID -}}
+{{- if eq $categoryID "minecraft-ui" -}}{{- $sourceID = "minecraft" -}}{{- end -}}
+{{- $category := index (where $catalog "id" $sourceID) 0 -}}
+{{- if not $category -}}{{- $category = index (where $catalog "id" "minecraft") 0 -}}{{- $categoryID = "minecraft-ui" -}}{{- end -}}
+{{- $first := index $category.items 0 -}}
+{{- $groupLabelsZh := dict "INVENTORIES" "背包界面" "ESC MENUS" "暂停菜单" "OTHER UI" "其他界面" "TEXTURES" "纹理与皮肤" "HIGHLIGHTS" "精选披风" "MULTIVERSE" "多元宇宙" "JAPANESE" "日式主题" "PREHISTORIC" "史前主题" "ANIME" "动漫主题" "SPACE" "太空主题" "NEW YEAR" "新年主题" "SUMMER" "夏日主题" "NEON" "霓虹主题" "MISC" "其他披风" "PIXEL ART" "像素作品" "TUTORIALS" "绘制教程" "WEB DESIGN" "网页设计" "LOGOS" "标志设计" "PRINT" "印刷设计" -}}
+{{- $categoryNamesZh := dict "minecraft" "Minecraft / UI" "capes" "披风" "art" "像素艺术" "other" "其他作品" -}}
+{{- $categoryIntroZh := dict "minecraft" "菜单、物品栏、HUD、方块、物品、生物与皮肤。" "capes" "为 Cloaks+ 与 Lunar Client 创作的 74 款动态披风。" "art" "像素绘画与逐步拆解教程。" "other" "网页设计、标志、海报与包装。" -}}
+{{- $categoryName := index $categoryNamesZh $category.id -}}
+{{- $categoryRoute := index $routeMap $category.id -}}
+{{- $firstGroupItems := where $category.items "group" $first.group -}}
+{{- $firstGroupIndex := 1 -}}
+{{- range $i, $item := $firstGroupItems -}}{{- if eq $item.title $first.title -}}{{- $firstGroupIndex = add $i 1 -}}{{- end -}}{{- end -}}
+{{- partial "themes/emil-pixel-terminal/head.html" . -}}
+<body class="emil-pixel-terminal ep-hobby-page ep-work-page" data-ep-fx-mode="full" data-ep-category="{{ $category.id }}"{{ if .Site.Params.theme_preview }} data-pagefind-ignore{{ end }}>
+  <canvas class="ep-canvas" data-ep-canvas aria-hidden="true"></canvas>
+  <canvas class="ep-glow-canvas" data-ep-glow-canvas aria-hidden="true"></canvas>
+  <canvas class="ep-signal-canvas" data-ep-signal-canvas aria-hidden="true"></canvas>
+  <div class="ep-scanlines" aria-hidden="true"></div>
+  {{ partial "themes/emil-pixel-terminal/header.html" . }}
+  <main class="ep-main ep-work-main" data-ep-work-main>
+    <nav class="ep-work-categories" aria-label="{{ if $zh }}作品分类{{ else }}Work categories{{ end }}">
+      {{ range $catalog }}
+        {{- $route := index $routeMap .id -}}
+        <a class="ep-work-category{{ if eq .id $category.id }} is-active{{ end }}" href="{{ printf "hobby/%s/" $route | relLangURL }}"{{ if eq .id $category.id }} aria-current="page"{{ end }}>
+          <span>{{ if $zh }}{{ index $categoryNamesZh .id }}{{ else }}{{ if eq .id "minecraft" }}MINECRAFT{{ else }}{{ upper .id }}{{ end }}{{ end }}</span><small>{{ .count }}</small>
+        </a>
+      {{ end }}
+    </nav>
+    <section class="ep-work-intro" aria-label="{{ if $zh }}分类简介{{ else }}Collection introduction{{ end }}">
+      <p>{{ if $zh }}{{ index $categoryIntroZh $category.id }}{{ else }}{{ $category.summary_en }}{{ end }}</p>
+      <span class="ep-work-credit">{{ if $zh }}作品与素材版权归原作者所有 · 非商业学习展示{{ else }}ARTWORK BY EMIL TRACHT · NON-COMMERCIAL STUDY{{ end }}</span>
+    </section>
+    <div class="ep-work-layout">
+      <div class="ep-work-library" aria-label="{{ if $zh }}作品缩略图库{{ else }}Artwork library{{ end }}">
+        {{ range $category.groups }}
+          {{- $group := . -}}
+          {{- $groupItems := where $category.items "group" $group.label -}}
+          {{- $parts := split $group.label " " -}}
+          {{- $groupName := replaceRE "\\s+\\d+$" "" $group.label -}}
+          <section class="ep-work-group" aria-labelledby="ep-work-group-{{ anchorize $group.label }}">
+            <h2 class="ep-work-group-title" id="ep-work-group-{{ anchorize $group.label }}"><span>{{ if $zh }}{{ with index $groupLabelsZh $groupName }}{{ . }}{{ else }}{{ $groupName }}{{ end }}{{ else }}{{ $groupName }}{{ end }}</span><small>{{ $group.count }}</small><i aria-hidden="true"></i></h2>
+            <div class="ep-work-thumbnails">
+              {{ range $i, $item := $groupItems }}
+                {{- $animation := index $capeAnimations $item.image -}}
+                <button class="ep-work-thumb{{ if and (eq $group.label $first.group) (eq $item.title $first.title) }} is-active{{ end }}" type="button" data-ep-work-item data-work-index="{{ $item.index }}" data-work-title="{{ $item.title }}" data-work-group="{{ $group.label }}" data-work-group-index="{{ add $i 1 }}" data-work-group-total="{{ $group.count }}" data-work-category-total="{{ $category.count }}" data-work-image="{{ $item.image | relURL }}"{{ with $animation }} data-work-animation="{{ . | jsonify }}"{{ end }} data-work-description="{{ $item.description }}" aria-label="{{ $item.title }}" aria-pressed="{{ if and (eq $group.label $first.group) (eq $item.title $first.title) }}true{{ else }}false{{ end }}">
+                  <img src="{{ $item.thumbnail | relURL }}" alt="" loading="lazy" decoding="async">
+                </button>
+              {{ end }}
+            </div>
+          </section>
+        {{ end }}
+      </div>
+      <aside class="ep-work-inspector" aria-live="polite">
+        <div class="ep-work-stage{{ if eq $category.id "capes" }} ep-work-stage-cape{{ end }}">
+          {{ if eq $category.id "capes" }}
+            {{- $firstAnimation := index $capeAnimations $first.image -}}
+            <canvas class="ep-cape-viewer" data-ep-cape-viewer data-texture="{{ $first.image | relURL }}" data-animation="{{ $firstAnimation | jsonify }}" aria-label="{{ $first.title }} on a 3D player. Drag to turn."></canvas>
+            <canvas class="ep-cape-holo" aria-hidden="true"></canvas>
+          {{ else }}
+            <img class="ep-work-preview-image" data-ep-work-preview src="{{ $first.image | relURL }}" alt="{{ $first.title }}" fetchpriority="high">
+          {{ end }}
+          <span class="ep-work-frame-corner ep-work-frame-tl" aria-hidden="true"></span><span class="ep-work-frame-corner ep-work-frame-tr" aria-hidden="true"></span><span class="ep-work-frame-corner ep-work-frame-bl" aria-hidden="true"></span><span class="ep-work-frame-corner ep-work-frame-br" aria-hidden="true"></span>
+          {{ if eq $category.id "capes" }}<span class="ep-cape-frame-count"><b data-ep-cape-frame-count>15</b> {{ if $zh }}帧{{ else }}FRAMES{{ end }}</span>{{ end }}
+        </div>
+        {{ if eq $category.id "capes" }}
+          <div class="ep-cape-pose-controls" role="group" aria-label="{{ if $zh }}披风展示姿态{{ else }}Cape display pose{{ end }}">
+            <button type="button" class="is-active" data-ep-cape-pose="stand" aria-pressed="true">Stand</button><button type="button" data-ep-cape-pose="walk" aria-pressed="false">Walk</button>
+          </div>
+        {{ end }}
+        <div class="ep-work-caption">
+          <span class="ep-work-caption-index" data-ep-work-count>{{ $firstGroupName := $first.group | strings.TrimSuffix (printf " %d" (len $firstGroupItems)) }}{{ $firstGroupName | upper }} · {{ $firstGroupIndex }} / {{ len $firstGroupItems }}</span>
+          <h1 data-ep-work-title>{{ $first.title }}</h1>
+          {{ if $first.description }}<p data-ep-work-description>{{ $first.description }}</p>{{ else if $zh }}<p class="ep-work-source-caption" data-ep-work-description>原站作品条目 · {{ $first.group }}</p>{{ else }}<p class="ep-work-source-caption" data-ep-work-description>{{ $first.group }} · ORIGINAL WORK ENTRY</p>{{ end }}
+          <div class="ep-work-controls">
+            <button class="ep-work-arrow" type="button" data-ep-work-previous aria-label="{{ if $zh }}上一件作品{{ else }}Previous artwork{{ end }}">◀</button>
+            <button class="ep-work-arrow" type="button" data-ep-work-next aria-label="{{ if $zh }}下一件作品{{ else }}Next artwork{{ end }}">▶</button>
+            <button class="ep-work-open" type="button" data-ep-work-open>{{ if $zh }}查看原图{{ else }}VIEW FULL SIZE{{ end }}</button>
+            <a class="ep-work-contact" href="{{ "contact/" | relLangURL }}">{{ if $zh }}想做类似作品？{{ else }}WANT SOMETHING LIKE THIS?{{ end }}</a>
+          </div>
+        </div>
+      </aside>
+    </div>
+    <footer class="ep-work-hints"><span><b>Q / E</b> {{ if $zh }}切换分类{{ else }}CATEGORY{{ end }}</span><span><b>← / →</b> {{ if $zh }}切换作品{{ else }}BROWSE{{ end }}</span><span><b>ENTER</b> {{ if $zh }}查看原图{{ else }}FULL SIZE{{ end }}</span><span><b>ESC</b> {{ if $zh }}关闭图片{{ else }}CLOSE VIEW{{ end }}</span></footer>
+    <section class="ep-work-rights"><span>IMAGE CREDIT / 01</span><p>{{ if $zh }}页面编排与互动为学习用途改编；作品图像由 Emil Tracht / emil.art 创作，版权归原作者及相关权利人所有。本站非商业展示，不表示获得原站背书；如权利人要求移除，将及时处理。{{ else }}The page interaction is adapted for study. Artwork is by Emil Tracht / emil.art and remains with its respective rightsholders. This non-commercial study is not endorsed by the source; rights concerns will be addressed promptly.{{ end }} <a href="https://www.emil.art/" target="_blank" rel="noopener noreferrer">emil.art ↗</a></p></section>
+  </main>
+  <dialog class="ep-work-lightbox" data-ep-work-dialog aria-label="{{ if $zh }}作品原图{{ else }}Full-size artwork{{ end }}"><button type="button" data-ep-work-close aria-label="{{ if $zh }}关闭{{ else }}Close{{ end }}">×</button><img data-ep-work-fullsize alt=""><span data-ep-work-fullsize-title></span></dialog>
+  {{ partial "themes/emil-pixel-terminal/footer.html" . }}
+  <script defer src="{{ "js/emil-work-gallery.js" | relURL }}?v=20261103-6"></script>
+  {{ if eq $category.id "capes" }}<script type="module" src="{{ "js/emil-cape-viewer.js" | relURL }}?v=20261103-8"></script>{{ end }}

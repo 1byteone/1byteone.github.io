@@ -1,0 +1,1 @@
+import{i as t,r as s,t as a}from"./C91hS4zJ.js";import{t as e}from"./BMdRyfmS2.js";function r(r){const{render:o,className:p,style:i,state:m=t,props:n=s,refs:f=s,metadata:c,stateAttributesMapping:d,tag:u="div",...g}=r,{compositeProps:b,compositeRef:j}=e({metadata:c});return a(u,r,{state:m,ref:[j,...f],props:[b,...n,g],stateAttributesMapping:d})}export{r as t};

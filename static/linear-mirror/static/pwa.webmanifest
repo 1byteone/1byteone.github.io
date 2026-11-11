@@ -1,0 +1,58 @@
+{
+  "short_name": "Linear",
+  "name": "Linear",
+  "icons": [
+    {
+      "purpose": "maskable",
+      "src": "https://static.linear.app/assets/pwa/icon_maskable_128.png?v=3",
+      "sizes": "128x128",
+      "type": "image/png"
+    },
+    {
+      "purpose": "maskable",
+      "src": "https://static.linear.app/assets/pwa/icon_maskable_192.png?v=3",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "purpose": "maskable",
+      "src": "https://static.linear.app/assets/pwa/icon_maskable_512.png?v=3",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "https://static.linear.app/assets/pwa/icon_512.png?v=3",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "https://static.linear.app/assets/pwa/icon_192.png?v=3",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://static.linear.app/assets/pwa/icon_180.png?v=3",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "https://static.linear.app/assets/pwa/icon_128.png?v=3",
+      "sizes": "128x128",
+      "type": "image/png"
+    },
+    {
+      "src": "https://static.linear.app/assets/pwa/icon_120.png?v=3",
+      "sizes": "120x120",
+      "type": "image/png"
+    }
+  ],
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff",
+  "gcm_sender_id": "463717515632",
+  "start_url": "https://linear.app/login",
+  "scope": "https://linear.app/",
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+  }
+}

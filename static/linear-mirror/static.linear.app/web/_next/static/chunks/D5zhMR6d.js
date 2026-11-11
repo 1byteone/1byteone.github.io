@@ -1,0 +1,1 @@
+import{o as r}from"./C_JJxWoe.js";import{ai as o}from"./DipWGRuU.js";import{d as s,f as t}from"./C91hS4zJ.js";var a=r(o(),1);function e(r,o){const e=a.useRef(r),f=t(o);s(()=>{e.current!==r&&f(e.current),e.current=r},[r,f])}export{e as t};

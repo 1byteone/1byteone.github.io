@@ -1,0 +1,57 @@
+{{- $zh := hasPrefix .Lang "zh" -}}
+{{- $site := .Site.Data.site.site -}}
+{{- $profile := .Site.Data.authors.me -}}
+{{- if not $zh }}{{ $profile = .Site.Data.authors.en.me }}{{ end -}}
+{{- $projects := where .Site.RegularPages "Section" "projects" -}}
+{{- $projects = $projects.ByDate.Reverse -}}
+{{- partial "themes/emil-pixel-terminal/head.html" . -}}
+<body class="emil-pixel-terminal" data-ep-fx-mode="full"{{ if .Site.Params.theme_preview }} data-pagefind-ignore{{ end }}>
+  <canvas class="ep-canvas" data-ep-canvas aria-hidden="true"></canvas><div class="ep-scanlines" aria-hidden="true"></div>
+  {{ partial "themes/emil-pixel-terminal/header.html" . }}
+  <main class="ep-main ep-page-main ep-profile-main">
+    <div class="ep-breadcrumb"><a href="{{ .Site.Home.RelPermalink }}">YOYO.PIXEL</a><span>/</span><span>{{ if $zh }}关于{{ else }}ABOUT{{ end }}</span></div>
+    <section class="ep-profile-hero" aria-labelledby="ep-profile-title">
+      <div class="ep-profile-copy">
+        <span class="ep-profile-kicker">YOYO / PERSONAL DOSSIER</span>
+        <h1 id="ep-profile-title">{{ $profile.name.display }}</h1>
+        <p class="ep-profile-role">{{ $profile.role }}</p>
+        <div class="ep-profile-bio">{{ $profile.bio | markdownify }}</div>
+        <div class="ep-profile-meta"><span><i></i>{{ if $zh }}{{ $site.identity.location }}{{ else }}{{ $site.identity.location_en }}{{ end }}</span><span><i></i>{{ if $zh }}软件工程本科 · 2027 届{{ else }}B.S. Software Engineering · Class of 2027{{ end }}</span></div>
+        <div class="ep-profile-actions">
+          <a class="ep-button ep-button-primary" href="{{ "uploads/resume.pdf" | relURL }}" target="_blank" rel="noopener">{{ if $zh }}查看简历{{ else }}VIEW RESUME{{ end }} <span aria-hidden="true">↗</span></a>
+          <a class="ep-button" href="{{ $site.identity.github }}" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+          <a class="ep-button" href="mailto:{{ $site.identity.email }}">{{ if $zh }}邮件联系{{ else }}EMAIL{{ end }} <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+      <figure class="ep-profile-portrait">
+        <div class="ep-profile-portrait-frame"><span class="ep-profile-corner ep-profile-corner-tl"></span><span class="ep-profile-corner ep-profile-corner-tr"></span><span class="ep-profile-corner ep-profile-corner-bl"></span><span class="ep-profile-corner ep-profile-corner-br"></span><img src="{{ "images/engineer-terminal-avatar.png" | relURL }}" alt="{{ if $zh }}YOYO 的原创像素工程师 IP 形象{{ else }}YOYO's original non-human engineer avatar{{ end }}" width="1024" height="1024" fetchpriority="high"><figcaption><span>AVATAR / LOCAL ASSET</span><b>● {{ if $zh }}在线{{ else }}ONLINE{{ end }}</b></figcaption></div>
+        <span class="ep-profile-portrait-note">{{ if $zh }}原创非真人 IP 形象{{ else }}ORIGINAL NON-HUMAN IP{{ end }}</span>
+      </figure>
+    </section>
+
+    <section class="ep-profile-section" aria-labelledby="ep-profile-interests-title">
+      <header class="ep-profile-section-head"><div><span>01 / SIGNAL INTERESTS</span><h2 id="ep-profile-interests-title">{{ if $zh }}关注方向{{ else }}Focus areas{{ end }}</h2></div><p>{{ if $zh }}围绕后端系统与 AI 应用，把架构、检索和交付连成可验证的工程实践。{{ else }}Backend systems and AI applications, connected through verifiable engineering practice.{{ end }}</p></header>
+      <div class="ep-interest-grid">{{ range $index, $interest := $profile.interests }}<div class="ep-interest-item"><span>{{ printf "%02d" (add $index 1) }}</span><strong>{{ $interest }}</strong><i aria-hidden="true">↗</i></div>{{ end }}</div>
+    </section>
+
+    <section class="ep-profile-section" aria-labelledby="ep-profile-history-title">
+      <header class="ep-profile-section-head"><div><span>02 / PERSONAL HISTORY</span><h2 id="ep-profile-history-title">{{ if $zh }}教育与实践{{ else }}Education & experience{{ end }}</h2></div><p>{{ if $zh }}按作者档案中的教育和工作记录展示。{{ else }}Education and work history from the maintained author profile.{{ end }}</p></header>
+      <div class="ep-history-list">
+        {{ range $profile.education }}<article class="ep-history-row"><div class="ep-history-date"><span>{{ (time .start).Format "2006" }}</span><i></i><span>{{ (time .end).Format "2006" }}</span></div><div><span class="ep-history-type">EDUCATION / {{ (time .start).Format "2006.01" }} → {{ (time .end).Format "2006.01" }}</span><h3>{{ .degree }}</h3><strong>{{ .institution }}</strong><div class="ep-history-summary">{{ .summary | markdownify }}</div></div></article>{{ end }}
+        {{ range $profile.experience }}<article class="ep-history-row"><div class="ep-history-date"><span>{{ (time .start).Format "2006" }}</span><i></i><span>{{ if $zh }}至今{{ else }}NOW{{ end }}</span></div><div><span class="ep-history-type">EXPERIENCE / {{ (time .start).Format "2006.01" }} → {{ if $zh }}至今{{ else }}CURRENT{{ end }}</span><h3>{{ .role }}</h3><strong>{{ .org }}</strong><div class="ep-history-summary">{{ .summary | markdownify }}</div></div></article>{{ end }}
+      </div>
+    </section>
+
+    <section class="ep-profile-section" aria-labelledby="ep-profile-skills-title">
+      <header class="ep-profile-section-head"><div><span>03 / CAPABILITY MATRIX</span><h2 id="ep-profile-skills-title">{{ if $zh }}技术能力{{ else }}Capabilities{{ end }}</h2></div><p>{{ if $zh }}技术项来自现有作者档案；点击技能组可展开细项。{{ else }}Skill groups and technologies come from the author profile; expand a group to inspect its details.{{ end }}</p></header>
+      <div class="ep-skill-grid">{{ range $index, $skill := $profile.skills }}<details class="ep-skill-module"{{ if eq $index 0 }} open{{ end }}><summary><span>{{ printf "%02d" (add $index 1) }}</span><strong>{{ .name }}</strong><i>{{ len .items }} {{ if $zh }}项{{ else }}ITEMS{{ end }}</i></summary><div class="ep-skill-tags">{{ range .items }}<span>{{ .label }}</span>{{ end }}</div></details>{{ end }}</div>
+    </section>
+
+    <section class="ep-profile-section" aria-labelledby="ep-profile-projects-title">
+      <header class="ep-profile-section-head"><div><span>04 / PROJECT ARCHIVE</span><h2 id="ep-profile-projects-title">{{ if $zh }}项目档案{{ else }}Selected projects{{ end }}</h2></div><p>{{ if $zh }}直接连接站内项目页面，继续查看系统设计、实现边界与验证记录。{{ else }}Open the project records for system design, implementation boundaries, and verification notes.{{ end }}</p></header>
+      <div class="ep-profile-project-list">{{ range $index, $project := first 4 $projects }}<a class="ep-profile-project" href="{{ $project.RelPermalink }}"><span>{{ printf "%02d / PROJECT" (add $index 1) }}</span><div><h3>{{ $project.Title }}</h3><p>{{ $project.Summary | plainify | truncate 180 }}</p>{{ with $project.Params.tags }}<div class="ep-tags">{{ range first 4 . }}<i>{{ . }}</i>{{ end }}</div>{{ end }}</div><b aria-hidden="true">↗</b></a>{{ else }}<p class="ep-empty">{{ if $zh }}项目档案正在整理中。{{ else }}Project records are being prepared.{{ end }}</p>{{ end }}</div>
+    </section>
+
+    <section class="ep-profile-contact" aria-label="{{ if $zh }}联系信息{{ else }}Contact information{{ end }}"><div><span>OPEN CHANNEL</span><h2>{{ if $zh }}交流工程实践、AI 应用与合作机会{{ else }}Engineering, AI applications, and collaboration{{ end }}</h2><p>{{ if $zh }}通过邮件或 GitHub 联系我。{{ else }}Reach me by email or GitHub.{{ end }}</p></div><div class="ep-profile-contact-actions"><a href="mailto:{{ $site.identity.email }}">{{ $site.identity.email }} ↗</a><a href="{{ $site.identity.github }}" target="_blank" rel="noopener noreferrer">{{ $site.identity.github_label }} ↗</a></div></section>
+  </main>
+  {{ partial "themes/emil-pixel-terminal/footer.html" . }}

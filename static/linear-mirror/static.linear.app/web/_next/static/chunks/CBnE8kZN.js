@@ -1,0 +1,1 @@
+function e(e){return t=e,new Promise(e=>{setTimeout(()=>{e(void 0)},t)});var t}export{e as t};

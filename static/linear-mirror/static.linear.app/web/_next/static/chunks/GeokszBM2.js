@@ -1,0 +1,1 @@
+var t,r;import{o as e}from"./C_JJxWoe.js";import{ai as a}from"./DipWGRuU.js";t=e(a(),1),r=()=>{const[r,e]=t.useState(!1);return t.useEffect(()=>{try{e("true"===window.localStorage.getItem("isLinearSuperuser"))}catch(t){}},[]),r};export{r as t};

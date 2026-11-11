@@ -1,0 +1,39 @@
+/* BlogGPT: quiet editorial surfaces keep the reading hierarchy primary. */
+body.bloggpt-theme .rich-code-frame,
+body.bloggpt-theme .rich-terminal {
+  border-color: var(--bloggpt-border, #0000001a);
+  border-radius: 10px;
+  background: var(--bloggpt-surface, #fff);
+  box-shadow: 0 8px 28px rgb(0 0 0 / 7%);
+}
+body.bloggpt-theme .rich-code-toolbar,
+body.bloggpt-theme .rich-terminal-toolbar {
+  min-height: 40px;
+  padding-inline: 14px;
+  border-bottom-color: var(--bloggpt-border, #0000001a);
+  color: var(--bloggpt-muted, #666);
+  background: var(--bloggpt-hover, #00000009);
+  font-family: inherit;
+  text-transform: none;
+}
+body.bloggpt-theme .rich-code-language { color: var(--bloggpt-muted, #666); font-weight: 600; }
+body.bloggpt-theme .rich-code-copy { border-color: var(--bloggpt-border, #0000001a); border-radius: 999px; color: var(--bloggpt-muted, #666); background: var(--bloggpt-surface, #fff); }
+body.bloggpt-theme .rich-code-copy:hover,
+body.bloggpt-theme .rich-code-copy:focus-visible { border-color: var(--bloggpt-accent, #2563eb); color: var(--bloggpt-accent, #2563eb); background: var(--bloggpt-surface, #fff); }
+body.bloggpt-theme .rich-code-body pre code,
+body.bloggpt-theme .rich-terminal-output { font-size: 12px !important; line-height: 1.7 !important; }
+body.bloggpt-theme .rich-code-highlight pre code > .line > .ln { color: #8e8e8e; }
+body.bloggpt-theme .rich-terminal { color: #e8e8e8; background: #151515; }
+body.bloggpt-theme .rich-terminal-toolbar { color: #aaa; background: #1d1d1d; border-bottom-color: #333; }
+body.bloggpt-theme .rich-terminal-title,
+body.bloggpt-theme .rich-terminal-meta { color: #ddd; }
+body.bloggpt-theme .rich-diagram { padding: 10px; border-color: var(--bloggpt-border, #0000001a); border-radius: 10px; background: var(--bloggpt-surface, #fff); }
+body.bloggpt-theme .rich-diagram-source { padding: 10px 4px 0; border-top: 1px solid var(--bloggpt-border, #0000001a); }
+body.bloggpt-theme .rich-diagram-source summary { color: var(--bloggpt-accent, #2563eb); font-family: inherit; }
+body.bloggpt-theme .rich-media-caption { color: var(--bloggpt-faint, #9b9b9b); font-size: 11px; }
+body.bloggpt-theme .rich-table-wrapper { border-block: 1px solid var(--bloggpt-border, #0000001a); }
+body.bloggpt-theme .rich-table-wrapper th { background: var(--bloggpt-hover, #00000009); font-weight: 600; }
+body.bloggpt-theme .rich-table-wrapper th,
+body.bloggpt-theme .rich-table-wrapper td { border-color: var(--bloggpt-border, #0000001a); }
+body.bloggpt-theme .rich-image-figure { margin-block: 2.5rem; }
+body.bloggpt-theme .rich-image-link img { border-radius: 9px; }

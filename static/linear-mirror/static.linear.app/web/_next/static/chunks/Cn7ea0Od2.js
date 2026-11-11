@@ -1,0 +1,1 @@
+var r;import{o}from"./C_JJxWoe.js";import{ai as a}from"./DipWGRuU.js";import{t as s}from"./PPnH9BIT.js";import{t as e}from"./CdVmPjvf2.js";r=o(a(),1).forwardRef((r,o)=>{const{render:a,className:t,...m}=r;return e({render:a,ref:o,defaultTagName:"div",props:{...m,className:s(t,"fWb0oq_root")}})});export{r as t};

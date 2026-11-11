@@ -1,0 +1,1 @@
+var e,t,n;import{o as i}from"./C_JJxWoe.js";import{ai as o}from"./DipWGRuU.js";e=i(o(),1),t=(t,n)=>{e.useEffect(()=>{if(t)return window.addEventListener(t,n),()=>window.removeEventListener(t,n)},[t,n])},n=(e,t)=>{window.dispatchEvent(new CustomEvent(e,{detail:t}))};export{t as n,n as t};

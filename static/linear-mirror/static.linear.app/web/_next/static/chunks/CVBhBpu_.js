@@ -1,0 +1,1 @@
+import{o as t}from"./C_JJxWoe.js";import{ai as s}from"./DipWGRuU.js";import{Lt as o,P as a,t as r}from"./xsznEox6.js";var e=t(s(),1);function i(t){const s=o(()=>a(t)),{isStatic:i}=(0,e.useContext)(r);if(i){const[,o]=(0,e.useState)(t);(0,e.useEffect)(()=>s.on("change",o),[])}return s}export{i as t};

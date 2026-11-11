@@ -1,0 +1,45 @@
+/* Cyberpunk 2077: signals, warnings, and hard-edged archive panels. */
+body.cp77 .rich-code-frame,
+body.cp77 .rich-terminal {
+  border-color: #4b4b4b;
+  border-radius: 0;
+  background: #0b0b0b;
+  box-shadow: 0 0 0 1px rgb(252 238 10 / 8%), 0 16px 36px rgb(0 0 0 / 42%);
+}
+body.cp77 .rich-code-toolbar,
+body.cp77 .rich-terminal-toolbar {
+  min-height: 40px;
+  padding-inline: 14px;
+  border-bottom: 2px solid #fcee0a;
+  background: #111;
+  font: 10px/1 var(--cp-mono, ui-monospace, monospace);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+body.cp77 .rich-code-language,
+body.cp77 .rich-terminal-meta { color: #fcee0a; }
+body.cp77 .rich-code-copy { border-color: #4b4b4b; border-radius: 0; color: #fcee0a; font: inherit; text-transform: uppercase; }
+body.cp77 .rich-code-copy:hover,
+body.cp77 .rich-code-copy:focus-visible { border-color: #fcee0a; background: #202000; }
+body.cp77 .rich-code-body pre code,
+body.cp77 .rich-terminal-output { font-size: 12px !important; line-height: 1.75 !important; }
+body.cp77 .rich-code-highlight pre code > .line > .ln { color: #6e6e6e; }
+body.cp77 .rich-terminal { background: #080808; }
+body.cp77 .rich-terminal-toolbar { border-bottom-color: #00e5ff; }
+body.cp77 .rich-terminal-title { color: #fff; }
+body.cp77 .rich-terminal-meta { color: #00e5ff; }
+body.cp77 .rich-diagram { padding: 12px; border-color: #454545; border-radius: 0; background: #0b0b0b; }
+body.cp77 .rich-diagram::before { display: block; margin-bottom: 12px; color: #fcee0a; content: "// VISUAL TRACE"; font: 9px var(--cp-mono, ui-monospace, monospace); letter-spacing: .12em; }
+body.cp77 .rich-diagram-source { border-top-color: #454545; }
+body.cp77 .rich-diagram-source summary { color: #00e5ff; font: 10px var(--cp-mono, ui-monospace, monospace); text-transform: uppercase; }
+body.cp77 .rich-media-caption { color: #aaa; font: 9px var(--cp-mono, ui-monospace, monospace); letter-spacing: .04em; text-transform: uppercase; }
+body.cp77 .rich-table-wrapper { border-block: 2px solid #fcee0a; }
+body.cp77 .rich-table-wrapper th { color: #fcee0a; background: #161600; font: 10px var(--cp-mono, ui-monospace, monospace); letter-spacing: .08em; text-transform: uppercase; }
+body.cp77 .rich-table-wrapper th,
+body.cp77 .rich-table-wrapper td { border-color: #454545; }
+body.cp77 .rich-image-figure { margin-block: 3rem; }
+body.cp77 .rich-image-link img { border: 1px solid #454545; border-radius: 0; }
+@media (max-width: 680px) {
+  body.cp77 .rich-code-body pre code,
+  body.cp77 .rich-terminal-output { font-size: 11px !important; }
+}

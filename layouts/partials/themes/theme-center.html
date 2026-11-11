@@ -2,7 +2,7 @@
 {{- $zh := hasPrefix .Lang "zh" -}}
 {{- $catalog := where .Site.Data.theme_registry.themes "id" "ne" "ai-engineering" -}}
 {{- $categories := .Site.Data.theme_categories.categories -}}
-{{- $activeTheme := lower (default "minimal" (index .Site.Params "site_theme")) -}}
+{{- $activeTheme := lower (default "ai-terminal" (index .Site.Params "site_theme")) -}}
 {{- $activeVariant := lower (default "minimal" (index .Site.Params "minimal_variant")) -}}
 {{- $activeID := $activeTheme -}}
 {{- if and (eq $activeTheme "minimal") (ne $activeVariant "minimal") -}}{{- $activeID = printf "minimal-%s" $activeVariant -}}{{- end -}}
@@ -61,8 +61,8 @@
     </section>
 
     {{- $family := .Site.Data.theme_families.ai_engineering -}}
-    <aside class="tc-family-note" aria-label="{{ if $zh }}AI 工程主题家族{{ else }}AI engineering theme family{{ end }}">
-      <div><span>{{ if $zh }}共享主题底座{{ else }}SHARED THEME FOUNDATION{{ end }}</span><strong>{{ if $zh }}{{ $family.name_zh }}{{ else }}{{ $family.name }}{{ end }}</strong><p>{{ if $zh }}六种表达方向共用同一套文章、项目、实验与学习记录模型。{{ else }}Six visual directions share the same model for articles, projects, experiments, and learning notes.{{ end }}</p></div>
+    <aside id="terminal-family" class="tc-family-note" aria-label="{{ if $zh }}AI 工程主题家族{{ else }}AI engineering theme family{{ end }}">
+      <div><span>{{ if $zh }}终端家族 / 共享主题底座{{ else }}TERMINAL FAMILY / SHARED FOUNDATION{{ end }}</span><strong>{{ if $zh }}{{ $family.name_zh }} · 终端主题集中管理{{ else }}{{ $family.name }} · terminal themes in one directory{{ end }}</strong><p>{{ if $zh }}Engineer Terminal、Astro TUI、Termfolio 与 Emil Pixel 都复用同一套文章、项目、实验和学习记录模型。{{ else }}Engineer Terminal, Astro TUI, Termfolio, and Emil Pixel share one model for articles, projects, experiments, and learning notes.{{ end }}</p></div>
       <div class="tc-family-capabilities">{{- range $family.capabilities -}}<span>{{ if $zh }}{{ .label_zh }}{{ else }}{{ .label }}{{ end }}</span>{{- end -}}</div>
     </aside>
 
@@ -97,7 +97,6 @@
           {{- if and $zh $theme.label_zh -}}{{- $label = $theme.label_zh -}}{{- end -}}
           {{- if and $zh $theme.description_zh -}}{{- $description = $theme.description_zh -}}{{- end -}}
           {{- $path := default "/" $theme.preview_path -}}
-          {{- if and hugo.IsServer $theme.dev_preview_path -}}{{- $path = $theme.dev_preview_path -}}{{- end -}}
           {{- $href := printf "%s%s" $path $languageSuffix -}}
           {{- $isAvailable := $theme.available -}}
           {{- $tags := delimit $theme.tags " " -}}

@@ -1,0 +1,1 @@
+import{i as t,r as e}from"./LqIASMXj.js";function n(n,s,r){const a=e(n,r?.in);return isNaN(s)?t(r?.in||n,NaN):s?(a.setDate(a.getDate()+s),a):a}function s(t,n){const s=e(t,n?.in),r=s.getMonth();return s.setFullYear(s.getFullYear(),r+1,0),s.setHours(23,59,59,999),s}export{n,s as t};

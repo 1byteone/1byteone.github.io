@@ -1,0 +1,25 @@
+{{- $src := .Get "src" -}}
+{{- $alt := .Get "alt" | default "Architecture diagram" -}}
+{{- $caption := .Get "caption" -}}
+{{- $source := .Inner | chomp -}}
+{{ partial "rich-content/assets.html" .Page }}
+{{- $image := .Page.Resources.GetMatch (printf "%s*" $src) -}}
+{{- if and (not $image) $src -}}{{- $image = resources.GetMatch (printf "%s*" $src) -}}{{- end -}}
+<figure class="rich-diagram" data-rich-diagram>
+  {{- if $image -}}
+    <img class="rich-diagram-image" src="{{ $image.RelPermalink }}" alt="{{ $alt }}" loading="lazy">
+  {{- else -}}
+    {{- if $src -}}
+      <img class="rich-diagram-image" src="{{ $src | relURL }}" alt="{{ $alt }}" loading="lazy">
+    {{- else -}}
+      <div class="rich-diagram-fallback" role="img" aria-label="{{ $alt }}">{{ if eq .Page.Language.Lang "zh" }}图解源文本已保留，添加 SVG/PNG 资源后即可显示静态图。{{ else }}Diagram source is retained; add an SVG or PNG asset to display the static diagram.{{ end }}</div>
+    {{- end -}}
+  {{- end -}}
+  {{- if $source -}}
+    <details class="rich-diagram-source">
+      <summary>{{ if eq .Page.Language.Lang "zh" }}查看 Mermaid 源文本{{ else }}View Mermaid source{{ end }}</summary>
+      <pre><code class="language-mermaid">{{ $source | htmlEscape }}</code></pre>
+    </details>
+  {{- end -}}
+  {{- with $caption -}}<figcaption class="rich-media-caption">{{ . }}</figcaption>{{- end -}}
+</figure>

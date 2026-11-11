@@ -1,0 +1,1 @@
+import{t as o}from"./Tbc7QM4C.js";import{t}from"./CGcaUgeF.js";var s=()=>(t(()=>(document.documentElement.classList.add(o["smooth-scroll"]),()=>document.documentElement.classList.remove(o["smooth-scroll"])),[]),null);export{s as t};

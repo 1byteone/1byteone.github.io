@@ -1,0 +1,69 @@
+retrieved_at: "2026-11-05"
+note: "代理图片仅用于抓取，线上文章只引用本地副本；许可和商标范围需要逐项复核。"
+assets:
+  - id: code-hike
+    file: code-hike.jpg
+    reference: https://codehike.org/docs
+    proxy_url: https://images.openai.com/static-rsc-4/YHy9PvfxBgC44agCfM43w2_G3Pv9cvU9vb9yVKL9zAWaEliw7Ov0Xw0sNc38LlSf8vGz0FC8JZYh4SNTWDHa_XpD76NTxPEeE_Jmrj4aRW43gLLCcjpvN_9IU27UfrlOPYKVQmHSAYM2WNiCTnkOw3V8Tw3xlJfeMbQuVnj2aEQ?purpose=inline
+    status: saved
+    media_type: image/jpeg
+  - id: sandpack
+    file: sandpack.jpg
+    reference: https://sandpack.codesandbox.io/
+    proxy_url: https://images.openai.com/static-rsc-4/ms9iGLW9RF7s6f-7sxzPZAJH_yLOP0WpQPNoxySVw0QnkfYjYyIoqdooFh2oWVNIpBch0SYpI_ZJF6iCY-7RZFwlmyK_IbIu46XEm99umpXUmDagZno7G4WLq8TLWy3_SiksM_98MaMLX4Z4Ob2TreTrGqepZHMWKsXJ6F00dtA?purpose=inline
+    status: saved
+    media_type: image/jpeg
+  - id: shiki
+    file: shiki.jpg
+    reference: https://github.com/shikijs/shiki
+    proxy_url: https://images.openai.com/static-rsc-4/uabD6dy5axWN0_pe44igenlCemXF_mTbCK17ePKuqm1nnNJuVA8IraxJF4TC385tApWSBsgqUgrKi2claTOH3wt5LSWQRCly73yG02S6CG9qZdgV-oP33nxlKd4AAlwAwAAiCvvXBtZMsykaZ2CpOdMgIvwv376iVnGYJeVTsgs?purpose=inline
+    status: saved
+    media_type: image/jpeg
+  - id: mermaid
+    file: mermaid.jpg
+    reference: https://mermaid.js.org/
+    proxy_url: https://images.openai.com/static-rsc-4/qY2RAa9oDRPRyJBHH9yV4goy9ipbS0xYTrZaaBfiK_KJaIRKl7b7gjLF-1ECwUdeJXtcASFLMmTdcqbM3JI7USnWBVcZWPhaUyXn1K3a854KUHUavw287S2nYocxx52rD3OFiU2uPdfgSpS0KRdSWzilqRN3fm82eodLDhGJMcM?purpose=inline
+    status: saved
+    media_type: image/jpeg
+  - id: react-flow
+    file: react-flow.jpg
+    reference: https://reactflow.dev/
+    proxy_url: https://images.openai.com/static-rsc-4/xoWFacMqoLFhYszFkd44UhhqZlU0LrDFQ9U2SSYdnPbbdhzjATvw2LyMjrxX4LTp33nZ6pkC49Xr73Enz8lWlyGEcwb9X0FBJthU2OeQj7_ZBJm7U8xf5pvkUsPgOpIuj0rRxkdFMdjzsfiHhRujhadl35r-9HgM1IiCOFX0xCA?purpose=inline
+    status: saved
+    media_type: image/jpeg
+  - id: observable-plot
+    file: observable-plot.jpg
+    reference: https://github.com/observablehq/plot
+    proxy_url: https://images.openai.com/static-rsc-4/_tW4ubzx6tV6mkBMaxVDPFHq4UCeXISumoFULxU5JcsDuCDyC4tQftlnL6QQVfG7S7j2tgxDi7glcv9QAYTLTbsrH1ly85pVOAAsz20gkH9JBl8xSU4piJsHIxkvhWe9THYUK2XXRT5bCh5LtlAXKsmJ1-Oa94zybF38o320V28?purpose=inline
+    status: saved
+    media_type: image/jpeg
+  - id: refero
+    file: refero.jpg
+    reference: https://refero.design/
+    proxy_url: https://images.openai.com/static-rsc-4/pR8nxpgnpVxhaXMF5lg7A7DSzv2ugsOFrQ8XEP-4EETk8_wM7RagwxaLfr6VBPTQAkWMP5KibZPsHOLHoN-vIvfNgPovLBIjxF8bbuX7maZ6hAVgrq5l7hyWXYxaaFRrzTeI_zullg1xjF7Pi5Z-NYVarbQ_-renqxiOYYnP9KI?purpose=inline
+    status: saved
+    media_type: image/jpeg
+  - id: vercel
+    file: vercel.jpg
+    reference: https://vercel.com/blog
+    proxy_url: https://images.openai.com/static-rsc-4/MzXRWMagfYIFUQoVlP8j5pvXZtb_PO869ls9HEDjCCZqX3tI6EswjCUI_haPVxi-MHlL4gSLjA9Ytm15YxgvTY1yxXv8yB-zNJamVW82QryBQddaR21fSeXEppchXpcsCMZesjC0caOfpEBjxzeQ1KaG5uQ4Yxo4GMXPD2Y8oug?purpose=inline
+    status: pending
+    failure: "HTTP 400 or timeout; no local image was created"
+  - id: anthropic
+    file: anthropic.jpg
+    reference: https://www.anthropic.com/research
+    proxy_url: https://images.openai.com/static-rsc-4/Ffm9IyndV_vFiYdapndSPk1HXv6R-QRdj8NvbRUgW0EeptGueSH7XJTKs7pGEbT987hylNnRI1eLcTuvGUXr7i1shePrnVTNP0KG37hIPwigMoJol_j90yvK0BXKFOUtOFlRmT2s0Hi4Q7TVxCxYLEbhROfdSjzKD8LGCVA9nyo?purpose=inline
+    status: saved
+    media_type: image/jpeg
+  - id: linear
+    file: linear.jpg
+    reference: https://linear.app/blog
+    proxy_url: https://images.openai.com/static-rsc-4/i2oUlZ3ns_GBKsENdD5VIpYVe_u3o8bZk3QGNeGf3mEbFcdwaJjNd31K7uo003k2fiRZiz4SRWVfJeqL7ED3HaEZWaRB2KuJ4nbmPffLawNGFY244tT1nvJ5dfpnoizYfauY2MY8vVGKODHaxskNPCfcbRbum1VW7lB3tXErZg?purpose=inline
+    status: pending
+    failure: "HTTP 400 or timeout; no local image was created"
+  - id: rag-use-cases
+    file: rag-use-cases.jpg
+    reference: https://www.shoutdigital.com/insights/use-cases-for-retrieval-augmented-generation-rag/
+    proxy_url: https://images.openai.com/static-rsc-4/qJVm3tEC7xKFwqYAPTU5TMxvvsN55rxuVwobGGqVjHbPA67qEpdgERGexK72tKOU2ivxq7ifW9q2KKVqYzl7bfUInDp0W0Y3FpZdzqi0nVVGMJ_YtiNEYtHy11c6OtMBse1CHJ2oFrOxsfXmo_SkowRkPTuTCp6hqXdLHpIOSdU?purpose=inline
+    status: saved
+    media_type: image/jpeg

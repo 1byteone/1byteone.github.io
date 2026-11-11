@@ -1,0 +1,1 @@
+var r=class extends Error{constructor(r){super(`Unreachable case: ${r}`)}};function n(n){return new r(n)}function e(n){throw new r(n)}export{n,e as r,r as t};

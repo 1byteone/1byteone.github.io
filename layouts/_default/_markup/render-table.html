@@ -1,0 +1,23 @@
+{{ partial "rich-content/assets.html" .PageInner }}
+<div class="rich-table-wrapper" role="region" tabindex="0" aria-label="{{ if eq .PageInner.Language.Lang "zh" }}可横向滚动的数据表格{{ else }}Scrollable data table{{ end }}">
+  <table>
+    <thead>
+      {{- range .THead -}}
+        <tr>
+          {{- range . -}}
+            <th{{ with .Alignment }} style="text-align: {{ . }}"{{ end }}>{{ .Text }}</th>
+          {{- end -}}
+        </tr>
+      {{- end -}}
+    </thead>
+    <tbody>
+      {{- range .TBody -}}
+        <tr>
+          {{- range . -}}
+            <td{{ with .Alignment }} style="text-align: {{ . }}"{{ end }}>{{ .Text }}</td>
+          {{- end -}}
+        </tr>
+      {{- end -}}
+    </tbody>
+  </table>
+</div>

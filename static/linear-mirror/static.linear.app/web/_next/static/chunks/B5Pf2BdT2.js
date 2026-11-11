@@ -1,0 +1,1 @@
+var a={primary:"_71adgG_primary",quaternary:"_71adgG_quaternary",secondary:"_71adgG_secondary",tertiary:"_71adgG_tertiary"};export{a as t};

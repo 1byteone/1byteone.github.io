@@ -1,0 +1,1 @@
+import{o as t}from"./C_JJxWoe.js";import{ai as r}from"./DipWGRuU.js";import{ft as s,pt as e,t as a}from"./xsznEox6.js";var o=t(r(),1);function n(t){const r=(0,o.useRef)(0),{isStatic:n}=(0,o.useContext)(a);(0,o.useEffect)(()=>{if(n)return;const a=({timestamp:s,delta:e})=>{r.current||(r.current=s),t(s-r.current,e)};return e.update(a,!0),()=>s(a)},[t])}export{n as t};

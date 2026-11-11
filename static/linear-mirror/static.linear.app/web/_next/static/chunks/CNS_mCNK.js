@@ -1,0 +1,1 @@
+var s,a;import{o as r}from"./C_JJxWoe.js";import{Ur as o,ai as t}from"./DipWGRuU.js";import{t as m}from"./PPnH9BIT.js";function i({className:r,...o}){return(0,a.jsx)("span",{...o,className:m(s,r)})}t(),s="PPSGPG_root",a=o();export{i as t};

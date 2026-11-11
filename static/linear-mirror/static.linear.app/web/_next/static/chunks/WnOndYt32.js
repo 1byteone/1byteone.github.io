@@ -1,0 +1,1 @@
+var r=r=>{if(r)return"number"==typeof r?`${r}px`:r};export{r as t};

@@ -1,0 +1,25 @@
+{
+  "snapshot": "clones\\linear.app",
+  "files": 807,
+  "html": 3,
+  "css": 46,
+  "javascript": 739,
+  "localReferences": 4047,
+  "missingLocalReferences": 0,
+  "missing": [],
+  "externalReferences": {
+    "linear.app": 83,
+    "client-api.linear.app": 2,
+    "static.linear.app": 2,
+    "root-relative-runtime": 134,
+    "linearstatus.com": 2,
+    "x.com": 2,
+    "github.com": 2,
+    "www.youtube.com": 2
+  },
+  "interpretation": {
+    "localReferences": "References resolvable inside the snapshot directory.",
+    "externalReferences": "Runtime/API/CDN references intentionally kept or unavailable offline.",
+    "privateSource": "The snapshot contains browser-delivered public files, not Linear's private source repository."
+  }
+}

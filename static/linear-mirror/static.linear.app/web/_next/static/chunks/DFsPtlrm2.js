@@ -1,0 +1,1 @@
+var s,a,t,e;import{t as o}from"./DwarMg872.js";o.BASE_URL,s=(s,a)=>`https://cms.linear.app/production/desk/${s};${a}`,a="/startups#apply",t=s=>`/contact/sales?message=${encodeURIComponent(s)}`,e=s=>`/customers/${s}`;export{e as i,s as n,t as r,a as t};

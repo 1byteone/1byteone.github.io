@@ -1,0 +1,49 @@
+{{- $page := . -}}
+{{- $featured := $page.Resources.GetMatch "featured.*" -}}
+{{- with $featured -}}
+<figure class="cp77-cover cp77-cover--editorial"><img src="{{ .RelPermalink }}" alt="" loading="lazy" decoding="async"></figure>
+{{- else -}}
+{{- $tags := lower (delimit (default (slice) $page.Params.tags) " ") -}}
+{{- $fallbacks := slice "card-night-city.webp" "card-street-view.webp" "card-night-city-day.webp" "card-japantown.webp" "card-black-sapphire.webp" "card-johnny.webp" -}}
+{{- $hashPath := replace $page.RelPermalink "/en/" "/" -}}
+{{- $assetName := index $fallbacks (mod (hash.FNV32a $hashPath) (len $fallbacks)) -}}
+{{- $assetRole := "NIGHT CITY / FIELD RECORD" -}}
+{{- if eq $page.Section "projects" -}}
+  {{- if in $page.RelPermalink "ecommerce-rag-search" -}}
+    {{- $assetName = "card-black-sapphire.webp" -}}
+    {{- $assetRole = "BLACK SAPPHIRE / DISTRIBUTED SYSTEMS" -}}
+  {{- else if in $page.RelPermalink "agricultural-qa-agent" -}}
+    {{- $assetName = "card-japantown.webp" -}}
+    {{- $assetRole = "JAPANTOWN / KNOWLEDGE SYSTEM" -}}
+  {{- end -}}
+{{- else if in $page.RelPermalink "spring-boot-production-architecture" -}}
+  {{- $assetName = "card-street-view.webp" -}}
+  {{- $assetRole = "WATSON WHITENESS / SERVICE ROUTE" -}}
+{{- else if in $page.RelPermalink "rag-production-architecture" -}}
+  {{- $assetName = "card-black-sapphire.webp" -}}
+  {{- $assetRole = "BLACK SAPPHIRE / RETRIEVAL SYSTEM" -}}
+{{- else if in $page.RelPermalink "mysql-high-concurrency-architecture" -}}
+  {{- $assetName = "card-night-city-day.webp" -}}
+  {{- $assetRole = "NIGHT CITY / DATA INFRASTRUCTURE" -}}
+{{- else if or (in $tags "java") (in $tags "spring") (in $tags "backend") (in $tags "microservices") -}}
+  {{- $pool := slice "card-street-view.webp" "card-night-city-day.webp" "card-night-city.webp" -}}
+  {{- $assetName = index $pool (mod (hash.FNV32a $hashPath) (len $pool)) -}}
+  {{- $assetRole = "CITY GRID / SERVICE ARCHITECTURE" -}}
+{{- else if or (in $tags "python") (in $tags "fastapi") (in $tags "langchain") -}}
+  {{- $pool := slice "card-japantown.webp" "card-johnny.webp" "card-night-city.webp" -}}
+  {{- $assetName = index $pool (mod (hash.FNV32a $hashPath) (len $pool)) -}}
+  {{- $assetRole = "NIGHT CITY / AI SYSTEMS" -}}
+{{- else if or (in $tags "mysql") (in $tags "database") (in $tags "redis") (in $tags "performance") -}}
+  {{- $pool := slice "card-night-city-day.webp" "card-black-sapphire.webp" "card-street-view.webp" -}}
+  {{- $assetName = index $pool (mod (hash.FNV32a $hashPath) (len $pool)) -}}
+  {{- $assetRole = "CITY GRID / DATA INFRASTRUCTURE" -}}
+{{- else if or (in $tags "rag") (in $tags "agent") (in $tags "openai") (in $tags "llm") -}}
+  {{- $pool := slice "card-black-sapphire.webp" "card-johnny.webp" "card-japantown.webp" -}}
+  {{- $assetName = index $pool (mod (hash.FNV32a $hashPath) (len $pool)) -}}
+  {{- $assetRole = "BLACK SAPPHIRE / INTELLIGENCE SYSTEM" -}}
+{{- end -}}
+{{- $cover := resources.Get (printf "media/cyberpunk2077/ui/%s" $assetName) -}}
+{{- with $cover -}}
+<figure class="cp77-cover" data-cover-role="{{ $assetRole }}"><img src="{{ .RelPermalink }}" alt="" width="1200" height="675" loading="lazy" decoding="async"></figure>
+{{- end -}}
+{{- end -}}

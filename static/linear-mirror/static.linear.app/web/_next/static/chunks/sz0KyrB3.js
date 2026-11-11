@@ -1,0 +1,1 @@
+function t(t,E=Number.MIN_SAFE_INTEGER,r=Number.MAX_SAFE_INTEGER){return Math.max(E,Math.min(t,r))}export{t};

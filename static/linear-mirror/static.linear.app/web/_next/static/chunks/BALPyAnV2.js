@@ -1,0 +1,1 @@
+function t(t,e){let s="";Object.keys(e).forEach(t=>{s+=`${t}: ${e[t]};`}),t.style.cssText+=s}export{t};

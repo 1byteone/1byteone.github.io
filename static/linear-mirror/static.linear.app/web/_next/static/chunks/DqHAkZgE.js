@@ -1,0 +1,1 @@
+var r;import{o as s}from"./C_JJxWoe.js";import{Ur as a,ai as o}from"./DipWGRuU.js";import{t}from"./CMXjvjQE2.js";function m(s){return(0,r.jsx)(t,{...s,children:(0,r.jsx)("svg",{children:(0,r.jsx)("path",{d:"M3 6.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm5 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm5 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z"})})})}o(),r=a();export{m as t};

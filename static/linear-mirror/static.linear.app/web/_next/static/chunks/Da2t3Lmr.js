@@ -1,0 +1,1 @@
+function t(t){return null==t||t.hasAttribute("disabled")||"true"===t.getAttribute("aria-disabled")}export{t};

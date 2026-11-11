@@ -1,0 +1,6 @@
+{{- $zh := hasPrefix .Lang "zh" -}}
+{{- $site := .Site.Data.site.site -}}
+<footer class="ep-footer"><span>YOYO.PIXEL / {{ if $zh }}终端档案{{ else }}TERMINAL ARCHIVE{{ end }}</span><span>{{ $site.identity.email }}</span><span data-ep-clock>00:00:00 LOCAL</span></footer>
+<script defer src="{{ "js/emil-pixel-terminal.js" | relURL }}?v=20261103-9"></script>
+</body>
+</html>

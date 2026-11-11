@@ -1,0 +1,23 @@
+/* Astro TUI: green terminal notes with restrained, system-like spacing. */
+body.astro-tui .rich-code-frame,
+body.astro-tui .rich-terminal { border-color: var(--at-line, #244235); border-radius: 4px; background: var(--at-panel, #0e1b16); box-shadow: none; }
+body.astro-tui .rich-code-toolbar,
+body.astro-tui .rich-terminal-toolbar { min-height: 36px; border-bottom-color: var(--at-line, #244235); background: var(--at-raised, #14261e); font: 10px ui-monospace, monospace; }
+body.astro-tui .rich-code-language,
+body.astro-tui .rich-terminal-meta { color: var(--at-green, #6de0a4); }
+body.astro-tui .rich-code-copy { border-color: var(--at-line, #244235); border-radius: 3px; color: var(--at-green, #6de0a4); font: inherit; }
+body.astro-tui .rich-code-copy:hover,
+body.astro-tui .rich-code-copy:focus-visible { border-color: var(--at-green, #6de0a4); background: #183225; }
+body.astro-tui .rich-code-body pre code,
+body.astro-tui .rich-terminal-output { font-size: 12px !important; line-height: 1.7 !important; }
+body.astro-tui .rich-code-highlight pre code > .line > .ln { color: var(--at-faint, #587064); }
+body.astro-tui .rich-terminal { background: #0b1511; }
+body.astro-tui .rich-diagram { padding: 12px; border-color: var(--at-line, #244235); border-radius: 4px; background: var(--at-panel, #0e1b16); }
+body.astro-tui .rich-diagram-source { border-top-color: var(--at-line, #244235); }
+body.astro-tui .rich-diagram-source summary { color: var(--at-green, #6de0a4); font: 10px ui-monospace, monospace; }
+body.astro-tui .rich-media-caption { color: var(--at-faint, #587064); font: 9px ui-monospace, monospace; }
+body.astro-tui .rich-table-wrapper { border-block: 1px solid var(--at-line, #244235); }
+body.astro-tui .rich-table-wrapper th { color: var(--at-ink, #e1f0e8); background: var(--at-raised, #14261e); font: 10px ui-monospace, monospace; }
+body.astro-tui .rich-table-wrapper th,
+body.astro-tui .rich-table-wrapper td { border-color: var(--at-line, #244235); }
+body.astro-tui .rich-image-link img { border: 1px solid var(--at-line, #244235); border-radius: 4px; }

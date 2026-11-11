@@ -1,0 +1,1 @@
+import{Ur as r}from"./DipWGRuU.js";import{t as a}from"./B6Phe7vF.js";var i=r();function o(r){return(0,i.jsx)(a,{width:r.size??64,height:r.size??64,fill:r.color??"#5E6AD2","aria-label":r["aria-label"]??"Linear logo",...r})}export{o as t};

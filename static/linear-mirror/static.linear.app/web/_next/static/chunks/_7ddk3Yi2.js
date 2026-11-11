@@ -1,0 +1,1 @@
+function e(e,a){if("URLSearchParams"in window){const r=new URL(window.location.href);if(a)r.searchParams.set(e,a);else{if(null!==a)return;r.searchParams.delete(e)}history.replaceState({},"",r.toString())}}export{e as t};

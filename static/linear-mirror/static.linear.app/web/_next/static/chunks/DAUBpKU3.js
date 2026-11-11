@@ -1,0 +1,1 @@
+var o;import{o as a}from"./C_JJxWoe.js";import{ai as r}from"./DipWGRuU.js";o=a(r(),1).useLayoutEffect;export{o as t};

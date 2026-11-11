@@ -1,0 +1,1 @@
+import{o as e}from"./C_JJxWoe.js";import{ai as t}from"./DipWGRuU.js";var n=e(t(),1);function r(e){const[t,r]=n.useState(!1);return n.useEffect(()=>{const t=window.matchMedia(e),n=()=>r(t.matches);return n(),t.addEventListener("change",n),()=>t.removeEventListener("change",n)},[e]),t}export{r as t};

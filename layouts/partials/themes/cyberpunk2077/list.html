@@ -1,11 +1,15 @@
 {{- $zh := hasPrefix .Lang "zh" -}}
-{{- $rail := resources.Get "media/cyberpunk2077/ui/derived/hud-vertical-rail.png" -}}
 {{- $pages := .RegularPages.ByDate.Reverse -}}
 {{- if not $pages }}{{ $pages = .Pages.ByDate.Reverse }}{{ end -}}
 {{- if and (eq .Section "logs") (not $pages) }}{{ $pages = where .Site.RegularPages "Section" "blog" }}{{ $pages = $pages.ByDate.Reverse }}{{ end -}}
 {{- partial "themes/cyberpunk2077/head.html" . -}}
 <body class="cp77 cp77-list-page"{{ if .Site.Params.theme_preview }} data-pagefind-ignore{{ end }}>
   {{ partial "themes/cyberpunk2077/header.html" . }}
+  {{ if eq .Section "about" }}
+  {{ partial "themes/cyberpunk2077/profile.html" . }}
+  {{ else if eq .Section "hobby" }}
+  {{ partial "themes/cyberpunk2077/hobby.html" . }}
+  {{ else }}
   <main class="cp77-shell cp77-page-main">
     <div class="cp77-breadcrumb"><a href="{{ .Site.Home.RelPermalink }}">YOYO</a><span>/</span><span>{{ upper .Section }}</span></div>
     <header class="cp77-page-heading"><span>ARCHIVE / {{ upper .Section }}</span><h1>{{ .Title }}</h1>{{ with .Description }}<p>{{ . }}</p>{{ end }}</header>
@@ -13,9 +17,18 @@
     <div class="cp77-list-heading"><span>{{ len $pages }} {{ if $zh }}条已发布记录{{ else }}PUBLISHED RECORDS{{ end }}</span><span>READ-ONLY / INDEXED</span></div>
     <div class="cp77-list-layout">
       <div class="cp77-record-list cp77-archive-list">
-        {{ range $index, $page := $pages }}<a class="cp77-record-row" href="{{ $page.RelPermalink }}"><span class="cp77-record-number">{{ printf "%02d" (add $index 1) }}</span><span class="cp77-record-type">{{ upper $page.Section }} / {{ $page.Date.Format "06.01.02" }}</span><div><h3>{{ $page.Title }}</h3><p>{{ $page.Summary | plainify | truncate 210 }}</p>{{ with $page.Params.tags }}<div class="cp77-tag-row">{{ range first 4 . }}<span>{{ . }}</span>{{ end }}</div>{{ end }}</div><span class="cp77-row-arrow" aria-hidden="true">↗</span></a>{{ else }}<p class="cp77-empty">{{ if $zh }}这个目录目前还没有公开条目。{{ else }}There are no published entries in this directory yet.{{ end }}</p>{{ end }}
+        {{ range $index, $page := $pages }}
+        <a class="cp77-record-row" href="{{ $page.RelPermalink }}" data-cp77-reveal>
+          <span class="cp77-record-number">{{ printf "%02d" (add $index 1) }}</span>
+          <span class="cp77-record-type">{{ upper $page.Section }} / {{ $page.Date.Format "06.01.02" }}</span>
+          <div class="cp77-record-copy"><h3>{{ $page.Title }}</h3><p>{{ $page.Summary | plainify | truncate 210 }}</p>{{ with $page.Params.tags }}<div class="cp77-tag-row">{{ range first 4 . }}<span>{{ . }}</span>{{ end }}</div>{{ end }}</div>
+          <div class="cp77-record-cover">{{ partial "themes/cyberpunk2077/cover.html" $page }}</div>
+          <span class="cp77-row-arrow" aria-hidden="true">↗</span>
+        </a>
+        {{ else }}<p class="cp77-empty">{{ if $zh }}这个目录目前还没有公开条目。{{ else }}There are no published entries in this directory yet.{{ end }}</p>{{ end }}
       </div>
-      <aside class="cp77-index-aside">{{ with $rail }}<img class="cp77-index-rail" src="{{ .RelPermalink }}" alt="" width="255" height="740">{{ end }}<span>ARCHIVE SIGNAL</span><strong>{{ upper .Section }}</strong><p>{{ if $zh }}按日期浏览真实工程记录。{{ else }}Browse real engineering records by date.{{ end }}</p><div class="cp77-aside-rule"></div><span>STATUS</span><strong>PUBLISHED</strong></aside>
+      <aside class="cp77-index-aside"><div class="cp77-aside-mark" aria-hidden="true">///</div><span>ARCHIVE SIGNAL</span><strong>{{ upper .Section }}</strong><p>{{ if $zh }}按日期浏览真实工程记录。{{ else }}Browse real engineering records by date.{{ end }}</p><div class="cp77-aside-rule"></div><span>STATUS</span><strong>PUBLISHED</strong></aside>
     </div>
   </main>
+  {{ end }}
   {{ partial "themes/cyberpunk2077/footer.html" . }}

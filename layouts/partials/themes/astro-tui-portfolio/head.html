@@ -14,5 +14,6 @@
   <meta property="og:description" content="{{ .Description | default .Summary | plainify | htmlEscape }}">
   <meta property="og:url" content="{{ .Permalink }}">
   <link rel="stylesheet" href="{{ "css/astro-tui.css" | relURL }}">
+  {{ partial "rich-content/head.html" . }}
   <title>{{ if .IsHome }}ASTRO TUI / YOYO{{ else }}{{ .Title }} · ASTRO TUI{{ end }}</title>
 </head>

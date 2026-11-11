@@ -1,0 +1,200 @@
+# Shared rich-content capability contract.
+# This registry describes the content interface and the planned rendering
+# contract. It does not grant articles permission to execute arbitrary HTML or
+# JavaScript from external sources.
+version: 1
+default_profile: standard
+
+profiles:
+  standard:
+    description: "Readable Markdown with lightweight enhancements and static fallbacks."
+    description_zh: "以可读 Markdown 为主，使用轻量增强并提供静态降级。"
+    allow_client_runtime: false
+  rich:
+    description: "Structured article with multiple evidence blocks and optional client enhancement."
+    description_zh: "包含多种证据块并允许客户端渐进增强的结构化文章。"
+    allow_client_runtime: true
+  interactive:
+    description: "High-value article with an explicitly reviewed interactive surface."
+    description_zh: "经过单独评审、包含交互演示的高价值文章。"
+    allow_client_runtime: true
+
+features:
+  code:
+    label: Code
+    label_zh: 代码
+    phase: P0
+    interface: fenced-code
+    current_fallback: plain-code
+    security: static
+    required_metadata: [language, fallback_text]
+  code-diff:
+    label: Code diff
+    label_zh: 代码差异
+    phase: P1
+    interface: shortcode:code-diff
+    current_fallback: two-labeled-code-blocks
+    security: static
+    required_metadata: [before, after, fallback_text]
+  diagram:
+    label: Architecture diagram
+    label_zh: 架构图
+    phase: P0
+    interface: shortcode:diagram
+    current_fallback: static-image-with-source-text
+    security: static
+    required_metadata: [alt, fallback_text]
+  chart:
+    label: Data chart
+    label_zh: 数据图表
+    phase: P1
+    interface: shortcode:chart
+    current_fallback: image-and-data-table
+    security: static-data
+    required_metadata: [data_source, units, fallback_text]
+  table:
+    label: Data table
+    label_zh: 数据表格
+    phase: P0
+    interface: gfm-table-or-shortcode:data-table
+    current_fallback: gfm-table
+    security: static
+    required_metadata: [caption, fallback_text]
+  gallery:
+    label: Image gallery
+    label_zh: 图片画廊
+    phase: P0
+    interface: markdown-images-and-page-bundles
+    current_fallback: figure-list
+    security: local-or-reviewed-external
+    required_metadata: [alt, caption, source]
+  terminal:
+    label: Terminal transcript
+    label_zh: 终端演示
+    phase: P0
+    interface: shortcode:terminal
+    current_fallback: fenced-shell-block
+    security: static
+    required_metadata: [shell, output, exit_status, fallback_text]
+  demo:
+    label: Interactive demo
+    label_zh: 交互演示
+    phase: P2
+    interface: reviewed-iframe-or-island
+    current_fallback: screenshot-and-steps
+    security: allowlisted-origin
+    required_metadata: [source, version, fallback_text]
+  video:
+    label: Video
+    label_zh: 视频
+    phase: P2
+    interface: native-video-or-reviewed-embed
+    current_fallback: poster-and-transcript
+    security: allowlisted-origin
+    required_metadata: [poster, transcript, source]
+
+theme_capabilities:
+  lzw-archive:
+    rich_skin: rich-content-engineer-terminal.css
+    code: baseline
+    code-diff: fallback
+    diagram: fallback
+    chart: fallback
+    table: baseline
+    gallery: baseline
+    terminal: baseline
+    demo: fallback
+    video: fallback
+  engineer-terminal:
+    rich_skin: rich-content-engineer-terminal.css
+    code: baseline
+    code-diff: fallback
+    diagram: fallback
+    chart: fallback
+    table: baseline
+    gallery: baseline
+    terminal: baseline
+    demo: fallback
+    video: fallback
+  astro-tui-portfolio:
+    rich_skin: rich-content-astro-tui.css
+    code: baseline
+    code-diff: fallback
+    diagram: fallback
+    chart: fallback
+    table: baseline
+    gallery: baseline
+    terminal: baseline
+    demo: fallback
+    video: fallback
+  emil-pixel-terminal:
+    rich_skin: rich-content-emil-pixel-terminal.css
+    code: baseline
+    code-diff: fallback
+    diagram: fallback
+    chart: fallback
+    table: baseline
+    gallery: baseline
+    terminal: baseline
+    demo: fallback
+    video: fallback
+  cyberpunk2077:
+    rich_skin: rich-content-cyberpunk2077.css
+    code: baseline
+    code-diff: fallback
+    diagram: fallback
+    chart: fallback
+    table: baseline
+    gallery: baseline
+    terminal: baseline
+    demo: fallback
+    video: fallback
+  bloggpt:
+    rich_skin: rich-content-bloggpt.css
+    code: baseline
+    code-diff: fallback
+    diagram: fallback
+    chart: fallback
+    table: baseline
+    gallery: baseline
+    terminal: fallback
+    demo: fallback
+    video: fallback
+  minimal:
+    rich_skin: rich-content-minimal.css
+    code: baseline
+    code-diff: fallback
+    diagram: fallback
+    chart: fallback
+    table: baseline
+    gallery: baseline
+    terminal: fallback
+    demo: fallback
+    video: fallback
+  alxian:
+    rich_skin: rich-content-alxian.css
+    code: baseline
+    code-diff: fallback
+    diagram: fallback
+    chart: fallback
+    table: baseline
+    gallery: baseline
+    terminal: fallback
+    demo: fallback
+    video: fallback
+  oil:
+    rich_skin: rich-content-oil.css
+    code: baseline
+    code-diff: fallback
+    diagram: fallback
+    chart: fallback
+    table: baseline
+    gallery: baseline
+    terminal: fallback
+    demo: fallback
+    video: fallback
+
+policies:
+  baseline: "Content renders with shared Markdown/Hugo behavior and does not require a theme-specific component."
+  fallback: "The article must expose a static, readable representation when the theme lacks an enhancement."
+  interactive: "Interactive content requires an allowlisted source, keyboard behavior, reduced-motion support, and a tested fallback."

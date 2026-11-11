@@ -13,6 +13,7 @@ on:
       - dev_termfolio
       - dev_theme_cyberpunk2077
       - dev_theme_lzw_archive
+      - dev_matthewtrent_clone
 
   workflow_dispatch:
 
@@ -222,8 +223,24 @@ jobs:
             --destination public/themes/engineer-terminal/astro-tui-portfolio \
             --baseURL "${{ steps.pages.outputs.base_url }}/themes/engineer-terminal/astro-tui-portfolio/"
 
+      - name: Build Emil Pixel terminal preview
+        env:
+          HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache
+          HUGO_ENVIRONMENT: emil-pixel-terminal
+          TZ: America/New_York
+        run: |
+          rm -rf "public/themes/engineer-terminal/emil-pixel-terminal"
+          hugo \
+            --gc \
+            --minify \
+            --cleanDestinationDir \
+            --environment emil-pixel-terminal \
+            --configDir config \
+            --destination public/themes/engineer-terminal/emil-pixel-terminal \
+            --baseURL "${{ steps.pages.outputs.base_url }}/themes/engineer-terminal/emil-pixel-terminal/"
+
       - name: Build Termfolio static terminal preview
-        if: github.ref == 'refs/heads/dev_termfolio'
+        if: github.ref == 'refs/heads/dev_termfolio' || github.ref == 'refs/heads/dev_matthewtrent_clone'
         working-directory: termfolio
         env:
           TERMFOLIO_BASE_PATH: /themes/engineer-terminal/termfolio
@@ -331,7 +348,13 @@ jobs:
           test -s public/themes/engineer-terminal/astro-tui-portfolio/en/blog/fastapi-ai-streaming-api/index.html
           test -s public/themes/engineer-terminal/astro-tui-portfolio/css/astro-tui.css
           test -s public/themes/engineer-terminal/astro-tui-portfolio/js/astro-tui.js
-          if [[ "${{ github.ref }}" == "refs/heads/dev_termfolio" ]]; then
+          test -s public/themes/engineer-terminal/emil-pixel-terminal/index.html
+          test -s public/themes/engineer-terminal/emil-pixel-terminal/en/index.html
+          test -s public/themes/engineer-terminal/emil-pixel-terminal/blog/index.html
+          test -s public/themes/engineer-terminal/emil-pixel-terminal/blog/fastapi-ai-streaming-api/index.html
+          test -s public/themes/engineer-terminal/emil-pixel-terminal/css/emil-pixel-terminal.css
+          test -s public/themes/engineer-terminal/emil-pixel-terminal/js/emil-pixel-terminal.js
+          if [[ "${{ github.ref }}" == "refs/heads/dev_termfolio" || "${{ github.ref }}" == "refs/heads/dev_matthewtrent_clone" ]]; then
             test -s public/themes/engineer-terminal/termfolio/index.html
             test -s public/themes/engineer-terminal/termfolio/blog/index.html
             test -s public/themes/engineer-terminal/termfolio/blog/fastapi-ai-streaming-api/index.html

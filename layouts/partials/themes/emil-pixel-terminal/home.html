@@ -1,0 +1,44 @@
+{{- $zh := hasPrefix .Lang "zh" -}}
+{{- $site := .Site.Data.site.site -}}
+{{- $translationURL := .Site.Home.RelPermalink -}}
+{{- with .Site.Home.Translations -}}{{- $translationURL = (index . 0).RelPermalink -}}{{- end -}}
+{{- partial "themes/emil-pixel-terminal/head.html" . -}}
+<body class="emil-pixel-terminal ep-home-page" data-ep-lang="{{ if $zh }}zh{{ else }}en{{ end }}" data-ep-fx-mode="calm"{{ if .Site.Params.theme_preview }} data-pagefind-ignore{{ end }}>
+  <canvas class="ep-canvas" data-ep-canvas aria-hidden="true"></canvas>
+  <canvas class="ep-glow-canvas" data-ep-glow-canvas aria-hidden="true"></canvas>
+  <canvas class="ep-signal-canvas" data-ep-signal-canvas aria-hidden="true"></canvas>
+  <div class="ep-scanlines" aria-hidden="true"></div>
+  <main class="ep-console-stage" data-ep-stage>
+    <section class="ep-active-screen" data-ep-active aria-labelledby="ep-active-title">
+      <header class="ep-home-header">
+        <a class="ep-home-brand" href="{{ .Site.Home.RelPermalink }}" aria-label="YOYO home">YOYO<span>.PIXEL</span></a>
+        <nav class="ep-game-menu" aria-label="{{ if $zh }}作品导航{{ else }}Portfolio navigation{{ end }}">
+          <a class="is-selected" href="{{ "hobby/minecraft-ui/" | relLangURL }}" data-ep-menu-link data-ep-target="minecraft" data-ep-copy-zh="Minecraft 菜单、物品栏、HUD、纹理与皮肤。" data-ep-copy-en="Minecraft menus, inventories, HUDs, textures, and skins." data-ep-label-zh="Minecraft / UI" data-ep-label-en="MINECRAFT / UI"><span aria-hidden="true">▶</span>{{ if $zh }}Minecraft / UI{{ else }}MINECRAFT / UI{{ end }}</a>
+          <a href="{{ "hobby/capes/" | relLangURL }}" data-ep-menu-link data-ep-target="capes" data-ep-copy-zh="为 Cloaks+ 与 Lunar Client 创作的动态披风。" data-ep-copy-en="Animated capes created for Cloaks+ and Lunar Client." data-ep-label-zh="动态披风" data-ep-label-en="CAPES"><span aria-hidden="true">▶</span>{{ if $zh }}披风{{ else }}CAPES{{ end }}</a>
+          <a href="{{ "hobby/art/" | relLangURL }}" data-ep-menu-link data-ep-target="art" data-ep-copy-zh="像素绘画、角色插画与逐步拆解教程。" data-ep-copy-en="Pixel paintings, character art, and step-by-step tutorials." data-ep-label-zh="像素艺术" data-ep-label-en="PIXEL ART"><span aria-hidden="true">▶</span>{{ if $zh }}像素艺术{{ else }}ART{{ end }}</a>
+          <a href="{{ "hobby/other/" | relLangURL }}" data-ep-menu-link data-ep-target="other" data-ep-copy-zh="网页设计、标志、海报与包装等其他视觉作品。" data-ep-copy-en="Web design, logos, posters, packaging, and other visual work." data-ep-label-zh="其他作品" data-ep-label-en="OTHER WORK"><span aria-hidden="true">▶</span>{{ if $zh }}其他{{ else }}OTHER{{ end }}</a>
+          <a href="{{ "about/" | relLangURL }}" data-ep-menu-link data-ep-target="about" data-ep-copy-zh="杨劲松，Java 后端与 AI 应用开发，关注 RAG、Agent 与可靠交付。" data-ep-copy-en="Jinsong Yang, a Java backend and AI application engineer focused on RAG, agents, and reliable delivery." data-ep-label-zh="关于 YOYO" data-ep-label-en="ABOUT YOYO"><span aria-hidden="true">▶</span>{{ if $zh }}关于{{ else }}ABOUT{{ end }}</a>
+          <a href="{{ "contact/" | relLangURL }}" data-ep-menu-link data-ep-target="contact" data-ep-copy-zh="通过邮件交流后端工程、AI 应用或项目合作。" data-ep-copy-en="Contact me about backend engineering, AI applications, or project collaboration." data-ep-label-zh="联系我" data-ep-label-en="CONTACT YOYO"><span aria-hidden="true">▶</span>{{ if $zh }}联系{{ else }}CONTACT{{ end }}</a>
+        </nav>
+        <div class="ep-home-tools">
+          <a class="ep-home-themes" href="{{ "theme-center/" | relLangURL }}#terminal-family">{{ if $zh }}主题中心{{ else }}THEMES{{ end }}</a>
+          <a class="ep-home-language" data-theme-language-switch data-theme-id="emil-pixel-terminal" href="{{ $translationURL }}" lang="{{ if $zh }}en{{ else }}zh-Hans{{ end }}">{{ if $zh }}EN{{ else }}中{{ end }}</a>
+        </div>
+      </header>
+      <div class="ep-home-center">
+        <div class="ep-home-mark" aria-hidden="true"><canvas data-ep-boot-sprite width="96" height="112"></canvas></div>
+        <p class="ep-active-kicker">{{ if $zh }}你好，我是{{ else }}HELLO, I'M{{ end }}</p>
+        <h1 id="ep-active-title"><canvas class="ep-wordmark ep-wordmark-active" data-ep-wordmark width="920" height="280" aria-hidden="true"></canvas><span class="ep-visually-hidden">YOYO</span></h1>
+        <p class="ep-home-subline">AI ENGINEERING · PIXEL ART · OPEN SOURCE</p>
+        <p class="ep-active-lede">{{ if $zh }}把复杂系统做成可靠、可玩的产品{{ else }}I bring complex systems to life{{ end }}</p>
+        <p class="ep-active-description" data-ep-description aria-live="polite">{{ if $zh }}Minecraft 菜单、物品栏、HUD、纹理与皮肤。{{ else }}Minecraft menus, inventories, HUDs, textures, and skins.{{ end }}</p>
+      </div>
+      <footer class="ep-game-footer">
+        <div class="ep-key-hints"><span><kbd>↑↓</kbd> {{ if $zh }}选择{{ else }}SELECT{{ end }}</span><span><kbd>ENTER</kbd> {{ if $zh }}打开{{ else }}OPEN{{ end }}</span><button type="button" data-ep-sound aria-pressed="false"><kbd>M</kbd> {{ if $zh }}音效{{ else }}SOUND{{ end }}</button></div>
+        <div class="ep-home-copyright">© 2026 {{ $site.identity.name_en }} / {{ if $zh }}独立作品集{{ else }}INDEPENDENT PORTFOLIO{{ end }}</div>
+      </footer>
+    </section>
+  </main>
+  {{ partial "themes/emil-pixel-terminal/footer.html" . }}
+</body>
+</html>

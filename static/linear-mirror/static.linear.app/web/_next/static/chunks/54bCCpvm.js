@@ -1,0 +1,1 @@
+var r,s,a;import{o as t}from"./C_JJxWoe.js";import{Ur as o,ai as e}from"./DipWGRuU.js";r=t(e(),1),s=o(),a=r.forwardRef((r,a)=>{const{type:t="text"}=r;return(0,s.jsx)("input",{className:"XB4soq_input",ref:a,"data-1p-ignore":"password"!==t,...r})});export{a as t};

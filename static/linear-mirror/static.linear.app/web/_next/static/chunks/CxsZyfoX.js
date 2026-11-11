@@ -1,0 +1,1 @@
+import{t as e}from"./hj4GbYaj.js";var a=e(e=>({panelId:"",setPanelId:a=>e({panelId:a}),activePanelId:"",setActivePanelId:a=>e({activePanelId:a})}));export{a as t};

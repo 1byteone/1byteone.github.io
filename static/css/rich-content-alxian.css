@@ -1,0 +1,24 @@
+/* Alxian: airy blue-gray cards and soft product-document surfaces. */
+body.alxian-theme .rich-code-frame,
+body.alxian-theme .rich-terminal { border-color: var(--alx-line, #cbd9e1); border-radius: 10px; background: #16212a; box-shadow: 0 18px 40px rgb(39 49 59 / 12%); }
+body.alxian-theme .rich-code-toolbar,
+body.alxian-theme .rich-terminal-toolbar { min-height: 40px; border-bottom-color: rgb(255 255 255 / 16%); background: rgb(255 255 255 / 7%); font-size: 11px; }
+body.alxian-theme .rich-code-language,
+body.alxian-theme .rich-terminal-meta { color: var(--alx-blue, #5d9bb7); }
+body.alxian-theme .rich-code-copy { border-color: rgb(255 255 255 / 30%); border-radius: 7px; color: #edf3f7; }
+body.alxian-theme .rich-code-copy:hover,
+body.alxian-theme .rich-code-copy:focus-visible { border-color: var(--alx-blue, #5d9bb7); color: #fff; background: rgb(93 155 183 / 18%); }
+body.alxian-theme .rich-code-body pre code,
+body.alxian-theme .rich-terminal-output { font-size: 12px !important; line-height: 1.75 !important; }
+body.alxian-theme .rich-code-highlight pre code > .line > .ln { color: #8295a0; }
+body.alxian-theme .rich-terminal { background: #101a21; }
+body.alxian-theme .rich-terminal-title { color: #edf3f7; }
+body.alxian-theme .rich-diagram { padding: 12px; border-color: var(--alx-line, #cbd9e1); border-radius: 12px; background: var(--alx-card, rgb(255 255 255 / 55%)); }
+body.alxian-theme .rich-diagram-source { border-top-color: var(--alx-line, #cbd9e1); }
+body.alxian-theme .rich-diagram-source summary { color: var(--alx-blue-deep, #46758b); font-size: 11px; }
+body.alxian-theme .rich-media-caption { color: var(--alx-muted, #71808a); font-size: 11px; }
+body.alxian-theme .rich-table-wrapper { border-block: 1px solid var(--alx-line, #cbd9e1); }
+body.alxian-theme .rich-table-wrapper th { color: var(--alx-ink, #27313b); background: #dceaf2; }
+body.alxian-theme .rich-table-wrapper th,
+body.alxian-theme .rich-table-wrapper td { border-color: var(--alx-line, #cbd9e1); }
+body.alxian-theme .rich-image-link img { border: 1px solid var(--alx-line, #cbd9e1); border-radius: 9px; }

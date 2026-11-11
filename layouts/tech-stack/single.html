@@ -1,10 +1,12 @@
-{{- $theme := lower (default "oil" (index .Site.Params "site_theme")) -}}
+{{- $theme := lower (default "ai-terminal" (index .Site.Params "site_theme")) -}}
 {{- if eq $theme "lzw-archive" -}}
   {{ partial "themes/engineer-terminal/single.html" . }}
 {{- else if eq $theme "cyberpunk2077" -}}
   {{ partial "themes/cyberpunk2077/single.html" . }}
 {{- else if eq $theme "ai-terminal" -}}
   {{ partial "themes/engineer-terminal/single.html" . }}
+{{- else if eq $theme "emil-pixel-terminal" -}}
+  {{ partial "themes/emil-pixel-terminal/single.html" . }}
 {{- else if eq $theme "bloggpt" -}}
   {{ partial "themes/bloggpt/tech-stack-single.html" . }}
 {{- else if eq $theme "alxian" -}}

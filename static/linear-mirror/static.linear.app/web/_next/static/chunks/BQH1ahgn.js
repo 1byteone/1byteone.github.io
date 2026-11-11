@@ -1,0 +1,1 @@
+var t,o;import{o as r}from"./C_JJxWoe.js";import{ai as e}from"./DipWGRuU.js";function i(){return t.useContext(o)?.direction??"ltr"}t=r(e(),1),o=t.createContext(void 0);export{i as t};

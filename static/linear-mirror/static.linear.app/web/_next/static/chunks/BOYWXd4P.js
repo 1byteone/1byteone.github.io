@@ -1,0 +1,1 @@
+import{t as r}from"./C_JJxWoe.js";import{t}from"./DbfmBpzo2.js";var o=r((r,o)=>{var s=t(),a=1/0;o.exports=function(r){return r?(r=s(r))===a||r===-1/0?17976931348623157e292*(r<0?-1:1):r==r?r:0:0===r?r:0}});export{o as t};

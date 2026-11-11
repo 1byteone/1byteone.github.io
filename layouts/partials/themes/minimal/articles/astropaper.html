@@ -21,6 +21,7 @@
   <title>{{ .Title }} · YOYO / Engineering Notes</title>
 </head>
 <body class="paper-site paper-article-page"{{ if .Site.Params.theme_preview }} data-pagefind-ignore{{ end }}>
+  {{ partial "rich-content/head.html" . }}
   <div class="paper-reading-progress" data-reading-progress aria-hidden="true"></div>
   <header class="paper-header">
     <a class="paper-logo" href="{{ .Site.Home.RelPermalink }}" aria-label="YOYO Engineering Notes">YOYO<span>/</span></a>

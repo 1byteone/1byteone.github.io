@@ -9,6 +9,7 @@
 {{- $searchPosts = $searchPosts.ByDate.Reverse -}}
 {{- $searchProjects := where site.RegularPages "Section" "projects" -}}
 {{- $searchProjects = $searchProjects.ByDate.Reverse -}}
+{{ partial "rich-content/head.html" $page }}
 <aside class="bloggpt-sidebar" id="bloggpt-sidebar">
   <div class="bloggpt-brand-row">
     {{ partial "theme-switcher.html" $page }}

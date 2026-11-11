@@ -1,0 +1,1 @@
+import{o as t}from"./C_JJxWoe.js";import{ai as e}from"./DipWGRuU.js";var a=t(e(),1);function o({controlled:t,default:e,name:o,state:r="value"}){const{current:s}=a.useRef(void 0!==t),[u,n]=a.useState(e);return[s&&void 0!==t?t:u,a.useCallback(t=>{s||n(t)},[])]}export{o as t};

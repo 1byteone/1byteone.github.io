@@ -92,7 +92,7 @@ themes:
     version: 0.1.0
     status: preview
     scope: site
-    category: engineering
+    category: terminal
     preview_style: terminal
     tags: [deployment, debugging, incident review]
     family: ai-engineering
@@ -172,6 +172,38 @@ themes:
     available: true
     default_selectable: true
     supports: [home, list, single, blog, tools, lab]
+  - id: emil-pixel-terminal
+    label: Emil Pixel Terminal
+    label_zh: Emil 像素终端
+    description: A CRT pixel terminal portfolio for engineering work, experiments, and interactive archives
+    description_zh: 以 CRT 像素画布呈现工程作品、实验记录与可交互档案
+    short_label: EMIL PIXEL
+    version: 0.1.0
+    status: preview
+    scope: site
+    category: terminal
+    preview_style: terminal
+    tags: [terminal, pixel, CRT, interactive]
+    family: ai-engineering
+    parent: ai-terminal
+    role: child
+    focus: Pixel-first terminal portfolio and interactive work archive
+    focus_zh: 像素优先的终端作品集与交互式工程档案
+    home_template: themes/emil-pixel-terminal/home.html
+    stylesheet: css/emil-pixel-terminal.css
+    script: js/emil-pixel-terminal.js
+    base_path: /themes/engineer-terminal/emil-pixel-terminal/
+    preview_path: /themes/engineer-terminal/emil-pixel-terminal/
+    showcase_image: /images/theme-center/emil-pixel-terminal.webp
+    showcase_alt_zh: Emil 像素终端主题真实首页截图
+    showcase_alt_en: Real Emil Pixel Terminal homepage screenshot
+    dev_preview_path: http://localhost:1317/
+    reference_url: https://www.emil.art/
+    reference_note: Original Hugo implementation inspired by the public CRT, pixel, and portfolio interaction language of emil.art; no external site assets or navigation are reused.
+    reference_note_zh: 基于 emil.art 公开的 CRT、像素与作品集交互语言重新实现；不复用外部站点素材或跳转。
+    available: true
+    default_selectable: true
+    supports: [home, list, single, projects, notes, fx]
   - id: ai-lab
     label: AI Engineering Lab
     label_zh: AI 实验室

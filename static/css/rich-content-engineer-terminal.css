@@ -1,0 +1,52 @@
+/* Engineer Terminal: evidence blocks read like an operator's console. */
+body.engineer-terminal .rich-code-frame,
+body.engineer-terminal .rich-terminal {
+  border-color: #29453d;
+  border-radius: 2px;
+  box-shadow: 0 12px 30px rgb(0 0 0 / 24%);
+}
+body.engineer-terminal .rich-code-toolbar,
+body.engineer-terminal .rich-terminal-toolbar {
+  min-height: 38px;
+  padding-inline: 13px;
+  border-bottom-color: #29453d;
+  background: #111a1b;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+body.engineer-terminal .rich-code-language,
+body.engineer-terminal .rich-terminal-meta { color: #71d4ae; }
+body.engineer-terminal .rich-code-copy {
+  border-radius: 2px;
+  border-color: #416b5b;
+  color: #9be7c8;
+  text-transform: uppercase;
+}
+body.engineer-terminal .rich-code-copy:hover,
+body.engineer-terminal .rich-code-copy:focus-visible { border-color: #8bd9ba; background: #163026; }
+body.engineer-terminal .rich-code-body pre code,
+body.engineer-terminal .rich-terminal-output { font-size: 12px !important; line-height: 1.8 !important; }
+body.engineer-terminal .rich-code-highlight pre code > .line > .ln { color: #52776b; }
+/* Hugo already emits line numbers for the shared rich-code renderer. */
+body.engineer-terminal .rich-code-frame .rich-code-body pre code > .line::before { content: none; display: none; }
+body.engineer-terminal .rich-terminal { background: #0b1214; }
+body.engineer-terminal .rich-terminal-output { padding: 18px 16px !important; }
+body.engineer-terminal .rich-diagram {
+  padding: 18px;
+  border-color: #29453d;
+  border-radius: 2px;
+  background: #101719;
+}
+body.engineer-terminal .rich-diagram-source { border-top: 1px solid #29453d; padding-top: 12px; }
+body.engineer-terminal .rich-diagram-source summary { color: #71d4ae; text-transform: uppercase; }
+body.engineer-terminal .rich-media-caption { color: #7d9990; font: 10px/1.5 ui-monospace, monospace; letter-spacing: .04em; }
+body.engineer-terminal .rich-table-wrapper { border-block: 1px solid #29453d; }
+body.engineer-terminal .rich-table-wrapper th { color: #9be7c8; background: #111a1b; font: 11px ui-monospace, monospace; letter-spacing: .04em; text-transform: uppercase; }
+body.engineer-terminal .rich-table-wrapper th,
+body.engineer-terminal .rich-table-wrapper td { border-color: #29453d; }
+body.engineer-terminal .rich-image-figure { margin-block: 2.2rem; }
+body.engineer-terminal .rich-image-link img { border: 1px solid #29453d; border-radius: 2px; }
+@media (max-width: 680px) {
+  body.engineer-terminal .rich-code-body pre code,
+  body.engineer-terminal .rich-terminal-output { font-size: 11px !important; }
+}

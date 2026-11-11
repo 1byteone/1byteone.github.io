@@ -1,7 +1,12 @@
-{{- if eq (lower (default "oil" (index .Site.Params "site_theme"))) "bloggpt" -}}
+{{- $theme := lower (default "ai-terminal" (index .Site.Params "site_theme")) -}}
+{{- if eq $theme "ai-terminal" -}}
+  {{ partial "themes/engineer-terminal/not-found.html" . }}
+{{- else if eq $theme "bloggpt" -}}
   {{ partial "themes/bloggpt/not-found.html" . }}
-{{- else if eq (lower (default "oil" (index .Site.Params "site_theme"))) "alxian" -}}
+{{- else if eq $theme "alxian" -}}
   {{ partial "themes/alxian/not-found.html" . }}
+{{- else if eq $theme "emil-pixel-terminal" -}}
+  {{ partial "themes/emil-pixel-terminal/home.html" . }}
 {{- else -}}
   {{ partial "themes/oil/home.html" . }}
 {{- end -}}

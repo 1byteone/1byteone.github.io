@@ -1,0 +1,57 @@
+categories:
+  - id: minecraft-ui
+    index: "01"
+    tone: lime
+    title: Minecraft / UI
+    title_zh: Minecraft / UI
+    eyebrow: INVENTORIES / HUD / TEXTURES
+    eyebrow_zh: 背包 / HUD / 纹理
+    summary: Interfaces, inventory systems, HUD studies, blocks, items, and texture experiments.
+    summary_zh: 背包界面、HUD、方块、物品与纹理实验，按可复用的界面问题整理。
+    status: INTERACTIVE STUDY
+    status_zh: 本地交互研究样例
+    detail: Explore an original local inventory-interface study. Reference-site work is not copied or presented as personal work.
+    detail_zh: 操作本地背包界面研究样例；不复制参考站作品，也不将演示包装为个人项目交付。
+    tags: [UI, HUD, Inventory, Texture]
+  - id: capes
+    index: "02"
+    tone: pink
+    title: Capes
+    title_zh: 披风与动态材质
+    eyebrow: MOTION / MATERIAL / LOOP
+    eyebrow_zh: 动态 / 材质 / 循环
+    summary: A place for original cape concepts, material tests, and small looping motion studies.
+    summary_zh: 用于收录原创披风概念、材质测试与循环动效研究。
+    status: MOTION STUDY
+    status_zh: 动态交互研究样例
+    detail: The interaction model is ready for frame sequences or local videos when the source assets are available.
+    detail_zh: 页面已支持帧序列或本地视频接入，待有原创素材后直接替换。
+    tags: [Cape, Motion, Pixel, Loop]
+  - id: art
+    index: "03"
+    tone: amber
+    title: Art
+    title_zh: 像素艺术
+    eyebrow: STUDIES / WORLDS / LIGHT
+    eyebrow_zh: 练习 / 世界 / 光影
+    summary: Pixel paintings, environment studies, and visual experiments with a readable process trail.
+    summary_zh: 像素绘画、环境练习与视觉实验，保留可阅读的创作过程线索。
+    status: PIXEL STUDY
+    status_zh: 像素配色研究样例
+    detail: Each entry is designed to expose the medium, process note, and local source file without external redirects.
+    detail_zh: 每个条目都会展示媒介、过程说明与本地源文件，不跳转到外部演示站。
+    tags: [Pixel Art, Study, Process, Light]
+  - id: other
+    index: "04"
+    tone: cyan
+    title: Other
+    title_zh: 其他实验
+    eyebrow: WEB / BRAND / OBJECTS
+    eyebrow_zh: 网页 / 品牌 / 物件
+    summary: Web interfaces, identity fragments, posters, and experiments that sit outside the main archive.
+    summary_zh: 网页界面、品牌片段、海报与不属于主档案的其他实验。
+    status: WEB STUDY
+    status_zh: 网页交互研究样例
+    detail: A flexible category for original experiments that do not fit the other three visual systems.
+    detail_zh: 用于收录不属于前三类视觉系统的原创实验，保留可扩展结构。
+    tags: [Web, Brand, Poster, Experiment]

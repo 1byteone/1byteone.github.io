@@ -25,6 +25,11 @@
     };
     image.complete ? (image.naturalWidth ? markLoaded() : markError()) : image.addEventListener("load", markLoaded, { once: true });
     image.addEventListener("error", markError, { once: true });
+    // A local preview should never leave the catalog in a permanent loading
+    // state when a stale service worker or an incomplete asset is present.
+    window.setTimeout(() => {
+      if (!preview.dataset.previewLoaded && !preview.dataset.previewError) markError();
+    }, 3000);
   });
 
   const update = () => {
@@ -57,6 +62,17 @@
   }));
 
   search?.addEventListener("input", update);
+  const applyHashFilter = () => {
+    if (window.location.hash !== "#terminal-family") return;
+    const terminalButton = categoryButtons.find((button) => button.dataset.themeFilter === "terminal");
+    if (!terminalButton) return;
+    category = "terminal";
+    categoryButtons.forEach((item) => item.setAttribute("aria-pressed", String(item === terminalButton)));
+    update();
+    window.requestAnimationFrame(() => document.querySelector("#terminal-family")?.scrollIntoView({ block: "start" }));
+  };
+  window.addEventListener("hashchange", applyHashFilter);
+  applyHashFilter();
   document.addEventListener("keydown", (event) => {
     if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "k") {
       event.preventDefault();

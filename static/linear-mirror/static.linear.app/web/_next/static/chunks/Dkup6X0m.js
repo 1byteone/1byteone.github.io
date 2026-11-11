@@ -1,0 +1,1 @@
+import{t}from"./LqIASMXj.js";function r(r,n){const[s,o]=t(r,n.start,n.end);return{start:s,end:o}}export{r as t};

@@ -1,0 +1,1 @@
+var o,r;import{o as t}from"./C_JJxWoe.js";import{ai as s}from"./DipWGRuU.js";import{c as e}from"./C91hS4zJ.js";function i(t){const s=o.useContext(r);if(void 0===s&&!t)throw new Error(e(69));return s}o=t(s(),1),r=o.createContext(void 0);export{i as t};

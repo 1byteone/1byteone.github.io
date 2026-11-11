@@ -25,6 +25,7 @@ links:
     label: Email Me
   - icon: brands/github
     url: "https://github.com/1byteone"
+    label: GitHub
 
 interests:
   - Java Microservices & High Concurrency

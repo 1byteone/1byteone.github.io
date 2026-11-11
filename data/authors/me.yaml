@@ -25,6 +25,7 @@ links:
     label: 联系我
   - icon: brands/github
     url: "https://github.com/1byteone"
+    label: GitHub
 
 interests:
   - Java微服务与高并发

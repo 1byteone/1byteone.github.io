@@ -1,0 +1,1 @@
+var r;import{o}from"./C_JJxWoe.js";import{ai as t}from"./DipWGRuU.js";import{t as a}from"./C91hS4zJ.js";r=o(t(),1).forwardRef(function(r,o){const{className:t,render:e,orientation:i="horizontal",style:s,...n}=r;return a("div",r,{state:{orientation:i},ref:o,props:[{role:"separator","aria-orientation":i},n]})});export{r as t};

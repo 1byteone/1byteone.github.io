@@ -1,0 +1,25 @@
+{{- $profile := lower (default "" .Params.render_profile) -}}
+{{- $features := default (slice) .Params.content_features -}}
+{{- if or (eq $profile "rich") (gt (len $features) 0) -}}
+  {{- $theme := lower (default "ai-terminal" (index .Site.Params "site_theme")) -}}
+  {{- $version := "20261105-2" -}}
+<link rel="stylesheet" href="{{ printf "css/rich-content.css?v=%s" $version | relURL }}">
+{{- if or (eq $theme "ai-terminal") (eq $theme "lzw-archive") (eq $theme "termfolio") -}}
+<link rel="stylesheet" href="{{ printf "css/rich-content-engineer-terminal.css?v=%s" $version | relURL }}">
+{{- else if eq $theme "bloggpt" -}}
+<link rel="stylesheet" href="{{ printf "css/rich-content-bloggpt.css?v=%s" $version | relURL }}">
+{{- else if eq $theme "cyberpunk2077" -}}
+<link rel="stylesheet" href="{{ printf "css/rich-content-cyberpunk2077.css?v=%s" $version | relURL }}">
+{{- else if eq $theme "minimal" -}}
+<link rel="stylesheet" href="{{ printf "css/rich-content-minimal.css?v=%s" $version | relURL }}">
+{{- else if eq $theme "astro-tui-portfolio" -}}
+<link rel="stylesheet" href="{{ printf "css/rich-content-astro-tui.css?v=%s" $version | relURL }}">
+{{- else if eq $theme "emil-pixel-terminal" -}}
+<link rel="stylesheet" href="{{ printf "css/rich-content-emil-pixel-terminal.css?v=%s" $version | relURL }}">
+{{- else if eq $theme "alxian" -}}
+<link rel="stylesheet" href="{{ printf "css/rich-content-alxian.css?v=%s" $version | relURL }}">
+{{- else if eq $theme "oil" -}}
+<link rel="stylesheet" href="{{ printf "css/rich-content-oil.css?v=%s" $version | relURL }}">
+{{- end -}}
+<script defer src="{{ printf "js/rich-content.js?v=%s" $version | relURL }}"></script>
+{{- end -}}

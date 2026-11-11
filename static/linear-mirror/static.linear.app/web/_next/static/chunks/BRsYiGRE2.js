@@ -1,0 +1,1 @@
+var t,r;import{o as s}from"./C_JJxWoe.js";import{ai as o}from"./DipWGRuU.js";t=s(o(),1),r=()=>{const[r,s]=t.useState(!1);return t.useEffect(()=>{s(!0)},[]),r};export{r as t};

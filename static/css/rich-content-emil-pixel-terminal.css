@@ -1,0 +1,23 @@
+/* Emil Pixel Terminal: crisp neon panels with pixel-console contrast. */
+body.emil-pixel-terminal .rich-code-frame,
+body.emil-pixel-terminal .rich-terminal { border-color: var(--ep-line, #1e3a2b); border-radius: 3px; background: var(--ep-panel-solid, #0a1711); box-shadow: var(--ep-shadow, 0 20px 70px rgb(0 0 0 / 42%)); }
+body.emil-pixel-terminal .rich-code-toolbar,
+body.emil-pixel-terminal .rich-terminal-toolbar { min-height: 38px; border-bottom-color: var(--ep-line, #1e3a2b); background: var(--ep-panel, #07110d); font: 10px ep-mono, ui-monospace, monospace; }
+body.emil-pixel-terminal .rich-code-language { color: var(--ep-lime, #cbf36a); }
+body.emil-pixel-terminal .rich-code-copy { border-color: var(--ep-line, #1e3a2b); border-radius: 2px; color: var(--ep-lime, #cbf36a); font: inherit; }
+body.emil-pixel-terminal .rich-code-copy:hover,
+body.emil-pixel-terminal .rich-code-copy:focus-visible { border-color: var(--ep-pink, #ff8cb2); color: var(--ep-pink, #ff8cb2); }
+body.emil-pixel-terminal .rich-code-body pre code,
+body.emil-pixel-terminal .rich-terminal-output { font-size: 12px !important; line-height: 1.75 !important; }
+body.emil-pixel-terminal .rich-code-highlight pre code > .line > .ln { color: var(--ep-faint, #4c6a5a); }
+body.emil-pixel-terminal .rich-terminal { background: #050a08; }
+body.emil-pixel-terminal .rich-terminal-meta { color: var(--ep-green, #72f0a8); }
+body.emil-pixel-terminal .rich-diagram { padding: 12px; border-color: var(--ep-line, #1e3a2b); border-radius: 3px; background: rgb(7 17 13 / 80%); }
+body.emil-pixel-terminal .rich-diagram-source { border-top-color: var(--ep-line, #1e3a2b); }
+body.emil-pixel-terminal .rich-diagram-source summary { color: var(--ep-lime, #cbf36a); font: 10px ep-mono, ui-monospace, monospace; }
+body.emil-pixel-terminal .rich-media-caption { color: var(--ep-muted, #93aa9c); font: 9px ep-mono, ui-monospace, monospace; }
+body.emil-pixel-terminal .rich-table-wrapper { border-block: 1px solid var(--ep-line, #1e3a2b); }
+body.emil-pixel-terminal .rich-table-wrapper th { color: var(--ep-lime, #cbf36a); background: #0d2117; font: 10px ep-mono, ui-monospace, monospace; }
+body.emil-pixel-terminal .rich-table-wrapper th,
+body.emil-pixel-terminal .rich-table-wrapper td { border-color: var(--ep-line, #1e3a2b); }
+body.emil-pixel-terminal .rich-image-link img { border: 1px solid var(--ep-line, #1e3a2b); border-radius: 3px; }

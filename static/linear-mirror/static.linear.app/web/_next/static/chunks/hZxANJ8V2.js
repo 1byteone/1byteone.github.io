@@ -1,0 +1,1 @@
+import{t as o}from"./BgSSKCiH2.js";var r={Collapsibles:o};export{r as export_d3e1eb66f3a4};

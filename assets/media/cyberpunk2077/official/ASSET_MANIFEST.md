@@ -19,6 +19,7 @@ The logo file was supplied by the site owner for use in this personal portfolio:
 | `logo-cyberpunk-2077-user.png` | User-provided upload | Site brand mark in the global header |
 | `hero-ultimate-edition-16x9-clean.png` | `https://press.cdn.cdpr.app/media/assets/766/CP2077_UE_KV_16x9_RGB_clean_v1.png` | Desktop home hero |
 | `hero-ultimate-edition-9x16-clean.png` | `https://press.cdn.cdpr.app/media/assets/766/CP2077_UE_KV_9x16_RGB_clean_v1.png` | Mobile home hero |
+| `hero-ultimate-edition-animation.webm` | `https://cdn-l-cyberpunk.cdprojektred.com/video/CP2077_UE_KV_Animation_1920x1080.webm` | Local 1920x1080, 10-second home hero animation; static poster remains reduced-motion fallback |
 | `night-city-vista-zh.png` | `https://press.cdn.cdpr.app/media/assets/800/CP77_UE_NS2_Night_City_Vista_ZHS_16x9.png` | Project card fallback |
 | `black-sapphire-clean.png` | `https://press.cdn.cdpr.app/media/assets/800/Cyberpunk2077_NS2_Black_Sapphire_1920x1080_CLEAN.png` | Project card fallback |
 | `japantown-parade-clean.png` | `https://press.cdn.cdpr.app/media/assets/800/Cyberpunk2077_NS2_Japantown_Parade_1920x1080_CLEAN_EN.png` | Project card fallback |
@@ -26,9 +27,9 @@ The logo file was supplied by the site owner for use in this personal portfolio:
 | `night-city-day-clean.png` | `https://press.cdn.cdpr.app/media/assets/808/Cyberpunk2077_Mac_Night_City_at_Day_CLEAN_EN.png` | Future archive/gallery visual |
 | `street-view-clean.png` | `https://press.cdn.cdpr.app/media/assets/808/Cyberpunk2077_Mac_Street_View_CLEAN_EN.png` | Project card fallback |
 
-## UI derivatives
+## Editorial derivatives
 
-The following derivatives are deterministic crops/resizes of the files above. They are optimized for their exact UI slots; the originals remain untouched.
+The following derivatives are deterministic crops/resizes of the official media above. They are optimized for editorial image slots; the originals remain untouched.
 
 | Local file | Derivation | Intended use |
 | --- | --- | --- |
@@ -43,27 +44,27 @@ The following derivatives are deterministic crops/resizes of the files above. Th
 | `../ui/card-johnny.webp` | Center crop from 8:5 to 16:9, resized to 1200x675 WebP | Future archive card |
 | `../ui/card-night-city-day.webp` | Center crop from 8:5 to 16:9, resized to 1200x675 WebP | Future archive card |
 
-## User-supplied UI atlas assets
+## Archived user-supplied UI references
 
-The original files are preserved in `../ui/source/`. They were supplied with the design brief and are treated as reference UI artwork, not as official CD PROJEKT RED press-kit material.
+The original files are preserved in `../ui/source/`. They were supplied with the design brief and are treated as offline references, not as official CD PROJEKT RED press-kit material. Neither the atlas files nor their crops are used by the active theme.
 
-| Local file | Dimensions | Use in the theme |
+| Local file | Dimensions | Former use (archived, not rendered) |
 | --- | ---: | --- |
 | `../ui/source/icons-symbol-sheet.png` | 2048x1365 | Transparent processed atlas used as the signal-strip symbol texture |
 | `../ui/source/hud-wide-sheet.png` | 2800x1387 | Compressed HUD atlas used as the telemetry section background |
 | `../ui/source/hud-vertical-sheet.png` | 1024x1480 | Compressed vertical atlas used as the telemetry side rail |
 | `../ui/source/hud-telemetry-sheet.png` | 1200x675 | Compressed telemetry panel displayed in the homepage interface section |
 
-Processed runtime files:
+Processed reference copies (not runtime assets):
 
 - `../ui/icons-symbol-sheet-transparent.png`
 - `../ui/hud-wide-sheet.webp`
 - `../ui/hud-vertical-sheet.webp`
 - `../ui/hud-telemetry.webp`
 
-## YOYO runtime crops
+## Deprecated YOYO UI crops
 
-The current YOYO redesign uses deterministic crops of the user-supplied atlases. These files are kept separate from the legacy CP2077 derivatives above and are referenced by the live theme templates.
+These deterministic crops are retained for project history only. The active theme no longer references them as controls, button skins, navigation arrows, modal frames, badges, backgrounds, or panel decoration.
 
 | Local file | Source crop | Intended use |
 | --- | --- | --- |
@@ -89,7 +90,7 @@ The current YOYO redesign uses deterministic crops of the user-supplied atlases.
 | `../ui/derived/hud-loading-bar-clean.png` | `../ui/source/hud-wide-sheet.png` crop `x=1990,y=670,w=310,h=35` | Single striped loading/status bar without label text |
 | `../ui/derived/logo-tight-transparent.png` | `../official/logo-cyberpunk-2077-user.png` crop `x=0,y=365,w=2048,h=560`, resize to 1320x360, chroma-key `#272322` | Header theme mark without a matte |
 
-The single-control crops can be regenerated with `tools/cyberpunk-ui-crops.ps1`; the script requires `ffmpeg` and keeps the source atlas unchanged.
+The archival crops can be regenerated with `tools/cyberpunk-ui-crops.ps1`; the script requires `ffmpeg` and keeps the source atlas unchanged.
 
 ## Usage note
 

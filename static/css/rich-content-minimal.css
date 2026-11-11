@@ -1,0 +1,36 @@
+/* Minimal family: paper-like evidence, thin rules, and calm reading density. */
+body.minimal-page .rich-code-frame,
+body.minimal-page .rich-terminal {
+  border-color: var(--paper-line, var(--line, #d8d4c9));
+  border-radius: 0;
+  background: #242a2f;
+  box-shadow: none;
+}
+body.minimal-page .rich-code-toolbar,
+body.minimal-page .rich-terminal-toolbar {
+  min-height: 36px;
+  padding-inline: 12px;
+  border-bottom-color: rgb(255 255 255 / 16%);
+  background: rgb(255 255 255 / 6%);
+  font-family: ui-monospace, monospace;
+}
+body.minimal-page .rich-code-language { color: #d5d9d7; }
+body.minimal-page .rich-code-copy { border-color: rgb(255 255 255 / 30%); border-radius: 0; color: #f1f3f1; }
+body.minimal-page .rich-code-copy:hover,
+body.minimal-page .rich-code-copy:focus-visible { border-color: var(--paper-accent, var(--accent, #a2472d)); color: var(--paper-accent, var(--accent, #a2472d)); }
+body.minimal-page .rich-code-body pre code,
+body.minimal-page .rich-terminal-output { font-size: 12px !important; line-height: 1.75 !important; }
+body.minimal-page .rich-code-highlight pre code > .line > .ln { color: #8e9896; }
+body.minimal-page .rich-terminal { background: #1f2529; }
+body.minimal-page .rich-terminal-toolbar { background: #2b3236; }
+body.minimal-page .rich-terminal-meta { color: var(--paper-accent, var(--accent, #a2472d)); }
+body.minimal-page .rich-diagram { padding: 0 0 12px; border: 0; border-bottom: 1px solid var(--paper-line, var(--line, #d8d4c9)); border-radius: 0; background: transparent; }
+body.minimal-page .rich-diagram-source { padding-top: 12px; border-top: 0; }
+body.minimal-page .rich-diagram-source summary { color: var(--paper-accent, var(--accent, #a2472d)); font-family: ui-monospace, monospace; }
+body.minimal-page .rich-media-caption { color: var(--paper-muted, var(--muted, #77746a)); font-family: ui-monospace, monospace; font-size: 10px; }
+body.minimal-page .rich-table-wrapper { border-block: 1px solid var(--paper-line, var(--line, #d8d4c9)); }
+body.minimal-page .rich-table-wrapper th { background: color-mix(in srgb, var(--paper-line, #d8d4c9) 42%, transparent); font-family: ui-monospace, monospace; font-size: 11px; font-weight: 600; }
+body.minimal-page .rich-table-wrapper th,
+body.minimal-page .rich-table-wrapper td { border-color: var(--paper-line, var(--line, #d8d4c9)); }
+body.minimal-page .rich-image-figure { margin-block: 2.8rem; }
+body.minimal-page .rich-image-link img { border-radius: 0; }

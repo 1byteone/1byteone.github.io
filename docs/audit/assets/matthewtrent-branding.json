@@ -1,0 +1,175 @@
+{
+  "branding": {
+    "colorScheme": "light",
+    "fonts": [
+      {
+        "family": "Twemoji Country Flags",
+        "role": "body"
+      }
+    ],
+    "colors": {
+      "primary": "#27272A",
+      "accent": "#27272A",
+      "background": "#F8F8F8",
+      "textPrimary": "#27272A",
+      "link": "#27272A"
+    },
+    "typography": {
+      "fontFamilies": {
+        "primary": "Twemoji Country Flags",
+        "heading": "Twemoji Country Flags"
+      },
+      "fontStacks": {
+        "heading": [
+          "Twemoji Country Flags",
+          "Inter",
+          "Inter Fallback",
+          "-apple-system",
+          "BlinkMacSystemFont",
+          "system-ui",
+          "Segoe UI",
+          "Roboto",
+          "Helvetica Neue",
+          "Arial",
+          "sans-serif"
+        ],
+        "body": [
+          "Twemoji Country Flags",
+          "Inter",
+          "Inter Fallback",
+          "-apple-system",
+          "BlinkMacSystemFont",
+          "system-ui",
+          "Segoe UI",
+          "Roboto",
+          "Helvetica Neue",
+          "Arial",
+          "sans-serif"
+        ],
+        "paragraph": [
+          "Twemoji Country Flags",
+          "Inter",
+          "Inter Fallback",
+          "-apple-system",
+          "BlinkMacSystemFont",
+          "system-ui",
+          "Segoe UI",
+          "Roboto",
+          "Helvetica Neue",
+          "Arial",
+          "sans-serif"
+        ]
+      },
+      "fontSizes": {
+        "h1": "30px",
+        "h2": "30px",
+        "body": "14px"
+      }
+    },
+    "spacing": {
+      "baseUnit": 4,
+      "borderRadius": "2px"
+    },
+    "components": {
+      "input": {
+        "background": "#FFFFFF",
+        "textColor": "#27272A",
+        "borderColor": null,
+        "borderRadius": "0px",
+        "borderRadiusCorners": {
+          "topLeft": "0px",
+          "topRight": "0px",
+          "bottomRight": "0px",
+          "bottomLeft": "0px"
+        },
+        "shadow": "color(srgb 0.152941 0.152941 0.164706 / 0.05) 1px 0px 0px 0px inset, rgb(250, 250, 250) 1px 0px 0px 0px inset"
+      },
+      "buttonPrimary": {
+        "background": "#27272A",
+        "textColor": "#FFFFFF",
+        "borderRadius": "0px",
+        "borderRadiusCorners": {
+          "topLeft": "0px",
+          "topRight": "0px",
+          "bottomRight": "0px",
+          "bottomLeft": "0px"
+        },
+        "shadow": "none"
+      }
+    },
+    "images": {
+      "logo": "https://api.dicebear.com/9.x/notionists/svg?seed=a_s4kKHVdctN4XTsH0&backgroundColor=transparent",
+      "favicon": "https://matthewtrent.me/favicon.ico",
+      "ogImage": "https://matthewtrent.me/media/misc_landing_page/social_share.jpg",
+      "logoHref": "/",
+      "logoAlt": "Open / in a new tab — You (new) using Linux on Desktop in Chrome from Centreville, United States on / via google.com."
+    },
+    "personality": {
+      "tone": "professional",
+      "energy": "low",
+      "targetAudience": "developers"
+    },
+    "designSystem": {
+      "framework": "custom",
+      "componentLibrary": ""
+    },
+    "confidence": {
+      "buttons": 0.88,
+      "colors": 0.7200000000000001,
+      "overall": 0.8
+    },
+    "brandName": "Matthew Trent",
+    "logo": "https://api.dicebear.com/9.x/notionists/svg?seed=a_s4kKHVdctN4XTsH0&backgroundColor=transparent"
+  },
+  "metadata": {
+    "referrer": "strict-origin-when-cross-origin",
+    "ogLocale": "en_US",
+    "og:image:alt": "Matthew Trent's portfolio home page: a halftone portrait above his name, role, and highlights.",
+    "ogUrl": "https://matthewtrent.me/?s=yJ8jyssA",
+    "seznam-wmt": "NMrj6U6PegPqj1oGHyic20vjbihOuzY4",
+    "og:image:type": "image/jpeg",
+    "twitter:site": "@mattrltrent",
+    "twitter:card": "summary_large_image",
+    "og:title": "Matthew Trent | Software Engineer | Portfolio & Blog",
+    "og:type": "profile",
+    "twitter:title": "Matthew Trent | Software Engineer | Portfolio & Blog",
+    "description": "Matthew Trent is a software engineer in San Francisco and founding member of technical staff at Sorce (YC F25). Projects, experience, and technical writing.",
+    "title": "Matthew Trent | Software Engineer | Portfolio & Blog",
+    "apple-mobile-web-app-status-bar-style": "black-translucent",
+    "msvalidate.01": "88C421DD1FBDC4FC512F7CA89ECA2A8F",
+    "og:image:height": "973",
+    "twitter:creator": "@mattrltrent",
+    "twitter:image": "https://matthewtrent.me/media/misc_landing_page/social_share.jpg",
+    "ogSiteName": "Matthew Trent",
+    "viewport": "width=device-width, initial-scale=1, viewport-fit=cover",
+    "og:url": "https://matthewtrent.me/?s=yJ8jyssA",
+    "ogTitle": "Matthew Trent | Software Engineer | Portfolio & Blog",
+    "ogImage": "https://matthewtrent.me/media/misc_landing_page/social_share.jpg",
+    "language": "en",
+    "yandex-verification": "0a87004324397843",
+    "og:locale": "en_US",
+    "og:site_name": "Matthew Trent",
+    "og:image": "https://matthewtrent.me/media/misc_landing_page/social_share.jpg",
+    "twitter:image:alt": "Matthew Trent's portfolio home page: a halftone portrait above his name, role, and highlights.",
+    "twitter:description": "Matthew Trent is a software engineer in San Francisco and founding member of technical staff at Sorce (YC F25). Projects, experience, and technical writing.",
+    "ogDescription": "Matthew Trent is a software engineer in San Francisco and founding member of technical staff at Sorce (YC F25). Projects, experience, and technical writing.",
+    "og:description": "Matthew Trent is a software engineer in San Francisco and founding member of technical staff at Sorce (YC F25). Projects, experience, and technical writing.",
+    "robots": "index, follow",
+    "og:image:width": "1800",
+    "theme-color": [
+      "#f8f8f8",
+      "#f8f8f8"
+    ],
+    "favicon": "https://matthewtrent.me/favicon.ico",
+    "scrapeId": "01a1be31-9b20-7578-b781-ab4edde691ae",
+    "sourceURL": "https://matthewtrent.me/?utm_source=chatgpt.com&s=lu8ca6Ja",
+    "url": "https://matthewtrent.me/?s=yJ8jyssA",
+    "statusCode": 200,
+    "contentType": "text/html",
+    "timezone": "America/New_York",
+    "proxyUsed": "basic",
+    "indexId": "c5bd3657-4b55-42cd-9360-5816c7de7a72",
+    "creditsUsed": 1,
+    "concurrencyLimited": false
+  }
+}

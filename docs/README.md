@@ -5,6 +5,7 @@
 ## 文档分区
 
 - [`architecture/THEME_ARCHITECTURE.md`](architecture/THEME_ARCHITECTURE.md)：多主题内容模型、路由和发布策略。
+- [`architecture/RICH_ARTICLE_SYSTEM.md`](architecture/RICH_ARTICLE_SYSTEM.md)：共享内容、富媒体能力和多主题文章呈现设计。
 - [`design/ALXIAN_DESIGN.md`](design/ALXIAN_DESIGN.md)：Alxian 主题的视觉参考和设计令牌。
 - [`integrations/ALXIAN_API_INTEGRATION.md`](integrations/ALXIAN_API_INTEGRATION.md)：Alxian 交互 API 契约和静态回退机制。
 - [`delivery/`](delivery/)：交付结果和验收记录。

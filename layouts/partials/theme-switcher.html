@@ -1,7 +1,7 @@
 {{- $zh := hasPrefix .Lang "zh" -}}
 {{- $themes := .Site.Data.theme_registry.themes -}}
 {{- $catalog := where $themes "id" "ne" "ai-engineering" -}}
-{{- $activeTheme := lower (default "minimal" (index .Site.Params "site_theme")) -}}
+{{- $activeTheme := lower (default "ai-terminal" (index .Site.Params "site_theme")) -}}
 {{- $activeVariant := lower (default "minimal" (index .Site.Params "minimal_variant")) -}}
 {{- $activeID := $activeTheme -}}
 {{- if and (eq $activeTheme "minimal") (ne $activeVariant "minimal") -}}{{- $activeID = printf "minimal-%s" $activeVariant -}}{{- end -}}
@@ -14,7 +14,6 @@
     {{- $activeLabel = .label -}}
     {{- if and $zh .label_zh -}}{{- $activeLabel = .label_zh -}}{{- end -}}
     {{- $activePath = default "/" .preview_path -}}
-    {{- if and hugo.IsServer .dev_preview_path -}}{{- $activePath = .dev_preview_path -}}{{- end -}}
   {{- end -}}
 {{- end -}}
 {{- $languageSuffix := "" -}}
@@ -53,7 +52,6 @@
           {{- if and $zh .label_zh -}}{{- $label = .label_zh -}}{{- end -}}
           {{- if and $zh .description_zh -}}{{- $description = .description_zh -}}{{- end -}}
           {{- $path := default "/" .preview_path -}}
-          {{- if and hugo.IsServer .dev_preview_path -}}{{- $path = .dev_preview_path -}}{{- end -}}
           {{- $selectionID := .id -}}
           {{- if and (eq .id "minimal") (eq $activeVariant "minimal") -}}{{- $selectionID = "minimal" -}}{{- else if and (eq .family "minimal") (ne .id "minimal") -}}{{- $selectionID = printf "minimal-%s" .variant -}}{{- end -}}
           <span data-theme-option data-theme-id="{{ $selectionID }}" data-theme-label="{{ $label }}" data-theme-description="{{ $description }}" data-theme-path="{{ printf "%s%s" $path $languageSuffix }}"></span>

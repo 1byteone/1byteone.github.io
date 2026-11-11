@@ -294,6 +294,7 @@
 
   const initCodeBlocks = () => {
     document.querySelectorAll(".et-prose pre").forEach((pre) => {
+      if (pre.closest("[data-rich-code], [data-rich-terminal]")) return;
       const code = pre.querySelector("code");
       if (!code || pre.dataset.enhanced === "true") return;
       pre.dataset.enhanced = "true";

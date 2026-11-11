@@ -1,0 +1,25 @@
+{{- $language := lower (default "text" .Type) -}}
+{{- $options := merge .Options (dict "wrapperClass" "rich-code-highlight") -}}
+{{- if not (isset $options "lineNos") -}}
+  {{- $options = merge $options (dict "lineNos" "inline") -}}
+{{- end -}}
+{{- if not (transform.CanHighlight .Type) -}}
+  {{- $options = merge $options (dict "type" "text") -}}
+{{- end -}}
+{{- $rendered := transform.HighlightCodeBlock . $options -}}
+{{- $label := $language -}}
+{{- $title := index .Attributes "title" -}}
+{{- if eq $language "sh" -}}{{- $label = "shell" -}}{{- end -}}
+{{- if eq $language "js" -}}{{- $label = "javascript" -}}{{- end -}}
+{{- if eq $language "ts" -}}{{- $label = "typescript" -}}{{- end -}}
+{{ partial "rich-content/assets.html" .Page }}
+<div class="rich-code-frame" data-rich-code data-rich-code-language="{{ $label }}">
+  <div class="rich-code-toolbar">
+    <span class="rich-code-language">{{ with $title }}{{ . }} · {{ end }}{{ $label }}</span>
+    <button type="button" class="rich-code-copy" data-rich-code-copy>{{ if eq .Page.Language.Lang "zh" }}复制{{ else }}Copy{{ end }}</button>
+  </div>
+  <div class="rich-code-body">
+    {{- $rendered.Wrapped -}}
+  </div>
+  <textarea class="rich-code-source" data-rich-code-source hidden readonly>{{ .Inner | htmlEscape }}</textarea>
+</div>

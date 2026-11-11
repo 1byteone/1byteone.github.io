@@ -14,5 +14,6 @@
   <meta property="og:description" content="{{ .Description | default .Summary | plainify | htmlEscape }}">
   <meta property="og:url" content="{{ .Permalink }}">
   <link rel="stylesheet" href="{{ "css/engineer-terminal.css" | relURL }}">
+  {{ partial "rich-content/head.html" . }}
   <title>{{ if .IsHome }}YOYO Engineering Lab{{ else }}{{ .Title }} · YOYO Engineering Lab{{ end }}</title>
 </head>

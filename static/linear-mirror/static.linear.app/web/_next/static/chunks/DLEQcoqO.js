@@ -1,0 +1,1 @@
+var r;import{o as s}from"./C_JJxWoe.js";import{ai as o}from"./DipWGRuU.js";import{t}from"./C91hS4zJ.js";import{b as e}from"./D-BNo7-q2.js";import{a}from"./Dv_GumD7.js";r=s(o(),1).forwardRef(function(r,s){const{render:o,className:m,style:i,id:f,...p}=r,n=a(),d=e(f);return n.useSyncedValueWithCleanup("titleElementId",d),t("h2",r,{ref:s,props:[{id:d},p]})});export{r as t};

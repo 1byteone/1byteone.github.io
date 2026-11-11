@@ -19,6 +19,38 @@
   const managers = Array.from(document.querySelectorAll("[data-theme-manager]"));
   if (!managers.length) return;
 
+  // The manager can live at the top of the document (Minimal family) or
+  // inside a right-aligned header (the other themes). Keep the fixed panel
+  // inside the viewport in both cases instead of anchoring it to a narrow
+  // parent and allowing it to be clipped.
+  const positionPanel = (manager) => {
+    if (!manager.open) return;
+    const panel = manager.querySelector(".theme-manager-panel");
+    if (!panel) return;
+    const anchor = manager.getBoundingClientRect();
+    const padding = 12;
+    const width = panel.getBoundingClientRect().width || Math.min(360, window.innerWidth - padding * 2);
+    const left = Math.max(padding, Math.min(anchor.right - width, window.innerWidth - width - padding));
+    const panelHeight = Math.min(panel.scrollHeight || 0, Math.max(180, window.innerHeight - 72));
+    let top = anchor.bottom + 8;
+    if (panelHeight && top + panelHeight > window.innerHeight - padding) {
+      top = Math.max(padding, anchor.top - panelHeight - 8);
+    }
+    panel.style.setProperty("--tm-panel-left", `${Math.round(left)}px`);
+    panel.style.setProperty("--tm-panel-top", `${Math.round(top)}px`);
+  };
+
+  const positionOpenPanels = () => managers.forEach(positionPanel);
+  const schedulePosition = (manager) => window.requestAnimationFrame(() => positionPanel(manager));
+
+  managers.forEach((manager) => {
+    manager.addEventListener("toggle", () => {
+      if (manager.open) schedulePosition(manager);
+    });
+  });
+  window.addEventListener("resize", positionOpenPanels, { passive: true });
+  window.addEventListener("scroll", positionOpenPanels, { passive: true });
+
   const readPreference = () => {
     try { return window.localStorage.getItem(preferenceKey) || ""; } catch { return ""; }
   };
@@ -35,6 +67,14 @@
   };
 
   const writeList = (key, list) => writeValue(key, JSON.stringify(list));
+
+  // Language links must keep the visual theme selected on the source page.
+  // Without this, a persisted default (for example Cyberpunk) can redirect
+  // the translated home route before the user gets to read it.
+  document.addEventListener("click", (event) => {
+    const languageLink = event.target?.closest?.("[data-theme-language-switch]");
+    if (languageLink?.dataset.themeId) writeValue(preferenceKey, languageLink.dataset.themeId);
+  }, true);
 
   const themeOptions = (manager) => Array.from(manager.querySelectorAll("[data-theme-option]"));
   const getTheme = (manager, id) => themeOptions(manager).find((option) => option.dataset.themeId === id);

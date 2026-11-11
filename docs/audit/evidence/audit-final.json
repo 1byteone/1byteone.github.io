@@ -1,0 +1,2716 @@
+{
+  "generatedAt": "2026-11-02T12:23:35.553Z",
+  "baseUrl": "http://127.0.0.1:1318",
+  "results": [
+    {
+      "route": "/",
+      "viewport": "desktop",
+      "status": 200,
+      "screenshot": "docs/audit/evidence/home-desktop.png",
+      "consoleErrors": [],
+      "requestFailures": [],
+      "state": {
+        "title": "YOYO / FIELD NOTES",
+        "headings": [
+          "最近使用",
+          "收藏",
+          "检索工程档案",
+          "现场记录",
+          "最新记录",
+          "生产级 Spring Boot 架构：可观测的服务边界",
+          "生产级 RAG 架构：权限、版本与可观测性",
+          "生产级 MySQL 高并发架构：缓存、读写分离与分片",
+          "项目档案",
+          "分布式微云商城",
+          "农业知识问答系统",
+          "杨劲松"
+        ],
+        "scrollWidth": 1440,
+        "viewportWidth": 1440,
+        "bodyHeight": 2818,
+        "navLinks": [
+          {
+            "text": "00首页",
+            "current": "page"
+          },
+          {
+            "text": "01文章",
+            "current": null
+          },
+          {
+            "text": "02项目",
+            "current": null
+          },
+          {
+            "text": "03爱好",
+            "current": null
+          },
+          {
+            "text": "04技术栈",
+            "current": null
+          },
+          {
+            "text": "05关于",
+            "current": null
+          }
+        ],
+        "images": [
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/derived/logo-tight-transparent.png",
+            "alt": "Cyberpunk 2077",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/hero-desktop.webp",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/spring-boot-production-architecture/featured.png",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/rag-production-architecture/featured.png",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/mysql-high-concurrency-architecture/featured.png",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/projects/ecommerce-rag-search/featured.png",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/projects/agricultural-qa-agent/featured.png",
+            "alt": "",
+            "loaded": true
+          }
+        ],
+        "interactiveCount": 17,
+        "undersizedTargets": [],
+        "focusStyle": {
+          "outlineStyle": "solid",
+          "outlineWidth": "2px",
+          "outlineColor": "rgb(0, 240, 255)",
+          "boxShadow": "none"
+        },
+        "contrast": {
+          "heroButton": 16.568641792653487,
+          "bodyText": null,
+          "note": "NOT MEASURED: sample may use layered/translucent or image-backed surfaces; run rendered contrast sampling before claiming conformance."
+        },
+        "fps": 61,
+        "vitals": {
+          "lcp": 680,
+          "cls": 0,
+          "inp": null
+        },
+        "hasVideo": true,
+        "videoDisplay": "block",
+        "commandHidden": true,
+        "menuExpanded": "false"
+      },
+      "search": {
+        "open": true,
+        "resultCount": 12,
+        "focus": true,
+        "closed": true
+      }
+    },
+    {
+      "route": "/blog/",
+      "viewport": "desktop",
+      "status": 200,
+      "screenshot": "docs/audit/evidence/blog-desktop.png",
+      "consoleErrors": [],
+      "requestFailures": [],
+      "state": {
+        "title": "技术博客 / YOYO ARCHIVE",
+        "headings": [
+          "最近使用",
+          "收藏",
+          "检索工程档案",
+          "技术博客",
+          "技术博客",
+          "生产级 Spring Boot 架构：可观测的服务边界",
+          "生产级 RAG 架构：权限、版本与可观测性",
+          "生产级 MySQL 高并发架构：缓存、读写分离与分片",
+          "Spring Boot 应用架构：Controller 到 Database",
+          "Spring Boot 请求生命周期：从 HTTP 到响应",
+          "Spring Boot IoC 与依赖注入：让对象可替换",
+          "RAG 基础管道：从文档到可引用答案"
+        ],
+        "scrollWidth": 1440,
+        "viewportWidth": 1440,
+        "bodyHeight": 6924,
+        "navLinks": [
+          {
+            "text": "00首页",
+            "current": null
+          },
+          {
+            "text": "01文章",
+            "current": "page"
+          },
+          {
+            "text": "02项目",
+            "current": null
+          },
+          {
+            "text": "03爱好",
+            "current": null
+          },
+          {
+            "text": "04技术栈",
+            "current": null
+          },
+          {
+            "text": "05关于",
+            "current": null
+          }
+        ],
+        "images": [
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/derived/logo-tight-transparent.png",
+            "alt": "Cyberpunk 2077",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/spring-boot-production-architecture/featured.png",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/rag-production-architecture/featured.png",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/mysql-high-concurrency-architecture/featured.png",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/spring-boot-application-architecture/featured.png",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/spring-boot-request-lifecycle/featured.png",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/spring-boot-ioc-dependency-injection/featured.png",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/rag-basic-pipeline/featured.png",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/rag-retriever-optimization/featured.png",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/rag-embedding-vector-database/featured.png",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/python-runtime-architecture/featured.png",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/python-data-structures-decorators/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/python-asyncio-concurrency/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/python-ai-engineering/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/openai-tool-calling/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/openai-structured-output/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/openai-multimodal-ai/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/openai-api-fundamentals/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/mysql-index-btree/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/mysql-transaction-mvcc/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/mysql-architecture/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/langchain-core-architecture/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/langchain-tool-calling-agent/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/langchain-prompt-chain/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/langchain-memory-multiturn/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/jvm-memory-gc/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/java-collections-hashmap/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/java-core-architecture/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/java-concurrency/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/fastapi-project-architecture/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/fastapi-request-response-pydantic/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/fastapi-async-dependency-injection/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/fastapi-ai-streaming-api/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/hallucination-prevention/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/building-ai-agents/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/building-rag-pipeline/featured.png",
+            "alt": "",
+            "loaded": false
+          }
+        ],
+        "interactiveCount": 13,
+        "undersizedTargets": [],
+        "focusStyle": {
+          "outlineStyle": "solid",
+          "outlineWidth": "2px",
+          "outlineColor": "rgb(0, 240, 255)",
+          "boxShadow": "none"
+        },
+        "contrast": {
+          "heroButton": null,
+          "bodyText": null,
+          "note": "NOT MEASURED: sample may use layered/translucent or image-backed surfaces; run rendered contrast sampling before claiming conformance."
+        },
+        "fps": 61,
+        "vitals": {
+          "lcp": 404,
+          "cls": 0.00002383761935763889,
+          "inp": null
+        },
+        "hasVideo": false,
+        "videoDisplay": null,
+        "commandHidden": true,
+        "menuExpanded": "false"
+      },
+      "search": {
+        "open": true,
+        "resultCount": 12,
+        "focus": true,
+        "closed": true
+      }
+    },
+    {
+      "route": "/projects/",
+      "viewport": "desktop",
+      "status": 200,
+      "screenshot": "docs/audit/evidence/projects-desktop.png",
+      "consoleErrors": [],
+      "requestFailures": [],
+      "state": {
+        "title": "项目作品 / YOYO ARCHIVE",
+        "headings": [
+          "最近使用",
+          "收藏",
+          "检索工程档案",
+          "项目作品",
+          "项目作品",
+          "分布式微云商城",
+          "农业知识问答系统"
+        ],
+        "scrollWidth": 1440,
+        "viewportWidth": 1440,
+        "bodyHeight": 976,
+        "navLinks": [
+          {
+            "text": "00首页",
+            "current": null
+          },
+          {
+            "text": "01文章",
+            "current": null
+          },
+          {
+            "text": "02项目",
+            "current": "page"
+          },
+          {
+            "text": "03爱好",
+            "current": null
+          },
+          {
+            "text": "04技术栈",
+            "current": null
+          },
+          {
+            "text": "05关于",
+            "current": null
+          }
+        ],
+        "images": [
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/derived/logo-tight-transparent.png",
+            "alt": "Cyberpunk 2077",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/projects/ecommerce-rag-search/featured.png",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/projects/agricultural-qa-agent/featured.png",
+            "alt": "",
+            "loaded": true
+          }
+        ],
+        "interactiveCount": 13,
+        "undersizedTargets": [],
+        "focusStyle": {
+          "outlineStyle": "solid",
+          "outlineWidth": "2px",
+          "outlineColor": "rgb(0, 240, 255)",
+          "boxShadow": "none"
+        },
+        "contrast": {
+          "heroButton": null,
+          "bodyText": null,
+          "note": "NOT MEASURED: sample may use layered/translucent or image-backed surfaces; run rendered contrast sampling before claiming conformance."
+        },
+        "fps": 61,
+        "vitals": {
+          "lcp": 80,
+          "cls": 0.0005704776298198517,
+          "inp": null
+        },
+        "hasVideo": false,
+        "videoDisplay": null,
+        "commandHidden": true,
+        "menuExpanded": "false"
+      },
+      "search": {
+        "open": true,
+        "resultCount": 12,
+        "focus": true,
+        "closed": true
+      }
+    },
+    {
+      "route": "/hobby/",
+      "viewport": "desktop",
+      "status": 200,
+      "screenshot": "docs/audit/evidence/hobby-desktop.png",
+      "consoleErrors": [],
+      "requestFailures": [],
+      "state": {
+        "title": "夜之城兴趣档案 / YOYO ARCHIVE",
+        "headings": [
+          "最近使用",
+          "收藏",
+          "检索工程档案",
+          "夜之城兴趣档案",
+          "人物档案",
+          "城市地点",
+          "阵营势力",
+          "剧情故事",
+          "音乐与电台",
+          "本地图集",
+          "故事与音乐索引",
+          "夜之城时间线"
+        ],
+        "scrollWidth": 1440,
+        "viewportWidth": 1440,
+        "bodyHeight": 4384,
+        "navLinks": [
+          {
+            "text": "00首页",
+            "current": null
+          },
+          {
+            "text": "01文章",
+            "current": null
+          },
+          {
+            "text": "02项目",
+            "current": null
+          },
+          {
+            "text": "03爱好",
+            "current": "page"
+          },
+          {
+            "text": "04技术栈",
+            "current": null
+          },
+          {
+            "text": "05关于",
+            "current": null
+          }
+        ],
+        "images": [
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/derived/logo-tight-transparent.png",
+            "alt": "Cyberpunk 2077",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-johnny.webp",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-night-city.webp",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-japantown.webp",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-black-sapphire.webp",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-street-view.webp",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/hero-desktop.webp",
+            "alt": "Ultimate Edition / Hero",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-hero-vertical.webp",
+            "alt": "Ultimate Edition / Vertical",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-johnny.webp",
+            "alt": "Johnny Silverhand",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-night-city.webp",
+            "alt": "Night City Vista",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-night-city-day.webp",
+            "alt": "Night City / Day",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-japantown.webp",
+            "alt": "Japantown Parade",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-black-sapphire.webp",
+            "alt": "Black Sapphire",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-street-view.webp",
+            "alt": "Street View",
+            "loaded": true
+          }
+        ],
+        "interactiveCount": 41,
+        "undersizedTargets": [],
+        "focusStyle": {
+          "outlineStyle": "solid",
+          "outlineWidth": "2px",
+          "outlineColor": "rgb(0, 240, 255)",
+          "boxShadow": "none"
+        },
+        "contrast": {
+          "heroButton": null,
+          "bodyText": null,
+          "note": "NOT MEASURED: sample may use layered/translucent or image-backed surfaces; run rendered contrast sampling before claiming conformance."
+        },
+        "fps": 62,
+        "vitals": {
+          "lcp": 500,
+          "cls": 0,
+          "inp": null
+        },
+        "hasVideo": false,
+        "videoDisplay": null,
+        "commandHidden": true,
+        "menuExpanded": "false"
+      },
+      "search": {
+        "open": true,
+        "resultCount": 12,
+        "focus": true,
+        "closed": true
+      }
+    },
+    {
+      "route": "/tech-stack/",
+      "viewport": "desktop",
+      "status": 200,
+      "screenshot": "docs/audit/evidence/tech-stack-desktop.png",
+      "consoleErrors": [],
+      "requestFailures": [],
+      "state": {
+        "title": "16 个技术栈学习路线 / YOYO ARCHIVE",
+        "headings": [
+          "最近使用",
+          "收藏",
+          "检索工程档案",
+          "16 个技术栈学习路线",
+          "16 个技术栈学习路线",
+          "spring-boot 学习路线",
+          "rocketmq 学习路线",
+          "redis 学习路线",
+          "rag 学习路线",
+          "python 学习路线",
+          "openai 学习路线",
+          "mysql 学习路线"
+        ],
+        "scrollWidth": 1440,
+        "viewportWidth": 1440,
+        "bodyHeight": 3237,
+        "navLinks": [
+          {
+            "text": "00首页",
+            "current": null
+          },
+          {
+            "text": "01文章",
+            "current": null
+          },
+          {
+            "text": "02项目",
+            "current": null
+          },
+          {
+            "text": "03爱好",
+            "current": null
+          },
+          {
+            "text": "04技术栈",
+            "current": "page"
+          },
+          {
+            "text": "05关于",
+            "current": null
+          }
+        ],
+        "images": [
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/derived/logo-tight-transparent.png",
+            "alt": "Cyberpunk 2077",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-johnny.webp",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-japantown.webp",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-night-city-day.webp",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-street-view.webp",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-japantown.webp",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-japantown.webp",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-japantown.webp",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-japantown.webp",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-black-sapphire.webp",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-night-city.webp",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-street-view.webp",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-japantown.webp",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-street-view.webp",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-night-city-day.webp",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-japantown.webp",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-black-sapphire.webp",
+            "alt": "",
+            "loaded": false
+          }
+        ],
+        "interactiveCount": 27,
+        "undersizedTargets": [],
+        "focusStyle": {
+          "outlineStyle": "solid",
+          "outlineWidth": "2px",
+          "outlineColor": "rgb(0, 240, 255)",
+          "boxShadow": "none"
+        },
+        "contrast": {
+          "heroButton": null,
+          "bodyText": null,
+          "note": "NOT MEASURED: sample may use layered/translucent or image-backed surfaces; run rendered contrast sampling before claiming conformance."
+        },
+        "fps": 61,
+        "vitals": {
+          "lcp": 144,
+          "cls": 0.0005162659193753214,
+          "inp": null
+        },
+        "hasVideo": false,
+        "videoDisplay": null,
+        "commandHidden": true,
+        "menuExpanded": "false"
+      },
+      "search": {
+        "open": true,
+        "resultCount": 12,
+        "focus": true,
+        "closed": true
+      }
+    },
+    {
+      "route": "/about/",
+      "viewport": "desktop",
+      "status": 200,
+      "screenshot": "docs/audit/evidence/about-desktop.png",
+      "consoleErrors": [],
+      "requestFailures": [],
+      "state": {
+        "title": "关于 / YOYO ARCHIVE",
+        "headings": [
+          "最近使用",
+          "收藏",
+          "检索工程档案",
+          "杨劲松",
+          "关注方向",
+          "教育档案",
+          "个人时间线",
+          "软件工程（本科）",
+          "Java后端 / AI应用开发实习生",
+          "个人工程地图",
+          "后端基础",
+          "检索系统"
+        ],
+        "scrollWidth": 1440,
+        "viewportWidth": 1440,
+        "bodyHeight": 4289,
+        "navLinks": [
+          {
+            "text": "00首页",
+            "current": null
+          },
+          {
+            "text": "01文章",
+            "current": null
+          },
+          {
+            "text": "02项目",
+            "current": null
+          },
+          {
+            "text": "03爱好",
+            "current": null
+          },
+          {
+            "text": "04技术栈",
+            "current": null
+          },
+          {
+            "text": "05关于",
+            "current": "page"
+          }
+        ],
+        "images": [
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/derived/logo-tight-transparent.png",
+            "alt": "Cyberpunk 2077",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-night-city.webp",
+            "alt": "",
+            "loaded": true
+          }
+        ],
+        "interactiveCount": 41,
+        "undersizedTargets": [],
+        "focusStyle": {
+          "outlineStyle": "solid",
+          "outlineWidth": "2px",
+          "outlineColor": "rgb(0, 240, 255)",
+          "boxShadow": "none"
+        },
+        "contrast": {
+          "heroButton": 16.568641792653487,
+          "bodyText": null,
+          "note": "NOT MEASURED: no representative body-copy sample on this route."
+        },
+        "fps": 61,
+        "vitals": {
+          "lcp": 280,
+          "cls": 0.0015927958756644374,
+          "inp": null
+        },
+        "hasVideo": false,
+        "videoDisplay": null,
+        "commandHidden": true,
+        "menuExpanded": "false"
+      },
+      "search": {
+        "open": true,
+        "resultCount": 12,
+        "focus": true,
+        "closed": true
+      },
+      "aboutTarget": "SIGNAL: STABLE",
+      "aboutMap": {
+        "active": "westbrook",
+        "panel": "westbrook"
+      },
+      "aboutTerminal": "HELP / about · projects · skills · experience · contact · clear"
+    },
+    {
+      "route": "/",
+      "viewport": "tablet",
+      "status": 200,
+      "screenshot": "docs/audit/evidence/home-tablet.png",
+      "consoleErrors": [],
+      "requestFailures": [],
+      "state": {
+        "title": "YOYO / FIELD NOTES",
+        "headings": [
+          "最近使用",
+          "收藏",
+          "检索工程档案",
+          "现场记录",
+          "最新记录",
+          "生产级 Spring Boot 架构：可观测的服务边界",
+          "生产级 RAG 架构：权限、版本与可观测性",
+          "生产级 MySQL 高并发架构：缓存、读写分离与分片",
+          "项目档案",
+          "分布式微云商城",
+          "农业知识问答系统",
+          "杨劲松"
+        ],
+        "scrollWidth": 1024,
+        "viewportWidth": 1024,
+        "bodyHeight": 2704,
+        "navLinks": [
+          {
+            "text": "00首页",
+            "current": "page"
+          },
+          {
+            "text": "01文章",
+            "current": null
+          },
+          {
+            "text": "02项目",
+            "current": null
+          },
+          {
+            "text": "03爱好",
+            "current": null
+          },
+          {
+            "text": "04技术栈",
+            "current": null
+          },
+          {
+            "text": "05关于",
+            "current": null
+          }
+        ],
+        "images": [
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/derived/logo-tight-transparent.png",
+            "alt": "Cyberpunk 2077",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/hero-desktop.webp",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/spring-boot-production-architecture/featured.png",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/rag-production-architecture/featured.png",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/mysql-high-concurrency-architecture/featured.png",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/projects/ecommerce-rag-search/featured.png",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/projects/agricultural-qa-agent/featured.png",
+            "alt": "",
+            "loaded": true
+          }
+        ],
+        "interactiveCount": 17,
+        "undersizedTargets": [],
+        "focusStyle": {
+          "outlineStyle": "solid",
+          "outlineWidth": "2px",
+          "outlineColor": "rgb(0, 240, 255)",
+          "boxShadow": "none"
+        },
+        "contrast": {
+          "heroButton": 16.568641792653487,
+          "bodyText": null,
+          "note": "NOT MEASURED: sample may use layered/translucent or image-backed surfaces; run rendered contrast sampling before claiming conformance."
+        },
+        "fps": 62,
+        "vitals": {
+          "lcp": 256,
+          "cls": 0,
+          "inp": null
+        },
+        "hasVideo": true,
+        "videoDisplay": "block",
+        "commandHidden": true,
+        "menuExpanded": "false"
+      }
+    },
+    {
+      "route": "/blog/",
+      "viewport": "tablet",
+      "status": 200,
+      "screenshot": "docs/audit/evidence/blog-tablet.png",
+      "consoleErrors": [],
+      "requestFailures": [],
+      "state": {
+        "title": "技术博客 / YOYO ARCHIVE",
+        "headings": [
+          "最近使用",
+          "收藏",
+          "检索工程档案",
+          "技术博客",
+          "技术博客",
+          "生产级 Spring Boot 架构：可观测的服务边界",
+          "生产级 RAG 架构：权限、版本与可观测性",
+          "生产级 MySQL 高并发架构：缓存、读写分离与分片",
+          "Spring Boot 应用架构：Controller 到 Database",
+          "Spring Boot 请求生命周期：从 HTTP 到响应",
+          "Spring Boot IoC 与依赖注入：让对象可替换",
+          "RAG 基础管道：从文档到可引用答案"
+        ],
+        "scrollWidth": 1024,
+        "viewportWidth": 1024,
+        "bodyHeight": 11469,
+        "navLinks": [
+          {
+            "text": "00首页",
+            "current": null
+          },
+          {
+            "text": "01文章",
+            "current": "page"
+          },
+          {
+            "text": "02项目",
+            "current": null
+          },
+          {
+            "text": "03爱好",
+            "current": null
+          },
+          {
+            "text": "04技术栈",
+            "current": null
+          },
+          {
+            "text": "05关于",
+            "current": null
+          }
+        ],
+        "images": [
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/derived/logo-tight-transparent.png",
+            "alt": "Cyberpunk 2077",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/spring-boot-production-architecture/featured.png",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/rag-production-architecture/featured.png",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/mysql-high-concurrency-architecture/featured.png",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/spring-boot-application-architecture/featured.png",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/spring-boot-request-lifecycle/featured.png",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/spring-boot-ioc-dependency-injection/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/rag-basic-pipeline/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/rag-retriever-optimization/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/rag-embedding-vector-database/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/python-runtime-architecture/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/python-data-structures-decorators/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/python-asyncio-concurrency/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/python-ai-engineering/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/openai-tool-calling/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/openai-structured-output/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/openai-multimodal-ai/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/openai-api-fundamentals/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/mysql-index-btree/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/mysql-transaction-mvcc/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/mysql-architecture/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/langchain-core-architecture/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/langchain-tool-calling-agent/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/langchain-prompt-chain/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/langchain-memory-multiturn/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/jvm-memory-gc/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/java-collections-hashmap/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/java-core-architecture/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/java-concurrency/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/fastapi-project-architecture/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/fastapi-request-response-pydantic/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/fastapi-async-dependency-injection/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/fastapi-ai-streaming-api/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/hallucination-prevention/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/building-ai-agents/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/building-rag-pipeline/featured.png",
+            "alt": "",
+            "loaded": false
+          }
+        ],
+        "interactiveCount": 12,
+        "undersizedTargets": [],
+        "focusStyle": {
+          "outlineStyle": "solid",
+          "outlineWidth": "2px",
+          "outlineColor": "rgb(0, 240, 255)",
+          "boxShadow": "none"
+        },
+        "contrast": {
+          "heroButton": null,
+          "bodyText": null,
+          "note": "NOT MEASURED: sample may use layered/translucent or image-backed surfaces; run rendered contrast sampling before claiming conformance."
+        },
+        "fps": 61,
+        "vitals": {
+          "lcp": 88,
+          "cls": 0.001095353936155637,
+          "inp": null
+        },
+        "hasVideo": false,
+        "videoDisplay": null,
+        "commandHidden": true,
+        "menuExpanded": "false"
+      }
+    },
+    {
+      "route": "/projects/",
+      "viewport": "tablet",
+      "status": 200,
+      "screenshot": "docs/audit/evidence/projects-tablet.png",
+      "consoleErrors": [],
+      "requestFailures": [],
+      "state": {
+        "title": "项目作品 / YOYO ARCHIVE",
+        "headings": [
+          "最近使用",
+          "收藏",
+          "检索工程档案",
+          "项目作品",
+          "项目作品",
+          "分布式微云商城",
+          "农业知识问答系统"
+        ],
+        "scrollWidth": 1024,
+        "viewportWidth": 1024,
+        "bodyHeight": 1119,
+        "navLinks": [
+          {
+            "text": "00首页",
+            "current": null
+          },
+          {
+            "text": "01文章",
+            "current": null
+          },
+          {
+            "text": "02项目",
+            "current": "page"
+          },
+          {
+            "text": "03爱好",
+            "current": null
+          },
+          {
+            "text": "04技术栈",
+            "current": null
+          },
+          {
+            "text": "05关于",
+            "current": null
+          }
+        ],
+        "images": [
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/derived/logo-tight-transparent.png",
+            "alt": "Cyberpunk 2077",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/projects/ecommerce-rag-search/featured.png",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/projects/agricultural-qa-agent/featured.png",
+            "alt": "",
+            "loaded": true
+          }
+        ],
+        "interactiveCount": 13,
+        "undersizedTargets": [],
+        "focusStyle": {
+          "outlineStyle": "solid",
+          "outlineWidth": "2px",
+          "outlineColor": "rgb(0, 240, 255)",
+          "boxShadow": "none"
+        },
+        "contrast": {
+          "heroButton": null,
+          "bodyText": null,
+          "note": "NOT MEASURED: sample may use layered/translucent or image-backed surfaces; run rendered contrast sampling before claiming conformance."
+        },
+        "fps": 61,
+        "vitals": {
+          "lcp": 72,
+          "cls": 0.0023673810452843704,
+          "inp": null
+        },
+        "hasVideo": false,
+        "videoDisplay": null,
+        "commandHidden": true,
+        "menuExpanded": "false"
+      }
+    },
+    {
+      "route": "/hobby/",
+      "viewport": "tablet",
+      "status": 200,
+      "screenshot": "docs/audit/evidence/hobby-tablet.png",
+      "consoleErrors": [],
+      "requestFailures": [],
+      "state": {
+        "title": "夜之城兴趣档案 / YOYO ARCHIVE",
+        "headings": [
+          "最近使用",
+          "收藏",
+          "检索工程档案",
+          "夜之城兴趣档案",
+          "人物档案",
+          "城市地点",
+          "阵营势力",
+          "剧情故事",
+          "音乐与电台",
+          "本地图集",
+          "故事与音乐索引",
+          "夜之城时间线"
+        ],
+        "scrollWidth": 1024,
+        "viewportWidth": 1024,
+        "bodyHeight": 4176,
+        "navLinks": [
+          {
+            "text": "00首页",
+            "current": null
+          },
+          {
+            "text": "01文章",
+            "current": null
+          },
+          {
+            "text": "02项目",
+            "current": null
+          },
+          {
+            "text": "03爱好",
+            "current": "page"
+          },
+          {
+            "text": "04技术栈",
+            "current": null
+          },
+          {
+            "text": "05关于",
+            "current": null
+          }
+        ],
+        "images": [
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/derived/logo-tight-transparent.png",
+            "alt": "Cyberpunk 2077",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-johnny.webp",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-night-city.webp",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-japantown.webp",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-black-sapphire.webp",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-street-view.webp",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/hero-desktop.webp",
+            "alt": "Ultimate Edition / Hero",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-hero-vertical.webp",
+            "alt": "Ultimate Edition / Vertical",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-johnny.webp",
+            "alt": "Johnny Silverhand",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-night-city.webp",
+            "alt": "Night City Vista",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-night-city-day.webp",
+            "alt": "Night City / Day",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-japantown.webp",
+            "alt": "Japantown Parade",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-black-sapphire.webp",
+            "alt": "Black Sapphire",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-street-view.webp",
+            "alt": "Street View",
+            "loaded": true
+          }
+        ],
+        "interactiveCount": 41,
+        "undersizedTargets": [],
+        "focusStyle": {
+          "outlineStyle": "solid",
+          "outlineWidth": "2px",
+          "outlineColor": "rgb(0, 240, 255)",
+          "boxShadow": "none"
+        },
+        "contrast": {
+          "heroButton": null,
+          "bodyText": null,
+          "note": "NOT MEASURED: sample may use layered/translucent or image-backed surfaces; run rendered contrast sampling before claiming conformance."
+        },
+        "fps": 62,
+        "vitals": {
+          "lcp": 288,
+          "cls": 0.001095353936155637,
+          "inp": null
+        },
+        "hasVideo": false,
+        "videoDisplay": null,
+        "commandHidden": true,
+        "menuExpanded": "false"
+      }
+    },
+    {
+      "route": "/tech-stack/",
+      "viewport": "tablet",
+      "status": 200,
+      "screenshot": "docs/audit/evidence/tech-stack-tablet.png",
+      "consoleErrors": [],
+      "requestFailures": [],
+      "state": {
+        "title": "16 个技术栈学习路线 / YOYO ARCHIVE",
+        "headings": [
+          "最近使用",
+          "收藏",
+          "检索工程档案",
+          "16 个技术栈学习路线",
+          "16 个技术栈学习路线",
+          "spring-boot 学习路线",
+          "rocketmq 学习路线",
+          "redis 学习路线",
+          "rag 学习路线",
+          "python 学习路线",
+          "openai 学习路线",
+          "mysql 学习路线"
+        ],
+        "scrollWidth": 1024,
+        "viewportWidth": 1024,
+        "bodyHeight": 3222,
+        "navLinks": [
+          {
+            "text": "00首页",
+            "current": null
+          },
+          {
+            "text": "01文章",
+            "current": null
+          },
+          {
+            "text": "02项目",
+            "current": null
+          },
+          {
+            "text": "03爱好",
+            "current": null
+          },
+          {
+            "text": "04技术栈",
+            "current": "page"
+          },
+          {
+            "text": "05关于",
+            "current": null
+          }
+        ],
+        "images": [
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/derived/logo-tight-transparent.png",
+            "alt": "Cyberpunk 2077",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-johnny.webp",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-japantown.webp",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-night-city-day.webp",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-street-view.webp",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-japantown.webp",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-japantown.webp",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-japantown.webp",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-japantown.webp",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-black-sapphire.webp",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-night-city.webp",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-street-view.webp",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-japantown.webp",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-street-view.webp",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-night-city-day.webp",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-japantown.webp",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-black-sapphire.webp",
+            "alt": "",
+            "loaded": false
+          }
+        ],
+        "interactiveCount": 12,
+        "undersizedTargets": [],
+        "focusStyle": {
+          "outlineStyle": "solid",
+          "outlineWidth": "2px",
+          "outlineColor": "rgb(0, 240, 255)",
+          "boxShadow": "none"
+        },
+        "contrast": {
+          "heroButton": null,
+          "bodyText": null,
+          "note": "NOT MEASURED: sample may use layered/translucent or image-backed surfaces; run rendered contrast sampling before claiming conformance."
+        },
+        "fps": 61,
+        "vitals": {
+          "lcp": 88,
+          "cls": 0.001095353936155637,
+          "inp": null
+        },
+        "hasVideo": false,
+        "videoDisplay": null,
+        "commandHidden": true,
+        "menuExpanded": "false"
+      }
+    },
+    {
+      "route": "/about/",
+      "viewport": "tablet",
+      "status": 200,
+      "screenshot": "docs/audit/evidence/about-tablet.png",
+      "consoleErrors": [],
+      "requestFailures": [],
+      "state": {
+        "title": "关于 / YOYO ARCHIVE",
+        "headings": [
+          "最近使用",
+          "收藏",
+          "检索工程档案",
+          "杨劲松",
+          "关注方向",
+          "教育档案",
+          "个人时间线",
+          "软件工程（本科）",
+          "Java后端 / AI应用开发实习生",
+          "个人工程地图",
+          "后端基础",
+          "检索系统"
+        ],
+        "scrollWidth": 1024,
+        "viewportWidth": 1024,
+        "bodyHeight": 4380,
+        "navLinks": [
+          {
+            "text": "00首页",
+            "current": null
+          },
+          {
+            "text": "01文章",
+            "current": null
+          },
+          {
+            "text": "02项目",
+            "current": null
+          },
+          {
+            "text": "03爱好",
+            "current": null
+          },
+          {
+            "text": "04技术栈",
+            "current": null
+          },
+          {
+            "text": "05关于",
+            "current": "page"
+          }
+        ],
+        "images": [
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/derived/logo-tight-transparent.png",
+            "alt": "Cyberpunk 2077",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-night-city.webp",
+            "alt": "",
+            "loaded": true
+          }
+        ],
+        "interactiveCount": 41,
+        "undersizedTargets": [],
+        "focusStyle": {
+          "outlineStyle": "solid",
+          "outlineWidth": "2px",
+          "outlineColor": "rgb(0, 240, 255)",
+          "boxShadow": "none"
+        },
+        "contrast": {
+          "heroButton": 16.568641792653487,
+          "bodyText": null,
+          "note": "NOT MEASURED: no representative body-copy sample on this route."
+        },
+        "fps": 61,
+        "vitals": {
+          "lcp": 224,
+          "cls": 0.002363836470370491,
+          "inp": null
+        },
+        "hasVideo": false,
+        "videoDisplay": null,
+        "commandHidden": true,
+        "menuExpanded": "false"
+      },
+      "aboutTarget": "SIGNAL: STABLE",
+      "aboutMap": {
+        "active": "westbrook",
+        "panel": "westbrook"
+      },
+      "aboutTerminal": "HELP / about · projects · skills · experience · contact · clear"
+    },
+    {
+      "route": "/",
+      "viewport": "mobile",
+      "status": 200,
+      "screenshot": "docs/audit/evidence/home-mobile.png",
+      "consoleErrors": [],
+      "requestFailures": [],
+      "state": {
+        "title": "YOYO / FIELD NOTES",
+        "headings": [
+          "最近使用",
+          "收藏",
+          "检索工程档案",
+          "现场记录",
+          "最新记录",
+          "生产级 Spring Boot 架构：可观测的服务边界",
+          "生产级 RAG 架构：权限、版本与可观测性",
+          "生产级 MySQL 高并发架构：缓存、读写分离与分片",
+          "项目档案",
+          "分布式微云商城",
+          "农业知识问答系统",
+          "杨劲松"
+        ],
+        "scrollWidth": 390,
+        "viewportWidth": 390,
+        "bodyHeight": 3580,
+        "navLinks": [
+          {
+            "text": "00首页",
+            "current": "page"
+          },
+          {
+            "text": "01文章",
+            "current": null
+          },
+          {
+            "text": "02项目",
+            "current": null
+          },
+          {
+            "text": "03爱好",
+            "current": null
+          },
+          {
+            "text": "04技术栈",
+            "current": null
+          },
+          {
+            "text": "05关于",
+            "current": null
+          }
+        ],
+        "images": [
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/derived/logo-tight-transparent.png",
+            "alt": "Cyberpunk 2077",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/hero-mobile.webp",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/spring-boot-production-architecture/featured.png",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/rag-production-architecture/featured.png",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/mysql-high-concurrency-architecture/featured.png",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/projects/ecommerce-rag-search/featured.png",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/projects/agricultural-qa-agent/featured.png",
+            "alt": "",
+            "loaded": false
+          }
+        ],
+        "interactiveCount": 16,
+        "undersizedTargets": [],
+        "focusStyle": {
+          "outlineStyle": "solid",
+          "outlineWidth": "2px",
+          "outlineColor": "rgb(0, 240, 255)",
+          "boxShadow": "none"
+        },
+        "contrast": {
+          "heroButton": 16.568641792653487,
+          "bodyText": null,
+          "note": "NOT MEASURED: sample may use layered/translucent or image-backed surfaces; run rendered contrast sampling before claiming conformance."
+        },
+        "fps": 61,
+        "vitals": {
+          "lcp": 224,
+          "cls": 0,
+          "inp": null
+        },
+        "hasVideo": true,
+        "videoDisplay": "none",
+        "commandHidden": true,
+        "menuExpanded": "false"
+      },
+      "mobileMenu": {
+        "expanded": "true",
+        "openClass": true,
+        "navFocusable": true,
+        "closed": {
+          "expanded": "false",
+          "openClass": false
+        }
+      }
+    },
+    {
+      "route": "/blog/",
+      "viewport": "mobile",
+      "status": 200,
+      "screenshot": "docs/audit/evidence/blog-mobile.png",
+      "consoleErrors": [],
+      "requestFailures": [],
+      "state": {
+        "title": "技术博客 / YOYO ARCHIVE",
+        "headings": [
+          "最近使用",
+          "收藏",
+          "检索工程档案",
+          "技术博客",
+          "技术博客",
+          "生产级 Spring Boot 架构：可观测的服务边界",
+          "生产级 RAG 架构：权限、版本与可观测性",
+          "生产级 MySQL 高并发架构：缓存、读写分离与分片",
+          "Spring Boot 应用架构：Controller 到 Database",
+          "Spring Boot 请求生命周期：从 HTTP 到响应",
+          "Spring Boot IoC 与依赖注入：让对象可替换",
+          "RAG 基础管道：从文档到可引用答案"
+        ],
+        "scrollWidth": 390,
+        "viewportWidth": 390,
+        "bodyHeight": 37620,
+        "navLinks": [
+          {
+            "text": "00首页",
+            "current": null
+          },
+          {
+            "text": "01文章",
+            "current": "page"
+          },
+          {
+            "text": "02项目",
+            "current": null
+          },
+          {
+            "text": "03爱好",
+            "current": null
+          },
+          {
+            "text": "04技术栈",
+            "current": null
+          },
+          {
+            "text": "05关于",
+            "current": null
+          }
+        ],
+        "images": [
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/derived/logo-tight-transparent.png",
+            "alt": "Cyberpunk 2077",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/spring-boot-production-architecture/featured.png",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/rag-production-architecture/featured.png",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/mysql-high-concurrency-architecture/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/spring-boot-application-architecture/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/spring-boot-request-lifecycle/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/spring-boot-ioc-dependency-injection/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/rag-basic-pipeline/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/rag-retriever-optimization/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/rag-embedding-vector-database/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/python-runtime-architecture/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/python-data-structures-decorators/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/python-asyncio-concurrency/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/python-ai-engineering/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/openai-tool-calling/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/openai-structured-output/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/openai-multimodal-ai/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/openai-api-fundamentals/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/mysql-index-btree/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/mysql-transaction-mvcc/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/mysql-architecture/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/langchain-core-architecture/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/langchain-tool-calling-agent/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/langchain-prompt-chain/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/langchain-memory-multiturn/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/jvm-memory-gc/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/java-collections-hashmap/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/java-core-architecture/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/java-concurrency/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/fastapi-project-architecture/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/fastapi-request-response-pydantic/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/fastapi-async-dependency-injection/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/fastapi-ai-streaming-api/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/hallucination-prevention/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/building-ai-agents/featured.png",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/blog/building-rag-pipeline/featured.png",
+            "alt": "",
+            "loaded": false
+          }
+        ],
+        "interactiveCount": 7,
+        "undersizedTargets": [],
+        "focusStyle": {
+          "outlineStyle": "solid",
+          "outlineWidth": "2px",
+          "outlineColor": "rgb(0, 240, 255)",
+          "boxShadow": "none"
+        },
+        "contrast": {
+          "heroButton": null,
+          "bodyText": null,
+          "note": "NOT MEASURED: sample may use layered/translucent or image-backed surfaces; run rendered contrast sampling before claiming conformance."
+        },
+        "fps": 61,
+        "vitals": {
+          "lcp": 232,
+          "cls": 0.00001888862570040413,
+          "inp": null
+        },
+        "hasVideo": false,
+        "videoDisplay": null,
+        "commandHidden": true,
+        "menuExpanded": "false"
+      },
+      "mobileMenu": {
+        "expanded": "true",
+        "openClass": true,
+        "navFocusable": true,
+        "closed": {
+          "expanded": "false",
+          "openClass": false
+        }
+      }
+    },
+    {
+      "route": "/projects/",
+      "viewport": "mobile",
+      "status": 200,
+      "screenshot": "docs/audit/evidence/projects-mobile.png",
+      "consoleErrors": [],
+      "requestFailures": [],
+      "state": {
+        "title": "项目作品 / YOYO ARCHIVE",
+        "headings": [
+          "最近使用",
+          "收藏",
+          "检索工程档案",
+          "项目作品",
+          "项目作品",
+          "分布式微云商城",
+          "农业知识问答系统"
+        ],
+        "scrollWidth": 390,
+        "viewportWidth": 390,
+        "bodyHeight": 2051,
+        "navLinks": [
+          {
+            "text": "00首页",
+            "current": null
+          },
+          {
+            "text": "01文章",
+            "current": null
+          },
+          {
+            "text": "02项目",
+            "current": "page"
+          },
+          {
+            "text": "03爱好",
+            "current": null
+          },
+          {
+            "text": "04技术栈",
+            "current": null
+          },
+          {
+            "text": "05关于",
+            "current": null
+          }
+        ],
+        "images": [
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/derived/logo-tight-transparent.png",
+            "alt": "Cyberpunk 2077",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/projects/ecommerce-rag-search/featured.png",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/projects/agricultural-qa-agent/featured.png",
+            "alt": "",
+            "loaded": true
+          }
+        ],
+        "interactiveCount": 7,
+        "undersizedTargets": [],
+        "focusStyle": {
+          "outlineStyle": "solid",
+          "outlineWidth": "2px",
+          "outlineColor": "rgb(0, 240, 255)",
+          "boxShadow": "none"
+        },
+        "contrast": {
+          "heroButton": null,
+          "bodyText": null,
+          "note": "NOT MEASURED: sample may use layered/translucent or image-backed surfaces; run rendered contrast sampling before claiming conformance."
+        },
+        "fps": 61,
+        "vitals": {
+          "lcp": 72,
+          "cls": 0,
+          "inp": null
+        },
+        "hasVideo": false,
+        "videoDisplay": null,
+        "commandHidden": true,
+        "menuExpanded": "false"
+      },
+      "mobileMenu": {
+        "expanded": "true",
+        "openClass": true,
+        "navFocusable": true,
+        "closed": {
+          "expanded": "false",
+          "openClass": false
+        }
+      }
+    },
+    {
+      "route": "/hobby/",
+      "viewport": "mobile",
+      "status": 200,
+      "screenshot": "docs/audit/evidence/hobby-mobile.png",
+      "consoleErrors": [],
+      "requestFailures": [],
+      "state": {
+        "title": "夜之城兴趣档案 / YOYO ARCHIVE",
+        "headings": [
+          "最近使用",
+          "收藏",
+          "检索工程档案",
+          "夜之城兴趣档案",
+          "人物档案",
+          "城市地点",
+          "阵营势力",
+          "剧情故事",
+          "音乐与电台",
+          "本地图集",
+          "故事与音乐索引",
+          "夜之城时间线"
+        ],
+        "scrollWidth": 390,
+        "viewportWidth": 390,
+        "bodyHeight": 6162,
+        "navLinks": [
+          {
+            "text": "00首页",
+            "current": null
+          },
+          {
+            "text": "01文章",
+            "current": null
+          },
+          {
+            "text": "02项目",
+            "current": null
+          },
+          {
+            "text": "03爱好",
+            "current": "page"
+          },
+          {
+            "text": "04技术栈",
+            "current": null
+          },
+          {
+            "text": "05关于",
+            "current": null
+          }
+        ],
+        "images": [
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/derived/logo-tight-transparent.png",
+            "alt": "Cyberpunk 2077",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-johnny.webp",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-night-city.webp",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-japantown.webp",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-black-sapphire.webp",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-street-view.webp",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/hero-desktop.webp",
+            "alt": "Ultimate Edition / Hero",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-hero-vertical.webp",
+            "alt": "Ultimate Edition / Vertical",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-johnny.webp",
+            "alt": "Johnny Silverhand",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-night-city.webp",
+            "alt": "Night City Vista",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-night-city-day.webp",
+            "alt": "Night City / Day",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-japantown.webp",
+            "alt": "Japantown Parade",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-black-sapphire.webp",
+            "alt": "Black Sapphire",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-street-view.webp",
+            "alt": "Street View",
+            "loaded": true
+          }
+        ],
+        "interactiveCount": 36,
+        "undersizedTargets": [],
+        "focusStyle": {
+          "outlineStyle": "solid",
+          "outlineWidth": "2px",
+          "outlineColor": "rgb(0, 240, 255)",
+          "boxShadow": "none"
+        },
+        "contrast": {
+          "heroButton": null,
+          "bodyText": null,
+          "note": "NOT MEASURED: sample may use layered/translucent or image-backed surfaces; run rendered contrast sampling before claiming conformance."
+        },
+        "fps": 61,
+        "vitals": {
+          "lcp": 240,
+          "cls": 0,
+          "inp": null
+        },
+        "hasVideo": false,
+        "videoDisplay": null,
+        "commandHidden": true,
+        "menuExpanded": "false"
+      },
+      "mobileMenu": {
+        "expanded": "true",
+        "openClass": true,
+        "navFocusable": true,
+        "closed": {
+          "expanded": "false",
+          "openClass": false
+        }
+      }
+    },
+    {
+      "route": "/tech-stack/",
+      "viewport": "mobile",
+      "status": 200,
+      "screenshot": "docs/audit/evidence/tech-stack-mobile.png",
+      "consoleErrors": [],
+      "requestFailures": [],
+      "state": {
+        "title": "16 个技术栈学习路线 / YOYO ARCHIVE",
+        "headings": [
+          "最近使用",
+          "收藏",
+          "检索工程档案",
+          "16 个技术栈学习路线",
+          "16 个技术栈学习路线",
+          "spring-boot 学习路线",
+          "rocketmq 学习路线",
+          "redis 学习路线",
+          "rag 学习路线",
+          "python 学习路线",
+          "openai 学习路线",
+          "mysql 学习路线"
+        ],
+        "scrollWidth": 390,
+        "viewportWidth": 390,
+        "bodyHeight": 4426,
+        "navLinks": [
+          {
+            "text": "00首页",
+            "current": null
+          },
+          {
+            "text": "01文章",
+            "current": null
+          },
+          {
+            "text": "02项目",
+            "current": null
+          },
+          {
+            "text": "03爱好",
+            "current": null
+          },
+          {
+            "text": "04技术栈",
+            "current": "page"
+          },
+          {
+            "text": "05关于",
+            "current": null
+          }
+        ],
+        "images": [
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/derived/logo-tight-transparent.png",
+            "alt": "Cyberpunk 2077",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-johnny.webp",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-japantown.webp",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-night-city-day.webp",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-street-view.webp",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-japantown.webp",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-japantown.webp",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-japantown.webp",
+            "alt": "",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-japantown.webp",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-black-sapphire.webp",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-night-city.webp",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-street-view.webp",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-japantown.webp",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-street-view.webp",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-night-city-day.webp",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-japantown.webp",
+            "alt": "",
+            "loaded": false
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-black-sapphire.webp",
+            "alt": "",
+            "loaded": false
+          }
+        ],
+        "interactiveCount": 7,
+        "undersizedTargets": [],
+        "focusStyle": {
+          "outlineStyle": "solid",
+          "outlineWidth": "2px",
+          "outlineColor": "rgb(0, 240, 255)",
+          "boxShadow": "none"
+        },
+        "contrast": {
+          "heroButton": null,
+          "bodyText": null,
+          "note": "NOT MEASURED: sample may use layered/translucent or image-backed surfaces; run rendered contrast sampling before claiming conformance."
+        },
+        "fps": 61,
+        "vitals": {
+          "lcp": 172,
+          "cls": 0,
+          "inp": null
+        },
+        "hasVideo": false,
+        "videoDisplay": null,
+        "commandHidden": true,
+        "menuExpanded": "false"
+      },
+      "mobileMenu": {
+        "expanded": "true",
+        "openClass": true,
+        "navFocusable": true,
+        "closed": {
+          "expanded": "false",
+          "openClass": false
+        }
+      }
+    },
+    {
+      "route": "/about/",
+      "viewport": "mobile",
+      "status": 200,
+      "screenshot": "docs/audit/evidence/about-mobile.png",
+      "consoleErrors": [],
+      "requestFailures": [],
+      "state": {
+        "title": "关于 / YOYO ARCHIVE",
+        "headings": [
+          "最近使用",
+          "收藏",
+          "检索工程档案",
+          "杨劲松",
+          "关注方向",
+          "教育档案",
+          "个人时间线",
+          "软件工程（本科）",
+          "Java后端 / AI应用开发实习生",
+          "个人工程地图",
+          "后端基础",
+          "检索系统"
+        ],
+        "scrollWidth": 390,
+        "viewportWidth": 390,
+        "bodyHeight": 6162,
+        "navLinks": [
+          {
+            "text": "00首页",
+            "current": null
+          },
+          {
+            "text": "01文章",
+            "current": null
+          },
+          {
+            "text": "02项目",
+            "current": null
+          },
+          {
+            "text": "03爱好",
+            "current": null
+          },
+          {
+            "text": "04技术栈",
+            "current": null
+          },
+          {
+            "text": "05关于",
+            "current": "page"
+          }
+        ],
+        "images": [
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/derived/logo-tight-transparent.png",
+            "alt": "Cyberpunk 2077",
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:1318/media/cyberpunk2077/ui/card-night-city.webp",
+            "alt": "",
+            "loaded": true
+          }
+        ],
+        "interactiveCount": 36,
+        "undersizedTargets": [],
+        "focusStyle": {
+          "outlineStyle": "solid",
+          "outlineWidth": "2px",
+          "outlineColor": "rgb(0, 240, 255)",
+          "boxShadow": "none"
+        },
+        "contrast": {
+          "heroButton": 16.568641792653487,
+          "bodyText": null,
+          "note": "NOT MEASURED: no representative body-copy sample on this route."
+        },
+        "fps": 61,
+        "vitals": {
+          "lcp": 208,
+          "cls": 0.0059461847925482,
+          "inp": null
+        },
+        "hasVideo": false,
+        "videoDisplay": null,
+        "commandHidden": true,
+        "menuExpanded": "false"
+      },
+      "mobileMenu": {
+        "expanded": "true",
+        "openClass": true,
+        "navFocusable": true,
+        "closed": {
+          "expanded": "false",
+          "openClass": false
+        }
+      },
+      "aboutTarget": "SIGNAL: STABLE",
+      "aboutMap": {
+        "active": "westbrook",
+        "panel": "westbrook"
+      },
+      "aboutTerminal": "HELP / about · projects · skills · experience · contact · clear"
+    },
+    {
+      "route": "/about/",
+      "viewport": "mobile-reduced-motion",
+      "reducedMotion": {
+        "mediaMatches": true,
+        "bootVisible": false,
+        "videoDisplay": null,
+        "motionReady": false
+      }
+    }
+  ]
+}

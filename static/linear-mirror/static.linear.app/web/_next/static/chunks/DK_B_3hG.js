@@ -1,0 +1,1 @@
+var r,s,a;import{o}from"./C_JJxWoe.js";import{Ur as t,ai as m}from"./DipWGRuU.js";import{t as f}from"./PPnH9BIT.js";r=o(m(),1),s=t(),a=r.forwardRef(function(r,a){return(0,s.jsx)("div",{ref:a,...r,className:f(r.className,"-B0yXq_root")})});export{a as t};

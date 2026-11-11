@@ -1,0 +1,1 @@
+import{o}from"./C_JJxWoe.js";import{ai as r}from"./DipWGRuU.js";var s=o(r(),1);function t(o,r,t){(0,s.useInsertionEffect)(()=>o.on(r,t),[o,r,t])}export{t};
