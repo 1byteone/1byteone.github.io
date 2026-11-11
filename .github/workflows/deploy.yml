@@ -302,7 +302,7 @@ jobs:
             while IFS= read -r dir; do
               [ -n "$dir" ] || continue
               case "$dir" in
-                "$keep") ;;
+                "$keep"|"public/themes/matthewtrent/_app/immutable/assets") ;;
                 *) rm -rf "$dir" ;;
               esac
             done < <(find public/themes -type d -path "$pattern" -print)
