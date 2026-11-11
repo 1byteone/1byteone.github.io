@@ -1,0 +1,280 @@
+{
+  "source": "https://matthewtrent.me",
+  "seedAssets": 74,
+  "downloadedAssets": 126,
+  "htmlFilesRewritten": 1,
+  "failures": [
+    {
+      "path": "/_app/immutable/chunks/],mn=[[",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "path": "/_app/immutable/chunks/,link:",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "path": "/_app/immutable/chunks/,hint:",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "path": "/_app/immutable/chunks/autocomplete=",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "path": "/_app/immutable/chunks/)),Ct(",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "path": "/_app/immutable/nodes/,",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "path": "/_app/immutable/chunks/mapbox-reserved-lut",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "path": "/_app/immutable/chunks/$lib/media/favicons",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "path": "/_app/immutable/chunks/svelte",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "path": "/_app/immutable/chunks/$lib/scroll/hash-landing",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "path": "/_app/immutable/chunks/$app/environment",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "path": "/_app/immutable/chunks/$lib/interaction/effects",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "path": "/_app/immutable/chunks/$lib/motion/glyph-roll",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "path": "/_app/immutable/chunks/$lib/motion/animate-track",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "path": "/_app/immutable/chunks/$lib/motion/scale",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "path": "/_app/immutable/chunks/$lib/components/home/Ed3BylineName.svelte",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "path": "/_app/immutable/chunks/$lib/components/shared/ArticleToc.svelte",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "path": "/_app/immutable/chunks/$lib/markdown/heading-anchors",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "path": "/_app/immutable/chunks/$lib/components/shared/Ed3AccordionList.svelte",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "path": "/_app/immutable/chunks/$lib/components/home/Ed3ExperienceBoard.svelte",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "path": "/_app/immutable/chunks/$lib/components/shared/Ed3IndexList.svelte",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "path": "/_app/immutable/chunks/$lib/components/home/Ed3AsAKidSphere.svelte",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "path": "/_app/immutable/chunks/$lib/components/home/Ed3ReceiptSection.svelte",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "path": "/_app/immutable/chunks/$lib/components/home/Ed3DisclosureReply.svelte",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "path": "/_app/immutable/chunks/$lib/components/home/Ed3TicketRevealSection.svelte",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "path": "/_app/immutable/chunks/$lib/components/shared/Ed3Footer.svelte",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "path": "/_app/immutable/chunks/$lib/components/home/VisitorPredictor.svelte",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "path": "/_app/immutable/chunks/$lib/components/shared/Ed3FrameRails.svelte",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "path": "/_app/immutable/chunks/$lib/components/home/Ed3ProjectWorkGrid.svelte",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "path": "/_app/immutable/chunks/$lib/components/home/Ed3SkillsGrid.svelte",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "path": "/_app/immutable/chunks/$lib/components/shared/DitherImage.svelte",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "path": "/_app/immutable/chunks/$lib/components/home/Ed3PortfolioEvolution.svelte",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "path": "/_app/immutable/chunks/$lib/components/home/Ed3Recommendations.svelte",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "path": "/_app/immutable/chunks/$lib/components/home/Ed3HomeSection.svelte",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "path": "/_app/immutable/chunks/$lib/components/home/Ed3SectionTabs.svelte",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "path": "/_app/immutable/chunks/$lib/components/home/Ed3ClassesMarqueeSection.svelte",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "path": "/_app/immutable/chunks/$lib/components/home/Ed3SpotifyNowPlayingMarquee.svelte",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "path": "/_app/immutable/chunks/$lib/components/home/Ed3PlaylistShelf.svelte",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "path": "/_app/immutable/chunks/$lib/components/home/Ed3SpotifyControl.svelte",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "path": "/_app/immutable/chunks/$lib/spotify/now-playing-types",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "path": "/_app/immutable/chunks/$lib/spotify/playlist-types",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "path": "/_app/immutable/chunks/$lib/components/home/Ed3SfMapTip.svelte",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "path": "/_app/immutable/chunks/$lib/components/home/Ed3CatchEmAll.svelte",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "path": "/_app/immutable/chunks/$lib/components/home/Ed3CatchModePicker.svelte",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "path": "/_app/immutable/chunks/$lib/evolution/places",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "path": "/_app/immutable/chunks/$lib/constants",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "path": "/_app/immutable/chunks/$lib/routing/outbound-utm",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "path": "/_app/immutable/chunks/$lib/content/competitions",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "path": "/_app/immutable/chunks/$lib/content/classes",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "path": "/_app/immutable/chunks/$lib/content/home",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "path": "/_app/immutable/chunks/$lib/content/education",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "path": "/_app/immutable/chunks/$lib/content/writing",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "path": "/_app/immutable/chunks/$lib/content/work",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "path": "/_app/immutable/chunks/$lib/analytics",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "path": "/_app/immutable/chunks/$lib/analytics/visitor-display",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "path": "/_app/immutable/chunks/$lib/content/orbit",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "path": "/_app/immutable/chunks/$lib/analytics/orbit-click",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "path": "/_app/immutable/chunks/$lib/actions/glideHeight",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "path": "/_app/immutable/chunks/$lib/actions/justifyCopyOnScroll",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "path": "/_app/immutable/chunks/$lib/content/childhood",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "path": "/_app/immutable/chunks/$lib/content/featured-projects",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "path": "/_app/immutable/chunks/$lib/content/project-archive",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "path": "/_app/immutable/chunks/$lib/media/image-thumb",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "path": "/_app/immutable/chunks/$lib/components/shared/SeoHead.svelte",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "path": "/_app/immutable/chunks/$lib/seo",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "path": "/_app/immutable/chunks/$lib/components/polaroid/PolaroidLifeSection.svelte",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "path": "/_app/immutable/chunks/$lib/analytics/visitors-client",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "path": "/_app/immutable/chunks/$types",
+      "error": "HTTP Error 404: Not Found"
+    }
+  ]
+}

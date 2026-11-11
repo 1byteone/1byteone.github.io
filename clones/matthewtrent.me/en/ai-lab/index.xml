@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>AI Lab | YOYO / Pixel Terminal</title>
+    <link>http://127.0.0.1:1318/en/ai-lab/</link>
+      <atom:link href="http://127.0.0.1:1318/en/ai-lab/index.xml" rel="self" type="application/rss+xml" />
+    <description>AI Lab</description>
+    <generator>HugoBlox Kit (https://hugoblox.com)</generator><language>en-us</language>
+  </channel>
+</rss>

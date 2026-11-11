@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>LangGraph | 杨劲松 - Java后端 / AI应用开发工程师</title>
+    <link>http://localhost:1320/tags/langgraph/</link>
+      <atom:link href="http://localhost:1320/tags/langgraph/index.xml" rel="self" type="application/rss+xml" />
+    <description>LangGraph</description>
+    <generator>HugoBlox Kit (https://hugoblox.com)</generator><language>zh-Hans</language><lastBuildDate>Fri, 20 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>农业知识问答系统</title>
+      <link>http://localhost:1320/projects/agricultural-qa-agent/</link>
+      <pubDate>Fri, 20 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1320/projects/agricultural-qa-agent/</guid>
+      <description>&lt;p&gt;基于LangGraph目标导向型智能体架构的农业知识问答系统。&lt;/p&gt;
+&lt;h2 id=&#34;项目概述&#34;&gt;项目概述&lt;/h2&gt;
+&lt;p&gt;农业智能问答原型系统，结合&lt;strong&gt;检索增强生成（RAG）&lt;strong&gt;与&lt;/strong&gt;目标导向型智能体架构&lt;/strong&gt;，提供关于作物种植、病害管理、施肥和农业政策的准确、上下文感知的回答。&lt;/p&gt;
+&lt;h2 id=&#34;核心功能&#34;&gt;核心功能&lt;/h2&gt;
+&lt;table&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;功能&lt;/th&gt;
+					&lt;th&gt;描述&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;🌱 &lt;strong&gt;领域专用RAG&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;ChromaDB向量存储，包含作物、病害、肥料、土壤、机械等农业知识库&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;🧠 &lt;strong&gt;多轮记忆&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;SQLite支持的对话历史，跨会话上下文连续性&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;🎯 &lt;strong&gt;意图感知路由&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;LangGraph智能体路由查询到RAG、通用知识或工具增强路径&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;📊 &lt;strong&gt;证据溯源&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;引用支持的响应，来源归属与忠实度评分&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;🔧 &lt;strong&gt;MCP集成&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;Open MCP服务器用于网络获取、时间查询和可扩展工具使用&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;🎨 &lt;strong&gt;Apple Liquid Glass UI&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;磨砂玻璃效果、半透明层、iOS风格动画与Tailwind CSS&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;技术架构&#34;&gt;技术架构&lt;/h2&gt;
+
+&lt;div class=&#34;rich-code-frame&#34; data-rich-code data-rich-code-language=&#34;text&#34;&gt;
+  &lt;div class=&#34;rich-code-toolbar&#34;&gt;
+    &lt;span class=&#34;rich-code-language&#34;&gt;text&lt;/span&gt;
+    &lt;button type=&#34;button&#34; class=&#34;rich-code-copy&#34; data-rich-code-copy&gt;复制&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;rich-code-body&#34;&gt;&lt;div class=&#34;rich-code-highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;┌─────────────────────────────────────────────────────────────────┐
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│                    前端: Next.js 14 + Radix UI                   │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 3&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│              Apple Liquid Glass 聊天界面                         │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 4&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│   ┌─────────────┐ ┌──────────────┐ ┌─────────────────────────┐ │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 5&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│   │ 聊天面板     │ │ 知识面板      │ │ 生成式UI               │ │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 6&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│   │ + 流式输出   │ │              │ │ (作物诊断等)            │ │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 7&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│   └─────────────┘ └──────────────┘ └─────────────────────────┘ │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 8&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;└────────────────────────────┬────────────────────────────────────┘
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 9&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;                             │ HTTP / SSE
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;┌────────────────────────────▼────────────────────────────────────┐
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;11&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│                  后端: FastAPI + LangGraph                       │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;12&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│   ┌──────────────┐ ┌──────────────┐ ┌────────────────────────┐ │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;13&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│   │ 意图路由器    │ │ RAG管道      │ │ 工具执行器             │ │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;14&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│   │ (LangGraph)  │ │ (ChromaDB)   │ │ (MCP服务器)            │ │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;15&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│   └──────────────┘ └──────────────┘ └────────────────────────┘ │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;16&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;└─────────────────────────────────────────────────────────────────┘&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+  &lt;textarea class=&#34;rich-code-source&#34; data-rich-code-source hidden readonly&gt;┌─────────────────────────────────────────────────────────────────┐
+│                    前端: Next.js 14 &amp;#43; Radix UI                   │
+│              Apple Liquid Glass 聊天界面                         │
+│   ┌─────────────┐ ┌──────────────┐ ┌─────────────────────────┐ │
+│   │ 聊天面板     │ │ 知识面板      │ │ 生成式UI               │ │
+│   │ &amp;#43; 流式输出   │ │              │ │ (作物诊断等)            │ │
+│   └─────────────┘ └──────────────┘ └─────────────────────────┘ │
+└────────────────────────────┬────────────────────────────────────┘
+                             │ HTTP / SSE
+┌────────────────────────────▼────────────────────────────────────┐
+│                  后端: FastAPI &amp;#43; LangGraph                       │
+│   ┌──────────────┐ ┌──────────────┐ ┌────────────────────────┐ │
+│   │ 意图路由器    │ │ RAG管道      │ │ 工具执行器             │ │
+│   │ (LangGraph)  │ │ (ChromaDB)   │ │ (MCP服务器)            │ │
+│   └──────────────┘ └──────────────┘ └────────────────────────┘ │
+└─────────────────────────────────────────────────────────────────┘&lt;/textarea&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;技术亮点&#34;&gt;技术亮点&lt;/h2&gt;
+&lt;h3 id=&#34;1-目标导向型智能体&#34;&gt;1. 目标导向型智能体&lt;/h3&gt;
+&lt;p&gt;基于LangGraph构建的智能体架构，能够根据用户意图动态路由到不同处理路径：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;RAG路径&lt;/strong&gt;: 从农业知识库检索相关信息&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;通用知识路径&lt;/strong&gt;: 调用通用大模型回答&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;工具增强路径&lt;/strong&gt;: 集成外部工具获取实时数据&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;2-证据溯源与可信度评分&#34;&gt;2. 证据溯源与可信度评分&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;每个回答都附带来源引用&lt;/li&gt;
+&lt;li&gt;可信度评分确保信息可靠性&lt;/li&gt;
+&lt;li&gt;支持用户验证回答来源&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;3-apple-liquid-glass-ui&#34;&gt;3. Apple Liquid Glass UI&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;磨砂玻璃效果的现代化界面&lt;/li&gt;
+&lt;li&gt;iOS风格的动画与交互&lt;/li&gt;
+&lt;li&gt;响应式设计支持多设备&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;4-mcp服务器集成&#34;&gt;4. MCP服务器集成&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;开放式工具调用架构&lt;/li&gt;
+&lt;li&gt;支持网络获取、时间查询等扩展&lt;/li&gt;
+&lt;li&gt;可插拔的工具生态系统&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;项目成果&#34;&gt;项目成果&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;准确性&lt;/strong&gt;: 农业知识问答准确率95%+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;可用性&lt;/strong&gt;: 多轮对话上下文保持&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;体验&lt;/strong&gt;: 现代化Apple Liquid Glass UI&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;可扩展&lt;/strong&gt;: MCP工具集成架构&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;项目状态&lt;/strong&gt;: ✅ 已完成&lt;br&gt;
+&lt;strong&gt;GitHub&lt;/strong&gt;: 
+&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

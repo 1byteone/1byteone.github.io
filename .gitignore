@@ -102,5 +102,13 @@ Desktop.ini
 .firecrawl/
 clones/matthewtrent.me/**/*.source.html
 
+# The Matthew Trent capture also contains content-addressed copies of the
+# same raw GitHub assets that are kept in media/external/.../by-name/.
+# Keep the named assets used by the runtime and omit only the duplicate hash
+# bucket from version control and Pages artifacts.
+clones/matthewtrent.me/media/external/raw.githubusercontent.com/*
+!clones/matthewtrent.me/media/external/raw.githubusercontent.com/by-name/
+!clones/matthewtrent.me/media/external/raw.githubusercontent.com/by-name/**
+
 *.log
 npm-debug.log*

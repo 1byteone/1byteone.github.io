@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Research | YOYO / Pixel Terminal</title>
+    <link>http://127.0.0.1:1318/en/ai-lab/research/</link>
+      <atom:link href="http://127.0.0.1:1318/en/ai-lab/research/index.xml" rel="self" type="application/rss+xml" />
+    <description>Research</description>
+    <generator>HugoBlox Kit (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Fri, 21 Aug 2026 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>The Evidence Chain In Retrieval-Augmented Generation</title>
+      <link>http://127.0.0.1:1318/en/ai-lab/research/retrieval-evidence/</link>
+      <pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>http://127.0.0.1:1318/en/ai-lab/research/retrieval-evidence/</guid>
+      <description>&lt;p&gt;RAG answer quality is not a single vector-similarity problem. The system must find candidate evidence, rank it by task relevance, and determine whether each important generated claim is supported by the context.&lt;/p&gt;
+&lt;h2 id=&#34;four-stages&#34;&gt;Four Stages&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Recall&lt;/strong&gt;: BM25 helps with exact terms and identifiers; dense retrieval covers semantically similar phrasing.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Ranking&lt;/strong&gt;: Hybrid candidates can be reranked using the query and passage together.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Context&lt;/strong&gt;: Deduplication, authorization filters, and a length budget decide what reaches the prompt.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Answer support&lt;/strong&gt;: Citations must point to real passages, and the system needs an abstention path when evidence is insufficient.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;metrics-that-need-context&#34;&gt;Metrics That Need Context&lt;/h2&gt;
+&lt;p&gt;Higher recall may simply add noise. Offline ranking metrics alone do not establish answer faithfulness; end-to-end evaluation also needs citation support, unsupported-answer rate, and latency.&lt;/p&gt;
+&lt;p&gt;The companion implementation notes are in 
+. Measured values will be added only after runs use a fixed dataset and pinned versions.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

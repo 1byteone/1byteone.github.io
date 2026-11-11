@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>分布式 | 杨劲松 - Java后端 / AI应用开发工程师</title>
+    <link>http://localhost:1320/tags/%E5%88%86%E5%B8%83%E5%BC%8F/</link>
+      <atom:link href="http://localhost:1320/tags/%E5%88%86%E5%B8%83%E5%BC%8F/index.xml" rel="self" type="application/rss+xml" />
+    <description>分布式</description>
+    <generator>HugoBlox Kit (https://hugoblox.com)</generator><language>zh-Hans</language><lastBuildDate>Fri, 15 May 2026 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>分布式微云商城</title>
+      <link>http://localhost:1320/projects/ecommerce-rag-search/</link>
+      <pubDate>Fri, 15 May 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1320/projects/ecommerce-rag-search/</guid>
+      <description>&lt;p&gt;微服务电商平台 - SpringCloud Alibaba技术栈 + MyBatis-Plus + Feign远程调用。&lt;/p&gt;
+&lt;h2 id=&#34;项目概述&#34;&gt;项目概述&lt;/h2&gt;
+&lt;p&gt;从单体架构到微服务演进的完整实践，覆盖企业级中间件集成与分布式解决方案。项目对标中高级Java后端工程师核心能力模型，按技术深度分层实现。&lt;/p&gt;
+&lt;h2 id=&#34;专业goal岗位能力对标&#34;&gt;专业GOAL（岗位能力对标）&lt;/h2&gt;
+&lt;table&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;层级&lt;/th&gt;
+					&lt;th&gt;能力域&lt;/th&gt;
+					&lt;th&gt;覆盖模块&lt;/th&gt;
+					&lt;th&gt;权重&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;🥇 &lt;strong&gt;分布式架构&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;微服务拆分、服务治理、分布式事务、消息队列&lt;/td&gt;
+					&lt;td&gt;mall-order-service, mall-seckill-service, Middleware&lt;/td&gt;
+					&lt;td&gt;35%&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;🥈 &lt;strong&gt;中间件深度&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;Redis缓存、ES搜索、RocketMQ消息、Seata事务、Sentinel限流&lt;/td&gt;
+					&lt;td&gt;docs/Middleware/ (11个中间件)&lt;/td&gt;
+					&lt;td&gt;30%&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;🥉 &lt;strong&gt;业务实现&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;商品/用户/购物车/订单CRUD、JWT鉴权、AOP日志&lt;/td&gt;
+					&lt;td&gt;mall-product-service, mall-user-service, mall-cart-service&lt;/td&gt;
+					&lt;td&gt;25%&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;🏅 &lt;strong&gt;工程化&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;Docker容器化、Gateway网关、Nacos配置中心、CI部署&lt;/td&gt;
+					&lt;td&gt;mall-gateway, docs/docker/&lt;/td&gt;
+					&lt;td&gt;10%&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;核心职责&#34;&gt;核心职责&lt;/h2&gt;
+&lt;p&gt;主导秒杀链路、搜索/RAG、分布式一致性与研发规范。&lt;/p&gt;
+&lt;h2 id=&#34;技术架构&#34;&gt;技术架构&lt;/h2&gt;
+
+&lt;div class=&#34;rich-code-frame&#34; data-rich-code data-rich-code-language=&#34;text&#34;&gt;
+  &lt;div class=&#34;rich-code-toolbar&#34;&gt;
+    &lt;span class=&#34;rich-code-language&#34;&gt;text&lt;/span&gt;
+    &lt;button type=&#34;button&#34; class=&#34;rich-code-copy&#34; data-rich-code-copy&gt;复制&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;rich-code-body&#34;&gt;&lt;div class=&#34;rich-code-highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;┌──────────┐   ┌──────────┐   ┌──────────┐
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│ 客户端     │   │ 客户端    │   │ 客户端    │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 3&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;└────┬─────┘   └────┬─────┘   └────┬─────┘
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 4&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;     └──────────────┴──────────────┘
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 5&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;                │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 6&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;         ┌──────┴──────┐
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 7&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;         │ Spring Cloud │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 8&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;         │   Gateway    │  ← 统一鉴权 + 路由 + 限流
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 9&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;         └──────┬──────┘
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;                │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;11&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;     ┌──────────┼──────────┐
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;12&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;     │          │          │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;13&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;┌────┴────┐ ┌──┴───┐ ┌───┴────┐
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;14&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│ 业务服务  │ │ 中间件 │ │ 基础设施 │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;15&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│ User     │ │ Redis │ │ Nacos   │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;16&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│ Product  │ │ MySQL │ │ Sentinel│
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;17&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│ Order    │ │ Mongo │ │ Seata   │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;18&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│ Cart     │ │ ES    │ │ XXL-Job │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;19&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│ Pay      │ │ MQ    │ │         │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;20&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│ Seckill  │ │ Canal │ │         │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;21&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;└─────────┘ └──────┘ └─────────┘&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+  &lt;textarea class=&#34;rich-code-source&#34; data-rich-code-source hidden readonly&gt;┌──────────┐   ┌──────────┐   ┌──────────┐
+│ 客户端     │   │ 客户端    │   │ 客户端    │
+└────┬─────┘   └────┬─────┘   └────┬─────┘
+     └──────────────┴──────────────┘
+                │
+         ┌──────┴──────┐
+         │ Spring Cloud │
+         │   Gateway    │  ← 统一鉴权 &amp;#43; 路由 &amp;#43; 限流
+         └──────┬──────┘
+                │
+     ┌──────────┼──────────┐
+     │          │          │
+┌────┴────┐ ┌──┴───┐ ┌───┴────┐
+│ 业务服务  │ │ 中间件 │ │ 基础设施 │
+│ User     │ │ Redis │ │ Nacos   │
+│ Product  │ │ MySQL │ │ Sentinel│
+│ Order    │ │ Mongo │ │ Seata   │
+│ Cart     │ │ ES    │ │ XXL-Job │
+│ Pay      │ │ MQ    │ │         │
+│ Seckill  │ │ Canal │ │         │
+└─────────┘ └──────┘ └─────────┘&lt;/textarea&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;项目结构&#34;&gt;项目结构&lt;/h2&gt;
+
+&lt;div class=&#34;rich-code-frame&#34; data-rich-code data-rich-code-language=&#34;text&#34;&gt;
+  &lt;div class=&#34;rich-code-toolbar&#34;&gt;
+    &lt;span class=&#34;rich-code-language&#34;&gt;text&lt;/span&gt;
+    &lt;button type=&#34;button&#34; class=&#34;rich-code-copy&#34; data-rich-code-copy&gt;复制&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;rich-code-body&#34;&gt;&lt;div class=&#34;rich-code-highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;mall-micro-cloud/
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;├── mall-api/                  # Feign接口声明层
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 3&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;├── mall-common/               # 公共工具模块
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 4&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;├── mall-gateway/              # Spring Cloud Gateway网关
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 5&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;├── mall-services/
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 6&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│   ├── mall-user-service/     # 用户服务（JWT + BCrypt鉴权）
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 7&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│   ├── mall-product-service/  # 商品服务（MyBatis-Plus）
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 8&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│   ├── mall-cart-service/     # 购物车服务（Redis缓存）
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 9&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│   ├── mall-order-service/    # 订单服务（Seata分布式事务）
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│   ├── mall-pay-service/      # 支付服务（RocketMQ事务消息）
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;11&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│   ├── mall-seckill-service/  # 秒杀服务（高并发 + 限流）
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;12&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│   ├── mall-es-service/       # 商品搜索服务（Elasticsearch）
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;13&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│   ├── mall-oss-service/      # 对象存储服务
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;14&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│   ├── mall-scheduler-service/ # 分布式调度服务（XXL-Job）
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;15&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│   ├── mall-consumer-service/  # 消息消费服务
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;16&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│   └── mall-test-service/     # 测试服务
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;17&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;├── docs/
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;18&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│   ├── Middleware/             # 11个中间件实战文档
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;19&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│   ├── interview/             # 面试题库（9章）
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;20&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│   ├── db-sql/                # 业务表SQL
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;21&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│   └── docker/                # Docker容器化部署指南
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;22&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;└── pom.xml                    # Maven父POM&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+  &lt;textarea class=&#34;rich-code-source&#34; data-rich-code-source hidden readonly&gt;mall-micro-cloud/
+├── mall-api/                  # Feign接口声明层
+├── mall-common/               # 公共工具模块
+├── mall-gateway/              # Spring Cloud Gateway网关
+├── mall-services/
+│   ├── mall-user-service/     # 用户服务（JWT &amp;#43; BCrypt鉴权）
+│   ├── mall-product-service/  # 商品服务（MyBatis-Plus）
+│   ├── mall-cart-service/     # 购物车服务（Redis缓存）
+│   ├── mall-order-service/    # 订单服务（Seata分布式事务）
+│   ├── mall-pay-service/      # 支付服务（RocketMQ事务消息）
+│   ├── mall-seckill-service/  # 秒杀服务（高并发 &amp;#43; 限流）
+│   ├── mall-es-service/       # 商品搜索服务（Elasticsearch）
+│   ├── mall-oss-service/      # 对象存储服务
+│   ├── mall-scheduler-service/ # 分布式调度服务（XXL-Job）
+│   ├── mall-consumer-service/  # 消息消费服务
+│   └── mall-test-service/     # 测试服务
+├── docs/
+│   ├── Middleware/             # 11个中间件实战文档
+│   ├── interview/             # 面试题库（9章）
+│   ├── db-sql/                # 业务表SQL
+│   └── docker/                # Docker容器化部署指南
+└── pom.xml                    # Maven父POM&lt;/textarea&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;技术亮点&#34;&gt;技术亮点&lt;/h2&gt;
+&lt;h3 id=&#34;1-分布式架构&#34;&gt;1. 分布式架构&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;微服务拆分&lt;/strong&gt;: 按业务域拆分为用户、商品、订单、支付等独立服务&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;服务治理&lt;/strong&gt;: Nacos服务注册发现 + Gateway统一路由&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;分布式事务&lt;/strong&gt;: Seata AT模式保证跨服务数据一致性&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;2-中间件深度集成&#34;&gt;2. 中间件深度集成&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Redis&lt;/strong&gt;: 缓存 + 分布式锁 + 会话管理&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Elasticsearch&lt;/strong&gt;: 全文搜索 + IK分词&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;RocketMQ&lt;/strong&gt;: 异步消息 + 事务消息&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Sentinel&lt;/strong&gt;: 限流降级 + 熔断保护&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;3-高并发秒杀&#34;&gt;3. 高并发秒杀&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Redis预扣库存 + Redisson可重入锁&lt;/li&gt;
+&lt;li&gt;RocketMQ异步落库解决超卖&lt;/li&gt;
+&lt;li&gt;Sentinel限流保护系统稳定&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;4-工程化实践&#34;&gt;4. 工程化实践&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Docker容器化部署&lt;/li&gt;
+&lt;li&gt;Gateway统一鉴权&lt;/li&gt;
+&lt;li&gt;Nacos配置中心&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;项目成果&#34;&gt;项目成果&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;架构&lt;/strong&gt;: 完成11个微服务拆分与治理&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;中间件&lt;/strong&gt;: 集成11个企业级中间件&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;性能&lt;/strong&gt;: 万级并发压测稳定运行&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;文档&lt;/strong&gt;: 完整的中间件实战文档与面试题库&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;项目状态&lt;/strong&gt;: ✅ 已完成&lt;br&gt;
+&lt;strong&gt;GitHub&lt;/strong&gt;: 
+&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>16 Tech Stack Learning Roadmap | 1byteone - Java Backend / AI Application Developer</title>
+    <link>http://localhost:1320/en/tech-stack/</link>
+      <atom:link href="http://localhost:1320/en/tech-stack/index.xml" rel="self" type="application/rss+xml" />
+    <description>16 Tech Stack Learning Roadmap</description>
+    <generator>HugoBlox Kit (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Fri, 21 Aug 2026 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>conda learning roadmap</title>
+      <link>http://localhost:1320/en/tech-stack/conda/</link>
+      <pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1320/en/tech-stack/conda/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>docker learning roadmap</title>
+      <link>http://localhost:1320/en/tech-stack/docker/</link>
+      <pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1320/en/tech-stack/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>elasticsearch learning roadmap</title>
+      <link>http://localhost:1320/en/tech-stack/elasticsearch/</link>
+      <pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1320/en/tech-stack/elasticsearch/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>fastapi learning roadmap</title>
+      <link>http://localhost:1320/en/tech-stack/fastapi/</link>
+      <pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1320/en/tech-stack/fastapi/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>git learning roadmap</title>
+      <link>http://localhost:1320/en/tech-stack/git/</link>
+      <pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1320/en/tech-stack/git/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>java learning roadmap</title>
+      <link>http://localhost:1320/en/tech-stack/java/</link>
+      <pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1320/en/tech-stack/java/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>jupyter learning roadmap</title>
+      <link>http://localhost:1320/en/tech-stack/jupyter/</link>
+      <pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1320/en/tech-stack/jupyter/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>langchain learning roadmap</title>
+      <link>http://localhost:1320/en/tech-stack/langchain/</link>
+      <pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1320/en/tech-stack/langchain/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>linux learning roadmap</title>
+      <link>http://localhost:1320/en/tech-stack/linux/</link>
+      <pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1320/en/tech-stack/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mysql learning roadmap</title>
+      <link>http://localhost:1320/en/tech-stack/mysql/</link>
+      <pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1320/en/tech-stack/mysql/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>openai learning roadmap</title>
+      <link>http://localhost:1320/en/tech-stack/openai/</link>
+      <pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1320/en/tech-stack/openai/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>python learning roadmap</title>
+      <link>http://localhost:1320/en/tech-stack/python/</link>
+      <pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1320/en/tech-stack/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>rag learning roadmap</title>
+      <link>http://localhost:1320/en/tech-stack/rag/</link>
+      <pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1320/en/tech-stack/rag/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>redis learning roadmap</title>
+      <link>http://localhost:1320/en/tech-stack/redis/</link>
+      <pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1320/en/tech-stack/redis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>rocketmq learning roadmap</title>
+      <link>http://localhost:1320/en/tech-stack/rocketmq/</link>
+      <pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1320/en/tech-stack/rocketmq/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>spring-boot learning roadmap</title>
+      <link>http://localhost:1320/en/tech-stack/spring-boot/</link>
+      <pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1320/en/tech-stack/spring-boot/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

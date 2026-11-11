@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="720" viewBox="0 0 600 720" role="img" aria-labelledby="title desc">
+  <title id="title">杨劲松工程联系回执</title>
+  <desc id="desc">一张列出 Java 后端、AI 应用和 RAG 项目交流方向的热敏纸回执</desc>
+  <rect width="600" height="720" fill="#d8c7a8"/>
+  <path d="M0 110h600M0 330h600M0 590h600" stroke="#c6b28f" stroke-width="2" opacity=".5"/>
+  <path d="M45 665h510" stroke="#bba681" stroke-width="3" opacity=".55"/>
+  <rect x="164" y="54" width="272" height="482" rx="3" fill="#f9f8f2" stroke="#c9c5b7" stroke-width="2"/>
+  <text x="300" y="105" text-anchor="middle" fill="#202323" font-family="Arial, Microsoft YaHei, sans-serif" font-size="18" font-weight="700" letter-spacing="2">YANG JINSONG</text>
+  <text x="300" y="141" text-anchor="middle" fill="#303536" font-family="Microsoft YaHei, sans-serif" font-size="19">工程联系回执</text>
+  <path d="M194 164h212" stroke="#77786f" stroke-width="1.5" stroke-dasharray="4 5"/>
+  <text x="195" y="199" fill="#474b47" font-family="Microsoft YaHei, sans-serif" font-size="15">交流方向</text>
+  <text x="195" y="232" fill="#252a28" font-family="Microsoft YaHei, sans-serif" font-size="17">Java 后端与分布式系统</text>
+  <text x="195" y="263" fill="#252a28" font-family="Microsoft YaHei, sans-serif" font-size="17">AI 应用 · RAG · Agent</text>
+  <text x="195" y="294" fill="#252a28" font-family="Microsoft YaHei, sans-serif" font-size="17">项目实践与技术写作</text>
+  <path d="M194 319h212" stroke="#77786f" stroke-width="1.5" stroke-dasharray="4 5"/>
+  <text x="195" y="353" fill="#474b47" font-family="Microsoft YaHei, sans-serif" font-size="15">联系邮箱</text>
+  <text x="195" y="384" fill="#252a28" font-family="Arial, sans-serif" font-size="16">yjs_0831@qq.com</text>
+  <path d="M195 420h210M195 434h178M195 448h194M195 462h156" stroke="#77786f" stroke-width="2" stroke-dasharray="3 5"/>
+  <text x="300" y="501" text-anchor="middle" fill="#555850" font-family="Microsoft YaHei, sans-serif" font-size="13">感谢认真交流 · 持续记录 · 持续构建</text>
+  <path d="M139 485h322l37 24v146H102V509z" fill="#292d2d"/>
+  <rect x="128" y="512" width="344" height="18" rx="3" fill="#171a1a"/>
+  <rect x="207" y="564" width="186" height="43" rx="3" fill="#171a1a" stroke="#404543" stroke-width="2"/>
+  <circle cx="428" cy="548" r="7" fill="#81ae8f"/>
+  <path d="M162 650h276" stroke="#414746" stroke-width="3"/>
+  <path d="M185 680h230" stroke="#b6a27f" stroke-width="5" opacity=".8"/>
+</svg>

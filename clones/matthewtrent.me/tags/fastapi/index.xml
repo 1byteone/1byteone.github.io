@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>FastAPI | 杨劲松 - Java后端 / AI应用开发工程师</title>
+    <link>http://localhost:1320/tags/fastapi/</link>
+      <atom:link href="http://localhost:1320/tags/fastapi/index.xml" rel="self" type="application/rss+xml" />
+    <description>FastAPI</description>
+    <generator>HugoBlox Kit (https://hugoblox.com)</generator><language>zh-Hans</language><lastBuildDate>Fri, 21 Aug 2026 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>FastAPI AI Streaming API：用 SSE 交付增量结果</title>
+      <link>http://localhost:1320/blog/fastapi-ai-streaming-api/</link>
+      <pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1320/blog/fastapi-ai-streaming-api/</guid>
+      <description>&lt;p&gt;&lt;em&gt;上图：FastAPI — FastAPI AI Streaming API。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;流式响应改善的是首字节延迟和用户感知，不是让模型计算更快。接口需要明确事件格式、结束信号、异常事件和客户端断开后的清理动作。&lt;/p&gt;
+&lt;h2 id=&#34;核心心智模型&#34;&gt;核心心智模型&lt;/h2&gt;
+&lt;p&gt;服务器以 data 事件发送，客户端按事件边界解析。不要把任意未转义文本拼成 SSE；更推荐 JSON 事件并统一 type 字段。&lt;/p&gt;
+&lt;h2 id=&#34;关键机制&#34;&gt;关键机制&lt;/h2&gt;
+&lt;p&gt;生成器用 try/finally 释放上游资源；每个事件携带 request id；模型错误转换成 error 事件并明确关闭。&lt;/p&gt;
+&lt;h2 id=&#34;python-示例&#34;&gt;Python 示例&lt;/h2&gt;
+
+&lt;div class=&#34;rich-code-frame&#34; data-rich-code data-rich-code-language=&#34;python&#34;&gt;
+  &lt;div class=&#34;rich-code-toolbar&#34;&gt;
+    &lt;span class=&#34;rich-code-language&#34;&gt;python&lt;/span&gt;
+    &lt;button type=&#34;button&#34; class=&#34;rich-code-copy&#34; data-rich-code-copy&gt;复制&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;rich-code-body&#34;&gt;&lt;div class=&#34;rich-code-highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;json&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;fastapi.responses&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;StreamingResponse&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 3&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 4&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;async&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;events&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;prompt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 5&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;try&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 6&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;async&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;token&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;provider&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;stream&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;prompt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 7&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;k&#34;&gt;yield&lt;/span&gt; &lt;span class=&#34;sa&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;data: &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;json&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;dumps&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;({&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;type&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;token&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;text&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;token&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;})&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\n\n&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 8&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;yield&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;data: {&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\&amp;#34;&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;type&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\&amp;#34;&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\&amp;#34;&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;done&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\&amp;#34;&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\n\n&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 9&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;except&lt;/span&gt; &lt;span class=&#34;ne&#34;&gt;Exception&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;yield&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;data: {&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\&amp;#34;&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;type&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\&amp;#34;&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\&amp;#34;&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;error&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\&amp;#34;&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\&amp;#34;&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;code&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\&amp;#34;&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\&amp;#34;&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;upstream_failed&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\&amp;#34;&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\n\n&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;11&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;12&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nd&#34;&gt;@app.post&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;/v1/chat/stream&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;13&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;async&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;stream&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;req&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ChatRequest&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;14&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;StreamingResponse&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;events&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;req&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;message&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;media_type&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;text/event-stream&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+  &lt;textarea class=&#34;rich-code-source&#34; data-rich-code-source hidden readonly&gt;import json
+from fastapi.responses import StreamingResponse
+
+async def events(prompt: str):
+    try:
+        async for token in provider.stream(prompt):
+            yield f&amp;amp;#34;data: {json.dumps({&amp;amp;#39;type&amp;amp;#39;: &amp;amp;#39;token&amp;amp;#39;, &amp;amp;#39;text&amp;amp;#39;: token})}\n\n&amp;amp;#34;
+        yield &amp;amp;#34;data: {\&amp;amp;#34;type\&amp;amp;#34;:\&amp;amp;#34;done\&amp;amp;#34;}\n\n&amp;amp;#34;
+    except Exception:
+        yield &amp;amp;#34;data: {\&amp;amp;#34;type\&amp;amp;#34;:\&amp;amp;#34;error\&amp;amp;#34;,\&amp;amp;#34;code\&amp;amp;#34;:\&amp;amp;#34;upstream_failed\&amp;amp;#34;}\n\n&amp;amp;#34;
+
+@app.post(&amp;amp;#34;/v1/chat/stream&amp;amp;#34;)
+async def stream(req: ChatRequest):
+    return StreamingResponse(events(req.message), media_type=&amp;amp;#34;text/event-stream&amp;amp;#34;)&lt;/textarea&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;课程定位&#34;&gt;课程定位&lt;/h2&gt;
+&lt;p&gt;这篇文章把白板上的模块拆成可以落地的工程边界：先定义输入和输出，再决定状态、失败策略与可观测性。示例使用 Python，重点是设计原则而不是绑定某个供应商版本；上线前请以当前依赖的官方文档为准。&lt;/p&gt;
+&lt;h2 id=&#34;工程实践&#34;&gt;工程实践&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;将业务规则放在应用层，不要藏进难以测试的提示词或路由函数。&lt;/li&gt;
+&lt;li&gt;为外部调用设置超时、重试上限和幂等键；重试不是错误处理的全部。&lt;/li&gt;
+&lt;li&gt;记录 request id、耗时、输入版本、模型/索引版本和结果状态，避免记录敏感原文。&lt;/li&gt;
+&lt;li&gt;用小规模固定数据集做回归测试，再用线上抽样监控质量与成本。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;常见错误&#34;&gt;常见错误&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;只画 happy path，没有画超时、空结果、限流和回滚路径。&lt;/li&gt;
+&lt;li&gt;让一个函数同时负责解析、调用外部服务、拼接提示词和持久化。&lt;/li&gt;
+&lt;li&gt;用字符串约定代替类型契约，导致改动只能靠人工联调。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;生产检查清单&#34;&gt;生产检查清单&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 输入、输出和错误响应均有明确 schema&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 外部依赖有 timeout、retry、rate limit 和 fallback&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 日志、指标、trace 能关联到同一次请求&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 关键路径有单元测试、集成测试和一组离线评测样本&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 密钥、用户内容和供应商响应按最小权限与隐私策略处理&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;练习建议&#34;&gt;练习建议&lt;/h2&gt;
+&lt;p&gt;先实现白板中的最小闭环，再故意注入一个超时、一个空结果和一个格式错误，观察系统能否给出稳定且可诊断的结果。最后补一条指标，证明你的优化确实改善了质量或延迟。&lt;/p&gt;
+&lt;h2 id=&#34;动手练习&#34;&gt;动手练习&lt;/h2&gt;
+&lt;p&gt;写一个浏览器端 SSE 客户端，分别测试正常完成、上游报错、用户刷新页面和网络断开。记录 TTFT、完整响应耗时以及未完成流的取消率。&lt;/p&gt;
+&lt;h2 id=&#34;总结&#34;&gt;总结&lt;/h2&gt;
+&lt;p&gt;当白板上的每个箭头都能对应到一个输入、输出和失败策略时，AI 功能才从 demo 变成可维护的系统。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>FastAPI Async 与依赖注入：避免阻塞事件循环</title>
+      <link>http://localhost:1320/blog/fastapi-async-dependency-injection/</link>
+      <pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1320/blog/fastapi-async-dependency-injection/</guid>
+      <description>&lt;p&gt;&lt;em&gt;上图：FastAPI — FastAPI Async 与依赖注入。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;async def 并不会自动让阻塞代码变快。文件 I/O、同步 SDK、CPU 密集任务如果直接运行在事件循环中，会拖慢所有请求。&lt;/p&gt;
+&lt;h2 id=&#34;核心心智模型&#34;&gt;核心心智模型&lt;/h2&gt;
+&lt;p&gt;异步路由适合等待异步网络 I/O；同步依赖应明确隔离，CPU 任务放入任务队列或进程池。依赖注入的重点是生命周期可见、替换容易。&lt;/p&gt;
+&lt;h2 id=&#34;关键机制&#34;&gt;关键机制&lt;/h2&gt;
+&lt;p&gt;在 lifespan 创建共享客户端，在请求结束后复用连接；用 semaphore 限制并发外部调用，避免本地服务把供应商打爆。&lt;/p&gt;
+&lt;h2 id=&#34;python-示例&#34;&gt;Python 示例&lt;/h2&gt;
+
+&lt;div class=&#34;rich-code-frame&#34; data-rich-code data-rich-code-language=&#34;python&#34;&gt;
+  &lt;div class=&#34;rich-code-toolbar&#34;&gt;
+    &lt;span class=&#34;rich-code-language&#34;&gt;python&lt;/span&gt;
+    &lt;button type=&#34;button&#34; class=&#34;rich-code-copy&#34; data-rich-code-copy&gt;复制&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;rich-code-body&#34;&gt;&lt;div class=&#34;rich-code-highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;asyncio&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;contextlib&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;asynccontextmanager&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 3&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;fastapi&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;FastAPI&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 4&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 5&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;limit&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;asyncio&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Semaphore&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;20&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 6&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 7&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;async&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;call_provider&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;client&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;payload&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 8&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;async&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;with&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;limit&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 9&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;await&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;client&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;post&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;/responses&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;json&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;payload&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;timeout&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;15&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;11&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nd&#34;&gt;@asynccontextmanager&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;12&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;async&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;lifespan&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;app&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;FastAPI&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;13&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;app&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;state&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;client&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;make_async_client&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;14&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;yield&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;15&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;await&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;app&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;state&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;client&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;aclose&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;16&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;17&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;app&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;FastAPI&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;lifespan&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;lifespan&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+  &lt;textarea class=&#34;rich-code-source&#34; data-rich-code-source hidden readonly&gt;import asyncio
+from contextlib import asynccontextmanager
+from fastapi import FastAPI
+
+limit = asyncio.Semaphore(20)
+
+async def call_provider(client, payload):
+    async with limit:
+        return await client.post(&amp;amp;#34;/responses&amp;amp;#34;, json=payload, timeout=15)
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    app.state.client = make_async_client()
+    yield
+    await app.state.client.aclose()
+
+app = FastAPI(lifespan=lifespan)&lt;/textarea&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;课程定位&#34;&gt;课程定位&lt;/h2&gt;
+&lt;p&gt;这篇文章把白板上的模块拆成可以落地的工程边界：先定义输入和输出，再决定状态、失败策略与可观测性。示例使用 Python，重点是设计原则而不是绑定某个供应商版本；上线前请以当前依赖的官方文档为准。&lt;/p&gt;
+&lt;h2 id=&#34;工程实践&#34;&gt;工程实践&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;将业务规则放在应用层，不要藏进难以测试的提示词或路由函数。&lt;/li&gt;
+&lt;li&gt;为外部调用设置超时、重试上限和幂等键；重试不是错误处理的全部。&lt;/li&gt;
+&lt;li&gt;记录 request id、耗时、输入版本、模型/索引版本和结果状态，避免记录敏感原文。&lt;/li&gt;
+&lt;li&gt;用小规模固定数据集做回归测试，再用线上抽样监控质量与成本。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;常见错误&#34;&gt;常见错误&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;只画 happy path，没有画超时、空结果、限流和回滚路径。&lt;/li&gt;
+&lt;li&gt;让一个函数同时负责解析、调用外部服务、拼接提示词和持久化。&lt;/li&gt;
+&lt;li&gt;用字符串约定代替类型契约，导致改动只能靠人工联调。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;生产检查清单&#34;&gt;生产检查清单&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 输入、输出和错误响应均有明确 schema&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 外部依赖有 timeout、retry、rate limit 和 fallback&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 日志、指标、trace 能关联到同一次请求&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 关键路径有单元测试、集成测试和一组离线评测样本&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 密钥、用户内容和供应商响应按最小权限与隐私策略处理&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;练习建议&#34;&gt;练习建议&lt;/h2&gt;
+&lt;p&gt;先实现白板中的最小闭环，再故意注入一个超时、一个空结果和一个格式错误，观察系统能否给出稳定且可诊断的结果。最后补一条指标，证明你的优化确实改善了质量或延迟。&lt;/p&gt;
+&lt;h2 id=&#34;动手练习&#34;&gt;动手练习&lt;/h2&gt;
+&lt;p&gt;用一个同步假客户端和一个异步假客户端压测 50 个并发请求，比较事件循环阻塞情况；再加入 semaphore，观察上游错误率与平均延迟。&lt;/p&gt;
+&lt;h2 id=&#34;总结&#34;&gt;总结&lt;/h2&gt;
+&lt;p&gt;当白板上的每个箭头都能对应到一个输入、输出和失败策略时，AI 功能才从 demo 变成可维护的系统。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>FastAPI 请求与响应：用 Pydantic 建立可靠契约</title>
+      <link>http://localhost:1320/blog/fastapi-request-response-pydantic/</link>
+      <pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1320/blog/fastapi-request-response-pydantic/</guid>
+      <description>&lt;p&gt;&lt;em&gt;上图：FastAPI — FastAPI 请求与响应。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;AI 接口的输入经常来自不可信客户端，输出又可能来自不稳定的模型或第三方 API。Pydantic schema 是第一道边界：它把看起来像数据变成可验证的数据。&lt;/p&gt;
+&lt;h2 id=&#34;核心心智模型&#34;&gt;核心心智模型&lt;/h2&gt;
+&lt;p&gt;请求模型负责输入约束，领域模型负责业务不变量，响应模型负责公开字段。不要直接返回 ORM 对象或供应商原始 JSON。&lt;/p&gt;
+&lt;h2 id=&#34;关键机制&#34;&gt;关键机制&lt;/h2&gt;
+&lt;p&gt;对字符串设长度上下限，对枚举使用 Literal，对嵌套结构使用模型；对模型输出先解析再返回，解析失败走可观测的 502/422 分支。&lt;/p&gt;
+&lt;h2 id=&#34;python-示例&#34;&gt;Python 示例&lt;/h2&gt;
+
+&lt;div class=&#34;rich-code-frame&#34; data-rich-code data-rich-code-language=&#34;python&#34;&gt;
+  &lt;div class=&#34;rich-code-toolbar&#34;&gt;
+    &lt;span class=&#34;rich-code-language&#34;&gt;python&lt;/span&gt;
+    &lt;button type=&#34;button&#34; class=&#34;rich-code-copy&#34; data-rich-code-copy&gt;复制&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;rich-code-body&#34;&gt;&lt;div class=&#34;rich-code-highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;typing&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Literal&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;pydantic&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;BaseModel&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Field&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 3&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 4&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;ChatRequest&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;BaseModel&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 5&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;message&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;str&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Field&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;min_length&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;max_length&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;4000&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 6&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;mode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Literal&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;answer&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;summarize&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;answer&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 7&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 8&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;ChatResponse&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;BaseModel&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 9&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;request_id&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;str&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;answer&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;str&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;11&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;citations&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;list&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Field&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;default_factory&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;list&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+  &lt;textarea class=&#34;rich-code-source&#34; data-rich-code-source hidden readonly&gt;from typing import Literal
+from pydantic import BaseModel, Field
+
+class ChatRequest(BaseModel):
+    message: str = Field(min_length=1, max_length=4000)
+    mode: Literal[&amp;amp;#34;answer&amp;amp;#34;, &amp;amp;#34;summarize&amp;amp;#34;] = &amp;amp;#34;answer&amp;amp;#34;
+
+class ChatResponse(BaseModel):
+    request_id: str
+    answer: str
+    citations: list[str] = Field(default_factory=list)&lt;/textarea&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;课程定位&#34;&gt;课程定位&lt;/h2&gt;
+&lt;p&gt;这篇文章把白板上的模块拆成可以落地的工程边界：先定义输入和输出，再决定状态、失败策略与可观测性。示例使用 Python，重点是设计原则而不是绑定某个供应商版本；上线前请以当前依赖的官方文档为准。&lt;/p&gt;
+&lt;h2 id=&#34;工程实践&#34;&gt;工程实践&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;将业务规则放在应用层，不要藏进难以测试的提示词或路由函数。&lt;/li&gt;
+&lt;li&gt;为外部调用设置超时、重试上限和幂等键；重试不是错误处理的全部。&lt;/li&gt;
+&lt;li&gt;记录 request id、耗时、输入版本、模型/索引版本和结果状态，避免记录敏感原文。&lt;/li&gt;
+&lt;li&gt;用小规模固定数据集做回归测试，再用线上抽样监控质量与成本。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;常见错误&#34;&gt;常见错误&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;只画 happy path，没有画超时、空结果、限流和回滚路径。&lt;/li&gt;
+&lt;li&gt;让一个函数同时负责解析、调用外部服务、拼接提示词和持久化。&lt;/li&gt;
+&lt;li&gt;用字符串约定代替类型契约，导致改动只能靠人工联调。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;生产检查清单&#34;&gt;生产检查清单&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 输入、输出和错误响应均有明确 schema&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 外部依赖有 timeout、retry、rate limit 和 fallback&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 日志、指标、trace 能关联到同一次请求&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 关键路径有单元测试、集成测试和一组离线评测样本&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 密钥、用户内容和供应商响应按最小权限与隐私策略处理&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;练习建议&#34;&gt;练习建议&lt;/h2&gt;
+&lt;p&gt;先实现白板中的最小闭环，再故意注入一个超时、一个空结果和一个格式错误，观察系统能否给出稳定且可诊断的结果。最后补一条指标，证明你的优化确实改善了质量或延迟。&lt;/p&gt;
+&lt;h2 id=&#34;动手练习&#34;&gt;动手练习&lt;/h2&gt;
+&lt;p&gt;为一个问答接口加入 request_id、长度限制、模式枚举和 citations。分别提交空字符串、超长文本、未知 mode 与缺失字段，确认客户端得到稳定错误。&lt;/p&gt;
+&lt;h2 id=&#34;总结&#34;&gt;总结&lt;/h2&gt;
+&lt;p&gt;当白板上的每个箭头都能对应到一个输入、输出和失败策略时，AI 功能才从 demo 变成可维护的系统。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>FastAPI 项目架构：从路由到领域服务的分层设计</title>
+      <link>http://localhost:1320/blog/fastapi-project-architecture/</link>
+      <pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1320/blog/fastapi-project-architecture/</guid>
+      <description>&lt;p&gt;&lt;em&gt;上图：FastAPI — FastAPI 项目架构。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;FastAPI 很容易在一个文件里快速起步，也很容易因此变成不可维护的全局脚本。更稳妥的结构是让路由处理 HTTP，让 service 处理用例，让 repository 处理数据访问。&lt;/p&gt;
+&lt;h2 id=&#34;核心心智模型&#34;&gt;核心心智模型&lt;/h2&gt;
+&lt;p&gt;推荐的调用方向是 router → service → repository/provider，依赖通过函数参数注入。领域服务不应依赖 Request 或 HTTP 状态码，这样可以在命令行、任务队列和测试中复用。&lt;/p&gt;
+&lt;h2 id=&#34;关键机制&#34;&gt;关键机制&lt;/h2&gt;
+&lt;p&gt;配置用环境变量读取并在启动时校验；连接池在 lifespan 中创建和关闭；异常统一映射为稳定的错误 schema。&lt;/p&gt;
+&lt;h2 id=&#34;python-示例&#34;&gt;Python 示例&lt;/h2&gt;
+
+&lt;div class=&#34;rich-code-frame&#34; data-rich-code data-rich-code-language=&#34;python&#34;&gt;
+  &lt;div class=&#34;rich-code-toolbar&#34;&gt;
+    &lt;span class=&#34;rich-code-language&#34;&gt;python&lt;/span&gt;
+    &lt;button type=&#34;button&#34; class=&#34;rich-code-copy&#34; data-rich-code-copy&gt;复制&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;rich-code-body&#34;&gt;&lt;div class=&#34;rich-code-highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;fastapi&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;APIRouter&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Depends&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;pydantic&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;BaseModel&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 3&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 4&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;router&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;APIRouter&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;prefix&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;/v1/chat&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;tags&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;chat&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;])&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 5&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 6&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;ChatRequest&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;BaseModel&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 7&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;message&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;str&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 8&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 9&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;ChatResponse&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;BaseModel&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;answer&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;str&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;11&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;12&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nd&#34;&gt;@router.post&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;response_model&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ChatResponse&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;13&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;async&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;chat&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;req&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ChatRequest&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;service&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Depends&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;get_chat_service&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;14&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ChatResponse&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;answer&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;await&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;service&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;answer&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;req&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;message&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+  &lt;textarea class=&#34;rich-code-source&#34; data-rich-code-source hidden readonly&gt;from fastapi import APIRouter, Depends
+from pydantic import BaseModel
+
+router = APIRouter(prefix=&amp;amp;#34;/v1/chat&amp;amp;#34;, tags=[&amp;amp;#34;chat&amp;amp;#34;])
+
+class ChatRequest(BaseModel):
+    message: str
+
+class ChatResponse(BaseModel):
+    answer: str
+
+@router.post(&amp;amp;#34;&amp;amp;#34;, response_model=ChatResponse)
+async def chat(req: ChatRequest, service = Depends(get_chat_service)):
+    return ChatResponse(answer=await service.answer(req.message))&lt;/textarea&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;课程定位&#34;&gt;课程定位&lt;/h2&gt;
+&lt;p&gt;这篇文章把白板上的模块拆成可以落地的工程边界：先定义输入和输出，再决定状态、失败策略与可观测性。示例使用 Python，重点是设计原则而不是绑定某个供应商版本；上线前请以当前依赖的官方文档为准。&lt;/p&gt;
+&lt;h2 id=&#34;工程实践&#34;&gt;工程实践&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;将业务规则放在应用层，不要藏进难以测试的提示词或路由函数。&lt;/li&gt;
+&lt;li&gt;为外部调用设置超时、重试上限和幂等键；重试不是错误处理的全部。&lt;/li&gt;
+&lt;li&gt;记录 request id、耗时、输入版本、模型/索引版本和结果状态，避免记录敏感原文。&lt;/li&gt;
+&lt;li&gt;用小规模固定数据集做回归测试，再用线上抽样监控质量与成本。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;常见错误&#34;&gt;常见错误&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;只画 happy path，没有画超时、空结果、限流和回滚路径。&lt;/li&gt;
+&lt;li&gt;让一个函数同时负责解析、调用外部服务、拼接提示词和持久化。&lt;/li&gt;
+&lt;li&gt;用字符串约定代替类型契约，导致改动只能靠人工联调。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;生产检查清单&#34;&gt;生产检查清单&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 输入、输出和错误响应均有明确 schema&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 外部依赖有 timeout、retry、rate limit 和 fallback&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 日志、指标、trace 能关联到同一次请求&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 关键路径有单元测试、集成测试和一组离线评测样本&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 密钥、用户内容和供应商响应按最小权限与隐私策略处理&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;练习建议&#34;&gt;练习建议&lt;/h2&gt;
+&lt;p&gt;先实现白板中的最小闭环，再故意注入一个超时、一个空结果和一个格式错误，观察系统能否给出稳定且可诊断的结果。最后补一条指标，证明你的优化确实改善了质量或延迟。&lt;/p&gt;
+&lt;h2 id=&#34;动手练习&#34;&gt;动手练习&lt;/h2&gt;
+&lt;p&gt;把一个包含模型调用的路由拆成 api、services、providers 和 schemas，为 service 注入 fake provider，并用 TestClient 验证错误映射。&lt;/p&gt;
+&lt;h2 id=&#34;总结&#34;&gt;总结&lt;/h2&gt;
+&lt;p&gt;当白板上的每个箭头都能对应到一个输入、输出和失败策略时，AI 功能才从 demo 变成可维护的系统。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Python AI 工程：把模型调用接入可靠应用</title>
+      <link>http://localhost:1320/blog/python-ai-engineering/</link>
+      <pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1320/blog/python-ai-engineering/</guid>
+      <description>&lt;p&gt;&lt;em&gt;上图：AI Engineering with Python 白板图；重点不是罗列名词，而是把一次真实请求如何穿过系统、在哪些边界失败画清楚。&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id=&#34;为什么要从场景理解这张图&#34;&gt;为什么要从场景理解这张图&lt;/h2&gt;
+&lt;p&gt;这张图围绕“A support copilot answers only from authorized policy passages and returns a review state when evidence is weak.”展开。学习 AI Engineering with Python 时，不能只记住组件名称：要能说明输入从哪里来、状态由谁持有、哪个组件承担失败、以及如何用指标证明系统仍然健康。白板中的箭头对应代码边界，红色感叹号对应需要显式处理的风险。&lt;/p&gt;
+&lt;h2 id=&#34;逐层拆解&#34;&gt;逐层拆解&lt;/h2&gt;
+&lt;p&gt;主流程是：&lt;strong&gt;Application → Prompt / RAG / Tool → Model → Validated Result&lt;/strong&gt;。前半段是请求或数据的进入路径，后半段是运行时、存储或执行结果。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;边界契约&lt;/strong&gt;：先确定输入、输出和错误结构；不要让隐式类型、未校验参数或共享可变状态穿透多层。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;核心机制&lt;/strong&gt;：FastAPI → typed request / response；Retriever → evidence + ACL filter。这些机制决定延迟、吞吐和可测试性。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;资源与状态&lt;/strong&gt;：Model call → timeout + retry budget；Tool → allowlist + argument validation。生产系统必须说明资源何时创建、何时释放，以及状态是否可恢复。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;失败路径&lt;/strong&gt;：Structured output → schema parse；必要时再结合 &lt;strong&gt;Trace → prompt version + cost + quality&lt;/strong&gt; 做降级、重试或回滚。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;一个可落地的最小实现&#34;&gt;一个可落地的最小实现&lt;/h2&gt;
+&lt;p&gt;下面的片段只展示边界，不代表完整业务。它的价值在于把“可以替换、可以测试、可以观测”的位置固定下来。&lt;/p&gt;
+
+&lt;div class=&#34;rich-code-frame&#34; data-rich-code data-rich-code-language=&#34;python&#34;&gt;
+  &lt;div class=&#34;rich-code-toolbar&#34;&gt;
+    &lt;span class=&#34;rich-code-language&#34;&gt;python&lt;/span&gt;
+    &lt;button type=&#34;button&#34; class=&#34;rich-code-copy&#34; data-rich-code-copy&gt;复制&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;rich-code-body&#34;&gt;&lt;div class=&#34;rich-code-highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;result&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;await&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;model&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ainvoke&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;prompt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;answer&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Answer&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;model_validate_json&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;result&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;content&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+  &lt;textarea class=&#34;rich-code-source&#34; data-rich-code-source hidden readonly&gt;result = await model.ainvoke(prompt)
+answer = Answer.model_validate_json(result.content)&lt;/textarea&gt;
+&lt;/div&gt;
+&lt;p&gt;在真实项目中，应把外部依赖封装在 adapter 或 repository 中；业务层只依赖稳定接口。这样本地测试可以使用 fake，压测可以替换慢依赖，线上故障也更容易定位。&lt;/p&gt;
+&lt;h2 id=&#34;场景中的工程决策&#34;&gt;场景中的工程决策&lt;/h2&gt;
+&lt;p&gt;以白板右侧的生产场景为例：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;先保护依赖&lt;/strong&gt;：连接池、线程池、并发信号量或缓存都要有上限，不能用无限队列掩盖下游过载。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;再保证正确性&lt;/strong&gt;：幂等键、事务边界、版本号、锁或 schema 校验至少要有一种明确机制，避免重试带来重复写入。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;最后优化性能&lt;/strong&gt;：先用 trace、慢查询、GC pause、队列长度、p99 延迟等数据定位，再选择索引、缓存、批处理或并发策略。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;让故障可恢复&lt;/strong&gt;：超时、重试、限流、熔断、回滚和告警必须能在演练中被验证，而不是只写在文档里。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;常见误区&#34;&gt;常见误区&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;只画成功路径，没有画超时、空数据、拒绝、回滚或副本延迟。&lt;/li&gt;
+&lt;li&gt;把框架默认行为当成业务契约，升级依赖后才发现边界改变。&lt;/li&gt;
+&lt;li&gt;用“加机器”替代测量，忽略连接池、锁竞争、慢 SQL、对象分配或事件循环阻塞。&lt;/li&gt;
+&lt;li&gt;将日志当作唯一观测手段，缺少指标、trace、采样和敏感数据脱敏。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;生产检查清单&#34;&gt;生产检查清单&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 输入、输出和错误响应有明确 schema&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 外部调用设置 timeout、retry 上限、rate limit 和 fallback&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 资源池有容量、排队和拒绝指标&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 关键状态有幂等、事务或恢复策略&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 日志、metrics、trace 可关联同一个 request id&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 用接近生产的数据做回归、压测和故障演练&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;总结&#34;&gt;总结&lt;/h2&gt;
+&lt;p&gt;真正掌握这张白板图，不是能背出每个框的定义，而是能从一次具体请求出发，解释每个箭头的输入输出、每个风险的处置方式，以及上线后用什么信号判断系统需要改进。&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

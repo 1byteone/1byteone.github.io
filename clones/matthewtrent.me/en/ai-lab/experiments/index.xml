@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Experiments | YOYO / Pixel Terminal</title>
+    <link>http://127.0.0.1:1318/en/ai-lab/experiments/</link>
+      <atom:link href="http://127.0.0.1:1318/en/ai-lab/experiments/index.xml" rel="self" type="application/rss+xml" />
+    <description>Experiments</description>
+    <generator>HugoBlox Kit (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Tue, 03 Nov 2026 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Hybrid Retrieval Evaluation Plan: Fix The Questions Before Comparing Retrievers</title>
+      <link>http://127.0.0.1:1318/en/ai-lab/experiments/retrieval-evaluation-plan/</link>
+      <pubDate>Tue, 03 Nov 2026 00:00:00 +0000</pubDate>
+      <guid>http://127.0.0.1:1318/en/ai-lab/experiments/retrieval-evaluation-plan/</guid>
+      <description>&lt;p&gt;This is a planned protocol. Existing retrieval notes discuss BM25, dense retrieval, and reranking, but there is no fixed labeled set and run log to support published performance numbers.&lt;/p&gt;
+&lt;h2 id=&#34;question&#34;&gt;Question&lt;/h2&gt;
+&lt;p&gt;With the same corpus, chunking, and latency budget, how much answer-supporting evidence do BM25, dense retrieval, and hybrid retrieval with a reranker find?&lt;/p&gt;
+&lt;h2 id=&#34;controls&#34;&gt;Controls&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Pin the corpus snapshot, chunker revision, embedding model version, and query set.&lt;/li&gt;
+&lt;li&gt;Record Top-K, filters, reranker version, hardware, and request concurrency.&lt;/li&gt;
+&lt;li&gt;Store relevance labels, retrieved documents, ranking scores, and end-to-end latency for every query.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;metrics&#34;&gt;Metrics&lt;/h2&gt;
+&lt;p&gt;The planned metrics are Recall@K, MRR, nDCG, citation support, unsupported-answer rate, P50/P95 latency, and token use. Definitions and denominators must ship with the results.&lt;/p&gt;
+&lt;h2 id=&#34;status&#34;&gt;Status&lt;/h2&gt;
+&lt;p&gt;PLANNED / not run. The page will not replace missing results with example values; a completed report must include data files, code revision, and reproduction steps.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>RAG Production Boundaries: Permissions, Index Versions, and Citations</title>
+      <link>http://127.0.0.1:1318/en/ai-lab/experiments/rag-production-boundaries/</link>
+      <pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>http://127.0.0.1:1318/en/ai-lab/experiments/rag-production-boundaries/</guid>
+      <description>&lt;p&gt;This is an architecture review, not a model performance experiment. Its deliverable is a production-boundary checklist; no throughput or accuracy run was performed, so no fabricated metrics are shown.&lt;/p&gt;
+&lt;h2 id=&#34;question&#34;&gt;Question&lt;/h2&gt;
+&lt;p&gt;A RAG demo returning an answer does not prove it can handle tenant permissions, document updates, deletion propagation, or upstream failures. The review asks whether those states are explicit in the system.&lt;/p&gt;
+&lt;h2 id=&#34;method&#34;&gt;Method&lt;/h2&gt;
+&lt;p&gt;Separate the system into ingestion, indexing, query serving, and evaluation planes. Online queries read only the active index; a new index is built in the background and published through an atomic switch.&lt;/p&gt;
+&lt;p&gt;Check that cache keys include tenant, permission digest, and index version; that deletion events reach every replica; and that answers carry verifiable source citations.&lt;/p&gt;
+&lt;h2 id=&#34;findings&#34;&gt;Findings&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Apply permission filters during retrieval. Do not rely on the generation model to ignore unauthorized context.&lt;/li&gt;
+&lt;li&gt;Include the index version in cache keys so stale results do not survive an index switch.&lt;/li&gt;
+&lt;li&gt;Evaluation data should cover permissions, citations, abstention, and document updates, not only semantic similarity.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;evidence-and-limits&#34;&gt;Evidence And Limits&lt;/h2&gt;
+&lt;p&gt;This is an engineering design review without independent runtime measurements. The companion implementation notes are in 
+.&lt;/p&gt;
+&lt;h2 id=&#34;next-validation&#34;&gt;Next Validation&lt;/h2&gt;
+&lt;p&gt;Prepare a fixed dataset with tenant and permission labels, then measure Recall@K, citation support, authorization violations, and end-to-end latency with the environment and code revision recorded.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

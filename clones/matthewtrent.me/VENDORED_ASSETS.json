@@ -1,0 +1,704 @@
+{
+  "source": "https://matthewtrent.me/",
+  "imageUrlsFound": 115,
+  "imagesVendored": 115,
+  "htmlFilesRewritten": 4,
+  "results": [
+    {
+      "url": "https://api.dicebear.com/9.x/notionists/svg?seed=a_zSyxbpaZF1-VhMmn&backgroundColor=transparent",
+      "local": "media/external/api.dicebear.com/9d9efd85db97-svg.svg",
+      "bytes": 11927,
+      "contentType": "image/svg+xml"
+    },
+    {
+      "url": "https://github.com/mattrltrent/random_assets/blob/main/ccf_3.jpg?raw=true",
+      "local": "media/external/github.com/68d72edb100e-ccf_3.jpg",
+      "bytes": 27738,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84b26b483bc89ecd4e559a15f3",
+      "local": "media/external/image-cdn-ak.spotifycdn.com/f55852d736f7-ab67706c0000da84b26b483bc89ecd4e559a15f3.jpg",
+      "bytes": 4340,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84c07ad6d337c0e592b9be841d",
+      "local": "media/external/image-cdn-ak.spotifycdn.com/a5dc1ebd460d-ab67706c0000da84c07ad6d337c0e592b9be841d.jpg",
+      "bytes": 2572,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84e3f267852e455268516b43b8",
+      "local": "media/external/image-cdn-ak.spotifycdn.com/5d7aafb791f5-ab67706c0000da84e3f267852e455268516b43b8.jpg",
+      "bytes": 4070,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84ed776f0228d2fc99c03dc298",
+      "local": "media/external/image-cdn-ak.spotifycdn.com/11c5f7aba051-ab67706c0000da84ed776f0228d2fc99c03dc298.jpg",
+      "bytes": 3716,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://image-cdn-fa.spotifycdn.com/image/ab67706c0000da841f2a27abb7f479a47352e583",
+      "local": "media/external/image-cdn-fa.spotifycdn.com/7e545f6f0b53-ab67706c0000da841f2a27abb7f479a47352e583.jpg",
+      "bytes": 4049,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://image-cdn-fa.spotifycdn.com/image/ab67706c0000da8483fc587683d87445c584c72e",
+      "local": "media/external/image-cdn-fa.spotifycdn.com/620907fb4ba8-ab67706c0000da8483fc587683d87445c584c72e.jpg",
+      "bytes": 2972,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://image-cdn-fa.spotifycdn.com/image/ab67706c0000da84925717a3e2c90cacd60c4c92",
+      "local": "media/external/image-cdn-fa.spotifycdn.com/97d162914f3a-ab67706c0000da84925717a3e2c90cacd60c4c92.jpg",
+      "bytes": 4391,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://image-cdn-fa.spotifycdn.com/image/ab67706c0000da849b801a982042355861163b0d",
+      "local": "media/external/image-cdn-fa.spotifycdn.com/d1224c4ea7e0-ab67706c0000da849b801a982042355861163b0d.jpg",
+      "bytes": 3295,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://image-cdn-fa.spotifycdn.com/image/ab67706c0000da84b6b056ee5a75cce4b2a4883f",
+      "local": "media/external/image-cdn-fa.spotifycdn.com/9ff271a952cd-ab67706c0000da84b6b056ee5a75cce4b2a4883f.jpg",
+      "bytes": 3812,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://image-cdn-fa.spotifycdn.com/image/ab67706c0000da84df8a067d0b11fd2011859a9b",
+      "local": "media/external/image-cdn-fa.spotifycdn.com/612a513d2049-ab67706c0000da84df8a067d0b11fd2011859a9b.jpg",
+      "bytes": 18254,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://mosaic.scdn.co/640/ab67616d00001e020774be95d6e4f8dfc2bc9228ab67616d00001e026da2600db1e55a8f02119956ab67616d00001e0275d19c40d243afc0c4650a54ab67616d00001e02d04a6a7ff695e891d3292391",
+      "local": "media/external/mosaic.scdn.co/2244bb70efda-ab67616d00001e020774be95d6e4f8dfc2bc9228ab67616d00001e026da2600db1e55a8f02119956ab67616d00001e0275d19c40d243afc0c4650a54ab67616d00001e02d04a6a7ff695e891d3292391.jpg",
+      "bytes": 27647,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://mosaic.scdn.co/640/ab67616d00001e0210ee65ae464018c19c8e8ab4ab67616d00001e0234f21d3047d85440dfa37f10ab67616d00001e02384d10f967c2b914de7e2713ab67616d00001e0248341e864d4b4881f56f01b4",
+      "local": "media/external/mosaic.scdn.co/9dc28d90fa0f-ab67616d00001e0210ee65ae464018c19c8e8ab4ab67616d00001e0234f21d3047d85440dfa37f10ab67616d00001e02384d10f967c2b914de7e2713ab67616d00001e0248341e864d4b4881f56f01b4.jpg",
+      "bytes": 63135,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://mosaic.scdn.co/640/ab67616d00001e02294c76aa576e98529e4a3bb2ab67616d00001e028d18d73bbfc8985d52865edfab67616d00001e02db34ae82285e3ed2ae1c309eab67616d00001e02de8eea4082c20ec1a5d91914",
+      "local": "media/external/mosaic.scdn.co/3a116b3a5154-ab67616d00001e02294c76aa576e98529e4a3bb2ab67616d00001e028d18d73bbfc8985d52865edfab67616d00001e02db34ae82285e3ed2ae1c309eab67616d00001e02de8eea4082c20ec1a5d91914.jpg",
+      "bytes": 67728,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://mosaic.scdn.co/640/ab67616d00001e023b30a8209354748dea0310c7ab67616d00001e024e2f07c231f4ebb4780d40d3ab67616d00001e027a6097579ccc1d457f8be3feab67616d00001e0282815367ee2fc76ed9107d8e",
+      "local": "media/external/mosaic.scdn.co/4d272fedc987-ab67616d00001e023b30a8209354748dea0310c7ab67616d00001e024e2f07c231f4ebb4780d40d3ab67616d00001e027a6097579ccc1d457f8be3feab67616d00001e0282815367ee2fc76ed9107d8e.jpg",
+      "bytes": 40253,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://mosaic.scdn.co/640/ab67616d00001e02540ed805d22337f9efbf2676ab67616d00001e0274c8e16782e942de67b1a203ab67616d00001e0289c39ba1acdf33ed7acd3867ab67616d00001e02e4c03429788f0aff263a5fc6",
+      "local": "media/external/mosaic.scdn.co/f5481f649b83-ab67616d00001e02540ed805d22337f9efbf2676ab67616d00001e0274c8e16782e942de67b1a203ab67616d00001e0289c39ba1acdf33ed7acd3867ab67616d00001e02e4c03429788f0aff263a5fc6.jpg",
+      "bytes": 38188,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://mosaic.scdn.co/640/ab67616d00001e029f3afba678d78dc6ed799e20ab67616d00001e02c144d03afdb899b3a33d5f94ab67616d00001e02f6db96dde3ed532a7fded90fab67616d00001e02ff8ac5fe6fd40c0816064c2f",
+      "local": "media/external/mosaic.scdn.co/8a8bbded8f6c-ab67616d00001e029f3afba678d78dc6ed799e20ab67616d00001e02c144d03afdb899b3a33d5f94ab67616d00001e02f6db96dde3ed532a7fded90fab67616d00001e02ff8ac5fe6fd40c0816064c2f.jpg",
+      "bytes": 53660,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/main/IMG_1831-portrait.png",
+      "local": "media/external/raw.githubusercontent.com/94d8ed0db472-IMG_1831-portrait.png",
+      "bytes": 1376876,
+      "contentType": "image/png"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/main/IMG_1832-portrait.png",
+      "local": "media/external/raw.githubusercontent.com/673c9ac9fcfd-IMG_1832-portrait.png",
+      "bytes": 1183954,
+      "contentType": "image/png"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/main/IMG_1833-portrait.png",
+      "local": "media/external/raw.githubusercontent.com/7241ae4e0e69-IMG_1833-portrait.png",
+      "bytes": 795676,
+      "contentType": "image/png"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/main/IMG_1834-portrait.png",
+      "local": "media/external/raw.githubusercontent.com/d530d5c30ac8-IMG_1834-portrait.png",
+      "bytes": 832402,
+      "contentType": "image/png"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/main/IMG_1835-portrait.png",
+      "local": "media/external/raw.githubusercontent.com/cefad0155061-IMG_1835-portrait.png",
+      "bytes": 1069702,
+      "contentType": "image/png"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/main/IMG_1836-portrait.png",
+      "local": "media/external/raw.githubusercontent.com/b373d6fc1fcb-IMG_1836-portrait.png",
+      "bytes": 1005222,
+      "contentType": "image/png"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/main/IMG_1837-portrait.png",
+      "local": "media/external/raw.githubusercontent.com/ad274b4f29cf-IMG_1837-portrait.png",
+      "bytes": 1097969,
+      "contentType": "image/png"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/main/IMG_1838-portrait.png",
+      "local": "media/external/raw.githubusercontent.com/1770079809ce-IMG_1838-portrait.png",
+      "bytes": 1456397,
+      "contentType": "image/png"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/main/IMG_1839-portrait.png",
+      "local": "media/external/raw.githubusercontent.com/9c85274f7a1c-IMG_1839-portrait.png",
+      "bytes": 2140678,
+      "contentType": "image/png"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/main/IMG_1840-portrait.png",
+      "local": "media/external/raw.githubusercontent.com/6a4033799a6c-IMG_1840-portrait.png",
+      "bytes": 1792152,
+      "contentType": "image/png"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/main/IMG_1841-portrait.png",
+      "local": "media/external/raw.githubusercontent.com/2d0eeaddd649-IMG_1841-portrait.png",
+      "bytes": 1004348,
+      "contentType": "image/png"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/main/IMG_1842-portrait.png",
+      "local": "media/external/raw.githubusercontent.com/87662daa62b2-IMG_1842-portrait.png",
+      "bytes": 1032611,
+      "contentType": "image/png"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/main/IMG_1843-portrait.png",
+      "local": "media/external/raw.githubusercontent.com/8742b2c28afa-IMG_1843-portrait.png",
+      "bytes": 1412781,
+      "contentType": "image/png"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/main/IMG_1844-portrait.png",
+      "local": "media/external/raw.githubusercontent.com/815d702689b3-IMG_1844-portrait.png",
+      "bytes": 853477,
+      "contentType": "image/png"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/main/IMG_1845-portrait.png",
+      "local": "media/external/raw.githubusercontent.com/4a4edb9cbea6-IMG_1845-portrait.png",
+      "bytes": 843960,
+      "contentType": "image/png"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/main/IMG_1846-portrait.png",
+      "local": "media/external/raw.githubusercontent.com/bd9f3a0e1157-IMG_1846-portrait.png",
+      "bytes": 1158766,
+      "contentType": "image/png"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/main/IMG_1847-portrait.png",
+      "local": "media/external/raw.githubusercontent.com/fb5c17155b7d-IMG_1847-portrait.png",
+      "bytes": 1184962,
+      "contentType": "image/png"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/main/IMG_1848-portrait.png",
+      "local": "media/external/raw.githubusercontent.com/dc0cd8a20480-IMG_1848-portrait.png",
+      "bytes": 2054153,
+      "contentType": "image/png"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/main/IMG_1849-portrait.png",
+      "local": "media/external/raw.githubusercontent.com/cf6f389deb0f-IMG_1849-portrait.png",
+      "bytes": 1200709,
+      "contentType": "image/png"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/main/IMG_1850-portrait.png",
+      "local": "media/external/raw.githubusercontent.com/91e7a4174036-IMG_1850-portrait.png",
+      "bytes": 1222073,
+      "contentType": "image/png"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/main/IMG_1851-portrait.png",
+      "local": "media/external/raw.githubusercontent.com/f16957fe9b4c-IMG_1851-portrait.png",
+      "bytes": 1192573,
+      "contentType": "image/png"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/main/IMG_1852-portrait.png",
+      "local": "media/external/raw.githubusercontent.com/03669703b41b-IMG_1852-portrait.png",
+      "bytes": 1065532,
+      "contentType": "image/png"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/main/IMG_1853-portrait.png",
+      "local": "media/external/raw.githubusercontent.com/c102e601b7bc-IMG_1853-portrait.png",
+      "bytes": 1008290,
+      "contentType": "image/png"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/main/IMG_1854-portrait.png",
+      "local": "media/external/raw.githubusercontent.com/e28cb03b9788-IMG_1854-portrait.png",
+      "bytes": 1134242,
+      "contentType": "image/png"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/main/IMG_1855-portrait.png",
+      "local": "media/external/raw.githubusercontent.com/160b97421ae4-IMG_1855-portrait.png",
+      "bytes": 1136341,
+      "contentType": "image/png"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/main/IMG_1856-portrait.png",
+      "local": "media/external/raw.githubusercontent.com/a0e0e1b2e499-IMG_1856-portrait.png",
+      "bytes": 2192740,
+      "contentType": "image/png"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/main/IMG_1857-portrait.png",
+      "local": "media/external/raw.githubusercontent.com/9d85e45b32c5-IMG_1857-portrait.png",
+      "bytes": 1115675,
+      "contentType": "image/png"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/main/IMG_1858-portrait.png",
+      "local": "media/external/raw.githubusercontent.com/b80a59d59620-IMG_1858-portrait.png",
+      "bytes": 947106,
+      "contentType": "image/png"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/main/IMG_1859-portrait.png",
+      "local": "media/external/raw.githubusercontent.com/f25ecc916302-IMG_1859-portrait.png",
+      "bytes": 849169,
+      "contentType": "image/png"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/main/Untitled%20design%20(8).png",
+      "local": "media/external/raw.githubusercontent.com/931b4c4d60c2-Untitled-design-8-.png",
+      "bytes": 308869,
+      "contentType": "image/png"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/main/anchor.jpg",
+      "local": "media/external/raw.githubusercontent.com/9b890f90515b-anchor.jpg",
+      "bytes": 827406,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/main/brain.jpg",
+      "local": "media/external/raw.githubusercontent.com/c10de6195bd2-brain.jpg",
+      "bytes": 1496042,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/main/coderscove.png",
+      "local": "media/external/raw.githubusercontent.com/74c015277079-coderscove.png",
+      "bytes": 670644,
+      "contentType": "image/png"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/main/confesi_walrus.png",
+      "local": "media/external/raw.githubusercontent.com/948ad9509ef4-confesi_walrus.png",
+      "bytes": 150661,
+      "contentType": "image/png"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/main/confession.png",
+      "local": "media/external/raw.githubusercontent.com/0fe0f901456e-confession.png",
+      "bytes": 566380,
+      "contentType": "image/png"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/main/crabs.png",
+      "local": "media/external/raw.githubusercontent.com/e73df81610b6-crabs.png",
+      "bytes": 153503,
+      "contentType": "image/png"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/main/d1.png",
+      "local": "media/external/raw.githubusercontent.com/96fe8c705f7d-d1.png",
+      "bytes": 68199,
+      "contentType": "image/png"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/main/d2.png",
+      "local": "media/external/raw.githubusercontent.com/afa7d67a30ac-d2.png",
+      "bytes": 78100,
+      "contentType": "image/png"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/main/d3.png",
+      "local": "media/external/raw.githubusercontent.com/5458071f02b3-d3.png",
+      "bytes": 55292,
+      "contentType": "image/png"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/main/d4.png",
+      "local": "media/external/raw.githubusercontent.com/2497c14766da-d4.png",
+      "bytes": 74280,
+      "contentType": "image/png"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/main/d5.png",
+      "local": "media/external/raw.githubusercontent.com/45e117cdb6bf-d5.png",
+      "bytes": 56583,
+      "contentType": "image/png"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/main/demo.gif",
+      "local": "media/external/raw.githubusercontent.com/00263202bcce-demo.gif",
+      "bytes": 360377,
+      "contentType": "image/gif"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/main/docs.png",
+      "local": "media/external/raw.githubusercontent.com/9e61b2b2de8b-docs.png",
+      "bytes": 117132,
+      "contentType": "image/png"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/main/fig.png",
+      "local": "media/external/raw.githubusercontent.com/c12ce0c97e9e-fig.png",
+      "bytes": 100848,
+      "contentType": "image/png"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/main/hist.png",
+      "local": "media/external/raw.githubusercontent.com/ef47554da8bc-hist.png",
+      "bytes": 178066,
+      "contentType": "image/png"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/main/hockey.jpg",
+      "local": "media/external/raw.githubusercontent.com/4079013d8aab-hockey.jpg",
+      "bytes": 1970462,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/main/hockey2.png",
+      "local": "media/external/raw.githubusercontent.com/a1f09d60c93d-hockey2.png",
+      "bytes": 17754,
+      "contentType": "image/png"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/main/lc-dashboard.jpg",
+      "local": "media/external/raw.githubusercontent.com/5871ebead292-lc-dashboard.jpg",
+      "bytes": 555760,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/main/libs.jpg",
+      "local": "media/external/raw.githubusercontent.com/62faab8e3f20-libs.jpg",
+      "bytes": 2635458,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/main/pexels-steve-johnson-927546.jpg",
+      "local": "media/external/raw.githubusercontent.com/6a91cbddb6c2-pexels-steve-johnson-927546.jpg",
+      "bytes": 580571,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/main/pi2.JPG",
+      "local": "media/external/raw.githubusercontent.com/a434e734d54d-pi2.JPG",
+      "bytes": 2620099,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/main/scripts.jpg",
+      "local": "media/external/raw.githubusercontent.com/eb626b91f5d5-scripts.jpg",
+      "bytes": 4981223,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/main/stuff.png",
+      "local": "media/external/raw.githubusercontent.com/18ce8c97e86e-stuff.png",
+      "bytes": 529550,
+      "contentType": "image/png"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/main/teams.png",
+      "local": "media/external/raw.githubusercontent.com/f14d28220340-teams.png",
+      "bytes": 46873,
+      "contentType": "image/png"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/main/terminal2.png",
+      "local": "media/external/raw.githubusercontent.com/6806bfd81164-terminal2.png",
+      "bytes": 328475,
+      "contentType": "image/png"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/main/tund.png",
+      "local": "media/external/raw.githubusercontent.com/d8b4e3f5b1de-tund.png",
+      "bytes": 670360,
+      "contentType": "image/png"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/main/tund2.png",
+      "local": "media/external/raw.githubusercontent.com/67b255f26cce-tund2.png",
+      "bytes": 534217,
+      "contentType": "image/png"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/main/tund3.png",
+      "local": "media/external/raw.githubusercontent.com/221cbe2d3c22-tund3.png",
+      "bytes": 617356,
+      "contentType": "image/png"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/main/webdev.webp",
+      "local": "media/external/raw.githubusercontent.com/4f1c86f00374-webdev.webp",
+      "bytes": 26636,
+      "contentType": "image/webp"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/refs/heads/main/Screenshot%202026-09-01%20at%2020.12.44.png",
+      "local": "media/external/raw.githubusercontent.com/53c904b10d1a-Screenshot-2026-09-01-at-20.12.44.png",
+      "bytes": 1392473,
+      "contentType": "image/png"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/refs/heads/main/Screenshot%202026-09-01%20at%2021.12.19.png",
+      "local": "media/external/raw.githubusercontent.com/17a7a74e7f67-Screenshot-2026-09-01-at-21.12.19.png",
+      "bytes": 1235815,
+      "contentType": "image/png"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/refs/heads/main/Screenshot%202026-09-02%20at%2017.51.14.png",
+      "local": "media/external/raw.githubusercontent.com/e27702ee32cd-Screenshot-2026-09-02-at-17.51.14.png",
+      "bytes": 1379557,
+      "contentType": "image/png"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/refs/heads/main/alyson-y-_I0z8MWUeVA-unsplash.jpg",
+      "local": "media/external/raw.githubusercontent.com/429b53d0c3dd-alyson-y-_I0z8MWUeVA-unsplash.jpg",
+      "bytes": 1313912,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/refs/heads/main/awards1.png",
+      "local": "media/external/raw.githubusercontent.com/39336cd846b9-awards1.png",
+      "bytes": 4327317,
+      "contentType": "image/png"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/refs/heads/main/awards2.png",
+      "local": "media/external/raw.githubusercontent.com/fa861d5a1900-awards2.png",
+      "bytes": 1449140,
+      "contentType": "image/png"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/refs/heads/main/boat.jpg",
+      "local": "media/external/raw.githubusercontent.com/5bdb7f903906-boat.jpg",
+      "bytes": 1956352,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/refs/heads/main/ccf_1.jpg",
+      "local": "media/external/raw.githubusercontent.com/6db49843b607-ccf_1.jpg",
+      "bytes": 46401,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/refs/heads/main/ccf_2.jpg",
+      "local": "media/external/raw.githubusercontent.com/f11ffe619948-ccf_2.jpg",
+      "bytes": 368803,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/refs/heads/main/ccf_4.jpg",
+      "local": "media/external/raw.githubusercontent.com/fc1759a734e9-ccf_4.jpg",
+      "bytes": 258817,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/refs/heads/main/ccf_5.jpg",
+      "local": "media/external/raw.githubusercontent.com/755fd3a629b3-ccf_5.jpg",
+      "bytes": 115644,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/refs/heads/main/copycat_10.png",
+      "local": "media/external/raw.githubusercontent.com/d6ab769968be-copycat_10.png",
+      "bytes": 34410,
+      "contentType": "image/png"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/refs/heads/main/copycat_11.png",
+      "local": "media/external/raw.githubusercontent.com/732ad7f8172c-copycat_11.png",
+      "bytes": 21163,
+      "contentType": "image/png"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/refs/heads/main/copycat_12.png",
+      "local": "media/external/raw.githubusercontent.com/a98e8145932a-copycat_12.png",
+      "bytes": 65200,
+      "contentType": "image/png"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/refs/heads/main/copycat_13.png",
+      "local": "media/external/raw.githubusercontent.com/9938679aedb2-copycat_13.png",
+      "bytes": 42671,
+      "contentType": "image/png"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/refs/heads/main/copycat_15.png",
+      "local": "media/external/raw.githubusercontent.com/ba42f44bd33a-copycat_15.png",
+      "bytes": 17161,
+      "contentType": "image/png"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/refs/heads/main/copycat_16.png",
+      "local": "media/external/raw.githubusercontent.com/b70a69af559c-copycat_16.png",
+      "bytes": 22096,
+      "contentType": "image/png"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/refs/heads/main/copycat_17.png",
+      "local": "media/external/raw.githubusercontent.com/2439fa07dcd8-copycat_17.png",
+      "bytes": 41139,
+      "contentType": "image/png"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/refs/heads/main/copycat_18.png",
+      "local": "media/external/raw.githubusercontent.com/1fd7f4df3223-copycat_18.png",
+      "bytes": 45328,
+      "contentType": "image/png"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/refs/heads/main/copycat_2.png",
+      "local": "media/external/raw.githubusercontent.com/2e9ff0eca6ee-copycat_2.png",
+      "bytes": 346994,
+      "contentType": "image/png"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/refs/heads/main/copycat_3.png",
+      "local": "media/external/raw.githubusercontent.com/c356cd25572f-copycat_3.png",
+      "bytes": 320037,
+      "contentType": "image/png"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/refs/heads/main/copycat_5.png",
+      "local": "media/external/raw.githubusercontent.com/d962793d9e8d-copycat_5.png",
+      "bytes": 98142,
+      "contentType": "image/png"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/refs/heads/main/copycat_6.png",
+      "local": "media/external/raw.githubusercontent.com/64125bbd21a0-copycat_6.png",
+      "bytes": 110349,
+      "contentType": "image/png"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/refs/heads/main/copycat_7.png",
+      "local": "media/external/raw.githubusercontent.com/59d37260a731-copycat_7.png",
+      "bytes": 207709,
+      "contentType": "image/png"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/refs/heads/main/copycat_8.png",
+      "local": "media/external/raw.githubusercontent.com/008c94a60f43-copycat_8.png",
+      "bytes": 43437,
+      "contentType": "image/png"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/refs/heads/main/copycat_9.png",
+      "local": "media/external/raw.githubusercontent.com/daaab72ac585-copycat_9.png",
+      "bytes": 51322,
+      "contentType": "image/png"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/refs/heads/main/copycat_banner.png",
+      "local": "media/external/raw.githubusercontent.com/25f02a0a18e7-copycat_banner.png",
+      "bytes": 365008,
+      "contentType": "image/png"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/refs/heads/main/engine.jpg",
+      "local": "media/external/raw.githubusercontent.com/e8988af7147b-engine.jpg",
+      "bytes": 3008595,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/refs/heads/main/keming-tan-xMygEKgsnes-unsplash.jpg",
+      "local": "media/external/raw.githubusercontent.com/32c5b7da2e99-keming-tan-xMygEKgsnes-unsplash.jpg",
+      "bytes": 7430558,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/refs/heads/main/lc.jpg",
+      "local": "media/external/raw.githubusercontent.com/91863eff1431-lc.jpg",
+      "bytes": 75380,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/refs/heads/main/miguel-angel-padrinan-alba-Ci9aTaiy9w8-unsplash.jpg",
+      "local": "media/external/raw.githubusercontent.com/d3b6b8933de7-miguel-angel-padrinan-alba-Ci9aTaiy9w8-unsplash.jpg",
+      "bytes": 2693213,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/refs/heads/main/nanda-firdaus-P64pNhm9g1s-unsplash.jpg",
+      "local": "media/external/raw.githubusercontent.com/0773471728e3-nanda-firdaus-P64pNhm9g1s-unsplash.jpg",
+      "bytes": 2524602,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/refs/heads/main/pexels-cara-denison-886614634-35415405.jpg",
+      "local": "media/external/raw.githubusercontent.com/03b0a936f0bd-pexels-cara-denison-886614634-35415405.jpg",
+      "bytes": 868056,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/refs/heads/main/pexels-loquellano-10511746.jpg",
+      "local": "media/external/raw.githubusercontent.com/220ad614de4b-pexels-loquellano-10511746.jpg",
+      "bytes": 3683269,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/refs/heads/main/pexels-pixabay-247823.jpg",
+      "local": "media/external/raw.githubusercontent.com/8e380d38c47f-pexels-pixabay-247823.jpg",
+      "bytes": 606162,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/refs/heads/main/pexels-rick98-2793444.jpg",
+      "local": "media/external/raw.githubusercontent.com/44a8d3c2e92a-pexels-rick98-2793444.jpg",
+      "bytes": 1432969,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/refs/heads/main/pexels-shanerich5-20858443.jpg",
+      "local": "media/external/raw.githubusercontent.com/eff1b61e1c79-pexels-shanerich5-20858443.jpg",
+      "bytes": 4134128,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mattrltrent/random_assets/refs/heads/main/unsplashcolumbia.png",
+      "local": "media/external/raw.githubusercontent.com/57e9be12ff92-unsplashcolumbia.png",
+      "bytes": 6214727,
+      "contentType": "image/png"
+    }
+  ],
+  "notVendored": [
+    "video and audio media",
+    "analytics and API responses",
+    "live visitor cursors/presence",
+    "Spotify playback and MattGPT interactions"
+  ]
+}

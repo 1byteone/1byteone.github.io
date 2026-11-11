@@ -1,0 +1,597 @@
+{
+  "generatedAt": "2026-11-10T03:41:18.932Z",
+  "count": 118,
+  "note": "Pexels and Flowbite assets are licensed sources; candidates/unverified are retained for local review until each source is confirmed.",
+  "assets": [
+    {
+      "src": "media/blog-library/photos/pexels/13054497-pexels.jpg",
+      "kind": "Pexels",
+      "index": 1
+    },
+    {
+      "src": "media/blog-library/photos/pexels/19569316-pexels.jpg",
+      "kind": "Pexels",
+      "index": 2
+    },
+    {
+      "src": "media/blog-library/photos/pexels/22719133-pexels.jpg",
+      "kind": "Pexels",
+      "index": 3
+    },
+    {
+      "src": "media/blog-library/photos/pexels/29724360-pexels.jpg",
+      "kind": "Pexels",
+      "index": 4
+    },
+    {
+      "src": "media/blog-library/photos/pexels/30975991-pexels.jpg",
+      "kind": "Pexels",
+      "index": 5
+    },
+    {
+      "src": "media/blog-library/photos/pexels/30975992-pexels.jpg",
+      "kind": "Pexels",
+      "index": 6
+    },
+    {
+      "src": "media/blog-library/photos/pexels/31704065-pexels.jpg",
+      "kind": "Pexels",
+      "index": 7
+    },
+    {
+      "src": "media/blog-library/photos/pexels/33786991-pexels.jpg",
+      "kind": "Pexels",
+      "index": 8
+    },
+    {
+      "src": "media/blog-library/photos/pexels/33856779-pexels.jpg",
+      "kind": "Pexels",
+      "index": 9
+    },
+    {
+      "src": "media/blog-library/photos/pexels/34803994-pexels.jpg",
+      "kind": "Pexels",
+      "index": 10
+    },
+    {
+      "src": "media/blog-library/photos/pexels/34804003-pexels.jpg",
+      "kind": "Pexels",
+      "index": 11
+    },
+    {
+      "src": "media/blog-library/photos/pexels/34804004-pexels.jpg",
+      "kind": "Pexels",
+      "index": 12
+    },
+    {
+      "src": "media/blog-library/photos/pexels/35184836-pexels.jpg",
+      "kind": "Pexels",
+      "index": 13
+    },
+    {
+      "src": "media/blog-library/photos/pexels/36123565-pexels.jpg",
+      "kind": "Pexels",
+      "index": 14
+    },
+    {
+      "src": "media/blog-library/photos/pexels/36496927-pexels.jpg",
+      "kind": "Pexels",
+      "index": 15
+    },
+    {
+      "src": "media/blog-library/photos/pexels/36567301-pexels.jpg",
+      "kind": "Pexels",
+      "index": 16
+    },
+    {
+      "src": "media/blog-library/photos/pexels/37085304-pexels.jpg",
+      "kind": "Pexels",
+      "index": 17
+    },
+    {
+      "src": "media/blog-library/photos/pexels/5926382-pexels.jpg",
+      "kind": "Pexels",
+      "index": 18
+    },
+    {
+      "src": "media/blog-library/photos/pexels/6616681-pexels.jpg",
+      "kind": "Pexels",
+      "index": 19
+    },
+    {
+      "src": "media/blog-library/photos/pexels/7988079-pexels.jpg",
+      "kind": "Pexels",
+      "index": 20
+    },
+    {
+      "src": "media/blog-library/photos/pexels/7988086-pexels.jpg",
+      "kind": "Pexels",
+      "index": 21
+    },
+    {
+      "src": "media/blog-library/photos/pexels/8019123-pexels.jpg",
+      "kind": "Pexels",
+      "index": 22
+    },
+    {
+      "src": "media/blog-library/photos/pexels/8289984-pexels.jpg",
+      "kind": "Pexels",
+      "index": 23
+    },
+    {
+      "src": "media/blog-library/photos/pexels/8534373-pexels.jpg",
+      "kind": "Pexels",
+      "index": 24
+    },
+    {
+      "src": "media/blog-library/photos/pexels/9553905-pexels.jpg",
+      "kind": "Pexels",
+      "index": 25
+    },
+    {
+      "src": "media/blog-library/candidates/unverified/10-websites-offering-free-scientific-illustrations-and-images.jpg",
+      "kind": "本地候选",
+      "index": 26
+    },
+    {
+      "src": "media/blog-library/candidates/unverified/10.jpg",
+      "kind": "本地候选",
+      "index": 27
+    },
+    {
+      "src": "media/blog-library/candidates/unverified/arxiv-tightens-policy-on-hallucinated-references-what-researchers-shou.jpg",
+      "kind": "本地候选",
+      "index": 28
+    },
+    {
+      "src": "media/blog-library/candidates/unverified/building-the-backend-of-todome-a-task-management-app-using-spring-boot.jpg",
+      "kind": "本地候选",
+      "index": 29
+    },
+    {
+      "src": "media/blog-library/candidates/unverified/cavie-creative-tech-agency.jpg",
+      "kind": "本地候选",
+      "index": 30
+    },
+    {
+      "src": "media/blog-library/candidates/unverified/challenge-1-github-anyone-can-code.jpg",
+      "kind": "本地候选",
+      "index": 31
+    },
+    {
+      "src": "media/blog-library/candidates/unverified/early-blight-disease-damaging-tomato-leaf-causing-brown-spots.jpg",
+      "kind": "本地候选",
+      "index": 32
+    },
+    {
+      "src": "media/blog-library/candidates/unverified/exploring-microservices-understanding-service-registry-and-discovery-w.jpg",
+      "kind": "本地候选",
+      "index": 33
+    },
+    {
+      "src": "media/blog-library/candidates/unverified/free-and-open-source-collection-of-svg-illustrations-for-flowbite-dev-.jpg",
+      "kind": "本地候选",
+      "index": 34
+    },
+    {
+      "src": "media/blog-library/candidates/unverified/free-and-open-source-images-icons-and-tools-for-creating-scientific-il.jpg",
+      "kind": "本地候选",
+      "index": 35
+    },
+    {
+      "src": "media/blog-library/candidates/unverified/function-calling-with-openai-by-parminder-singh-medium.jpg",
+      "kind": "本地候选",
+      "index": 36
+    },
+    {
+      "src": "media/blog-library/candidates/unverified/github-themesberg-flowbite-illustrations-free-and-open-source-collecti.jpg",
+      "kind": "本地候选",
+      "index": 37
+    },
+    {
+      "src": "media/blog-library/candidates/unverified/green-rice-field.jpg",
+      "kind": "本地候选",
+      "index": 38
+    },
+    {
+      "src": "media/blog-library/candidates/unverified/handling-big-datasets-for-machine-learning-by-matthew-stewart-phd-tds-.jpg",
+      "kind": "本地候选",
+      "index": 39
+    },
+    {
+      "src": "media/blog-library/candidates/unverified/how-ai-code-assistants-changing-software-development-hcode-s-offical-b.jpg",
+      "kind": "本地候选",
+      "index": 40
+    },
+    {
+      "src": "media/blog-library/candidates/unverified/how-i-choose-between-prompt-engineering-rag-and-fine-tuning-by-system-.jpg",
+      "kind": "本地候选",
+      "index": 41
+    },
+    {
+      "src": "media/blog-library/candidates/unverified/introduction-to-vector-search-sciences-44.jpg",
+      "kind": "本地候选",
+      "index": 42
+    },
+    {
+      "src": "media/blog-library/candidates/unverified/kling-3-0-vs-veo-3-api-best-ai-video-api-for-developers-2026-ai-blog-a.jpg",
+      "kind": "本地候选",
+      "index": 43
+    },
+    {
+      "src": "media/blog-library/candidates/unverified/medium.jpg",
+      "kind": "本地候选",
+      "index": 44
+    },
+    {
+      "src": "media/blog-library/candidates/unverified/michigan-vegetable-crop-report-august-27-2025-vegetables.jpg",
+      "kind": "本地候选",
+      "index": 45
+    },
+    {
+      "src": "media/blog-library/candidates/unverified/microservices-distributed-transactions-by-mehmet-ozkaya-design-microse.jpg",
+      "kind": "本地候选",
+      "index": 46
+    },
+    {
+      "src": "media/blog-library/candidates/unverified/o-que-faz-um-desenvolvedor-back-end-em-2026-stack-carreira-e-o-futuro-.jpg",
+      "kind": "本地候选",
+      "index": 47
+    },
+    {
+      "src": "media/blog-library/candidates/unverified/open-doodles-benrito.jpg",
+      "kind": "本地候选",
+      "index": 48
+    },
+    {
+      "src": "media/blog-library/candidates/unverified/open-peeps.jpg",
+      "kind": "本地候选",
+      "index": 49
+    },
+    {
+      "src": "media/blog-library/candidates/unverified/personal-website-by-alexis-wollseifen-on-dribbble.jpg",
+      "kind": "本地候选",
+      "index": 50
+    },
+    {
+      "src": "media/blog-library/candidates/unverified/pexels-pexels-provides-millions-of-free-high-quality-stock-photos-and-.jpg",
+      "kind": "本地候选",
+      "index": 51
+    },
+    {
+      "src": "media/blog-library/candidates/unverified/plant-disease-agronomist-junior-agricultural-scientists-research-green.jpg",
+      "kind": "本地候选",
+      "index": 52
+    },
+    {
+      "src": "media/blog-library/candidates/unverified/powdery-mildew-blumeria-graminis-f-sp-hordei-photomicrograph-of-a-fung.jpg",
+      "kind": "本地候选",
+      "index": 53
+    },
+    {
+      "src": "media/blog-library/candidates/unverified/premium-open-source-lucide-icons-for-the-best-web-design-eagle-communi.jpg",
+      "kind": "本地候选",
+      "index": 54
+    },
+    {
+      "src": "media/blog-library/candidates/unverified/q-gate-infotech.jpg",
+      "kind": "本地候选",
+      "index": 55
+    },
+    {
+      "src": "media/blog-library/candidates/unverified/redesigning-eslint-eslint-pluggable-javascript-linter.jpg",
+      "kind": "本地候选",
+      "index": 56
+    },
+    {
+      "src": "media/blog-library/candidates/unverified/saas-analytics-dashboard-ui-design-for-ai-platform-by-visenor-on-dribb.jpg",
+      "kind": "本地候选",
+      "index": 57
+    },
+    {
+      "src": "media/blog-library/candidates/unverified/software-climaax-cra-handbook.jpg",
+      "kind": "本地候选",
+      "index": 58
+    },
+    {
+      "src": "media/blog-library/candidates/unverified/task-oriented-ai-agents-with-langgraph-euron-daily-euron-community.jpg",
+      "kind": "本地候选",
+      "index": 59
+    },
+    {
+      "src": "media/blog-library/candidates/unverified/taurus-solving-your-it-problems-end-to-end-it-solutions.jpg",
+      "kind": "本地候选",
+      "index": 60
+    },
+    {
+      "src": "media/blog-library/candidates/unverified/three-free-resource-websites-to-boost-my-workflow-dev-community.jpg",
+      "kind": "本地候选",
+      "index": 61
+    },
+    {
+      "src": "media/blog-library/candidates/unverified/undraw-open-source-illustrations-for-any-idea.jpg",
+      "kind": "本地候选",
+      "index": 62
+    },
+    {
+      "src": "media/blog-library/candidates/unverified/unsplash-review-2024-features-alternatives-pricings.jpg",
+      "kind": "本地候选",
+      "index": 63
+    },
+    {
+      "src": "media/blog-library/candidates/unverified/why-nue-improved-developer-experience.jpg",
+      "kind": "本地候选",
+      "index": 64
+    },
+    {
+      "src": "media/blog-library/illustrations/flowbite/3d/light/404-not-found-shopping.svg",
+      "kind": "Flowbite · MIT",
+      "index": 65
+    },
+    {
+      "src": "media/blog-library/illustrations/flowbite/3d/light/404-not-found-smiley.svg",
+      "kind": "Flowbite · MIT",
+      "index": 66
+    },
+    {
+      "src": "media/blog-library/illustrations/flowbite/3d/light/authentication-form-fields.svg",
+      "kind": "Flowbite · MIT",
+      "index": 67
+    },
+    {
+      "src": "media/blog-library/illustrations/flowbite/3d/light/balloon-package-flying.svg",
+      "kind": "Flowbite · MIT",
+      "index": 68
+    },
+    {
+      "src": "media/blog-library/illustrations/flowbite/3d/light/couple-dancing-music.svg",
+      "kind": "Flowbite · MIT",
+      "index": 69
+    },
+    {
+      "src": "media/blog-library/illustrations/flowbite/3d/light/credit-card-payment-receipt.svg",
+      "kind": "Flowbite · MIT",
+      "index": 70
+    },
+    {
+      "src": "media/blog-library/illustrations/flowbite/3d/light/document-folders.svg",
+      "kind": "Flowbite · MIT",
+      "index": 71
+    },
+    {
+      "src": "media/blog-library/illustrations/flowbite/3d/light/employees-working-charts.svg",
+      "kind": "Flowbite · MIT",
+      "index": 72
+    },
+    {
+      "src": "media/blog-library/illustrations/flowbite/3d/light/employees-working-office.svg",
+      "kind": "Flowbite · MIT",
+      "index": 73
+    },
+    {
+      "src": "media/blog-library/illustrations/flowbite/3d/light/gaming-controller-ghosts.svg",
+      "kind": "Flowbite · MIT",
+      "index": 74
+    },
+    {
+      "src": "media/blog-library/illustrations/flowbite/3d/light/group-brainstorming.svg",
+      "kind": "Flowbite · MIT",
+      "index": 75
+    },
+    {
+      "src": "media/blog-library/illustrations/flowbite/3d/light/laptop-404-not-found-error.svg",
+      "kind": "Flowbite · MIT",
+      "index": 76
+    },
+    {
+      "src": "media/blog-library/illustrations/flowbite/3d/light/laptop-server-error.svg",
+      "kind": "Flowbite · MIT",
+      "index": 77
+    },
+    {
+      "src": "media/blog-library/illustrations/flowbite/3d/light/man-adjusting-settings.svg",
+      "kind": "Flowbite · MIT",
+      "index": 78
+    },
+    {
+      "src": "media/blog-library/illustrations/flowbite/3d/light/man-car-service-repairing.svg",
+      "kind": "Flowbite · MIT",
+      "index": 79
+    },
+    {
+      "src": "media/blog-library/illustrations/flowbite/3d/light/man-clock-shopping-charts.svg",
+      "kind": "Flowbite · MIT",
+      "index": 80
+    },
+    {
+      "src": "media/blog-library/illustrations/flowbite/3d/light/man-credit-card.svg",
+      "kind": "Flowbite · MIT",
+      "index": 81
+    },
+    {
+      "src": "media/blog-library/illustrations/flowbite/3d/light/man-drawing.svg",
+      "kind": "Flowbite · MIT",
+      "index": 82
+    },
+    {
+      "src": "media/blog-library/illustrations/flowbite/3d/light/man-pointing-smartphone.svg",
+      "kind": "Flowbite · MIT",
+      "index": 83
+    },
+    {
+      "src": "media/blog-library/illustrations/flowbite/3d/light/man-question-marks.svg",
+      "kind": "Flowbite · MIT",
+      "index": 84
+    },
+    {
+      "src": "media/blog-library/illustrations/flowbite/3d/light/man-repairing.svg",
+      "kind": "Flowbite · MIT",
+      "index": 85
+    },
+    {
+      "src": "media/blog-library/illustrations/flowbite/3d/light/man-review-stars.svg",
+      "kind": "Flowbite · MIT",
+      "index": 86
+    },
+    {
+      "src": "media/blog-library/illustrations/flowbite/3d/light/man-vr-headset.svg",
+      "kind": "Flowbite · MIT",
+      "index": 87
+    },
+    {
+      "src": "media/blog-library/illustrations/flowbite/3d/light/man-working-programs.svg",
+      "kind": "Flowbite · MIT",
+      "index": 88
+    },
+    {
+      "src": "media/blog-library/illustrations/flowbite/3d/light/man-working-question-mark.svg",
+      "kind": "Flowbite · MIT",
+      "index": 89
+    },
+    {
+      "src": "media/blog-library/illustrations/flowbite/3d/light/password-lock-key.svg",
+      "kind": "Flowbite · MIT",
+      "index": 90
+    },
+    {
+      "src": "media/blog-library/illustrations/flowbite/3d/light/people-connecting.svg",
+      "kind": "Flowbite · MIT",
+      "index": 91
+    },
+    {
+      "src": "media/blog-library/illustrations/flowbite/3d/light/smartphone-application-features.svg",
+      "kind": "Flowbite · MIT",
+      "index": 92
+    },
+    {
+      "src": "media/blog-library/illustrations/flowbite/3d/light/smartphone-charts.svg",
+      "kind": "Flowbite · MIT",
+      "index": 93
+    },
+    {
+      "src": "media/blog-library/illustrations/flowbite/3d/light/smartphone-crypto-charts.svg",
+      "kind": "Flowbite · MIT",
+      "index": 94
+    },
+    {
+      "src": "media/blog-library/illustrations/flowbite/3d/light/store-discount-open.svg",
+      "kind": "Flowbite · MIT",
+      "index": 95
+    },
+    {
+      "src": "media/blog-library/illustrations/flowbite/3d/light/wallet-money.svg",
+      "kind": "Flowbite · MIT",
+      "index": 96
+    },
+    {
+      "src": "media/blog-library/illustrations/flowbite/3d/light/woman-cooking-kitchen.svg",
+      "kind": "Flowbite · MIT",
+      "index": 97
+    },
+    {
+      "src": "media/blog-library/illustrations/flowbite/3d/light/woman-cyber-security.svg",
+      "kind": "Flowbite · MIT",
+      "index": 98
+    },
+    {
+      "src": "media/blog-library/illustrations/flowbite/3d/light/woman-earth-hugging.svg",
+      "kind": "Flowbite · MIT",
+      "index": 99
+    },
+    {
+      "src": "media/blog-library/illustrations/flowbite/3d/light/woman-exchanging-money.svg",
+      "kind": "Flowbite · MIT",
+      "index": 100
+    },
+    {
+      "src": "media/blog-library/illustrations/flowbite/3d/light/woman-fitness-gym.svg",
+      "kind": "Flowbite · MIT",
+      "index": 101
+    },
+    {
+      "src": "media/blog-library/illustrations/flowbite/3d/light/woman-laptop-chart.svg",
+      "kind": "Flowbite · MIT",
+      "index": 102
+    },
+    {
+      "src": "media/blog-library/illustrations/flowbite/3d/light/woman-laptop-chatting.svg",
+      "kind": "Flowbite · MIT",
+      "index": 103
+    },
+    {
+      "src": "media/blog-library/illustrations/flowbite/3d/light/woman-laptop-sitting.svg",
+      "kind": "Flowbite · MIT",
+      "index": 104
+    },
+    {
+      "src": "media/blog-library/illustrations/flowbite/3d/light/woman-laptop-standing.svg",
+      "kind": "Flowbite · MIT",
+      "index": 105
+    },
+    {
+      "src": "media/blog-library/illustrations/flowbite/3d/light/woman-map.svg",
+      "kind": "Flowbite · MIT",
+      "index": 106
+    },
+    {
+      "src": "media/blog-library/illustrations/flowbite/3d/light/woman-mindfulness-yoga.svg",
+      "kind": "Flowbite · MIT",
+      "index": 107
+    },
+    {
+      "src": "media/blog-library/illustrations/flowbite/3d/light/woman-reading-paper-receipt.svg",
+      "kind": "Flowbite · MIT",
+      "index": 108
+    },
+    {
+      "src": "media/blog-library/illustrations/flowbite/3d/light/woman-real-estate-selling.svg",
+      "kind": "Flowbite · MIT",
+      "index": 109
+    },
+    {
+      "src": "media/blog-library/illustrations/flowbite/3d/light/woman-rocket-flying.svg",
+      "kind": "Flowbite · MIT",
+      "index": 110
+    },
+    {
+      "src": "media/blog-library/illustrations/flowbite/3d/light/woman-scooter-transporting.svg",
+      "kind": "Flowbite · MIT",
+      "index": 111
+    },
+    {
+      "src": "media/blog-library/illustrations/flowbite/3d/light/woman-shopping-cart.svg",
+      "kind": "Flowbite · MIT",
+      "index": 112
+    },
+    {
+      "src": "media/blog-library/illustrations/flowbite/3d/light/woman-shopping-discount.svg",
+      "kind": "Flowbite · MIT",
+      "index": 113
+    },
+    {
+      "src": "media/blog-library/illustrations/flowbite/3d/light/woman-shopping-online.svg",
+      "kind": "Flowbite · MIT",
+      "index": 114
+    },
+    {
+      "src": "media/blog-library/illustrations/flowbite/3d/light/woman-shopping-window.svg",
+      "kind": "Flowbite · MIT",
+      "index": 115
+    },
+    {
+      "src": "media/blog-library/illustrations/flowbite/3d/light/woman-tutoring-classroom.svg",
+      "kind": "Flowbite · MIT",
+      "index": 116
+    },
+    {
+      "src": "media/blog-library/illustrations/flowbite/3d/light/woman-vr-headset.svg",
+      "kind": "Flowbite · MIT",
+      "index": 117
+    },
+    {
+      "src": "media/blog-library/illustrations/flowbite/3d/light/woman-working-servers.svg",
+      "kind": "Flowbite · MIT",
+      "index": 118
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+const e=2e3,s=80;function u(o,t){return o>0?"used":t>0?"could":"none"}const n={used:"Custom prompt used",could:"Custom prompt off (could've been used)",none:"No custom prompt"};export{n as C,s as a,e as b,u as c};

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Tutorial on </title>
+		<link>http://127.0.0.1:1318/tags/tutorial/</link>
+		<description>Recent content in Tutorial on </description>
+		<generator>Hugo</generator>
+		<language>en</language>
+		
+		
+		
+		
+			<lastBuildDate>Fri, 21 Aug 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://127.0.0.1:1318/tags/tutorial/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>FastAPI AI Streaming APIs with Server-Sent Events</title>
+				<link>http://127.0.0.1:1318/en/blog/fastapi-ai-streaming-api/</link>
+				<pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://127.0.0.1:1318/en/blog/fastapi-ai-streaming-api/</guid>
+				<description>Build cancellable and observable AI streaming endpoints with generators, SSE framing, and disconnect handling.</description>
+			</item>
+			<item>
+				<title>FastAPI Async and Dependency Injection: Keep the Event Loop Healthy</title>
+				<link>http://127.0.0.1:1318/en/blog/fastapi-async-dependency-injection/</link>
+				<pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://127.0.0.1:1318/en/blog/fastapi-async-dependency-injection/</guid>
+				<description>Understand async/sync boundaries, pool lifecycles, dependency scopes, and concurrency control in FastAPI.</description>
+			</item>
+			<item>
+				<title>FastAPI Project Architecture: Layering Routes and Domain Services</title>
+				<link>http://127.0.0.1:1318/en/blog/fastapi-project-architecture/</link>
+				<pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://127.0.0.1:1318/en/blog/fastapi-project-architecture/</guid>
+				<description>Organize a FastAPI service with layers, dependency injection, and configuration so AI endpoints stay testable and deployable.</description>
+			</item>
+			<item>
+				<title>FastAPI Request and Response Contracts with Pydantic</title>
+				<link>http://127.0.0.1:1318/en/blog/fastapi-request-response-pydantic/</link>
+				<pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://127.0.0.1:1318/en/blog/fastapi-request-response-pydantic/</guid>
+				<description>Use Pydantic schemas, field validation, response shaping, and consistent errors instead of fragile dictionary conventions.</description>
+			</item>
+			<item>
+				<title>LangChain Core Architecture: Runnables, Models, and Composable Chains</title>
+				<link>http://127.0.0.1:1318/en/blog/langchain-core-architecture/</link>
+				<pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://127.0.0.1:1318/en/blog/langchain-core-architecture/</guid>
+				<description>Understand how LangChain composes prompts, models, parsers, and Runnable stages into testable AI workflows.</description>
+			</item>
+			<item>
+				<title>LangChain Memory: Designing Controlled Multi-Turn State</title>
+				<link>http://127.0.0.1:1318/en/blog/langchain-memory-multiturn/</link>
+				<pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://127.0.0.1:1318/en/blog/langchain-memory-multiturn/</guid>
+				<description>Design conversation history, summary memory, and long-term memory with clear state, capacity, and privacy boundaries.</description>
+			</item>
+			<item>
+				<title>LangChain Prompt Chains: Treat Prompts as Maintainable Programs</title>
+				<link>http://127.0.0.1:1318/en/blog/langchain-prompt-chain/</link>
+				<pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://127.0.0.1:1318/en/blog/langchain-prompt-chain/</guid>
+				<description>Use templates, variable contracts, message roles, and composition to build versioned and evaluable prompt chains.</description>
+			</item>
+			<item>
+				<title>LangChain Tool-Calling Agents: Separate Decisions from Execution</title>
+				<link>http://127.0.0.1:1318/en/blog/langchain-tool-calling-agent/</link>
+				<pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://127.0.0.1:1318/en/blog/langchain-tool-calling-agent/</guid>
+				<description>Design controllable agents with explicit tool schemas, decision loops, execution boundaries, and error recovery.</description>
+			</item>
+			<item>
+				<title>OpenAI API Fundamentals: Requests, Messages, Parameters, and Reliability</title>
+				<link>http://127.0.0.1:1318/en/blog/openai-api-fundamentals/</link>
+				<pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://127.0.0.1:1318/en/blog/openai-api-fundamentals/</guid>
+				<description>Build a reliable model API foundation with client setup, message structure, timeouts, retries, and cost controls.</description>
+			</item>
+			<item>
+				<title>OpenAI Multimodal AI: Working with Text, Images, and Documents</title>
+				<link>http://127.0.0.1:1318/en/blog/openai-multimodal-ai/</link>
+				<pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://127.0.0.1:1318/en/blog/openai-multimodal-ai/</guid>
+				<description>Design multimodal input pipelines with preprocessing, cost, privacy, and structured output for images and documents.</description>
+			</item>
+			<item>
+				<title>OpenAI Structured Outputs: Make Model Results Verifiable</title>
+				<link>http://127.0.0.1:1318/en/blog/openai-structured-output/</link>
+				<pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://127.0.0.1:1318/en/blog/openai-structured-output/</guid>
+				<description>Constrain model output with JSON Schema and Pydantic while handling refusals, parse failures, and schema evolution.</description>
+			</item>
+			<item>
+				<title>OpenAI Tool Calling: Schemas, Execution Loops, and Safety Boundaries</title>
+				<link>http://127.0.0.1:1318/en/blog/openai-tool-calling/</link>
+				<pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://127.0.0.1:1318/en/blog/openai-tool-calling/</guid>
+				<description>Build auditable function-calling loops with explicit schemas, model decisions, application execution, and result handoff.</description>
+			</item>
+			<item>
+				<title>Optimizing RAG Retrievers: Top-K, Hybrid Search, and Reranking</title>
+				<link>http://127.0.0.1:1318/en/blog/rag-retriever-optimization/</link>
+				<pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://127.0.0.1:1318/en/blog/rag-retriever-optimization/</guid>
+				<description>Tune RAG retrievers with BM25, vector search, hybrid recall, reranking, and context compression trade-offs.</description>
+			</item>
+			<item>
+				<title>Production RAG Architecture: Permissions, Versions, and Observability</title>
+				<link>http://127.0.0.1:1318/en/blog/rag-production-architecture/</link>
+				<pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://127.0.0.1:1318/en/blog/rag-production-architecture/</guid>
+				<description>Design deployable RAG systems with ingestion, permission filters, index versions, caching, evaluation, and graceful degradation.</description>
+			</item>
+			<item>
+				<title>RAG Embeddings and Vector Databases: The Engineering Behind Similarity</title>
+				<link>http://127.0.0.1:1318/en/blog/rag-embedding-vector-database/</link>
+				<pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://127.0.0.1:1318/en/blog/rag-embedding-vector-database/</guid>
+				<description>Understand embeddings, distance metrics, metadata, indexing, and incremental updates for reliable vector retrieval.</description>
+			</item>
+			<item>
+				<title>The RAG Basics: From Documents to Cited Answers</title>
+				<link>http://127.0.0.1:1318/en/blog/rag-basic-pipeline/</link>
+				<pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://127.0.0.1:1318/en/blog/rag-basic-pipeline/</guid>
+				<description>Understand ingestion, chunking, retrieval, and grounded generation, with citations that constrain answers.</description>
+			</item>
+			<item>
+				<title>Building AI Agents with LangChain: Tool Integration and Multi-Turn Conversations</title>
+				<link>http://127.0.0.1:1318/en/blog/building-ai-agents/</link>
+				<pubDate>Fri, 10 Jul 2026 00:00:00 +0000</pubDate>
+				<guid>http://127.0.0.1:1318/en/blog/building-ai-agents/</guid>
+				<description>Learn how to build intelligent AI agents using LangChain, including tool integration, memory management, and multi-turn conversation support</description>
+			</item>
+			<item>
+				<title>Building a RAG Pipeline with LangChain: From Document Processing to Vector Search</title>
+				<link>http://127.0.0.1:1318/en/blog/building-rag-pipeline/</link>
+				<pubDate>Mon, 15 Jun 2026 00:00:00 +0000</pubDate>
+				<guid>http://127.0.0.1:1318/en/blog/building-rag-pipeline/</guid>
+				<description>A comprehensive guide to building a production-ready RAG (Retrieval-Augmented Generation) pipeline using LangChain, covering document preprocessing, vector storage, and retrieval optimization</description>
+			</item>
+	</channel>
+</rss>

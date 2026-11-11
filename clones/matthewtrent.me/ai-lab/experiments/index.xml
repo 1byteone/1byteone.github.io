@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>实验记录 | 杨劲松 / YOYO Pixel Terminal</title>
+    <link>http://127.0.0.1:1318/ai-lab/experiments/</link>
+      <atom:link href="http://127.0.0.1:1318/ai-lab/experiments/index.xml" rel="self" type="application/rss+xml" />
+    <description>实验记录</description>
+    <generator>HugoBlox Kit (https://hugoblox.com)</generator><language>zh-Hans</language><lastBuildDate>Tue, 03 Nov 2026 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>混合检索评测计划：先固定问题，再比较检索器</title>
+      <link>http://127.0.0.1:1318/ai-lab/experiments/retrieval-evaluation-plan/</link>
+      <pubDate>Tue, 03 Nov 2026 00:00:00 +0000</pubDate>
+      <guid>http://127.0.0.1:1318/ai-lab/experiments/retrieval-evaluation-plan/</guid>
+      <description>&lt;p&gt;本条目是待执行方案。仓库中的检索文章讨论了 BM25、向量召回和 reranker 的取舍，但当前没有足够的固定标注集与运行记录来发布性能数字。&lt;/p&gt;
+&lt;h2 id=&#34;实验问题&#34;&gt;实验问题&lt;/h2&gt;
+&lt;p&gt;在相同语料、切分方式和延迟预算下，BM25、向量召回、混合召回加 reranker 分别能找到多少支持答案的证据？&lt;/p&gt;
+&lt;h2 id=&#34;控制变量&#34;&gt;控制变量&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;固定语料快照、chunker 版本、embedding 模型版本与查询集合。&lt;/li&gt;
+&lt;li&gt;记录 Top-K、过滤条件、reranker 版本、硬件和请求并发。&lt;/li&gt;
+&lt;li&gt;每个查询保存相关文档标注、召回结果、排序分数和端到端耗时。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;指标&#34;&gt;指标&lt;/h2&gt;
+&lt;p&gt;计划记录 Recall@K、MRR、nDCG、引用支持率、无依据回答率、P50/P95 延迟和 token 消耗。指标定义和分母需要随结果一起发布。&lt;/p&gt;
+&lt;h2 id=&#34;状态&#34;&gt;状态&lt;/h2&gt;
+&lt;p&gt;PLANNED / 尚未运行。页面不会将空白结果替换成示例数值；实验完成后再发布数据文件、代码版本和复现步骤。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>RAG 生产边界审查：权限、索引版本与引用</title>
+      <link>http://127.0.0.1:1318/ai-lab/experiments/rag-production-boundaries/</link>
+      <pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>http://127.0.0.1:1318/ai-lab/experiments/rag-production-boundaries/</guid>
+      <description>&lt;p&gt;這份记录整理的是一次架构审查，而不是模型性能实验。交付物是可检查的生产边界清单；没有运行吞吐或准确率测试，因此不展示虚构指标。&lt;/p&gt;
+&lt;h2 id=&#34;问题&#34;&gt;问题&lt;/h2&gt;
+&lt;p&gt;一个 RAG demo 能返回答案，并不代表它能处理租户权限、文档更新、删除传播和上游故障。审查关注的是这些状态能否在系统中被明确表达。&lt;/p&gt;
+&lt;h2 id=&#34;方法&#34;&gt;方法&lt;/h2&gt;
+&lt;p&gt;将系统拆成 ingestion、indexing、query serving 与 evaluation 四个平面。在线查询只读取当前 active index；新索引在后台构建并通过原子切换发布。&lt;/p&gt;
+&lt;p&gt;检查缓存键是否包含 tenant、权限摘要和 index version；检查删除事件能否传播到所有副本；检查回答是否带有可验证的来源引用。&lt;/p&gt;
+&lt;h2 id=&#34;结论&#34;&gt;结论&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;权限过滤需要在召回阶段执行，不能依赖生成模型忽略越权内容。&lt;/li&gt;
+&lt;li&gt;索引版本必须进入缓存键，否则切换索引后旧结果可能继续返回。&lt;/li&gt;
+&lt;li&gt;评测集应覆盖权限、引用、拒答和文档更新，不应只统计语义相似度。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;证据与限制&#34;&gt;证据与限制&lt;/h2&gt;
+&lt;p&gt;这是工程设计审查记录，不包含独立部署的运行数据。完整实现示例见 
+。&lt;/p&gt;
+&lt;h2 id=&#34;后续验证&#34;&gt;后续验证&lt;/h2&gt;
+&lt;p&gt;下一步需要准备带租户和权限标签的固定测试集，测量 Recall@K、引用支持率、权限违规率与端到端延迟，再补充环境和代码版本。&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

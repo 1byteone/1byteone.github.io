@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>性能评测 | 杨劲松 / YOYO Pixel Terminal</title>
+    <link>http://127.0.0.1:1318/ai-lab/benchmarks/</link>
+      <atom:link href="http://127.0.0.1:1318/ai-lab/benchmarks/index.xml" rel="self" type="application/rss+xml" />
+    <description>性能评测</description>
+    <generator>HugoBlox Kit (https://hugoblox.com)</generator><language>zh-Hans</language><lastBuildDate>Tue, 03 Nov 2026 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>RAG 评测记录规范：让每个分数都能复核</title>
+      <link>http://127.0.0.1:1318/ai-lab/benchmarks/evaluation-protocol/</link>
+      <pubDate>Tue, 03 Nov 2026 00:00:00 +0000</pubDate>
+      <guid>http://127.0.0.1:1318/ai-lab/benchmarks/evaluation-protocol/</guid>
+      <description>&lt;p&gt;当前实验室没有可公开复核的模型基准分数。此页提供发布规范，不用合成曲线或示例数字制造性能结论。&lt;/p&gt;
+&lt;h2 id=&#34;每次运行必须记录&#34;&gt;每次运行必须记录&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;数据集版本、样本数量、标注规范与数据许可。&lt;/li&gt;
+&lt;li&gt;模型、Embedding、reranker、Prompt、Chunker 和代码提交版本。&lt;/li&gt;
+&lt;li&gt;硬件、批量大小、并发、温度、超时和重试策略。&lt;/li&gt;
+&lt;li&gt;Accuracy、Precision、Recall、F1、Recall@K 等指标的计算定义。&lt;/li&gt;
+&lt;li&gt;延迟统计窗口、P50/P95、失败请求处理方式和 token 计费口径。&lt;/li&gt;
+&lt;li&gt;原始预测、错误案例、运行脚本和可复现环境。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;当前状态&#34;&gt;当前状态&lt;/h2&gt;
+&lt;p&gt;PLANNED / 无实测数据。只有完成数据审查和重复运行后，才会发布图表；小样本也会同时给出样本量和不确定性说明。&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

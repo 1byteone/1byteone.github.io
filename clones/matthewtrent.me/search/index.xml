@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>搜索 | 杨劲松 - Java后端 / AI应用开发工程师</title>
+    <link>http://localhost:1320/search/</link>
+      <atom:link href="http://localhost:1320/search/index.xml" rel="self" type="application/rss+xml" />
+    <description>搜索</description>
+    <generator>HugoBlox Kit (https://hugoblox.com)</generator><language>zh-Hans</language>
+  </channel>
+</rss>

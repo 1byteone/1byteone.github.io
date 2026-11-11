@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hugo | 杨劲松 - Java后端 / AI应用开发工程师</title>
+    <link>http://localhost:1320/tags/hugo/</link>
+      <atom:link href="http://localhost:1320/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+    <description>Hugo</description>
+    <generator>HugoBlox Kit (https://hugoblox.com)</generator><language>zh-Hans</language><lastBuildDate>Thu, 05 Nov 2026 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>AI 应用开发工程师博客的富媒体文章系统</title>
+      <link>http://localhost:1320/blog/ai-engineering-blog-content-system/</link>
+      <pubDate>Thu, 05 Nov 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1320/blog/ai-engineering-blog-content-system/</guid>
+      <description>&lt;p&gt;一篇面向 AI 应用开发工程师的文章，不应该只能展示一段文字和一组固定卡片。RAG 检索链路需要架构图，Agent 调用链需要时序或流程图，模型评测需要表格与图表，部署排障需要命令和日志，交互 Demo 则需要可阅读的静态回退。&lt;/p&gt;
+&lt;p&gt;这篇文章把这些需求整理成一套可长期维护的内容系统。核心约束是：&lt;strong&gt;正文只维护一份事实，主题负责各自表达，复杂交互必须有静态降级。&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&#34;先定义文章能力而不是先挑模板&#34;&gt;先定义文章能力，而不是先挑模板&lt;/h2&gt;
+&lt;p&gt;技术博客的文章可以组合以下八类内容：&lt;/p&gt;
+&lt;table&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;内容形态&lt;/th&gt;
+					&lt;th&gt;工程用途&lt;/th&gt;
+					&lt;th&gt;推荐的静态表达&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;代码演示&lt;/td&gt;
+					&lt;td&gt;展示实现、关键调用和重构&lt;/td&gt;
+					&lt;td&gt;语言高亮、行号、复制、差异说明&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;图表演示&lt;/td&gt;
+					&lt;td&gt;展示延迟、召回率和模型对比&lt;/td&gt;
+					&lt;td&gt;图片或可审阅的数据表&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;表格演示&lt;/td&gt;
+					&lt;td&gt;对比参数、方案和边界&lt;/td&gt;
+					&lt;td&gt;GFM 表格，窄屏横向滚动&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;架构图解&lt;/td&gt;
+					&lt;td&gt;说明 RAG、Agent 和服务边界&lt;/td&gt;
+					&lt;td&gt;Mermaid 源文本加 PNG/SVG 回退&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;图片画廊&lt;/td&gt;
+					&lt;td&gt;展示界面、实验截图和参考资料&lt;/td&gt;
+					&lt;td&gt;page bundle、图注和灯箱&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;交互组件&lt;/td&gt;
+					&lt;td&gt;演示可调参数和工作流&lt;/td&gt;
+					&lt;td&gt;独立 Demo 加静态截图&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;终端记录&lt;/td&gt;
+					&lt;td&gt;记录部署、测试和排障过程&lt;/td&gt;
+					&lt;td&gt;命令、输出、退出状态&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;视频演示&lt;/td&gt;
+					&lt;td&gt;展示完整流程或操作录屏&lt;/td&gt;
+					&lt;td&gt;封面、来源、可访问文本说明&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;这份矩阵比“所有文章都使用同一个模板”更稳定：文章只声明真正使用的能力，主题根据能力选择视觉皮肤。当前仓库已经支持 &lt;code&gt;article_form&lt;/code&gt;、&lt;code&gt;content_features&lt;/code&gt; 和 &lt;code&gt;render_profile&lt;/code&gt; 这组字段，普通 Markdown 文章也可以继续保持轻量。&lt;/p&gt;
+&lt;h2 id=&#34;内容渲染和主题分层&#34;&gt;内容、渲染和主题分层&lt;/h2&gt;
+&lt;p&gt;建议把文章系统拆成三层：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;内容层&lt;/strong&gt;：Markdown、Front Matter、代码和数据文件，是唯一事实来源。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;渲染层&lt;/strong&gt;：Markdown render hook、短代码和可选前端增强，把语义块转成 HTML。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;主题层&lt;/strong&gt;：terminal、editorial、paper、research 或 cyberpunk 等主题分别决定排版、颜色、密度和动效。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;主题不应复制正文，也不应要求文章写入主题专属 CSS。一个 &lt;code&gt;architecture&lt;/code&gt; 文章可以在终端主题中呈现为日志面板，在编辑主题中呈现为长文图解，在研究主题中呈现为带注释的图表；事实、来源和无脚本回退保持一致。&lt;/p&gt;
+&lt;figure class=&#34;rich-diagram&#34; data-rich-diagram&gt;&lt;img class=&#34;rich-diagram-image&#34; src=&#34;http://localhost:1320/blog/ai-engineering-blog-content-system/images/content-architecture.svg&#34; alt=&#34;AI 工程文章的内容、渲染和主题分层&#34; loading=&#34;lazy&#34;&gt;&lt;details class=&#34;rich-diagram-source&#34;&gt;
+      &lt;summary&gt;查看 Mermaid 源文本&lt;/summary&gt;
+      &lt;pre&gt;&lt;code class=&#34;language-mermaid&#34;&gt;
+flowchart LR
+  A[Markdown &amp;#43; Front Matter] --&amp;amp;gt; B[语义块]
+  B --&amp;amp;gt; C[代码 / 图表 / 表格 / 图片 / 终端]
+  C --&amp;amp;gt; D[主题皮肤]
+  D --&amp;amp;gt; E[静态页面]
+  C --&amp;amp;gt; F[可选交互增强]
+  F --&amp;amp;gt; E&lt;/code&gt;&lt;/pre&gt;
+    &lt;/details&gt;&lt;figcaption class=&#34;rich-media-caption&#34;&gt;内容层只维护事实；渲染层提供语义块；主题层提供不同的阅读表达。&lt;/figcaption&gt;&lt;/figure&gt;
+
+&lt;h2 id=&#34;面向-ai-工程文章的模板组合&#34;&gt;面向 AI 工程文章的模板组合&lt;/h2&gt;
+&lt;p&gt;不同文章形态需要不同证据组合，而不是统一套用教程结构：&lt;/p&gt;
+&lt;table&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;文章形态&lt;/th&gt;
+					&lt;th&gt;推荐结构&lt;/th&gt;
+					&lt;th&gt;适合的内容能力&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;原理解析型&lt;/td&gt;
+					&lt;td&gt;背景 → 原理 → 架构 → 代码 → 总结&lt;/td&gt;
+					&lt;td&gt;&lt;code&gt;diagram&lt;/code&gt;、&lt;code&gt;code&lt;/code&gt;、&lt;code&gt;table&lt;/code&gt;&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;实战教程型&lt;/td&gt;
+					&lt;td&gt;需求 → 选型 → 步骤 → 验证 → 排障&lt;/td&gt;
+					&lt;td&gt;&lt;code&gt;code&lt;/code&gt;、&lt;code&gt;terminal&lt;/code&gt;、&lt;code&gt;table&lt;/code&gt;&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;架构设计型&lt;/td&gt;
+					&lt;td&gt;边界 → 组件 → 数据流 → 失败路径 → 权衡&lt;/td&gt;
+					&lt;td&gt;&lt;code&gt;diagram&lt;/code&gt;、&lt;code&gt;code-diff&lt;/code&gt;、&lt;code&gt;table&lt;/code&gt;&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;源码阅读型&lt;/td&gt;
+					&lt;td&gt;项目 → 调用链 → 关键源码 → 迁移&lt;/td&gt;
+					&lt;td&gt;&lt;code&gt;code&lt;/code&gt;、&lt;code&gt;code-diff&lt;/code&gt;&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;性能分析型&lt;/td&gt;
+					&lt;td&gt;数据集 → 指标 → 实验 → 对比 → 限制&lt;/td&gt;
+					&lt;td&gt;&lt;code&gt;chart&lt;/code&gt;、&lt;code&gt;table&lt;/code&gt;&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;项目复盘型&lt;/td&gt;
+					&lt;td&gt;背景 → 目标 → 方案 → 结果 → 经验&lt;/td&gt;
+					&lt;td&gt;&lt;code&gt;gallery&lt;/code&gt;、&lt;code&gt;diagram&lt;/code&gt;、&lt;code&gt;table&lt;/code&gt;&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;运维手册型&lt;/td&gt;
+					&lt;td&gt;环境 → 命令 → 日志 → 回滚 → 预防&lt;/td&gt;
+					&lt;td&gt;&lt;code&gt;terminal&lt;/code&gt;、&lt;code&gt;code&lt;/code&gt;&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;AI 实验型&lt;/td&gt;
+					&lt;td&gt;假设 → 变量 → 方法 → 结果 → 可复现步骤&lt;/td&gt;
+					&lt;td&gt;&lt;code&gt;chart&lt;/code&gt;、&lt;code&gt;table&lt;/code&gt;、&lt;code&gt;demo&lt;/code&gt;&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;例如，RAG 文章可以用架构图解释摄入、嵌入、检索和生成，用代码块展示检索接口，再用终端块放置评测命令；三种主题共享这份正文时，不需要维护三套文章。&lt;/p&gt;
+
+&lt;div class=&#34;rich-code-frame&#34; data-rich-code data-rich-code-language=&#34;python&#34;&gt;
+  &lt;div class=&#34;rich-code-toolbar&#34;&gt;
+    &lt;span class=&#34;rich-code-language&#34;&gt;retrieval.py · python&lt;/span&gt;
+    &lt;button type=&#34;button&#34; class=&#34;rich-code-copy&#34; data-rich-code-copy&gt;复制&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;rich-code-body&#34;&gt;&lt;div class=&#34;rich-code-highlight&#34; title=&#34;retrieval.py&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;retrieve&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;query&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;vector_store&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;top_k&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;#34;&amp;#34;返回候选上下文；生产环境还应叠加权限过滤和来源校验。&amp;#34;&amp;#34;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;vector_store&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;similarity_search&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;query&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;k&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;top_k&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+  &lt;textarea class=&#34;rich-code-source&#34; data-rich-code-source hidden readonly&gt;def retrieve(query: str, vector_store, top_k: int = 5):
+    &amp;amp;#34;&amp;amp;#34;&amp;amp;#34;返回候选上下文；生产环境还应叠加权限过滤和来源校验。&amp;amp;#34;&amp;amp;#34;&amp;amp;#34;
+    return vector_store.similarity_search(query, k=top_k)&lt;/textarea&gt;
+&lt;/div&gt;
+
+&lt;figure class=&#34;rich-terminal&#34; data-rich-terminal&gt;
+  &lt;figcaption class=&#34;rich-terminal-toolbar&#34;&gt;
+    &lt;span class=&#34;rich-terminal-title&#34;&gt;检索评测示例（合成数据）&lt;/span&gt;
+    &lt;span class=&#34;rich-terminal-meta&#34;&gt;&lt;span&gt;bash&lt;/span&gt;&lt;span&gt;exit 0&lt;/span&gt;&lt;/span&gt;
+  &lt;/figcaption&gt;
+  &lt;pre class=&#34;rich-terminal-output&#34;&gt;&lt;code&gt;
+$ python evaluate_retrieval.py --top-k 5
+queries=20
+retrieved_chunks=100
+citation_coverage=0.90&lt;/code&gt;&lt;/pre&gt;
+&lt;/figure&gt;
+
+&lt;h2 id=&#34;组件选型按稳定性分阶段交付&#34;&gt;组件选型：按稳定性分阶段交付&lt;/h2&gt;
+&lt;table&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;阶段&lt;/th&gt;
+					&lt;th&gt;先解决什么&lt;/th&gt;
+					&lt;th&gt;推荐技术&lt;/th&gt;
+					&lt;th&gt;文章中的回退&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;P0&lt;/td&gt;
+					&lt;td&gt;代码、图片、表格、架构图和终端&lt;/td&gt;
+					&lt;td&gt;Hugo render hook、Mermaid、语义 shortcode&lt;/td&gt;
+					&lt;td&gt;普通 Markdown、图片和代码块&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;P1&lt;/td&gt;
+					&lt;td&gt;图表、Diff、图片组和可选 Demo&lt;/td&gt;
+					&lt;td&gt;ECharts、Diff 组件、灯箱&lt;/td&gt;
+					&lt;td&gt;静态图、两段代码和操作说明&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;P2&lt;/td&gt;
+					&lt;td&gt;浏览器运行时和滚动叙事&lt;/td&gt;
+					&lt;td&gt;Sandpack、React Flow、GSAP&lt;/td&gt;
+					&lt;td&gt;截图、源代码和数据表&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Fumadocs、Nextra、Docusaurus、Astro Starlight 和 VitePress 都值得研究；它们解决的是内容站或文档站的组织问题。对当前 Hugo 仓库，先把语义块、资源契约和主题降级做好，能够减少迁移成本，也不会阻塞普通文章发布。&lt;/p&gt;
+&lt;h2 id=&#34;参考资料与本地图片资源&#34;&gt;参考资料与本地图片资源&lt;/h2&gt;
+&lt;p&gt;下面的图片是这篇文章的视觉和组件参考，已按 page bundle 规则保存到本地 &lt;code&gt;images/&lt;/code&gt;。图片点击后可以使用当前主题提供的灯箱；原始参考页、代理地址和抓取状态见同目录的 
+。仓库内的人读说明保留在 &lt;code&gt;images/SOURCES.md&lt;/code&gt;。&lt;/p&gt;
+&lt;h3 id=&#34;代码图表和交互组件&#34;&gt;代码、图表和交互组件&lt;/h3&gt;
+
+&lt;figure class=&#34;rich-image-figure&#34; data-rich-image-figure&gt;
+  &lt;a class=&#34;rich-image-link&#34; href=&#34;http://localhost:1320/blog/ai-engineering-blog-content-system/images/code-hike.jpg&#34; data-rich-image-link data-rich-gallery=&#34;/blog/ai-engineering-blog-content-system/&#34; data-rich-caption=&#34;Code Hike：代码讲解与 Scrollycoding&#34;&gt;
+    &lt;img src=&#34;http://localhost:1320/blog/ai-engineering-blog-content-system/images/code-hike.jpg&#34; alt=&#34;Code Hike 的交互式代码讲解示例&#34; loading=&#34;lazy&#34; width=&#34;1720&#34; height=&#34;860&#34;&gt;
+  &lt;/a&gt;
+  &lt;figcaption class=&#34;rich-media-caption&#34;&gt;Code Hike：代码讲解与 Scrollycoding&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+
+&lt;figure class=&#34;rich-image-figure&#34; data-rich-image-figure&gt;
+  &lt;a class=&#34;rich-image-link&#34; href=&#34;http://localhost:1320/blog/ai-engineering-blog-content-system/images/sandpack.jpg&#34; data-rich-image-link data-rich-gallery=&#34;/blog/ai-engineering-blog-content-system/&#34; data-rich-caption=&#34;Sandpack：浏览器中的代码编辑和预览&#34;&gt;
+    &lt;img src=&#34;http://localhost:1320/blog/ai-engineering-blog-content-system/images/sandpack.jpg&#34; alt=&#34;Sandpack 的在线代码编辑器示例&#34; loading=&#34;lazy&#34; width=&#34;1600&#34; height=&#34;825&#34;&gt;
+  &lt;/a&gt;
+  &lt;figcaption class=&#34;rich-media-caption&#34;&gt;Sandpack：浏览器中的代码编辑和预览&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+
+&lt;figure class=&#34;rich-image-figure&#34; data-rich-image-figure&gt;
+  &lt;a class=&#34;rich-image-link&#34; href=&#34;http://localhost:1320/blog/ai-engineering-blog-content-system/images/shiki.jpg&#34; data-rich-image-link data-rich-gallery=&#34;/blog/ai-engineering-blog-content-system/&#34; data-rich-caption=&#34;Shiki：接近 VS Code 的语法高亮&#34;&gt;
+    &lt;img src=&#34;http://localhost:1320/blog/ai-engineering-blog-content-system/images/shiki.jpg&#34; alt=&#34;Shiki 的代码高亮示例&#34; loading=&#34;lazy&#34; width=&#34;1213&#34; height=&#34;860&#34;&gt;
+  &lt;/a&gt;
+  &lt;figcaption class=&#34;rich-media-caption&#34;&gt;Shiki：接近 VS Code 的语法高亮&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+
+&lt;figure class=&#34;rich-image-figure&#34; data-rich-image-figure&gt;
+  &lt;a class=&#34;rich-image-link&#34; href=&#34;http://localhost:1320/blog/ai-engineering-blog-content-system/images/mermaid.jpg&#34; data-rich-image-link data-rich-gallery=&#34;/blog/ai-engineering-blog-content-system/&#34; data-rich-caption=&#34;Mermaid：流程图、时序图和架构图&#34;&gt;
+    &lt;img src=&#34;http://localhost:1320/blog/ai-engineering-blog-content-system/images/mermaid.jpg&#34; alt=&#34;Mermaid 的架构图示例&#34; loading=&#34;lazy&#34; width=&#34;1376&#34; height=&#34;860&#34;&gt;
+  &lt;/a&gt;
+  &lt;figcaption class=&#34;rich-media-caption&#34;&gt;Mermaid：流程图、时序图和架构图&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+
+&lt;figure class=&#34;rich-image-figure&#34; data-rich-image-figure&gt;
+  &lt;a class=&#34;rich-image-link&#34; href=&#34;http://localhost:1320/blog/ai-engineering-blog-content-system/images/react-flow.jpg&#34; data-rich-image-link data-rich-gallery=&#34;/blog/ai-engineering-blog-content-system/&#34; data-rich-caption=&#34;React Flow：可交互的 Agent 工作流节点&#34;&gt;
+    &lt;img src=&#34;http://localhost:1320/blog/ai-engineering-blog-content-system/images/react-flow.jpg&#34; alt=&#34;React Flow 的节点工作流示例&#34; loading=&#34;lazy&#34; width=&#34;1200&#34; height=&#34;653&#34;&gt;
+  &lt;/a&gt;
+  &lt;figcaption class=&#34;rich-media-caption&#34;&gt;React Flow：可交互的 Agent 工作流节点&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+
+&lt;figure class=&#34;rich-image-figure&#34; data-rich-image-figure&gt;
+  &lt;a class=&#34;rich-image-link&#34; href=&#34;http://localhost:1320/blog/ai-engineering-blog-content-system/images/observable-plot.jpg&#34; data-rich-image-link data-rich-gallery=&#34;/blog/ai-engineering-blog-content-system/&#34; data-rich-caption=&#34;Observable Plot：模型评测与数据叙事&#34;&gt;
+    &lt;img src=&#34;http://localhost:1320/blog/ai-engineering-blog-content-system/images/observable-plot.jpg&#34; alt=&#34;Observable Plot 的数据可视化示例&#34; loading=&#34;lazy&#34; width=&#34;1266&#34; height=&#34;860&#34;&gt;
+  &lt;/a&gt;
+  &lt;figcaption class=&#34;rich-media-caption&#34;&gt;Observable Plot：模型评测与数据叙事&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;h3 id=&#34;文章视觉参考&#34;&gt;文章视觉参考&lt;/h3&gt;
+
+&lt;figure class=&#34;rich-image-figure&#34; data-rich-image-figure&gt;
+  &lt;a class=&#34;rich-image-link&#34; href=&#34;http://localhost:1320/blog/ai-engineering-blog-content-system/images/refero.jpg&#34; data-rich-image-link data-rich-gallery=&#34;/blog/ai-engineering-blog-content-system/&#34; data-rich-caption=&#34;Refero：产品界面与文章视觉参考&#34;&gt;
+    &lt;img src=&#34;http://localhost:1320/blog/ai-engineering-blog-content-system/images/refero.jpg&#34; alt=&#34;Refero 的产品界面参考&#34; loading=&#34;lazy&#34; width=&#34;800&#34; height=&#34;449&#34;&gt;
+  &lt;/a&gt;
+  &lt;figcaption class=&#34;rich-media-caption&#34;&gt;Refero：产品界面与文章视觉参考&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+
+&lt;figure class=&#34;rich-image-figure&#34; data-rich-image-figure&gt;
+  &lt;a class=&#34;rich-image-link&#34; href=&#34;http://localhost:1320/blog/ai-engineering-blog-content-system/images/anthropic.jpg&#34; data-rich-image-link data-rich-gallery=&#34;/blog/ai-engineering-blog-content-system/&#34; data-rich-caption=&#34;Anthropic Research：研究文章与编辑式插图&#34;&gt;
+    &lt;img src=&#34;http://localhost:1320/blog/ai-engineering-blog-content-system/images/anthropic.jpg&#34; alt=&#34;Anthropic Research 的编辑式视觉参考&#34; loading=&#34;lazy&#34; width=&#34;905&#34; height=&#34;724&#34;&gt;
+  &lt;/a&gt;
+  &lt;figcaption class=&#34;rich-media-caption&#34;&gt;Anthropic Research：研究文章与编辑式插图&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+
+&lt;figure class=&#34;rich-image-figure&#34; data-rich-image-figure&gt;
+  &lt;a class=&#34;rich-image-link&#34; href=&#34;http://localhost:1320/blog/ai-engineering-blog-content-system/images/rag-use-cases.jpg&#34; data-rich-image-link data-rich-gallery=&#34;/blog/ai-engineering-blog-content-system/&#34; data-rich-caption=&#34;RAG：从文档摄入到检索和生成&#34;&gt;
+    &lt;img src=&#34;http://localhost:1320/blog/ai-engineering-blog-content-system/images/rag-use-cases.jpg&#34; alt=&#34;RAG 用例架构参考图&#34; loading=&#34;lazy&#34; width=&#34;1024&#34; height=&#34;1024&#34;&gt;
+  &lt;/a&gt;
+  &lt;figcaption class=&#34;rich-media-caption&#34;&gt;RAG：从文档摄入到检索和生成&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;Vercel Blog 和 Linear Blog 的代理图片在本次抓取时返回了 &lt;code&gt;400&lt;/code&gt; 或超时，因此没有写入伪造文件。两项仍保留在资源清单中，后续拿到稳定原图或重新生成可追溯静态图后再补入画廊。&lt;/p&gt;
+&lt;h2 id=&#34;交付规则&#34;&gt;交付规则&lt;/h2&gt;
+&lt;p&gt;每篇共享文章发布前，至少检查以下项目：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Front Matter 的 &lt;code&gt;article_form&lt;/code&gt; 与正文结构一致。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;content_features&lt;/code&gt; 与实际语义块一致。&lt;/li&gt;
+&lt;li&gt;图片有 &lt;code&gt;alt&lt;/code&gt;、图注、来源页和许可状态。&lt;/li&gt;
+&lt;li&gt;外部 Demo 有版本、来源和静态回退。&lt;/li&gt;
+&lt;li&gt;代码示例写明语言、依赖和是否可以直接运行。&lt;/li&gt;
+&lt;li&gt;主题不支持增强能力时，正文仍能作为普通 Markdown 阅读。&lt;/li&gt;
+&lt;li&gt;文章不包含 Token、Cookie、未知脚本、事件属性或临时内部链接。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这套做法让博客从“固定模板集合”变成“可组合的技术内容演示平台”：同一份工程事实可以被多个主题共享，每种主题仍然拥有自己的文章节奏和视觉语言。&lt;/p&gt;
+
+
+
+  
+  &lt;blockquote class=&#34;border-l-4 border-neutral-300 dark:border-neutral-600 pl-4 italic text-neutral-600 dark:text-neutral-400 my-6&#34;&gt;
+    &lt;p&gt;参考链接、开源项目维护状态和许可证需要在正式集成前逐项复核。本文中的截图用于技术选型与版式研究，不代表相关项目的官方背书。&lt;/p&gt;
+
+  &lt;/blockquote&gt;
+
+</description>
+    </item>
+    
+    <item>
+      <title>富媒体文章组件：P0 阅读与演示能力</title>
+      <link>http://localhost:1320/ui-lab/rich-content-p0/</link>
+      <pubDate>Mon, 02 Nov 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1320/ui-lab/rich-content-p0/</guid>
+      <description>&lt;p&gt;这页用同一份 Markdown 内容演示博客的 P0 富媒体能力。组件只描述文章语义，由当前主题负责视觉呈现；不支持交互增强时，正文仍可作为静态内容阅读。&lt;/p&gt;
+&lt;h2 id=&#34;架构图与图片&#34;&gt;架构图与图片&lt;/h2&gt;
+&lt;p&gt;架构图包含可复用的 Mermaid 源文本和静态图片。图片可以点击放大；同一篇文章中的图片组成一个可用键盘浏览的画廊。&lt;/p&gt;
+
+&lt;figure class=&#34;rich-image-figure&#34; data-rich-image-figure&gt;
+  &lt;a class=&#34;rich-image-link&#34; href=&#34;http://localhost:1320/media/ai-engineering/09-rag-basic-pipeline.png&#34; data-rich-image-link data-rich-gallery=&#34;/ui-lab/rich-content-p0/&#34; data-rich-caption=&#34;RAG 基础管道&#34;&gt;
+    &lt;img src=&#34;http://localhost:1320/media/ai-engineering/09-rag-basic-pipeline.png&#34; alt=&#34;RAG 基础管道：文档、分块、嵌入、检索、提示词和答案&#34; loading=&#34;lazy&#34; width=&#34;1200&#34; height=&#34;630&#34;&gt;
+  &lt;/a&gt;
+  &lt;figcaption class=&#34;rich-media-caption&#34;&gt;RAG 基础管道&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;figure class=&#34;rich-diagram&#34; data-rich-diagram&gt;&lt;img class=&#34;rich-diagram-image&#34; src=&#34;http://localhost:1320/media/ai-engineering/09-rag-basic-pipeline.png&#34; alt=&#34;RAG 基础管道，从文档摄入到带来源的答案&#34; loading=&#34;lazy&#34;&gt;&lt;details class=&#34;rich-diagram-source&#34;&gt;
+      &lt;summary&gt;查看 Mermaid 源文本&lt;/summary&gt;
+      &lt;pre&gt;&lt;code class=&#34;language-mermaid&#34;&gt;
+flowchart LR
+  A[文档] --&amp;amp;gt; B[清洗与分块]
+  B --&amp;amp;gt; C[Embedding]
+  C --&amp;amp;gt; D[向量索引]
+  Q[用户问题] --&amp;amp;gt; R[检索与过滤]
+  D --&amp;amp;gt; R
+  R --&amp;amp;gt; P[上下文组装]
+  P --&amp;amp;gt; G[生成与引用校验]&lt;/code&gt;&lt;/pre&gt;
+    &lt;/details&gt;&lt;figcaption class=&#34;rich-media-caption&#34;&gt;静态架构图随文章资源发布，Mermaid 源文本保持可审阅。&lt;/figcaption&gt;&lt;/figure&gt;
+
+&lt;h2 id=&#34;代码块&#34;&gt;代码块&lt;/h2&gt;
+&lt;p&gt;代码围栏自动带语言标识、行号和复制按钮。这里的实现是教学示例，具体检索参数应由数据集评测决定。&lt;/p&gt;
+
+&lt;div class=&#34;rich-code-frame&#34; data-rich-code data-rich-code-language=&#34;python&#34;&gt;
+  &lt;div class=&#34;rich-code-toolbar&#34;&gt;
+    &lt;span class=&#34;rich-code-language&#34;&gt;retrieval.py · python&lt;/span&gt;
+    &lt;button type=&#34;button&#34; class=&#34;rich-code-copy&#34; data-rich-code-copy&gt;复制&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;rich-code-body&#34;&gt;&lt;div class=&#34;rich-code-highlight&#34; title=&#34;retrieval.py&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;retrieve&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;query&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;vector_store&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;top_k&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;vector_store&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;similarity_search&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;query&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;k&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;top_k&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+  &lt;textarea class=&#34;rich-code-source&#34; data-rich-code-source hidden readonly&gt;def retrieve(query: str, vector_store, top_k: int = 5):
+    return vector_store.similarity_search(query, k=top_k)&lt;/textarea&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;参数表&#34;&gt;参数表&lt;/h2&gt;
+&lt;table&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;阶段&lt;/th&gt;
+					&lt;th&gt;输入&lt;/th&gt;
+					&lt;th&gt;输出&lt;/th&gt;
+					&lt;th&gt;验证重点&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;分块&lt;/td&gt;
+					&lt;td&gt;清洗后的文档&lt;/td&gt;
+					&lt;td&gt;带元数据的文本块&lt;/td&gt;
+					&lt;td&gt;语义完整、来源可追溯&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;嵌入&lt;/td&gt;
+					&lt;td&gt;文本块&lt;/td&gt;
+					&lt;td&gt;向量和版本信息&lt;/td&gt;
+					&lt;td&gt;模型版本、维度一致&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;检索&lt;/td&gt;
+					&lt;td&gt;用户问题&lt;/td&gt;
+					&lt;td&gt;候选上下文&lt;/td&gt;
+					&lt;td&gt;Recall、权限过滤&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;生成&lt;/td&gt;
+					&lt;td&gt;问题与上下文&lt;/td&gt;
+					&lt;td&gt;答案和引用&lt;/td&gt;
+					&lt;td&gt;忠实度、引用覆盖&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;宽表在窄屏中保留表格语义并允许横向滚动。&lt;/p&gt;
+&lt;h2 id=&#34;终端记录&#34;&gt;终端记录&lt;/h2&gt;
+&lt;p&gt;下面是用于说明组件外观的合成示例数据，不代表线上评测结果。&lt;/p&gt;
+
+&lt;figure class=&#34;rich-terminal&#34; data-rich-terminal&gt;
+  &lt;figcaption class=&#34;rich-terminal-toolbar&#34;&gt;
+    &lt;span class=&#34;rich-terminal-title&#34;&gt;检索评测示例（合成数据）&lt;/span&gt;
+    &lt;span class=&#34;rich-terminal-meta&#34;&gt;&lt;span&gt;bash&lt;/span&gt;&lt;span&gt;exit 0&lt;/span&gt;&lt;/span&gt;
+  &lt;/figcaption&gt;
+  &lt;pre class=&#34;rich-terminal-output&#34;&gt;&lt;code&gt;
+$ python evaluate_retrieval.py --top-k 5
+queries=20
+retrieved_chunks=100
+citation_coverage=0.90&lt;/code&gt;&lt;/pre&gt;
+&lt;/figure&gt;
+
+</description>
+    </item>
+    
+  </channel>
+</rss>

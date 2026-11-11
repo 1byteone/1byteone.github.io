@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Minecraft / UI | 1byteone - Java Backend / AI Application Developer</title>
+    <link>http://localhost:1320/en/hobby/minecraft-ui/</link>
+      <atom:link href="http://localhost:1320/en/hobby/minecraft-ui/index.xml" rel="self" type="application/rss+xml" />
+    <description>Minecraft / UI</description>
+    <generator>HugoBlox Kit (https://hugoblox.com)</generator><language>en-us</language>
+  </channel>
+</rss>

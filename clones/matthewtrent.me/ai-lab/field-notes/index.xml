@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>工程手记 | 杨劲松 / YOYO Pixel Terminal</title>
+    <link>http://127.0.0.1:1318/ai-lab/field-notes/</link>
+      <atom:link href="http://127.0.0.1:1318/ai-lab/field-notes/index.xml" rel="self" type="application/rss+xml" />
+    <description>工程手记</description>
+    <generator>HugoBlox Kit (https://hugoblox.com)</generator><language>zh-Hans</language><lastBuildDate>Fri, 21 Aug 2026 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>流式请求断开后，谁负责清理上游任务？</title>
+      <link>http://127.0.0.1:1318/ai-lab/field-notes/sse-disconnect-cleanup/</link>
+      <pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>http://127.0.0.1:1318/ai-lab/field-notes/sse-disconnect-cleanup/</guid>
+      <description>&lt;p&gt;服务端开始发送 SSE 后，浏览器关闭页面并不代表模型请求自动结束。若客户端断开后仍继续读取上游流，后台任务会占用连接、内存和模型额度。&lt;/p&gt;
+&lt;h2 id=&#34;复盘要点&#34;&gt;复盘要点&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;生成器使用 &lt;code&gt;try/finally&lt;/code&gt; 统一释放模型响应、HTTP 客户端和信号量。&lt;/li&gt;
+&lt;li&gt;在等待下一段模型输出前检查客户端断开状态，并把取消向上游传播。&lt;/li&gt;
+&lt;li&gt;请求日志记录 request id、结束原因和清理结果；不要把断连记录为成功完成。&lt;/li&gt;
+&lt;li&gt;测试正常结束、模型异常、客户端取消和服务端超时四条终止路径。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;证据&#34;&gt;证据&lt;/h2&gt;
+&lt;p&gt;相关实现讨论见 
+。本条是工程实践手记，不代表当前服务已部署模型流量监控。&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

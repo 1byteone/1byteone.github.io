@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Spring Boot | 杨劲松 - Java后端 / AI应用开发工程师</title>
+    <link>http://localhost:1320/tags/spring-boot/</link>
+      <atom:link href="http://localhost:1320/tags/spring-boot/index.xml" rel="self" type="application/rss+xml" />
+    <description>Spring Boot</description>
+    <generator>HugoBlox Kit (https://hugoblox.com)</generator><language>zh-Hans</language><lastBuildDate>Fri, 21 Aug 2026 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Spring Boot IoC 与依赖注入：让对象可替换</title>
+      <link>http://localhost:1320/blog/spring-boot-ioc-dependency-injection/</link>
+      <pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1320/blog/spring-boot-ioc-dependency-injection/</guid>
+      <description>&lt;p&gt;&lt;em&gt;上图：Spring Boot IoC &amp;amp; Dependency Injection 白板图；重点不是罗列名词，而是把一次真实请求如何穿过系统、在哪些边界失败画清楚。&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id=&#34;为什么要从场景理解这张图&#34;&gt;为什么要从场景理解这张图&lt;/h2&gt;
+&lt;p&gt;这张图围绕“The same payment use case runs with a sandbox gateway in tests and a real gateway in production.”展开。学习 Spring Boot IoC &amp;amp; Dependency Injection 时，不能只记住组件名称：要能说明输入从哪里来、状态由谁持有、哪个组件承担失败、以及如何用指标证明系统仍然健康。白板中的箭头对应代码边界，红色感叹号对应需要显式处理的风险。&lt;/p&gt;
+&lt;h2 id=&#34;逐层拆解&#34;&gt;逐层拆解&lt;/h2&gt;
+&lt;p&gt;主流程是：&lt;strong&gt;Container owns construction; application owns behavior&lt;/strong&gt;。前半段是请求或数据的进入路径，后半段是运行时、存储或执行结果。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;边界契约&lt;/strong&gt;：先确定输入、输出和错误结构；不要让隐式类型、未校验参数或共享可变状态穿透多层。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;核心机制&lt;/strong&gt;：Scan / Register → BeanDefinition；Instantiate → constructor injection。这些机制决定延迟、吞吐和可测试性。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;资源与状态&lt;/strong&gt;：Populate → dependencies are resolved；Initialize → @PostConstruct / proxy。生产系统必须说明资源何时创建、何时释放，以及状态是否可恢复。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;失败路径&lt;/strong&gt;：Ready → request can use the Bean；必要时再结合 &lt;strong&gt;Destroy → cleanup resources&lt;/strong&gt; 做降级、重试或回滚。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;一个可落地的最小实现&#34;&gt;一个可落地的最小实现&lt;/h2&gt;
+&lt;p&gt;下面的片段只展示边界，不代表完整业务。它的价值在于把“可以替换、可以测试、可以观测”的位置固定下来。&lt;/p&gt;
+
+&lt;div class=&#34;rich-code-frame&#34; data-rich-code data-rich-code-language=&#34;java&#34;&gt;
+  &lt;div class=&#34;rich-code-toolbar&#34;&gt;
+    &lt;span class=&#34;rich-code-language&#34;&gt;java&lt;/span&gt;
+    &lt;button type=&#34;button&#34; class=&#34;rich-code-copy&#34; data-rich-code-copy&gt;复制&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;rich-code-body&#34;&gt;&lt;div class=&#34;rich-code-highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nd&#34;&gt;@Service&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kd&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;PaymentService&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;PaymentService&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;PaymentGateway&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;gateway&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;...&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+  &lt;textarea class=&#34;rich-code-source&#34; data-rich-code-source hidden readonly&gt;@Service
+class PaymentService {
+  PaymentService(PaymentGateway gateway) { ... }
+}&lt;/textarea&gt;
+&lt;/div&gt;
+&lt;p&gt;在真实项目中，应把外部依赖封装在 adapter 或 repository 中；业务层只依赖稳定接口。这样本地测试可以使用 fake，压测可以替换慢依赖，线上故障也更容易定位。&lt;/p&gt;
+&lt;h2 id=&#34;场景中的工程决策&#34;&gt;场景中的工程决策&lt;/h2&gt;
+&lt;p&gt;以白板右侧的生产场景为例：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;先保护依赖&lt;/strong&gt;：连接池、线程池、并发信号量或缓存都要有上限，不能用无限队列掩盖下游过载。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;再保证正确性&lt;/strong&gt;：幂等键、事务边界、版本号、锁或 schema 校验至少要有一种明确机制，避免重试带来重复写入。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;最后优化性能&lt;/strong&gt;：先用 trace、慢查询、GC pause、队列长度、p99 延迟等数据定位，再选择索引、缓存、批处理或并发策略。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;让故障可恢复&lt;/strong&gt;：超时、重试、限流、熔断、回滚和告警必须能在演练中被验证，而不是只写在文档里。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;常见误区&#34;&gt;常见误区&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;只画成功路径，没有画超时、空数据、拒绝、回滚或副本延迟。&lt;/li&gt;
+&lt;li&gt;把框架默认行为当成业务契约，升级依赖后才发现边界改变。&lt;/li&gt;
+&lt;li&gt;用“加机器”替代测量，忽略连接池、锁竞争、慢 SQL、对象分配或事件循环阻塞。&lt;/li&gt;
+&lt;li&gt;将日志当作唯一观测手段，缺少指标、trace、采样和敏感数据脱敏。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;生产检查清单&#34;&gt;生产检查清单&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 输入、输出和错误响应有明确 schema&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 外部调用设置 timeout、retry 上限、rate limit 和 fallback&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 资源池有容量、排队和拒绝指标&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 关键状态有幂等、事务或恢复策略&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 日志、metrics、trace 可关联同一个 request id&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 用接近生产的数据做回归、压测和故障演练&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;总结&#34;&gt;总结&lt;/h2&gt;
+&lt;p&gt;真正掌握这张白板图，不是能背出每个框的定义，而是能从一次具体请求出发，解释每个箭头的输入输出、每个风险的处置方式，以及上线后用什么信号判断系统需要改进。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Spring Boot 请求生命周期：从 HTTP 到响应</title>
+      <link>http://localhost:1320/blog/spring-boot-request-lifecycle/</link>
+      <pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1320/blog/spring-boot-request-lifecycle/</guid>
+      <description>&lt;p&gt;&lt;em&gt;上图：Spring Boot Request Lifecycle 白板图；重点不是罗列名词，而是把一次真实请求如何穿过系统、在哪些边界失败画清楚。&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id=&#34;为什么要从场景理解这张图&#34;&gt;为什么要从场景理解这张图&lt;/h2&gt;
+&lt;p&gt;这张图围绕“A public API distinguishes authentication errors, validation errors, and downstream timeouts.”展开。学习 Spring Boot Request Lifecycle 时，不能只记住组件名称：要能说明输入从哪里来、状态由谁持有、哪个组件承担失败、以及如何用指标证明系统仍然健康。白板中的箭头对应代码边界，红色感叹号对应需要显式处理的风险。&lt;/p&gt;
+&lt;h2 id=&#34;逐层拆解&#34;&gt;逐层拆解&lt;/h2&gt;
+&lt;p&gt;主流程是：&lt;strong&gt;Filter → DispatcherServlet → Controller → Response&lt;/strong&gt;。前半段是请求或数据的进入路径，后半段是运行时、存储或执行结果。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;边界契约&lt;/strong&gt;：先确定输入、输出和错误结构；不要让隐式类型、未校验参数或共享可变状态穿透多层。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;核心机制&lt;/strong&gt;：Filter → trace id / auth / CORS；Handler Mapping → select endpoint。这些机制决定延迟、吞吐和可测试性。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;资源与状态&lt;/strong&gt;：Argument Resolver → bind + validate DTO；Interceptor → timing / policy checks。生产系统必须说明资源何时创建、何时释放，以及状态是否可恢复。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;失败路径&lt;/strong&gt;：Exception Handler → stable error schema；必要时再结合 &lt;strong&gt;Message Converter → JSON response&lt;/strong&gt; 做降级、重试或回滚。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;一个可落地的最小实现&#34;&gt;一个可落地的最小实现&lt;/h2&gt;
+&lt;p&gt;下面的片段只展示边界，不代表完整业务。它的价值在于把“可以替换、可以测试、可以观测”的位置固定下来。&lt;/p&gt;
+
+&lt;div class=&#34;rich-code-frame&#34; data-rich-code data-rich-code-language=&#34;text&#34;&gt;
+  &lt;div class=&#34;rich-code-toolbar&#34;&gt;
+    &lt;span class=&#34;rich-code-language&#34;&gt;text&lt;/span&gt;
+    &lt;button type=&#34;button&#34; class=&#34;rich-code-copy&#34; data-rich-code-copy&gt;复制&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;rich-code-body&#34;&gt;&lt;div class=&#34;rich-code-highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;Filter → HandlerMapping → Controller → Service
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;      → ExceptionHandler / MessageConverter&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+  &lt;textarea class=&#34;rich-code-source&#34; data-rich-code-source hidden readonly&gt;Filter → HandlerMapping → Controller → Service
+      → ExceptionHandler / MessageConverter&lt;/textarea&gt;
+&lt;/div&gt;
+&lt;p&gt;在真实项目中，应把外部依赖封装在 adapter 或 repository 中；业务层只依赖稳定接口。这样本地测试可以使用 fake，压测可以替换慢依赖，线上故障也更容易定位。&lt;/p&gt;
+&lt;h2 id=&#34;场景中的工程决策&#34;&gt;场景中的工程决策&lt;/h2&gt;
+&lt;p&gt;以白板右侧的生产场景为例：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;先保护依赖&lt;/strong&gt;：连接池、线程池、并发信号量或缓存都要有上限，不能用无限队列掩盖下游过载。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;再保证正确性&lt;/strong&gt;：幂等键、事务边界、版本号、锁或 schema 校验至少要有一种明确机制，避免重试带来重复写入。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;最后优化性能&lt;/strong&gt;：先用 trace、慢查询、GC pause、队列长度、p99 延迟等数据定位，再选择索引、缓存、批处理或并发策略。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;让故障可恢复&lt;/strong&gt;：超时、重试、限流、熔断、回滚和告警必须能在演练中被验证，而不是只写在文档里。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;常见误区&#34;&gt;常见误区&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;只画成功路径，没有画超时、空数据、拒绝、回滚或副本延迟。&lt;/li&gt;
+&lt;li&gt;把框架默认行为当成业务契约，升级依赖后才发现边界改变。&lt;/li&gt;
+&lt;li&gt;用“加机器”替代测量，忽略连接池、锁竞争、慢 SQL、对象分配或事件循环阻塞。&lt;/li&gt;
+&lt;li&gt;将日志当作唯一观测手段，缺少指标、trace、采样和敏感数据脱敏。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;生产检查清单&#34;&gt;生产检查清单&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 输入、输出和错误响应有明确 schema&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 外部调用设置 timeout、retry 上限、rate limit 和 fallback&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 资源池有容量、排队和拒绝指标&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 关键状态有幂等、事务或恢复策略&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 日志、metrics、trace 可关联同一个 request id&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 用接近生产的数据做回归、压测和故障演练&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;总结&#34;&gt;总结&lt;/h2&gt;
+&lt;p&gt;真正掌握这张白板图，不是能背出每个框的定义，而是能从一次具体请求出发，解释每个箭头的输入输出、每个风险的处置方式，以及上线后用什么信号判断系统需要改进。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Spring Boot 应用架构：Controller 到 Database</title>
+      <link>http://localhost:1320/blog/spring-boot-application-architecture/</link>
+      <pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1320/blog/spring-boot-application-architecture/</guid>
+      <description>&lt;p&gt;&lt;em&gt;上图：Spring Boot Application Architecture 白板图；重点不是罗列名词，而是把一次真实请求如何穿过系统、在哪些边界失败画清楚。&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id=&#34;为什么要从场景理解这张图&#34;&gt;为什么要从场景理解这张图&lt;/h2&gt;
+&lt;p&gt;这张图围绕“An order endpoint keeps HTTP, business rules, and SQL separate so each layer can be tested independently.”展开。学习 Spring Boot Application Architecture 时，不能只记住组件名称：要能说明输入从哪里来、状态由谁持有、哪个组件承担失败、以及如何用指标证明系统仍然健康。白板中的箭头对应代码边界，红色感叹号对应需要显式处理的风险。&lt;/p&gt;
+&lt;h2 id=&#34;逐层拆解&#34;&gt;逐层拆解&lt;/h2&gt;
+&lt;p&gt;主流程是：&lt;strong&gt;Client → Controller → Service → Repository → Database&lt;/strong&gt;。前半段是请求或数据的进入路径，后半段是运行时、存储或执行结果。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;边界契约&lt;/strong&gt;：先确定输入、输出和错误结构；不要让隐式类型、未校验参数或共享可变状态穿透多层。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;核心机制&lt;/strong&gt;：BeanDefinition → BeanFactory → ApplicationContext；@Controller → transport boundary。这些机制决定延迟、吞吐和可测试性。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;资源与状态&lt;/strong&gt;：@Service → domain orchestration；@Repository → persistence boundary。生产系统必须说明资源何时创建、何时释放，以及状态是否可恢复。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;失败路径&lt;/strong&gt;：Auto Configuration + Starter；必要时再结合 &lt;strong&gt;Embedded Server + externalized config&lt;/strong&gt; 做降级、重试或回滚。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;一个可落地的最小实现&#34;&gt;一个可落地的最小实现&lt;/h2&gt;
+&lt;p&gt;下面的片段只展示边界，不代表完整业务。它的价值在于把“可以替换、可以测试、可以观测”的位置固定下来。&lt;/p&gt;
+
+&lt;div class=&#34;rich-code-frame&#34; data-rich-code data-rich-code-language=&#34;java&#34;&gt;
+  &lt;div class=&#34;rich-code-toolbar&#34;&gt;
+    &lt;span class=&#34;rich-code-language&#34;&gt;java&lt;/span&gt;
+    &lt;button type=&#34;button&#34; class=&#34;rich-code-copy&#34; data-rich-code-copy&gt;复制&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;rich-code-body&#34;&gt;&lt;div class=&#34;rich-code-highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nd&#34;&gt;@RestController&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kd&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;OrderController&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;private&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;final&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;OrderService&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;service&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;OrderController&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;OrderService&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;service&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;this&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;service&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;service&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+  &lt;textarea class=&#34;rich-code-source&#34; data-rich-code-source hidden readonly&gt;@RestController
+class OrderController {
+  private final OrderService service;
+  OrderController(OrderService service) { this.service = service; }
+}&lt;/textarea&gt;
+&lt;/div&gt;
+&lt;p&gt;在真实项目中，应把外部依赖封装在 adapter 或 repository 中；业务层只依赖稳定接口。这样本地测试可以使用 fake，压测可以替换慢依赖，线上故障也更容易定位。&lt;/p&gt;
+&lt;h2 id=&#34;场景中的工程决策&#34;&gt;场景中的工程决策&lt;/h2&gt;
+&lt;p&gt;以白板右侧的生产场景为例：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;先保护依赖&lt;/strong&gt;：连接池、线程池、并发信号量或缓存都要有上限，不能用无限队列掩盖下游过载。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;再保证正确性&lt;/strong&gt;：幂等键、事务边界、版本号、锁或 schema 校验至少要有一种明确机制，避免重试带来重复写入。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;最后优化性能&lt;/strong&gt;：先用 trace、慢查询、GC pause、队列长度、p99 延迟等数据定位，再选择索引、缓存、批处理或并发策略。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;让故障可恢复&lt;/strong&gt;：超时、重试、限流、熔断、回滚和告警必须能在演练中被验证，而不是只写在文档里。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;常见误区&#34;&gt;常见误区&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;只画成功路径，没有画超时、空数据、拒绝、回滚或副本延迟。&lt;/li&gt;
+&lt;li&gt;把框架默认行为当成业务契约，升级依赖后才发现边界改变。&lt;/li&gt;
+&lt;li&gt;用“加机器”替代测量，忽略连接池、锁竞争、慢 SQL、对象分配或事件循环阻塞。&lt;/li&gt;
+&lt;li&gt;将日志当作唯一观测手段，缺少指标、trace、采样和敏感数据脱敏。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;生产检查清单&#34;&gt;生产检查清单&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 输入、输出和错误响应有明确 schema&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 外部调用设置 timeout、retry 上限、rate limit 和 fallback&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 资源池有容量、排队和拒绝指标&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 关键状态有幂等、事务或恢复策略&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 日志、metrics、trace 可关联同一个 request id&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 用接近生产的数据做回归、压测和故障演练&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;总结&#34;&gt;总结&lt;/h2&gt;
+&lt;p&gt;真正掌握这张白板图，不是能背出每个框的定义，而是能从一次具体请求出发，解释每个箭头的输入输出、每个风险的处置方式，以及上线后用什么信号判断系统需要改进。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>生产级 Spring Boot 架构：可观测的服务边界</title>
+      <link>http://localhost:1320/blog/spring-boot-production-architecture/</link>
+      <pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1320/blog/spring-boot-production-architecture/</guid>
+      <description>&lt;p&gt;&lt;em&gt;上图：Production Spring Boot Architecture 白板图；重点不是罗列名词，而是把一次真实请求如何穿过系统、在哪些边界失败画清楚。&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id=&#34;为什么要从场景理解这张图&#34;&gt;为什么要从场景理解这张图&lt;/h2&gt;
+&lt;p&gt;这张图围绕“A flash-sale service protects the database with cache, bounded writes, idempotency, and asynchronous inventory events.”展开。学习 Production Spring Boot Architecture 时，不能只记住组件名称：要能说明输入从哪里来、状态由谁持有、哪个组件承担失败、以及如何用指标证明系统仍然健康。白板中的箭头对应代码边界，红色感叹号对应需要显式处理的风险。&lt;/p&gt;
+&lt;h2 id=&#34;逐层拆解&#34;&gt;逐层拆解&lt;/h2&gt;
+&lt;p&gt;主流程是：&lt;strong&gt;Gateway → Service → Cache / DB / MQ → Observability&lt;/strong&gt;。前半段是请求或数据的进入路径，后半段是运行时、存储或执行结果。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;边界契约&lt;/strong&gt;：先确定输入、输出和错误结构；不要让隐式类型、未校验参数或共享可变状态穿透多层。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;核心机制&lt;/strong&gt;：Nginx / Gateway → auth + rate limit；Service → idempotency + transaction。这些机制决定延迟、吞吐和可测试性。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;资源与状态&lt;/strong&gt;：Redis → cache-aside with TTL；MySQL → source of truth。生产系统必须说明资源何时创建、何时释放，以及状态是否可恢复。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;失败路径&lt;/strong&gt;：RocketMQ → async side effects；必要时再结合 &lt;strong&gt;Metrics + Logs + Traces → feedback loop&lt;/strong&gt; 做降级、重试或回滚。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;一个可落地的最小实现&#34;&gt;一个可落地的最小实现&lt;/h2&gt;
+&lt;p&gt;下面的片段只展示边界，不代表完整业务。它的价值在于把“可以替换、可以测试、可以观测”的位置固定下来。&lt;/p&gt;
+
+&lt;div class=&#34;rich-code-frame&#34; data-rich-code data-rich-code-language=&#34;text&#34;&gt;
+  &lt;div class=&#34;rich-code-toolbar&#34;&gt;
+    &lt;span class=&#34;rich-code-language&#34;&gt;text&lt;/span&gt;
+    &lt;button type=&#34;button&#34; class=&#34;rich-code-copy&#34; data-rich-code-copy&gt;复制&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;rich-code-body&#34;&gt;&lt;div class=&#34;rich-code-highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;request → idempotency → transaction → outbox event
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;        → Redis / MySQL / MQ → trace + metrics&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+  &lt;textarea class=&#34;rich-code-source&#34; data-rich-code-source hidden readonly&gt;request → idempotency → transaction → outbox event
+        → Redis / MySQL / MQ → trace &amp;#43; metrics&lt;/textarea&gt;
+&lt;/div&gt;
+&lt;p&gt;在真实项目中，应把外部依赖封装在 adapter 或 repository 中；业务层只依赖稳定接口。这样本地测试可以使用 fake，压测可以替换慢依赖，线上故障也更容易定位。&lt;/p&gt;
+&lt;h2 id=&#34;场景中的工程决策&#34;&gt;场景中的工程决策&lt;/h2&gt;
+&lt;p&gt;以白板右侧的生产场景为例：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;先保护依赖&lt;/strong&gt;：连接池、线程池、并发信号量或缓存都要有上限，不能用无限队列掩盖下游过载。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;再保证正确性&lt;/strong&gt;：幂等键、事务边界、版本号、锁或 schema 校验至少要有一种明确机制，避免重试带来重复写入。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;最后优化性能&lt;/strong&gt;：先用 trace、慢查询、GC pause、队列长度、p99 延迟等数据定位，再选择索引、缓存、批处理或并发策略。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;让故障可恢复&lt;/strong&gt;：超时、重试、限流、熔断、回滚和告警必须能在演练中被验证，而不是只写在文档里。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;常见误区&#34;&gt;常见误区&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;只画成功路径，没有画超时、空数据、拒绝、回滚或副本延迟。&lt;/li&gt;
+&lt;li&gt;把框架默认行为当成业务契约，升级依赖后才发现边界改变。&lt;/li&gt;
+&lt;li&gt;用“加机器”替代测量，忽略连接池、锁竞争、慢 SQL、对象分配或事件循环阻塞。&lt;/li&gt;
+&lt;li&gt;将日志当作唯一观测手段，缺少指标、trace、采样和敏感数据脱敏。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;生产检查清单&#34;&gt;生产检查清单&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 输入、输出和错误响应有明确 schema&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 外部调用设置 timeout、retry 上限、rate limit 和 fallback&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 资源池有容量、排队和拒绝指标&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 关键状态有幂等、事务或恢复策略&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 日志、metrics、trace 可关联同一个 request id&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 用接近生产的数据做回归、压测和故障演练&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;总结&#34;&gt;总结&lt;/h2&gt;
+&lt;p&gt;真正掌握这张白板图，不是能背出每个框的定义，而是能从一次具体请求出发，解释每个箭头的输入输出、每个风险的处置方式，以及上线后用什么信号判断系统需要改进。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>分布式微云商城</title>
+      <link>http://localhost:1320/projects/ecommerce-rag-search/</link>
+      <pubDate>Fri, 15 May 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1320/projects/ecommerce-rag-search/</guid>
+      <description>&lt;p&gt;微服务电商平台 - SpringCloud Alibaba技术栈 + MyBatis-Plus + Feign远程调用。&lt;/p&gt;
+&lt;h2 id=&#34;项目概述&#34;&gt;项目概述&lt;/h2&gt;
+&lt;p&gt;从单体架构到微服务演进的完整实践，覆盖企业级中间件集成与分布式解决方案。项目对标中高级Java后端工程师核心能力模型，按技术深度分层实现。&lt;/p&gt;
+&lt;h2 id=&#34;专业goal岗位能力对标&#34;&gt;专业GOAL（岗位能力对标）&lt;/h2&gt;
+&lt;table&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;层级&lt;/th&gt;
+					&lt;th&gt;能力域&lt;/th&gt;
+					&lt;th&gt;覆盖模块&lt;/th&gt;
+					&lt;th&gt;权重&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;🥇 &lt;strong&gt;分布式架构&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;微服务拆分、服务治理、分布式事务、消息队列&lt;/td&gt;
+					&lt;td&gt;mall-order-service, mall-seckill-service, Middleware&lt;/td&gt;
+					&lt;td&gt;35%&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;🥈 &lt;strong&gt;中间件深度&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;Redis缓存、ES搜索、RocketMQ消息、Seata事务、Sentinel限流&lt;/td&gt;
+					&lt;td&gt;docs/Middleware/ (11个中间件)&lt;/td&gt;
+					&lt;td&gt;30%&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;🥉 &lt;strong&gt;业务实现&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;商品/用户/购物车/订单CRUD、JWT鉴权、AOP日志&lt;/td&gt;
+					&lt;td&gt;mall-product-service, mall-user-service, mall-cart-service&lt;/td&gt;
+					&lt;td&gt;25%&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;🏅 &lt;strong&gt;工程化&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;Docker容器化、Gateway网关、Nacos配置中心、CI部署&lt;/td&gt;
+					&lt;td&gt;mall-gateway, docs/docker/&lt;/td&gt;
+					&lt;td&gt;10%&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;核心职责&#34;&gt;核心职责&lt;/h2&gt;
+&lt;p&gt;主导秒杀链路、搜索/RAG、分布式一致性与研发规范。&lt;/p&gt;
+&lt;h2 id=&#34;技术架构&#34;&gt;技术架构&lt;/h2&gt;
+
+&lt;div class=&#34;rich-code-frame&#34; data-rich-code data-rich-code-language=&#34;text&#34;&gt;
+  &lt;div class=&#34;rich-code-toolbar&#34;&gt;
+    &lt;span class=&#34;rich-code-language&#34;&gt;text&lt;/span&gt;
+    &lt;button type=&#34;button&#34; class=&#34;rich-code-copy&#34; data-rich-code-copy&gt;复制&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;rich-code-body&#34;&gt;&lt;div class=&#34;rich-code-highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;┌──────────┐   ┌──────────┐   ┌──────────┐
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│ 客户端     │   │ 客户端    │   │ 客户端    │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 3&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;└────┬─────┘   └────┬─────┘   └────┬─────┘
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 4&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;     └──────────────┴──────────────┘
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 5&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;                │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 6&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;         ┌──────┴──────┐
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 7&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;         │ Spring Cloud │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 8&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;         │   Gateway    │  ← 统一鉴权 + 路由 + 限流
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 9&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;         └──────┬──────┘
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;                │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;11&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;     ┌──────────┼──────────┐
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;12&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;     │          │          │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;13&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;┌────┴────┐ ┌──┴───┐ ┌───┴────┐
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;14&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│ 业务服务  │ │ 中间件 │ │ 基础设施 │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;15&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│ User     │ │ Redis │ │ Nacos   │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;16&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│ Product  │ │ MySQL │ │ Sentinel│
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;17&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│ Order    │ │ Mongo │ │ Seata   │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;18&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│ Cart     │ │ ES    │ │ XXL-Job │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;19&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│ Pay      │ │ MQ    │ │         │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;20&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│ Seckill  │ │ Canal │ │         │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;21&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;└─────────┘ └──────┘ └─────────┘&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+  &lt;textarea class=&#34;rich-code-source&#34; data-rich-code-source hidden readonly&gt;┌──────────┐   ┌──────────┐   ┌──────────┐
+│ 客户端     │   │ 客户端    │   │ 客户端    │
+└────┬─────┘   └────┬─────┘   └────┬─────┘
+     └──────────────┴──────────────┘
+                │
+         ┌──────┴──────┐
+         │ Spring Cloud │
+         │   Gateway    │  ← 统一鉴权 &amp;#43; 路由 &amp;#43; 限流
+         └──────┬──────┘
+                │
+     ┌──────────┼──────────┐
+     │          │          │
+┌────┴────┐ ┌──┴───┐ ┌───┴────┐
+│ 业务服务  │ │ 中间件 │ │ 基础设施 │
+│ User     │ │ Redis │ │ Nacos   │
+│ Product  │ │ MySQL │ │ Sentinel│
+│ Order    │ │ Mongo │ │ Seata   │
+│ Cart     │ │ ES    │ │ XXL-Job │
+│ Pay      │ │ MQ    │ │         │
+│ Seckill  │ │ Canal │ │         │
+└─────────┘ └──────┘ └─────────┘&lt;/textarea&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;项目结构&#34;&gt;项目结构&lt;/h2&gt;
+
+&lt;div class=&#34;rich-code-frame&#34; data-rich-code data-rich-code-language=&#34;text&#34;&gt;
+  &lt;div class=&#34;rich-code-toolbar&#34;&gt;
+    &lt;span class=&#34;rich-code-language&#34;&gt;text&lt;/span&gt;
+    &lt;button type=&#34;button&#34; class=&#34;rich-code-copy&#34; data-rich-code-copy&gt;复制&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;rich-code-body&#34;&gt;&lt;div class=&#34;rich-code-highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;mall-micro-cloud/
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;├── mall-api/                  # Feign接口声明层
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 3&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;├── mall-common/               # 公共工具模块
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 4&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;├── mall-gateway/              # Spring Cloud Gateway网关
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 5&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;├── mall-services/
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 6&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│   ├── mall-user-service/     # 用户服务（JWT + BCrypt鉴权）
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 7&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│   ├── mall-product-service/  # 商品服务（MyBatis-Plus）
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 8&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│   ├── mall-cart-service/     # 购物车服务（Redis缓存）
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 9&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│   ├── mall-order-service/    # 订单服务（Seata分布式事务）
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│   ├── mall-pay-service/      # 支付服务（RocketMQ事务消息）
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;11&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│   ├── mall-seckill-service/  # 秒杀服务（高并发 + 限流）
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;12&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│   ├── mall-es-service/       # 商品搜索服务（Elasticsearch）
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;13&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│   ├── mall-oss-service/      # 对象存储服务
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;14&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│   ├── mall-scheduler-service/ # 分布式调度服务（XXL-Job）
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;15&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│   ├── mall-consumer-service/  # 消息消费服务
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;16&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│   └── mall-test-service/     # 测试服务
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;17&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;├── docs/
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;18&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│   ├── Middleware/             # 11个中间件实战文档
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;19&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│   ├── interview/             # 面试题库（9章）
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;20&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│   ├── db-sql/                # 业务表SQL
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;21&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│   └── docker/                # Docker容器化部署指南
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;22&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;└── pom.xml                    # Maven父POM&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+  &lt;textarea class=&#34;rich-code-source&#34; data-rich-code-source hidden readonly&gt;mall-micro-cloud/
+├── mall-api/                  # Feign接口声明层
+├── mall-common/               # 公共工具模块
+├── mall-gateway/              # Spring Cloud Gateway网关
+├── mall-services/
+│   ├── mall-user-service/     # 用户服务（JWT &amp;#43; BCrypt鉴权）
+│   ├── mall-product-service/  # 商品服务（MyBatis-Plus）
+│   ├── mall-cart-service/     # 购物车服务（Redis缓存）
+│   ├── mall-order-service/    # 订单服务（Seata分布式事务）
+│   ├── mall-pay-service/      # 支付服务（RocketMQ事务消息）
+│   ├── mall-seckill-service/  # 秒杀服务（高并发 &amp;#43; 限流）
+│   ├── mall-es-service/       # 商品搜索服务（Elasticsearch）
+│   ├── mall-oss-service/      # 对象存储服务
+│   ├── mall-scheduler-service/ # 分布式调度服务（XXL-Job）
+│   ├── mall-consumer-service/  # 消息消费服务
+│   └── mall-test-service/     # 测试服务
+├── docs/
+│   ├── Middleware/             # 11个中间件实战文档
+│   ├── interview/             # 面试题库（9章）
+│   ├── db-sql/                # 业务表SQL
+│   └── docker/                # Docker容器化部署指南
+└── pom.xml                    # Maven父POM&lt;/textarea&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;技术亮点&#34;&gt;技术亮点&lt;/h2&gt;
+&lt;h3 id=&#34;1-分布式架构&#34;&gt;1. 分布式架构&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;微服务拆分&lt;/strong&gt;: 按业务域拆分为用户、商品、订单、支付等独立服务&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;服务治理&lt;/strong&gt;: Nacos服务注册发现 + Gateway统一路由&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;分布式事务&lt;/strong&gt;: Seata AT模式保证跨服务数据一致性&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;2-中间件深度集成&#34;&gt;2. 中间件深度集成&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Redis&lt;/strong&gt;: 缓存 + 分布式锁 + 会话管理&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Elasticsearch&lt;/strong&gt;: 全文搜索 + IK分词&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;RocketMQ&lt;/strong&gt;: 异步消息 + 事务消息&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Sentinel&lt;/strong&gt;: 限流降级 + 熔断保护&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;3-高并发秒杀&#34;&gt;3. 高并发秒杀&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Redis预扣库存 + Redisson可重入锁&lt;/li&gt;
+&lt;li&gt;RocketMQ异步落库解决超卖&lt;/li&gt;
+&lt;li&gt;Sentinel限流保护系统稳定&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;4-工程化实践&#34;&gt;4. 工程化实践&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Docker容器化部署&lt;/li&gt;
+&lt;li&gt;Gateway统一鉴权&lt;/li&gt;
+&lt;li&gt;Nacos配置中心&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;项目成果&#34;&gt;项目成果&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;架构&lt;/strong&gt;: 完成11个微服务拆分与治理&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;中间件&lt;/strong&gt;: 集成11个企业级中间件&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;性能&lt;/strong&gt;: 万级并发压测稳定运行&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;文档&lt;/strong&gt;: 完整的中间件实战文档与面试题库&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;项目状态&lt;/strong&gt;: ✅ 已完成&lt;br&gt;
+&lt;strong&gt;GitHub&lt;/strong&gt;: 
+&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

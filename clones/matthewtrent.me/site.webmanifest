@@ -1,0 +1,23 @@
+{
+  "name": "Matthew Trent",
+  "short_name": "M. Trent",
+  "description": "Matthew Trent is a software engineer in San Francisco and founding member of technical staff at Sorce (YC F25). Projects, experience, and technical writing.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "browser",
+  "theme_color": "#f8f8f8",
+  "background_color": "#f8f8f8",
+  "icons": [
+    {
+      "src": "/media/misc_landing_page/favicon.png",
+      "sizes": "500x500",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}

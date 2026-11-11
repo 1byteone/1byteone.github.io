@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>像素艺术 on </title>
+		<link>http://127.0.0.1:1318/zh/hobby/art/</link>
+		<description>Recent content in 像素艺术 on </description>
+		<generator>Hugo</generator>
+		<language>en</language>
+		
+		
+		
+		
+			<atom:link href="http://127.0.0.1:1318/zh/hobby/art/index.xml" rel="self" type="application/rss+xml" />
+	</channel>
+</rss>

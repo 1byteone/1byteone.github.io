@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Matthew Trent Blog</title>
+    <link>https://matthewtrent.me/blog</link>
+    <description>Technical articles and multi-part series on software engineering, systems, and development.</description>
+    <language>en-us</language>
+    <ttl>60</ttl>
+    <managingEditor>me@matthewtrent.me (Matthew Trent)</managingEditor>
+    <webMaster>me@matthewtrent.me (Matthew Trent)</webMaster>
+    <lastBuildDate>Thu, 05 Nov 2026 08:46:12 GMT</lastBuildDate>
+    <atom:link href="https://matthewtrent.me/rss.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://matthewtrent.me/rss.xml" rel="first" type="application/rss+xml" />
+    <atom:link href="https://matthewtrent.me/rss.xml" rel="last" type="application/rss+xml" />
+  <item>
+    <title>[Fall ’25 Offer + Reject Full Essays] Purdue University: Master of Science in Software Engineering (MS SWE) + Master of Science in Computer Science (MS CS)</title>
+    <link>https://matthewtrent.me/blog/a/purdue-ms-cs-ms-swe-applications</link>
+    <guid isPermaLink="true">https://matthewtrent.me/blog/a/purdue-ms-cs-ms-swe-applications</guid>
+    <pubDate>Thu, 05 Nov 2026 08:46:12 GMT</pubDate>
+    <dc:creator>Matthew Trent</dc:creator>
+    <description>The Fall 2025 applications that earned an offer from Purdue’s MS in Software Engineering and a rejection from its MS in Computer Science: my essays and letters.</description>
+    <category>grad applications</category>
+    <category>purdue university</category>
+    <category>fall 2025</category>
+    <category>example application</category>
+    <category>ms cs</category>
+    <category>ms swe</category>
+    <category>statement of purpose</category>
+    <category>master of science in computer science</category>
+    <category>master of science in software engineering</category>
+  </item>
+  <item>
+    <title>[Fall ’25 Offer Full Essays] Columbia University: Master of Science in Computer Science (MS CS)</title>
+    <link>https://matthewtrent.me/blog/a/columbia-ms-cs-application</link>
+    <guid isPermaLink="true">https://matthewtrent.me/blog/a/columbia-ms-cs-application</guid>
+    <pubDate>Sun, 25 Oct 2026 08:46:12 GMT</pubDate>
+    <dc:creator>Matthew Trent</dc:creator>
+    <description>The Fall 2025 application that earned an offer from Columbia’s MS in Computer Science (MS CS): my statement of purpose, letters of recommendation, and profile.</description>
+    <category>grad applications</category>
+    <category>columbia university</category>
+    <category>fall 2025</category>
+    <category>example application</category>
+    <category>ms cs</category>
+    <category>statement of purpose</category>
+    <category>ivy league</category>
+    <category>master of science in computer science</category>
+  </item>
+  <item>
+    <title>[Fall ’25 Waitlist → Reject] Cornell Tech (Cornell University): Master of Engineering in Computer Science (MEng CS)</title>
+    <link>https://matthewtrent.me/blog/a/cornell-tech-meng-cs-application</link>
+    <guid isPermaLink="true">https://matthewtrent.me/blog/a/cornell-tech-meng-cs-application</guid>
+    <pubDate>Tue, 29 Sep 2026 08:46:12 GMT</pubDate>
+    <dc:creator>Matthew Trent</dc:creator>
+    <description>The Fall 2025 application that got me waitlisted, then rejected, by Cornell Tech’s MEng in Computer Science: my statement of purpose and what I’d change.</description>
+    <category>grad applications</category>
+    <category>cornell</category>
+    <category>cornell tech</category>
+    <category>fall 2025</category>
+    <category>example application</category>
+    <category>meng in cs</category>
+    <category>statement of purpose</category>
+    <category>ivy league</category>
+    <category>master of engineering in computer science</category>
+  </item>
+  <item>
+    <title>[Fall ’25 Offer + Scholarship] UC Irvine (UCI): Master of Engineering in Electrical Engineering and Computer Science (MEng EECS)</title>
+    <link>https://matthewtrent.me/blog/a/uci-meng-eecs-application</link>
+    <guid isPermaLink="true">https://matthewtrent.me/blog/a/uci-meng-eecs-application</guid>
+    <pubDate>Sun, 27 Sep 2026 02:51:09 GMT</pubDate>
+    <dc:creator>Matthew Trent</dc:creator>
+    <description>The Fall 2025 application that earned an offer and a $5,000 scholarship from UC Irvine’s MEng in EECS: my statement of purpose and four essays.</description>
+    <category>grad applications</category>
+    <category>uci</category>
+    <category>university of california irvine</category>
+    <category>fall 2025</category>
+    <category>sop</category>
+    <category>statement of purpose</category>
+    <category>example application</category>
+    <category>master of engineering in electrical engineering and computer science</category>
+  </item>
+  <item>
+    <title>[Fall ’25 Offer Full Essays] UC San Diego (UCSD): Master of Science in Computer Science (MS CS)</title>
+    <link>https://matthewtrent.me/blog/a/ucsd-ms-cs-application</link>
+    <guid isPermaLink="true">https://matthewtrent.me/blog/a/ucsd-ms-cs-application</guid>
+    <pubDate>Sun, 20 Sep 2026 03:54:58 GMT</pubDate>
+    <dc:creator>Matthew Trent</dc:creator>
+    <description>The Fall 2025 application that earned an offer from UC San Diego’s MS in Computer Science: my statement of purpose, seven short essays, and faculty picks.</description>
+    <category>grad applications</category>
+    <category>ucsd</category>
+    <category>university of california san diego</category>
+    <category>fall 2025</category>
+    <category>example application</category>
+    <category>master of science in computer science</category>
+    <category>mscs</category>
+    <category>statement of purpose</category>
+    <category>sop</category>
+  </item>
+  <item>
+    <title>[Fall ’25 Offer Full Essays] Brown University: Master of Science in Computer Science (MS CS)</title>
+    <link>https://matthewtrent.me/blog/a/brown-university-ms-cs-application</link>
+    <guid isPermaLink="true">https://matthewtrent.me/blog/a/brown-university-ms-cs-application</guid>
+    <pubDate>Thu, 17 Sep 2026 03:54:58 GMT</pubDate>
+    <dc:creator>Matthew Trent</dc:creator>
+    <description>The Fall 2025 application that earned an offer from Brown’s ScM in Computer Science: all seven essays, my letters of recommendation, and my profile.</description>
+    <category>grad applications</category>
+    <category>brown</category>
+    <category>brown university</category>
+    <category>fall 2025</category>
+    <category>example application</category>
+    <category>sc.m. in computer science</category>
+    <category>statement of purpose</category>
+    <category>sop</category>
+    <category>ivy league admission</category>
+    <category>mscs</category>
+  </item>
+  <item>
+    <title>[Fall ’25 Offer Full Essays] Carnegie Mellon: School of Computer Science (SCS): Master of Software Engineering in Scalable Systems (MSE-SS)</title>
+    <link>https://matthewtrent.me/blog/a/cmu-mse-ss-application</link>
+    <guid isPermaLink="true">https://matthewtrent.me/blog/a/cmu-mse-ss-application</guid>
+    <pubDate>Tue, 01 Sep 2026 03:54:58 GMT</pubDate>
+    <dc:creator>Matthew Trent</dc:creator>
+    <description>The Fall 2025 application that earned an offer from Carnegie Mellon’s MSE in Scalable Systems: both essays, my video script, and why I didn’t attend.</description>
+    <category>grad applications</category>
+    <category>cmu</category>
+    <category>carnegie mellon university</category>
+    <category>fall 2025</category>
+    <category>example application</category>
+    <category>school of computer science (scs)</category>
+    <category>sop</category>
+    <category>statement of purpose</category>
+  </item>
+  <item>
+    <title>4AM Runs</title>
+    <link>https://matthewtrent.me/blog/a/4am-runs</link>
+    <guid isPermaLink="true">https://matthewtrent.me/blog/a/4am-runs</guid>
+    <pubDate>Tue, 01 Sep 2026 03:54:58 GMT</pubDate>
+    <dc:creator>Matthew Trent</dc:creator>
+    <description>A short essay on running before sunrise — written in high school, posted years later — about the point where distance stops being about the body.</description>
+    <category>running</category>
+  </item>
+  <item>
+    <title>The Eternal Sleep</title>
+    <link>https://matthewtrent.me/blog/a/the-eternal-sleep</link>
+    <guid isPermaLink="true">https://matthewtrent.me/blog/a/the-eternal-sleep</guid>
+    <pubDate>Fri, 21 Aug 2026 03:54:58 GMT</pubDate>
+    <dc:creator>Matthew Trent</dc:creator>
+    <description>Short fiction about an old fisherman who has outlived his own wanting. Written in high school and posted unchanged.</description>
+    <category>fiction</category>
+  </item>
+  <item>
+    <title>Someone Copied My GitHub Project, Then Licensed It</title>
+    <link>https://matthewtrent.me/blog/a/i-have-a-copycat</link>
+    <guid isPermaLink="true">https://matthewtrent.me/blog/a/i-have-a-copycat</guid>
+    <pubDate>Mon, 19 May 2025 03:54:58 GMT</pubDate>
+    <atom:updated>2025-05-25T03:09:07.000Z</atom:updated>
+    <dc:creator>Matthew Trent</dc:creator>
+    <description>Someone rebuilt my GitHub Painter project’s interface and features without credit, then licensed it as their own. What happened, and how it was resolved.</description>
+    <category>open source</category>
+  </item>
+  <item>
+    <title>Trent: A Reactive State Manager for Flutter</title>
+    <link>https://matthewtrent.me/blog/a/trent</link>
+    <guid isPermaLink="true">https://matthewtrent.me/blog/a/trent</guid>
+    <pubDate>Fri, 07 Feb 2025 13:46:54 GMT</pubDate>
+    <dc:creator>Matthew Trent</dc:creator>
+    <description>Why I built Trent, an opinionated state management library for large Flutter apps, and the reasoning behind its reactive API.</description>
+    <category>dart</category>
+    <category>flutter</category>
+    <category>package</category>
+    <category>state management</category>
+  </item>
+  <item>
+    <title>Optimizing Log2(x) with the Convergence Computing Method (CCM)</title>
+    <link>https://matthewtrent.me/blog/a/ccm</link>
+    <guid isPermaLink="true">https://matthewtrent.me/blog/a/ccm</guid>
+    <pubDate>Thu, 22 Aug 2024 20:32:36 GMT</pubDate>
+    <dc:creator>Matthew Trent</dc:creator>
+    <description>Optimizing the Convergence Computing Method for log₂ in C, then ARM assembly and NEON intrinsics on a Raspberry Pi — an embedded systems final project.</description>
+    <category>c</category>
+    <category>raspberry pi</category>
+    <category>arm</category>
+    <category>asm</category>
+  </item>
+  <item>
+    <title>Covehack Summer 2024</title>
+    <link>https://matthewtrent.me/blog/a/covehack-summer-2024</link>
+    <guid isPermaLink="true">https://matthewtrent.me/blog/a/covehack-summer-2024</guid>
+    <pubDate>Mon, 19 Aug 2024 13:11:35 GMT</pubDate>
+    <dc:creator>Matthew Trent</dc:creator>
+    <description>Results from Covehack Summer 2024: nine finishers across three themes — cryptography, gamification, and habits — in 24 hours, and the winning projects.</description>
+    <category>hackathon</category>
+  </item>
+  <item>
+    <title>Small Script: A Multi-Threaded Poll Spammer Bot</title>
+    <link>https://matthewtrent.me/blog/a/menti-bot</link>
+    <guid isPermaLink="true">https://matthewtrent.me/blog/a/menti-bot</guid>
+    <pubDate>Tue, 23 Apr 2024 02:37:01 GMT</pubDate>
+    <dc:creator>Matthew Trent</dc:creator>
+    <description>A multi-threaded Python script that submits many votes to a Menti live poll at once — how it works, and what it says about the platform.</description>
+    <category>python</category>
+    <category>web scraping</category>
+    <category>automation</category>
+  </item>
+  <item>
+    <title>Building a Real-Time Predictor of Hockey Game Outcomes</title>
+    <link>https://matthewtrent.me/blog/a/hockey-predictor</link>
+    <guid isPermaLink="true">https://matthewtrent.me/blog/a/hockey-predictor</guid>
+    <pubDate>Sat, 13 Apr 2024 02:45:47 GMT</pubDate>
+    <dc:creator></dc:creator>
+    <description>A real-time hockey outcome predictor over 1.75M MoneyPuck shots: logistic regression scores each shot’s quality, an LSTM turns that into a live prediction.</description>
+    <category>python</category>
+    <category>machine learning</category>
+    <category>tensorflow</category>
+    <category>keras</category>
+    <category>scikit-learn</category>
+    <category>numpy</category>
+    <category>pandas</category>
+    <category>matplotlib</category>
+  </item>
+  <item>
+    <title>Building an Optimistic Update Hook for Flutter Apps</title>
+    <link>https://matthewtrent.me/blog/a/use-optimistic</link>
+    <guid isPermaLink="true">https://matthewtrent.me/blog/a/use-optimistic</guid>
+    <pubDate>Tue, 26 Mar 2024 23:49:06 GMT</pubDate>
+    <atom:updated>2024-03-28T22:06:12.000Z</atom:updated>
+    <dc:creator>Matthew Trent</dc:creator>
+    <description>Porting React’s useOptimistic hook to Dart as a Flutter package: optimistic UI updates that roll back on failure, and the API I settled on.</description>
+    <category>dart</category>
+    <category>flutter</category>
+    <category>package</category>
+  </item>
+  <item>
+    <title>Building a Killswitch Package for Flutter Apps</title>
+    <link>https://matthewtrent.me/blog/a/killswitch</link>
+    <guid isPermaLink="true">https://matthewtrent.me/blog/a/killswitch</guid>
+    <pubDate>Thu, 22 Feb 2024 23:07:47 GMT</pubDate>
+    <dc:creator>Matthew Trent</dc:creator>
+    <description>Building and publishing a Flutter package that can remotely disable a shipped app — the design, the implementation, and the pub.dev release.</description>
+    <category>dart</category>
+    <category>flutter</category>
+    <category>package</category>
+  </item>
+  <item>
+    <title>LeetCode Bot: Auto-Solving 1,782 Problems in a Day (Python + Selenium)</title>
+    <link>https://matthewtrent.me/blog/a/leetcode-bot</link>
+    <guid isPermaLink="true">https://matthewtrent.me/blog/a/leetcode-bot</guid>
+    <pubDate>Wed, 21 Feb 2024 12:08:53 GMT</pubDate>
+    <dc:creator>Matthew Trent</dc:creator>
+    <description>How I automated 1,782 LeetCode submissions in a single day with Python and Selenium, what broke along the way, and why I built it at all.</description>
+    <category>python</category>
+    <category>javascript</category>
+    <category>selenium</category>
+    <category>leetcode</category>
+    <category>web scraping</category>
+  </item>
+  <item>
+    <title>State of Confesi</title>
+    <link>https://matthewtrent.me/blog/a/state-of-confesi</link>
+    <guid isPermaLink="true">https://matthewtrent.me/blog/a/state-of-confesi</guid>
+    <pubDate>Fri, 16 Feb 2024 15:40:00 GMT</pubDate>
+    <dc:creator>Matthew Trent</dc:creator>
+    <description>A progress report on Confesi, my “town square” confessions app for college students: the stack, what shipped, what stalled, and where it goes next.</description>
+    <category>confesi</category>
+  </item>
+  <item>
+    <title>How to Publish a Rust CLI on Homebrew (ghloc)</title>
+    <link>https://matthewtrent.me/blog/a/ghloc</link>
+    <guid isPermaLink="true">https://matthewtrent.me/blog/a/ghloc</guid>
+    <pubDate>Thu, 01 Feb 2024 08:11:35 GMT</pubDate>
+    <dc:creator>Matthew Trent</dc:creator>
+    <description>ghloc, my first Homebrew-distributed Rust CLI: it totals your lifetime commits and lines added and removed across every GitHub repo, public and private.</description>
+    <category>rust</category>
+    <category>cargo</category>
+    <category>homebrew</category>
+  </item>
+  </channel>
+</rss>

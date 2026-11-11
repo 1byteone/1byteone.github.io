@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>工程实践 | 杨劲松 / YOYO Pixel Terminal</title>
+    <link>http://127.0.0.1:1318/ai-lab/engineering/</link>
+      <atom:link href="http://127.0.0.1:1318/ai-lab/engineering/index.xml" rel="self" type="application/rss+xml" />
+    <description>工程实践</description>
+    <generator>HugoBlox Kit (https://hugoblox.com)</generator><language>zh-Hans</language><lastBuildDate>Fri, 20 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>农业问答 Agent：把 RAG、路由与证据引用分开</title>
+      <link>http://127.0.0.1:1318/ai-lab/engineering/agri-qa-architecture/</link>
+      <pubDate>Fri, 20 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://127.0.0.1:1318/ai-lab/engineering/agri-qa-architecture/</guid>
+      <description>&lt;p&gt;Agri-QA 是一个已完成的农业知识问答原型。它将领域知识检索、目标导向型路由和证据引用放在不同职责中，避免把所有问题都交给一个无边界的生成步骤。&lt;/p&gt;
+&lt;h2 id=&#34;请求路径&#34;&gt;请求路径&lt;/h2&gt;
+
+&lt;div class=&#34;rich-code-frame&#34; data-rich-code data-rich-code-language=&#34;text&#34;&gt;
+  &lt;div class=&#34;rich-code-toolbar&#34;&gt;
+    &lt;span class=&#34;rich-code-language&#34;&gt;text&lt;/span&gt;
+    &lt;button type=&#34;button&#34; class=&#34;rich-code-copy&#34; data-rich-code-copy&gt;复制&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;rich-code-body&#34;&gt;&lt;div class=&#34;rich-code-highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;Question
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;  -&amp;gt; intent route
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;  -&amp;gt; domain retrieval or general answer
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;  -&amp;gt; evidence-aware response
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;  -&amp;gt; citation and confidence display&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+  &lt;textarea class=&#34;rich-code-source&#34; data-rich-code-source hidden readonly&gt;Question
+  -&amp;amp;gt; intent route
+  -&amp;amp;gt; domain retrieval or general answer
+  -&amp;amp;gt; evidence-aware response
+  -&amp;amp;gt; citation and confidence display&lt;/textarea&gt;
+&lt;/div&gt;
+&lt;p&gt;Python / FastAPI 提供服务边界，LangGraph 表达查询路由与工具流程，ChromaDB 保存向量索引，SQLite 保存原型阶段的会话记录。当前公开项目描述没有给出可复核的生产 SLA 或模型评测数据，因此这里不推断准确率、吞吐或生产规模。&lt;/p&gt;
+&lt;h2 id=&#34;代码与资料&#34;&gt;代码与资料&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;项目档案：
+&lt;/li&gt;
+&lt;li&gt;源码：
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;复现或扩展时，应另外固定语料版本、权限策略和评测集；原型能力不等同于生产验证。&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

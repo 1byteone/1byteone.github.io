@@ -1,0 +1,55 @@
+{
+  "source": "https://matthewtrent.me",
+  "capturedAt": "2026-11-09T02:57:30.638936+00:00",
+  "pagesAndAssets": 186,
+  "errors": [
+    {
+      "url": "https://matthewtrent.me/cdn-cgi/l/email-protection",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://matthewtrent.me/killswitch",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://matthewtrent.me/_app/immutable/assets/%23r",
+      "error": "HTTP Error 404: Not Found"
+    }
+  ],
+  "thirdPartyReferences": [],
+  "routes": [
+    "https://matthewtrent.me/",
+    "https://matthewtrent.me/blog",
+    "https://matthewtrent.me/blog/a/4am-runs",
+    "https://matthewtrent.me/blog/a/brown-university-ms-cs-application",
+    "https://matthewtrent.me/blog/a/ccm",
+    "https://matthewtrent.me/blog/a/cmu-mse-ss-application",
+    "https://matthewtrent.me/blog/a/columbia-ms-cs-application",
+    "https://matthewtrent.me/blog/a/cornell-tech-meng-cs-application",
+    "https://matthewtrent.me/blog/a/covehack-summer-2024",
+    "https://matthewtrent.me/blog/a/ghloc",
+    "https://matthewtrent.me/blog/a/hockey-predictor",
+    "https://matthewtrent.me/blog/a/i-have-a-copycat",
+    "https://matthewtrent.me/blog/a/killswitch",
+    "https://matthewtrent.me/blog/a/leetcode-bot",
+    "https://matthewtrent.me/blog/a/menti-bot",
+    "https://matthewtrent.me/blog/a/purdue-ms-cs-ms-swe-applications",
+    "https://matthewtrent.me/blog/a/state-of-confesi",
+    "https://matthewtrent.me/blog/a/the-eternal-sleep",
+    "https://matthewtrent.me/blog/a/trent",
+    "https://matthewtrent.me/blog/a/uci-meng-eecs-application",
+    "https://matthewtrent.me/blog/a/ucsd-ms-cs-application",
+    "https://matthewtrent.me/blog/a/use-optimistic",
+    "https://matthewtrent.me/blog/s/childhood-writing",
+    "https://matthewtrent.me/blog/s/confesi",
+    "https://matthewtrent.me/blog/s/covehack",
+    "https://matthewtrent.me/blog/s/grad-school-applications",
+    "https://matthewtrent.me/blog/s/machine-learning",
+    "https://matthewtrent.me/blog/s/packages",
+    "https://matthewtrent.me/blog/s/questionable-decisions",
+    "https://matthewtrent.me/blog/s/scripting-and-dev-tools",
+    "https://matthewtrent.me/blog/s/software-optimization",
+    "https://matthewtrent.me/credits",
+    "https://matthewtrent.me/privacy"
+  ]
+}

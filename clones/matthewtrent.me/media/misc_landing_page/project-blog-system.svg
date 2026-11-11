@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 760" role="img" aria-labelledby="title desc">
+  <title id="title">AI 工程文章的内容、渲染和主题分层</title>
+  <desc id="desc">Markdown 内容进入语义块，再由渲染层生成静态页面和可选增强，主题层提供不同视觉表达。</desc>
+  <rect width="1600" height="760" fill="#101719"/>
+  <g fill="none" stroke="#29453d" stroke-width="3">
+    <rect x="80" y="180" width="310" height="210" rx="8" fill="#162522"/>
+    <rect x="510" y="180" width="310" height="210" rx="8" fill="#14231f"/>
+    <rect x="940" y="90" width="260" height="160" rx="8" fill="#17221f"/>
+    <rect x="940" y="300" width="260" height="160" rx="8" fill="#17221f"/>
+    <rect x="1280" y="180" width="240" height="210" rx="8" fill="#162522"/>
+    <path d="M390 285h120M820 285h120M1200 175l80 80M1200 380l80-80" stroke="#71d4ae"/>
+    <path d="M490 275l20 10-20 10M920 275l20 10-20 10M1268 245l12 10-12 10M1268 290l12 10-12 10" fill="#71d4ae" stroke="none"/>
+  </g>
+  <g fill="#9be7c8" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <text x="80" y="90" font-size="24" letter-spacing="4" fill="#71d4ae">ARTICLE ENGINE</text>
+    <text x="125" y="240" font-size="30">内容层</text>
+    <text x="125" y="285" font-size="20" fill="#c8d7d2">Markdown + Front Matter</text>
+    <text x="125" y="322" font-size="18" fill="#7d9990">代码 · 数据 · 来源</text>
+    <text x="555" y="240" font-size="30">语义块</text>
+    <text x="555" y="285" font-size="20" fill="#c8d7d2">code · diagram · table</text>
+    <text x="555" y="322" font-size="18" fill="#7d9990">image · terminal · demo</text>
+    <text x="985" y="150" font-size="26">主题皮肤 A</text>
+    <text x="985" y="195" font-size="18" fill="#7d9990">terminal / dense</text>
+    <text x="985" y="360" font-size="26">主题皮肤 B</text>
+    <text x="985" y="405" font-size="18" fill="#7d9990">editorial / calm</text>
+    <text x="1325" y="240" font-size="28">静态页面</text>
+    <text x="1325" y="285" font-size="18" fill="#c8d7d2">可读、可分享</text>
+    <text x="1325" y="322" font-size="18" fill="#7d9990">可选交互增强</text>
+  </g>
+  <g fill="#71d4ae" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" letter-spacing="2">
+    <text x="80" y="680">ONE SOURCE OF TRUTH</text>
+    <text x="1180" y="680">STATIC FIRST / PROGRESSIVE ENHANCEMENT</text>
+  </g>
+</svg>

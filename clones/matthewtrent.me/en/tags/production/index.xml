@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Production | 1byteone - Java Backend / AI Application Developer</title>
+    <link>http://localhost:1320/en/tags/production/</link>
+      <atom:link href="http://localhost:1320/en/tags/production/index.xml" rel="self" type="application/rss+xml" />
+    <description>Production</description>
+    <generator>HugoBlox Kit (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Fri, 21 Aug 2026 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Production RAG Architecture: Permissions, Versions, and Observability</title>
+      <link>http://localhost:1320/en/blog/rag-production-architecture/</link>
+      <pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1320/en/blog/rag-production-architecture/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Whiteboard: RAG — Production RAG Architecture.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;The gap between a RAG demo and production is mostly boundary conditions: who can see a document, how indexes update, how answers cite evidence, and what happens when an upstream is unavailable.&lt;/p&gt;
+&lt;h2 id=&#34;core-mental-model&#34;&gt;Core mental model&lt;/h2&gt;
+&lt;p&gt;Separate ingestion, indexing, query serving, and evaluation planes. Online traffic reads only the active index while new versions build in the background and switch atomically.&lt;/p&gt;
+&lt;h2 id=&#34;key-mechanics&#34;&gt;Key mechanics&lt;/h2&gt;
+&lt;p&gt;Enforce permissions during retrieval. Cache keys should include tenant, a permission digest, query-normalization version, and index version. Deletions must reach every replica.&lt;/p&gt;
+&lt;h2 id=&#34;python-example&#34;&gt;Python example&lt;/h2&gt;
+
+&lt;div class=&#34;rich-code-frame&#34; data-rich-code data-rich-code-language=&#34;python&#34;&gt;
+  &lt;div class=&#34;rich-code-toolbar&#34;&gt;
+    &lt;span class=&#34;rich-code-language&#34;&gt;python&lt;/span&gt;
+    &lt;button type=&#34;button&#34; class=&#34;rich-code-copy&#34; data-rich-code-copy&gt;Copy&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;rich-code-body&#34;&gt;&lt;div class=&#34;rich-code-highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;dataclasses&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;dataclass&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 3&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nd&#34;&gt;@dataclass&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 4&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;QueryContext&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 5&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;tenant_id&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;str&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 6&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;allowed_collections&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 7&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;index_version&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;str&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 8&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 9&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;cache_key&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;query&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ctx&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;QueryContext&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;scopes&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;,&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;join&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;sorted&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ctx&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;allowed_collections&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;11&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;sa&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;rag:v2:&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ctx&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;tenant_id&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ctx&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;index_version&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;scopes&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;normalize&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;query&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+  &lt;textarea class=&#34;rich-code-source&#34; data-rich-code-source hidden readonly&gt;from dataclasses import dataclass
+
+@dataclass
+class QueryContext:
+    tenant_id: str
+    allowed_collections: set[str]
+    index_version: str
+
+def cache_key(query: str, ctx: QueryContext) -&amp;amp;gt; str:
+    scopes = &amp;amp;#34;,&amp;amp;#34;.join(sorted(ctx.allowed_collections))
+    return f&amp;amp;#34;rag:v2:{ctx.tenant_id}:{ctx.index_version}:{scopes}:{normalize(query)}&amp;amp;#34;&lt;/textarea&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;course-focus&#34;&gt;Course focus&lt;/h2&gt;
+&lt;p&gt;This article turns the whiteboard into explicit engineering boundaries: define inputs and outputs first, then decide how state, failures, and observability work. The examples use Python and focus on durable design principles rather than a particular provider version; verify APIs against the documentation for your installed dependencies.&lt;/p&gt;
+&lt;h2 id=&#34;engineering-practice&#34;&gt;Engineering practice&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Keep business rules in the application layer instead of hiding them in untestable prompts or route handlers.&lt;/li&gt;
+&lt;li&gt;Add timeouts, bounded retries, and idempotency keys to external calls; retries are not a complete error strategy.&lt;/li&gt;
+&lt;li&gt;Record a request id, latency, input version, model/index version, and outcome without logging sensitive raw content.&lt;/li&gt;
+&lt;li&gt;Use a small fixed regression set first, then monitor quality and cost with sampled production traffic.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;common-mistakes&#34;&gt;Common mistakes&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Drawing only the happy path and omitting timeouts, empty results, rate limits, and rollback paths.&lt;/li&gt;
+&lt;li&gt;Letting one function parse input, call providers, build prompts, and persist data.&lt;/li&gt;
+&lt;li&gt;Replacing typed contracts with string conventions that can only be verified by manual integration.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;production-checklist&#34;&gt;Production checklist&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Inputs, outputs, and error responses have explicit schemas&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; External dependencies have timeouts, bounded retries, rate limits, and fallbacks&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Logs, metrics, and traces can be correlated to one request&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Critical paths have unit tests, integration tests, and offline evaluation samples&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Secrets, user content, and provider responses follow least-privilege and privacy rules&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;practice&#34;&gt;Practice&lt;/h2&gt;
+&lt;p&gt;Implement the smallest loop shown on the whiteboard. Inject a timeout, an empty result, and a malformed payload, then check whether the system remains stable and diagnosable. Add one metric that proves your optimization improved quality or latency.&lt;/p&gt;
+&lt;h2 id=&#34;hands-on-exercise&#34;&gt;Hands-on exercise&lt;/h2&gt;
+&lt;p&gt;Design active and candidate indexes. Simulate a failed publish and a document deletion, verify traffic never receives unauthorized stale data, and persist evidence ids for every answer.&lt;/p&gt;
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;An AI feature becomes maintainable when every arrow on the whiteboard maps to an input, an output, and a failure strategy.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Production Spring Boot Architecture</title>
+      <link>http://localhost:1320/en/blog/spring-boot-production-architecture/</link>
+      <pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1320/en/blog/spring-boot-production-architecture/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Whiteboard note: the goal is not to memorize boxes, but to connect each arrow to a request, a contract, and an operational signal.&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id=&#34;start-with-a-real-scenario&#34;&gt;Start with a real scenario&lt;/h2&gt;
+&lt;p&gt;Use this situation as the mental model: &lt;strong&gt;A flash-sale service protects the database with cache, bounded writes, idempotency, and asynchronous inventory events.&lt;/strong&gt;. A useful backend diagram answers four questions: where does input enter, who owns state, which boundary can fail, and how do we know the system is healthy? The flow is &lt;strong&gt;Gateway → Service → Cache / DB / MQ → Observability&lt;/strong&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;deconstructing-the-architecture&#34;&gt;Deconstructing the architecture&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Contract&lt;/strong&gt;: define input, output, and error shape before adding implementation detail.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Mechanism&lt;/strong&gt;: Nginx / Gateway → auth + rate limit; Service → idempotency + transaction. This is the part that determines latency, throughput, and testability.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;State and resources&lt;/strong&gt;: Redis → cache-aside with TTL; MySQL → source of truth. Explain creation, ownership, cleanup, and recovery.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Failure path&lt;/strong&gt;: RocketMQ → async side effects; combine it with &lt;strong&gt;Metrics + Logs + Traces → feedback loop&lt;/strong&gt; when choosing a fallback, retry, or rollback.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;a-small-implementation-boundary&#34;&gt;A small implementation boundary&lt;/h2&gt;
+&lt;p&gt;The following sketch is intentionally small. It shows where a production implementation should place validation and ownership rather than pretending that a happy path is enough.&lt;/p&gt;
+
+&lt;div class=&#34;rich-code-frame&#34; data-rich-code data-rich-code-language=&#34;text&#34;&gt;
+  &lt;div class=&#34;rich-code-toolbar&#34;&gt;
+    &lt;span class=&#34;rich-code-language&#34;&gt;text&lt;/span&gt;
+    &lt;button type=&#34;button&#34; class=&#34;rich-code-copy&#34; data-rich-code-copy&gt;Copy&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;rich-code-body&#34;&gt;&lt;div class=&#34;rich-code-highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;request → bounded resource → validated boundary → observable result&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+  &lt;textarea class=&#34;rich-code-source&#34; data-rich-code-source hidden readonly&gt;request → bounded resource → validated boundary → observable result&lt;/textarea&gt;
+&lt;/div&gt;
+&lt;p&gt;Keep external systems behind an adapter, repository, client, or gateway. The domain layer should depend on a stable contract so tests can use fakes and incidents can be isolated to one boundary.&lt;/p&gt;
+&lt;h2 id=&#34;engineering-decisions-for-the-scenario&#34;&gt;Engineering decisions for the scenario&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Protect dependencies first.&lt;/strong&gt; Pools, queues, semaphores, caches, and worker counts need explicit limits. An unbounded queue only hides overload.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Preserve correctness.&lt;/strong&gt; Use an idempotency key, transaction boundary, lock, version check, or schema validation where retries or concurrency can duplicate work.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Optimize with evidence.&lt;/strong&gt; Use traces, slow-query data, GC pauses, queue depth, or p99 latency before choosing a cache, index, batch size, or concurrency setting.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Make recovery testable.&lt;/strong&gt; Timeout, retry, rate limit, circuit breaking, rollback, and alerting should be exercised in a drill.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;common-mistakes&#34;&gt;Common mistakes&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Drawing only the happy path while omitting timeout, empty data, rejection, rollback, or replica lag.&lt;/li&gt;
+&lt;li&gt;Treating framework defaults as business contracts and discovering their limits after an upgrade.&lt;/li&gt;
+&lt;li&gt;Scaling machines before measuring pool exhaustion, lock contention, slow SQL, allocation, or event-loop blocking.&lt;/li&gt;
+&lt;li&gt;Treating logs as the only observability tool; metrics, traces, sampling, and redaction are also required.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;production-checklist&#34;&gt;Production checklist&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Input, output, and error responses have explicit schemas&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Dependencies have timeout, retry budgets, rate limits, and fallback behavior&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Pools and queues expose capacity, waiting, and rejected-work metrics&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Important state has idempotency, transaction, or recovery semantics&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Logs, metrics, and traces share a request or correlation ID&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Regression tests, load tests, and failure drills use production-like data&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;summary&#34;&gt;Summary&lt;/h2&gt;
+&lt;p&gt;You understand this whiteboard when you can start from one request, explain every arrow&amp;rsquo;s contract, state how each risk is handled, and name the signal that would tell you to change the design.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

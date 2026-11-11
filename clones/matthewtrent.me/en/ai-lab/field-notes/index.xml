@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Field Notes | YOYO / Pixel Terminal</title>
+    <link>http://127.0.0.1:1318/en/ai-lab/field-notes/</link>
+      <atom:link href="http://127.0.0.1:1318/en/ai-lab/field-notes/index.xml" rel="self" type="application/rss+xml" />
+    <description>Field Notes</description>
+    <generator>HugoBlox Kit (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Fri, 21 Aug 2026 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Who Cancels The Upstream Task After An SSE Client Disconnects?</title>
+      <link>http://127.0.0.1:1318/en/ai-lab/field-notes/sse-disconnect-cleanup/</link>
+      <pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>http://127.0.0.1:1318/en/ai-lab/field-notes/sse-disconnect-cleanup/</guid>
+      <description>&lt;p&gt;Once a server starts sending SSE, closing the browser does not automatically stop the model request. If the upstream stream continues after the client disconnects, background work consumes connections, memory, and model quota.&lt;/p&gt;
+&lt;h2 id=&#34;review-notes&#34;&gt;Review Notes&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Use &lt;code&gt;try/finally&lt;/code&gt; in the generator to release model responses, HTTP clients, and semaphores.&lt;/li&gt;
+&lt;li&gt;Check for client disconnects before waiting for the next model chunk, then propagate cancellation upstream.&lt;/li&gt;
+&lt;li&gt;Log the request id, termination reason, and cleanup result; do not record a disconnect as successful completion.&lt;/li&gt;
+&lt;li&gt;Test normal completion, model errors, client cancellation, and server timeout as separate termination paths.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;evidence&#34;&gt;Evidence&lt;/h2&gt;
+&lt;p&gt;Implementation notes are in 
+. This is an engineering note, not a claim that deployed model traffic is currently monitored.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

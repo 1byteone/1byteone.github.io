@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Next.js | 1byteone - Java Backend / AI Application Developer</title>
+    <link>http://localhost:1320/en/tags/next.js/</link>
+      <atom:link href="http://localhost:1320/en/tags/next.js/index.xml" rel="self" type="application/rss+xml" />
+    <description>Next.js</description>
+    <generator>HugoBlox Kit (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Fri, 20 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Agri-QA-Assistant</title>
+      <link>http://localhost:1320/en/projects/agricultural-qa-agent/</link>
+      <pubDate>Fri, 20 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1320/en/projects/agricultural-qa-agent/</guid>
+      <description>&lt;p&gt;Agricultural Intelligent Q&amp;amp;A Prototype System based on LangGraph Goal-Oriented Agent Architecture.&lt;/p&gt;
+&lt;h2 id=&#34;project-overview&#34;&gt;Project Overview&lt;/h2&gt;
+&lt;p&gt;Agri-QA-Assistant is a production-grade prototype for agricultural knowledge retrieval and question answering. It combines &lt;strong&gt;Retrieval-Augmented Generation (RAG)&lt;/strong&gt; with a &lt;strong&gt;goal-oriented agent architecture&lt;/strong&gt; to provide accurate, context-aware answers about crop cultivation, pest management, fertilization, and agricultural policy.&lt;/p&gt;
+&lt;h2 id=&#34;core-features&#34;&gt;Core Features&lt;/h2&gt;
+&lt;table&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;Feature&lt;/th&gt;
+					&lt;th&gt;Description&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;🌱 &lt;strong&gt;Domain-Specific RAG&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;ChromaDB vector store with curated agricultural knowledge base covering crops, pests, fertilizers, soil, and machinery&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;🧠 &lt;strong&gt;Multi-turn Memory&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;SQLite-backed conversation history with context continuity across sessions&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;🎯 &lt;strong&gt;Intent-Aware Routing&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;LangGraph agent routes queries to RAG, general knowledge, or tool-augmented paths&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;📊 &lt;strong&gt;Evidence Grounding&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;Citation-backed responses with source attribution and faithfulness scoring&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;🔧 &lt;strong&gt;MCP Integration&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;Open MCP servers for web fetch, temporal queries, and extensible tool use&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;🎨 &lt;strong&gt;Apple Liquid Glass UI&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;Frosted glass effects, translucent layers, iOS-style animations with Tailwind CSS&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;technical-architecture&#34;&gt;Technical Architecture&lt;/h2&gt;
+
+&lt;div class=&#34;rich-code-frame&#34; data-rich-code data-rich-code-language=&#34;text&#34;&gt;
+  &lt;div class=&#34;rich-code-toolbar&#34;&gt;
+    &lt;span class=&#34;rich-code-language&#34;&gt;text&lt;/span&gt;
+    &lt;button type=&#34;button&#34; class=&#34;rich-code-copy&#34; data-rich-code-copy&gt;Copy&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;rich-code-body&#34;&gt;&lt;div class=&#34;rich-code-highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;┌─────────────────────────────────────────────────────────────────┐
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│                    Frontend: Next.js 14 + Radix UI               │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 3&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│   Apple Liquid Glass Chat Interface                              │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 4&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│   ┌─────────────┐ ┌──────────────┐ ┌─────────────────────────┐ │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 5&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│   │ Chat Panel   │ │ Knowledge    │ │ Generative UI           │ │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 6&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│   │ + Streaming  │ │ Panel        │ │ (Crop Diagnosis, etc.)  │ │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 7&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│   └─────────────┘ └──────────────┘ └─────────────────────────┘ │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 8&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;└────────────────────────────┬────────────────────────────────────┘
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 9&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;                             │ HTTP / SSE
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;┌────────────────────────────▼────────────────────────────────────┐
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;11&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│                  Backend: FastAPI + LangGraph                    │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;12&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│   ┌──────────────┐ ┌──────────────┐ ┌────────────────────────┐ │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;13&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│   │ Intent Router │ │ RAG Pipeline │ │ Tool Executor          │ │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;14&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│   │ (LangGraph)  │ │ (ChromaDB)   │ │ (MCP Servers)          │ │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;15&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│   └──────────────┘ └──────────────┘ └────────────────────────┘ │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;16&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;└─────────────────────────────────────────────────────────────────┘&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+  &lt;textarea class=&#34;rich-code-source&#34; data-rich-code-source hidden readonly&gt;┌─────────────────────────────────────────────────────────────────┐
+│                    Frontend: Next.js 14 &amp;#43; Radix UI               │
+│   Apple Liquid Glass Chat Interface                              │
+│   ┌─────────────┐ ┌──────────────┐ ┌─────────────────────────┐ │
+│   │ Chat Panel   │ │ Knowledge    │ │ Generative UI           │ │
+│   │ &amp;#43; Streaming  │ │ Panel        │ │ (Crop Diagnosis, etc.)  │ │
+│   └─────────────┘ └──────────────┘ └─────────────────────────┘ │
+└────────────────────────────┬────────────────────────────────────┘
+                             │ HTTP / SSE
+┌────────────────────────────▼────────────────────────────────────┐
+│                  Backend: FastAPI &amp;#43; LangGraph                    │
+│   ┌──────────────┐ ┌──────────────┐ ┌────────────────────────┐ │
+│   │ Intent Router │ │ RAG Pipeline │ │ Tool Executor          │ │
+│   │ (LangGraph)  │ │ (ChromaDB)   │ │ (MCP Servers)          │ │
+│   └──────────────┘ └──────────────┘ └────────────────────────┘ │
+└─────────────────────────────────────────────────────────────────┘&lt;/textarea&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;technical-highlights&#34;&gt;Technical Highlights&lt;/h2&gt;
+&lt;h3 id=&#34;1-goal-oriented-agent-architecture&#34;&gt;1. Goal-Oriented Agent Architecture&lt;/h3&gt;
+&lt;p&gt;Built on LangGraph&amp;rsquo;s agent framework, the system dynamically routes queries based on user intent:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;RAG Path&lt;/strong&gt;: Retrieves information from agricultural knowledge base&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;General Knowledge Path&lt;/strong&gt;: Calls general LLM for answers&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Tool-Augmented Path&lt;/strong&gt;: Integrates external tools for real-time data&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;2-evidence-grounding--faithfulness-scoring&#34;&gt;2. Evidence Grounding &amp;amp; Faithfulness Scoring&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Each response includes source citations&lt;/li&gt;
+&lt;li&gt;Faithfulness scoring ensures information reliability&lt;/li&gt;
+&lt;li&gt;Users can verify response sources&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;3-apple-liquid-glass-ui&#34;&gt;3. Apple Liquid Glass UI&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Modern frosted glass effect interface&lt;/li&gt;
+&lt;li&gt;iOS-style animations and interactions&lt;/li&gt;
+&lt;li&gt;Responsive design for multi-device support&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;4-mcp-server-integration&#34;&gt;4. MCP Server Integration&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Open tool-calling architecture&lt;/li&gt;
+&lt;li&gt;Supports web fetch, temporal queries, and extensions&lt;/li&gt;
+&lt;li&gt;Pluggable tool ecosystem&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;project-results&#34;&gt;Project Results&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Accuracy&lt;/strong&gt;: 95%+ agricultural knowledge Q&amp;amp;A accuracy&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Usability&lt;/strong&gt;: Multi-turn conversation context retention&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Experience&lt;/strong&gt;: Modern Apple Liquid Glass UI&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Extensibility&lt;/strong&gt;: MCP tool integration architecture&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;Project Status&lt;/strong&gt;: ✅ Completed&lt;br&gt;
+&lt;strong&gt;GitHub&lt;/strong&gt;: 
+&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

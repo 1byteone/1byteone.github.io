@@ -214,6 +214,15 @@ jobs:
             --destination public/themes/lzw-archive \
             --baseURL "${{ steps.pages.outputs.base_url }}/themes/lzw-archive/"
 
+      - name: Build Matthew Trent mirror preview
+        if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/dev_matthewtrent_clone'
+        run: |
+          set -euo pipefail
+          python3 scripts/prepare-matthewtrent-preview.py \
+            --source clones/matthewtrent.me \
+            --destination public/themes/matthewtrent \
+            --prefix /themes/matthewtrent/
+
       - name: Build Astro TUI terminal preview
         env:
           HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache
@@ -413,6 +422,13 @@ jobs:
           test -s public/themes/lzw-archive/resume.html
           test -s public/themes/lzw-archive/lzw-archive.css
           test -s public/themes/lzw-archive/lzw-archive.js
+          if [[ "${{ github.ref }}" == "refs/heads/main" || "${{ github.ref }}" == "refs/heads/dev_matthewtrent_clone" ]]; then
+            test -s public/themes/matthewtrent/index.html
+            test -s public/themes/matthewtrent/en/index.html
+            test -s public/themes/matthewtrent/_app/immutable/entry/start.Dnsen9PA.js
+            test -s public/themes/matthewtrent/media/blog-library/photos/pexels/13054497-pexels.jpg
+            test -s public/themes/matthewtrent/songs/1.mp3
+          fi
           test -s public/themes/engineer-terminal/css/theme-center.css
           test -s public/themes/engineer-terminal/astro-tui-portfolio/index.html
           test -s public/themes/engineer-terminal/astro-tui-portfolio/en/index.html

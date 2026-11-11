@@ -1,0 +1,472 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Java | 1byteone - Java Backend / AI Application Developer</title>
+    <link>http://localhost:1320/en/tags/java/</link>
+      <atom:link href="http://localhost:1320/en/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    <description>Java</description>
+    <generator>HugoBlox Kit (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Fri, 21 Aug 2026 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Java Collections &amp; HashMap Internals</title>
+      <link>http://localhost:1320/en/blog/java-collections-hashmap/</link>
+      <pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1320/en/blog/java-collections-hashmap/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Whiteboard note: the goal is not to memorize boxes, but to connect each arrow to a request, a contract, and an operational signal.&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id=&#34;start-with-a-real-scenario&#34;&gt;Start with a real scenario&lt;/h2&gt;
+&lt;p&gt;Use this situation as the mental model: &lt;strong&gt;An order API deduplicates request IDs before writing to MySQL.&lt;/strong&gt;. A useful backend diagram answers four questions: where does input enter, who owns state, which boundary can fail, and how do we know the system is healthy? The flow is &lt;strong&gt;Collection hierarchy + hash spreading + collision handling&lt;/strong&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;deconstructing-the-architecture&#34;&gt;Deconstructing the architecture&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Contract&lt;/strong&gt;: define input, output, and error shape before adding implementation detail.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Mechanism&lt;/strong&gt;: key → hash() → hash spreading; index = (n - 1) &amp;amp; hash. This is the part that determines latency, throughput, and testability.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;State and resources&lt;/strong&gt;: Bucket: Node → Node → Node; Collision → Linked List / Tree Bin. Explain creation, ownership, cleanup, and recovery.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Failure path&lt;/strong&gt;: Capacity × Load Factor → Resize; combine it with &lt;strong&gt;Average lookup O(1) when distribution is healthy&lt;/strong&gt; when choosing a fallback, retry, or rollback.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;a-small-implementation-boundary&#34;&gt;A small implementation boundary&lt;/h2&gt;
+&lt;p&gt;The following sketch is intentionally small. It shows where a production implementation should place validation and ownership rather than pretending that a happy path is enough.&lt;/p&gt;
+
+&lt;div class=&#34;rich-code-frame&#34; data-rich-code data-rich-code-language=&#34;text&#34;&gt;
+  &lt;div class=&#34;rich-code-toolbar&#34;&gt;
+    &lt;span class=&#34;rich-code-language&#34;&gt;text&lt;/span&gt;
+    &lt;button type=&#34;button&#34; class=&#34;rich-code-copy&#34; data-rich-code-copy&gt;Copy&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;rich-code-body&#34;&gt;&lt;div class=&#34;rich-code-highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;request → bounded resource → validated boundary → observable result&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+  &lt;textarea class=&#34;rich-code-source&#34; data-rich-code-source hidden readonly&gt;request → bounded resource → validated boundary → observable result&lt;/textarea&gt;
+&lt;/div&gt;
+&lt;p&gt;Keep external systems behind an adapter, repository, client, or gateway. The domain layer should depend on a stable contract so tests can use fakes and incidents can be isolated to one boundary.&lt;/p&gt;
+&lt;h2 id=&#34;engineering-decisions-for-the-scenario&#34;&gt;Engineering decisions for the scenario&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Protect dependencies first.&lt;/strong&gt; Pools, queues, semaphores, caches, and worker counts need explicit limits. An unbounded queue only hides overload.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Preserve correctness.&lt;/strong&gt; Use an idempotency key, transaction boundary, lock, version check, or schema validation where retries or concurrency can duplicate work.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Optimize with evidence.&lt;/strong&gt; Use traces, slow-query data, GC pauses, queue depth, or p99 latency before choosing a cache, index, batch size, or concurrency setting.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Make recovery testable.&lt;/strong&gt; Timeout, retry, rate limit, circuit breaking, rollback, and alerting should be exercised in a drill.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;common-mistakes&#34;&gt;Common mistakes&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Drawing only the happy path while omitting timeout, empty data, rejection, rollback, or replica lag.&lt;/li&gt;
+&lt;li&gt;Treating framework defaults as business contracts and discovering their limits after an upgrade.&lt;/li&gt;
+&lt;li&gt;Scaling machines before measuring pool exhaustion, lock contention, slow SQL, allocation, or event-loop blocking.&lt;/li&gt;
+&lt;li&gt;Treating logs as the only observability tool; metrics, traces, sampling, and redaction are also required.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;production-checklist&#34;&gt;Production checklist&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Input, output, and error responses have explicit schemas&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Dependencies have timeout, retry budgets, rate limits, and fallback behavior&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Pools and queues expose capacity, waiting, and rejected-work metrics&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Important state has idempotency, transaction, or recovery semantics&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Logs, metrics, and traces share a request or correlation ID&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Regression tests, load tests, and failure drills use production-like data&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;summary&#34;&gt;Summary&lt;/h2&gt;
+&lt;p&gt;You understand this whiteboard when you can start from one request, explain every arrow&amp;rsquo;s contract, state how each risk is handled, and name the signal that would tell you to change the design.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Java Concurrency Model</title>
+      <link>http://localhost:1320/en/blog/java-concurrency/</link>
+      <pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1320/en/blog/java-concurrency/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Whiteboard note: the goal is not to memorize boxes, but to connect each arrow to a request, a contract, and an operational signal.&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id=&#34;start-with-a-real-scenario&#34;&gt;Start with a real scenario&lt;/h2&gt;
+&lt;p&gt;Use this situation as the mental model: &lt;strong&gt;A notification service absorbs bursts with a bounded pool and a visible rejection policy.&lt;/strong&gt;. A useful backend diagram answers four questions: where does input enter, who owns state, which boundary can fail, and how do we know the system is healthy? The flow is &lt;strong&gt;Shared state → synchronization → safe result&lt;/strong&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;deconstructing-the-architecture&#34;&gt;Deconstructing the architecture&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Contract&lt;/strong&gt;: define input, output, and error shape before adding implementation detail.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Mechanism&lt;/strong&gt;: Core Pool Size + Maximum Pool Size; Work Queue → backpressure boundary. This is the part that determines latency, throughput, and testability.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;State and resources&lt;/strong&gt;: Keep Alive Time → idle worker policy; Rejected Handler → explicit overload path. Explain creation, ownership, cleanup, and recovery.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Failure path&lt;/strong&gt;: CAS: expected → compare → swap; combine it with &lt;strong&gt;volatile / lock → memory visibility&lt;/strong&gt; when choosing a fallback, retry, or rollback.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;a-small-implementation-boundary&#34;&gt;A small implementation boundary&lt;/h2&gt;
+&lt;p&gt;The following sketch is intentionally small. It shows where a production implementation should place validation and ownership rather than pretending that a happy path is enough.&lt;/p&gt;
+
+&lt;div class=&#34;rich-code-frame&#34; data-rich-code data-rich-code-language=&#34;text&#34;&gt;
+  &lt;div class=&#34;rich-code-toolbar&#34;&gt;
+    &lt;span class=&#34;rich-code-language&#34;&gt;text&lt;/span&gt;
+    &lt;button type=&#34;button&#34; class=&#34;rich-code-copy&#34; data-rich-code-copy&gt;Copy&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;rich-code-body&#34;&gt;&lt;div class=&#34;rich-code-highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;request → bounded resource → validated boundary → observable result&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+  &lt;textarea class=&#34;rich-code-source&#34; data-rich-code-source hidden readonly&gt;request → bounded resource → validated boundary → observable result&lt;/textarea&gt;
+&lt;/div&gt;
+&lt;p&gt;Keep external systems behind an adapter, repository, client, or gateway. The domain layer should depend on a stable contract so tests can use fakes and incidents can be isolated to one boundary.&lt;/p&gt;
+&lt;h2 id=&#34;engineering-decisions-for-the-scenario&#34;&gt;Engineering decisions for the scenario&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Protect dependencies first.&lt;/strong&gt; Pools, queues, semaphores, caches, and worker counts need explicit limits. An unbounded queue only hides overload.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Preserve correctness.&lt;/strong&gt; Use an idempotency key, transaction boundary, lock, version check, or schema validation where retries or concurrency can duplicate work.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Optimize with evidence.&lt;/strong&gt; Use traces, slow-query data, GC pauses, queue depth, or p99 latency before choosing a cache, index, batch size, or concurrency setting.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Make recovery testable.&lt;/strong&gt; Timeout, retry, rate limit, circuit breaking, rollback, and alerting should be exercised in a drill.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;common-mistakes&#34;&gt;Common mistakes&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Drawing only the happy path while omitting timeout, empty data, rejection, rollback, or replica lag.&lt;/li&gt;
+&lt;li&gt;Treating framework defaults as business contracts and discovering their limits after an upgrade.&lt;/li&gt;
+&lt;li&gt;Scaling machines before measuring pool exhaustion, lock contention, slow SQL, allocation, or event-loop blocking.&lt;/li&gt;
+&lt;li&gt;Treating logs as the only observability tool; metrics, traces, sampling, and redaction are also required.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;production-checklist&#34;&gt;Production checklist&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Input, output, and error responses have explicit schemas&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Dependencies have timeout, retry budgets, rate limits, and fallback behavior&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Pools and queues expose capacity, waiting, and rejected-work metrics&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Important state has idempotency, transaction, or recovery semantics&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Logs, metrics, and traces share a request or correlation ID&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Regression tests, load tests, and failure drills use production-like data&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;summary&#34;&gt;Summary&lt;/h2&gt;
+&lt;p&gt;You understand this whiteboard when you can start from one request, explain every arrow&amp;rsquo;s contract, state how each risk is handled, and name the signal that would tell you to change the design.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Java Core Architecture</title>
+      <link>http://localhost:1320/en/blog/java-core-architecture/</link>
+      <pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1320/en/blog/java-core-architecture/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Whiteboard note: the goal is not to memorize boxes, but to connect each arrow to a request, a contract, and an operational signal.&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id=&#34;start-with-a-real-scenario&#34;&gt;Start with a real scenario&lt;/h2&gt;
+&lt;p&gt;Use this situation as the mental model: &lt;strong&gt;A payment service starts slowly, then becomes faster as JIT compiles its hot methods.&lt;/strong&gt;. A useful backend diagram answers four questions: where does input enter, who owns state, which boundary can fail, and how do we know the system is healthy? The flow is &lt;strong&gt;Source → Bytecode → JVM → Machine Code&lt;/strong&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;deconstructing-the-architecture&#34;&gt;Deconstructing the architecture&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Contract&lt;/strong&gt;: define input, output, and error shape before adding implementation detail.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Mechanism&lt;/strong&gt;: Class Loader → load / link / initialize; Heap → objects + GC managed memory. This is the part that determines latency, throughput, and testability.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;State and resources&lt;/strong&gt;: Stack → frames + local variables; Method Area → class metadata. Explain creation, ownership, cleanup, and recovery.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Failure path&lt;/strong&gt;: PC Register + Native Method Stack; combine it with &lt;strong&gt;Execution Engine → Interpreter + JIT&lt;/strong&gt; when choosing a fallback, retry, or rollback.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;a-small-implementation-boundary&#34;&gt;A small implementation boundary&lt;/h2&gt;
+&lt;p&gt;The following sketch is intentionally small. It shows where a production implementation should place validation and ownership rather than pretending that a happy path is enough.&lt;/p&gt;
+
+&lt;div class=&#34;rich-code-frame&#34; data-rich-code data-rich-code-language=&#34;text&#34;&gt;
+  &lt;div class=&#34;rich-code-toolbar&#34;&gt;
+    &lt;span class=&#34;rich-code-language&#34;&gt;text&lt;/span&gt;
+    &lt;button type=&#34;button&#34; class=&#34;rich-code-copy&#34; data-rich-code-copy&gt;Copy&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;rich-code-body&#34;&gt;&lt;div class=&#34;rich-code-highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;request → bounded resource → validated boundary → observable result&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+  &lt;textarea class=&#34;rich-code-source&#34; data-rich-code-source hidden readonly&gt;request → bounded resource → validated boundary → observable result&lt;/textarea&gt;
+&lt;/div&gt;
+&lt;p&gt;Keep external systems behind an adapter, repository, client, or gateway. The domain layer should depend on a stable contract so tests can use fakes and incidents can be isolated to one boundary.&lt;/p&gt;
+&lt;h2 id=&#34;engineering-decisions-for-the-scenario&#34;&gt;Engineering decisions for the scenario&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Protect dependencies first.&lt;/strong&gt; Pools, queues, semaphores, caches, and worker counts need explicit limits. An unbounded queue only hides overload.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Preserve correctness.&lt;/strong&gt; Use an idempotency key, transaction boundary, lock, version check, or schema validation where retries or concurrency can duplicate work.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Optimize with evidence.&lt;/strong&gt; Use traces, slow-query data, GC pauses, queue depth, or p99 latency before choosing a cache, index, batch size, or concurrency setting.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Make recovery testable.&lt;/strong&gt; Timeout, retry, rate limit, circuit breaking, rollback, and alerting should be exercised in a drill.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;common-mistakes&#34;&gt;Common mistakes&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Drawing only the happy path while omitting timeout, empty data, rejection, rollback, or replica lag.&lt;/li&gt;
+&lt;li&gt;Treating framework defaults as business contracts and discovering their limits after an upgrade.&lt;/li&gt;
+&lt;li&gt;Scaling machines before measuring pool exhaustion, lock contention, slow SQL, allocation, or event-loop blocking.&lt;/li&gt;
+&lt;li&gt;Treating logs as the only observability tool; metrics, traces, sampling, and redaction are also required.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;production-checklist&#34;&gt;Production checklist&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Input, output, and error responses have explicit schemas&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Dependencies have timeout, retry budgets, rate limits, and fallback behavior&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Pools and queues expose capacity, waiting, and rejected-work metrics&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Important state has idempotency, transaction, or recovery semantics&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Logs, metrics, and traces share a request or correlation ID&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Regression tests, load tests, and failure drills use production-like data&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;summary&#34;&gt;Summary&lt;/h2&gt;
+&lt;p&gt;You understand this whiteboard when you can start from one request, explain every arrow&amp;rsquo;s contract, state how each risk is handled, and name the signal that would tell you to change the design.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>JVM Memory &amp; Garbage Collection</title>
+      <link>http://localhost:1320/en/blog/jvm-memory-gc/</link>
+      <pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1320/en/blog/jvm-memory-gc/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Whiteboard note: the goal is not to memorize boxes, but to connect each arrow to a request, a contract, and an operational signal.&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id=&#34;start-with-a-real-scenario&#34;&gt;Start with a real scenario&lt;/h2&gt;
+&lt;p&gt;Use this situation as the mental model: &lt;strong&gt;A recommendation API protects p99 latency by measuring allocation bursts rather than guessing GC flags.&lt;/strong&gt;. A useful backend diagram answers four questions: where does input enter, who owns state, which boundary can fail, and how do we know the system is healthy? The flow is &lt;strong&gt;Allocation → promotion → reachability → collection&lt;/strong&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;deconstructing-the-architecture&#34;&gt;Deconstructing the architecture&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Contract&lt;/strong&gt;: define input, output, and error shape before adding implementation detail.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Mechanism&lt;/strong&gt;: GC Root → Reachability Analysis; Young Gen: Eden + Survivor From / To. This is the part that determines latency, throughput, and testability.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;State and resources&lt;/strong&gt;: Minor GC → copy live objects; Promotion → long-lived objects enter Old Gen. Explain creation, ownership, cleanup, and recovery.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Failure path&lt;/strong&gt;: Mark → Sweep / Compact; combine it with &lt;strong&gt;G1 / ZGC → choose for latency goals&lt;/strong&gt; when choosing a fallback, retry, or rollback.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;a-small-implementation-boundary&#34;&gt;A small implementation boundary&lt;/h2&gt;
+&lt;p&gt;The following sketch is intentionally small. It shows where a production implementation should place validation and ownership rather than pretending that a happy path is enough.&lt;/p&gt;
+
+&lt;div class=&#34;rich-code-frame&#34; data-rich-code data-rich-code-language=&#34;text&#34;&gt;
+  &lt;div class=&#34;rich-code-toolbar&#34;&gt;
+    &lt;span class=&#34;rich-code-language&#34;&gt;text&lt;/span&gt;
+    &lt;button type=&#34;button&#34; class=&#34;rich-code-copy&#34; data-rich-code-copy&gt;Copy&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;rich-code-body&#34;&gt;&lt;div class=&#34;rich-code-highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;request → bounded resource → validated boundary → observable result&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+  &lt;textarea class=&#34;rich-code-source&#34; data-rich-code-source hidden readonly&gt;request → bounded resource → validated boundary → observable result&lt;/textarea&gt;
+&lt;/div&gt;
+&lt;p&gt;Keep external systems behind an adapter, repository, client, or gateway. The domain layer should depend on a stable contract so tests can use fakes and incidents can be isolated to one boundary.&lt;/p&gt;
+&lt;h2 id=&#34;engineering-decisions-for-the-scenario&#34;&gt;Engineering decisions for the scenario&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Protect dependencies first.&lt;/strong&gt; Pools, queues, semaphores, caches, and worker counts need explicit limits. An unbounded queue only hides overload.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Preserve correctness.&lt;/strong&gt; Use an idempotency key, transaction boundary, lock, version check, or schema validation where retries or concurrency can duplicate work.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Optimize with evidence.&lt;/strong&gt; Use traces, slow-query data, GC pauses, queue depth, or p99 latency before choosing a cache, index, batch size, or concurrency setting.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Make recovery testable.&lt;/strong&gt; Timeout, retry, rate limit, circuit breaking, rollback, and alerting should be exercised in a drill.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;common-mistakes&#34;&gt;Common mistakes&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Drawing only the happy path while omitting timeout, empty data, rejection, rollback, or replica lag.&lt;/li&gt;
+&lt;li&gt;Treating framework defaults as business contracts and discovering their limits after an upgrade.&lt;/li&gt;
+&lt;li&gt;Scaling machines before measuring pool exhaustion, lock contention, slow SQL, allocation, or event-loop blocking.&lt;/li&gt;
+&lt;li&gt;Treating logs as the only observability tool; metrics, traces, sampling, and redaction are also required.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;production-checklist&#34;&gt;Production checklist&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Input, output, and error responses have explicit schemas&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Dependencies have timeout, retry budgets, rate limits, and fallback behavior&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Pools and queues expose capacity, waiting, and rejected-work metrics&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Important state has idempotency, transaction, or recovery semantics&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Logs, metrics, and traces share a request or correlation ID&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Regression tests, load tests, and failure drills use production-like data&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;summary&#34;&gt;Summary&lt;/h2&gt;
+&lt;p&gt;You understand this whiteboard when you can start from one request, explain every arrow&amp;rsquo;s contract, state how each risk is handled, and name the signal that would tell you to change the design.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Spring Boot Application Architecture</title>
+      <link>http://localhost:1320/en/blog/spring-boot-application-architecture/</link>
+      <pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1320/en/blog/spring-boot-application-architecture/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Whiteboard note: the goal is not to memorize boxes, but to connect each arrow to a request, a contract, and an operational signal.&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id=&#34;start-with-a-real-scenario&#34;&gt;Start with a real scenario&lt;/h2&gt;
+&lt;p&gt;Use this situation as the mental model: &lt;strong&gt;An order endpoint keeps HTTP, business rules, and SQL separate so each layer can be tested independently.&lt;/strong&gt;. A useful backend diagram answers four questions: where does input enter, who owns state, which boundary can fail, and how do we know the system is healthy? The flow is &lt;strong&gt;Client → Controller → Service → Repository → Database&lt;/strong&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;deconstructing-the-architecture&#34;&gt;Deconstructing the architecture&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Contract&lt;/strong&gt;: define input, output, and error shape before adding implementation detail.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Mechanism&lt;/strong&gt;: BeanDefinition → BeanFactory → ApplicationContext; @Controller → transport boundary. This is the part that determines latency, throughput, and testability.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;State and resources&lt;/strong&gt;: @Service → domain orchestration; @Repository → persistence boundary. Explain creation, ownership, cleanup, and recovery.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Failure path&lt;/strong&gt;: Auto Configuration + Starter; combine it with &lt;strong&gt;Embedded Server + externalized config&lt;/strong&gt; when choosing a fallback, retry, or rollback.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;a-small-implementation-boundary&#34;&gt;A small implementation boundary&lt;/h2&gt;
+&lt;p&gt;The following sketch is intentionally small. It shows where a production implementation should place validation and ownership rather than pretending that a happy path is enough.&lt;/p&gt;
+
+&lt;div class=&#34;rich-code-frame&#34; data-rich-code data-rich-code-language=&#34;text&#34;&gt;
+  &lt;div class=&#34;rich-code-toolbar&#34;&gt;
+    &lt;span class=&#34;rich-code-language&#34;&gt;text&lt;/span&gt;
+    &lt;button type=&#34;button&#34; class=&#34;rich-code-copy&#34; data-rich-code-copy&gt;Copy&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;rich-code-body&#34;&gt;&lt;div class=&#34;rich-code-highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;request → bounded resource → validated boundary → observable result&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+  &lt;textarea class=&#34;rich-code-source&#34; data-rich-code-source hidden readonly&gt;request → bounded resource → validated boundary → observable result&lt;/textarea&gt;
+&lt;/div&gt;
+&lt;p&gt;Keep external systems behind an adapter, repository, client, or gateway. The domain layer should depend on a stable contract so tests can use fakes and incidents can be isolated to one boundary.&lt;/p&gt;
+&lt;h2 id=&#34;engineering-decisions-for-the-scenario&#34;&gt;Engineering decisions for the scenario&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Protect dependencies first.&lt;/strong&gt; Pools, queues, semaphores, caches, and worker counts need explicit limits. An unbounded queue only hides overload.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Preserve correctness.&lt;/strong&gt; Use an idempotency key, transaction boundary, lock, version check, or schema validation where retries or concurrency can duplicate work.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Optimize with evidence.&lt;/strong&gt; Use traces, slow-query data, GC pauses, queue depth, or p99 latency before choosing a cache, index, batch size, or concurrency setting.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Make recovery testable.&lt;/strong&gt; Timeout, retry, rate limit, circuit breaking, rollback, and alerting should be exercised in a drill.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;common-mistakes&#34;&gt;Common mistakes&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Drawing only the happy path while omitting timeout, empty data, rejection, rollback, or replica lag.&lt;/li&gt;
+&lt;li&gt;Treating framework defaults as business contracts and discovering their limits after an upgrade.&lt;/li&gt;
+&lt;li&gt;Scaling machines before measuring pool exhaustion, lock contention, slow SQL, allocation, or event-loop blocking.&lt;/li&gt;
+&lt;li&gt;Treating logs as the only observability tool; metrics, traces, sampling, and redaction are also required.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;production-checklist&#34;&gt;Production checklist&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Input, output, and error responses have explicit schemas&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Dependencies have timeout, retry budgets, rate limits, and fallback behavior&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Pools and queues expose capacity, waiting, and rejected-work metrics&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Important state has idempotency, transaction, or recovery semantics&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Logs, metrics, and traces share a request or correlation ID&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Regression tests, load tests, and failure drills use production-like data&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;summary&#34;&gt;Summary&lt;/h2&gt;
+&lt;p&gt;You understand this whiteboard when you can start from one request, explain every arrow&amp;rsquo;s contract, state how each risk is handled, and name the signal that would tell you to change the design.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Distributed Micro Cloud Mall</title>
+      <link>http://localhost:1320/en/projects/ecommerce-rag-search/</link>
+      <pubDate>Fri, 15 May 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1320/en/projects/ecommerce-rag-search/</guid>
+      <description>&lt;p&gt;Microservice E-commerce Platform - SpringCloud Alibaba Stack (Nacos/Gateway/Sentinel) + MyBatis-Plus + Feign Remote Calls.&lt;/p&gt;
+&lt;h2 id=&#34;project-overview&#34;&gt;Project Overview&lt;/h2&gt;
+&lt;p&gt;Complete practice from monolithic to microservice architecture, covering enterprise middleware integration and distributed solutions. The project benchmarks against mid-senior Java backend engineer core competency models.&lt;/p&gt;
+&lt;h2 id=&#34;professional-goal-position-capability-benchmarking&#34;&gt;Professional GOAL (Position Capability Benchmarking)&lt;/h2&gt;
+&lt;table&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;Level&lt;/th&gt;
+					&lt;th&gt;Capability Domain&lt;/th&gt;
+					&lt;th&gt;Coverage Modules&lt;/th&gt;
+					&lt;th&gt;Weight&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;🥇 &lt;strong&gt;Distributed Architecture&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;Microservice splitting, service governance, distributed transactions, message queues&lt;/td&gt;
+					&lt;td&gt;mall-order-service, mall-seckill-service, Middleware&lt;/td&gt;
+					&lt;td&gt;35%&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;🥈 &lt;strong&gt;Middleware Depth&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;Redis cache, ES search, RocketMQ messaging, Seata transactions, Sentinel rate limiting&lt;/td&gt;
+					&lt;td&gt;docs/Middleware/ (11 middlewares)&lt;/td&gt;
+					&lt;td&gt;30%&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;🥉 &lt;strong&gt;Business Implementation&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;Product/User/Cart/Order CRUD, JWT auth, AOP logging&lt;/td&gt;
+					&lt;td&gt;mall-product-service, mall-user-service, mall-cart-service&lt;/td&gt;
+					&lt;td&gt;25%&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;🏅 &lt;strong&gt;Engineering&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;Docker containerization, Gateway, Nacos config center, CI deployment&lt;/td&gt;
+					&lt;td&gt;mall-gateway, docs/docker/&lt;/td&gt;
+					&lt;td&gt;10%&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;technical-architecture&#34;&gt;Technical Architecture&lt;/h2&gt;
+
+&lt;div class=&#34;rich-code-frame&#34; data-rich-code data-rich-code-language=&#34;text&#34;&gt;
+  &lt;div class=&#34;rich-code-toolbar&#34;&gt;
+    &lt;span class=&#34;rich-code-language&#34;&gt;text&lt;/span&gt;
+    &lt;button type=&#34;button&#34; class=&#34;rich-code-copy&#34; data-rich-code-copy&gt;Copy&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;rich-code-body&#34;&gt;&lt;div class=&#34;rich-code-highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;┌──────────┐   ┌──────────┐   ┌──────────┐
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│ Client    │   │ Client   │   │ Client   │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 3&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;└────┬─────┘   └────┬─────┘   └────┬─────┘
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 4&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;     └──────────────┴──────────────┘
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 5&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;                │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 6&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;         ┌──────┴──────┐
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 7&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;         │ Spring Cloud │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 8&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;         │   Gateway    │  ← Unified Auth + Routing + Rate Limiting
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 9&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;         └──────┬──────┘
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;                │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;11&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;     ┌──────────┼──────────┐
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;12&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;     │          │          │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;13&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;┌────┴────┐ ┌──┴───┐ ┌───┴────┐
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;14&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│ Services │ │Middle│ │Infra   │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;15&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│ User     │ │Redis │ │Nacos   │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;16&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│ Product  │ │MySQL │ │Sentinel│
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;17&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│ Order    │ │Mongo │ │Seata   │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;18&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│ Cart     │ │ES    │ │XXL-Job │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;19&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│ Pay      │ │MQ    │ │        │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;20&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│ Seckill  │ │Canal │ │        │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;21&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;└─────────┘ └──────┘ └─────────┘&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+  &lt;textarea class=&#34;rich-code-source&#34; data-rich-code-source hidden readonly&gt;┌──────────┐   ┌──────────┐   ┌──────────┐
+│ Client    │   │ Client   │   │ Client   │
+└────┬─────┘   └────┬─────┘   └────┬─────┘
+     └──────────────┴──────────────┘
+                │
+         ┌──────┴──────┐
+         │ Spring Cloud │
+         │   Gateway    │  ← Unified Auth &amp;#43; Routing &amp;#43; Rate Limiting
+         └──────┬──────┘
+                │
+     ┌──────────┼──────────┐
+     │          │          │
+┌────┴────┐ ┌──┴───┐ ┌───┴────┐
+│ Services │ │Middle│ │Infra   │
+│ User     │ │Redis │ │Nacos   │
+│ Product  │ │MySQL │ │Sentinel│
+│ Order    │ │Mongo │ │Seata   │
+│ Cart     │ │ES    │ │XXL-Job │
+│ Pay      │ │MQ    │ │        │
+│ Seckill  │ │Canal │ │        │
+└─────────┘ └──────┘ └─────────┘&lt;/textarea&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;project-structure&#34;&gt;Project Structure&lt;/h2&gt;
+
+&lt;div class=&#34;rich-code-frame&#34; data-rich-code data-rich-code-language=&#34;text&#34;&gt;
+  &lt;div class=&#34;rich-code-toolbar&#34;&gt;
+    &lt;span class=&#34;rich-code-language&#34;&gt;text&lt;/span&gt;
+    &lt;button type=&#34;button&#34; class=&#34;rich-code-copy&#34; data-rich-code-copy&gt;Copy&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;rich-code-body&#34;&gt;&lt;div class=&#34;rich-code-highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;mall-micro-cloud/
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;├── mall-api/                  # Feign Interface Layer
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 3&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;├── mall-common/               # Common Utilities
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 4&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;├── mall-gateway/              # Spring Cloud Gateway
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 5&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;├── mall-services/
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 6&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│   ├── mall-user-service/     # User Service (JWT + BCrypt)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 7&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│   ├── mall-product-service/  # Product Service (MyBatis-Plus)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 8&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│   ├── mall-cart-service/     # Cart Service (Redis Cache)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 9&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│   ├── mall-order-service/    # Order Service (Seata Distributed Tx)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│   ├── mall-pay-service/      # Payment Service (RocketMQ Tx Messages)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;11&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│   ├── mall-seckill-service/  # Seckill Service (High Concurrency)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;12&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│   ├── mall-es-service/       # Search Service (Elasticsearch)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;13&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│   ├── mall-oss-service/      # Object Storage Service
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;14&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│   ├── mall-scheduler-service/ # Scheduler Service (XXL-Job)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;15&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│   ├── mall-consumer-service/ # Message Consumer Service
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;16&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│   └── mall-test-service/     # Test Service
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;17&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;├── docs/
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;18&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│   ├── Middleware/             # 11 Middleware Tutorials
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;19&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│   ├── interview/             # Interview Questions (9 chapters)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;20&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│   ├── db-sql/                # Business SQL
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;21&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│   └── docker/                # Docker Deployment Guide
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;22&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;└── pom.xml                    # Maven Parent POM&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+  &lt;textarea class=&#34;rich-code-source&#34; data-rich-code-source hidden readonly&gt;mall-micro-cloud/
+├── mall-api/                  # Feign Interface Layer
+├── mall-common/               # Common Utilities
+├── mall-gateway/              # Spring Cloud Gateway
+├── mall-services/
+│   ├── mall-user-service/     # User Service (JWT &amp;#43; BCrypt)
+│   ├── mall-product-service/  # Product Service (MyBatis-Plus)
+│   ├── mall-cart-service/     # Cart Service (Redis Cache)
+│   ├── mall-order-service/    # Order Service (Seata Distributed Tx)
+│   ├── mall-pay-service/      # Payment Service (RocketMQ Tx Messages)
+│   ├── mall-seckill-service/  # Seckill Service (High Concurrency)
+│   ├── mall-es-service/       # Search Service (Elasticsearch)
+│   ├── mall-oss-service/      # Object Storage Service
+│   ├── mall-scheduler-service/ # Scheduler Service (XXL-Job)
+│   ├── mall-consumer-service/ # Message Consumer Service
+│   └── mall-test-service/     # Test Service
+├── docs/
+│   ├── Middleware/             # 11 Middleware Tutorials
+│   ├── interview/             # Interview Questions (9 chapters)
+│   ├── db-sql/                # Business SQL
+│   └── docker/                # Docker Deployment Guide
+└── pom.xml                    # Maven Parent POM&lt;/textarea&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;technical-highlights&#34;&gt;Technical Highlights&lt;/h2&gt;
+&lt;h3 id=&#34;1-distributed-architecture&#34;&gt;1. Distributed Architecture&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Microservice Splitting&lt;/strong&gt;: Independent services by business domain&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Service Governance&lt;/strong&gt;: Nacos discovery + Gateway routing&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Distributed Transactions&lt;/strong&gt;: Seata AT mode for cross-service consistency&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;2-deep-middleware-integration&#34;&gt;2. Deep Middleware Integration&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Redis&lt;/strong&gt;: Cache + Distributed Lock + Session Management&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Elasticsearch&lt;/strong&gt;: Full-text Search + IK Analyzer&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;RocketMQ&lt;/strong&gt;: Async Messaging + Transaction Messages&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Sentinel&lt;/strong&gt;: Rate Limiting + Circuit Breaking&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;3-high-concurrency-seckill&#34;&gt;3. High-Concurrency Seckill&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Redis pre-deduction + Redisson reentrant lock&lt;/li&gt;
+&lt;li&gt;RocketMQ async persistence prevents overselling&lt;/li&gt;
+&lt;li&gt;Sentinel rate limiting protects system stability&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;4-engineering-practices&#34;&gt;4. Engineering Practices&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Docker containerization&lt;/li&gt;
+&lt;li&gt;Gateway unified authentication&lt;/li&gt;
+&lt;li&gt;Nacos configuration center&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;project-results&#34;&gt;Project Results&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Architecture&lt;/strong&gt;: 11 microservices designed and governed&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Middleware&lt;/strong&gt;: 11 enterprise middlewares integrated&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Performance&lt;/strong&gt;: 10k+ concurrent stress testing passed&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Documentation&lt;/strong&gt;: Complete middleware tutorials and interview questions&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;Project Status&lt;/strong&gt;: ✅ Completed&lt;br&gt;
+&lt;strong&gt;GitHub&lt;/strong&gt;: 
+&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

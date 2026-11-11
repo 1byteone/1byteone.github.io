@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>16 个技术栈学习路线 on </title>
+		<link>http://127.0.0.1:1318/zh/tech-stack/</link>
+		<description>Recent content in 16 个技术栈学习路线 on </description>
+		<generator>Hugo</generator>
+		<language>en</language>
+		
+		
+		
+		
+			<lastBuildDate>Fri, 21 Aug 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://127.0.0.1:1318/zh/tech-stack/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>conda 学习路线</title>
+				<link>http://127.0.0.1:1318/zh/tech-stack/conda/</link>
+				<pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://127.0.0.1:1318/zh/tech-stack/conda/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>docker 学习路线</title>
+				<link>http://127.0.0.1:1318/zh/tech-stack/docker/</link>
+				<pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://127.0.0.1:1318/zh/tech-stack/docker/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>elasticsearch 学习路线</title>
+				<link>http://127.0.0.1:1318/zh/tech-stack/elasticsearch/</link>
+				<pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://127.0.0.1:1318/zh/tech-stack/elasticsearch/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>fastapi 学习路线</title>
+				<link>http://127.0.0.1:1318/zh/tech-stack/fastapi/</link>
+				<pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://127.0.0.1:1318/zh/tech-stack/fastapi/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>git 学习路线</title>
+				<link>http://127.0.0.1:1318/zh/tech-stack/git/</link>
+				<pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://127.0.0.1:1318/zh/tech-stack/git/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>java 学习路线</title>
+				<link>http://127.0.0.1:1318/zh/tech-stack/java/</link>
+				<pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://127.0.0.1:1318/zh/tech-stack/java/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>jupyter 学习路线</title>
+				<link>http://127.0.0.1:1318/zh/tech-stack/jupyter/</link>
+				<pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://127.0.0.1:1318/zh/tech-stack/jupyter/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>langchain 学习路线</title>
+				<link>http://127.0.0.1:1318/zh/tech-stack/langchain/</link>
+				<pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://127.0.0.1:1318/zh/tech-stack/langchain/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>linux 学习路线</title>
+				<link>http://127.0.0.1:1318/zh/tech-stack/linux/</link>
+				<pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://127.0.0.1:1318/zh/tech-stack/linux/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>mysql 学习路线</title>
+				<link>http://127.0.0.1:1318/zh/tech-stack/mysql/</link>
+				<pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://127.0.0.1:1318/zh/tech-stack/mysql/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>openai 学习路线</title>
+				<link>http://127.0.0.1:1318/zh/tech-stack/openai/</link>
+				<pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://127.0.0.1:1318/zh/tech-stack/openai/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>python 学习路线</title>
+				<link>http://127.0.0.1:1318/zh/tech-stack/python/</link>
+				<pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://127.0.0.1:1318/zh/tech-stack/python/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>rag 学习路线</title>
+				<link>http://127.0.0.1:1318/zh/tech-stack/rag/</link>
+				<pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://127.0.0.1:1318/zh/tech-stack/rag/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>redis 学习路线</title>
+				<link>http://127.0.0.1:1318/zh/tech-stack/redis/</link>
+				<pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://127.0.0.1:1318/zh/tech-stack/redis/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>rocketmq 学习路线</title>
+				<link>http://127.0.0.1:1318/zh/tech-stack/rocketmq/</link>
+				<pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://127.0.0.1:1318/zh/tech-stack/rocketmq/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>spring-boot 学习路线</title>
+				<link>http://127.0.0.1:1318/zh/tech-stack/spring-boot/</link>
+				<pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://127.0.0.1:1318/zh/tech-stack/spring-boot/</guid>
+				<description></description>
+			</item>
+	</channel>
+</rss>

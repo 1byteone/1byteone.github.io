@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>研究与原理 | 杨劲松 / YOYO Pixel Terminal</title>
+    <link>http://127.0.0.1:1318/ai-lab/research/</link>
+      <atom:link href="http://127.0.0.1:1318/ai-lab/research/index.xml" rel="self" type="application/rss+xml" />
+    <description>研究与原理</description>
+    <generator>HugoBlox Kit (https://hugoblox.com)</generator><language>zh-Hans</language><lastBuildDate>Fri, 21 Aug 2026 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>检索增强生成的证据链：从候选片段到可核验回答</title>
+      <link>http://127.0.0.1:1318/ai-lab/research/retrieval-evidence/</link>
+      <pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>http://127.0.0.1:1318/ai-lab/research/retrieval-evidence/</guid>
+      <description>&lt;p&gt;RAG 的回答质量不是单一的“向量相似度”问题。系统需要先找到候选证据，再按任务相关性排序，最后判断生成的每个关键结论是否被上下文支持。&lt;/p&gt;
+&lt;h2 id=&#34;四段证据链&#34;&gt;四段证据链&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;召回&lt;/strong&gt;：BM25 对专有名词和精确标识有效，向量检索补充表达不同但语义相近的查询。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;排序&lt;/strong&gt;：混合召回合并候选后，reranker 根据 query 与片段的联合相关性重新排序。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;上下文&lt;/strong&gt;：去重、权限过滤和长度预算决定哪些证据能进入提示词。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;回答支持&lt;/strong&gt;：引用位置必须指向真实片段；证据不足时系统应允许拒答。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;容易误读的指标&#34;&gt;容易误读的指标&lt;/h2&gt;
+&lt;p&gt;Recall 提升可能只是引入更多噪声。离线排序指标无法单独证明回答忠实；端到端评估还需要引用支持率、无依据回答率和延迟。&lt;/p&gt;
+&lt;p&gt;完整的检索实现笔记见 
+。真实指标会在相同数据集和固定版本上测得后再加入评测页。&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

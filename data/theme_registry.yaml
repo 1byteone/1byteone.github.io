@@ -513,3 +513,28 @@ themes:
     available: true
     default_selectable: true
     supports: [home, list, single, resource, chat, friends, tech-stack, categories, archives, about, search, status, 404]
+  - id: matthewtrent
+    label: Matthew Trent Mirror
+    label_zh: Matthew Trent 镜像
+    description: A motion-rich personal archive with glass UI, polaroid galleries, scroll scenes, and local audio
+    description_zh: 保留玻璃拟态、拍立得图集、滚动叙事与本地音频交互的个人档案镜像
+    short_label: MATT / MIRROR
+    version: 1.0.0
+    status: preview
+    scope: site
+    category: creative
+    preview_style: editorial
+    tags: [motion, glass, gallery, audio, mirror]
+    role: standalone
+    base_path: /themes/matthewtrent/
+    preview_path: /themes/matthewtrent/
+    showcase_image: /images/theme-center/matthewtrent.webp
+    showcase_alt_zh: Matthew Trent 镜像主题真实首页截图
+    showcase_alt_en: Real Matthew Trent mirror homepage screenshot
+    source_repository: https://matthewtrent.me/
+    reference_url: https://matthewtrent.me/
+    reference_note: A local static capture of the public reference site with the personal blog content and portrait adapted for 1byteone.
+    reference_note_zh: 将公开参考站静态镜像接入主题中心，内容与人物形象已适配 1byteone 个人博客。
+    available: true
+    default_selectable: true
+    supports: [home, blog, projects, gallery, audio, bilingual]

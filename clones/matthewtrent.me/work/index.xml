@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>项目详情 | 杨劲松 - Java后端 / AI应用开发工程师</title>
+    <link>http://localhost:1320/work/</link>
+      <atom:link href="http://localhost:1320/work/index.xml" rel="self" type="application/rss+xml" />
+    <description>项目详情</description>
+    <generator>HugoBlox Kit (https://hugoblox.com)</generator><language>zh-Hans</language><lastBuildDate>Mon, 05 Jan 2026 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>专业能力矩阵</title>
+      <link>http://localhost:1320/work/professional-goal/</link>
+      <pubDate>Mon, 05 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1320/work/professional-goal/</guid>
+      <description>&lt;h1 id=&#34;专业能力矩阵&#34;&gt;专业能力矩阵&lt;/h1&gt;
+&lt;h2 id=&#34;-岗位目标java后端--ai应用开发工程师&#34;&gt;🎯 岗位目标：Java后端 / AI应用开发工程师&lt;/h2&gt;
+&lt;h3 id=&#34;核心能力对标&#34;&gt;核心能力对标&lt;/h3&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;能力层级&lt;/th&gt;
+      &lt;th&gt;核心能力&lt;/th&gt;
+      &lt;th&gt;项目实践&lt;/th&gt;
+      &lt;th&gt;掌握程度&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;P0 核心&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Java微服务架构&lt;/td&gt;
+      &lt;td&gt;分布式微云商城&lt;/td&gt;
+      &lt;td&gt;⭐⭐⭐⭐⭐&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;P0 核心&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;AI应用开发（RAG/Agent）&lt;/td&gt;
+      &lt;td&gt;Agri-QA-Assistant&lt;/td&gt;
+      &lt;td&gt;⭐⭐⭐⭐⭐&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;P1 重要&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;数据库设计与优化&lt;/td&gt;
+      &lt;td&gt;MySQL + Elasticsearch&lt;/td&gt;
+      &lt;td&gt;⭐⭐⭐⭐&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;P1 重要&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;分布式系统设计&lt;/td&gt;
+      &lt;td&gt;Seata + RocketMQ&lt;/td&gt;
+      &lt;td&gt;⭐⭐⭐⭐&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;P2 加分&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;前端开发&lt;/td&gt;
+      &lt;td&gt;Next.js + React&lt;/td&gt;
+      &lt;td&gt;⭐⭐⭐&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;P2 加分&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;DevOps与部署&lt;/td&gt;
+      &lt;td&gt;Docker + Nacos&lt;/td&gt;
+      &lt;td&gt;⭐⭐⭐⭐&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;-技术能力图谱&#34;&gt;🏗️ 技术能力图谱&lt;/h2&gt;
+&lt;h3 id=&#34;1-java微服务技术栈&#34;&gt;1. Java微服务技术栈&lt;/h3&gt;
+
+&lt;div class=&#34;rich-code-frame&#34; data-rich-code data-rich-code-language=&#34;text&#34;&gt;
+  &lt;div class=&#34;rich-code-toolbar&#34;&gt;
+    &lt;span class=&#34;rich-code-language&#34;&gt;text&lt;/span&gt;
+    &lt;button type=&#34;button&#34; class=&#34;rich-code-copy&#34; data-rich-code-copy&gt;复制&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;rich-code-body&#34;&gt;&lt;div class=&#34;rich-code-highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;Spring Boot 3.3.2
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;    ↓
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 3&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;Spring Cloud Alibaba
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 4&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;    ↓
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 5&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;┌─────────────────────────────────────┐
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 6&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│  Nacos (服务发现/配置中心)           │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 7&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│  Gateway (统一网关/鉴权/限流)        │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 8&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│  Sentinel (熔断/降级/限流)           │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 9&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│  Seata (分布式事务)                  │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│  OpenFeign (远程调用)               │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;11&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;└─────────────────────────────────────┘
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;12&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;    ↓
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;13&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;MyBatis-Plus (ORM)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;14&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;    ↓
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;15&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;MySQL + Redis + Elasticsearch&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+  &lt;textarea class=&#34;rich-code-source&#34; data-rich-code-source hidden readonly&gt;Spring Boot 3.3.2
+    ↓
+Spring Cloud Alibaba
+    ↓
+┌─────────────────────────────────────┐
+│  Nacos (服务发现/配置中心)           │
+│  Gateway (统一网关/鉴权/限流)        │
+│  Sentinel (熔断/降级/限流)           │
+│  Seata (分布式事务)                  │
+│  OpenFeign (远程调用)               │
+└─────────────────────────────────────┘
+    ↓
+MyBatis-Plus (ORM)
+    ↓
+MySQL &amp;#43; Redis &amp;#43; Elasticsearch&lt;/textarea&gt;
+&lt;/div&gt;
+&lt;h3 id=&#34;2-ai应用开发技术栈&#34;&gt;2. AI应用开发技术栈&lt;/h3&gt;
+
+&lt;div class=&#34;rich-code-frame&#34; data-rich-code data-rich-code-language=&#34;text&#34;&gt;
+  &lt;div class=&#34;rich-code-toolbar&#34;&gt;
+    &lt;span class=&#34;rich-code-language&#34;&gt;text&lt;/span&gt;
+    &lt;button type=&#34;button&#34; class=&#34;rich-code-copy&#34; data-rich-code-copy&gt;复制&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;rich-code-body&#34;&gt;&lt;div class=&#34;rich-code-highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;Python 3.10+
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;    ↓
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 3&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;┌─────────────────────────────────────┐
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 4&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│  LangChain (智能体编排)              │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 5&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│  LangGraph (目标导向型路由)          │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 6&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│  FastAPI (异步Web框架)               │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 7&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│  ChromaDB (向量存储)                 │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 8&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;└─────────────────────────────────────┘
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 9&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;    ↓
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;RAG Pipeline
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;11&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;    ↓
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;12&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;┌─────────────────────────────────────┤
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;13&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│  文档预处理 → 向量化 → 检索 → 生成  │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;14&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│  多轮记忆 → 证据溯源 → 幻觉控制     │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;15&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;└─────────────────────────────────────┘&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+  &lt;textarea class=&#34;rich-code-source&#34; data-rich-code-source hidden readonly&gt;Python 3.10&amp;#43;
+    ↓
+┌─────────────────────────────────────┐
+│  LangChain (智能体编排)              │
+│  LangGraph (目标导向型路由)          │
+│  FastAPI (异步Web框架)               │
+│  ChromaDB (向量存储)                 │
+└─────────────────────────────────────┘
+    ↓
+RAG Pipeline
+    ↓
+┌─────────────────────────────────────┤
+│  文档预处理 → 向量化 → 检索 → 生成  │
+│  多轮记忆 → 证据溯源 → 幻觉控制     │
+└─────────────────────────────────────┘&lt;/textarea&gt;
+&lt;/div&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;-项目与能力映射&#34;&gt;📊 项目与能力映射&lt;/h2&gt;
+&lt;h3 id=&#34;分布式微云商城&#34;&gt;分布式微云商城&lt;/h3&gt;
+&lt;table&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;能力域&lt;/th&gt;
+					&lt;th&gt;具体实现&lt;/th&gt;
+					&lt;th&gt;成果指标&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;strong&gt;微服务拆分&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;11个独立服务&lt;/td&gt;
+					&lt;td&gt;按业务域解耦&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;strong&gt;服务治理&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;Nacos + Gateway&lt;/td&gt;
+					&lt;td&gt;统一路由鉴权&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;strong&gt;分布式事务&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;Seata AT模式&lt;/td&gt;
+					&lt;td&gt;跨服务数据一致&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;strong&gt;高并发&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;Redis + RocketMQ&lt;/td&gt;
+					&lt;td&gt;万级QPS稳定&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;strong&gt;搜索&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;ES + IK分词&lt;/td&gt;
+					&lt;td&gt;2s→20ms响应&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;agri-qa-assistant&#34;&gt;Agri-QA-Assistant&lt;/h3&gt;
+&lt;table&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;能力域&lt;/th&gt;
+					&lt;th&gt;具体实现&lt;/th&gt;
+					&lt;th&gt;成果指标&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;strong&gt;智能体架构&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;LangGraph路由&lt;/td&gt;
+					&lt;td&gt;意图识别准确率95%&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;strong&gt;RAG管道&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;ChromaDB + 文档分块&lt;/td&gt;
+					&lt;td&gt;检索召回率90%+&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;strong&gt;多轮记忆&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;SQLite会话管理&lt;/td&gt;
+					&lt;td&gt;上下文保持完整&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;strong&gt;证据溯源&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;来源引用 + 可信度评分&lt;/td&gt;
+					&lt;td&gt;幻觉率&amp;lt;5%&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;strong&gt;UI设计&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;Apple Liquid Glass&lt;/td&gt;
+					&lt;td&gt;现代化交互体验&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;-职业发展路径&#34;&gt;🚀 职业发展路径&lt;/h2&gt;
+&lt;h3 id=&#34;短期目标0-1年&#34;&gt;短期目标（0-1年）&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;✅ 完成Java微服务项目&lt;/li&gt;
+&lt;li&gt;✅ 完成AI应用开发项目&lt;/li&gt;
+&lt;li&gt;🎯 进入Java后端/AI应用开发岗位&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;中期目标1-3年&#34;&gt;中期目标（1-3年）&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;深入分布式系统设计&lt;/li&gt;
+&lt;li&gt;掌握云原生架构&lt;/li&gt;
+&lt;li&gt;成为技术骨干&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;长期目标3-5年&#34;&gt;长期目标（3-5年）&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;架构师/技术专家&lt;/li&gt;
+&lt;li&gt;技术团队管理&lt;/li&gt;
+&lt;li&gt;行业解决方案&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;-求职优势&#34;&gt;💼 求职优势&lt;/h2&gt;
+&lt;h3 id=&#34;1-技术深度&#34;&gt;1. 技术深度&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Java微服务全栈能力&lt;/li&gt;
+&lt;li&gt;AI应用开发实战经验&lt;/li&gt;
+&lt;li&gt;分布式系统设计能力&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;2-项目质量&#34;&gt;2. 项目质量&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;企业级项目架构&lt;/li&gt;
+&lt;li&gt;完整技术文档&lt;/li&gt;
+&lt;li&gt;可量化成果指标&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;3-学习能力&#34;&gt;3. 学习能力&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;快速掌握新技术&lt;/li&gt;
+&lt;li&gt;主动解决技术难题&lt;/li&gt;
+&lt;li&gt;持续输出技术文章&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;-联系方式&#34;&gt;📞 联系方式&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;GitHub&lt;/strong&gt;: 
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;邮箱&lt;/strong&gt;: 
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;求职意向&lt;/strong&gt;: Java后端 / AI应用开发工程师&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;到岗时间&lt;/strong&gt;: 2026年9月可实习，2027年6月全职&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;专业能力矩阵已建立，欢迎交流合作！&lt;/strong&gt; 🎉&lt;/p&gt;
+&lt;h2 id=&#34;-16-技术栈专业-goal-总览&#34;&gt;🧭 16 技术栈专业 Goal 总览&lt;/h2&gt;
+
+
+
+  
+  &lt;blockquote class=&#34;border-l-4 border-neutral-300 dark:border-neutral-600 pl-4 italic text-neutral-600 dark:text-neutral-400 my-6&#34;&gt;
+    &lt;p&gt;&lt;strong&gt;总 Goal：&lt;/strong&gt; 在 2026 年内完成一条“Java 后端 + AI 应用 + 分布式工程”的可验收能力链：每项技术都要做到 &lt;strong&gt;能解释架构、能写最小实现、能处理故障、能用项目验收&lt;/strong&gt;，而不是只停留在 API 记忆。&lt;/p&gt;
+
+  &lt;/blockquote&gt;
+
+&lt;p&gt;主页的 16 张技术栈卡片已经接入学习详情页： 
+。每个详情页都包含配套架构图、教程入口、学习速览、路线大纲、练习与完成定义。&lt;/p&gt;
+&lt;h3 id=&#34;学习优先级与顺序&#34;&gt;学习优先级与顺序&lt;/h3&gt;
+&lt;table&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;阶段&lt;/th&gt;
+					&lt;th&gt;技术栈&lt;/th&gt;
+					&lt;th&gt;阶段性 Goal&lt;/th&gt;
+					&lt;th&gt;验收标准&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;strong&gt;P0 核心路线&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;
+、
+、
+、
+、
+、
+&lt;/td&gt;
+					&lt;td&gt;打通后端服务与 AI 应用闭环&lt;/td&gt;
+					&lt;td&gt;完成一个带测试、日志、错误处理、证据引用的 AI 服务，并能解释关键架构取舍&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;strong&gt;P1 工程深化&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;
+、
+、
+、
+、
+&lt;/td&gt;
+					&lt;td&gt;把 Demo 提升为可承压、可检索、最终一致的工程系统&lt;/td&gt;
+					&lt;td&gt;用执行计划、压测、消息重放和故障演练证明性能、一致性与可恢复性&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;strong&gt;P2 交付工具&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;
+、
+、
+、
+、
+&lt;/td&gt;
+					&lt;td&gt;让开发、实验、部署和协作可复现&lt;/td&gt;
+					&lt;td&gt;新环境一条命令启动；提交可审计；服务可监控；实验可重跑&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;16-项完成定义&#34;&gt;16 项完成定义&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Java / Spring Boot：&lt;/strong&gt; 能从领域建模到 REST 服务、测试与健康检查，说明并发、事务和配置边界。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Python / FastAPI：&lt;/strong&gt; 能实现类型安全的异步 API，处理取消、超时、上游失败与流式断连。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;LangChain / OpenAI：&lt;/strong&gt; 能用结构化输出和工具调用构建可替换、可评测的模型链路，并控制密钥、成本和重试。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;RAG / Elasticsearch：&lt;/strong&gt; 能完成索引、召回、重排、引用与拒答，拥有 Recall@K、命中率、延迟等基线。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;MySQL / Redis：&lt;/strong&gt; 能解释索引、MVCC、锁、缓存一致性和热点保护，并通过并发测试验证。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;RocketMQ：&lt;/strong&gt; 能实现幂等消费、重试、死信、积压告警与业务补偿，支持安全重放。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Docker / Linux：&lt;/strong&gt; 能以最小权限和健康检查部署服务，使用进程、网络、日志、资源四层定位故障。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Git / Conda / Jupyter：&lt;/strong&gt; 能让代码、依赖和实验可审计、可复现、可交接。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;阶段性验收节奏&#34;&gt;阶段性验收节奏&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;每周：&lt;/strong&gt; 选一个技术栈详情页，读懂配套图，完成一个最小 Demo，并记录一个失败案例。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;每两周：&lt;/strong&gt; 将两个以上技术栈连成可运行链路，例如 Spring Boot + MySQL + Redis，或 FastAPI + RAG + OpenAI。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;每月：&lt;/strong&gt; 进行一次故障演练和复盘：超时、限流、空结果、重复消息、缓存失效、容器重启至少覆盖一项。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;阶段完成：&lt;/strong&gt; 输出代码、README、架构图、测试报告和指标对比；只有满足“能解释、能实现、能验证、能恢复”才标记完成。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;推荐项目验收路线&#34;&gt;推荐项目验收路线&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;阶段一：&lt;/strong&gt; Java / Spring Boot + MySQL + Redis，完成分布式微云商城的订单、库存与搜索基础链路。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;阶段二：&lt;/strong&gt; Python / FastAPI + OpenAI + LangChain + RAG，完成 Agri-QA-Assistant 的知识库问答闭环。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;阶段三：&lt;/strong&gt; RocketMQ + Elasticsearch + Docker + Linux，把两个项目补齐异步解耦、混合检索、容器部署与故障恢复。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;阶段四：&lt;/strong&gt; Git + Conda + Jupyter 固化交付、依赖和实验规范，形成可展示的作品集与技术文章。&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

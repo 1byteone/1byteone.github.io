@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Works | 1byteone - Java Backend / AI Application Developer</title>
+    <link>http://localhost:1320/en/work/</link>
+      <atom:link href="http://localhost:1320/en/work/index.xml" rel="self" type="application/rss+xml" />
+    <description>Works</description>
+    <generator>HugoBlox Kit (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Mon, 05 Jan 2026 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Professional Goal Matrix</title>
+      <link>http://localhost:1320/en/work/professional-goal/</link>
+      <pubDate>Mon, 05 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1320/en/work/professional-goal/</guid>
+      <description>&lt;h1 id=&#34;professional-goal-matrix&#34;&gt;Professional Goal Matrix&lt;/h1&gt;
+&lt;h2 id=&#34;-target-role-java-backend--ai-application-developer&#34;&gt;🎯 Target Role: Java Backend / AI Application Developer&lt;/h2&gt;
+&lt;h3 id=&#34;core-competency-benchmarking&#34;&gt;Core Competency Benchmarking&lt;/h3&gt;
+&lt;table&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;Capability Level&lt;/th&gt;
+					&lt;th&gt;Core Competency&lt;/th&gt;
+					&lt;th&gt;Project Practice&lt;/th&gt;
+					&lt;th&gt;Proficiency&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;strong&gt;P0 Core&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;Java Microservices Architecture&lt;/td&gt;
+					&lt;td&gt;Distributed Micro Cloud Mall&lt;/td&gt;
+					&lt;td&gt;⭐⭐⭐⭐⭐&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;strong&gt;P0 Core&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;AI Application Development (RAG/Agent)&lt;/td&gt;
+					&lt;td&gt;Agri-QA-Assistant&lt;/td&gt;
+					&lt;td&gt;⭐⭐⭐⭐⭐&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;strong&gt;P1 Important&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;Database Design &amp;amp; Optimization&lt;/td&gt;
+					&lt;td&gt;MySQL + Elasticsearch&lt;/td&gt;
+					&lt;td&gt;⭐⭐⭐⭐&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;strong&gt;P1 Important&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;Distributed System Design&lt;/td&gt;
+					&lt;td&gt;Seata + RocketMQ&lt;/td&gt;
+					&lt;td&gt;⭐⭐⭐⭐&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;strong&gt;P2 Bonus&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;Frontend Development&lt;/td&gt;
+					&lt;td&gt;Next.js + React&lt;/td&gt;
+					&lt;td&gt;⭐⭐⭐&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;strong&gt;P2 Bonus&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;DevOps &amp;amp; Deployment&lt;/td&gt;
+					&lt;td&gt;Docker + Nacos&lt;/td&gt;
+					&lt;td&gt;⭐⭐⭐⭐&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;-technical-capability-map&#34;&gt;🏗️ Technical Capability Map&lt;/h2&gt;
+&lt;h3 id=&#34;1-java-microservices-stack&#34;&gt;1. Java Microservices Stack&lt;/h3&gt;
+
+&lt;div class=&#34;rich-code-frame&#34; data-rich-code data-rich-code-language=&#34;text&#34;&gt;
+  &lt;div class=&#34;rich-code-toolbar&#34;&gt;
+    &lt;span class=&#34;rich-code-language&#34;&gt;text&lt;/span&gt;
+    &lt;button type=&#34;button&#34; class=&#34;rich-code-copy&#34; data-rich-code-copy&gt;Copy&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;rich-code-body&#34;&gt;&lt;div class=&#34;rich-code-highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;Spring Boot 3.3.2
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;    ↓
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 3&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;Spring Cloud Alibaba
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 4&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;    ↓
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 5&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;┌─────────────────────────────────────┐
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 6&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│  Nacos (Service Discovery/Config)    │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 7&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│  Gateway (API Gateway/Auth/Limiting) │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 8&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│  Sentinel (Circuit Breaking/Limiting)│
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 9&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│  Seata (Distributed Transactions)    │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│  OpenFeign (Remote Calls)            │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;11&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;└─────────────────────────────────────┘
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;12&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;    ↓
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;13&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;MyBatis-Plus (ORM)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;14&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;    ↓
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;15&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;MySQL + Redis + Elasticsearch&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+  &lt;textarea class=&#34;rich-code-source&#34; data-rich-code-source hidden readonly&gt;Spring Boot 3.3.2
+    ↓
+Spring Cloud Alibaba
+    ↓
+┌─────────────────────────────────────┐
+│  Nacos (Service Discovery/Config)    │
+│  Gateway (API Gateway/Auth/Limiting) │
+│  Sentinel (Circuit Breaking/Limiting)│
+│  Seata (Distributed Transactions)    │
+│  OpenFeign (Remote Calls)            │
+└─────────────────────────────────────┘
+    ↓
+MyBatis-Plus (ORM)
+    ↓
+MySQL &amp;#43; Redis &amp;#43; Elasticsearch&lt;/textarea&gt;
+&lt;/div&gt;
+&lt;h3 id=&#34;2-ai-application-development-stack&#34;&gt;2. AI Application Development Stack&lt;/h3&gt;
+
+&lt;div class=&#34;rich-code-frame&#34; data-rich-code data-rich-code-language=&#34;text&#34;&gt;
+  &lt;div class=&#34;rich-code-toolbar&#34;&gt;
+    &lt;span class=&#34;rich-code-language&#34;&gt;text&lt;/span&gt;
+    &lt;button type=&#34;button&#34; class=&#34;rich-code-copy&#34; data-rich-code-copy&gt;Copy&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;rich-code-body&#34;&gt;&lt;div class=&#34;rich-code-highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;Python 3.10+
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;    ↓
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 3&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;┌─────────────────────────────────────┐
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 4&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│  LangChain (Agent Orchestration)     │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 5&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│  LangGraph (Goal-Oriented Routing)   │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 6&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│  FastAPI (Async Web Framework)       │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 7&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│  ChromaDB (Vector Storage)           │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 8&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;└─────────────────────────────────────┘
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 9&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;    ↓
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;RAG Pipeline
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;11&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;    ↓
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;12&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;┌─────────────────────────────────────┐
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;13&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│  Doc Preprocessing → Vectorization → │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;14&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│  Retrieval → Generation              │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;15&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│  Multi-turn Memory → Evidence →      │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;16&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;│  Hallucination Control               │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;17&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;└─────────────────────────────────────┘&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+  &lt;textarea class=&#34;rich-code-source&#34; data-rich-code-source hidden readonly&gt;Python 3.10&amp;#43;
+    ↓
+┌─────────────────────────────────────┐
+│  LangChain (Agent Orchestration)     │
+│  LangGraph (Goal-Oriented Routing)   │
+│  FastAPI (Async Web Framework)       │
+│  ChromaDB (Vector Storage)           │
+└─────────────────────────────────────┘
+    ↓
+RAG Pipeline
+    ↓
+┌─────────────────────────────────────┐
+│  Doc Preprocessing → Vectorization → │
+│  Retrieval → Generation              │
+│  Multi-turn Memory → Evidence →      │
+│  Hallucination Control               │
+└─────────────────────────────────────┘&lt;/textarea&gt;
+&lt;/div&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;-project-capability-mapping&#34;&gt;📊 Project-Capability Mapping&lt;/h2&gt;
+&lt;h3 id=&#34;distributed-micro-cloud-mall&#34;&gt;Distributed Micro Cloud Mall&lt;/h3&gt;
+&lt;table&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;Capability Domain&lt;/th&gt;
+					&lt;th&gt;Implementation&lt;/th&gt;
+					&lt;th&gt;Key Results&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;strong&gt;Microservices&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;11 independent services&lt;/td&gt;
+					&lt;td&gt;Business-domain decoupling&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;strong&gt;Service Governance&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;Nacos + Gateway&lt;/td&gt;
+					&lt;td&gt;Unified routing &amp;amp; auth&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;strong&gt;Distributed Transactions&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;Seata AT mode&lt;/td&gt;
+					&lt;td&gt;Cross-service consistency&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;strong&gt;High Concurrency&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;Redis + RocketMQ&lt;/td&gt;
+					&lt;td&gt;10k+ QPS stability&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;strong&gt;Search&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;ES + IK Analyzer&lt;/td&gt;
+					&lt;td&gt;2s → 20ms response&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;agri-qa-assistant&#34;&gt;Agri-QA-Assistant&lt;/h3&gt;
+&lt;table&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;Capability Domain&lt;/th&gt;
+					&lt;th&gt;Implementation&lt;/th&gt;
+					&lt;th&gt;Key Results&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;strong&gt;Agent Architecture&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;LangGraph routing&lt;/td&gt;
+					&lt;td&gt;95%+ intent accuracy&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;strong&gt;RAG Pipeline&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;ChromaDB + chunking&lt;/td&gt;
+					&lt;td&gt;90%+ retrieval recall&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;strong&gt;Multi-turn Memory&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;SQLite sessions&lt;/td&gt;
+					&lt;td&gt;Full context retention&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;strong&gt;Evidence Grounding&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;Citations + scoring&lt;/td&gt;
+					&lt;td&gt;&amp;lt;5% hallucination rate&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;strong&gt;UI Design&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;Apple Liquid Glass&lt;/td&gt;
+					&lt;td&gt;Modern UX&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;-career-development-path&#34;&gt;🚀 Career Development Path&lt;/h2&gt;
+&lt;h3 id=&#34;short-term-0-1-years&#34;&gt;Short-term (0-1 years)&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;✅ Completed Java microservices project&lt;/li&gt;
+&lt;li&gt;✅ Completed AI application project&lt;/li&gt;
+&lt;li&gt;🎯 Enter Java backend / AI application development&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;mid-term-1-3-years&#34;&gt;Mid-term (1-3 years)&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Deep dive into distributed systems&lt;/li&gt;
+&lt;li&gt;Master cloud-native architecture&lt;/li&gt;
+&lt;li&gt;Become technical backbone&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;long-term-3-5-years&#34;&gt;Long-term (3-5 years)&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Architect / technical expert&lt;/li&gt;
+&lt;li&gt;Technical team management&lt;/li&gt;
+&lt;li&gt;Industry solutions&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;-career-advantages&#34;&gt;💼 Career Advantages&lt;/h2&gt;
+&lt;h3 id=&#34;1-technical-depth&#34;&gt;1. Technical Depth&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Full-stack Java microservices capability&lt;/li&gt;
+&lt;li&gt;Hands-on AI application development&lt;/li&gt;
+&lt;li&gt;Distributed system design experience&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;2-project-quality&#34;&gt;2. Project Quality&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Enterprise-grade project architecture&lt;/li&gt;
+&lt;li&gt;Complete technical documentation&lt;/li&gt;
+&lt;li&gt;Quantifiable achievement metrics&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;3-learning-ability&#34;&gt;3. Learning Ability&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Quick mastery of new technologies&lt;/li&gt;
+&lt;li&gt;Proactive problem solving&lt;/li&gt;
+&lt;li&gt;Continuous technical writing&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;-contact&#34;&gt;📞 Contact&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;GitHub&lt;/strong&gt;: 
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Email&lt;/strong&gt;: 
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Target Role&lt;/strong&gt;: Java Backend / AI Application Developer&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Availability&lt;/strong&gt;: Internship from Sep 2026, Full-time from Jun 2027&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;Professional Goal Matrix Established - Welcome to connect!&lt;/strong&gt; 🎉&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,118 @@
+{
+  "generatedAt": "2026-11-10T02:08:37.225Z",
+  "counts": {
+    "pexelsPhotos": 25,
+    "flowbiteIllustrations": 107,
+    "flowbiteIcons": 584,
+    "totalLocalVisuals": 716
+  },
+  "licenseNotes": {
+    "pexels": "Pexels License; attribution optional; preserve source URLs in download-manifest.json.",
+    "flowbite": "MIT; retain licenses/FLOWBITE-ILLUSTRATIONS-LICENSE and licenses/FLOWBITE-ICONS-LICENSE.",
+    "unverified": "The candidates/unverified directory is local review only and must not be published without checking each source license."
+  },
+  "selectedCovers": [
+    {
+      "file": "media/blog-library/article-covers/rag-basic-pipeline.jpg",
+      "source": "media/blog-library/photos/pexels/5926382-pexels.jpg",
+      "topic": "RAG 检索与向量数据库",
+      "provider": "Pexels"
+    },
+    {
+      "file": "media/blog-library/article-covers/building-ai-agents.jpg",
+      "source": "media/blog-library/photos/pexels/34804003-pexels.jpg",
+      "topic": "Agent 工具调用与流式输出",
+      "provider": "Pexels"
+    },
+    {
+      "file": "media/blog-library/article-covers/java-high-concurrency.jpg",
+      "source": "media/blog-library/photos/pexels/34804004-pexels.jpg",
+      "topic": "Java 高并发与缓存一致性",
+      "provider": "Pexels"
+    },
+    {
+      "file": "media/blog-library/article-covers/fastapi-ai-streaming.jpg",
+      "source": "media/blog-library/photos/pexels/7988086-pexels.jpg",
+      "topic": "FastAPI 与 AI 服务工程化",
+      "provider": "Pexels"
+    },
+    {
+      "file": "media/blog-library/article-covers/agriculture-rag.jpg",
+      "source": "media/blog-library/photos/pexels/13054497-pexels.jpg",
+      "topic": "农业知识问答与田间数据",
+      "provider": "Pexels"
+    },
+    {
+      "file": "media/blog-library/article-covers/developer-profile.jpg",
+      "source": "media/blog-library/photos/pexels/31704065-pexels.jpg",
+      "topic": "开发者工作与长期学习",
+      "provider": "Pexels"
+    }
+  ],
+  "illustrationSuggestions": [
+    {
+      "file": "media/blog-library/illustrations/flowbite/3d/light/document-folders.svg",
+      "topic": "可作为文章内插图或专题卡片"
+    },
+    {
+      "file": "media/blog-library/illustrations/flowbite/3d/light/employees-working-charts.svg",
+      "topic": "可作为文章内插图或专题卡片"
+    },
+    {
+      "file": "media/blog-library/illustrations/flowbite/3d/light/employees-working-office.svg",
+      "topic": "可作为文章内插图或专题卡片"
+    },
+    {
+      "file": "media/blog-library/illustrations/flowbite/3d/light/group-brainstorming.svg",
+      "topic": "可作为文章内插图或专题卡片"
+    },
+    {
+      "file": "media/blog-library/illustrations/flowbite/3d/light/laptop-404-not-found-error.svg",
+      "topic": "可作为文章内插图或专题卡片"
+    },
+    {
+      "file": "media/blog-library/illustrations/flowbite/3d/light/laptop-server-error.svg",
+      "topic": "可作为文章内插图或专题卡片"
+    },
+    {
+      "file": "media/blog-library/illustrations/flowbite/3d/light/man-clock-shopping-charts.svg",
+      "topic": "可作为文章内插图或专题卡片"
+    },
+    {
+      "file": "media/blog-library/illustrations/flowbite/3d/light/man-working-programs.svg",
+      "topic": "可作为文章内插图或专题卡片"
+    },
+    {
+      "file": "media/blog-library/illustrations/flowbite/3d/light/man-working-question-mark.svg",
+      "topic": "可作为文章内插图或专题卡片"
+    },
+    {
+      "file": "media/blog-library/illustrations/flowbite/3d/light/smartphone-charts.svg",
+      "topic": "可作为文章内插图或专题卡片"
+    },
+    {
+      "file": "media/blog-library/illustrations/flowbite/3d/light/smartphone-crypto-charts.svg",
+      "topic": "可作为文章内插图或专题卡片"
+    },
+    {
+      "file": "media/blog-library/illustrations/flowbite/3d/light/woman-laptop-chart.svg",
+      "topic": "可作为文章内插图或专题卡片"
+    },
+    {
+      "file": "media/blog-library/illustrations/flowbite/3d/light/woman-laptop-chatting.svg",
+      "topic": "可作为文章内插图或专题卡片"
+    },
+    {
+      "file": "media/blog-library/illustrations/flowbite/3d/light/woman-laptop-sitting.svg",
+      "topic": "可作为文章内插图或专题卡片"
+    },
+    {
+      "file": "media/blog-library/illustrations/flowbite/3d/light/woman-laptop-standing.svg",
+      "topic": "可作为文章内插图或专题卡片"
+    },
+    {
+      "file": "media/blog-library/illustrations/flowbite/3d/light/woman-working-servers.svg",
+      "topic": "可作为文章内插图或专题卡片"
+    }
+  ]
+}

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>教程 | 1byteone - Java Backend / AI Application Developer</title>
+    <link>http://localhost:1320/en/tags/%E6%95%99%E7%A8%8B/</link>
+      <atom:link href="http://localhost:1320/en/tags/%E6%95%99%E7%A8%8B/index.xml" rel="self" type="application/rss+xml" />
+    <description>教程</description>
+    <generator>HugoBlox Kit (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Fri, 21 Aug 2026 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Java Core Architecture</title>
+      <link>http://localhost:1320/en/blog/java-core-architecture/</link>
+      <pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1320/en/blog/java-core-architecture/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Whiteboard note: the goal is not to memorize boxes, but to connect each arrow to a request, a contract, and an operational signal.&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id=&#34;start-with-a-real-scenario&#34;&gt;Start with a real scenario&lt;/h2&gt;
+&lt;p&gt;Use this situation as the mental model: &lt;strong&gt;A payment service starts slowly, then becomes faster as JIT compiles its hot methods.&lt;/strong&gt;. A useful backend diagram answers four questions: where does input enter, who owns state, which boundary can fail, and how do we know the system is healthy? The flow is &lt;strong&gt;Source → Bytecode → JVM → Machine Code&lt;/strong&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;deconstructing-the-architecture&#34;&gt;Deconstructing the architecture&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Contract&lt;/strong&gt;: define input, output, and error shape before adding implementation detail.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Mechanism&lt;/strong&gt;: Class Loader → load / link / initialize; Heap → objects + GC managed memory. This is the part that determines latency, throughput, and testability.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;State and resources&lt;/strong&gt;: Stack → frames + local variables; Method Area → class metadata. Explain creation, ownership, cleanup, and recovery.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Failure path&lt;/strong&gt;: PC Register + Native Method Stack; combine it with &lt;strong&gt;Execution Engine → Interpreter + JIT&lt;/strong&gt; when choosing a fallback, retry, or rollback.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;a-small-implementation-boundary&#34;&gt;A small implementation boundary&lt;/h2&gt;
+&lt;p&gt;The following sketch is intentionally small. It shows where a production implementation should place validation and ownership rather than pretending that a happy path is enough.&lt;/p&gt;
+
+&lt;div class=&#34;rich-code-frame&#34; data-rich-code data-rich-code-language=&#34;text&#34;&gt;
+  &lt;div class=&#34;rich-code-toolbar&#34;&gt;
+    &lt;span class=&#34;rich-code-language&#34;&gt;text&lt;/span&gt;
+    &lt;button type=&#34;button&#34; class=&#34;rich-code-copy&#34; data-rich-code-copy&gt;Copy&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;rich-code-body&#34;&gt;&lt;div class=&#34;rich-code-highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;request → bounded resource → validated boundary → observable result&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+  &lt;textarea class=&#34;rich-code-source&#34; data-rich-code-source hidden readonly&gt;request → bounded resource → validated boundary → observable result&lt;/textarea&gt;
+&lt;/div&gt;
+&lt;p&gt;Keep external systems behind an adapter, repository, client, or gateway. The domain layer should depend on a stable contract so tests can use fakes and incidents can be isolated to one boundary.&lt;/p&gt;
+&lt;h2 id=&#34;engineering-decisions-for-the-scenario&#34;&gt;Engineering decisions for the scenario&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Protect dependencies first.&lt;/strong&gt; Pools, queues, semaphores, caches, and worker counts need explicit limits. An unbounded queue only hides overload.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Preserve correctness.&lt;/strong&gt; Use an idempotency key, transaction boundary, lock, version check, or schema validation where retries or concurrency can duplicate work.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Optimize with evidence.&lt;/strong&gt; Use traces, slow-query data, GC pauses, queue depth, or p99 latency before choosing a cache, index, batch size, or concurrency setting.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Make recovery testable.&lt;/strong&gt; Timeout, retry, rate limit, circuit breaking, rollback, and alerting should be exercised in a drill.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;common-mistakes&#34;&gt;Common mistakes&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Drawing only the happy path while omitting timeout, empty data, rejection, rollback, or replica lag.&lt;/li&gt;
+&lt;li&gt;Treating framework defaults as business contracts and discovering their limits after an upgrade.&lt;/li&gt;
+&lt;li&gt;Scaling machines before measuring pool exhaustion, lock contention, slow SQL, allocation, or event-loop blocking.&lt;/li&gt;
+&lt;li&gt;Treating logs as the only observability tool; metrics, traces, sampling, and redaction are also required.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;production-checklist&#34;&gt;Production checklist&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Input, output, and error responses have explicit schemas&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Dependencies have timeout, retry budgets, rate limits, and fallback behavior&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Pools and queues expose capacity, waiting, and rejected-work metrics&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Important state has idempotency, transaction, or recovery semantics&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Logs, metrics, and traces share a request or correlation ID&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Regression tests, load tests, and failure drills use production-like data&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;summary&#34;&gt;Summary&lt;/h2&gt;
+&lt;p&gt;You understand this whiteboard when you can start from one request, explain every arrow&amp;rsquo;s contract, state how each risk is handled, and name the signal that would tell you to change the design.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Python Runtime &amp; Basics</title>
+      <link>http://localhost:1320/en/blog/python-runtime-architecture/</link>
+      <pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1320/en/blog/python-runtime-architecture/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Whiteboard note: the goal is not to memorize boxes, but to connect each arrow to a request, a contract, and an operational signal.&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id=&#34;start-with-a-real-scenario&#34;&gt;Start with a real scenario&lt;/h2&gt;
+&lt;p&gt;Use this situation as the mental model: &lt;strong&gt;A data pipeline validates records at its boundary and uses profiling to find the real CPU hotspot.&lt;/strong&gt;. A useful backend diagram answers four questions: where does input enter, who owns state, which boundary can fail, and how do we know the system is healthy? The flow is &lt;strong&gt;Python Code → Parser → AST → Bytecode → Interpreter&lt;/strong&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;deconstructing-the-architecture&#34;&gt;Deconstructing the architecture&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Contract&lt;/strong&gt;: define input, output, and error shape before adding implementation detail.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Mechanism&lt;/strong&gt;: Source → tokens → AST; AST → bytecode instructions. This is the part that determines latency, throughput, and testability.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;State and resources&lt;/strong&gt;: Interpreter loop executes bytecode; int / str / list / dict are objects. Explain creation, ownership, cleanup, and recovery.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Failure path&lt;/strong&gt;: Dynamic typing resolves at runtime; combine it with &lt;strong&gt;Reference counting + cyclic GC reclaim objects&lt;/strong&gt; when choosing a fallback, retry, or rollback.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;a-small-implementation-boundary&#34;&gt;A small implementation boundary&lt;/h2&gt;
+&lt;p&gt;The following sketch is intentionally small. It shows where a production implementation should place validation and ownership rather than pretending that a happy path is enough.&lt;/p&gt;
+
+&lt;div class=&#34;rich-code-frame&#34; data-rich-code data-rich-code-language=&#34;text&#34;&gt;
+  &lt;div class=&#34;rich-code-toolbar&#34;&gt;
+    &lt;span class=&#34;rich-code-language&#34;&gt;text&lt;/span&gt;
+    &lt;button type=&#34;button&#34; class=&#34;rich-code-copy&#34; data-rich-code-copy&gt;Copy&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;rich-code-body&#34;&gt;&lt;div class=&#34;rich-code-highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;request → bounded resource → validated boundary → observable result&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+  &lt;textarea class=&#34;rich-code-source&#34; data-rich-code-source hidden readonly&gt;request → bounded resource → validated boundary → observable result&lt;/textarea&gt;
+&lt;/div&gt;
+&lt;p&gt;Keep external systems behind an adapter, repository, client, or gateway. The domain layer should depend on a stable contract so tests can use fakes and incidents can be isolated to one boundary.&lt;/p&gt;
+&lt;h2 id=&#34;engineering-decisions-for-the-scenario&#34;&gt;Engineering decisions for the scenario&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Protect dependencies first.&lt;/strong&gt; Pools, queues, semaphores, caches, and worker counts need explicit limits. An unbounded queue only hides overload.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Preserve correctness.&lt;/strong&gt; Use an idempotency key, transaction boundary, lock, version check, or schema validation where retries or concurrency can duplicate work.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Optimize with evidence.&lt;/strong&gt; Use traces, slow-query data, GC pauses, queue depth, or p99 latency before choosing a cache, index, batch size, or concurrency setting.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Make recovery testable.&lt;/strong&gt; Timeout, retry, rate limit, circuit breaking, rollback, and alerting should be exercised in a drill.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;common-mistakes&#34;&gt;Common mistakes&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Drawing only the happy path while omitting timeout, empty data, rejection, rollback, or replica lag.&lt;/li&gt;
+&lt;li&gt;Treating framework defaults as business contracts and discovering their limits after an upgrade.&lt;/li&gt;
+&lt;li&gt;Scaling machines before measuring pool exhaustion, lock contention, slow SQL, allocation, or event-loop blocking.&lt;/li&gt;
+&lt;li&gt;Treating logs as the only observability tool; metrics, traces, sampling, and redaction are also required.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;production-checklist&#34;&gt;Production checklist&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Input, output, and error responses have explicit schemas&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Dependencies have timeout, retry budgets, rate limits, and fallback behavior&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Pools and queues expose capacity, waiting, and rejected-work metrics&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Important state has idempotency, transaction, or recovery semantics&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Logs, metrics, and traces share a request or correlation ID&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Regression tests, load tests, and failure drills use production-like data&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;summary&#34;&gt;Summary&lt;/h2&gt;
+&lt;p&gt;You understand this whiteboard when you can start from one request, explain every arrow&amp;rsquo;s contract, state how each risk is handled, and name the signal that would tell you to change the design.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Spring Boot Application Architecture</title>
+      <link>http://localhost:1320/en/blog/spring-boot-application-architecture/</link>
+      <pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1320/en/blog/spring-boot-application-architecture/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Whiteboard note: the goal is not to memorize boxes, but to connect each arrow to a request, a contract, and an operational signal.&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id=&#34;start-with-a-real-scenario&#34;&gt;Start with a real scenario&lt;/h2&gt;
+&lt;p&gt;Use this situation as the mental model: &lt;strong&gt;An order endpoint keeps HTTP, business rules, and SQL separate so each layer can be tested independently.&lt;/strong&gt;. A useful backend diagram answers four questions: where does input enter, who owns state, which boundary can fail, and how do we know the system is healthy? The flow is &lt;strong&gt;Client → Controller → Service → Repository → Database&lt;/strong&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;deconstructing-the-architecture&#34;&gt;Deconstructing the architecture&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Contract&lt;/strong&gt;: define input, output, and error shape before adding implementation detail.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Mechanism&lt;/strong&gt;: BeanDefinition → BeanFactory → ApplicationContext; @Controller → transport boundary. This is the part that determines latency, throughput, and testability.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;State and resources&lt;/strong&gt;: @Service → domain orchestration; @Repository → persistence boundary. Explain creation, ownership, cleanup, and recovery.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Failure path&lt;/strong&gt;: Auto Configuration + Starter; combine it with &lt;strong&gt;Embedded Server + externalized config&lt;/strong&gt; when choosing a fallback, retry, or rollback.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;a-small-implementation-boundary&#34;&gt;A small implementation boundary&lt;/h2&gt;
+&lt;p&gt;The following sketch is intentionally small. It shows where a production implementation should place validation and ownership rather than pretending that a happy path is enough.&lt;/p&gt;
+
+&lt;div class=&#34;rich-code-frame&#34; data-rich-code data-rich-code-language=&#34;text&#34;&gt;
+  &lt;div class=&#34;rich-code-toolbar&#34;&gt;
+    &lt;span class=&#34;rich-code-language&#34;&gt;text&lt;/span&gt;
+    &lt;button type=&#34;button&#34; class=&#34;rich-code-copy&#34; data-rich-code-copy&gt;Copy&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;rich-code-body&#34;&gt;&lt;div class=&#34;rich-code-highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;request → bounded resource → validated boundary → observable result&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+  &lt;textarea class=&#34;rich-code-source&#34; data-rich-code-source hidden readonly&gt;request → bounded resource → validated boundary → observable result&lt;/textarea&gt;
+&lt;/div&gt;
+&lt;p&gt;Keep external systems behind an adapter, repository, client, or gateway. The domain layer should depend on a stable contract so tests can use fakes and incidents can be isolated to one boundary.&lt;/p&gt;
+&lt;h2 id=&#34;engineering-decisions-for-the-scenario&#34;&gt;Engineering decisions for the scenario&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Protect dependencies first.&lt;/strong&gt; Pools, queues, semaphores, caches, and worker counts need explicit limits. An unbounded queue only hides overload.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Preserve correctness.&lt;/strong&gt; Use an idempotency key, transaction boundary, lock, version check, or schema validation where retries or concurrency can duplicate work.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Optimize with evidence.&lt;/strong&gt; Use traces, slow-query data, GC pauses, queue depth, or p99 latency before choosing a cache, index, batch size, or concurrency setting.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Make recovery testable.&lt;/strong&gt; Timeout, retry, rate limit, circuit breaking, rollback, and alerting should be exercised in a drill.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;common-mistakes&#34;&gt;Common mistakes&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Drawing only the happy path while omitting timeout, empty data, rejection, rollback, or replica lag.&lt;/li&gt;
+&lt;li&gt;Treating framework defaults as business contracts and discovering their limits after an upgrade.&lt;/li&gt;
+&lt;li&gt;Scaling machines before measuring pool exhaustion, lock contention, slow SQL, allocation, or event-loop blocking.&lt;/li&gt;
+&lt;li&gt;Treating logs as the only observability tool; metrics, traces, sampling, and redaction are also required.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;production-checklist&#34;&gt;Production checklist&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Input, output, and error responses have explicit schemas&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Dependencies have timeout, retry budgets, rate limits, and fallback behavior&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Pools and queues expose capacity, waiting, and rejected-work metrics&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Important state has idempotency, transaction, or recovery semantics&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Logs, metrics, and traces share a request or correlation ID&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Regression tests, load tests, and failure drills use production-like data&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;summary&#34;&gt;Summary&lt;/h2&gt;
+&lt;p&gt;You understand this whiteboard when you can start from one request, explain every arrow&amp;rsquo;s contract, state how each risk is handled, and name the signal that would tell you to change the design.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

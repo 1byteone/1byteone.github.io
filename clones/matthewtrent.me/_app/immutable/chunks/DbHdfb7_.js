@@ -1,0 +1,1 @@
+function n(t){if(!t)return"";const e=Date.parse(t.includes("T")?t:t.replace(" ","T")+"Z");if(!Number.isFinite(e))return"";const r=Math.max(0,(Date.now()-e)/1e3);return r<60?"now":r<3600?`${Math.floor(r/60)}m`:r<86400?`${Math.floor(r/3600)}h`:`${Math.floor(r/86400)}d`}export{n as a};

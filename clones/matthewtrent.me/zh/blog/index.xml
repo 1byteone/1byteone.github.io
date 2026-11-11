@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>技术博客 on </title>
+		<link>http://127.0.0.1:1318/zh/blog/</link>
+		<description>Recent content in 技术博客 on </description>
+		<generator>Hugo</generator>
+		<language>en</language>
+		
+		
+		
+		
+			<lastBuildDate>Fri, 21 Aug 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://127.0.0.1:1318/zh/blog/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>FastAPI AI Streaming API：用 SSE 交付增量结果</title>
+				<link>http://127.0.0.1:1318/zh/blog/fastapi-ai-streaming-api/</link>
+				<pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://127.0.0.1:1318/zh/blog/fastapi-ai-streaming-api/</guid>
+				<description>从生成器、SSE 协议到断开处理，构建可取消、可观测的 AI 流式接口。</description>
+			</item>
+			<item>
+				<title>FastAPI Async 与依赖注入：避免阻塞事件循环</title>
+				<link>http://127.0.0.1:1318/zh/blog/fastapi-async-dependency-injection/</link>
+				<pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://127.0.0.1:1318/zh/blog/fastapi-async-dependency-injection/</guid>
+				<description>理解 async/sync 边界、连接池、依赖生命周期与并发控制，构建高吞吐 FastAPI 服务。</description>
+			</item>
+			<item>
+				<title>FastAPI 请求与响应：用 Pydantic 建立可靠契约</title>
+				<link>http://127.0.0.1:1318/zh/blog/fastapi-request-response-pydantic/</link>
+				<pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://127.0.0.1:1318/zh/blog/fastapi-request-response-pydantic/</guid>
+				<description>掌握 Pydantic schema、字段校验、响应裁剪和错误格式，避免 AI 接口依赖脆弱的字典约定。</description>
+			</item>
+			<item>
+				<title>FastAPI 项目架构：从路由到领域服务的分层设计</title>
+				<link>http://127.0.0.1:1318/zh/blog/fastapi-project-architecture/</link>
+				<pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://127.0.0.1:1318/zh/blog/fastapi-project-architecture/</guid>
+				<description>用分层、依赖注入和配置管理组织 FastAPI 项目，让 AI 接口易测、易扩展、易部署。</description>
+			</item>
+			<item>
+				<title>Java 并发模型：线程池、锁与可见性</title>
+				<link>http://127.0.0.1:1318/zh/blog/java-concurrency/</link>
+				<pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://127.0.0.1:1318/zh/blog/java-concurrency/</guid>
+				<description>从线程、共享状态到线程安全的工程闭环。结合真实后端场景拆解 Java Concurrency Model 的边界、失败路径与生产实践。</description>
+			</item>
+			<item>
+				<title>Java 核心架构：从源码到 JVM 执行</title>
+				<link>http://127.0.0.1:1318/zh/blog/java-core-architecture/</link>
+				<pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://127.0.0.1:1318/zh/blog/java-core-architecture/</guid>
+				<description>从 Java 源码、字节码到 JVM 执行引擎的完整路径。结合真实后端场景拆解 Java Core Architecture 的边界、失败路径与生产实践。</description>
+			</item>
+			<item>
+				<title>Java 集合与 HashMap：从 key 到 bucket</title>
+				<link>http://127.0.0.1:1318/zh/blog/java-collections-hashmap/</link>
+				<pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://127.0.0.1:1318/zh/blog/java-collections-hashmap/</guid>
+				<description>从集合选型到 HashMap 冲突、扩容与树化。结合真实后端场景拆解 Java Collections &amp;amp; HashMap Internals 的边界、失败路径与生产实践。</description>
+			</item>
+			<item>
+				<title>JVM 内存与 GC：对象从 Eden 到回收</title>
+				<link>http://127.0.0.1:1318/zh/blog/jvm-memory-gc/</link>
+				<pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://127.0.0.1:1318/zh/blog/jvm-memory-gc/</guid>
+				<description>对象分配、晋升、可达性分析与 GC 选择。结合真实后端场景拆解 JVM Memory &amp;amp; Garbage Collection 的边界、失败路径与生产实践。</description>
+			</item>
+			<item>
+				<title>LangChain Memory：设计可控的多轮对话状态</title>
+				<link>http://127.0.0.1:1318/zh/blog/langchain-memory-multiturn/</link>
+				<pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://127.0.0.1:1318/zh/blog/langchain-memory-multiturn/</guid>
+				<description>从会话历史、摘要记忆到长期记忆，掌握多轮 Agent 的状态边界、容量预算和隐私策略。</description>
+			</item>
+			<item>
+				<title>LangChain Prompt Chain：让提示词成为可维护的程序</title>
+				<link>http://127.0.0.1:1318/zh/blog/langchain-prompt-chain/</link>
+				<pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://127.0.0.1:1318/zh/blog/langchain-prompt-chain/</guid>
+				<description>学习提示词模板、变量契约、消息角色和链式组合，构建可版本化、可评测的 Prompt Chain。</description>
+			</item>
+			<item>
+				<title>LangChain Tool Calling Agent：把决策与执行分开</title>
+				<link>http://127.0.0.1:1318/zh/blog/langchain-tool-calling-agent/</link>
+				<pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://127.0.0.1:1318/zh/blog/langchain-tool-calling-agent/</guid>
+				<description>理解 Agent 的工具 schema、决策循环、执行边界与错误恢复，构建可控的工具调用智能体。</description>
+			</item>
+			<item>
+				<title>LangChain 核心架构：Runnable、模型与可组合链</title>
+				<link>http://127.0.0.1:1318/zh/blog/langchain-core-architecture/</link>
+				<pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://127.0.0.1:1318/zh/blog/langchain-core-architecture/</guid>
+				<description>从 Runnable 抽象、提示词、模型到输出解析器，理解 LangChain 如何把 AI 流程组合成可测试的链。</description>
+			</item>
+			<item>
+				<title>MySQL 事务与 MVCC：一致性读如何成立</title>
+				<link>http://127.0.0.1:1318/zh/blog/mysql-transaction-mvcc/</link>
+				<pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://127.0.0.1:1318/zh/blog/mysql-transaction-mvcc/</guid>
+				<description>用 ACID、隔离级别、Undo Log 和 Read View 解释并发读写。结合真实后端场景拆解 MySQL Transaction &amp;amp; MVCC 的边界、失败路径与生产实践。</description>
+			</item>
+			<item>
+				<title>MySQL 内部架构：SQL 层到 InnoDB</title>
+				<link>http://127.0.0.1:1318/zh/blog/mysql-architecture/</link>
+				<pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://127.0.0.1:1318/zh/blog/mysql-architecture/</guid>
+				<description>理解一条 SQL 如何经过解析、优化和 InnoDB 存储。结合真实后端场景拆解 MySQL Architecture 的边界、失败路径与生产实践。</description>
+			</item>
+			<item>
+				<title>MySQL 索引与 B&#43;Tree：让查询走 Fast Path</title>
+				<link>http://127.0.0.1:1318/zh/blog/mysql-index-btree/</link>
+				<pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://127.0.0.1:1318/zh/blog/mysql-index-btree/</guid>
+				<description>从索引结构、回表到范围查询与全表扫描对比。结合真实后端场景拆解 MySQL Index &amp;amp; B+Tree 的边界、失败路径与生产实践。</description>
+			</item>
+			<item>
+				<title>OpenAI API 基础：请求、消息、参数与可靠性</title>
+				<link>http://127.0.0.1:1318/zh/blog/openai-api-fundamentals/</link>
+				<pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://127.0.0.1:1318/zh/blog/openai-api-fundamentals/</guid>
+				<description>从客户端初始化、消息结构到超时、重试和成本控制，建立可靠的模型 API 调用基础。</description>
+			</item>
+			<item>
+				<title>OpenAI Multimodal AI：统一处理文本、图片与文档</title>
+				<link>http://127.0.0.1:1318/zh/blog/openai-multimodal-ai/</link>
+				<pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://127.0.0.1:1318/zh/blog/openai-multimodal-ai/</guid>
+				<description>设计多模态输入管道，处理图片、PDF、音频的预处理、成本、隐私与结构化输出。</description>
+			</item>
+			<item>
+				<title>OpenAI Structured Output：让模型输出可验证的数据</title>
+				<link>http://127.0.0.1:1318/zh/blog/openai-structured-output/</link>
+				<pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://127.0.0.1:1318/zh/blog/openai-structured-output/</guid>
+				<description>使用 JSON Schema/Pydantic 约束模型输出，处理拒答、解析失败和 schema 演进。</description>
+			</item>
+			<item>
+				<title>OpenAI Tool Calling：函数声明、执行循环与安全边界</title>
+				<link>http://127.0.0.1:1318/zh/blog/openai-tool-calling/</link>
+				<pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://127.0.0.1:1318/zh/blog/openai-tool-calling/</guid>
+				<description>掌握工具 schema、模型决策、应用执行与结果回传，构建安全可审计的函数调用循环。</description>
+			</item>
+			<item>
+				<title>Python AI 工程：把模型调用接入可靠应用</title>
+				<link>http://127.0.0.1:1318/zh/blog/python-ai-engineering/</link>
+				<pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://127.0.0.1:1318/zh/blog/python-ai-engineering/</guid>
+				<description>将 Python、RAG、Agent 与模型调用组织成可测试服务。结合真实后端场景拆解 AI Engineering with Python 的边界、失败路径与生产实践。</description>
+			</item>
+			<item>
+				<title>Python asyncio 并发：事件循环与非阻塞 I/O</title>
+				<link>http://127.0.0.1:1318/zh/blog/python-asyncio-concurrency/</link>
+				<pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://127.0.0.1:1318/zh/blog/python-asyncio-concurrency/</guid>
+				<description>用协程处理 I/O 等待，并明确取消、超时和背压。结合真实后端场景拆解 Python asyncio &amp;amp; Concurrency 的边界、失败路径与生产实践。</description>
+			</item>
+			<item>
+				<title>Python 数据结构与装饰器：复用行为而不隐藏边界</title>
+				<link>http://127.0.0.1:1318/zh/blog/python-data-structures-decorators/</link>
+				<pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://127.0.0.1:1318/zh/blog/python-data-structures-decorators/</guid>
+				<description>从 list、dict 选型到装饰器、生成器和可维护复用。结合真实后端场景拆解 Python Data Structures &amp;amp; Decorators 的边界、失败路径与生产实践。</description>
+			</item>
+			<item>
+				<title>Python 运行时：源码、字节码与对象模型</title>
+				<link>http://127.0.0.1:1318/zh/blog/python-runtime-architecture/</link>
+				<pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://127.0.0.1:1318/zh/blog/python-runtime-architecture/</guid>
+				<description>理解 CPython 如何解析代码并执行对象操作。结合真实后端场景拆解 Python Runtime &amp;amp; Basics 的边界、失败路径与生产实践。</description>
+			</item>
+			<item>
+				<title>RAG Embedding 与向量数据库：相似度背后的工程细节</title>
+				<link>http://127.0.0.1:1318/zh/blog/rag-embedding-vector-database/</link>
+				<pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://127.0.0.1:1318/zh/blog/rag-embedding-vector-database/</guid>
+				<description>理解 embedding、距离度量、索引元数据与增量更新，搭建可靠的向量检索层。</description>
+			</item>
+			<item>
+				<title>RAG Retriever 优化：从 Top-K 到混合检索与重排</title>
+				<link>http://127.0.0.1:1318/zh/blog/rag-retriever-optimization/</link>
+				<pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://127.0.0.1:1318/zh/blog/rag-retriever-optimization/</guid>
+				<description>系统调优 RAG 检索器，理解 BM25、向量搜索、混合召回、重排和上下文压缩的取舍。</description>
+			</item>
+			<item>
+				<title>RAG 基础管道：从文档到可引用答案</title>
+				<link>http://127.0.0.1:1318/zh/blog/rag-basic-pipeline/</link>
+				<pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://127.0.0.1:1318/zh/blog/rag-basic-pipeline/</guid>
+				<description>理解 RAG 的摄入、切分、检索、增强生成全流程，并用来源引用约束回答。</description>
+			</item>
+			<item>
+				<title>Spring Boot IoC 与依赖注入：让对象可替换</title>
+				<link>http://127.0.0.1:1318/zh/blog/spring-boot-ioc-dependency-injection/</link>
+				<pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://127.0.0.1:1318/zh/blog/spring-boot-ioc-dependency-injection/</guid>
+				<description>容器负责组装，对象专注行为，测试替换依赖。结合真实后端场景拆解 Spring Boot IoC &amp;amp; Dependency Injection 的边界、失败路径与生产实践。</description>
+			</item>
+			<item>
+				<title>Spring Boot 应用架构：Controller 到 Database</title>
+				<link>http://127.0.0.1:1318/zh/blog/spring-boot-application-architecture/</link>
+				<pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://127.0.0.1:1318/zh/blog/spring-boot-application-architecture/</guid>
+				<description>用分层边界组织可测试、可演进的业务服务。结合真实后端场景拆解 Spring Boot Application Architecture 的边界、失败路径与生产实践。</description>
+			</item>
+			<item>
+				<title>Spring Boot 请求生命周期：从 HTTP 到响应</title>
+				<link>http://127.0.0.1:1318/zh/blog/spring-boot-request-lifecycle/</link>
+				<pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://127.0.0.1:1318/zh/blog/spring-boot-request-lifecycle/</guid>
+				<description>拆解一次请求如何经过过滤器、参数绑定和异常处理。结合真实后端场景拆解 Spring Boot Request Lifecycle 的边界、失败路径与生产实践。</description>
+			</item>
+			<item>
+				<title>生产级 MySQL 高并发架构：缓存、读写分离与分片</title>
+				<link>http://127.0.0.1:1318/zh/blog/mysql-high-concurrency-architecture/</link>
+				<pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://127.0.0.1:1318/zh/blog/mysql-high-concurrency-architecture/</guid>
+				<description>从连接池、Redis、主从复制到分片与恢复策略。结合真实后端场景拆解 Production MySQL High-Concurrency Architecture 的边界、失败路径与生产实践。</description>
+			</item>
+			<item>
+				<title>生产级 RAG 架构：权限、版本与可观测性</title>
+				<link>http://127.0.0.1:1318/zh/blog/rag-production-architecture/</link>
+				<pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://127.0.0.1:1318/zh/blog/rag-production-architecture/</guid>
+				<description>设计可上线的 RAG 系统，覆盖文档摄入、权限过滤、索引版本、缓存、评估与故障降级。</description>
+			</item>
+			<item>
+				<title>生产级 Spring Boot 架构：可观测的服务边界</title>
+				<link>http://127.0.0.1:1318/zh/blog/spring-boot-production-architecture/</link>
+				<pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://127.0.0.1:1318/zh/blog/spring-boot-production-architecture/</guid>
+				<description>把网关、服务、缓存、消息、数据库和观测闭环串起来。结合真实后端场景拆解 Production Spring Boot Architecture 的边界、失败路径与生产实践。</description>
+			</item>
+			<item>
+				<title>RAG系统中的三层幻觉预防：实践指南</title>
+				<link>http://127.0.0.1:1318/zh/blog/hallucination-prevention/</link>
+				<pubDate>Wed, 05 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://127.0.0.1:1318/zh/blog/hallucination-prevention/</guid>
+				<description>学习如何通过三层方法预防RAG系统中的LLM幻觉：检索过滤、提示词工程和输出验证</description>
+			</item>
+			<item>
+				<title>使用LangChain构建AI智能体：工具集成与多轮对话</title>
+				<link>http://127.0.0.1:1318/zh/blog/building-ai-agents/</link>
+				<pubDate>Fri, 10 Jul 2026 00:00:00 +0000</pubDate>
+				<guid>http://127.0.0.1:1318/zh/blog/building-ai-agents/</guid>
+				<description>学习如何使用LangChain构建智能AI智能体，包括工具集成、记忆管理和多轮对话支持</description>
+			</item>
+			<item>
+				<title>使用LangChain构建RAG管道：从文档处理到向量搜索</title>
+				<link>http://127.0.0.1:1318/zh/blog/building-rag-pipeline/</link>
+				<pubDate>Mon, 15 Jun 2026 00:00:00 +0000</pubDate>
+				<guid>http://127.0.0.1:1318/zh/blog/building-rag-pipeline/</guid>
+				<description>使用LangChain构建生产级RAG（检索增强生成）管道的完整指南，涵盖文档预处理、向量存储和检索优化</description>
+			</item>
+	</channel>
+</rss>

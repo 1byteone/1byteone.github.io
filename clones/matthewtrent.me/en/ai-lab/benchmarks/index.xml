@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Benchmarks | YOYO / Pixel Terminal</title>
+    <link>http://127.0.0.1:1318/en/ai-lab/benchmarks/</link>
+      <atom:link href="http://127.0.0.1:1318/en/ai-lab/benchmarks/index.xml" rel="self" type="application/rss+xml" />
+    <description>Benchmarks</description>
+    <generator>HugoBlox Kit (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Tue, 03 Nov 2026 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>RAG Evaluation Protocol: Make Every Score Auditable</title>
+      <link>http://127.0.0.1:1318/en/ai-lab/benchmarks/evaluation-protocol/</link>
+      <pubDate>Tue, 03 Nov 2026 00:00:00 +0000</pubDate>
+      <guid>http://127.0.0.1:1318/en/ai-lab/benchmarks/evaluation-protocol/</guid>
+      <description>&lt;p&gt;The lab currently has no public benchmark scores that can be independently reproduced. This page defines a release protocol; it does not use synthetic curves or sample numbers to imply performance.&lt;/p&gt;
+&lt;h2 id=&#34;required-run-record&#34;&gt;Required Run Record&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Dataset version, sample count, annotation policy, and data license.&lt;/li&gt;
+&lt;li&gt;Model, embedding, reranker, prompt, chunker, and code revision.&lt;/li&gt;
+&lt;li&gt;Hardware, batch size, concurrency, temperature, timeout, and retry policy.&lt;/li&gt;
+&lt;li&gt;Metric definitions for Accuracy, Precision, Recall, F1, Recall@K, and related measures.&lt;/li&gt;
+&lt;li&gt;Latency window, P50/P95, failed-request treatment, and token accounting.&lt;/li&gt;
+&lt;li&gt;Raw predictions, error cases, run scripts, and reproducible environment.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;current-status&#34;&gt;Current Status&lt;/h2&gt;
+&lt;p&gt;PLANNED / no measurements. Charts will be published only after data review and repeated runs, with sample sizes and uncertainty disclosed for small datasets.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

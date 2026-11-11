@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>简历 - 杨劲松 / Java 后端与 AI 应用开发</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+  @page { size: A4; margin: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Noto Sans SC", "Microsoft YaHei", "PingFang SC", sans-serif;
+    color: #2d2d2d;
+    background: #d0d0d0;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto;
+    background: #fff;
+    display: grid;
+    grid-template-columns: 68mm 1fr;
+    position: relative;
+  }
+
+  /* ── Left Sidebar ── */
+  .sidebar {
+    background: linear-gradient(170deg, #0b1d3a 0%, #132d5e 40%, #1a3f7a 100%);
+    color: #dce6f5;
+    padding: 22mm 5mm 16mm 6mm;
+    position: relative;
+  }
+  .sidebar::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 1px; height: 100%;
+    background: linear-gradient(180deg, transparent, rgba(255,255,255,0.15), transparent);
+  }
+
+  .avatar-ring {
+    width: 52px; height: 52px;
+    border-radius: 50%;
+    border: 2.5px solid rgba(255,255,255,0.4);
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 14px auto;
+    background: rgba(255,255,255,0.08);
+  }
+  .avatar-ring .initials {
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 1px;
+  }
+
+  .sidebar h1 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    text-align: center;
+    letter-spacing: 3px;
+    margin-bottom: 4px;
+  }
+  .sidebar .subtitle {
+    font-size: 10.5px;
+    color: rgba(255,255,255,0.65);
+    text-align: center;
+    margin-bottom: 18px;
+    letter-spacing: 1px;
+  }
+
+  .sb-section { margin-bottom: 16px; }
+  .sb-title {
+    font-size: 10px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.5);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 8px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+  }
+
+  .contact-list { font-size: 10px; line-height: 2; }
+  .contact-list .ci { display: flex; align-items: flex-start; gap: 6px; margin-bottom: 2px; }
+  .contact-list .ci-icon {
+    flex-shrink: 0;
+    width: 14px; height: 14px;
+    background: rgba(255,255,255,0.12);
+    border-radius: 3px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 8px; color: rgba(255,255,255,0.7);
+    margin-top: 2px;
+  }
+  .contact-list .ci-text { color: #c5d3e8; word-break: break-all; }
+
+  /* Skill bars */
+  .skill-item { margin-bottom: 6px; }
+  .skill-label {
+    font-size: 10px;
+    color: #c5d3e8;
+    margin-bottom: 3px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .skill-label .level { color: rgba(255,255,255,0.45); font-size: 9px; }
+  .skill-bar {
+    height: 4px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .skill-bar .fill {
+    height: 100%;
+    border-radius: 2px;
+    background: linear-gradient(90deg, #4da3ff, #7ec8ff);
+  }
+
+  .sb-tags { display: flex; flex-wrap: wrap; gap: 4px; }
+  .sb-tag {
+    font-size: 9px;
+    color: rgba(255,255,255,0.7);
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    padding: 2px 7px;
+    border-radius: 3px;
+  }
+
+  /* ── Main Content ── */
+  .main {
+    padding: 18mm 16mm 14mm 14mm;
+  }
+
+  .section { margin-bottom: 14px; }
+  .section-head {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+  .section-icon {
+    width: 22px; height: 22px;
+    background: linear-gradient(135deg, #0b1d3a, #1a3f7a);
+    border-radius: 5px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; color: #fff;
+    flex-shrink: 0;
+  }
+  .section-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #0b1d3a;
+    letter-spacing: 2px;
+  }
+  .section-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, #c0cde0, transparent);
+  }
+
+  /* Project */
+  .project {
+    margin-bottom: 12px;
+    padding: 10px 12px;
+    background: #f8fafd;
+    border-left: 3px solid #1a3f7a;
+    border-radius: 0 6px 6px 0;
+  }
+  .project-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 3px;
+  }
+  .project-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: #0b1d3a;
+  }
+  .project-tech {
+    font-size: 9.5px;
+    color: #5a7a9e;
+    background: #e4edf7;
+    padding: 2px 8px;
+    border-radius: 3px;
+    white-space: nowrap;
+  }
+  .project-link {
+    font-size: 10px;
+    color: #7a8ea3;
+    margin-bottom: 4px;
+  }
+  .project-desc {
+    font-size: 11px;
+    color: #3a3a3a;
+    line-height: 1.75;
+    padding-left: 12px;
+  }
+  .project-desc li { margin-bottom: 1px; }
+  .project-desc li::marker { color: #1a3f7a; }
+  .project-desc b { color: #0b1d3a; font-weight: 600; }
+
+  /* Education */
+  .edu-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .edu-school {
+    font-size: 13px;
+    font-weight: 700;
+    color: #0b1d3a;
+    margin-bottom: 2px;
+  }
+  .edu-detail {
+    font-size: 11px;
+    color: #555;
+    line-height: 1.7;
+  }
+  .edu-time {
+    font-size: 11px;
+    color: #7a8ea3;
+    white-space: nowrap;
+    padding-top: 1px;
+  }
+
+  /* Other */
+  .other-list {
+    font-size: 11px;
+    line-height: 1.8;
+    color: #3a3a3a;
+    padding-left: 14px;
+  }
+  .other-list li { margin-bottom: 2px; }
+  .other-list li::marker { color: #1a3f7a; }
+  .other-list b { color: #0b1d3a; }
+
+  /* Self */
+  .self-text {
+    font-size: 11px;
+    color: #444;
+    line-height: 1.85;
+    text-indent: 2em;
+  }
+
+  /* Print */
+  @media print {
+    body { background: #fff; }
+    .page { width: 100%; min-height: auto; box-shadow: none; margin: 0; }
+  }
+  @media screen {
+    .page { box-shadow: 0 8px 40px rgba(0,0,0,0.18); margin: 20px auto; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ── Sidebar ── -->
+  <div class="sidebar">
+    <div class="avatar-ring"><span class="initials">YJ</span></div>
+    <h1>杨劲松</h1>
+    <div class="subtitle">Java 后端 / AI 应用开发</div>
+
+    <!-- Contact -->
+    <div class="sb-section">
+      <div class="sb-title">联系方式</div>
+      <div class="contact-list">
+        <div class="ci"><div class="ci-icon">@</div><div class="ci-text">yjs_0831@qq.com</div></div>
+        <div class="ci"><div class="ci-icon">G</div><div class="ci-text">github.com/1byteone</div></div>
+        <div class="ci"><div class="ci-icon">L</div><div class="ci-text">南昌 / 中国</div></div>
+      </div>
+    </div>
+
+    <!-- Skills -->
+    <div class="sb-section">
+      <div class="sb-title">核心技能</div>
+      <div class="skill-item">
+        <div class="skill-label"><span>Java / Spring Boot</span><span class="level">熟练</span></div>
+        <div class="skill-bar"><div class="fill" style="width:92%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-label"><span>Spring Cloud / 微服务</span><span class="level">熟练</span></div>
+        <div class="skill-bar"><div class="fill" style="width:82%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-label"><span>Redis / RocketMQ / ES</span><span class="level">熟悉</span></div>
+        <div class="skill-bar"><div class="fill" style="width:80%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-label"><span>Python / FastAPI</span><span class="level">熟悉</span></div>
+        <div class="skill-bar"><div class="fill" style="width:78%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-label"><span>LangChain / LangGraph / RAG</span><span class="level">熟悉</span></div>
+        <div class="skill-bar"><div class="fill" style="width:75%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-label"><span>MySQL / Git / Docker</span><span class="level">熟悉</span></div>
+        <div class="skill-bar"><div class="fill" style="width:55%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-label"><span>Agent / MCP / SSE</span><span class="level">了解</span></div>
+        <div class="skill-bar"><div class="fill" style="width:45%"></div></div>
+      </div>
+    </div>
+
+    <!-- Tools -->
+    <div class="sb-section">
+      <div class="sb-title">AI 工具链</div>
+      <div class="sb-tags">
+        <span class="sb-tag">LangChain</span><span class="sb-tag">LangGraph</span><span class="sb-tag">FastAPI</span><span class="sb-tag">MCP</span><span class="sb-tag">SSE</span><span class="sb-tag">Pydantic</span>
+      </div>
+    </div>
+
+    <!-- API -->
+    <div class="sb-section">
+      <div class="sb-title">API 集成</div>
+      <div class="sb-tags">
+        <span class="sb-tag">Spring Boot</span><span class="sb-tag">Spring Cloud</span><span class="sb-tag">Redis</span><span class="sb-tag">RocketMQ</span><span class="sb-tag">Elasticsearch</span><span class="sb-tag">Seata</span>
+      </div>
+    </div>
+
+    <!-- Education (sidebar) -->
+    <div class="sb-section">
+      <div class="sb-title">教育背景</div>
+      <div style="font-size:11px; font-weight:700; color:#fff; margin-bottom:2px;">江西农业大学</div>
+      <div style="font-size:10px; color:#c5d3e8; line-height:1.7;">
+        软件工程 · 本科<br>
+        2023.09 — 2027.06<br>
+        GPA 专业前 15% · CET-4
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Main Content ── -->
+  <div class="main">
+
+    <!-- Projects -->
+    <div class="section">
+      <div class="section-head">
+        <div class="section-icon">P</div>
+        <div class="section-title">项目经历</div>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="project">
+        <div class="project-head">
+          <span class="project-name">分布式微云商城</span>
+          <span class="project-tech">Spring Cloud · Redis · RocketMQ · Elasticsearch</span>
+        </div>
+        <div class="project-link">github.com/1byteone/mall-micro-cloud</div>
+        <ul class="project-desc">
+          <li>主导微服务拆分、服务治理、统一网关、分布式事务与研发规范。</li><li>集成 <b>11 个中间件</b>：Nacos、Gateway、Sentinel、Redis、Elasticsearch、RocketMQ、Seata 等。</li><li>采用 Redis 预扣库存、Redisson 可重入锁和 RocketMQ 异步落库解决超卖，完成 <b>万级并发压测</b>。</li>
+        </ul>
+      </div>
+
+      <div class="project">
+        <div class="project-head">
+          <span class="project-name">农业知识问答系统</span>
+          <span class="project-tech">Python · FastAPI · LangGraph · ChromaDB</span>
+        </div>
+        <div class="project-link">github.com/1byteone/agri-qa-assistant</div>
+        <ul class="project-desc">
+          <li>独立完成 PDF 文档预处理、向量检索、FastAPI 接口和前端交互闭环。</li><li>基于 LangGraph 实现意图路由，支持私有知识库、通用知识和工具增强路径。</li><li>支持多轮记忆、SSE 流式输出、结构化结果、证据溯源与可信度评分。</li>
+        </ul>
+      </div>
+
+      <div class="project">
+        <div class="project-head">
+          <span class="project-name">AI 驱动搜索与推荐系统（实习）</span>
+          <span class="project-tech">Java · Python · Spring Cloud · RAG</span>
+        </div>
+        <div class="project-link">江西传习教育科技有限公司 · 2026.09 — 至今</div>
+        <ul class="project-desc">
+          <li>开发 AI 驱动的搜索与推荐系统，构建 RAG 智能检索服务。</li><li>集成 Python AI 服务与 Spring Cloud 微服务，参与向量搜索与幻觉控制机制落地。</li>
+        </ul>
+      </div>
+
+      <div class="project">
+        <div class="project-head">
+          <span class="project-name">能力与实践</span>
+          <span class="project-tech">接口契约 · CodeReview · 压测 · 文档</span>
+        </div>
+        <div class="project-link">Java / Python 跨语言工程协作</div>
+        <ul class="project-desc">
+          <li>关注可量化指标，通过压测、日志与链路排查定位锁、缓存、检索和接口问题。</li><li>重视接口契约、CodeReview 和文档沉淀，推动 Java/Python 跨语言联调落地。</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Education Detail -->
+    <div class="section">
+      <div class="section-head">
+        <div class="section-icon">E</div>
+        <div class="section-title">教育背景</div>
+        <div class="section-line"></div>
+      </div>
+      <div class="edu-card">
+        <div>
+          <div class="edu-school">江西农业大学 · 软件工程 · 本科</div>
+          <div class="edu-detail">2027 届 · GPA 专业前 15% · CET-4 · Java 后端 / AI 应用开发</div>
+        </div>
+        <div class="edu-time">2023.09 — 2027.06</div>
+      </div>
+    </div>
+
+    <!-- Other -->
+    <div class="section">
+      <div class="section-head">
+        <div class="section-icon">+</div>
+        <div class="section-title">其他亮点</div>
+        <div class="section-line"></div>
+      </div>
+      <ul class="other-list">
+        <li><b>后端工程：</b>Spring Boot、Spring Cloud Alibaba、Redis/Redisson、RocketMQ、Elasticsearch、MySQL。</li><li><b>AI 应用：</b>Python、LangChain、LangGraph、FastAPI、RAG、Agent、MCP。</li><li><b>工程协作：</b>Git、Docker、CodeReview、Conda/Jupyter，以及可复现的压测与故障排查记录。</li>
+      </ul>
+    </div>
+
+    <!-- Self -->
+    <div class="section" style="margin-bottom:0;">
+      <div class="section-head">
+        <div class="section-icon">M</div>
+        <div class="section-title">自我评价</div>
+        <div class="section-line"></div>
+      </div>
+      <div class="self-text">
+        Java 后端与 AI 应用融合开发，具备微服务、高并发、缓存、消息队列、RAG 检索与 Agent 工具调用的项目实践。关注可量化结果和工程闭环，期望在真实业务场景中交付清晰、可靠、可维护的系统。
+      </div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
