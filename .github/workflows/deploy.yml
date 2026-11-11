@@ -290,6 +290,12 @@ jobs:
       - name: Verify theme route matrix
         run: |
           set -euo pipefail
+          for cover in public/images/theme-center/*.webp; do
+            test -s "$cover"
+          done
+          test -s public/themes/engineer-terminal/images/theme-center/ai-terminal.webp
+          test -s public/themes/bloggpt/images/theme-center/bloggpt.webp
+          test -s public/themes/cyberpunk2077/images/theme-center/cyberpunk2077.webp
           for route in \
             "index.html" \
             "works/index.html" \
@@ -422,7 +428,8 @@ jobs:
       github.ref == 'refs/heads/dev_theme_engineer-terminal' ||
       github.ref == 'refs/heads/dev_termfolio' ||
       github.ref == 'refs/heads/dev_theme_cyberpunk2077' ||
-      github.ref == 'refs/heads/dev_theme_lzw_archive'
+      github.ref == 'refs/heads/dev_theme_lzw_archive' ||
+      github.ref == 'refs/heads/dev_matthewtrent_clone'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

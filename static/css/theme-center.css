@@ -182,20 +182,17 @@ body.theme-center-page {
   background: #e7ebea;
 }
 .tc-preview-real { color: inherit; text-decoration: none; }
-.tc-preview-image { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top center; opacity: 0; transform: scale(1.005); transition: opacity 280ms ease, transform 520ms cubic-bezier(.2,.7,.2,1); }
+.tc-preview-image { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top center; opacity: 1; transform: scale(1.005); transition: transform 520ms cubic-bezier(.2,.7,.2,1); }
 .tc-preview-real[data-preview-loaded="true"] .tc-preview-image { opacity: 1; }
-.tc-preview-loading { position: absolute; inset: 0; display: grid; place-items: center; color: #657174; font-size: 10px; background: linear-gradient(100deg, #e7ebea 20%, #f2f4f3 38%, #e7ebea 56%); background-size: 220% 100%; animation: tc-preview-shimmer 1.25s linear infinite; }
-.tc-preview-real[data-preview-loaded="true"] .tc-preview-loading { opacity: 0; transition: opacity 180ms ease; }
-.tc-preview-real[data-preview-error="true"] .tc-preview-loading { color: #7a5751; background: #f2e9e6; animation: none; }
+.tc-preview-loading { position: absolute; inset: 0; display: none; place-items: center; color: #657174; font-size: 10px; background: #e7ebea; }
+.tc-preview-real[data-preview-error="true"] .tc-preview-loading { display: grid; color: #7a5751; background: #f2e9e6; }
 .tc-preview-unavailable { display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end; gap: 7px; padding: 18px; border: 1px dashed #cbd4d2; background: #eff2f1; color: #657174; }
 .tc-preview-unavailable-index { color: var(--tc-accent); font: 10px ui-monospace, SFMono-Regular, Consolas, monospace; }
 .tc-preview-unavailable strong { color: #263237; font-size: 12px; font-weight: 620; }
 .tc-preview-unavailable small { max-width: 34ch; color: #6b787c; font-size: 9px; line-height: 1.5; }
 .tc-card:hover .tc-preview-real[data-preview-loaded="true"] .tc-preview-image { transform: scale(1.025); }
-@keyframes tc-preview-shimmer { to { background-position: -220% 0; } }
 @media (prefers-reduced-motion: reduce) {
-  .tc-preview-loading { animation: none; }
-  .tc-preview-image, .tc-preview-loading { transition: none; }
+  .tc-preview-image { transition: none; }
 }
 
 .tc-card-content { padding: 12px 14px 13px; }

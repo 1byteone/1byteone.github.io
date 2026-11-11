@@ -110,8 +110,9 @@
             {{- if $isAvailable -}}
               {{- $showcase := $theme.showcase_image -}}
               {{- if not $showcase }}{{- $showcase = printf "/images/theme-center/%s.webp" $theme.id -}}{{- end -}}
+              {{- $showcase = replaceRE "^/" "" $showcase -}}
               <a class="tc-preview tc-preview-real" href="{{ $href }}" data-theme-visit data-theme-id="{{ $selectionID }}" aria-label="{{ if $zh }}预览 {{ $label }} 主题{{ else }}Preview {{ $label }} theme{{ end }}">
-                <img class="tc-preview-image" src="{{ $showcase | relURL }}" alt="{{ if $zh }}{{ default (printf "%s 主题真实首页截图" $label) $theme.showcase_alt_zh }}{{ else }}{{ default (printf "Real %s theme homepage screenshot" $label) $theme.showcase_alt_en }}{{ end }}" width="1199" height="633" loading="lazy" decoding="async">
+                <img class="tc-preview-image" src="{{ $showcase | relURL }}" alt="{{ if $zh }}{{ default (printf "%s 主题真实首页截图" $label) $theme.showcase_alt_zh }}{{ else }}{{ default (printf "Real %s theme homepage screenshot" $label) $theme.showcase_alt_en }}{{ end }}" width="1199" height="633" loading="eager" decoding="async">
                 <span class="tc-preview-loading" aria-hidden="true">{{ if $zh }}加载真实预览…{{ else }}Loading live preview…{{ end }}</span>
               </a>
             {{- else -}}

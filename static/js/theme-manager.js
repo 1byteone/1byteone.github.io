@@ -58,7 +58,7 @@
   const readList = (key) => {
     try {
       const value = JSON.parse(window.localStorage.getItem(key) || "[]");
-      return Array.isArray(value) ? value.filter((item) => typeof item === "string") : [];
+      return Array.isArray(value) ? value.filter((item, index) => typeof item === "string" && value.indexOf(item) === index) : [];
     } catch { return []; }
   };
 
@@ -177,9 +177,13 @@
   const renderManagers = () => {
     const recent = readList(recentKey);
     const favorites = readList(favoritesKey);
+    const favoriteIDs = new Set(favorites);
+    // A theme should appear once in the panel even when it is both visited
+    // recently and saved. Favorites take precedence over the recent list.
+    const recentOnly = recent.filter((id) => !favoriteIDs.has(id));
     managers.forEach((manager) => {
       const isChinese = manager.dataset.themeUiLang === "zh";
-      renderList(manager, "recent", recent, isChinese ? "浏览主题后会显示在这里。" : "Themes you visit will appear here.");
+      renderList(manager, "recent", recentOnly, isChinese ? "浏览主题后会显示在这里。" : "Themes you visit will appear here.");
       renderList(manager, "favorites", favorites, isChinese ? "收藏的主题会显示在这里。" : "Your saved themes will appear here.");
     });
     updateFavoriteButtons();
