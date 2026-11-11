@@ -39,12 +39,17 @@ def rewrite_root_urls(value: str, prefix: str) -> str:
     """Prefix local root-relative URLs while leaving protocols untouched."""
 
     # Root URLs in the capture occur in HTML attributes, CSS url() values, and
-    # JavaScript strings/template literals. Restrict the match to a URL-like
-    # delimiter so regular-expression literals and https:// values are not
-    # changed accidentally.
+    # JavaScript strings/template literals. Only quote-delimited strings are
+    # rewritten here. A slash after ``(`` is ambiguous in JavaScript: it can
+    # begin either ``url(/asset)`` or a regular-expression literal such as
+    # ``/^\\/blog/``. Treating both cases alike corrupts the script with an
+    # ``/themes/...`` prefix and produces ``Invalid regular expression flags``
+    # in the browser. CSS's unquoted ``url(/asset)`` form is handled separately.
     escaped_prefix = re.escape(prefix)
-    pattern = re.compile(rf"([\"'`(=])/(?![/>])(?!{escaped_prefix.lstrip('/')})")
-    return pattern.sub(rf"\1{prefix}", value)
+    string_pattern = re.compile(rf"([\"'`])/(?![/>])(?!{escaped_prefix.lstrip('/')})")
+    rewritten = string_pattern.sub(rf"\1{prefix}", value)
+    css_url_pattern = re.compile(rf"(\burl\(\s*)/(?![/>])(?!{escaped_prefix.lstrip('/')})", re.IGNORECASE)
+    return css_url_pattern.sub(rf"\1{prefix}", rewritten)
 
 
 def copy_preview(source: Path, destination: Path, prefix: str) -> int:
