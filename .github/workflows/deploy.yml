@@ -222,11 +222,10 @@ jobs:
             --source clones/matthewtrent.me \
             --destination public/themes/matthewtrent \
             --prefix /themes/matthewtrent/
-          node --check public/themes/matthewtrent/mirror-polish.js
-          node --check public/themes/matthewtrent/mirror-home-content.js
-          ! grep -Eq '/themes/matthewtrent/(\^|\\b|mattr)' \
-            public/themes/matthewtrent/mirror-polish.js \
-            public/themes/matthewtrent/mirror-home-content.js
+          find public/themes/matthewtrent -type f -name '*.js' -print0 \
+            | xargs -0 -n1 node --check
+          ! grep -R -E -q '/themes/matthewtrent/(\^|\\b)' \
+            public/themes/matthewtrent --include='*.js'
 
       - name: Build Astro TUI terminal preview
         env:
