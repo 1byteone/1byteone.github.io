@@ -90,6 +90,7 @@ jobs:
         run: |
           hugo \
             --gc \
+            --cleanDestinationDir \
             --minify \
             --baseURL "${{ steps.pages.outputs.base_url }}/"
 
@@ -268,6 +269,57 @@ jobs:
               --destination "$target" \
               --baseURL "${{ steps.pages.outputs.base_url }}/themes/minimal/${variant}/"
           done
+
+      # Each Hugo preview inherits the shared static directory. Keep only the
+      # asset families that a preview can actually render so the Pages artifact
+      # stays deployable instead of repeating several hundred MB per theme.
+      - name: Prune duplicated preview assets
+        run: |
+          set -euo pipefail
+
+          remove_all_except() {
+            local pattern="$1"
+            local keep="$2"
+            while IFS= read -r dir; do
+              [ -n "$dir" ] || continue
+              case "$dir" in
+                "$keep") ;;
+                *) rm -rf "$dir" ;;
+              esac
+            done < <(find public/themes -type d -path "$pattern" -print)
+          }
+
+          remove_all_except '*/linear-mirror' ''
+          remove_all_except '*/assets' 'public/themes/alxian/assets'
+          remove_all_except '*/media/cyberpunk2077' 'public/themes/cyberpunk2077/media/cyberpunk2077'
+          remove_all_except '*/images/emil-pixel-terminal' 'public/themes/engineer-terminal/emil-pixel-terminal/images/emil-pixel-terminal'
+
+          # Legacy mirror galleries are not referenced by any theme route.
+          # Article and roadmap media remain available for the actual content
+          # pages, while these two unused buckets would be copied repeatedly.
+          find public/themes -type d \( -path '*/media/blog' -o -path '*/media/projects' \) -prune -exec rm -rf {} +
+
+          # The Cyberpunk preview only renders the local hero, profile logo,
+          # six card images, and the Night City hobby backdrop. The source
+          # archive also contains raw region sheets and unrelated official
+          # reference material; keeping those in every preview is wasteful.
+          cp_media="public/themes/cyberpunk2077/media/cyberpunk2077"
+          if [ -d "$cp_media" ]; then
+            find "$cp_media/official" -type f ! -name 'hero-ultimate-edition-animation.webm' ! -name 'night-city-vista-zh.png' -delete
+            find "$cp_media/ui/regions" "$cp_media/ui/source" "$cp_media/ui/granular" "$cp_media/ui/components" -type f -delete 2>/dev/null || true
+            find "$cp_media/ui" -maxdepth 1 -type f ! -name 'hero-desktop.webp' ! -name 'hero-mobile.webp' ! -name 'card-hero-vertical.webp' ! -name 'card-johnny.webp' ! -name 'card-night-city.webp' ! -name 'card-night-city-day.webp' ! -name 'card-japantown.webp' ! -name 'card-black-sapphire.webp' ! -name 'card-street-view.webp' -delete
+            find "$cp_media/ui/derived" -type f ! -name 'logo-tight-transparent.png' -delete 2>/dev/null || true
+          fi
+
+          total_bytes=$(find public -type f -printf '%s\n' | awk '{ total += $1 } END { print total + 0 }')
+          # The Pages action compresses this tree before upload; keep a
+          # conservative raw-tree ceiling below the service artifact limit.
+          max_bytes=$((1200 * 1024 * 1024))
+          if [ "$total_bytes" -ge "$max_bytes" ]; then
+            echo "Pages artifact is too large: ${total_bytes} bytes" >&2
+            exit 1
+          fi
+          echo "Pages artifact size: ${total_bytes} bytes"
 
       - name: Verify Minimal family previews
         run: |
