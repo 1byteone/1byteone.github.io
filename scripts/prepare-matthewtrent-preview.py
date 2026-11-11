@@ -90,6 +90,23 @@ def copy_preview(source: Path, destination: Path, prefix: str) -> int:
             shutil.copy2(item, target)
         copied += 1
 
+    # Keep the theme-center English preview URL valid without copying the
+    # capture's separate English export (which only contains redirects and
+    # several dozen megabytes of duplicate routes). The mirror's own language
+    # switch remains available because this entry starts it in English.
+    root_index = destination / "index.html"
+    english_index = destination / "en" / "index.html"
+    english_index.parent.mkdir(parents=True, exist_ok=True)
+    english = root_index.read_text(encoding="utf-8")
+    english = english.replace('<html lang="zh-CN"', '<html lang="en"', 1)
+    english = english.replace(
+        "<head>",
+        "<head><script>try{localStorage.setItem('mirror-language','en')}catch(_){}</script>",
+        1,
+    )
+    english_index.write_text(english, encoding="utf-8")
+    copied += 1
+
     return copied
 
 
