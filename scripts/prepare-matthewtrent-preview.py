@@ -25,6 +25,15 @@ TEXT_EXTENSIONS = {
     ".xml",
 }
 
+BLOG_ROUTES = {
+    "ai-engineering-blog-content-system",
+    "langchain-tool-calling-agent",
+    "mysql-high-concurrency-architecture",
+    "rag-basic-pipeline",
+    "rag-retriever-optimization",
+    "spring-boot-request-lifecycle",
+}
+
 
 def rewrite_root_urls(value: str, prefix: str) -> str:
     """Prefix local root-relative URLs while leaving protocols untouched."""
@@ -53,11 +62,20 @@ def copy_preview(source: Path, destination: Path, prefix: str) -> int:
         relative = item.relative_to(source)
         target = destination / relative
 
-        # The capture stores both content-addressed and by-name copies of raw
-        # GitHub assets. The runtime resolves the by-name paths; omitting the
-        # duplicate hash bucket keeps the Pages artifact comfortably below its
-        # size limit without changing any rendered route.
-        if relative.parts[:3] == ("media", "external", "raw.githubusercontent.com") and len(relative.parts) == 4 and relative.parts[3] != "by-name":
+        # The public preview is the adapted landing page plus the article and
+        # project entries linked from it. The capture still remains complete in
+        # clones/matthewtrent.me; this smaller deployment set keeps Pages below
+        # its artifact limit without turning links from the visible page into
+        # unrelated content.
+        if relative.parts and relative.parts[0] in {"en", "zh", "tags"}:
+            continue
+        if relative.parts and relative.parts[0] == "blog" and len(relative.parts) > 1 and relative.parts[1] not in {"index.html", "index.xml"} and relative.parts[1] not in BLOG_ROUTES:
+            continue
+        if relative.parts and relative.parts[0] == "projects" and len(relative.parts) > 1 and relative.parts[1] not in {"index.html", "index.xml", "agricultural-qa-agent", "ecommerce-rag-search"}:
+            continue
+        if relative.parts[:2] == ("media", "gallery-thumb"):
+            continue
+        if relative.parts[:3] == ("media", "external", "raw.githubusercontent.com"):
             continue
 
         if item.is_dir():
