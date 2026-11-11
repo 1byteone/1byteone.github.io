@@ -1,7 +1,7 @@
 {{- $page := . -}}
 {{- $zh := hasPrefix $page.Lang "zh" -}}
 {{- $site := $page.Site.Data.site.site -}}
-{{- $avatar := "media/authors/me.png" | relURL -}}
+{{- $avatar := "/media/authors/me.png" -}}
 {{- $translationURL := "/en/" -}}
 {{- if not $zh }}{{- $translationURL = "/" -}}{{- end -}}
 {{- with $page.Translations }}{{- $translationURL = (index . 0).RelPermalink -}}{{- end -}}

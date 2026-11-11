@@ -3,11 +3,12 @@
 {{- $caption := .Get "caption" -}}
 {{- $source := .Inner | chomp -}}
 {{ partial "rich-content/assets.html" .Page }}
-{{- $image := .Page.Resources.GetMatch (printf "%s*" $src) -}}
+{{- $pageImage := .Page.Resources.GetMatch (printf "%s*" $src) -}}
+{{- $image := $pageImage -}}
 {{- if and (not $image) $src -}}{{- $image = resources.GetMatch (printf "%s*" $src) -}}{{- end -}}
 <figure class="rich-diagram" data-rich-diagram>
   {{- if $image -}}
-    <img class="rich-diagram-image" src="{{ $image.RelPermalink }}" alt="{{ $alt }}" loading="lazy">
+    <img class="rich-diagram-image" src="{{ if $pageImage }}{{ $pageImage.RelPermalink }}{{ else }}{{ printf "/%s" (strings.TrimPrefix $src "/") }}{{ end }}" alt="{{ $alt }}" loading="lazy">
   {{- else -}}
     {{- if $src -}}
       <img class="rich-diagram-image" src="{{ $src | relURL }}" alt="{{ $alt }}" loading="lazy">

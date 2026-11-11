@@ -300,11 +300,23 @@ jobs:
           remove_all_except '*/media/cyberpunk2077' 'public/themes/cyberpunk2077/media/cyberpunk2077'
           remove_all_except '*/images/emil-pixel-terminal' 'public/themes/engineer-terminal/emil-pixel-terminal/images/emil-pixel-terminal'
 
+          # Shared article, roadmap, author, and theme-center media are emitted
+          # once at the site root and referenced with root-relative URLs. Keep
+          # only the Cyberpunk runtime media and the Emil pixel gallery that
+          # are owned by their preview bundles.
+          find public/themes -type d \( \
+            -path '*/media/blog' -o \
+            -path '*/media/projects' -o \
+            -path '*/media/tech-stack' -o \
+            -path '*/media/backend-engineering' -o \
+            -path '*/media/ai-engineering' -o \
+            -path '*/media/authors' -o \
+            -path '*/media/icons' -o \
+            -path '*/images/theme-center' \) -prune -exec rm -rf {} +
+
           # Legacy mirror galleries are not referenced by any theme route.
           # Article and roadmap media remain available for the actual content
           # pages, while these two unused buckets would be copied repeatedly.
-          find public/themes -type d \( -path '*/media/blog' -o -path '*/media/projects' \) -prune -exec rm -rf {} +
-
           # The Cyberpunk preview only renders the local hero, profile logo,
           # six card images, and the Night City hobby backdrop. The source
           # archive also contains raw region sheets and unrelated official
